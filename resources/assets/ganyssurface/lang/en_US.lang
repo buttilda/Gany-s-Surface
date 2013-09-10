@@ -1,0 +1,55 @@
+# Item localizations
+item.ganyssurface.woodenHelmet.name=Wooden Helmet
+item.ganyssurface.woodenChestplate.name=Wooden Chestplate
+item.ganyssurface.woodenLeggings.name=Wooden Leggings
+item.ganyssurface.woodenBoots.name=Wooden Boots
+
+item.ganyssurface.rot.name=Rot
+item.ganyssurface.camelliaSeeds.name=Camellia Seeds
+item.ganyssurface.teaLeaves.name=Tea Leaves
+item.ganyssurface.teaBag.name=Tea Bag
+item.ganyssurface.emptyMug.name=Empty Mug
+item.ganyssurface.cupOfTea.name=Cup of Tea
+item.ganyssurface.mankyCupOfTea.name=Manky Cup of Tea
+item.ganyssurface.poop.name=Poop
+item.ganyssurface.batPoop.name=Bat Poop
+item.ganyssurface.fertilizer.name=Fertilizer
+item.ganyssurface.cookedEgg.name=Cooked Egg
+item.ganyssurface.obsidianHead.name=Obsidian Head
+item.ganyssurface.woodenWrench.name=Wooden Wrench
+item.ganyssurface.batNet.name=Bat Net
+item.ganyssurface.pocketBat.name=Pocket Bat
+item.ganyssurface.batStew.name=Bat Stew
+item.ganyssurface.chocolateBar.name=Chocolate Bar
+
+pleaseletmefree=Please let me free!
+
+# Block localizations
+tile.ganyssurface.camelliaCrop.name=Camellia Crop
+tile.ganyssurface.rainDetector.name=Rain Detector
+tile.ganyssurface.blockDetector.name=Block Detector
+tile.ganyssurface.dislocator.name=Dislocator
+tile.ganyssurface.sensoringDislocator.name=Sensitive Dislocator
+tile.ganyssurface.cubicSensoringDislocator.name=Cubic Sensitive Dislocator
+tile.ganyssurface.disguisedTrapDoorOak.name=Disguised Trap Door Oak
+tile.ganyssurface.disguisedTrapDoorSpruce.name=Disguised Trap Door Spruce
+tile.ganyssurface.disguisedTrapDoorBirch.name=Disguised Trap Door Birch
+tile.ganyssurface.disguisedTrapDoorJungle.name=Disguised Trap Door Jungle
+tile.ganyssurface.workTable.name=Work Table
+tile.ganyssurface.organicMatterCompressor.name=Organic Matter Compressor
+tile.ganyssurface.cushion.name=Cushion
+tile.ganyssurface.chocolateCake.name=Chocolate Cake
+tile.ganyssurface.itemDisplay.name=Item Display
+
+# GUI localizations
+container.ganyssurface:blockDetector=Block Detector
+container.ganyssurface:sensoringDislocator= Sensitive Dislocator
+container.ganyssurface:cubicSensoringDislocator=Cubic Sensitive Dislocator
+container.ganyssurface:workTable=Work Table
+container.ganyssurface:organicMatterCompressor=Organic Matter Compressor
+container.ganyssurface:itemDisplay=Item Display
+
+matter=Matter:
+
+# Creative Tab localizations
+itemGroup.ganyssurface=Gany's Surface

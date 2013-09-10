@@ -1,0 +1,14 @@
+package ganymedes01.ganyssurface.items;
+
+import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.Strings;
+import net.minecraft.item.ItemBlock;
+
+public class ItemChocolateCake extends ItemBlock {
+
+	public ItemChocolateCake(int id) {
+		super(id);
+		setMaxStackSize(1);
+		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CHOCOLATE_CAKE_NAME + "_item"));
+	}
+}
