@@ -60,5 +60,6 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.cushion), "zxz", "xyx", "zxz", 'x', Block.cloth, 'y', new ItemStack(Item.dyePowder, 1, 5), 'z', Item.goldNugget);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.chocolateCake), "xxx", "yzy", "www", 'x', Item.bucketMilk, 'y', ModItems.chocolateBar, 'z', Item.egg, 'w', Item.wheat);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.itemDisplay), "xxx", "x x", "xyx", 'x', Block.thinGlass, 'y', new ItemStack(Block.carpet, 0, 14));
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.chestPropellant), "yxy", "xzx", "xyx", 'x', Item.ingotIron, 'y', Item.goldNugget, 'z', Block.chest);
 	}
 }

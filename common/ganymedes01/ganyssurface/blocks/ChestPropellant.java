@@ -10,7 +10,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 
@@ -25,7 +24,7 @@ public class ChestPropellant extends BlockContainer {
 		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CHEST_PROPELLANT_NAME));
 		setTextureName(Utils.getBlockTexture(Strings.CHEST_PROPELLANT_NAME, false));
-		setBlockBounds(0.07F, 0.07F, 0.07F, 0.93F, 0.93F, 0.93F);
+		setBlockBounds(0.07F, 0.0F, 0.07F, 0.93F, 1.0F, 0.93F);
 	}
 
 	@Override
@@ -49,24 +48,6 @@ public class ChestPropellant extends BlockContainer {
 			metadata = 3;
 
 		world.setBlockMetadataWithNotify(x, y, z, metadata, 3);
-	}
-
-	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess access, int x, int y, int z) {
-		switch (access.getBlockMetadata(x, y, z)) {
-			case 0:
-				setBlockBounds(0.07F, 0.07F, 0.07F, 0.93F, 0.93F, 0.93F);
-				break;
-			case 1:
-				setBlockBounds(0.07F, 0.0F, 0.07F, 0.93F, 0.93F, 0.93F);
-				break;
-			case 2:
-				setBlockBounds(0.07F, 0.07F, 0.07F, 0.93F, 1.0F, 0.93F);
-				break;
-			case 3:
-				setBlockBounds(0.07F, 0.0F, 0.07F, 0.93F, 1.0F, 0.93F);
-				break;
-		}
 	}
 
 	@Override

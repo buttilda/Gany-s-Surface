@@ -40,6 +40,7 @@ tile.ganyssurface.organicMatterCompressor.name=Compressor de Matéria Orgânica
 tile.ganyssurface.cushion.name=Almofada
 tile.ganyssurface.chocolateCake.name=Bolo de Chocolate
 tile.ganyssurface.itemDisplay.name=Display para Ítems
+tile.ganyssurface.chestPropellant.name=Propelente de Baús
 
 # GUI localizations
 container.ganyssurface:blockDetector=Detector de Blocos

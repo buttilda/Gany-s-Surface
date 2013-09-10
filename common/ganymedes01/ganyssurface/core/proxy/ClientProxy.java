@@ -1,7 +1,5 @@
 package ganymedes01.ganyssurface.core.proxy;
 
-import ganymedes01.ganyssurface.blocks.ModBlocks;
-import ganymedes01.ganyssurface.client.renderer.item.ItemChestPropellantRender;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityItemDisplayRender;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWorkTableRender;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
@@ -9,7 +7,6 @@ import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 
@@ -24,7 +21,6 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRenderers() {
-		MinecraftForgeClient.registerItemRenderer(ModBlocks.chestPropellant.blockID, new ItemChestPropellantRender());
 	}
 
 	@Override
