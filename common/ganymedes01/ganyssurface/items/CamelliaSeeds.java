@@ -7,6 +7,13 @@ import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemSeeds;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class CamelliaSeeds extends ItemSeeds {
 
 	public CamelliaSeeds(int id) {

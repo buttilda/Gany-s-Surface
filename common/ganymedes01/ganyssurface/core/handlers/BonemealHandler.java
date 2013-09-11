@@ -4,6 +4,13 @@ import ganymedes01.ganyssurface.blocks.ModBlocks;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class BonemealHandler {
 
 	@ForgeSubscribe

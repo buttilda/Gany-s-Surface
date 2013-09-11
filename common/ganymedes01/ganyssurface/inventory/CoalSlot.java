@@ -5,6 +5,13 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class CoalSlot extends Slot {
 
 	public CoalSlot(IInventory inventory, int slot, int posX, int posY) {

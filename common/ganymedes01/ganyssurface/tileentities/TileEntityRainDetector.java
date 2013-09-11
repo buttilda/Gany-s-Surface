@@ -3,6 +3,13 @@ package ganymedes01.ganyssurface.tileentities;
 import ganymedes01.ganyssurface.blocks.RainDetector;
 import net.minecraft.tileentity.TileEntity;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class TileEntityRainDetector extends TileEntity {
 
 	@Override

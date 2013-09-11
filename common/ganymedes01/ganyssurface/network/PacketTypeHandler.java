@@ -11,6 +11,13 @@ import java.io.DataInputStream;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet250CustomPayload;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public enum PacketTypeHandler {
 	TILE_WITH_SINGLE_DISPLAY_ITEM(PacketTileWithISingleDisplayItem.class),
 	TILE_WITH_MULTIPLE_DISPLAY_ITEMS(PacketTileWithIMultipleDisplayItems.class);

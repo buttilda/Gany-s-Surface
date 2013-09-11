@@ -11,6 +11,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.ForgeDirection;
 import buildcraft.api.transport.IPipeTile.PipeType;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class TileEntityCubicSensoringDislocator extends TileEntitySensoringDislocator {
 
 	public boolean activated;

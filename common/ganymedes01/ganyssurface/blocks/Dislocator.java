@@ -24,6 +24,13 @@ import buildcraft.api.transport.IPipeTile.PipeType;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class Dislocator extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)

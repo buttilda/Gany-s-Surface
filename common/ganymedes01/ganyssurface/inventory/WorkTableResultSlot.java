@@ -6,6 +6,13 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class WorkTableResultSlot extends SlotCrafting {
 
 	TileEntityWorkTable workTable;

@@ -10,6 +10,13 @@ import java.io.IOException;
 import net.minecraft.network.INetworkManager;
 import cpw.mods.fml.common.network.Player;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class PacketTileWithISingleDisplayItem extends CustomPacket {
 
 	public int x, y, z;

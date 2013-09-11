@@ -1,6 +1,14 @@
 package ganymedes01.ganyssurface.lib;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class ItemsID {
+
 	/* Default */
 	// Armour
 	public static int WOODEN_HELMET_ID_DEFAULT = 6000;

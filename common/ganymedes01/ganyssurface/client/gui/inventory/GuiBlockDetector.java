@@ -11,6 +11,13 @@ import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class GuiBlockDetector extends GuiContainer {
 
 	private final TileEntityBlockDetector detector;

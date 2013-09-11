@@ -51,6 +51,13 @@ import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class TileEntityOrganicMatterCompressor extends TileEntity implements ISidedInventory {
 
 	private ItemStack[] inventory = new ItemStack[11];

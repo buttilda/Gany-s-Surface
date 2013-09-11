@@ -7,6 +7,13 @@ import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
 import cpw.mods.fml.common.registry.GameRegistry;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class ModBlocks {
 
 	public static Block camelliaCrop;

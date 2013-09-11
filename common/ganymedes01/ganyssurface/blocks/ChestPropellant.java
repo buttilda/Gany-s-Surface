@@ -7,15 +7,29 @@ import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
 
 public class ChestPropellant extends BlockContainer {
 
 	public static final int MAX_PILE_SIZE = 16;
+
+	@SideOnly(Side.CLIENT)
+	private Icon blockTop, blockSide;
 
 	public ChestPropellant(int id) {
 		super(id, Material.rock);
@@ -38,19 +52,6 @@ public class ChestPropellant extends BlockContainer {
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, int id) {
-		int metadata = 0;
-		if (world.getBlockTileEntity(x, y - 1, z) instanceof IInventory)
-			metadata = 1;
-		if (world.getBlockTileEntity(x, y + 1, z) instanceof IInventory)
-			metadata = 2;
-		if (world.getBlockTileEntity(x, y + 1, z) instanceof IInventory && world.getBlockTileEntity(x, y - 1, z) instanceof IInventory)
-			metadata = 3;
-
-		world.setBlockMetadataWithNotify(x, y, z, metadata, 3);
-	}
-
-	@Override
 	public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side) {
 		return false;
 	}
@@ -59,7 +60,7 @@ public class ChestPropellant extends BlockContainer {
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		if (world.isRemote)
 			return true;
-		for (int i = 0; i < MAX_PILE_SIZE; i++) {
+		for (int i = 1; i < MAX_PILE_SIZE; i++) {
 			TileEntity tile = world.getBlockTileEntity(x, y - i, z);
 			if (tile instanceof IInventory) {
 				if (!(tile instanceof TileEntityChestPropellant))
@@ -73,5 +74,18 @@ public class ChestPropellant extends BlockContainer {
 	@Override
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityChestPropellant();
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int side, int meta) {
+		return side == 0 || side == 1 ? blockTop : blockSide;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister reg) {
+		blockSide = reg.registerIcon(Utils.getBlockTexture(Strings.CHEST_PROPELLANT_NAME, true) + "side");
+		blockTop = reg.registerIcon(Utils.getBlockTexture(Strings.CHEST_PROPELLANT_NAME, true) + "top");
 	}
 }

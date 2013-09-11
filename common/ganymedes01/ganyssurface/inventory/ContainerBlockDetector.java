@@ -7,6 +7,13 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class ContainerBlockDetector extends Container {
 
 	public ContainerBlockDetector(InventoryPlayer inventory, TileEntityBlockDetector tile) {

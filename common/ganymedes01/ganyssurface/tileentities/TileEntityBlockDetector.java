@@ -16,6 +16,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class TileEntityBlockDetector extends TileEntity implements ISidedInventory {
 
 	protected ItemStack[] inventory = new ItemStack[1];

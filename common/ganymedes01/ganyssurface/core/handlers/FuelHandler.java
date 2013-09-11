@@ -4,6 +4,13 @@ import ganymedes01.ganyssurface.items.WoodenArmour;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.IFuelHandler;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class FuelHandler implements IFuelHandler {
 
 	@Override

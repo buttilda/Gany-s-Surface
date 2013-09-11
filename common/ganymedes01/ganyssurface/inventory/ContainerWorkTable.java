@@ -11,6 +11,13 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class ContainerWorkTable extends Container {
 
 	public IInventory craftResult = new InventoryCraftResult();

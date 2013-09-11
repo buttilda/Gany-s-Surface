@@ -8,6 +8,13 @@ import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class BatNet extends Item {
 
 	public BatNet(int id) {

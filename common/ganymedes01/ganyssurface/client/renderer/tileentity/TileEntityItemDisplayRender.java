@@ -16,6 +16,13 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.FMLClientHandler;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 
 	ModelItemDisplay model = new ModelItemDisplay();

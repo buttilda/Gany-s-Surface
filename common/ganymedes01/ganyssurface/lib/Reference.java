@@ -1,5 +1,12 @@
 package ganymedes01.ganyssurface.lib;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class Reference {
 
 	public static final String MOD_ID = "ganyssurface";

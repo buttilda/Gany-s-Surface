@@ -6,6 +6,13 @@ import net.minecraftforge.common.ForgeDirection;
 import buildcraft.api.transport.IPipeConnection;
 import buildcraft.api.transport.IPipeTile.PipeType;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class TileEntityDislocator extends TileEntity implements IPipeConnection {
 
 	public boolean activated;

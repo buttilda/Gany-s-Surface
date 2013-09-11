@@ -9,6 +9,13 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class ContainerOrganicMatterCompressor extends Container {
 
 	TileEntityOrganicMatterCompressor compressor;

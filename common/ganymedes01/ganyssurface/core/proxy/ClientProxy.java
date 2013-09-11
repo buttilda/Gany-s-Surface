@@ -1,7 +1,9 @@
 package ganymedes01.ganyssurface.core.proxy;
 
+import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityChestPropellantRender;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityItemDisplayRender;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWorkTableRender;
+import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.item.ItemStack;
@@ -10,6 +12,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class ClientProxy extends CommonProxy {
 
 	@Override
@@ -17,6 +26,7 @@ public class ClientProxy extends CommonProxy {
 		super.registerTileEntities();
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityItemDisplay.class, new TileEntityItemDisplayRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWorkTable.class, new TileEntityWorkTableRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChestPropellant.class, new TileEntityChestPropellantRender());
 	}
 
 	@Override
@@ -42,12 +52,10 @@ public class ClientProxy extends CommonProxy {
 		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
 		if (tileEntity != null)
 			if (tileEntity instanceof TileEntityWorkTable)
-				for (int i = 0; i < invSize; i++) {
-					System.out.println(stackSize[i]);
+				for (int i = 0; i < invSize; i++)
 					if (stackSize[i] > 0) {
 						ItemStack stack = new ItemStack(itemID[i], stackSize[i], meta[i]);
 						((TileEntityWorkTable) tileEntity).addToCraftMatrix(i, stack);
 					}
-				}
 	}
 }

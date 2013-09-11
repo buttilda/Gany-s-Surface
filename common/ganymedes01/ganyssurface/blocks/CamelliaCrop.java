@@ -9,6 +9,13 @@ import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class CamelliaCrop extends BlockCrops {
 
 	@SideOnly(Side.CLIENT)

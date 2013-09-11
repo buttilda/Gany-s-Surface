@@ -14,6 +14,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class OrganicMatterCompressor extends BlockContainer {
 
 	public OrganicMatterCompressor(int id) {

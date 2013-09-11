@@ -11,6 +11,13 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.tileentity.TileEntity;
 
+/**
+ * Gany's Surface
+ * 
+ * @author ganymedes01
+ * 
+ */
+
 public class TileEntityWorkTable extends TileEntity implements ISidedInventory {
 
 	private ItemStack[] craftMatrix = new ItemStack[9];
