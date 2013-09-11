@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.recipes;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.items.ModItems;
 import net.minecraft.block.Block;
@@ -43,7 +44,8 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModItems.woodenWrench), "x x", " x ", " x ", 'x', Block.planks);
 		GameRegistry.addRecipe(new ItemStack(ModItems.batNet), "xyx", " x ", " x ", 'x', Item.stick, 'y', Item.silk);
 		GameRegistry.addRecipe(new ItemStack(ModItems.batStew), "xyz", " w ", 'x', Block.mushroomBrown, 'z', Block.mushroomRed, 'y', ModItems.pocketBat, 'w', Item.bowlEmpty);
-		GameRegistry.addRecipe(new ItemStack(ModItems.chocolateBar, 4), "xxx", "xyx", "xxx", 'x', new ItemStack(Item.dyePowder, 1, 3), 'y', Item.bucketMilk);
+		if (GanysSurface.activateChocolate)
+			GameRegistry.addRecipe(new ItemStack(ModItems.chocolateBar, 4), "xxx", "xyx", "xxx", 'x', new ItemStack(Item.dyePowder, 1, 3), 'y', Item.bucketMilk);
 
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Item.clay, 8), "xxx", "yzy", "xxx", 'x', Block.gravel, 'y', Block.dirt, 'z', Item.bucketWater);
@@ -65,7 +67,8 @@ public class ModRecipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.workTable), Block.workbench, Block.chest);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.organicMatterCompressor), "yzy", "zxz", "zwz", 'x', Item.cauldron, 'y', Item.emerald, 'z', Block.obsidian, 'w', Block.blockIron);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.cushion), "zxz", "xyx", "zxz", 'x', Block.cloth, 'y', new ItemStack(Item.dyePowder, 1, 5), 'z', Item.goldNugget);
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.chocolateCake), "xxx", "yzy", "www", 'x', Item.bucketMilk, 'y', ModItems.chocolateBar, 'z', Item.egg, 'w', Item.wheat);
+		if (GanysSurface.activateChocolate)
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.chocolateCake), "xxx", "yzy", "www", 'x', Item.bucketMilk, 'y', ModItems.chocolateBar, 'z', Item.egg, 'w', Item.wheat);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.itemDisplay), "xxx", "x x", "xyx", 'x', Block.thinGlass, 'y', new ItemStack(Block.carpet, 0, 14));
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.chestPropellant), "ywy", "xzx", "xyx", 'x', Item.ingotIron, 'y', Item.goldNugget, 'z', new ItemStack(Block.sandStone, 1, 2), 'w', Item.redstone);
 	}

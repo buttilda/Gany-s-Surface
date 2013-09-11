@@ -17,15 +17,14 @@ import net.minecraft.tileentity.TileEntity;
 public class TileEntityChestPropellant extends TileEntity implements ISidedInventory {
 
 	public ItemStack getInventoryToRender() {
-		for (int i = 1; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory)
-				if (!(tile instanceof TileEntityChestPropellant))
-					return new ItemStack(worldObj.getBlockId(xCoord, yCoord - i, zCoord), 1, worldObj.getBlockMetadata(xCoord, yCoord - i, zCoord));
-				else
-					return tile == null ? null : ((TileEntityChestPropellant) tile).getInventoryToRender();
-		}
-		return null;
+		TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - 1, zCoord);
+		if (tile instanceof IInventory)
+			if (!(tile instanceof TileEntityChestPropellant))
+				return new ItemStack(worldObj.getBlockId(xCoord, yCoord - 1, zCoord), 1, worldObj.getBlockMetadata(xCoord, yCoord - 1, zCoord));
+			else
+				return tile == null ? null : ((TileEntityChestPropellant) tile).getInventoryToRender();
+		else
+			return null;
 	}
 
 	@Override
