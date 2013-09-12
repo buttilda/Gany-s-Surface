@@ -13,8 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
-
-import cpw.mods.fml.client.FMLClientHandler;
+import org.lwjgl.opengl.GL12;
 
 /**
  * Gany's Surface
@@ -41,13 +40,15 @@ public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float angle) {
 		TileEntityItemDisplay itemDisplay = (TileEntityItemDisplay) tile;
+		bindTexture(new ResourceLocation(Utils.getEntityTexture(Strings.ITEM_DISPLAY_NAME)));
 
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_CULL_FACE);
 		GL11.glPushMatrix();
-		GL11.glScalef(1.0F, 1.0F, 1.0F);
-		GL11.glTranslatef((float) x + 0.0F, (float) y + 0.0F, (float) z + 0.0F);
-		FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation(Utils.getEntityTexture(Strings.ITEM_DISPLAY_NAME)));
+		GL11.glTranslatef((float) x + 1.0F, (float) y + 1.0F, (float) z + 0.0F);
+		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+		GL11.glScalef(-1.0F, -1.0F, 1.0F);
+		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		model.renderAll();
 		GL11.glPopMatrix();
 

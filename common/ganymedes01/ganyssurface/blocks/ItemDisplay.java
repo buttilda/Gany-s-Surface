@@ -11,7 +11,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -24,9 +23,6 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 
 public class ItemDisplay extends BlockContainer {
-
-	@SideOnly(Side.CLIENT)
-	private Icon blockBottom;
 
 	public ItemDisplay(int id) {
 		super(id, Material.glass);
@@ -83,20 +79,18 @@ public class ItemDisplay extends BlockContainer {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityItemDisplay();
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta) {
-		return side == 0 ? blockBottom : blockIcon;
+	public int getRenderType() {
+		return -1;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockIcon = reg.registerIcon(Utils.getBlockTexture(Strings.ITEM_DISPLAY_NAME, true) + "rest");
-		blockBottom = reg.registerIcon(Utils.getBlockTexture(Strings.ITEM_DISPLAY_NAME, true) + "bottom");
+		blockIcon = reg.registerIcon(Utils.getBlockTexture(Strings.ITEM_DISPLAY_NAME, false));
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world) {
+		return new TileEntityItemDisplay();
 	}
 }
