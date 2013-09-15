@@ -3,8 +3,9 @@ package ganymedes01.ganyssurface.items;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityBat;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
@@ -28,11 +29,11 @@ public class BatNet extends Item {
 	}
 
 	@Override
-	public boolean hitEntity(ItemStack item, EntityLivingBase attacked, EntityLivingBase player) {
-		if (attacked instanceof EntityBat) {
+	public boolean onLeftClickEntity(ItemStack item, EntityPlayer player, Entity target) {
+		if (target instanceof EntityBat) {
 			if (!player.worldObj.isRemote) {
-				attacked.setDead();
-				attacked.entityDropItem(new ItemStack(ModItems.pocketBat), 1.0F);
+				target.setDead();
+				target.entityDropItem(new ItemStack(ModItems.pocketBat), 1.0F);
 				item.damageItem(1, player);
 			}
 			return true;
