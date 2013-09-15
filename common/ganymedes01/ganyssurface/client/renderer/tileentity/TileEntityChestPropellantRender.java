@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 
@@ -58,7 +59,7 @@ public class TileEntityChestPropellantRender extends TileEntitySpecialRenderer {
 				posY = 0.5F;
 
 				if (stack.itemID < Block.blocksList.length)
-					if (Block.blocksList[stack.itemID].getItemIconName() != null) {
+					if (Block.blocksList[stack.itemID].getItemIconName() != null || Block.blocksList[stack.itemID] == Block.brewingStand) {
 						rot1 -= 90.0F;
 						rot2 -= 90.0F;
 						rot3 -= 90.0F;
@@ -66,6 +67,8 @@ public class TileEntityChestPropellantRender extends TileEntitySpecialRenderer {
 						scale -= 1.0F;
 						offset += 0.14F;
 						posY -= 0.1F;
+						if (Block.blocksList[stack.itemID] == Block.brewingStand)
+							ghostEntityItem.setEntityItemStack(new ItemStack(Item.brewingStand));
 					}
 
 				GL11.glPushMatrix();

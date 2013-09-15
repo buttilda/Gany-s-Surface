@@ -46,7 +46,7 @@ public class ItemDisplay extends BlockContainer {
 				player.getCurrentEquippedItem().stackSize--;
 				if (player.getCurrentEquippedItem().stackSize <= 0)
 					player.setCurrentItemOrArmor(0, null);
-			} else {
+			} else if (tile.getDisplayItem() != null) {
 				Utils.dropStack(world, x, y + 1, z, tile.getDisplayItem().copy());
 				tile.addItemToDisplay(null);
 				GanysSurface.proxy.handleTileWithSingleDisplayItemPacket(x, y, z, Item.appleGold.itemID, 0, 0);

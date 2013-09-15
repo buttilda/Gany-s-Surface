@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import net.minecraft.block.Block;
@@ -26,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ChestPropellant extends BlockContainer {
 
-	public static final int MAX_PILE_SIZE = 16;
+	public static final int MAX_PILE_SIZE = 17;
 
 	@SideOnly(Side.CLIENT)
 	private Icon blockTop, blockSide;
@@ -64,7 +65,29 @@ public class ChestPropellant extends BlockContainer {
 			TileEntity tile = world.getBlockTileEntity(x, y - i, z);
 			if (tile instanceof IInventory) {
 				if (!(tile instanceof TileEntityChestPropellant))
-					return Block.blocksList[world.getBlockId(x, y - i, z)].onBlockActivated(world, x, y - i, z, player, side, hitX, hitY, hitZ);
+					if (world.getBlockId(x, y - i, z) < Block.blocksList.length) {
+						Block block = Block.blocksList[world.getBlockId(x, y - i, z)];
+						if (block.blockID == Block.chest.blockID || block.blockID == Block.chestTrapped.blockID) {
+							player.openGui(GanysSurface.instance, GUIsID.VANILLA_CHEST, world, x, y - i, z);
+							return true;
+						} else if (block.blockID == Block.furnaceIdle.blockID || block.blockID == Block.furnaceBurning.blockID) {
+							player.openGui(GanysSurface.instance, GUIsID.VANILLA_FURNACE, world, x, y - i, z);
+							return true;
+						} else if (block.blockID == Block.brewingStand.blockID) {
+							player.openGui(GanysSurface.instance, GUIsID.VANILLA_BREW_STAND, world, x, y - i, z);
+							return true;
+						} else if (block.blockID == Block.hopperBlock.blockID) {
+							player.openGui(GanysSurface.instance, GUIsID.VANILLA_HOPPER, world, x, y - i, z);
+							return true;
+						} else if (block.blockID == Block.dispenser.blockID) {
+							player.openGui(GanysSurface.instance, GUIsID.VANILLA_DISPENSER, world, x, y - i, z);
+							return true;
+						} else if (block.blockID == Block.dropper.blockID) {
+							player.openGui(GanysSurface.instance, GUIsID.VANILLA_DROPPER, world, x, y - i, z);
+							return true;
+						} else
+							return block.onBlockActivated(world, x, y - i, z, player, side, hitX, hitY, hitZ);
+					}
 			} else
 				return false;
 		}

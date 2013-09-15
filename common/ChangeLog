@@ -19,3 +19,7 @@ v1.3
 -Added: Chocolate Cake
 -Added: Item Display
 -Added: Chest Propellant
+
+v1.3.1
+-Fix: Chest Propellant derpiness with vanilla chests, furnaces and brewing stands
+-Fix: Item Display crash
