@@ -5,9 +5,6 @@ import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.items.Rot;
 import ganymedes01.ganyssurface.lib.Strings;
-
-import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockButtonWood;
 import net.minecraft.block.BlockCarpet;
@@ -77,7 +74,6 @@ public class TileEntityOrganicMatterCompressor extends TileEntity implements ISi
 	public void updateEntity() {
 		if (worldObj.isRemote)
 			return;
-		Random rand = new Random();
 		if (yCoord > 15)
 			return;
 		if (inventory[BLOCK_OF_COAL] == null || inventory[BLOCK_OF_COAL].stackSize < 64) {

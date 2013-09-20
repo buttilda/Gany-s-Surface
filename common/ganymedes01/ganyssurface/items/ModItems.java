@@ -1,7 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.lib.ItemsID;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -43,28 +43,28 @@ public class ModItems {
 
 	public static void init() {
 		// Armour
-		woodenHelmet = new WoodenArmour(ItemsID.WOODEN_HELMET_ID, 0);
-		woodenChestplate = new WoodenArmour(ItemsID.WOODEN_CHESTPLATE_ID, 1);
-		woodenLeggings = new WoodenArmour(ItemsID.WOODEN_LEGGINGS_ID, 2);
-		woodenBoots = new WoodenArmour(ItemsID.WOODEN_BOOTS_ID, 3);
+		woodenHelmet = new WoodenArmour(ModIDs.WOODEN_HELMET_ID, 0);
+		woodenChestplate = new WoodenArmour(ModIDs.WOODEN_CHESTPLATE_ID, 1);
+		woodenLeggings = new WoodenArmour(ModIDs.WOODEN_LEGGINGS_ID, 2);
+		woodenBoots = new WoodenArmour(ModIDs.WOODEN_BOOTS_ID, 3);
 
 		// Items
-		rot = new Rot(ItemsID.ROT_ID);
-		camelliaSeeds = new CamelliaSeeds(ItemsID.CAMELLIA_SEEDS_ID);
-		teaLeaves = new TeaLeaves(ItemsID.TEA_LEAVES_ID);
-		teaBag = new TeaBag(ItemsID.TEA_BAG_ID);
-		emptyMug = new EmptyMug(ItemsID.EMPTY_MUG_ID);
-		cupOfTea = new CupOfTea(ItemsID.CUP_OF_TEA_ID).setCreativeTab(GanysSurface.surfaceTab);
-		mankyCupOfTea = new MankyCupOfTea(ItemsID.MANKY_CUP_OF_TEA_ID);
-		poop = new Poop(ItemsID.POOP_ID);
-		fertilizer = new Fertilizer(ItemsID.FERTILIZER_ID);
-		cookedEgg = new CookedEgg(ItemsID.COOKED_EGG_ID);
-		obsidianHead = new ObsidianHead(ItemsID.OBSIDIAN_HEAD_ID);
-		woodenWrench = new WoodenWrench(ItemsID.WOODEN_WRENCH_ID);
-		batNet = new BatNet(ItemsID.BAT_NET_ID);
-		pocketBat = new PocketBat(ItemsID.POCKET_BAT_ID);
-		batStew = new BatStew(ItemsID.BAT_STEW_ID);
-		chocolateBar = new ChocolateBar(ItemsID.CHOCOLATE_BAR_ID);
+		rot = new Rot(ModIDs.ROT_ID);
+		camelliaSeeds = new CamelliaSeeds(ModIDs.CAMELLIA_SEEDS_ID);
+		teaLeaves = new TeaLeaves(ModIDs.TEA_LEAVES_ID);
+		teaBag = new TeaBag(ModIDs.TEA_BAG_ID);
+		emptyMug = new EmptyMug(ModIDs.EMPTY_MUG_ID);
+		cupOfTea = new CupOfTea(ModIDs.CUP_OF_TEA_ID).setCreativeTab(GanysSurface.surfaceTab);
+		mankyCupOfTea = new MankyCupOfTea(ModIDs.MANKY_CUP_OF_TEA_ID);
+		poop = new Poop(ModIDs.POOP_ID);
+		fertilizer = new Fertilizer(ModIDs.FERTILIZER_ID);
+		cookedEgg = new CookedEgg(ModIDs.COOKED_EGG_ID);
+		obsidianHead = new ObsidianHead(ModIDs.OBSIDIAN_HEAD_ID);
+		woodenWrench = new WoodenWrench(ModIDs.WOODEN_WRENCH_ID);
+		batNet = new BatNet(ModIDs.BAT_NET_ID);
+		pocketBat = new PocketBat(ModIDs.POCKET_BAT_ID);
+		batStew = new BatStew(ModIDs.BAT_STEW_ID);
+		chocolateBar = new ChocolateBar(ModIDs.CHOCOLATE_BAR_ID);
 
 		registerNames();
 		registerForge();

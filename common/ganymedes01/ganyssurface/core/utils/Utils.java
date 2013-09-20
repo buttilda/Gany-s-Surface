@@ -1,6 +1,9 @@
 package ganymedes01.ganyssurface.core.utils;
 
 import ganymedes01.ganyssurface.lib.Reference;
+
+import java.awt.Color;
+
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -62,6 +65,23 @@ public class Utils {
 	}
 
 	public static final int getColour(int R, int G, int B) {
-		return R * 65536 + G * 191 + B;
+		return new Color(R, G, B).getRGB() & 0x00ffffff;
 	}
+
+	public static final String CHAT_COLOUR_BLACK = "¤0";
+	public static final String CHAT_COLOUR_DARKBLUE = "¤1";
+	public static final String CHAT_COLOUR_DARKGREEN = "¤2";
+	public static final String CHAT_COLOUR_DARKAQUA = "¤3";
+	public static final String CHAT_COLOUR_DARKRED = "¤4";
+	public static final String CHAT_COLOUR_DARKPURPLE = "¤5";
+	public static final String CHAT_COLOUR_GOLD = "¤6";
+	public static final String CHAT_COLOUR_GREY = "¤7";
+	public static final String CHAT_COLOUR_DARKGREY = "¤8";
+	public static final String CHAT_COLOUR_BLUE = "¤9";
+	public static final String CHAT_COLOUR_GREEN = "¤a";
+	public static final String CHAT_COLOUR_AQUA = "¤b";
+	public static final String CHAT_COLOUR_RED = "¤c";
+	public static final String CHAT_COLOUR_PUEPLE = "¤d";
+	public static final String CHAT_COLOUR_YELLOW = "¤e";
+	public static final String CHAT_COLOUR_WHITE = "¤f";
 }

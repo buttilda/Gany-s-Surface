@@ -5,7 +5,9 @@ import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
 import ganymedes01.ganyssurface.core.handlers.BonemealHandler;
 import ganymedes01.ganyssurface.core.handlers.FuelHandler;
 import ganymedes01.ganyssurface.core.handlers.PoopHandler;
+import ganymedes01.ganyssurface.core.handlers.VersionCheckTickHandler;
 import ganymedes01.ganyssurface.core.proxy.CommonProxy;
+import ganymedes01.ganyssurface.core.utils.VersionHelper;
 import ganymedes01.ganyssurface.creativetab.CreativeTabSurface;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
@@ -26,6 +28,8 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 /**
  * Gany's Surface
@@ -47,10 +51,17 @@ public class GanysSurface {
 	public static CreativeTabs surfaceTab = new CreativeTabSurface();
 	public static boolean mobsShouldPoop = true;
 	public static boolean activateChocolate = true;
+	public static boolean shouldDoVersionCheck = true;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.MASTER + File.separator + Reference.MOD_ID + ".cfg"));
+
+		if (shouldDoVersionCheck) {
+			VersionHelper.execute();
+			TickRegistry.registerTickHandler(new VersionCheckTickHandler(), Side.CLIENT);
+		}
+
 		ModBlocks.init();
 		ModItems.init();
 		ModRecipes.init();

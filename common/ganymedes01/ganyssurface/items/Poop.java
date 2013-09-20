@@ -25,14 +25,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Poop extends Item {
 
 	@SideOnly(Side.CLIENT)
-	private Icon[] icon;
+	private Icon[] icon = new Icon[2];
 
 	public Poop(int id) {
 		super(id);
 		setMaxDamage(0);
 		setHasSubtypes(true);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setTextureName(Utils.getItemTexture(Strings.POOP_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.POOP_NAME));
 	}
 
@@ -53,16 +52,14 @@ public class Poop extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int itemID, CreativeTabs tabs, List list) {
-		for (int i = 0; i <= 1; ++i)
-			list.add(new ItemStack(itemID, 1, i));
+		list.add(new ItemStack(itemID, 1, 0));
+		list.add(new ItemStack(itemID, 1, 1));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		icon = new Icon[2];
-
-		for (int i = 0; i <= 1; ++i)
-			icon[i] = reg.registerIcon(Utils.getItemTexture(Strings.POOP_NAME) + "_" + i);
+		icon[0] = reg.registerIcon(Utils.getItemTexture(Strings.POOP_NAME) + "_0");
+		icon[1] = reg.registerIcon(Utils.getItemTexture(Strings.POOP_NAME) + "_1");
 	}
 }

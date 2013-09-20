@@ -15,6 +15,8 @@ public class Reference {
 	public static final String CHANNEL_NAME = "GanysSurface";
 	public static final String MASTER = "GanysMods";
 	public static final String VERSION_NUMBER = "1.3.1";
+	public static final int RAW_VERSION_NUMBER = 131;
+	public static String LATEST_VERSION;
 	public static final String ITEM_BLOCK_TEXTURE_PATH = MOD_ID + ":";
 	public static final String ARMOUR_TEXTURE_PATH = ITEM_BLOCK_TEXTURE_PATH + "textures/models/armor/";
 	public static final String ENTITY_TEXTURE_PATH = ITEM_BLOCK_TEXTURE_PATH + "textures/entities/";
@@ -23,4 +25,8 @@ public class Reference {
 
 	public static final String SERVER_PROXY_CLASS = "ganymedes01.ganyssurface.core.proxy.CommonProxy";
 	public static final String CLIENT_PROXY_CLASS = "ganymedes01.ganyssurface.core.proxy.ClientProxy";
+	public static final String VERSION_CHECK_FILE = "https://raw.github.com/ganymedes01/Version-Checks/master/Version.xml";
+
+	public static final int ITEM_ID_BASE = 6000;
+	public static final int BLOCK_ID_BASE = 1000;
 }

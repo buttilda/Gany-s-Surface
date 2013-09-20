@@ -32,7 +32,7 @@ public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 			@Override
 			public boolean shouldBob() {
 				return false;
-			};
+			}
 		};
 		customRenderItem.setRenderManager(RenderManager.instance);
 	}

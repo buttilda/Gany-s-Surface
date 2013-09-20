@@ -37,7 +37,6 @@ public class TileEntityItemDisplay extends TileEntity {
 		NBTTagList tagList = data.getTagList("Items");
 		if (tagList.tagCount() > 0) {
 			NBTTagCompound tagCompound = (NBTTagCompound) tagList.tagAt(0);
-			byte slot = tagCompound.getByte("Slot");
 			itemDisplay = ItemStack.loadItemStackFromNBT(tagCompound);
 		}
 	}
@@ -48,7 +47,6 @@ public class TileEntityItemDisplay extends TileEntity {
 		NBTTagList tagList = new NBTTagList();
 		if (itemDisplay != null) {
 			NBTTagCompound tagCompound = new NBTTagCompound();
-			tagCompound.setByte("Slot", (byte) 0);
 			itemDisplay.writeToNBT(tagCompound);
 			tagList.appendTag(tagCompound);
 		}

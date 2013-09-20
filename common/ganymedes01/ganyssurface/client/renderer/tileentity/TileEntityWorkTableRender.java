@@ -27,7 +27,7 @@ public class TileEntityWorkTableRender extends TileEntitySpecialRenderer {
 			@Override
 			public boolean shouldBob() {
 				return false;
-			};
+			}
 		};
 		customRenderItem.setRenderManager(RenderManager.instance);
 	}
@@ -45,14 +45,10 @@ public class TileEntityWorkTableRender extends TileEntitySpecialRenderer {
 					if (workTable.getStackInSlot(j + i * 3) != null) {
 
 						float scaleFactor;
-						float translate;
-						if (workTable.getStackInSlot(j + i * 3).getItem() instanceof ItemBlock) {
+						if (workTable.getStackInSlot(j + i * 3).getItem() instanceof ItemBlock)
 							scaleFactor = 0.5F;
-							translate = 0.4F;
-						} else {
+						else
 							scaleFactor = 0.5F * 0.6F;
-							translate = 0.3F;
-						}
 
 						EntityItem ghostEntityItem = new EntityItem(workTable.worldObj);
 						ghostEntityItem.hoverStart = 0.0F;
