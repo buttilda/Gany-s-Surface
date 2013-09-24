@@ -12,6 +12,7 @@ import ganymedes01.ganyssurface.creativetab.CreativeTabSurface;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.network.PacketHandler;
+import ganymedes01.ganyssurface.recipes.BuildCraftFacadeManager;
 import ganymedes01.ganyssurface.recipes.ModRecipes;
 
 import java.io.File;
@@ -76,6 +77,7 @@ public class GanysSurface {
 		MinecraftForge.EVENT_BUS.register(new BonemealHandler());
 		proxy.registerTileEntities();
 		proxy.registerRenderers();
+		BuildCraftFacadeManager.registerFacades();
 	}
 
 	@EventHandler
