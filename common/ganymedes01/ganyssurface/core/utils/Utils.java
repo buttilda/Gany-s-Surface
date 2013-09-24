@@ -8,6 +8,7 @@ import java.util.Collections;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 /**
@@ -46,10 +47,6 @@ public class Utils {
 		return Reference.ENTITY_TEXTURE_PATH + name + ".png";
 	}
 
-	public static final String getEntityItemTexture(String name) {
-		return Reference.ENTITY_ITEM_TEXTURE_PATH + name + ".png";
-	}
-
 	public static final String getConainerName(String name) {
 		return "container." + Reference.MOD_ID + ":" + name;
 	}
@@ -68,6 +65,10 @@ public class Utils {
 
 	public static final int getColour(int R, int G, int B) {
 		return new Color(R, G, B).getRGB() & 0x00ffffff;
+	}
+
+	public static final ResourceLocation getResource(String path) {
+		return new ResourceLocation(path);
 	}
 
 	public static final ArrayList<Integer> getRandomizedList(int min, int max) {

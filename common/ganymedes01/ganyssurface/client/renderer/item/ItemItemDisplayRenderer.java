@@ -2,10 +2,8 @@ package ganymedes01.ganyssurface.client.renderer.item;
 
 import ganymedes01.ganyssurface.client.model.ModelItemDisplay;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
@@ -65,7 +63,7 @@ public class ItemItemDisplayRenderer implements IItemRenderer {
 	}
 
 	private void renderItemDisplay(float x, float y, float z) {
-		FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID, Utils.getEntityItemTexture(Strings.ITEM_DISPLAY_NAME)));
+		FMLClientHandler.instance().getClient().renderEngine.bindTexture(Utils.getResource(Utils.getEntityTexture(Strings.ITEM_DISPLAY_NAME)));
 		GL11.glPushMatrix();
 		GL11.glDisable(GL11.GL_CULL_FACE);
 		GL11.glDisable(GL11.GL_LIGHTING);
