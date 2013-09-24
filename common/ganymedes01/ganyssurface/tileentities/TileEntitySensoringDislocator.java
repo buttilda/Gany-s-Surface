@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.tileentities;
 
+import ganymedes01.ganyssurface.blocks.Dislocator;
 import ganymedes01.ganyssurface.blocks.SensoringDislocator;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -8,7 +9,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemReed;
 import net.minecraft.item.ItemSeeds;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.ForgeDirection;
 import buildcraft.api.transport.IPipeConnection;
 import buildcraft.api.transport.IPipeTile.PipeType;
@@ -22,72 +22,33 @@ import buildcraft.api.transport.IPipeTile.PipeType;
 
 public class TileEntitySensoringDislocator extends TileEntityBlockDetector implements IPipeConnection {
 
-	public boolean activated;
-
-	public TileEntitySensoringDislocator() {
-		activated = true;
-	}
-
 	@Override
 	public boolean checkNearbyBlocks() {
-		int meta = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
+		return checkNearbyBlocks(Dislocator.getDirectionFromMetadata(worldObj.getBlockMetadata(xCoord, yCoord, zCoord)));
+	}
 
-		int x = 0, y = 0, z = 0;
-
-		switch (meta) {
-			case 0:
-				x = xCoord;
-				y = yCoord + 1;
-				z = zCoord;
-				break;
-			case 1:
-				x = xCoord;
-				y = yCoord - 1;
-				z = zCoord;
-				break;
-			case 2:
-				x = xCoord;
-				y = yCoord;
-				z = zCoord - 1;
-				break;
-			case 3:
-				x = xCoord;
-				y = yCoord;
-				z = zCoord + 1;
-				break;
-			case 4:
-				x = xCoord - 1;
-				y = yCoord;
-				z = zCoord;
-				break;
-			case 5:
-				x = xCoord + 1;
-				y = yCoord;
-				z = zCoord;
-				break;
-		}
-
+	public boolean checkNearbyBlocks(ForgeDirection dir) {
 		if (inventory[0] == null)
 			return false;
 		if (inventory[0].getItem() instanceof ItemSeeds) {
 			int cropID = ((ItemSeeds) inventory[0].getItem()).getPlantID(worldObj, xCoord, yCoord, zCoord);
-			if (worldObj.getBlockId(x, y, z) == cropID) {
+			if (worldObj.getBlockId(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == cropID) {
 				coolDown = 0;
-				if (worldObj.getBlockMetadata(x, y, z) >= 7)
+				if (worldObj.getBlockMetadata(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) >= 7)
 					return true;
 			}
 		}
 		if (inventory[0].getItem() instanceof ItemReed) {
-			if (checkIdPicked(x, y, z))
+			if (checkIdPicked(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ))
 				return true;
 		} else if (inventory[0].getItem() instanceof ItemBucket) {
 			if (inventory[0].getItem().itemID == Item.bucketLava.itemID) {
-				if (worldObj.getBlockMaterial(x, y, z) == Material.lava)
+				if (worldObj.getBlockMaterial(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == Material.lava)
 					return true;
 			} else if (inventory[0].getItem().itemID == Item.bucketWater.itemID)
-				if (worldObj.getBlockMaterial(x, y, z) == Material.water)
+				if (worldObj.getBlockMaterial(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == Material.water)
 					return true;
-		} else if (worldObj.getBlockId(x, y, z) == inventory[0].itemID)
+		} else if (worldObj.getBlockId(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == inventory[0].itemID)
 			return true;
 		return false;
 	}
@@ -102,18 +63,6 @@ public class TileEntitySensoringDislocator extends TileEntityBlockDetector imple
 	@Override
 	public String getInvName() {
 		return Utils.getConainerName(Strings.SENSORING_DISLOCATOR_NAME);
-	}
-
-	@Override
-	public void readFromNBT(NBTTagCompound data) {
-		super.readFromNBT(data);
-		activated = data.getBoolean("activated");
-	}
-
-	@Override
-	public void writeToNBT(NBTTagCompound data) {
-		super.writeToNBT(data);
-		data.setBoolean("activated", activated);
 	}
 
 	@Override

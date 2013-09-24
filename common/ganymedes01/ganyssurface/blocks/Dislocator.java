@@ -66,6 +66,24 @@ public class Dislocator extends BlockContainer {
 		return true;
 	}
 
+	public static ForgeDirection getDirectionFromMetadata(int meta) {
+		switch (meta) {
+			case 0:
+				return ForgeDirection.UP;
+			case 1:
+				return ForgeDirection.DOWN;
+			case 2:
+				return ForgeDirection.NORTH;
+			case 3:
+				return ForgeDirection.SOUTH;
+			case 4:
+				return ForgeDirection.WEST;
+			case 5:
+				return ForgeDirection.EAST;
+		}
+		return null;
+	}
+
 	@Override
 	public void onNeighborBlockChange(World world, int x, int y, int z, int id) {
 		if (world.isRemote)
@@ -79,43 +97,27 @@ public class Dislocator extends BlockContainer {
 		if (!tile.activated)
 			if (world.isBlockIndirectlyGettingPowered(x, y, z)) {
 				tile.activated = true;
-				int meta = world.getBlockMetadata(x, y, z);
-				switch (meta) {
-					case 0:
-						breakSurroundingBlock(world, x, y + 1, z, meta);
-						break;
-					case 1:
-						breakSurroundingBlock(world, x, y - 1, z, meta);
-						break;
-					case 2:
-						breakSurroundingBlock(world, x, y, z - 1, meta);
-						break;
-					case 3:
-						breakSurroundingBlock(world, x, y, z + 1, meta);
-						break;
-					case 4:
-						breakSurroundingBlock(world, x - 1, y, z, meta);
-						break;
-					case 5:
-						breakSurroundingBlock(world, x + 1, y, z, meta);
-						break;
-				}
+				breakSurroundingBlock(world, x, y, z, getDirectionFromMetadata(world.getBlockMetadata(x, y, z)));
 			}
 	}
 
-	protected void breakSurroundingBlock(World world, int x, int y, int z, int meta) {
+	protected void breakSurroundingBlock(World world, int xCoord, int yCoord, int zCoord, ForgeDirection dir) {
+		int x = xCoord + dir.offsetX;
+		int y = yCoord + dir.offsetY;
+		int z = zCoord + dir.offsetZ;
+
 		Block target = Block.blocksList[world.getBlockId(x, y, z)];
 		if (target != null)
 			if (target.getBlockHardness(world, x, y, z) >= 0 && target.blockMaterial != Material.water && target.blockMaterial != Material.lava) {
-				IInventory tile = getInventory(world, x, y, z, meta);
-				IPipeTile pipe = getPipe(world, x, y, z, meta);
+				IInventory tile = getInventory(world, xCoord, yCoord, zCoord, dir);
+				IPipeTile pipe = getPipe(world, xCoord, yCoord, zCoord, dir);
 				if (tile != null) {
 					for (ItemStack stack : target.getBlockDropped(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
 						if (!addStacktoInventory(tile, stack))
 							Utils.dropStack(world, x, y, z, stack);
 				} else if (pipe != null) {
 					for (ItemStack stack : target.getBlockDropped(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
-						if (!addStackToPipe(pipe, stack, meta))
+						if (!addStackToPipe(pipe, stack, dir))
 							Utils.dropStack(world, x, y, z, stack);
 				} else
 					target.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
@@ -124,24 +126,8 @@ public class Dislocator extends BlockContainer {
 			}
 	}
 
-	protected boolean addStackToPipe(IPipeTile pipe, ItemStack stack, int meta) {
-
-		switch (meta) {
-			case 0:
-				return pipe.injectItem(stack, true, ForgeDirection.UP) == stack.stackSize;
-			case 1:
-				return pipe.injectItem(stack, true, ForgeDirection.DOWN) == stack.stackSize;
-			case 2:
-				return pipe.injectItem(stack, true, ForgeDirection.NORTH) == stack.stackSize;
-			case 3:
-				return pipe.injectItem(stack, true, ForgeDirection.SOUTH) == stack.stackSize;
-			case 4:
-				return pipe.injectItem(stack, true, ForgeDirection.WEST) == stack.stackSize;
-			case 5:
-				return pipe.injectItem(stack, true, ForgeDirection.EAST) == stack.stackSize;
-			default:
-				return false;
-		}
+	protected boolean addStackToPipe(IPipeTile pipe, ItemStack stack, ForgeDirection dir) {
+		return pipe.injectItem(stack, true, dir) == stack.stackSize;
 	}
 
 	protected boolean addStacktoInventory(IInventory iinventory, ItemStack stack) {
@@ -180,85 +166,20 @@ public class Dislocator extends BlockContainer {
 		return slots;
 	}
 
-	protected IPipeTile getPipe(World world, int x, int y, int z, int meta) {
-		int i = 0, j = 0, k = 0;
-
-		switch (meta) {
-			case 0:
-				i = x;
-				j = y - 2;
-				k = z;
-				break;
-			case 1:
-				i = x;
-				j = y + 2;
-				k = z;
-				break;
-			case 2:
-				i = x;
-				j = y;
-				k = z + 2;
-				break;
-			case 3:
-				i = x;
-				j = y;
-				k = z - 2;
-				break;
-			case 4:
-				i = x + 2;
-				j = y;
-				k = z;
-				break;
-			case 5:
-				i = x - 2;
-				j = y;
-				k = z;
-				break;
-		}
-		TileEntity tile = world.getBlockTileEntity(i, j, k);
+	protected IPipeTile getPipe(World world, int x, int y, int z, ForgeDirection dir) {
+		ForgeDirection direction = dir.getOpposite();
+		TileEntity tile = world.getBlockTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
 		if (tile instanceof IPipeTile)
 			if (((IPipeTile) tile).getPipeType() == PipeType.ITEM)
-				return (IPipeTile) world.getBlockTileEntity(i, j, k);
+				return (IPipeTile) tile;
 		return null;
 	}
 
-	protected IInventory getInventory(World world, int x, int y, int z, int meta) {
-		int i = 0, j = 0, k = 0;
-
-		switch (meta) {
-			case 0:
-				i = x;
-				j = y - 2;
-				k = z;
-				break;
-			case 1:
-				i = x;
-				j = y + 2;
-				k = z;
-				break;
-			case 2:
-				i = x;
-				j = y;
-				k = z + 2;
-				break;
-			case 3:
-				i = x;
-				j = y;
-				k = z - 2;
-				break;
-			case 4:
-				i = x + 2;
-				j = y;
-				k = z;
-				break;
-			case 5:
-				i = x - 2;
-				j = y;
-				k = z;
-				break;
-		}
-		if (world.getBlockTileEntity(i, j, k) instanceof IInventory)
-			return (IInventory) world.getBlockTileEntity(i, j, k);
+	protected IInventory getInventory(World world, int x, int y, int z, ForgeDirection dir) {
+		ForgeDirection direction = dir.getOpposite();
+		TileEntity tile = world.getBlockTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
+		if (tile instanceof IInventory)
+			return (IInventory) tile;
 		else
 			return null;
 	}

@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.ForgeDirection;
 
 /**
  * Gany's Surface
@@ -47,53 +48,40 @@ public class TileEntityBlockDetector extends TileEntity implements ISidedInvento
 				}
 	}
 
-	protected boolean checkSeeds() {
-		if (inventory[0].getItem() instanceof ItemSeeds) {
-			int cropID = ((ItemSeeds) inventory[0].getItem()).getPlantID(worldObj, xCoord, yCoord, zCoord);
-			if (worldObj.getBlockId(xCoord + 1, yCoord, zCoord) == cropID || worldObj.getBlockId(xCoord - 1, yCoord, zCoord) == cropID || worldObj.getBlockId(xCoord, yCoord - 1, zCoord) == cropID || worldObj.getBlockId(xCoord, yCoord, zCoord + 1) == cropID ||
-			worldObj.getBlockId(xCoord, yCoord, zCoord - 1) == cropID) {
-				coolDown = 0;
-				if (worldObj.getBlockMetadata(xCoord + 1, yCoord, zCoord) >= 7 || worldObj.getBlockMetadata(xCoord - 1, yCoord, zCoord) >= 7 || worldObj.getBlockMetadata(xCoord, yCoord - 1, zCoord) >= 7 || worldObj.getBlockMetadata(xCoord, yCoord, zCoord + 1) >= 7 ||
-				worldObj.getBlockMetadata(xCoord, yCoord, zCoord - 1) >= 7)
-					return true;
-			}
-		}
-		return false;
-	}
-
 	public boolean checkNearbyBlocks() {
 		if (inventory[0] == null)
 			return false;
 
 		if (inventory[0].getItem() instanceof ItemSeeds) {
 			int cropID = ((ItemSeeds) inventory[0].getItem()).getPlantID(worldObj, xCoord, yCoord, zCoord);
-			if (worldObj.getBlockId(xCoord + 1, yCoord, zCoord) == cropID || worldObj.getBlockId(xCoord - 1, yCoord, zCoord) == cropID || worldObj.getBlockId(xCoord, yCoord - 1, zCoord) == cropID || worldObj.getBlockId(xCoord, yCoord, zCoord + 1) == cropID ||
-			worldObj.getBlockId(xCoord, yCoord, zCoord - 1) == cropID) {
-				coolDown = 0;
-				if (worldObj.getBlockMetadata(xCoord + 1, yCoord, zCoord) >= 7 || worldObj.getBlockMetadata(xCoord - 1, yCoord, zCoord) >= 7 || worldObj.getBlockMetadata(xCoord, yCoord - 1, zCoord) >= 7 || worldObj.getBlockMetadata(xCoord, yCoord, zCoord + 1) >= 7 ||
-				worldObj.getBlockMetadata(xCoord, yCoord, zCoord - 1) >= 7)
+			for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
+				if (worldObj.getBlockId(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == cropID)
+					coolDown = 0;
+				if (worldObj.getBlockMetadata(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) >= 7)
 					return true;
 			}
 		}
 
 		if (inventory[0].getItem() instanceof ItemReed) {
-			if (checkIdPicked(xCoord + 1, yCoord, zCoord) || checkIdPicked(xCoord - 1, yCoord, zCoord) || checkIdPicked(xCoord, yCoord + 1, zCoord) || checkIdPicked(xCoord, yCoord - 1, zCoord) || checkIdPicked(xCoord, yCoord, zCoord + 1) || checkIdPicked(xCoord, yCoord, zCoord - 1))
-				return true;
+			for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
+				if (checkIdPicked(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ))
+					return true;
 
 		} else if (inventory[0].getItem() instanceof ItemBucket) {
 			if (inventory[0].getItem().itemID == Item.bucketLava.itemID) {
-				if (worldObj.getBlockMaterial(xCoord + 1, yCoord, zCoord) == Material.lava || worldObj.getBlockMaterial(xCoord - 1, yCoord, zCoord) == Material.lava || worldObj.getBlockMaterial(xCoord, yCoord, zCoord + 1) == Material.lava ||
-				worldObj.getBlockMaterial(xCoord, yCoord, zCoord - 1) == Material.lava || worldObj.getBlockMaterial(xCoord, yCoord + 1, zCoord) == Material.lava || worldObj.getBlockMaterial(xCoord, yCoord - 1, zCoord) == Material.lava)
-					return true;
+				for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
+					if (worldObj.getBlockMaterial(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == Material.lava)
+						return true;
 
 			} else if (inventory[0].getItem().itemID == Item.bucketWater.itemID)
-				if (worldObj.getBlockMaterial(xCoord + 1, yCoord, zCoord) == Material.water || worldObj.getBlockMaterial(xCoord - 1, yCoord, zCoord) == Material.water || worldObj.getBlockMaterial(xCoord, yCoord, zCoord + 1) == Material.water ||
-				worldObj.getBlockMaterial(xCoord, yCoord, zCoord - 1) == Material.water || worldObj.getBlockMaterial(xCoord, yCoord + 1, zCoord) == Material.water || worldObj.getBlockMaterial(xCoord, yCoord - 1, zCoord) == Material.water)
-					return true;
+				for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
+					if (worldObj.getBlockMaterial(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == Material.water)
+						return true;
 
-		} else if (worldObj.getBlockId(xCoord + 1, yCoord, zCoord) == inventory[0].itemID || worldObj.getBlockId(xCoord - 1, yCoord, zCoord) == inventory[0].itemID || worldObj.getBlockId(xCoord, yCoord, zCoord + 1) == inventory[0].itemID ||
-		worldObj.getBlockId(xCoord, yCoord, zCoord - 1) == inventory[0].itemID || worldObj.getBlockId(xCoord, yCoord + 1, zCoord) == inventory[0].itemID || worldObj.getBlockId(xCoord, yCoord - 1, zCoord) == inventory[0].itemID)
-			return true;
+		} else
+			for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
+				if (worldObj.getBlockId(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == inventory[0].itemID)
+					return true;
 
 		return false;
 	}

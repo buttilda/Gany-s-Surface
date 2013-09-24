@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.tileentities;
 
+import ganymedes01.ganyssurface.blocks.Dislocator;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
@@ -36,13 +37,8 @@ public class TileEntityDislocator extends TileEntity implements IPipeConnection 
 	@Override
 	public ConnectOverride overridePipeConnection(PipeType type, ForgeDirection side) {
 		if (type == PipeType.ITEM) {
-			int meta = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
-			if (side == ForgeDirection.UP)
-				return meta == 1 ? ConnectOverride.CONNECT : ConnectOverride.DEFAULT;
-			else if (side == ForgeDirection.DOWN)
-				return meta == 0 ? ConnectOverride.CONNECT : ConnectOverride.DEFAULT;
-			else
-				return meta == side.getOpposite().ordinal() ? ConnectOverride.CONNECT : ConnectOverride.DEFAULT;
+			ForgeDirection dir = Dislocator.getDirectionFromMetadata(worldObj.getBlockMetadata(xCoord, yCoord, zCoord));
+			return dir.getOpposite() == side ? ConnectOverride.CONNECT : ConnectOverride.DISCONNECT;
 		}
 		return ConnectOverride.DISCONNECT;
 	}

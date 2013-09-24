@@ -73,34 +73,8 @@ public class SensoringDislocator extends Dislocator {
 		TileEntitySensoringDislocator tile = (TileEntitySensoringDislocator) world.getBlockTileEntity(x, y, z);
 		if (tile == null)
 			return;
-
-		if (!tile.checkNearbyBlocks())
-			tile.activated = false;
-		if (!tile.activated)
-			if (tile.checkNearbyBlocks()) {
-				tile.activated = true;
-				int meta = world.getBlockMetadata(x, y, z);
-				switch (meta) {
-					case 0:
-						breakSurroundingBlock(world, x, y + 1, z, meta);
-						break;
-					case 1:
-						breakSurroundingBlock(world, x, y - 1, z, meta);
-						break;
-					case 2:
-						breakSurroundingBlock(world, x, y, z - 1, meta);
-						break;
-					case 3:
-						breakSurroundingBlock(world, x, y, z + 1, meta);
-						break;
-					case 4:
-						breakSurroundingBlock(world, x - 1, y, z, meta);
-						break;
-					case 5:
-						breakSurroundingBlock(world, x + 1, y, z, meta);
-						break;
-				}
-			}
+		if (tile.checkNearbyBlocks())
+			breakSurroundingBlock(world, x, y, z, getDirectionFromMetadata(world.getBlockMetadata(x, y, z)));
 	}
 
 	@Override

@@ -3,6 +3,8 @@ package ganymedes01.ganyssurface.core.utils;
 import ganymedes01.ganyssurface.lib.Reference;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
@@ -66,6 +68,14 @@ public class Utils {
 
 	public static final int getColour(int R, int G, int B) {
 		return new Color(R, G, B).getRGB() & 0x00ffffff;
+	}
+
+	public static final ArrayList<Integer> getRandomizedList(int min, int max) {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		for (int i = min; i < max; i++)
+			list.add(i);
+		Collections.shuffle(list);
+		return list;
 	}
 
 	public static final String CHAT_COLOUR_BLACK = "¤0";
