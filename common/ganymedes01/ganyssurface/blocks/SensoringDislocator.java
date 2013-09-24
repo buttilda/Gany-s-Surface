@@ -50,10 +50,8 @@ public class SensoringDislocator extends Dislocator {
 			return false;
 		else {
 			if (player.getCurrentEquippedItem() != null)
-				if (player.getCurrentEquippedItem().getItem() == ModItems.woodenWrench) {
-					player.getCurrentEquippedItem().damageItem(1, player);
-					return rotate(world, x, y, z, player, side);
-				}
+				if (player.getCurrentEquippedItem().getItem() == ModItems.woodenWrench)
+					return false;
 
 			TileEntitySensoringDislocator tile = (TileEntitySensoringDislocator) world.getBlockTileEntity(x, y, z);
 			if (tile != null)

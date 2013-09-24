@@ -2,7 +2,6 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityDislocator;
 
@@ -12,7 +11,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -41,29 +39,6 @@ public class Dislocator extends BlockContainer {
 		setHardness(0.2F);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.DISLOCATOR_NAME));
-	}
-
-	@Override
-	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-		if (player.getCurrentEquippedItem() != null)
-			if (player.getCurrentEquippedItem().getItem() == ModItems.woodenWrench) {
-				player.getCurrentEquippedItem().damageItem(1, player);
-				return rotate(world, x, y, z, player, side);
-			}
-		return false;
-	}
-
-	protected boolean rotate(World world, int x, int y, int z, EntityPlayer player, int side) {
-		int meta = world.getBlockMetadata(x, y, z);
-		int newMeta = meta;
-		if (meta == 5)
-			newMeta = 0;
-		else
-			newMeta = meta + 1;
-
-		world.notifyBlocksOfNeighborChange(x, y, z, blockID);
-		world.setBlockMetadataWithNotify(x, y, z, newMeta, 2);
-		return true;
 	}
 
 	public static ForgeDirection getDirectionFromMetadata(int meta) {
