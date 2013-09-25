@@ -10,7 +10,6 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -40,7 +39,7 @@ public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float angle) {
 		TileEntityItemDisplay itemDisplay = (TileEntityItemDisplay) tile;
-		bindTexture(new ResourceLocation(Utils.getEntityTexture(Strings.ITEM_DISPLAY_NAME)));
+		bindTexture(Utils.getResource(Utils.getEntityTexture(Strings.ITEM_DISPLAY_NAME)));
 
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_CULL_FACE);
@@ -75,9 +74,8 @@ public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 
 			customRenderItem.doRenderItem(ghostEntityItem, 0, 0, 0, 0, 0);
 		}
-		GL11.glPopMatrix();
-
 		GL11.glEnable(GL11.GL_CULL_FACE);
 		GL11.glEnable(GL11.GL_LIGHTING);
+		GL11.glPopMatrix();
 	}
 }
