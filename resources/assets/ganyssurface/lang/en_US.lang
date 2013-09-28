@@ -41,6 +41,7 @@ tile.ganyssurface.cushion.name=Cushion
 tile.ganyssurface.chocolateCake.name=Chocolate Cake
 tile.ganyssurface.itemDisplay.name=Item Display
 tile.ganyssurface.chestPropellant.name=Chest Propellant
+tile.ganyssurface.fertilizedSoil.name=Fertilized Soil
 
 # GUI localizations
 container.ganyssurface:blockDetector=Block Detector

@@ -26,6 +26,7 @@ public class Strings {
 	public static final String CHOCOLATE_CAKE_NAME = "chocolateCake";
 	public static final String ITEM_DISPLAY_NAME = "itemDisplay";
 	public static final String CHEST_PROPELLANT_NAME = "chestPropellant";
+	public static final String FERTILIZED_SOIL_NAME = "fertilizedSoil";
 
 	// Item names
 	public static final String ROT_NAME = "rot";

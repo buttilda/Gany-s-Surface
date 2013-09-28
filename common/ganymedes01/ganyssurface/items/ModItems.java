@@ -64,7 +64,8 @@ public class ModItems {
 		batNet = new BatNet(ModIDs.BAT_NET_ID);
 		pocketBat = new PocketBat(ModIDs.POCKET_BAT_ID);
 		batStew = new BatStew(ModIDs.BAT_STEW_ID);
-		chocolateBar = new ChocolateBar(ModIDs.CHOCOLATE_BAR_ID);
+		if (GanysSurface.activateChocolate)
+			chocolateBar = new ChocolateBar(ModIDs.CHOCOLATE_BAR_ID);
 
 		registerNames();
 		registerForge();

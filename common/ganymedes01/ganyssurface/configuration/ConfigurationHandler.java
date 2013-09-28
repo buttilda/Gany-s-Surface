@@ -55,6 +55,7 @@ public class ConfigurationHandler {
 			ModIDs.CHOCOLATE_CAKE_ID = configBlock(Strings.CHOCOLATE_CAKE_NAME);
 			ModIDs.ITEM_DISPLAY_ID = configBlock(Strings.ITEM_DISPLAY_NAME);
 			ModIDs.CHEST_PROPELLANT_ID = configBlock(Strings.CHEST_PROPELLANT_NAME);
+			ModIDs.FERTILIZED_SOIL_ID = configBlock(Strings.FERTILIZED_SOIL_NAME);
 
 			// Armour
 			ModIDs.WOODEN_HELMET_ID = configItem(Strings.WOODEN_HELMET_NAME);

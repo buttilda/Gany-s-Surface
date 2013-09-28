@@ -32,6 +32,7 @@ public class ModBlocks {
 	public static Block chocolateCake;
 	public static Block itemDisplay;
 	public static Block chestPropellant;
+	public static Block fertilizedSoil;
 
 	public static void init() {
 		camelliaCrop = new CamelliaCrop(ModIDs.CAMELLIA_CROP_ID);
@@ -50,6 +51,7 @@ public class ModBlocks {
 		chocolateCake = new ChocolateCakeBlock(ModIDs.CHOCOLATE_CAKE_ID);
 		itemDisplay = new ItemDisplay(ModIDs.ITEM_DISPLAY_ID);
 		chestPropellant = new ChestPropellant(ModIDs.CHEST_PROPELLANT_ID);
+		fertilizedSoil = new FertilizedSoil(ModIDs.FERTILIZED_SOIL_ID);
 
 		registerNames();
 	}
@@ -72,5 +74,6 @@ public class ModBlocks {
 			GameRegistry.registerBlock(chocolateCake, ItemChocolateCake.class, Strings.CHOCOLATE_CAKE_NAME);
 		GameRegistry.registerBlock(itemDisplay, Strings.ITEM_DISPLAY_NAME);
 		GameRegistry.registerBlock(chestPropellant, Strings.CHEST_PROPELLANT_NAME);
+		GameRegistry.registerBlock(fertilizedSoil, Strings.FERTILIZED_SOIL_NAME);
 	}
 }
