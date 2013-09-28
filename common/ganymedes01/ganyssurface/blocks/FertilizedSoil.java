@@ -8,16 +8,22 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class FertilizedSoil extends Block {
 
 	public FertilizedSoil(int id) {
 		super(id, Material.ground);
+		setHardness(0.6F);
 		setLightOpacity(255);
 		setTickRandomly(true);
+		setStepSound(soundGravelFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9375F, 1.0F);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.FERTILIZED_SOIL_NAME));
@@ -65,5 +71,17 @@ public class FertilizedSoil extends Block {
 	@Override
 	public int idDropped(int id, Random rand, int par3) {
 		return Block.dirt.blockID;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int side, int meta) {
+		return side == 1 ? blockIcon : Block.dirt.getBlockTextureFromSide(side);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister reg) {
+		blockIcon = reg.registerIcon(Utils.getBlockTexture(Strings.FERTILIZED_SOIL_NAME, false));
 	}
 }
