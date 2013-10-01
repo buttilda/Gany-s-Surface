@@ -26,14 +26,17 @@ public interface IPipeTile extends ISolidSideTile, IFluidHandler {
 	/**
 	 * Offers an ItemStack for addition to the pipe. Will be rejected if the
 	 * pipe doesn't accept items from that side.
-	 *
-	 * @param stack ItemStack offered for addition. Do not manipulate this!
-	 * @param doAdd If false no actual addition should take place. Implementors
-	 * should simulate.
-	 * @param from Orientation the ItemStack is offered from.
+	 * 
+	 * @param stack
+	 *            ItemStack offered for addition. Do not manipulate this!
+	 * @param doAdd
+	 *            If false no actual addition should take place. Implementors
+	 *            should simulate.
+	 * @param from
+	 *            Orientation the ItemStack is offered from.
 	 * @return Amount of items used from the passed stack.
 	 */
 	int injectItem(ItemStack stack, boolean doAdd, ForgeDirection from);
-	
+
 	boolean isPipeConnected(ForgeDirection with);
 }
