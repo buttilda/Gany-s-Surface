@@ -3,7 +3,7 @@ package ganymedes01.ganyssurface.network;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.network.packet.CustomPacket;
 import ganymedes01.ganyssurface.network.packet.PacketTileWithIMultipleDisplayItems;
-import ganymedes01.ganyssurface.network.packet.PacketTileWithISingleDisplayItem;
+import ganymedes01.ganyssurface.network.packet.PacketTileWithSingleDisplayItem;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -19,7 +19,7 @@ import net.minecraft.network.packet.Packet250CustomPayload;
  */
 
 public enum PacketTypeHandler {
-	TILE_WITH_SINGLE_DISPLAY_ITEM(PacketTileWithISingleDisplayItem.class),
+	TILE_WITH_SINGLE_DISPLAY_ITEM(PacketTileWithSingleDisplayItem.class),
 	TILE_WITH_MULTIPLE_DISPLAY_ITEMS(PacketTileWithIMultipleDisplayItems.class);
 
 	private Class<? extends CustomPacket> clazz;

@@ -8,7 +8,6 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -49,7 +48,7 @@ public class ItemDisplay extends BlockContainer {
 			} else if (tile.getDisplayItem() != null) {
 				Utils.dropStack(world, x, y + 1, z, tile.getDisplayItem().copy());
 				tile.addItemToDisplay(null);
-				GanysSurface.proxy.handleTileWithSingleDisplayItemPacket(x, y, z, Item.appleGold.itemID, 0, 0);
+				GanysSurface.proxy.handleTileWithSingleDisplayItemPacket(x, y, z, 0, 0, 0);
 			}
 			return true;
 		}

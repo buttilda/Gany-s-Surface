@@ -31,7 +31,7 @@ public class CustomPacket {
 
 		try {
 			dos.writeByte(packetType.ordinal());
-			this.writeData(dos);
+			writeData(dos);
 		} catch (IOException e) {
 			e.printStackTrace(System.err);
 		}
@@ -41,7 +41,7 @@ public class CustomPacket {
 
 	public void readPopulate(DataInputStream data) {
 		try {
-			this.readData(data);
+			readData(data);
 		} catch (IOException e) {
 			e.printStackTrace(System.err);
 		}
@@ -56,10 +56,6 @@ public class CustomPacket {
 	}
 
 	public void execute(INetworkManager network, Player player) {
-
-	}
-
-	public void setKey(int key) {
 
 	}
 }

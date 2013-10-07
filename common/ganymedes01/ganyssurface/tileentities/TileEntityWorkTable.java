@@ -73,8 +73,8 @@ public class TileEntityWorkTable extends TileEntity implements ISidedInventory {
 	}
 
 	@Override
-	public ItemStack getStackInSlot(int i) {
-		return craftMatrix[i];
+	public ItemStack getStackInSlot(int slot) {
+		return craftMatrix[slot];
 	}
 
 	@Override
@@ -144,7 +144,7 @@ public class TileEntityWorkTable extends TileEntity implements ISidedInventory {
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
+	public boolean isUseableByPlayer(EntityPlayer player) {
 		return true;
 	}
 
@@ -157,12 +157,12 @@ public class TileEntityWorkTable extends TileEntity implements ISidedInventory {
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
+	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		return true;
 	}
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int var1) {
+	public int[] getAccessibleSlotsFromSide(int side) {
 		return new int[] {};
 	}
 

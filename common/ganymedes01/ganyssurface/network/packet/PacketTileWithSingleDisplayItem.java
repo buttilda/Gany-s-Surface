@@ -17,22 +17,22 @@ import cpw.mods.fml.common.network.Player;
  * 
  */
 
-public class PacketTileWithISingleDisplayItem extends CustomPacket {
+public class PacketTileWithSingleDisplayItem extends CustomPacket {
 
 	public int x, y, z;
-	public int itemID, metaData, stackSize;
+	public int itemID, meta, stackSize;
 
-	public PacketTileWithISingleDisplayItem() {
+	public PacketTileWithSingleDisplayItem() {
 		super(PacketTypeHandler.TILE_WITH_SINGLE_DISPLAY_ITEM);
 	}
-
-	public PacketTileWithISingleDisplayItem(int x, int y, int z, int itemID, int metaData, int stackSize) {
+	
+	public PacketTileWithSingleDisplayItem(int x, int y, int z, int itemID, int meta, int stackSize) {
 		super(PacketTypeHandler.TILE_WITH_SINGLE_DISPLAY_ITEM);
 		this.x = x;
 		this.y = y;
 		this.z = z;
 		this.itemID = itemID;
-		this.metaData = metaData;
+		this.meta = meta;
 		this.stackSize = stackSize;
 	}
 
@@ -42,7 +42,7 @@ public class PacketTileWithISingleDisplayItem extends CustomPacket {
 		data.writeInt(y);
 		data.writeInt(z);
 		data.writeInt(itemID);
-		data.writeInt(metaData);
+		data.writeInt(meta);
 		data.writeInt(stackSize);
 	}
 
@@ -52,12 +52,12 @@ public class PacketTileWithISingleDisplayItem extends CustomPacket {
 		y = data.readInt();
 		z = data.readInt();
 		itemID = data.readInt();
-		metaData = data.readInt();
+		meta = data.readInt();
 		stackSize = data.readInt();
 	}
 
 	@Override
 	public void execute(INetworkManager manager, Player player) {
-		GanysSurface.proxy.handleTileWithSingleDisplayItemPacket(x, y, z, itemID, metaData, stackSize);
+		GanysSurface.proxy.handleTileWithSingleDisplayItemPacket(x, y, z, itemID, meta, stackSize);
 	}
 }
