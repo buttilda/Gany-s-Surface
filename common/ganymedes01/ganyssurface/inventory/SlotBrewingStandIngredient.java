@@ -16,7 +16,7 @@ class SlotBrewingStandIngredient extends Slot {
 
 	public SlotBrewingStandIngredient(ContainerVanillaBrewingStand containerVanillaBrewingStand, IInventory par2IInventory, int par3, int par4, int par5) {
 		super(par2IInventory, par3, par4, par5);
-		this.brewingStand = containerVanillaBrewingStand;
+		brewingStand = containerVanillaBrewingStand;
 	}
 
 	/**

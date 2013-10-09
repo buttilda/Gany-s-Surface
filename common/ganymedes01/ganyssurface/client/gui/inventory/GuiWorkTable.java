@@ -40,6 +40,6 @@ public class GuiWorkTable extends GuiContainer {
 		mc.renderEngine.bindTexture(new ResourceLocation("textures/gui/container/crafting_table.png"));
 		int k = (width - xSize) / 2;
 		int l = (height - ySize) / 2;
-		drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
+		drawTexturedModalRect(k, l, 0, 0, xSize, ySize);
 	}
 }

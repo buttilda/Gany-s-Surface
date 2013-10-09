@@ -59,24 +59,24 @@ public class ContainerWorkTable extends Container {
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
 		ItemStack itemstack = null;
-		Slot slot = (Slot) this.inventorySlots.get(slotIndex);
+		Slot slot = (Slot) inventorySlots.get(slotIndex);
 
 		if (slot != null && slot.getHasStack()) {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
 
 			if (slotIndex == 0) {
-				if (!this.mergeItemStack(itemstack1, 10, 46, true))
+				if (!mergeItemStack(itemstack1, 10, 46, true))
 					return null;
 
 				slot.onSlotChange(itemstack1, itemstack);
 			} else if (slotIndex >= 10 && slotIndex < 37) {
-				if (!this.mergeItemStack(itemstack1, 37, 46, false))
+				if (!mergeItemStack(itemstack1, 37, 46, false))
 					return null;
 			} else if (slotIndex >= 37 && slotIndex < 46) {
-				if (!this.mergeItemStack(itemstack1, 10, 37, false))
+				if (!mergeItemStack(itemstack1, 10, 37, false))
 					return null;
-			} else if (!this.mergeItemStack(itemstack1, 10, 46, false))
+			} else if (!mergeItemStack(itemstack1, 10, 46, false))
 				return null;
 
 			if (itemstack1.stackSize == 0)
