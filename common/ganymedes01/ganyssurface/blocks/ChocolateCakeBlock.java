@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.BlockCake;
@@ -24,21 +25,21 @@ public class ChocolateCakeBlock extends BlockCake {
 	@SideOnly(Side.CLIENT)
 	private Icon cakeTopIcon, cakeBottomIcon, cakeInner;
 
-	public ChocolateCakeBlock(int id) {
-		super(id);
+	public ChocolateCakeBlock() {
+		super(ModIDs.CHOCOLATE_CAKE_ID);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CHOCOLATE_CAKE_NAME));
 	}
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
-		this.eatCakeSlice(world, x, y, z, player);
+		eatCakeSlice(world, x, y, z, player);
 		return true;
 	}
 
 	@Override
 	public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player) {
-		this.eatCakeSlice(world, x, y, z, player);
+		eatCakeSlice(world, x, y, z, player);
 	}
 
 	private void eatCakeSlice(World world, int x, int y, int z, EntityPlayer player) {
@@ -74,9 +75,9 @@ public class ChocolateCakeBlock extends BlockCake {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		this.blockIcon = reg.registerIcon(Utils.getBlockTexture(Strings.CHOCOLATE_CAKE_NAME, true) + "side");
-		this.cakeInner = reg.registerIcon(Utils.getBlockTexture(Strings.CHOCOLATE_CAKE_NAME, true) + "inner");
-		this.cakeTopIcon = reg.registerIcon(Utils.getBlockTexture(Strings.CHOCOLATE_CAKE_NAME, true) + "top");
-		this.cakeBottomIcon = reg.registerIcon(Utils.getBlockTexture(Strings.CHOCOLATE_CAKE_NAME, true) + "bottom");
+		blockIcon = reg.registerIcon(Utils.getBlockTexture(Strings.CHOCOLATE_CAKE_NAME, true) + "side");
+		cakeInner = reg.registerIcon(Utils.getBlockTexture(Strings.CHOCOLATE_CAKE_NAME, true) + "inner");
+		cakeTopIcon = reg.registerIcon(Utils.getBlockTexture(Strings.CHOCOLATE_CAKE_NAME, true) + "top");
+		cakeBottomIcon = reg.registerIcon(Utils.getBlockTexture(Strings.CHOCOLATE_CAKE_NAME, true) + "bottom");
 	}
 }

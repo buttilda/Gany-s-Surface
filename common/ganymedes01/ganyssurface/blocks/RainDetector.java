@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityRainDetector;
 import net.minecraft.block.BlockContainer;
@@ -26,8 +27,8 @@ public class RainDetector extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	private Icon blockSide, blockTop;
 
-	public RainDetector(int id) {
-		super(id, Material.circuits);
+	public RainDetector() {
+		super(ModIDs.RAIN_DETECTOR_ID, Material.circuits);
 		setHardness(0.2F);
 		setLightOpacity(0);
 		setStepSound(soundWoodFootstep);

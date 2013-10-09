@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.ModItems;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -21,8 +22,8 @@ public class CamelliaCrop extends BlockCrops {
 	@SideOnly(Side.CLIENT)
 	private Icon[] iconArray;
 
-	protected CamelliaCrop(int id) {
-		super(id);
+	protected CamelliaCrop() {
+		super(ModIDs.CAMELLIA_CROP_ID);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CAMELLIA_CROP_NAME));
 	}
 

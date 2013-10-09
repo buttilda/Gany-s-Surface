@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.block.Block;
@@ -31,8 +32,8 @@ public class WorkTable extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	private Icon blockTop, blockSide, blockFront;
 
-	public WorkTable(int id) {
-		super(id, Material.wood);
+	public WorkTable() {
+		super(ModIDs.WORK_TABLE_ID, Material.wood);
 		setHardness(2.5F);
 		setStepSound(soundWoodFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);

@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import net.minecraft.block.Block;
@@ -32,8 +33,8 @@ public class ChestPropellant extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	private Icon blockTop, blockSide;
 
-	public ChestPropellant(int id) {
-		super(id, Material.rock);
+	public ChestPropellant() {
+		super(ModIDs.CHEST_PROPELLANT_ID, Material.rock);
 		setHardness(1.0F);
 		setLightOpacity(0);
 		setCreativeTab(GanysSurface.surfaceTab);

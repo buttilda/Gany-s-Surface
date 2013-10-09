@@ -25,7 +25,7 @@ public class PacketTileWithSingleDisplayItem extends CustomPacket {
 	public PacketTileWithSingleDisplayItem() {
 		super(PacketTypeHandler.TILE_WITH_SINGLE_DISPLAY_ITEM);
 	}
-	
+
 	public PacketTileWithSingleDisplayItem(int x, int y, int z, int itemID, int meta, int stackSize) {
 		super(PacketTypeHandler.TILE_WITH_SINGLE_DISPLAY_ITEM);
 		this.x = x;

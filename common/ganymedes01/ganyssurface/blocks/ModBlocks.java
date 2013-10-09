@@ -35,23 +35,23 @@ public class ModBlocks {
 	public static Block fertilizedSoil;
 
 	public static void init() {
-		camelliaCrop = new CamelliaCrop(ModIDs.CAMELLIA_CROP_ID);
-		rainDetector = new RainDetector(ModIDs.RAIN_DETECTOR_ID);
-		blockDetector = new BlockDetector(ModIDs.BLOCK_DETECTOR_ID);
-		dislocator = new Dislocator(ModIDs.DISLOCATOR_ID);
-		sensoringDislocator = new SensoringDislocator(ModIDs.SENSORING_DISLOCATOR_ID);
-		cubicSensoringDislocator = new CubicSensoringDislocator(ModIDs.CUBIC_SENSORING_DISLOCATOR_ID);
+		camelliaCrop = new CamelliaCrop();
+		rainDetector = new RainDetector();
+		blockDetector = new BlockDetector();
+		dislocator = new Dislocator();
+		sensoringDislocator = new SensoringDislocator();
+		cubicSensoringDislocator = new CubicSensoringDislocator();
 		disguisedTrapDoorOak = new DisguisedTrapDoor(ModIDs.DISGUISED_TRAP_DOOR_OAK_ID, 0);
 		disguisedTrapDoorSpruce = new DisguisedTrapDoor(ModIDs.DISGUISED_TRAP_DOOR_SPRUCE_ID, 1);
 		disguisedTrapDoorBirch = new DisguisedTrapDoor(ModIDs.DISGUISED_TRAP_DOOR_BIRCH_ID, 2);
 		disguisedTrapDoorJungle = new DisguisedTrapDoor(ModIDs.DISGUISED_TRAP_DOOR_JUNGLE_ID, 3);
-		workTable = new WorkTable(ModIDs.WORK_TABLE_ID);
-		organicMatterCompressor = new OrganicMatterCompressor(ModIDs.ORGANIC_MATTER_COMPRESSOR_ID);
-		cushion = new Cushion(ModIDs.CUSHION_ID);
-		chocolateCake = new ChocolateCakeBlock(ModIDs.CHOCOLATE_CAKE_ID);
-		itemDisplay = new ItemDisplay(ModIDs.ITEM_DISPLAY_ID);
-		chestPropellant = new ChestPropellant(ModIDs.CHEST_PROPELLANT_ID);
-		fertilizedSoil = new FertilizedSoil(ModIDs.FERTILIZED_SOIL_ID);
+		workTable = new WorkTable();
+		organicMatterCompressor = new OrganicMatterCompressor();
+		cushion = new Cushion();
+		chocolateCake = new ChocolateCakeBlock();
+		itemDisplay = new ItemDisplay();
+		chestPropellant = new ChestPropellant();
+		fertilizedSoil = new FertilizedSoil();
 
 		registerNames();
 	}

@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityBat;
@@ -18,8 +19,8 @@ import net.minecraft.item.ItemStack;
 
 public class BatNet extends Item {
 
-	public BatNet(int id) {
-		super(id);
+	public BatNet() {
+		super(ModIDs.BAT_NET_ID);
 		setFull3D();
 		setMaxDamage(32);
 		setMaxStackSize(1);

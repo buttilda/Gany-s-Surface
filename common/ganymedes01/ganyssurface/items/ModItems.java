@@ -26,7 +26,6 @@ public class ModItems {
 	public static Item cupOfTea;
 	public static Item mankyCupOfTea;
 	public static Item poop;
-	public static Item fertilizer;
 	public static Item cookedEgg;
 	public static Item obsidianHead;
 	public static Item woodenWrench;
@@ -49,23 +48,22 @@ public class ModItems {
 		woodenBoots = new WoodenArmour(ModIDs.WOODEN_BOOTS_ID, 3);
 
 		// Items
-		rot = new Rot(ModIDs.ROT_ID);
-		camelliaSeeds = new CamelliaSeeds(ModIDs.CAMELLIA_SEEDS_ID);
-		teaLeaves = new TeaLeaves(ModIDs.TEA_LEAVES_ID);
-		teaBag = new TeaBag(ModIDs.TEA_BAG_ID);
-		emptyMug = new EmptyMug(ModIDs.EMPTY_MUG_ID);
-		cupOfTea = new CupOfTea(ModIDs.CUP_OF_TEA_ID).setCreativeTab(GanysSurface.surfaceTab);
-		mankyCupOfTea = new MankyCupOfTea(ModIDs.MANKY_CUP_OF_TEA_ID);
-		poop = new Poop(ModIDs.POOP_ID);
-		fertilizer = new Fertilizer(ModIDs.FERTILIZER_ID);
-		cookedEgg = new CookedEgg(ModIDs.COOKED_EGG_ID);
-		obsidianHead = new ObsidianHead(ModIDs.OBSIDIAN_HEAD_ID);
-		woodenWrench = new WoodenWrench(ModIDs.WOODEN_WRENCH_ID);
-		batNet = new BatNet(ModIDs.BAT_NET_ID);
-		pocketBat = new PocketBat(ModIDs.POCKET_BAT_ID);
-		batStew = new BatStew(ModIDs.BAT_STEW_ID);
+		rot = new Rot();
+		camelliaSeeds = new CamelliaSeeds();
+		teaLeaves = new TeaLeaves();
+		teaBag = new TeaBag();
+		emptyMug = new EmptyMug();
+		cupOfTea = new CupOfTea();
+		mankyCupOfTea = new MankyCupOfTea();
+		poop = new Poop();
+		cookedEgg = new CookedEgg();
+		obsidianHead = new ObsidianHead();
+		woodenWrench = new WoodenWrench();
+		batNet = new BatNet();
+		pocketBat = new PocketBat();
+		batStew = new BatStew();
 		if (GanysSurface.activateChocolate)
-			chocolateBar = new ChocolateBar(ModIDs.CHOCOLATE_BAR_ID);
+			chocolateBar = new ChocolateBar();
 
 		registerNames();
 		registerForge();
@@ -86,7 +84,6 @@ public class ModItems {
 		GameRegistry.registerItem(emptyMug, Strings.EMPTY_MUG_NAME);
 		GameRegistry.registerItem(cupOfTea, Strings.CUP_OF_TEA_NAME);
 		GameRegistry.registerItem(poop, Strings.POOP_NAME);
-		GameRegistry.registerItem(fertilizer, Strings.FERTILIZER_NAME);
 		GameRegistry.registerItem(cookedEgg, Strings.COOKED_EGG_NAME);
 		GameRegistry.registerItem(obsidianHead, Strings.OBSIDIAN_HEAD_NAME);
 		GameRegistry.registerItem(woodenWrench, Strings.WOODEN_WRENCH_NAME);

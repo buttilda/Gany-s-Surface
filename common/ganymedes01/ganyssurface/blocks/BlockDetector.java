@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityBlockDetector;
 import net.minecraft.block.BlockContainer;
@@ -29,8 +30,8 @@ public class BlockDetector extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	private Icon blockOn, blockOff;
 
-	protected BlockDetector(int id) {
-		super(id, Material.rock);
+	protected BlockDetector() {
+		super(ModIDs.BLOCK_DETECTOR_ID, Material.rock);
 		setHardness(0.2F);
 		setStepSound(soundWoodFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);

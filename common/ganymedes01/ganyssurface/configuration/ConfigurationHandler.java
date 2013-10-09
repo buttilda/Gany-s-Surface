@@ -72,7 +72,6 @@ public class ConfigurationHandler {
 			ModIDs.CUP_OF_TEA_ID = configItem(Strings.CUP_OF_TEA_NAME);
 			ModIDs.MANKY_CUP_OF_TEA_ID = configItem(Strings.MANKY_CUP_OF_TEA_NAME);
 			ModIDs.POOP_ID = configItem(Strings.POOP_NAME);
-			ModIDs.FERTILIZER_ID = configItem(Strings.FERTILIZER_NAME);
 			ModIDs.COOKED_EGG_ID = configItem(Strings.COOKED_EGG_NAME);
 			ModIDs.OBSIDIAN_HEAD_ID = configItem(Strings.OBSIDIAN_HEAD_NAME);
 			ModIDs.WOODEN_WRENCH_ID = configItem(Strings.WOODEN_WRENCH_NAME);

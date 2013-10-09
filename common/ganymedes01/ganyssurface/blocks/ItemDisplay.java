@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import net.minecraft.block.BlockContainer;
@@ -23,8 +24,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemDisplay extends BlockContainer {
 
-	public ItemDisplay(int id) {
-		super(id, Material.glass);
+	public ItemDisplay() {
+		super(ModIDs.ITEM_DISPLAY_ID, Material.glass);
 		setHardness(1.0F);
 		setStepSound(soundGlassFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);

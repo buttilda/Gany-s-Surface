@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityOrganicMatterCompressor;
 import net.minecraft.block.BlockContainer;
@@ -23,8 +24,8 @@ import net.minecraft.world.World;
 
 public class OrganicMatterCompressor extends BlockContainer {
 
-	public OrganicMatterCompressor(int id) {
-		super(id, Material.rock);
+	public OrganicMatterCompressor() {
+		super(ModIDs.ORGANIC_MATTER_COMPRESSOR_ID, Material.rock);
 		setHardness(3.5F);
 		setStepSound(soundStoneFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);

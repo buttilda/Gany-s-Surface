@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
@@ -18,8 +19,8 @@ import net.minecraft.world.World;
 
 public class Cushion extends BlockSand {
 
-	public Cushion(int id) {
-		super(id, Material.cloth);
+	public Cushion() {
+		super(ModIDs.CUSHION_ID, Material.cloth);
 		setHardness(0.2F);
 		setStepSound(soundClothFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);

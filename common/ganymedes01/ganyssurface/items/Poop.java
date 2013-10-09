@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -27,8 +28,8 @@ public class Poop extends Item {
 	@SideOnly(Side.CLIENT)
 	private Icon[] icon = new Icon[2];
 
-	public Poop(int id) {
-		super(id);
+	public Poop() {
+		super(ModIDs.POOP_ID);
 		setMaxDamage(0);
 		setHasSubtypes(true);
 		setCreativeTab(GanysSurface.surfaceTab);

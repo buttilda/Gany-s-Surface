@@ -42,7 +42,6 @@ public class ModIDs {
 	public static int CUP_OF_TEA_ID;
 	public static int MANKY_CUP_OF_TEA_ID;
 	public static int POOP_ID;
-	public static int FERTILIZER_ID;
 	public static int COOKED_EGG_ID;
 	public static int OBSIDIAN_HEAD_ID;
 	public static int WOODEN_WRENCH_ID;

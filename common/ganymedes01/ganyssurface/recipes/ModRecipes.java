@@ -37,8 +37,8 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModItems.emptyMug, 5), "x x", "xxx", 'x', Item.clay);
 		GameRegistry.addRecipe(new ItemStack(ModItems.cupOfTea), " x ", "yaz", " b ", 'x', Item.bucketMilk, 'y', Item.potion, 'z', Item.sugar, 'a', ModItems.teaBag, 'b', ModItems.emptyMug);
 		GameRegistry.addRecipe(new ItemStack(ModItems.mankyCupOfTea), " y ", "xaz", " b ", 'x', Item.bucketMilk, 'y', Item.potion, 'z', Item.sugar, 'a', ModItems.teaBag, 'b', ModItems.emptyMug);
-		GameRegistry.addRecipe(new ItemStack(ModItems.fertilizer, 8), "xxx", "xyx", "xxx", 'x', new ItemStack(ModItems.poop, 1, 0), 'y', Block.dirt);
-		GameRegistry.addRecipe(new ItemStack(ModItems.fertilizer, 16), "xxx", "xyx", "xxx", 'x', new ItemStack(ModItems.poop, 1, 1), 'y', Block.dirt);
+		GameRegistry.addRecipe(new ItemStack(ModItems.rot, 8, 1), "xxx", "xyx", "xxx", 'x', new ItemStack(ModItems.poop, 1, 0), 'y', Block.dirt);
+		GameRegistry.addRecipe(new ItemStack(ModItems.rot, 16, 1), "xxx", "xyx", "xxx", 'x', new ItemStack(ModItems.poop, 1, 1), 'y', Block.dirt);
 		GameRegistry.addSmelting(Item.egg.itemID, new ItemStack(ModItems.cookedEgg), 0F);
 		GameRegistry.addRecipe(new ItemStack(ModItems.obsidianHead), " x ", "xyx", 'x', Block.obsidian, 'y', Item.ingotIron);
 		GameRegistry.addRecipe(new ItemStack(ModItems.woodenWrench), "x x", " x ", " x ", 'x', Block.planks);
@@ -71,6 +71,6 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.chocolateCake), "xxx", "yzy", "www", 'x', Item.bucketMilk, 'y', ModItems.chocolateBar, 'z', Item.egg, 'w', Item.wheat);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.itemDisplay), "xxx", "x x", "xyx", 'x', Block.thinGlass, 'y', new ItemStack(Block.carpet, 0, 14));
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.chestPropellant), "ywy", "xzx", "xyx", 'x', Item.ingotIron, 'y', Item.goldNugget, 'z', new ItemStack(Block.sandStone, 1, 2), 'w', Item.redstone);
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.fertilizedSoil), "yyy", "xzx", "yyy", 'x', new ItemStack(ModItems.poop, 1, 1), 'y', ModItems.fertilizer, 'z', Block.dirt);
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.fertilizedSoil), "yyy", "xzx", "yyy", 'x', new ItemStack(ModItems.poop, 1, 1), 'y', new ItemStack(ModItems.rot, 1, 1), 'z', Block.dirt);
 	}
 }

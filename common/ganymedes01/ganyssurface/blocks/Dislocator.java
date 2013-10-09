@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityDislocator;
 
@@ -33,6 +34,10 @@ public class Dislocator extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
 	protected Icon blockSide, blockFront, blockBack;
+
+	public Dislocator() {
+		this(ModIDs.DISLOCATOR_ID);
+	}
 
 	public Dislocator(int id) {
 		super(id, Material.cloth);

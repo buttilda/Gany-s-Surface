@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.GUIsID;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntitySensoringDislocator;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -22,6 +23,10 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 
 public class SensoringDislocator extends Dislocator {
+
+	public SensoringDislocator() {
+		this(ModIDs.SENSORING_DISLOCATOR_ID);
+	}
 
 	public SensoringDislocator(int id) {
 		super(id);

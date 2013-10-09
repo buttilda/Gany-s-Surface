@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.blocks.CubicSensoringDislocator;
 import ganymedes01.ganyssurface.blocks.Dislocator;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockQuartz;
@@ -22,8 +23,8 @@ import net.minecraft.world.World;
 
 public class WoodenWrench extends Item {
 
-	public WoodenWrench(int id) {
-		super(id);
+	public WoodenWrench() {
+		super(ModIDs.WOODEN_WRENCH_ID);
 		setFull3D();
 		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.WOODEN_WRENCH_NAME));

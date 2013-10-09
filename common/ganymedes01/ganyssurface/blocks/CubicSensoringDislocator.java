@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityCubicSensoringDislocator;
 import net.minecraft.block.Block;
@@ -28,8 +29,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class CubicSensoringDislocator extends SensoringDislocator {
 
-	public CubicSensoringDislocator(int id) {
-		super(id);
+	public CubicSensoringDislocator() {
+		super(ModIDs.CUBIC_SENSORING_DISLOCATOR_ID);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CUBIC_SENSORING_DISLOCATOR_NAME));
 	}
 

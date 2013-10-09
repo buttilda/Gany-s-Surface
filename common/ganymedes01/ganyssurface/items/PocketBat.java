@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
@@ -30,8 +31,8 @@ import net.minecraft.world.World;
 
 public class PocketBat extends Item {
 
-	public PocketBat(int id) {
-		super(id);
+	public PocketBat() {
+		super(ModIDs.POCKET_BAT_ID);
 		setMaxStackSize(1);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.POCKET_BAT_NAME));
@@ -45,7 +46,7 @@ public class PocketBat extends Item {
 
 	@Override
 	public String getItemDisplayName(ItemStack stack) {
-		return ("" + StatCollector.translateToLocal(this.getUnlocalizedNameInefficiently(stack) + ".name")).trim();
+		return ("" + StatCollector.translateToLocal(getUnlocalizedNameInefficiently(stack) + ".name")).trim();
 	}
 
 	@Override

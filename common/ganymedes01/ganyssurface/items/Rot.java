@@ -2,7 +2,11 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
+
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCocoa;
 import net.minecraft.block.BlockCrops;
@@ -10,14 +14,19 @@ import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.BlockMushroom;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.BlockStem;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.entity.player.BonemealEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
@@ -28,11 +37,39 @@ import net.minecraftforge.event.entity.player.BonemealEvent;
 
 public class Rot extends Item {
 
-	public Rot(int id) {
-		super(id);
+	@SideOnly(Side.CLIENT)
+	private Icon[] icon = new Icon[2];
+
+	public Rot() {
+		super(ModIDs.ROT_ID);
+		setMaxDamage(0);
+		setHasSubtypes(true);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setTextureName(Utils.getItemTexture(Strings.ROT_NAME));
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ROT_NAME));
+	}
+
+	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		return "item." + (stack.getItemDamage() == 0 ? Utils.getUnlocalizedName(Strings.ROT_NAME) : Utils.getUnlocalizedName(Strings.FERTILIZER_NAME));
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIconFromDamage(int i) {
+		return icon[i];
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(int itemID, CreativeTabs tabs, List list) {
+		list.add(new ItemStack(itemID, 1, 0));
+		list.add(new ItemStack(itemID, 1, 1));
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister reg) {
+		icon[0] = reg.registerIcon(Utils.getItemTexture(Strings.ROT_NAME));
+		icon[1] = reg.registerIcon(Utils.getItemTexture(Strings.FERTILIZER_NAME));
 	}
 
 	@Override
@@ -45,7 +82,7 @@ public class Rot extends Item {
 		return false;
 	}
 
-	public static boolean applyBonemeal(ItemStack item, World world, int x, int y, int z, EntityPlayer player) {
+	private boolean applyBonemeal(ItemStack item, World world, int x, int y, int z, EntityPlayer player) {
 		int target = world.getBlockId(x, y, z);
 
 		BonemealEvent event = new BonemealEvent(player, world, target, x, y, z);

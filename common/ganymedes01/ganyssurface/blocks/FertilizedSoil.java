@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.Random;
@@ -14,8 +15,8 @@ import net.minecraftforge.common.IPlantable;
 
 public class FertilizedSoil extends Block {
 
-	public FertilizedSoil(int id) {
-		super(id, Material.ground);
+	public FertilizedSoil() {
+		super(ModIDs.FERTILIZED_SOIL_ID, Material.ground);
 		setHardness(0.6F);
 		setLightOpacity(255);
 		setTickRandomly(true);
