@@ -40,8 +40,7 @@ public class ContainerBlockDetector extends Container {
 				if (!mergeItemStack(slotItemStack, 1, inventorySlots.size(), true))
 					return null;
 			} else if (((Slot) inventorySlots.get(0)).getStack() == null) {
-				((Slot) inventorySlots.get(0)).putStack(new ItemStack(slotItemStack.getItem()));
-				slotItemStack.stackSize--;
+				((Slot) inventorySlots.get(0)).putStack(slotItemStack.splitStack(1));
 				if (slotItemStack.stackSize <= 0)
 					slot.putStack(null);
 				return null;

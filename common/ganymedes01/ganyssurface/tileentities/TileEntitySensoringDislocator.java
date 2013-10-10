@@ -9,6 +9,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemReed;
 import net.minecraft.item.ItemSeeds;
+import net.minecraft.item.ItemSkull;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraftforge.common.ForgeDirection;
 import buildcraft.api.transport.IPipeConnection;
 import buildcraft.api.transport.IPipeTile.PipeType;
@@ -28,28 +31,30 @@ public class TileEntitySensoringDislocator extends TileEntityBlockDetector imple
 	}
 
 	public boolean checkNearbyBlocks(ForgeDirection dir) {
+		int x = xCoord + dir.offsetX;
+		int y = yCoord + dir.offsetY;
+		int z = zCoord + dir.offsetZ;
+
 		if (inventory[0] == null)
 			return false;
-		if (inventory[0].getItem() instanceof ItemSeeds) {
-			int cropID = ((ItemSeeds) inventory[0].getItem()).getPlantID(worldObj, xCoord, yCoord, zCoord);
-			if (worldObj.getBlockId(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == cropID) {
+		if (inventory[0].getItem() instanceof ItemSeeds)
+			if (worldObj.getBlockId(x, y, z) == ((ItemSeeds) inventory[0].getItem()).getPlantID(worldObj, xCoord, yCoord, zCoord)) {
 				coolDown = 0;
-				if (worldObj.getBlockMetadata(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) >= 7)
-					return true;
+				return worldObj.getBlockMetadata(x, y, z) >= 7;
 			}
-		}
-		if (inventory[0].getItem() instanceof ItemReed) {
-			if (checkIdPicked(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ))
-				return true;
-		} else if (inventory[0].getItem() instanceof ItemBucket) {
-			if (inventory[0].getItem().itemID == Item.bucketLava.itemID) {
-				if (worldObj.getBlockMaterial(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == Material.lava)
-					return true;
-			} else if (inventory[0].getItem().itemID == Item.bucketWater.itemID)
-				if (worldObj.getBlockMaterial(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == Material.water)
-					return true;
-		} else if (worldObj.getBlockId(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == inventory[0].itemID)
-			return true;
+		if (inventory[0].getItem() instanceof ItemReed)
+			return checkIdPicked(x, y, z);
+		else if (inventory[0].getItem() instanceof ItemBucket) {
+			if (inventory[0].getItem().itemID == Item.bucketLava.itemID)
+				return worldObj.getBlockMaterial(x, y, z) == Material.lava;
+			else if (inventory[0].getItem().itemID == Item.bucketWater.itemID)
+				return worldObj.getBlockMaterial(x, y, z) == Material.water;
+		} else if (inventory[0].getItem() instanceof ItemSkull) {
+			TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
+			if (tile != null && tile instanceof TileEntitySkull)
+				return ((TileEntitySkull) tile).getSkullType() == inventory[0].getItemDamage();
+		} else
+			return worldObj.getBlockId(x, y, z) == inventory[0].itemID;
 		return false;
 	}
 

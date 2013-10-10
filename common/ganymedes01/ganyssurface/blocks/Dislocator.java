@@ -85,7 +85,6 @@ public class Dislocator extends BlockContainer {
 		int x = xCoord + dir.offsetX;
 		int y = yCoord + dir.offsetY;
 		int z = zCoord + dir.offsetZ;
-
 		Block target = Block.blocksList[world.getBlockId(x, y, z)];
 		if (target != null)
 			if (target.getBlockHardness(world, x, y, z) >= 0 && target.blockMaterial != Material.water && target.blockMaterial != Material.lava) {

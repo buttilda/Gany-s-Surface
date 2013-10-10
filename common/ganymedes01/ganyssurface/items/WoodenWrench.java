@@ -26,6 +26,7 @@ public class WoodenWrench extends Item {
 	public WoodenWrench() {
 		super(ModIDs.WOODEN_WRENCH_ID);
 		setFull3D();
+		setMaxStackSize(1);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.WOODEN_WRENCH_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.WOODEN_WRENCH_NAME));
