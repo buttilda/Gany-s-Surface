@@ -27,10 +27,7 @@ public class Utils {
 	}
 
 	public static final String getBlockTexture(String name, boolean hasSubBlocks) {
-		if (hasSubBlocks)
-			return Reference.ITEM_BLOCK_TEXTURE_PATH + name + "_";
-		else
-			return Reference.ITEM_BLOCK_TEXTURE_PATH + name;
+		return Reference.ITEM_BLOCK_TEXTURE_PATH + name + (hasSubBlocks ? "_" : "");
 	}
 
 	public static final String getItemTexture(String name) {
@@ -66,7 +63,7 @@ public class Utils {
 	}
 
 	public static final int getColour(int R, int G, int B) {
-		return new Color(R, G, B).getRGB() & 0x00ffffff;
+		return new Color(R < 0 ? 0 : R, G < 0 ? 0 : G, B < 0 ? 0 : B).getRGB() & 0x00ffffff;
 	}
 
 	public static final ResourceLocation getResource(String path) {
