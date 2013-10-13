@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.core.proxy;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerBlockDetector;
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
 import ganymedes01.ganyssurface.inventory.ContainerVanillaBrewingStand;
@@ -48,15 +49,15 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class CommonProxy implements IGuiHandler {
 
 	public void registerTileEntities() {
-		GameRegistry.registerTileEntity(TileEntityRainDetector.class, Strings.RAIN_DETECTOR_NAME);
-		GameRegistry.registerTileEntity(TileEntityBlockDetector.class, Strings.BLOCK_DETECTOR_NAME);
-		GameRegistry.registerTileEntity(TileEntityDislocator.class, Strings.DISLOCATOR_NAME);
-		GameRegistry.registerTileEntity(TileEntitySensoringDislocator.class, Strings.SENSORING_DISLOCATOR_NAME);
-		GameRegistry.registerTileEntity(TileEntityCubicSensoringDislocator.class, Strings.CUBIC_SENSORING_DISLOCATOR_NAME);
-		GameRegistry.registerTileEntity(TileEntityWorkTable.class, Strings.WORK_TABLE_NAME);
-		GameRegistry.registerTileEntity(TileEntityOrganicMatterCompressor.class, Strings.ORGANIC_MATTER_COMPRESSOR_NAME);
-		GameRegistry.registerTileEntity(TileEntityItemDisplay.class, Strings.ITEM_DISPLAY_NAME);
-		GameRegistry.registerTileEntity(TileEntityChestPropellant.class, Strings.CHEST_PROPELLANT_NAME);
+		GameRegistry.registerTileEntity(TileEntityRainDetector.class, Utils.getUnlocalizedName(Strings.RAIN_DETECTOR_NAME));
+		GameRegistry.registerTileEntity(TileEntityBlockDetector.class, Utils.getUnlocalizedName(Strings.BLOCK_DETECTOR_NAME));
+		GameRegistry.registerTileEntity(TileEntityDislocator.class, Utils.getUnlocalizedName(Strings.DISLOCATOR_NAME));
+		GameRegistry.registerTileEntity(TileEntitySensoringDislocator.class, Utils.getUnlocalizedName(Strings.SENSORING_DISLOCATOR_NAME));
+		GameRegistry.registerTileEntity(TileEntityCubicSensoringDislocator.class, Utils.getUnlocalizedName(Strings.CUBIC_SENSORING_DISLOCATOR_NAME));
+		GameRegistry.registerTileEntity(TileEntityWorkTable.class, Utils.getUnlocalizedName(Strings.WORK_TABLE_NAME));
+		GameRegistry.registerTileEntity(TileEntityOrganicMatterCompressor.class, Utils.getUnlocalizedName(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
+		GameRegistry.registerTileEntity(TileEntityItemDisplay.class, Utils.getUnlocalizedName(Strings.ITEM_DISPLAY_NAME));
+		GameRegistry.registerTileEntity(TileEntityChestPropellant.class, Utils.getUnlocalizedName(Strings.CHEST_PROPELLANT_NAME));
 	}
 
 	public void registerRenderers() {
