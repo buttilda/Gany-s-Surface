@@ -38,7 +38,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Rot extends Item {
 
 	@SideOnly(Side.CLIENT)
-	private Icon[] icon = new Icon[2];
+	private Icon[] icon;
 
 	public Rot() {
 		super(ModIDs.ROT_ID);
@@ -54,8 +54,8 @@ public class Rot extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int i) {
-		return icon[i];
+	public Icon getIconFromDamage(int meta) {
+		return icon[meta];
 	}
 
 	@Override
@@ -68,12 +68,13 @@ public class Rot extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
+		icon = new Icon[2];
 		icon[0] = reg.registerIcon(Utils.getItemTexture(Strings.ROT_NAME));
 		icon[1] = reg.registerIcon(Utils.getItemTexture(Strings.FERTILIZER_NAME));
 	}
 
 	@Override
-	public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10) {
+	public boolean onItemUse(ItemStack item, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
 		if (applyBonemeal(item, world, x, y, z, player)) {
 			if (!world.isRemote)
 				world.playAuxSFX(2005, x, y, z, 0);
@@ -99,7 +100,7 @@ public class Rot extends Item {
 			if (!world.isRemote) {
 				if (world.rand.nextFloat() < 0.45D)
 					((BlockSapling) Block.sapling).markOrGrowMarked(world, x, y, z, world.rand);
-				--item.stackSize;
+				item.stackSize--;
 			}
 			return true;
 		} else if (target != Block.mushroomBrown.blockID && target != Block.mushroomRed.blockID) {
@@ -110,27 +111,27 @@ public class Rot extends Item {
 					else {
 						if (!world.isRemote) {
 							((BlockCrops) Block.blocksList[target]).fertilize(world, x, y, z);
-							--item.stackSize;
+							item.stackSize--;
 						}
 						return true;
 					}
 				else {
-					int i1;
-					int j1;
-					int k1;
+					int meta;
+					int dir;
+					int stage;
 
 					if (target == Block.cocoaPlant.blockID) {
-						i1 = world.getBlockMetadata(x, y, z);
-						j1 = BlockDirectional.getDirection(i1);
-						k1 = BlockCocoa.func_72219_c(i1);
+						meta = world.getBlockMetadata(x, y, z);
+						dir = BlockDirectional.getDirection(meta);
+						stage = BlockCocoa.func_72219_c(meta);
 
-						if (k1 >= 2)
+						if (stage >= 2)
 							return false;
 						else {
 							if (!world.isRemote) {
-								++k1;
-								world.setBlockMetadataWithNotify(x, y, z, k1 << 2 | j1, 2);
-								--item.stackSize;
+								stage++;
+								world.setBlockMetadataWithNotify(x, y, z, stage << 2 | dir, 2);
+								item.stackSize--;
 							}
 							return true;
 						}
@@ -138,30 +139,30 @@ public class Rot extends Item {
 						return false;
 					else {
 						if (!world.isRemote) {
-							--item.stackSize;
+							item.stackSize--;
 							label102:
 
-							for (i1 = 0; i1 < 128; ++i1) {
-								j1 = x;
-								k1 = y + 1;
+							for (meta = 0; meta < 128; meta++) {
+								dir = x;
+								stage = y + 1;
 								int l1 = z;
 
-								for (int i2 = 0; i2 < i1 / 16; ++i2) {
-									j1 += itemRand.nextInt(3) - 1;
-									k1 += (itemRand.nextInt(3) - 1) * itemRand.nextInt(3) / 2;
+								for (int i2 = 0; i2 < meta / 16; ++i2) {
+									dir += itemRand.nextInt(3) - 1;
+									stage += (itemRand.nextInt(3) - 1) * itemRand.nextInt(3) / 2;
 									l1 += itemRand.nextInt(3) - 1;
 
-									if (world.getBlockId(j1, k1 - 1, l1) != Block.grass.blockID || world.isBlockNormalCube(j1, k1, l1))
+									if (world.getBlockId(dir, stage - 1, l1) != Block.grass.blockID || world.isBlockNormalCube(dir, stage, l1))
 										continue label102;
 
 								}
 
-								if (world.getBlockId(j1, k1, l1) == 0)
+								if (world.getBlockId(dir, stage, l1) == 0)
 									if (itemRand.nextInt(10) != 0)
-										if (Block.tallGrass.canBlockStay(world, j1, k1, l1))
-											world.setBlock(j1, k1, l1, Block.tallGrass.blockID, 1, 3);
+										if (Block.tallGrass.canBlockStay(world, dir, stage, l1))
+											world.setBlock(dir, stage, l1, Block.tallGrass.blockID, 1, 3);
 										else
-											ForgeHooks.plantGrass(world, j1, k1, l1);
+											ForgeHooks.plantGrass(world, dir, stage, l1);
 							}
 						}
 						return true;
@@ -172,7 +173,7 @@ public class Rot extends Item {
 			else {
 				if (!world.isRemote) {
 					((BlockStem) Block.blocksList[target]).fertilizeStem(world, x, y, z);
-					--item.stackSize;
+					item.stackSize--;
 				}
 				return true;
 			}
@@ -180,7 +181,7 @@ public class Rot extends Item {
 			if (!world.isRemote) {
 				if (world.rand.nextFloat() < 0.4D)
 					((BlockMushroom) Block.blocksList[target]).fertilizeMushroom(world, x, y, z, world.rand);
-				--item.stackSize;
+				item.stackSize--;
 			}
 			return true;
 		}
