@@ -37,8 +37,8 @@ public class SensoringDislocator extends Dislocator {
 	public void breakBlock(World world, int x, int y, int z, int par5, int par6) {
 		TileEntitySensoringDislocator tile = (TileEntitySensoringDislocator) world.getBlockTileEntity(x, y, z);
 		if (tile != null) {
-			for (int j1 = 0; j1 < tile.getSizeInventory(); ++j1) {
-				ItemStack stack = tile.getStackInSlot(j1);
+			for (int i = 0; i < tile.getSizeInventory(); i++) {
+				ItemStack stack = tile.getStackInSlot(i);
 				if (stack != null)
 					Utils.dropStack(world, x, y, z, stack);
 			}

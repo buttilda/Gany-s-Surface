@@ -38,8 +38,8 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 	public void breakBlock(World world, int x, int y, int z, int par5, int par6) {
 		TileEntityCubicSensoringDislocator tile = (TileEntityCubicSensoringDislocator) world.getBlockTileEntity(x, y, z);
 		if (tile != null) {
-			for (int j1 = 0; j1 < tile.getSizeInventory(); ++j1) {
-				ItemStack itemstack = tile.getStackInSlot(j1);
+			for (int i = 0; i < tile.getSizeInventory(); i++) {
+				ItemStack itemstack = tile.getStackInSlot(i);
 
 				if (itemstack != null)
 					Utils.dropStack(world, x, y, z, itemstack);
