@@ -1,9 +1,12 @@
 package ganymedes01.ganyssurface.core.proxy;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.entities.EntityBatPoop;
+import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.inventory.ContainerBlockDetector;
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
 import ganymedes01.ganyssurface.inventory.ContainerVanillaBrewingStand;
@@ -13,6 +16,7 @@ import ganymedes01.ganyssurface.inventory.ContainerVanillaFurnace;
 import ganymedes01.ganyssurface.inventory.ContainerVanillaHopper;
 import ganymedes01.ganyssurface.inventory.ContainerWorkTable;
 import ganymedes01.ganyssurface.lib.GUIsID;
+import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityBlockDetector;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
@@ -37,6 +41,7 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -58,6 +63,14 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityOrganicMatterCompressor.class, Utils.getUnlocalizedName(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
 		GameRegistry.registerTileEntity(TileEntityItemDisplay.class, Utils.getUnlocalizedName(Strings.ITEM_DISPLAY_NAME));
 		GameRegistry.registerTileEntity(TileEntityChestPropellant.class, Utils.getUnlocalizedName(Strings.CHEST_PROPELLANT_NAME));
+	}
+
+	public void registerEntities() {
+		EntityRegistry.registerGlobalEntityID(EntityPoop.class, Utils.getUnlocalizedName("EntityPoop"), EntityRegistry.findGlobalUniqueEntityId());
+		EntityRegistry.registerModEntity(EntityPoop.class, Utils.getUnlocalizedName("EntityPoop"), ModIDs.ENTITY_POOP_ID, GanysSurface.instance, 64, 1, true);
+
+		EntityRegistry.registerGlobalEntityID(EntityBatPoop.class, Utils.getUnlocalizedName("EntityBatPoop"), EntityRegistry.findGlobalUniqueEntityId());
+		EntityRegistry.registerModEntity(EntityBatPoop.class, Utils.getUnlocalizedName("EntityBatPoop"), ModIDs.ENTITY_BAT_POOP_ID, GanysSurface.instance, 64, 1, true);
 	}
 
 	public void registerRenderers() {

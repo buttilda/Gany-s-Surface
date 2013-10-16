@@ -2,6 +2,8 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.entities.EntityBatPoop;
+import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -10,9 +12,11 @@ import java.util.List;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -42,6 +46,21 @@ public class Poop extends Item {
 			return super.getUnlocalizedName();
 		else
 			return "item." + Reference.MOD_ID + ".batPoop";
+	}
+
+	@Override
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+		if (!player.capabilities.isCreativeMode)
+			stack.stackSize--;
+
+		world.playSoundAtEntity(player, "random.bow", 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+		if (!world.isRemote)
+			if (stack.getItemDamage() == 0)
+				world.spawnEntityInWorld(new EntityPoop(world, player));
+			else
+				world.spawnEntityInWorld(new EntityBatPoop(world, player));
+
+		return stack;
 	}
 
 	@Override

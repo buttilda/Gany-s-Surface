@@ -49,4 +49,8 @@ public class ModIDs {
 	public static int POCKET_BAT_ID;
 	public static int BAT_STEW_ID;
 	public static int CHOCOLATE_BAR_ID;
+
+	// Entities
+	public static final int ENTITY_POOP_ID = 0;
+	public static final int ENTITY_BAT_POOP_ID = 1;
 }

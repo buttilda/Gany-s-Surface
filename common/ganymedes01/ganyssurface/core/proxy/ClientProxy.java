@@ -5,15 +5,20 @@ import ganymedes01.ganyssurface.client.renderer.item.ItemItemDisplayRenderer;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityChestPropellantRender;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityItemDisplayRender;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWorkTableRender;
+import ganymedes01.ganyssurface.entities.EntityBatPoop;
+import ganymedes01.ganyssurface.entities.EntityPoop;
+import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 /**
  * Gany's Surface
@@ -35,6 +40,9 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void registerRenderers() {
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.itemDisplay.blockID, new ItemItemDisplayRenderer());
+
+		RenderingRegistry.registerEntityRenderingHandler(EntityPoop.class, new RenderSnowball(ModItems.poop, 0));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBatPoop.class, new RenderSnowball(ModItems.poop, 1));
 	}
 
 	@Override
