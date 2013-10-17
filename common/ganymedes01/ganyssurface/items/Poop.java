@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Poop extends Item {
 
 	@SideOnly(Side.CLIENT)
-	private Icon[] icon = new Icon[2];
+	private Icon[] icon;
 
 	public Poop() {
 		super(ModIDs.POOP_ID);
@@ -65,8 +65,8 @@ public class Poop extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int i) {
-		return icon[i];
+	public Icon getIconFromDamage(int meta) {
+		return icon[meta];
 	}
 
 	@Override
@@ -79,6 +79,7 @@ public class Poop extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
+		icon = new Icon[2];
 		icon[0] = reg.registerIcon(Utils.getItemTexture(Strings.POOP_NAME) + "_0");
 		icon[1] = reg.registerIcon(Utils.getItemTexture(Strings.POOP_NAME) + "_1");
 	}
