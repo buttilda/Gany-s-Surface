@@ -33,8 +33,11 @@ public class BatNet extends Item {
 	public boolean onLeftClickEntity(ItemStack item, EntityPlayer player, Entity target) {
 		if (target instanceof EntityBat) {
 			if (!player.worldObj.isRemote) {
+				ItemStack pocketBat = new ItemStack(ModItems.pocketBat);
+				if (((EntityBat) target).hasCustomNameTag())
+					pocketBat.setItemName(((EntityBat) target).getCustomNameTag());
 				target.setDead();
-				target.entityDropItem(new ItemStack(ModItems.pocketBat), 1.0F);
+				target.entityDropItem(pocketBat, 1.0F);
 				item.damageItem(1, player);
 			}
 			return true;

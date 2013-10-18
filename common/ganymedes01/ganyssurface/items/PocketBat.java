@@ -7,11 +7,11 @@ import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemMonsterPlacer;
@@ -54,23 +54,20 @@ public class PocketBat extends Item {
 		if (world.isRemote)
 			return true;
 		else {
-			int i1 = world.getBlockId(x, y, z);
+			int blockID = world.getBlockId(x, y, z);
 			x += Facing.offsetsXForSide[side];
 			y += Facing.offsetsYForSide[side];
 			z += Facing.offsetsZForSide[side];
-			double d0 = 0.0D;
 
-			if (side == 1 && Block.blocksList[i1] != null && Block.blocksList[i1].getRenderType() == 11)
-				d0 = 0.5D;
-
-			Entity entity = ItemMonsterPlacer.spawnCreature(world, 65, x + 0.5D, y + d0, z + 0.5D);
+			Entity entity = ItemMonsterPlacer.spawnCreature(world, 65, x + 0.5D, y + 0.5D, z + 0.5D);
+			((EntityBat) entity).func_110163_bv();
 
 			if (entity != null) {
-				if (entity instanceof EntityLivingBase && stack.hasDisplayName())
+				if (stack.hasDisplayName())
 					((EntityLiving) entity).setCustomNameTag(stack.getDisplayName());
 
 				if (!player.capabilities.isCreativeMode)
-					--stack.stackSize;
+					stack.stackSize--;
 			}
 
 			return true;
