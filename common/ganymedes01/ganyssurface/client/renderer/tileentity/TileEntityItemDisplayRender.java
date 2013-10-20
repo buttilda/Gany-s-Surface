@@ -14,6 +14,9 @@ import net.minecraft.tileentity.TileEntity;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 /**
  * Gany's Surface
  * 
@@ -21,6 +24,7 @@ import org.lwjgl.opengl.GL12;
  * 
  */
 
+@SideOnly(Side.CLIENT)
 public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 
 	ModelItemDisplay model = new ModelItemDisplay();

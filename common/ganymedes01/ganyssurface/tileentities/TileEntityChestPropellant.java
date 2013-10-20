@@ -19,7 +19,6 @@ public class TileEntityChestPropellant extends TileEntity implements ISidedInven
 	public ItemStack getInventoryToRender() {
 		if (worldObj.getBlockTileEntity(xCoord, yCoord - (ChestPropellant.MAX_PILE_SIZE - 1), zCoord) instanceof TileEntityChestPropellant)
 			return null;
-
 		TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - 1, zCoord);
 		if (tile instanceof IInventory)
 			if (!(tile instanceof TileEntityChestPropellant))

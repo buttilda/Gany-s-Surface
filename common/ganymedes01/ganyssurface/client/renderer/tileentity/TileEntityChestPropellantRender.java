@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
+import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.entity.RenderItem;
@@ -12,6 +13,9 @@ import net.minecraft.tileentity.TileEntity;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 /**
  * Gany's Surface
  * 
@@ -19,6 +23,7 @@ import org.lwjgl.opengl.GL11;
  * 
  */
 
+@SideOnly(Side.CLIENT)
 public class TileEntityChestPropellantRender extends TileEntitySpecialRenderer {
 
 	private RenderItem customRenderItem;
@@ -36,7 +41,7 @@ public class TileEntityChestPropellantRender extends TileEntitySpecialRenderer {
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float angle) {
 		TileEntityChestPropellant chestPropellant = (TileEntityChestPropellant) tile;
-		if (chestPropellant.worldObj.isAirBlock(chestPropellant.xCoord, chestPropellant.yCoord + 1, chestPropellant.zCoord)) {
+		if (chestPropellant.worldObj.getBlockId(chestPropellant.xCoord, chestPropellant.yCoord + 1, chestPropellant.zCoord) != ModBlocks.chestPropellant.blockID) {
 			GL11.glDisable(GL11.GL_LIGHTING);
 			GL11.glDisable(GL11.GL_CULL_FACE);
 
