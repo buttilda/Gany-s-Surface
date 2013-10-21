@@ -2,8 +2,8 @@ package ganymedes01.ganyssurface.inventory;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.IPlantable;
 
 /**
  * Gany's Surface
@@ -20,6 +20,6 @@ public class SeedSlot extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		return stack.getItem() instanceof ItemSeeds;
+		return stack.getItem() instanceof IPlantable;
 	}
 }

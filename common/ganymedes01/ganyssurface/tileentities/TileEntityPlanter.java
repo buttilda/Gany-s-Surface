@@ -8,13 +8,13 @@ import ganymedes01.ganyssurface.network.packet.PacketPlanter;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.IPlantable;
 
 /**
  * Gany's Surface
@@ -47,8 +47,8 @@ public class TileEntityPlanter extends TileEntity implements IInventory {
 					for (int i = 0; i < inventory.length; i++) {
 						if (inventory[i] == null)
 							continue;
-						if (inventory[i].getItem() instanceof ItemSeeds) {
-							ItemSeeds seed = (ItemSeeds) inventory[i].getItem();
+						if (inventory[i].getItem() instanceof IPlantable) {
+							IPlantable seed = (IPlantable) inventory[i].getItem();
 							Block soil = Block.blocksList[worldObj.getBlockId(xCoord, yCoord - 2, zCoord)];
 							if (soil.canSustainPlant(worldObj, xCoord, yCoord - 2, zCoord, ForgeDirection.UP, seed)) {
 								armExtension += 0.01F;
@@ -161,7 +161,7 @@ public class TileEntityPlanter extends TileEntity implements IInventory {
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
-		return stack != null ? stack.getItem() instanceof ItemSeeds : false;
+		return stack != null ? stack.getItem() instanceof IPlantable : false;
 	}
 
 	@Override
