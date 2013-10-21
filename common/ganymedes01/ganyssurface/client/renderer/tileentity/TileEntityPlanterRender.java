@@ -22,16 +22,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class TileEntityPlanterRender extends TileEntitySpecialRenderer {
 
-	private ModelPlanter model = new ModelPlanter();
-
-	public TileEntityPlanterRender() {
-
-	}
-
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float angle) {
 		TileEntityPlanter planter = (TileEntityPlanter) tile;
-
+		ModelPlanter model = new ModelPlanter();
 		bindTexture(Utils.getResource(Utils.getEntityTexture(Strings.PLANTER_NAME)));
 
 		GL11.glPushMatrix();

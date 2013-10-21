@@ -1,7 +1,10 @@
 package ganymedes01.ganyssurface.tileentities;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
+import ganymedes01.ganyssurface.network.PacketTypeHandler;
+import ganymedes01.ganyssurface.network.packet.PacketPlanter;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -9,6 +12,7 @@ import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.packet.Packet;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
 
@@ -22,36 +26,63 @@ import net.minecraftforge.common.ForgeDirection;
 public class TileEntityPlanter extends TileEntity implements IInventory {
 
 	private ItemStack[] inventory = new ItemStack[9];
-	private float armExtension = 8.0F;
+	private float armExtension = 0.0F;
+	private boolean isReturning;
 
 	@Override
 	public void updateEntity() {
 		if (worldObj.isRemote)
 			return;
-		if (worldObj.isAirBlock(xCoord, yCoord - 1, zCoord))
-			if (!worldObj.isAirBlock(xCoord, yCoord - 2, zCoord))
-				for (int i = 0; i < inventory.length; i++) {
-					if (inventory[i] == null)
-						continue;
-					if (inventory[i].getItem() instanceof ItemSeeds) {
-						ItemSeeds seed = (ItemSeeds) inventory[i].getItem();
-						Block soil = Block.blocksList[worldObj.getBlockId(xCoord, yCoord - 2, zCoord)];
-						if (soil.canSustainPlant(worldObj, xCoord, yCoord - 2, zCoord, ForgeDirection.UP, seed)) {
-							armExtension += 0.1F;
-							if (armExtension >= 16.0F) {
-								worldObj.setBlock(xCoord, yCoord - 1, zCoord, seed.getPlantID(worldObj, xCoord, yCoord, zCoord));
-								inventory[i].stackSize--;
-								if (inventory[i].stackSize <= 0)
-									inventory[i] = null;
-								armExtension = 8.0F;
-							}
+		if (isReturning) {
+			armExtension -= 0.01F;
+			if (armExtension <= 0.0F) {
+				armExtension = 0.0F;
+				isReturning = false;
+			}
+			update();
+		}
+		if (!isReturning)
+			if (worldObj.isAirBlock(xCoord, yCoord - 1, zCoord))
+				if (!worldObj.isAirBlock(xCoord, yCoord - 2, zCoord))
+					for (int i = 0; i < inventory.length; i++) {
+						if (inventory[i] == null)
+							continue;
+						if (inventory[i].getItem() instanceof ItemSeeds) {
+							ItemSeeds seed = (ItemSeeds) inventory[i].getItem();
+							Block soil = Block.blocksList[worldObj.getBlockId(xCoord, yCoord - 2, zCoord)];
+							if (soil.canSustainPlant(worldObj, xCoord, yCoord - 2, zCoord, ForgeDirection.UP, seed)) {
+								armExtension += 0.01F;
+								if (armExtension >= 0.5F) {
+									worldObj.setBlock(xCoord, yCoord - 1, zCoord, seed.getPlantID(worldObj, xCoord, yCoord, zCoord));
+									inventory[i].stackSize--;
+									if (inventory[i].stackSize <= 0)
+										inventory[i] = null;
+									isReturning = true;
+								}
+								update();
+							} else if (armExtension != 0.0F)
+								armExtension = 0.0F;
 						}
 					}
-				}
+				else
+					isReturning = true;
 	}
 
 	public float getArmExtension() {
 		return armExtension;
+	}
+
+	public void setArmExtension(float value) {
+		armExtension = value;
+	}
+
+	@Override
+	public Packet getDescriptionPacket() {
+		return PacketTypeHandler.populatePacket(new PacketPlanter(xCoord, yCoord, zCoord, armExtension));
+	}
+
+	private void update() {
+		GanysSurface.proxy.handlePlanterPacket(xCoord, yCoord, zCoord, armExtension);
 	}
 
 	@Override

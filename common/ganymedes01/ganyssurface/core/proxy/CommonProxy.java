@@ -89,6 +89,10 @@ public class CommonProxy implements IGuiHandler {
 
 	}
 
+	public void handlePlanterPacket(int x, int y, int z, float armExtension) {
+
+	}
+
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tile = world.getBlockTileEntity(x, y, z);

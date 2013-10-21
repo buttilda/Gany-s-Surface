@@ -75,4 +75,13 @@ public class ClientProxy extends CommonProxy {
 						((TileEntityWorkTable) tileEntity).addToCraftMatrix(i, stack);
 					}
 	}
+
+	@Override
+	public void handlePlanterPacket(int x, int y, int z, float armExtension) {
+		World world = FMLClientHandler.instance().getClient().theWorld;
+		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
+		if (tileEntity != null)
+			if (tileEntity instanceof TileEntityPlanter)
+				((TileEntityPlanter) tileEntity).setArmExtension(armExtension);
+	}
 }
