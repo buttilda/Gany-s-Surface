@@ -27,10 +27,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 
-	ModelItemDisplay model = new ModelItemDisplay();
+	private ModelItemDisplay model;
 	private RenderItem customRenderItem;
 
 	public TileEntityItemDisplayRender() {
+		model = new ModelItemDisplay();
 		customRenderItem = new RenderItem() {
 			@Override
 			public boolean shouldBob() {
@@ -57,9 +58,7 @@ public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 
 		GL11.glPushMatrix();
 		if (itemDisplay.getDisplayItem() != null) {
-
-			float scaleFactor;
-			float translate;
+			float scaleFactor, translate;
 			if (itemDisplay.getDisplayItem().getItem() instanceof ItemBlock) {
 				scaleFactor = 2.5F;
 				translate = 0.4F;

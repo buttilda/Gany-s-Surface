@@ -7,9 +7,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import net.minecraft.network.INetworkManager;
-import cpw.mods.fml.common.network.Player;
-
 /**
  * Gany's Surface
  * 
@@ -55,7 +52,7 @@ public class CustomPacket {
 
 	}
 
-	public void execute(INetworkManager network, Player player) {
+	public void execute() {
 
 	}
 }

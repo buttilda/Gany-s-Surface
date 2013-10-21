@@ -7,9 +7,6 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
-import net.minecraft.network.INetworkManager;
-import cpw.mods.fml.common.network.Player;
-
 /**
  * Gany's Surface
  * 
@@ -67,7 +64,7 @@ public class PacketTileWithIMultipleDisplayItems extends CustomPacket {
 	}
 
 	@Override
-	public void execute(INetworkManager manager, Player player) {
+	public void execute() {
 		GanysSurface.proxy.handleTileWithMultipleDisplayItemsPacket(x, y, z, itemID, metaData, stackSize, invSize);
 	}
 }
