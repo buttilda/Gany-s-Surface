@@ -46,9 +46,9 @@ public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 		TileEntityItemDisplay itemDisplay = (TileEntityItemDisplay) tile;
 		bindTexture(Utils.getResource(Utils.getEntityTexture(Strings.ITEM_DISPLAY_NAME)));
 
+		GL11.glPushMatrix();
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_CULL_FACE);
-		GL11.glPushMatrix();
 		GL11.glTranslatef((float) x + 1.0F, (float) y + 1.0F, (float) z + 0.0F);
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);

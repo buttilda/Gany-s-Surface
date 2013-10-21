@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
-import ganymedes01.ganyssurface.tileentities.TileEntityBlockDetector;
+import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -14,10 +14,12 @@ import net.minecraft.item.ItemStack;
  * 
  */
 
-public class ContainerBlockDetector extends Container {
+public class ContainerPlanter extends Container {
 
-	public ContainerBlockDetector(InventoryPlayer inventory, TileEntityBlockDetector tile) {
-		addSlotToContainer(new BlockDetectorSlot(tile, 0, 80, 42));
+	public ContainerPlanter(InventoryPlayer inventory, TileEntityPlanter tile) {
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 3; j++)
+				addSlotToContainer(new SeedSlot(tile, j + i * 3, 62 + j * 18, 17 + i * 18));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++)
@@ -29,31 +31,31 @@ public class ContainerBlockDetector extends Container {
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
-		ItemStack stack = null;
+		ItemStack itemstack = null;
 		Slot slot = (Slot) inventorySlots.get(slotIndex);
 
 		if (slot != null && slot.getHasStack()) {
-			ItemStack slotItemStack = slot.getStack();
-			stack = slotItemStack.copy();
+			ItemStack stack = slot.getStack();
+			itemstack = stack.copy();
 
-			if (slotIndex < 1) {
-				if (!mergeItemStack(slotItemStack, 1, inventorySlots.size(), true))
+			if (slotIndex < 9) {
+				if (!mergeItemStack(stack, 9, 45, true))
 					return null;
-			} else if (((Slot) inventorySlots.get(0)).getStack() == null) {
-				((Slot) inventorySlots.get(0)).putStack(slotItemStack.splitStack(1));
-				if (slotItemStack.stackSize <= 0)
-					slot.putStack(null);
-				return null;
-			} else
+			} else if (!mergeItemStack(stack, 0, 9, false))
 				return null;
 
-			if (slotItemStack.stackSize == 0)
+			if (stack.stackSize == 0)
 				slot.putStack((ItemStack) null);
 			else
 				slot.onSlotChanged();
+
+			if (stack.stackSize == itemstack.stackSize)
+				return null;
+
+			slot.onPickupFromSlot(player, stack);
 		}
 
-		return stack;
+		return itemstack;
 	}
 
 	@Override

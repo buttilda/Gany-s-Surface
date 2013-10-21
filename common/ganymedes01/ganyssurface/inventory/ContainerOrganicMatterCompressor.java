@@ -29,11 +29,11 @@ public class ContainerOrganicMatterCompressor extends Container {
 		addSlotToContainer(new CoalSlot(tile, 9, 126, 17));
 		addSlotToContainer(new CoalBlockSlot(tile, 10, 126, 53));
 
-		for (int i = 0; i < 3; ++i)
-			for (int j = 0; j < 9; ++j)
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 9; j++)
 				addSlotToContainer(new Slot(inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 
-		for (int i = 0; i < 9; ++i)
+		for (int i = 0; i < 9; i++)
 			addSlotToContainer(new Slot(inventory, i, 8 + i * 18, 142));
 	}
 

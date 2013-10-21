@@ -42,6 +42,7 @@ tile.ganyssurface.chocolateCake.name=Chocolate Cake
 tile.ganyssurface.itemDisplay.name=Item Display
 tile.ganyssurface.chestPropellant.name=Chest Propellant
 tile.ganyssurface.fertilizedSoil.name=Fertilized Soil
+tile.ganyssurface.planter=Planter
 
 # GUI localizations
 container.ganyssurface:blockDetector=Block Detector
@@ -50,6 +51,7 @@ container.ganyssurface:cubicSensoringDislocator=Cubic Sensitive Dislocator
 container.ganyssurface:workTable=Work Table
 container.ganyssurface:organicMatterCompressor=Organic Matter Compressor
 container.ganyssurface:itemDisplay=Item Display
+container.ganyssurface:planter=Planter
 
 matter=Matter:
 

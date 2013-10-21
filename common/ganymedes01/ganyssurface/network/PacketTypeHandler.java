@@ -46,18 +46,6 @@ public enum PacketTypeHandler {
 		return packet;
 	}
 
-	public static CustomPacket buildPacket(PacketTypeHandler type) {
-		CustomPacket packet = null;
-
-		try {
-			packet = values()[type.ordinal()].clazz.newInstance();
-		} catch (Exception e) {
-			e.printStackTrace(System.err);
-		}
-
-		return packet;
-	}
-
 	public static Packet populatePacket(CustomPacket customPacket) {
 		byte[] data = customPacket.populate();
 

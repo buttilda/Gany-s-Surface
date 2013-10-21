@@ -4,7 +4,6 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityOrganicMatterCompressor;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -22,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 
 @SideOnly(Side.CLIENT)
-public class GuiOrganicMatterCompressor extends GuiContainer {
+public class GuiOrganicMatterCompressor extends GuiGanysSurface {
 
 	private final TileEntityOrganicMatterCompressor compressor;
 
@@ -33,9 +32,9 @@ public class GuiOrganicMatterCompressor extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
-		fontRenderer.drawString(StatCollector.translateToLocal(compressor.getInvName()), xSize / 2 - fontRenderer.getStringWidth(StatCollector.translateToLocal(compressor.getInvName())) / 2, 6, 4210752);
-		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
-		fontRenderer.drawString(StatCollector.translateToLocal("matter"), 89, ySize - 94, 4210752);
+		fontRenderer.drawString(StatCollector.translateToLocal(compressor.getInvName()), xSize / 2 - fontRenderer.getStringWidth(StatCollector.translateToLocal(compressor.getInvName())) / 2, 6, BLACK);
+		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
+		fontRenderer.drawString(StatCollector.translateToLocal("matter"), 89, ySize - 94, BLACK);
 	}
 
 	@Override

@@ -3,12 +3,14 @@ package ganymedes01.ganyssurface.core.proxy;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiPlanter;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.inventory.ContainerBlockDetector;
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
+import ganymedes01.ganyssurface.inventory.ContainerPlanter;
 import ganymedes01.ganyssurface.inventory.ContainerVanillaBrewingStand;
 import ganymedes01.ganyssurface.inventory.ContainerVanillaChest;
 import ganymedes01.ganyssurface.inventory.ContainerVanillaDispenser;
@@ -24,6 +26,7 @@ import ganymedes01.ganyssurface.tileentities.TileEntityCubicSensoringDislocator;
 import ganymedes01.ganyssurface.tileentities.TileEntityDislocator;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityOrganicMatterCompressor;
+import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityRainDetector;
 import ganymedes01.ganyssurface.tileentities.TileEntitySensoringDislocator;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
@@ -63,6 +66,7 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityOrganicMatterCompressor.class, Utils.getUnlocalizedName(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
 		GameRegistry.registerTileEntity(TileEntityItemDisplay.class, Utils.getUnlocalizedName(Strings.ITEM_DISPLAY_NAME));
 		GameRegistry.registerTileEntity(TileEntityChestPropellant.class, Utils.getUnlocalizedName(Strings.CHEST_PROPELLANT_NAME));
+		GameRegistry.registerTileEntity(TileEntityPlanter.class, Utils.getUnlocalizedName(Strings.PLANTER_NAME));
 	}
 
 	public void registerEntities() {
@@ -114,6 +118,9 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.VANILLA_DROPPER:
 				TileEntityDispenser tileDispenser = (TileEntityDispenser) tile;
 				return new ContainerVanillaDispenser(player.inventory, tileDispenser);
+			case GUIsID.PLANTER:
+				TileEntityPlanter tilePlanter = (TileEntityPlanter) tile;
+				return new ContainerPlanter(player.inventory, tilePlanter);
 		}
 		return null;
 	}
@@ -147,6 +154,9 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.VANILLA_DROPPER:
 				TileEntityDispenser tileDispenser = (TileEntityDispenser) tile;
 				return new GuiDispenser(player.inventory, tileDispenser);
+			case GUIsID.PLANTER:
+				TileEntityPlanter tilePlanter = (TileEntityPlanter) tile;
+				return new GuiPlanter(player.inventory, tilePlanter);
 		}
 		return null;
 	}

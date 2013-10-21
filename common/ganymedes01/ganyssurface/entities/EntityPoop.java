@@ -25,14 +25,8 @@ public class EntityPoop extends EntityThrowable {
 
 	@Override
 	protected void onImpact(MovingObjectPosition target) {
-		if (target.entityHit != null) {
-			byte damage = 0;
-
-			if (this instanceof EntityBatPoop)
-				damage = 3;
-
-			target.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), damage);
-		}
+		if (target.entityHit != null)
+			target.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), 0);
 
 		if (worldObj.isRemote)
 			for (int i = 0; i < 8; i++)

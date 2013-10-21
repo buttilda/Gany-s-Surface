@@ -33,6 +33,7 @@ public class ModBlocks {
 	public static Block itemDisplay;
 	public static Block chestPropellant;
 	public static Block fertilizedSoil;
+	public static Block planter;
 
 	public static void init() {
 		camelliaCrop = new CamelliaCrop();
@@ -52,6 +53,7 @@ public class ModBlocks {
 		itemDisplay = new ItemDisplay();
 		chestPropellant = new ChestPropellant();
 		fertilizedSoil = new FertilizedSoil();
+		planter = new Planter();
 
 		registerNames();
 	}
@@ -75,5 +77,6 @@ public class ModBlocks {
 		GameRegistry.registerBlock(itemDisplay, Strings.ITEM_DISPLAY_NAME);
 		GameRegistry.registerBlock(chestPropellant, Strings.CHEST_PROPELLANT_NAME);
 		GameRegistry.registerBlock(fertilizedSoil, Strings.FERTILIZED_SOIL_NAME);
+		GameRegistry.registerBlock(planter, Strings.PLANTER_NAME);
 	}
 }

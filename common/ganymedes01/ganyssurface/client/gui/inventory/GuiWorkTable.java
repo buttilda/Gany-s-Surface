@@ -4,7 +4,6 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerWorkTable;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -22,20 +21,20 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 
 @SideOnly(Side.CLIENT)
-public class GuiWorkTable extends GuiContainer {
+public class GuiWorkTable extends GuiGanysSurface {
 
 	public GuiWorkTable(InventoryPlayer inventory, TileEntityWorkTable tile) {
 		super(new ContainerWorkTable(inventory, tile));
 	}
 
 	@Override
-	protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-		fontRenderer.drawString(StatCollector.translateToLocal(Utils.getConainerName(Strings.WORK_TABLE_NAME)), 28, 6, 4210752);
-		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
+	protected void drawGuiContainerForegroundLayer(int x, int y) {
+		fontRenderer.drawString(StatCollector.translateToLocal(Utils.getConainerName(Strings.WORK_TABLE_NAME)), 28, 6, BLACK);
+		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
 	}
 
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {
+	protected void drawGuiContainerBackgroundLayer(float f, int x, int y) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.renderEngine.bindTexture(new ResourceLocation("textures/gui/container/crafting_table.png"));
 		int k = (width - xSize) / 2;

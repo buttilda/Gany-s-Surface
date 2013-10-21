@@ -4,7 +4,6 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerBlockDetector;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityBlockDetector;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -18,7 +17,7 @@ import org.lwjgl.opengl.GL11;
  * 
  */
 
-public class GuiBlockDetector extends GuiContainer {
+public class GuiBlockDetector extends GuiGanysSurface {
 
 	private final TileEntityBlockDetector detector;
 
@@ -29,8 +28,8 @@ public class GuiBlockDetector extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
-		fontRenderer.drawString(StatCollector.translateToLocal(detector.getInvName()), xSize / 2 - fontRenderer.getStringWidth(StatCollector.translateToLocal(detector.getInvName())) / 2, 6, 4210752);
-		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
+		fontRenderer.drawString(StatCollector.translateToLocal(detector.getInvName()), xSize / 2 - fontRenderer.getStringWidth(StatCollector.translateToLocal(detector.getInvName())) / 2, 6, BLACK);
+		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
 	}
 
 	@Override

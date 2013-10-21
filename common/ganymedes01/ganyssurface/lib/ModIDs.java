@@ -26,6 +26,7 @@ public class ModIDs {
 	public static int ITEM_DISPLAY_ID;
 	public static int CHEST_PROPELLANT_ID;
 	public static int FERTILIZED_SOIL_ID;
+	public static int PLANTER_ID;
 
 	// Armour
 	public static int WOODEN_HELMET_ID;
