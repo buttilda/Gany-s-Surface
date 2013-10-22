@@ -60,8 +60,7 @@ public class TileEntityPlanter extends TileEntity implements IInventory {
 									isReturning = true;
 								}
 								update();
-							} else if (armExtension != 0.0F)
-								armExtension = 0.0F;
+							}
 						}
 					}
 				else
@@ -175,6 +174,9 @@ public class TileEntityPlanter extends TileEntity implements IInventory {
 			if (slot >= 0 && slot < inventory.length)
 				inventory[slot] = ItemStack.loadItemStackFromNBT(tagCompound);
 		}
+
+		armExtension = data.getFloat("armExtension");
+		isReturning = data.getBoolean("isReturning");
 	}
 
 	@Override
@@ -189,5 +191,8 @@ public class TileEntityPlanter extends TileEntity implements IInventory {
 				tagList.appendTag(tagCompound);
 			}
 		data.setTag("Items", tagList);
+
+		data.setFloat("armExtension", armExtension);
+		data.setBoolean("isReturning", isReturning);
 	}
 }

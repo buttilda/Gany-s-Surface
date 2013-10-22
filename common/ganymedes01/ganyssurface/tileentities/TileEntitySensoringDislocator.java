@@ -8,11 +8,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemReed;
-import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemSkull;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.IPlantable;
 import buildcraft.api.transport.IPipeConnection;
 import buildcraft.api.transport.IPipeTile.PipeType;
 
@@ -37,10 +37,11 @@ public class TileEntitySensoringDislocator extends TileEntityBlockDetector imple
 
 		if (inventory[0] == null)
 			return false;
-		if (inventory[0].getItem() instanceof ItemSeeds)
-			if (worldObj.getBlockId(x, y, z) == ((ItemSeeds) inventory[0].getItem()).getPlantID(worldObj, xCoord, yCoord, zCoord)) {
+		if (inventory[0].getItem() instanceof IPlantable)
+			if (worldObj.getBlockId(x, y, z) == ((IPlantable) inventory[0].getItem()).getPlantID(worldObj, xCoord, yCoord, zCoord)) {
 				coolDown = 0;
-				return worldObj.getBlockMetadata(x, y, z) >= 7;
+				int finalMeta = inventory[0].getItem() != Item.netherStalkSeeds ? 7 : 3;
+				return worldObj.getBlockMetadata(x, y, z) >= finalMeta;
 			}
 		if (inventory[0].getItem() instanceof ItemReed)
 			return checkIdPicked(x, y, z);

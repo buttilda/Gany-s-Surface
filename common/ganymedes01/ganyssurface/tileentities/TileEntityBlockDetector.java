@@ -10,12 +10,12 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemReed;
-import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.IPlantable;
 
 /**
  * Gany's Surface
@@ -39,7 +39,7 @@ public class TileEntityBlockDetector extends TileEntity implements ISidedInvento
 	public void updateEntity() {
 		if (worldObj.getBlockMetadata(xCoord, yCoord, zCoord) != 15)
 			if (inventory[0] != null)
-				if (inventory[0].getItem() instanceof ItemSeeds) {
+				if (inventory[0].getItem() instanceof IPlantable) {
 					coolDown--;
 					if (coolDown <= 0) {
 						updateRedstoneSignalStatus(checkNearbyBlocks());
@@ -52,12 +52,13 @@ public class TileEntityBlockDetector extends TileEntity implements ISidedInvento
 		if (inventory[0] == null)
 			return false;
 
-		if (inventory[0].getItem() instanceof ItemSeeds) {
-			int cropID = ((ItemSeeds) inventory[0].getItem()).getPlantID(worldObj, xCoord, yCoord, zCoord);
+		if (inventory[0].getItem() instanceof IPlantable) {
+			int finalMeta = inventory[0].getItem() != Item.netherStalkSeeds ? 7 : 3;
+			int cropID = ((IPlantable) inventory[0].getItem()).getPlantID(worldObj, xCoord, yCoord, zCoord);
 			for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
 				if (worldObj.getBlockId(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) == cropID)
 					coolDown = 0;
-				if (worldObj.getBlockMetadata(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) >= 7)
+				if (worldObj.getBlockMetadata(xCoord + dir.offsetX, yCoord + dir.offsetY, zCoord + dir.offsetZ) >= finalMeta)
 					return true;
 			}
 		}

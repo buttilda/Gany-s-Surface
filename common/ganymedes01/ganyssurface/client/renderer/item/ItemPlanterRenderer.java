@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
-import ganymedes01.ganyssurface.client.model.ModelItemDisplay;
+import ganymedes01.ganyssurface.client.model.ModelPlanter;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.item.ItemStack;
@@ -22,11 +22,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ItemPlanterRenderer implements IItemRenderer {
 
-	private ModelItemDisplay model;
-
-	public ItemPlanterRenderer() {
-		model = new ModelItemDisplay();
-	}
+	private ModelPlanter model = new ModelPlanter();
+	private float armExtension = 0.0F;
+	private boolean isReturning = false;
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -40,32 +38,45 @@ public class ItemPlanterRenderer implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
+		if (isReturning) {
+			armExtension -= 0.005F;
+			if (armExtension <= 0.0F) {
+				armExtension = 0.0F;
+				isReturning = false;
+			}
+		} else {
+			armExtension += 0.005F;
+			if (armExtension >= 0.35F)
+				isReturning = true;
+		}
+
 		switch (type) {
 			case ENTITY: {
-				renderItemDisplay(0.5F, 0.5F, 0.5F);
+				renderPlanter(0.5F, 0.5F, 0.5F);
 				break;
 			}
 			case EQUIPPED: {
-				renderItemDisplay(1.0F, 1.0F, 1.0F);
+				renderPlanter(1.0F, 1.0F, 1.0F);
 				break;
 			}
 			case EQUIPPED_FIRST_PERSON: {
-				renderItemDisplay(1.0F, 1.0F, 1.0F);
+				renderPlanter(1.0F, 1.0F, 1.0F);
 				break;
 			}
 			case INVENTORY: {
-				renderItemDisplay(0.0F, 0.075F, 0.0F);
+				renderPlanter(0.0F, 0.075F, 0.0F);
 				break;
 			}
 		}
 	}
 
-	private void renderItemDisplay(float x, float y, float z) {
+	private void renderPlanter(float x, float y, float z) {
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(Utils.getResource(Utils.getEntityTexture(Strings.PLANTER_NAME)));
 		GL11.glPushMatrix();
-		GL11.glTranslatef(x, y, z);
+		GL11.glTranslatef(x, y + 0.5F, z);
 		GL11.glRotatef(180, 1, 0, 0);
 		GL11.glRotatef(-90, 0, 1, 0);
+		model.moveArm(armExtension);
 		model.renderAll();
 		GL11.glPopMatrix();
 	}
