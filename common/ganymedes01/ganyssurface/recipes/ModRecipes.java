@@ -72,6 +72,6 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.itemDisplay), "xxx", "x x", "xyx", 'x', Block.thinGlass, 'y', new ItemStack(Block.carpet, 0, 14));
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.chestPropellant), "ywy", "xzx", "xyx", 'x', Item.ingotIron, 'y', Item.goldNugget, 'z', new ItemStack(Block.sandStone, 1, 2), 'w', Item.redstone);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.fertilizedSoil), "yyy", "xzx", "yyy", 'x', new ItemStack(ModItems.poop, 1, 1), 'y', new ItemStack(ModItems.rot, 1, 1), 'z', Block.dirt);
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.planter), "aza", "ywy", "axa", 'x', Block.hopperBlock, 'y', new ItemStack(Block.cloth, 1, 13), 'z', Block.dispenser, 'w', ModBlocks.blockDetector, 'a', Block.stone);
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.planter), "aza", "ywy", " x ", 'x', Block.hopperBlock, 'y', new ItemStack(Block.cloth, 1, 13), 'z', Block.dispenser, 'w', ModBlocks.blockDetector, 'a', Block.stone);
 	}
 }
