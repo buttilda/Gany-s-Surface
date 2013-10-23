@@ -1,0 +1,59 @@
+# Item localizations
+item.ganyssurface.woodenHelmet.name=Træ Hjelm
+item.ganyssurface.woodenChestplate.name=Træ Brystplade
+item.ganyssurface.woodenLeggings.name=Træ Bukser
+item.ganyssurface.woodenBoots.name=Træ Sko
+
+item.ganyssurface.rot.name=Råd
+item.ganyssurface.camelliaSeeds.name=Kamelia Frø
+item.ganyssurface.teaLeaves.name=Te Blade
+item.ganyssurface.teaBag.name=Te Pose
+item.ganyssurface.emptyMug.name=Tomt Krus
+item.ganyssurface.cupOfTea.name=Kop Te
+item.ganyssurface.mankyCupOfTea.name=Manky Kop Te
+item.ganyssurface.poop.name=Lort
+item.ganyssurface.batPoop.name=Flagermusse Lort
+item.ganyssurface.fertilizer.name=Gødning
+item.ganyssurface.cookedEgg.name=Kogt Æg
+item.ganyssurface.obsidianHead.name=Obsidian Hoved
+item.ganyssurface.woodenWrench.name=Træ Skruenøgle
+item.ganyssurface.batNet.name=Flagermusse Net
+item.ganyssurface.pocketBat.name=Lomme Flagermus
+item.ganyssurface.batStew.name=Flagermusse Stuvning
+item.ganyssurface.chocolateBar.name=Chokoladestang
+
+pleaseletmefree=Please let me free!
+
+# Block localizations
+tile.ganyssurface.camelliaCrop.name=Kamelia Afgrød
+tile.ganyssurface.rainDetector.name=Regn Detektor
+tile.ganyssurface.blockDetector.name=Blok Detektor
+tile.ganyssurface.dislocator.name=Dislokerer
+tile.ganyssurface.sensoringDislocator.name=Følsom Dislokerer
+tile.ganyssurface.cubicSensoringDislocator.name=Kubisk Følsom Dislokerer
+tile.ganyssurface.disguisedTrapDoorOak.name=Forklædt Lem Eg
+tile.ganyssurface.disguisedTrapDoorSpruce.name=Forklædt Lem Gran
+tile.ganyssurface.disguisedTrapDoorBirch.name=Forklædt Lem Birk
+tile.ganyssurface.disguisedTrapDoorJungle.name=Forklædt Lem Jungle
+tile.ganyssurface.workTable.name=Arbejdsbord
+tile.ganyssurface.organicMatterCompressor.name=Organisk Stof Kompressor
+tile.ganyssurface.cushion.name=Pude
+tile.ganyssurface.chocolateCake.name=Chokoladekage
+tile.ganyssurface.itemDisplay.name=Element Udstilling
+tile.ganyssurface.chestPropellant.name=Kiste Drivmiddel
+tile.ganyssurface.fertilizedSoil.name=Gødet Jord
+tile.ganyssurface.planter=Planter
+
+# GUI localizations
+container.ganyssurface:blockDetector=Blok Detektor
+container.ganyssurface:sensoringDislocator=Følsom Dislokerer
+container.ganyssurface:cubicSensoringDislocator=Kubisk Følsom Dislokerer
+container.ganyssurface:workTable=Arbejdsbord
+container.ganyssurface:organicMatterCompressor=Organisk Stof Kompressor
+container.ganyssurface:itemDisplay=Element Udstilling
+container.ganyssurface:planter=Planter
+
+matter=Matter:
+
+# Creative Tab localizations
+itemGroup.ganyssurface=Gany's Overflade
