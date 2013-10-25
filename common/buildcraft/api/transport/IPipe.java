@@ -22,14 +22,14 @@ public interface IPipe {
 
 		public WireColor reverse() {
 			switch (this) {
-				case Red:
-					return Yellow;
-				case Blue:
-					return Green;
-				case Green:
-					return Blue;
-				default:
-					return Red;
+			case Red:
+				return Yellow;
+			case Blue:
+				return Green;
+			case Green:
+				return Blue;
+			default:
+				return Red;
 			}
 		}
 	}

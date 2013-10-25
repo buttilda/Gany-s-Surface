@@ -7,8 +7,8 @@
  */
 package buildcraft.api.transport;
 
-import net.minecraftforge.common.ForgeDirection;
 import buildcraft.api.transport.IPipeTile.PipeType;
+import net.minecraftforge.common.ForgeDirection;
 
 public interface IPipeConnection {
 
@@ -19,11 +19,11 @@ public interface IPipeConnection {
 
 	/**
 	 * Allows you to override pipe connection logic.
-	 * 
+	 *
 	 * @param type
 	 * @param with
 	 * @return CONNECT to force a connection, DISCONNECT to force no connection,
-	 *         and DEFAULT to let the pipe decide.
+	 * and DEFAULT to let the pipe decide.
 	 */
 	public ConnectOverride overridePipeConnection(PipeType type, ForgeDirection with);
 }
