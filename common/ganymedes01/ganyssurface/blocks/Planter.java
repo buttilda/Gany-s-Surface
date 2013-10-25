@@ -6,11 +6,17 @@ import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
@@ -59,7 +65,37 @@ public class Planter extends BlockContainer {
 	}
 
 	@Override
+	public void breakBlock(World world, int x, int y, int z, int par5, int par6) {
+		TileEntityPlanter tile = (TileEntityPlanter) world.getBlockTileEntity(x, y, z);
+		if (tile != null) {
+			for (int i = 0; i < tile.getSizeInventory(); i++) {
+				ItemStack stack = tile.getStackInSlot(i);
+				if (stack != null)
+					Utils.dropStack(world, x, y, z, stack);
+			}
+			world.func_96440_m(x, y, z, par5);
+		}
+		super.breakBlock(world, x, y, z, par5, par6);
+	}
+
+	@Override
+	public boolean hasComparatorInputOverride() {
+		return true;
+	}
+
+	@Override
+	public int getComparatorInputOverride(World world, int x, int y, int z, int par5) {
+		return Container.calcRedstoneFromInventory((TileEntityPlanter) world.getBlockTileEntity(x, y, z));
+	}
+
+	@Override
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityPlanter();
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister reg) {
+		blockIcon = Block.cloth.getIcon(0, 13);
 	}
 }
