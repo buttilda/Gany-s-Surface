@@ -9,6 +9,7 @@ import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import thaumcraft.api.IRepairable;
 
 /**
  * Gany's Surface
@@ -17,7 +18,7 @@ import net.minecraft.item.ItemStack;
  * 
  */
 
-public class BatNet extends Item {
+public class BatNet extends Item implements IRepairable {
 
 	public BatNet() {
 		super(ModIDs.BAT_NET_ID);

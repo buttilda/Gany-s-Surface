@@ -14,6 +14,7 @@ import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.recipes.BuildCraftFacadeManager;
 import ganymedes01.ganyssurface.recipes.ModRecipes;
+import ganymedes01.ganyssurface.recipes.ThaumCraftManager;
 
 import java.io.File;
 
@@ -80,6 +81,7 @@ public class GanysSurface {
 		proxy.registerTileEntities();
 		proxy.registerRenderers();
 		BuildCraftFacadeManager.registerFacades();
+		ThaumCraftManager.init();
 	}
 
 	@EventHandler
