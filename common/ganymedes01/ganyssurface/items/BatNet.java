@@ -38,7 +38,8 @@ public class BatNet extends Item implements IRepairable {
 				if (((EntityBat) target).hasCustomNameTag())
 					pocketBat.setItemName(((EntityBat) target).getCustomNameTag());
 				target.setDead();
-				target.entityDropItem(pocketBat, 1.0F);
+				if (!player.inventory.addItemStackToInventory(pocketBat))
+					target.entityDropItem(pocketBat, 1.0F);
 				item.damageItem(1, player);
 			}
 			return true;

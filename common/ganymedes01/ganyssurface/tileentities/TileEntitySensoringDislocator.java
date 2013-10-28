@@ -4,15 +4,7 @@ import ganymedes01.ganyssurface.blocks.Dislocator;
 import ganymedes01.ganyssurface.blocks.SensoringDislocator;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
-import net.minecraft.block.material.Material;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBucket;
-import net.minecraft.item.ItemReed;
-import net.minecraft.item.ItemSkull;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraftforge.common.ForgeDirection;
-import net.minecraftforge.common.IPlantable;
 import buildcraft.api.transport.IPipeConnection;
 import buildcraft.api.transport.IPipeTile.PipeType;
 
@@ -27,36 +19,7 @@ public class TileEntitySensoringDislocator extends TileEntityBlockDetector imple
 
 	@Override
 	public boolean checkNearbyBlocks() {
-		return checkNearbyBlocks(Dislocator.getDirectionFromMetadata(worldObj.getBlockMetadata(xCoord, yCoord, zCoord)));
-	}
-
-	public boolean checkNearbyBlocks(ForgeDirection dir) {
-		int x = xCoord + dir.offsetX;
-		int y = yCoord + dir.offsetY;
-		int z = zCoord + dir.offsetZ;
-
-		if (inventory[0] == null)
-			return false;
-		if (inventory[0].getItem() instanceof IPlantable)
-			if (worldObj.getBlockId(x, y, z) == ((IPlantable) inventory[0].getItem()).getPlantID(worldObj, xCoord, yCoord, zCoord)) {
-				coolDown = 0;
-				int finalMeta = inventory[0].getItem() != Item.netherStalkSeeds ? 7 : 3;
-				return worldObj.getBlockMetadata(x, y, z) >= finalMeta;
-			}
-		if (inventory[0].getItem() instanceof ItemReed)
-			return checkIdPicked(x, y, z);
-		else if (inventory[0].getItem() instanceof ItemBucket) {
-			if (inventory[0].getItem().itemID == Item.bucketLava.itemID)
-				return worldObj.getBlockMaterial(x, y, z) == Material.lava;
-			else if (inventory[0].getItem().itemID == Item.bucketWater.itemID)
-				return worldObj.getBlockMaterial(x, y, z) == Material.water;
-		} else if (inventory[0].getItem() instanceof ItemSkull) {
-			TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
-			if (tile != null && tile instanceof TileEntitySkull)
-				return ((TileEntitySkull) tile).getSkullType() == inventory[0].getItemDamage();
-		} else
-			return worldObj.getBlockId(x, y, z) == inventory[0].itemID;
-		return false;
+		return checkBlock(Dislocator.getDirectionFromMetadata(worldObj.getBlockMetadata(xCoord, yCoord, zCoord)));
 	}
 
 	@Override

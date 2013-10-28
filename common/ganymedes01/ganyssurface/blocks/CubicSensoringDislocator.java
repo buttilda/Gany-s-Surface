@@ -70,7 +70,7 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 			return;
 
 		for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
-			if (tile.checkNearbyBlocks(dir))
+			if (tile.checkBlock(dir))
 				breakSurroundingBlock(world, x, y, z, dir);
 	}
 
