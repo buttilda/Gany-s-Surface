@@ -1,8 +1,10 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.dispenser.DispenserBehaviorPocketBat;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
+import net.minecraft.block.BlockDispenser;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -96,5 +98,6 @@ public class ModItems {
 
 	private static void registerForge() {
 		MinecraftForge.addGrassSeed(new ItemStack(camelliaSeeds), 8);
+		BlockDispenser.dispenseBehaviorRegistry.putObject(pocketBat, new DispenserBehaviorPocketBat());
 	}
 }
