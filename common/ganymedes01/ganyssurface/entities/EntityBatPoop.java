@@ -1,8 +1,7 @@
 package ganymedes01.ganyssurface.entities;
 
-import ganymedes01.ganyssurface.items.ModItems;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityBreakingFX;
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.lib.ParticleEffectsID;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.world.World;
 
@@ -22,6 +21,6 @@ public class EntityBatPoop extends EntityPoop {
 
 	@Override
 	protected void spawnParticle() {
-		Minecraft.getMinecraft().effectRenderer.addEffect(new EntityBreakingFX(worldObj, posX, posY, posZ, ModItems.poop, 1));
+		GanysSurface.proxy.handleParticleEffects(worldObj, posX, posY, posZ, ParticleEffectsID.BAT_POOP);
 	}
 }

@@ -1,8 +1,7 @@
 package ganymedes01.ganyssurface.entities;
 
-import ganymedes01.ganyssurface.items.ModItems;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityBreakingFX;
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.lib.ParticleEffectsID;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.DamageSource;
@@ -28,15 +27,14 @@ public class EntityPoop extends EntityThrowable {
 		if (target.entityHit != null)
 			target.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, getThrower()), 0);
 
-		if (worldObj.isRemote)
-			for (int i = 0; i < 8; i++)
-				spawnParticle();
+		for (int i = 0; i < 8; i++)
+			spawnParticle();
 
 		if (!worldObj.isRemote)
 			setDead();
 	}
 
 	protected void spawnParticle() {
-		Minecraft.getMinecraft().effectRenderer.addEffect(new EntityBreakingFX(worldObj, posX, posY, posZ, ModItems.poop, 0));
+		GanysSurface.proxy.handleParticleEffects(worldObj, posX, posY, posZ, ParticleEffectsID.POOP);
 	}
 }

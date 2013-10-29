@@ -10,10 +10,13 @@ import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWorkTableRe
 import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.items.ModItems;
+import ganymedes01.ganyssurface.lib.ParticleEffectsID;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.EntityBreakingFX;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -84,6 +87,18 @@ public class ClientProxy extends CommonProxy {
 			if (tileEntity != null)
 				if (tileEntity instanceof TileEntityPlanter)
 					((TileEntityPlanter) tileEntity).setArmExtension(armExtension);
+		}
+	}
+
+	@Override
+	public void handleParticleEffects(World world, double x, double y, double z, int id) {
+		switch (id) {
+			case ParticleEffectsID.POOP:
+				Minecraft.getMinecraft().effectRenderer.addEffect(new EntityBreakingFX(world, x, y, z, ModItems.poop, 0));
+				break;
+			case ParticleEffectsID.BAT_POOP:
+				Minecraft.getMinecraft().effectRenderer.addEffect(new EntityBreakingFX(world, x, y, z, ModItems.poop, 1));
+				break;
 		}
 	}
 }
