@@ -44,7 +44,7 @@ public class TileEntityWorkTable extends TileEntity implements ISidedInventory {
 	public void writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
 		NBTTagList tagList = new NBTTagList();
-		for (int i = 0; i < craftMatrix.length; ++i)
+		for (int i = 0; i < craftMatrix.length; i++)
 			if (craftMatrix[i] != null) {
 				NBTTagCompound tagCompound = new NBTTagCompound();
 				tagCompound.setByte("Slot", (byte) i);
@@ -59,7 +59,7 @@ public class TileEntityWorkTable extends TileEntity implements ISidedInventory {
 		super.readFromNBT(data);
 		NBTTagList tagList = data.getTagList("Items");
 		craftMatrix = new ItemStack[9];
-		for (int i = 0; i < tagList.tagCount(); ++i) {
+		for (int i = 0; i < tagList.tagCount(); i++) {
 			NBTTagCompound tagCompound = (NBTTagCompound) tagList.tagAt(i);
 			byte slot = tagCompound.getByte("Slot");
 			if (slot >= 0 && slot < craftMatrix.length)

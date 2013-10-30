@@ -43,6 +43,7 @@ tile.ganyssurface.itemDisplay.name=Item Display
 tile.ganyssurface.chestPropellant.name=Chest Propellant
 tile.ganyssurface.fertilizedSoil.name=Fertilized Soil
 tile.ganyssurface.planter.name=Planter
+tile.ganyssurface.lantern.name=Lantern
 
 # GUI localizations
 container.ganyssurface:blockDetector=Block Detector

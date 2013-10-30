@@ -28,6 +28,7 @@ public class Strings {
 	public static final String CHEST_PROPELLANT_NAME = "chestPropellant";
 	public static final String FERTILIZED_SOIL_NAME = "fertilizedSoil";
 	public static final String PLANTER_NAME = "planter";
+	public static final String LANTERN_NAME = "lantern";
 
 	// Item names
 	public static final String ROT_NAME = "rot";

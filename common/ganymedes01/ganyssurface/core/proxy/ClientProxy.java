@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.core.proxy;
 
 import ganymedes01.ganyssurface.blocks.ModBlocks;
+import ganymedes01.ganyssurface.client.renderer.block.BlockLanternRender;
 import ganymedes01.ganyssurface.client.renderer.item.ItemItemDisplayRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemPlanterRenderer;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityChestPropellantRender;
@@ -11,6 +12,7 @@ import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.ParticleEffectsID;
+import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
@@ -51,6 +53,8 @@ public class ClientProxy extends CommonProxy {
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityPoop.class, new RenderSnowball(ModItems.poop, 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBatPoop.class, new RenderSnowball(ModItems.poop, 1));
+
+		RenderingRegistry.registerBlockHandler(RenderIDs.LANTERN, new BlockLanternRender());
 	}
 
 	@Override
