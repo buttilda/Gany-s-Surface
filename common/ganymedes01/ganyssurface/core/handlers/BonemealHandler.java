@@ -14,7 +14,7 @@ import net.minecraftforge.event.entity.player.BonemealEvent;
 public class BonemealHandler {
 
 	@ForgeSubscribe
-	public void onLivingUpdate(BonemealEvent event) {
+	public void bonemealEvent(BonemealEvent event) {
 		event.world.notifyBlocksOfNeighborChange(event.X, event.Y, event.Z, ModBlocks.blockDetector.blockID);
 	}
 }
