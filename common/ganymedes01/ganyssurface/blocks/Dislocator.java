@@ -10,8 +10,10 @@ import java.util.ArrayList;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -164,12 +166,13 @@ public class Dislocator extends BlockContainer {
 	}
 
 	@Override
-	public int onBlockPlaced(World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ, int meta) {
-		if (side == 0)
-			return 1;
-		if (side == 1)
-			return 0;
-		return side;
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack stack) {
+		int meta = BlockPistonBase.determineOrientation(world, x, y, z, player);
+		if (meta == 0)
+			meta = 1;
+		else if (meta == 1)
+			meta = 0;
+		world.setBlockMetadataWithNotify(x, y, z, meta, 2);
 	}
 
 	@Override
