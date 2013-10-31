@@ -1,4 +1,4 @@
-package ganymedes01.ganyssurface.recipes;
+package ganymedes01.ganyssurface.modsupport;
 
 import ganymedes01.ganyssurface.items.ModItems;
 import thaumcraft.api.ThaumcraftApi;

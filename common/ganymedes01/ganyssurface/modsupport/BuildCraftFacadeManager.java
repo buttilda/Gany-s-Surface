@@ -1,4 +1,4 @@
-package ganymedes01.ganyssurface.recipes;
+package ganymedes01.ganyssurface.modsupport;
 
 import ganymedes01.ganyssurface.blocks.ModBlocks;
 import cpw.mods.fml.common.event.FMLInterModComms;

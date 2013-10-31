@@ -11,10 +11,11 @@ import ganymedes01.ganyssurface.core.utils.VersionHelper;
 import ganymedes01.ganyssurface.creativetab.CreativeTabSurface;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
+import ganymedes01.ganyssurface.modsupport.BuildCraftFacadeManager;
+import ganymedes01.ganyssurface.modsupport.EE3Manager;
+import ganymedes01.ganyssurface.modsupport.ThaumCraftManager;
 import ganymedes01.ganyssurface.network.PacketHandler;
-import ganymedes01.ganyssurface.recipes.BuildCraftFacadeManager;
 import ganymedes01.ganyssurface.recipes.ModRecipes;
-import ganymedes01.ganyssurface.recipes.ThaumCraftManager;
 
 import java.io.File;
 
@@ -75,13 +76,17 @@ public class GanysSurface {
 	public void load(FMLInitializationEvent event) {
 		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
 		GameRegistry.registerFuelHandler(new FuelHandler());
+
 		if (mobsShouldPoop)
 			MinecraftForge.EVENT_BUS.register(new PoopHandler());
 		MinecraftForge.EVENT_BUS.register(new BonemealHandler());
+
 		proxy.registerTileEntities();
 		proxy.registerRenderers();
+
 		BuildCraftFacadeManager.registerFacades();
 		ThaumCraftManager.init();
+		EE3Manager.init();
 	}
 
 	@EventHandler
