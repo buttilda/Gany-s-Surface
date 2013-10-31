@@ -81,6 +81,8 @@ public class ConfigurationHandler {
 			ModIDs.POCKET_BAT_ID = configItem(Strings.POCKET_BAT_NAME);
 			ModIDs.BAT_STEW_ID = configItem(Strings.BAT_STEW_NAME);
 			ModIDs.CHOCOLATE_BAR_ID = configItem(Strings.CHOCOLATE_BAR_NAME);
+			ModIDs.HORSALYSER_ID = configItem(Strings.HORSALYSER_NAME);
+			ModIDs.HORSE_SPAWNER_ID = configItem(Strings.HORSE_SPAWNER_NAME);
 
 			// Others
 			GanysSurface.mobsShouldPoop = configuration.get("Others", Strings.MOBS_SHOULD_POOP, true).getBoolean(true);

@@ -21,6 +21,9 @@ item.ganyssurface.batNet.name=Bat Net
 item.ganyssurface.pocketBat.name=Pocket Bat
 item.ganyssurface.batStew.name=Bat Stew
 item.ganyssurface.chocolateBar.name=Chocolate Bar
+item.ganyssurface.horsalyser.name=Horsalyser
+item.ganyssurface.horseSpawner0.name=Spawn Undead Horse
+item.ganyssurface.horseSpawner1.name=Spawn Skeleton Horse
 
 pleaseletmefree=Please let me free!
 

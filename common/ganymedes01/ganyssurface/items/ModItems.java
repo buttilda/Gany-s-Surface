@@ -37,6 +37,8 @@ public class ModItems {
 	public static Item pocketBat;
 	public static Item batStew;
 	public static Item chocolateBar;
+	public static Item horsalyser;
+	public static Item horseSpawner;
 
 	// Armour
 	public static Item woodenHelmet;
@@ -68,6 +70,8 @@ public class ModItems {
 		batStew = new BatStew();
 		if (GanysSurface.activateChocolate)
 			chocolateBar = new ChocolateBar();
+		horsalyser = new Horsalyser();
+		horseSpawner = new HorseSpawner();
 
 		registerNames();
 		registerForge();
@@ -97,6 +101,8 @@ public class ModItems {
 		GameRegistry.registerItem(batStew, Strings.BAT_STEW_NAME);
 		if (GanysSurface.activateChocolate)
 			GameRegistry.registerItem(chocolateBar, Strings.CHOCOLATE_BAR_NAME);
+		GameRegistry.registerItem(horsalyser, Strings.HORSALYSER_NAME);
+		GameRegistry.registerItem(horseSpawner, Strings.HORSE_SPAWNER_NAME);
 	}
 
 	private static void registerForge() {

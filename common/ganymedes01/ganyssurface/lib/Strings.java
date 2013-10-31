@@ -47,6 +47,8 @@ public class Strings {
 	public static final String POCKET_BAT_NAME = "pocketBat";
 	public static final String BAT_STEW_NAME = "batStew";
 	public static final String CHOCOLATE_BAR_NAME = "chocolateBar";
+	public static final String HORSALYSER_NAME = "horsalyser";
+	public static final String HORSE_SPAWNER_NAME = "horseSpawner";
 
 	// Armour names
 	public static final String WOODEN_HELMET_NAME = "woodenHelmet";
