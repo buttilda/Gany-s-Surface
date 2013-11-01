@@ -46,6 +46,7 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModItems.batStew), "xyz", " w ", 'x', Block.mushroomBrown, 'z', Block.mushroomRed, 'y', ModItems.pocketBat, 'w', Item.bowlEmpty);
 		if (GanysSurface.activateChocolate)
 			GameRegistry.addRecipe(new ItemStack(ModItems.chocolateBar, 4), "xxx", "xyx", "xxx", 'x', new ItemStack(Item.dyePowder, 1, 3), 'y', Item.bucketMilk);
+		GameRegistry.addRecipe(new ItemStack(ModItems.horsalyser), "xyx", "xzx", "xwx", 'x', Item.leather, 'y', Item.flint, 'z', Block.thinGlass, 'w', Item.redstone);
 
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Item.clay, 8), "xxx", "yzy", "xxx", 'x', Block.gravel, 'y', Block.dirt, 'z', Item.bucketWater);

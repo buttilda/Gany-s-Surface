@@ -16,6 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatMessageComponent;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import thaumcraft.api.IRepairable;
 
@@ -32,7 +33,7 @@ public class Horsalyser extends Item implements IRepairable {
 
 	public Horsalyser() {
 		super(ModIDs.HORSALYSER_ID);
-		setMaxDamage(32);
+		setMaxDamage(64);
 		setMaxStackSize(1);
 		setCreativeTab(GanysSurface.surfaceTab);
 		decForm.setRoundingMode(RoundingMode.DOWN);
@@ -46,18 +47,20 @@ public class Horsalyser extends Item implements IRepairable {
 
 		if (target instanceof EntityHorse) {
 			EntityHorse horse = (EntityHorse) target;
-
+			String name = horse.getCustomNameTag() == "" ? "Horse" : horse.getCustomNameTag();
 			if (world.isRemote) {
-				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("----- Analysing Horse Data -----"));
+				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("----- Analysing " + name + "'s Data -----"));
 				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Tamed: " + isTamed(horse.isTame(), horse.getOwnerName())));
 				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Type: " + getType(horse.getHorseType())));
 				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Jump Strength: " + getHorseJumpStrength(horse.getHorseJumpStrength())));
 				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Size: " + getHorseSize(horse.getHorseSize())));
-				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Health: " + getHorseHealth(horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).getBaseValue())));
+				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Max Health: " + getHorseHealth(horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).getBaseValue())));
 				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Max Speed: " + getHorseMaxSpeed(horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getBaseValue())));
 				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("----- End -----"));
+			} else {
+				horse.attackEntityFrom(DamageSource.generic, 1.0F);
+				stack.damageItem(1, player);
 			}
-			stack.damageItem(1, player);
 			return true;
 		}
 		return false;
