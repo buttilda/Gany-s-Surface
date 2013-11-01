@@ -30,7 +30,7 @@ public class InkHarvester extends BlockContainer {
 	private Icon blockOn, blockOff;
 
 	protected InkHarvester() {
-		super(ModIDs.INK_HARVESTER_ID, Material.rock);
+		super(ModIDs.INK_HARVESTER_ID, Material.ground);
 		setHardness(0.2F);
 		setStepSound(soundStoneFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);
@@ -66,8 +66,8 @@ public class InkHarvester extends BlockContainer {
 			return false;
 		else {
 			TileEntityInkHarvester tile = (TileEntityInkHarvester) world.getBlockTileEntity(x, y, z);
-			if (tile != null)
-				player.openGui(GanysSurface.instance, GUIsID.BLOCK_DETECTOR, world, x, y, z);
+			if (tile != null && tile.isFormed())
+				player.openGui(GanysSurface.instance, GUIsID.INK_HARVESTER, world, x, y, z);
 			return true;
 		}
 	}

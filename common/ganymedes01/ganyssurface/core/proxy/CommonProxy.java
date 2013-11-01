@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.core.proxy;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiInkHarvester;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPlanter;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
@@ -9,6 +10,7 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.inventory.ContainerBlockDetector;
+import ganymedes01.ganyssurface.inventory.ContainerInkHarvester;
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
 import ganymedes01.ganyssurface.inventory.ContainerPlanter;
 import ganymedes01.ganyssurface.inventory.ContainerVanillaBrewingStand;
@@ -131,6 +133,9 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.PLANTER:
 				TileEntityPlanter tilePlanter = (TileEntityPlanter) tile;
 				return new ContainerPlanter(player.inventory, tilePlanter);
+			case GUIsID.INK_HARVESTER:
+				TileEntityInkHarvester tileHarvester = (TileEntityInkHarvester) tile;
+				return new ContainerInkHarvester(player.inventory, tileHarvester);
 		}
 		return null;
 	}
@@ -167,6 +172,9 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.PLANTER:
 				TileEntityPlanter tilePlanter = (TileEntityPlanter) tile;
 				return new GuiPlanter(player.inventory, tilePlanter);
+			case GUIsID.INK_HARVESTER:
+				TileEntityInkHarvester tileHarvester = (TileEntityInkHarvester) tile;
+				return new GuiInkHarvester(player.inventory, tileHarvester);
 		}
 		return null;
 	}

@@ -58,6 +58,7 @@ container.ganyssurface:workTable=Work Table
 container.ganyssurface:organicMatterCompressor=Organic Matter Compressor
 container.ganyssurface:itemDisplay=Item Display
 container.ganyssurface:planter=Planter
+container.ganyssurface:inkHarvester=Ink Harvester
 
 matter=Matter:
 
