@@ -47,7 +47,8 @@ public class Horsalyser extends Item implements IRepairable {
 
 		if (target instanceof EntityHorse) {
 			EntityHorse horse = (EntityHorse) target;
-			String name = horse.getCustomNameTag() == "" ? "Horse" : horse.getCustomNameTag();
+			String name = horse.getEntityName();
+
 			if (world.isRemote) {
 				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("----- Analysing " + name + "'s Data -----"));
 				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Tamed: " + isTamed(horse.isTame(), horse.getOwnerName())));
@@ -58,7 +59,8 @@ public class Horsalyser extends Item implements IRepairable {
 				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Max Speed: " + getHorseMaxSpeed(horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getBaseValue())));
 				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("----- End -----"));
 			} else {
-				horse.attackEntityFrom(DamageSource.generic, 1.0F);
+				if (!player.capabilities.isCreativeMode)
+					horse.attackEntityFrom(DamageSource.generic, 1.0F);
 				stack.damageItem(1, player);
 			}
 			return true;
@@ -83,18 +85,22 @@ public class Horsalyser extends Item implements IRepairable {
 		}
 	}
 
+	// Max = 1
 	private String getHorseSize(float size) {
 		return decForm.format(size * 100) + " %";
 	}
 
+	// Max = 1
 	private String getHorseJumpStrength(double jump) {
-		return decForm.format((jump - 0.4D) * (500D / 3D)) + " %";
+		return decForm.format((jump - 0.4F) * (500.0F / 3.0F)) + " %";
 	}
 
+	// Max = 30
 	private String getHorseHealth(double health) {
 		return decForm.format(health) + " (" + (int) health / 2 + " H)";
 	}
 
+	// Max = 0.3375
 	private String getHorseMaxSpeed(double maxSpeed) {
 		return decForm.format((maxSpeed - 0.1125D) * (4000D / 9D)) + " %";
 	}
