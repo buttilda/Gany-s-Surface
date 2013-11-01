@@ -5,7 +5,9 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -15,6 +17,8 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EntityLivingData;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -48,6 +52,12 @@ public class HorseSpawner extends Item {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return stack.getItemDamage() == 2;
+	}
+
+	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		return "item." + Utils.getUnlocalizedName(Strings.HORSE_SPAWNER_NAME) + stack.getItemDamage();
 	}
@@ -65,13 +75,36 @@ public class HorseSpawner extends Item {
 					horse.rotationYawHead = horse.rotationYaw;
 					horse.renderYawOffset = horse.rotationYaw;
 					horse.onSpawnWithEgg((EntityLivingData) null);
-					horse.setHorseType(type);
+					setHorseType(horse, type);
 					world.spawnEntityInWorld(horse);
 					horse.playLivingSound();
 				}
 			}
 			return horse;
 		}
+	}
+
+	private static void setHorseType(EntityHorse horse, int type) {
+		int newType = type;
+		if (type > 4) {
+			newType = new Random().nextInt(3);
+
+			try {
+				Field field = EntityHorse.class.getDeclaredField("horseJumpStrength");
+				field.setAccessible(true);
+				Attribute horseJumpStrength = (Attribute) field.get(null);
+
+				horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(30D);
+				horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.3375D);
+				horse.getEntityAttribute(horseJumpStrength).setAttribute(1.0D);
+
+			} catch (SecurityException e) {
+			} catch (NoSuchFieldException e) {
+			} catch (IllegalArgumentException e) {
+			} catch (IllegalAccessException e) {
+			}
+		}
+		horse.setHorseType(newType);
 	}
 
 	@Override
@@ -126,14 +159,19 @@ public class HorseSpawner extends Item {
 	public void getSubItems(int itemID, CreativeTabs tab, List list) {
 		list.add(new ItemStack(itemID, 1, 0));
 		list.add(new ItemStack(itemID, 1, 1));
+		list.add(new ItemStack(itemID, 1, 2));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack stack, int pass) {
-		if (stack.getItemDamage() == 0)
-			return pass == 0 ? Utils.getColour(43, 66, 43) : Utils.getColour(33, 51, 39);
-		else
-			return pass == 0 ? Utils.getColour(228, 222, 218) : Utils.getColour(186, 181, 162);
+		switch (stack.getItemDamage()) {
+			case 0:
+				return pass == 0 ? Utils.getColour(43, 66, 43) : Utils.getColour(33, 51, 39);
+			case 1:
+				return pass == 0 ? Utils.getColour(228, 222, 218) : Utils.getColour(186, 181, 162);
+			default:
+				return pass == 0 ? 12623485 : 15656192;
+		}
 	}
 }

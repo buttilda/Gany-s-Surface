@@ -50,7 +50,7 @@ public class Horsalyser extends Item implements IRepairable {
 			String name = horse.getEntityName();
 
 			if (world.isRemote) {
-				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("----- Analysing " + name + "'s Data -----"));
+				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText(String.format("----- Analysing %s's Data -----", name)));
 				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Tamed: " + isTamed(horse.isTame(), horse.getOwnerName())));
 				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Type: " + getType(horse.getHorseType())));
 				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Jump Strength: " + getHorseJumpStrength(horse.getHorseJumpStrength())));

@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.dispenser.DispenserBehaviorHorseSpawner;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorPocketBat;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorPoop;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorRot;
@@ -113,5 +114,6 @@ public class ModItems {
 		BlockDispenser.dispenseBehaviorRegistry.putObject(pocketBat, new DispenserBehaviorPocketBat());
 		BlockDispenser.dispenseBehaviorRegistry.putObject(poop, new DispenserBehaviorPoop());
 		BlockDispenser.dispenseBehaviorRegistry.putObject(rot, new DispenserBehaviorRot());
+		BlockDispenser.dispenseBehaviorRegistry.putObject(horseSpawner, new DispenserBehaviorHorseSpawner());
 	}
 }

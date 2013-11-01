@@ -1,13 +1,12 @@
 package ganymedes01.ganyssurface.dispenser;
 
+import ganymedes01.ganyssurface.items.HorseSpawner;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityBat;
-import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 
@@ -18,7 +17,7 @@ import net.minecraft.util.EnumFacing;
  * 
  */
 
-public class DispenserBehaviorPocketBat extends BehaviorDefaultDispenseItem {
+public class DispenserBehaviorHorseSpawner extends BehaviorDefaultDispenseItem {
 
 	@Override
 	public ItemStack dispenseStack(IBlockSource block, ItemStack stack) {
@@ -26,9 +25,7 @@ public class DispenserBehaviorPocketBat extends BehaviorDefaultDispenseItem {
 		double x = block.getX() + enumfacing.getFrontOffsetX();
 		double y = block.getYInt() + 0.2F;
 		double z = block.getZ() + enumfacing.getFrontOffsetZ();
-
-		Entity entity = ItemMonsterPlacer.spawnCreature(block.getWorld(), 65, x, y, z);
-		((EntityBat) entity).func_110163_bv();
+		Entity entity = HorseSpawner.spawnHorse(block.getWorld(), x, y, z, stack.getItemDamage() + 3);
 
 		if (entity instanceof EntityLivingBase && stack.hasDisplayName())
 			((EntityLiving) entity).setCustomNameTag(stack.getDisplayName());
