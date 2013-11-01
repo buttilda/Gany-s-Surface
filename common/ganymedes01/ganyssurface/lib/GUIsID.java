@@ -19,4 +19,5 @@ public class GUIsID {
 	public static final int VANILLA_DISPENSER = 7;
 	public static final int VANILLA_DROPPER = 8;
 	public static final int PLANTER = 9;
+	public static final int INK_HARVESTER = 10;
 }

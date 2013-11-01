@@ -58,6 +58,7 @@ public class ConfigurationHandler {
 			ModIDs.FERTILIZED_SOIL_ID = configBlock(Strings.FERTILIZED_SOIL_NAME);
 			ModIDs.PLANTER_ID = configBlock(Strings.PLANTER_NAME);
 			ModIDs.LANTERN_ID = configBlock(Strings.LANTERN_NAME);
+			ModIDs.INK_HARVESTER_ID = configBlock(Strings.INK_HARVESTER_NAME);
 
 			// Armour
 			ModIDs.WOODEN_HELMET_ID = configItem(Strings.WOODEN_HELMET_NAME);

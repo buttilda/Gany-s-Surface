@@ -1,6 +1,5 @@
 package ganymedes01.ganyssurface.tileentities;
 
-import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.items.Rot;
@@ -11,7 +10,6 @@ import net.minecraft.block.BlockCarpet;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.BlockLadder;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.EnumArmorMaterial;
@@ -42,8 +40,6 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.item.ItemWritableBook;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -55,9 +51,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  */
 
-public class TileEntityOrganicMatterCompressor extends TileEntity implements ISidedInventory {
+public class TileEntityOrganicMatterCompressor extends GanysInventory implements ISidedInventory {
 
-	private ItemStack[] inventory = new ItemStack[11];
 	private final int BLOCK_OF_COAL = 10;
 	private final int COAL = 9;
 	private final int[] SLOTS = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
@@ -66,6 +61,7 @@ public class TileEntityOrganicMatterCompressor extends TileEntity implements ISi
 	private final int NEEDED_MATTER = 144;
 
 	public TileEntityOrganicMatterCompressor() {
+		super(11, Strings.ORGANIC_MATTER_COMPRESSOR_NAME);
 		currentTime = WORK_TIME;
 		organicMatter = 0;
 	}
@@ -265,82 +261,6 @@ public class TileEntityOrganicMatterCompressor extends TileEntity implements ISi
 	}
 
 	@Override
-	public int getSizeInventory() {
-		return inventory.length;
-	}
-
-	@Override
-	public ItemStack getStackInSlot(int slot) {
-		return inventory[slot];
-	}
-
-	@Override
-	public ItemStack decrStackSize(int slot, int size) {
-		if (inventory[slot] != null) {
-			ItemStack stack;
-			if (inventory[slot].stackSize <= size) {
-				stack = inventory[slot];
-				inventory[slot] = null;
-				return stack;
-			} else {
-				stack = inventory[slot].splitStack(size);
-				if (inventory[slot].stackSize == 0)
-					inventory[slot] = null;
-				return stack;
-			}
-		} else
-			return null;
-	}
-
-	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
-		if (inventory[slot] != null) {
-			ItemStack stack = inventory[slot];
-			inventory[slot] = null;
-			return stack;
-		} else
-			return null;
-	}
-
-	@Override
-	public void setInventorySlotContents(int slot, ItemStack stack) {
-		inventory[slot] = stack;
-
-		if (stack != null && stack.stackSize > getInventoryStackLimit())
-			stack.stackSize = getInventoryStackLimit();
-	}
-
-	@Override
-	public String getInvName() {
-		return Utils.getConainerName(Strings.ORGANIC_MATTER_COMPRESSOR_NAME);
-	}
-
-	@Override
-	public boolean isInvNameLocalized() {
-		return false;
-	}
-
-	@Override
-	public int getInventoryStackLimit() {
-		return 64;
-	}
-
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
-		return true;
-	}
-
-	@Override
-	public void openChest() {
-
-	}
-
-	@Override
-	public void closeChest() {
-
-	}
-
-	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		if (slot == 9)
 			return stack.getItem() == Item.coal && stack.getItemDamage() == 0;
@@ -368,14 +288,6 @@ public class TileEntityOrganicMatterCompressor extends TileEntity implements ISi
 	@Override
 	public void readFromNBT(NBTTagCompound data) {
 		super.readFromNBT(data);
-		NBTTagList nbttaglist = data.getTagList("Items");
-		inventory = new ItemStack[getSizeInventory()];
-		for (int i = 0; i < nbttaglist.tagCount(); ++i) {
-			NBTTagCompound nbttagcompound1 = (NBTTagCompound) nbttaglist.tagAt(i);
-			byte b0 = nbttagcompound1.getByte("Slot");
-			if (b0 >= 0 && b0 < inventory.length)
-				inventory[b0] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-		}
 		currentTime = data.getInteger("currentTime");
 		organicMatter = data.getInteger("organicMatter");
 	}
@@ -383,15 +295,6 @@ public class TileEntityOrganicMatterCompressor extends TileEntity implements ISi
 	@Override
 	public void writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
-		NBTTagList nbttaglist = new NBTTagList();
-		for (int i = 0; i < inventory.length; ++i)
-			if (inventory[i] != null) {
-				NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-				nbttagcompound1.setByte("Slot", (byte) i);
-				inventory[i].writeToNBT(nbttagcompound1);
-				nbttaglist.appendTag(nbttagcompound1);
-			}
-		data.setTag("Items", nbttaglist);
 		data.setInteger("currentTime", currentTime);
 		data.setInteger("organicMatter", organicMatter);
 	}

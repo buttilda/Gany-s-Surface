@@ -1,20 +1,16 @@
 package ganymedes01.ganyssurface.tileentities;
 
 import ganymedes01.ganyssurface.blocks.BlockDetector;
-import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCocoa;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemReed;
 import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraftforge.common.ForgeDirection;
@@ -27,10 +23,13 @@ import net.minecraftforge.common.IPlantable;
  * 
  */
 
-public class TileEntityBlockDetector extends TileEntity implements ISidedInventory {
+public class TileEntityBlockDetector extends GanysInventory implements ISidedInventory {
 
-	protected ItemStack[] inventory = new ItemStack[1];
 	protected int coolDown = 50;
+
+	public TileEntityBlockDetector() {
+		super(1, Strings.BLOCK_DETECTOR_NAME);
+	}
 
 	public void updateRedstoneSignalStatus(boolean flag) {
 		blockType = getBlockType();
@@ -100,75 +99,8 @@ public class TileEntityBlockDetector extends TileEntity implements ISidedInvento
 	}
 
 	@Override
-	public int getSizeInventory() {
-		return inventory.length;
-	}
-
-	@Override
-	public ItemStack getStackInSlot(int slot) {
-		return inventory[slot];
-	}
-
-	@Override
-	public ItemStack decrStackSize(int slot, int amount) {
-		ItemStack stack = getStackInSlot(slot);
-		if (stack != null)
-			if (stack.stackSize <= amount)
-				setInventorySlotContents(slot, null);
-			else {
-				stack = stack.splitStack(amount);
-				if (stack.stackSize == 0)
-					setInventorySlotContents(slot, null);
-			}
-		return stack;
-	}
-
-	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
-		ItemStack stack = getStackInSlot(slot);
-		if (stack != null)
-			setInventorySlotContents(slot, null);
-		return stack;
-	}
-
-	@Override
-	public void setInventorySlotContents(int slot, ItemStack stack) {
-		inventory[slot] = stack;
-		if (stack != null && stack.stackSize > getInventoryStackLimit())
-			stack.stackSize = getInventoryStackLimit();
-	}
-
-	@Override
-	public String getInvName() {
-		return Utils.getConainerName(Strings.BLOCK_DETECTOR_NAME);
-	}
-
-	@Override
-	public boolean isInvNameLocalized() {
-		return false;
-	}
-
-	@Override
 	public int getInventoryStackLimit() {
 		return 1;
-	}
-
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer entityplayer) {
-		return true;
-	}
-
-	@Override
-	public void openChest() {
-	}
-
-	@Override
-	public void closeChest() {
-	}
-
-	@Override
-	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-		return true;
 	}
 
 	@Override
@@ -178,44 +110,17 @@ public class TileEntityBlockDetector extends TileEntity implements ISidedInvento
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound data) {
-		super.readFromNBT(data);
-		NBTTagList tagList = data.getTagList("Items");
-		inventory = new ItemStack[getSizeInventory()];
-		for (int i = 0; i < tagList.tagCount(); ++i) {
-			NBTTagCompound tagCompound = (NBTTagCompound) tagList.tagAt(i);
-			byte slot = tagCompound.getByte("Slot");
-			if (slot >= 0 && slot < inventory.length)
-				inventory[slot] = ItemStack.loadItemStackFromNBT(tagCompound);
-		}
-	}
-
-	@Override
-	public void writeToNBT(NBTTagCompound data) {
-		super.writeToNBT(data);
-		NBTTagList tagList = new NBTTagList();
-		for (int i = 0; i < inventory.length; ++i)
-			if (inventory[i] != null) {
-				NBTTagCompound tagCompound = new NBTTagCompound();
-				tagCompound.setByte("Slot", (byte) i);
-				inventory[i].writeToNBT(tagCompound);
-				tagList.appendTag(tagCompound);
-			}
-		data.setTag("Items", tagList);
-	}
-
-	@Override
-	public int[] getAccessibleSlotsFromSide(int var1) {
+	public int[] getAccessibleSlotsFromSide(int side) {
 		return new int[] {};
 	}
 
 	@Override
-	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
+	public boolean canInsertItem(int slot, ItemStack stack, int side) {
 		return false;
 	}
 
 	@Override
-	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
+	public boolean canExtractItem(int slot, ItemStack stack, int side) {
 		return false;
 	}
 }
