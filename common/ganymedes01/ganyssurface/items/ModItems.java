@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.dispenser.DispenserBehaviorChargedCreeperSpawner;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorHorseSpawner;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorPocketBat;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorPoop;
@@ -40,6 +41,7 @@ public class ModItems {
 	public static Item chocolateBar;
 	public static Item horsalyser;
 	public static Item horseSpawner;
+	public static Item chargedCreeperSpawner;
 
 	// Armour
 	public static Item woodenHelmet;
@@ -73,6 +75,7 @@ public class ModItems {
 			chocolateBar = new ChocolateBar();
 		horsalyser = new Horsalyser();
 		horseSpawner = new HorseSpawner();
+		chargedCreeperSpawner = new ChargedCreeperSpawner();
 
 		registerNames();
 		registerForge();
@@ -104,6 +107,7 @@ public class ModItems {
 			GameRegistry.registerItem(chocolateBar, Strings.CHOCOLATE_BAR_NAME);
 		GameRegistry.registerItem(horsalyser, Strings.HORSALYSER_NAME);
 		GameRegistry.registerItem(horseSpawner, Strings.HORSE_SPAWNER_NAME);
+		GameRegistry.registerItem(chargedCreeperSpawner, Strings.CHARGED_CREEPER_SPAWNER_NAME);
 	}
 
 	private static void registerForge() {
@@ -115,5 +119,6 @@ public class ModItems {
 		BlockDispenser.dispenseBehaviorRegistry.putObject(poop, new DispenserBehaviorPoop());
 		BlockDispenser.dispenseBehaviorRegistry.putObject(rot, new DispenserBehaviorRot());
 		BlockDispenser.dispenseBehaviorRegistry.putObject(horseSpawner, new DispenserBehaviorHorseSpawner());
+		BlockDispenser.dispenseBehaviorRegistry.putObject(chargedCreeperSpawner, new DispenserBehaviorChargedCreeperSpawner());
 	}
 }

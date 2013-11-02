@@ -50,6 +50,7 @@ public class Strings {
 	public static final String CHOCOLATE_BAR_NAME = "chocolateBar";
 	public static final String HORSALYSER_NAME = "horsalyser";
 	public static final String HORSE_SPAWNER_NAME = "horseSpawner";
+	public static final String CHARGED_CREEPER_SPAWNER_NAME = "chargedCreeperSpawner";
 
 	// Armour names
 	public static final String WOODEN_HELMET_NAME = "woodenHelmet";

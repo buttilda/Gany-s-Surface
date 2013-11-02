@@ -84,6 +84,7 @@ public class ConfigurationHandler {
 			ModIDs.CHOCOLATE_BAR_ID = configItem(Strings.CHOCOLATE_BAR_NAME);
 			ModIDs.HORSALYSER_ID = configItem(Strings.HORSALYSER_NAME);
 			ModIDs.HORSE_SPAWNER_ID = configItem(Strings.HORSE_SPAWNER_NAME);
+			ModIDs.CHARGED_CREEPER_SPAWNER_ID = configItem(Strings.CHARGED_CREEPER_SPAWNER_NAME);
 
 			// Others
 			GanysSurface.mobsShouldPoop = configuration.get("Others", Strings.MOBS_SHOULD_POOP, true).getBoolean(true);
