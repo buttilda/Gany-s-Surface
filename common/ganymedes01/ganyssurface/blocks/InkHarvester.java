@@ -66,9 +66,11 @@ public class InkHarvester extends BlockContainer {
 			return false;
 		else {
 			TileEntityInkHarvester tile = (TileEntityInkHarvester) world.getBlockTileEntity(x, y, z);
-			if (tile != null && tile.isFormed())
+			if (tile != null && tile.isFormed()) {
 				player.openGui(GanysSurface.instance, GUIsID.INK_HARVESTER, world, x, y, z);
-			return true;
+				return true;
+			}
+			return false;
 		}
 	}
 
