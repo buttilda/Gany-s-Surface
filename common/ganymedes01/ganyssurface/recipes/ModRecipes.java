@@ -75,5 +75,6 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.fertilizedSoil), "yyy", "xzx", "yyy", 'x', new ItemStack(ModItems.poop, 1, 1), 'y', new ItemStack(ModItems.rot, 1, 1), 'z', Block.dirt);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.planter), "aza", "ywy", " x ", 'x', Block.hopperBlock, 'y', new ItemStack(Block.cloth, 1, 13), 'z', Block.dispenser, 'w', ModBlocks.blockDetector, 'a', Block.stone);
 		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.lantern), Block.glass, Block.torchWood);
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.inkHarvester), "xzy", "yax", "xwy", 'x', new ItemStack(Item.dyePowder), 'y', new ItemStack(Item.dyePowder, 1, 4), 'z', Item.redstone, 'w', Item.swordGold, 'a', Block.blockIron);
 	}
 }
