@@ -1,6 +1,5 @@
 package ganymedes01.ganyssurface.tileentities;
 
-import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.PacketTypeHandler;
 import ganymedes01.ganyssurface.network.packet.PacketPlanter;
@@ -10,6 +9,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
+import cpw.mods.fml.common.network.PacketDispatcher;
 
 /**
  * Gany's Surface
@@ -79,7 +79,7 @@ public class TileEntityPlanter extends GanysInventory {
 	}
 
 	private void update() {
-		GanysSurface.proxy.handlePlanterPacket(xCoord, yCoord, zCoord, armExtension);
+		PacketDispatcher.sendPacketToAllPlayers(PacketTypeHandler.populatePacket(new PacketPlanter(xCoord, yCoord, zCoord, armExtension)));
 	}
 
 	@Override
