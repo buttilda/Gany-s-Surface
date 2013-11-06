@@ -85,7 +85,7 @@ public class TileEntityBlockDetector extends GanysInventory implements ISidedInv
 				return ((TileEntitySkull) tile).getSkullType() == inventory[0].getItemDamage();
 		} else if (inventory[0].getItem() == Item.dyePowder && inventory[0].getItemDamage() == 3) {
 			coolDown = 0;
-			return id == Block.cocoaPlant.blockID && BlockCocoa.func_72219_c(meta) >= 2;
+			return Block.blocksList[id] instanceof BlockCocoa && BlockCocoa.func_72219_c(meta) >= 2;
 		} else
 			return id == inventory[0].itemID && meta == inventory[0].getItemDamage();
 		return false;
