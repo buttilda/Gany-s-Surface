@@ -1,7 +1,7 @@
 package ganymedes01.ganyssurface.tileentities;
 
 import ganymedes01.ganyssurface.network.PacketTypeHandler;
-import ganymedes01.ganyssurface.network.packet.PacketTileWithSingleDisplayItem;
+import ganymedes01.ganyssurface.network.packet.PacketItemDisplay;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -56,7 +56,7 @@ public class TileEntityItemDisplay extends TileEntity {
 	@Override
 	public Packet getDescriptionPacket() {
 		if (itemDisplay != null && itemDisplay.stackSize > 0)
-			return PacketTypeHandler.populatePacket(new PacketTileWithSingleDisplayItem(xCoord, yCoord, zCoord, itemDisplay.itemID, itemDisplay.getItemDamage(), itemDisplay.stackSize));
+			return PacketTypeHandler.populatePacket(new PacketItemDisplay(xCoord, yCoord, zCoord, itemDisplay.copy()));
 		return null;
 	}
 }

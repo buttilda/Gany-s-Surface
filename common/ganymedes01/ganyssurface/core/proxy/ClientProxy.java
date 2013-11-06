@@ -58,7 +58,7 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public void handleTileWithSingleDisplayItemPacket(int x, int y, int z, int itemID, int meta, int stackSize) {
+	public void handleItemDisplayPacket(int x, int y, int z, int itemID, int meta, int stackSize) {
 		World world = FMLClientHandler.instance().getClient().theWorld;
 		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
 		if (tileEntity != null)
@@ -71,12 +71,12 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public void handleTileWithMultipleDisplayItemsPacket(int x, int y, int z, int[] itemID, int[] meta, int[] stackSize, int invSize) {
+	public void handleWorkTablePacket(int x, int y, int z, int[] itemID, int[] meta, int[] stackSize) {
 		World world = FMLClientHandler.instance().getClient().theWorld;
 		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
 		if (tileEntity != null)
 			if (tileEntity instanceof TileEntityWorkTable)
-				for (int i = 0; i < invSize; i++)
+				for (int i = 0; i < 9; i++)
 					if (stackSize[i] > 0) {
 						ItemStack stack = new ItemStack(itemID[i], stackSize[i], meta[i]);
 						((TileEntityWorkTable) tileEntity).addToCraftMatrix(i, stack);

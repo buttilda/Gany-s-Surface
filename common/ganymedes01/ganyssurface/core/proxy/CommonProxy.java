@@ -85,11 +85,11 @@ public class CommonProxy implements IGuiHandler {
 
 	}
 
-	public void handleTileWithSingleDisplayItemPacket(int x, int y, int z, int itemID, int meta, int stackSize) {
+	public void handleItemDisplayPacket(int x, int y, int z, int itemID, int meta, int stacksize) {
 
 	}
 
-	public void handleTileWithMultipleDisplayItemsPacket(int x, int y, int z, int[] itemID, int[] meta, int[] stackSize, int invSize) {
+	public void handleWorkTablePacket(int x, int y, int z, int[] itemID, int[] meta, int[] stackSize) {
 
 	}
 

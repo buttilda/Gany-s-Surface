@@ -1,7 +1,7 @@
 package ganymedes01.ganyssurface.tileentities;
 
 import ganymedes01.ganyssurface.network.PacketTypeHandler;
-import ganymedes01.ganyssurface.network.packet.PacketTileWithIMultipleDisplayItems;
+import ganymedes01.ganyssurface.network.packet.PacketWorkTable;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -36,7 +36,7 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 				stackSize[i] = inventory[i].stackSize;
 			}
 
-		return PacketTypeHandler.populatePacket(new PacketTileWithIMultipleDisplayItems(xCoord, yCoord, zCoord, itemID, meta, stackSize, inventory.length));
+		return PacketTypeHandler.populatePacket(new PacketWorkTable(xCoord, yCoord, zCoord, itemID, meta, stackSize));
 	}
 
 	@Override

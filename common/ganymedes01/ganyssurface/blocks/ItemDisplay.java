@@ -4,6 +4,8 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
+import ganymedes01.ganyssurface.network.PacketTypeHandler;
+import ganymedes01.ganyssurface.network.packet.PacketItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -12,6 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import cpw.mods.fml.common.network.PacketDispatcher;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -42,14 +45,14 @@ public class ItemDisplay extends BlockContainer {
 			TileEntityItemDisplay tile = (TileEntityItemDisplay) world.getBlockTileEntity(x, y, z);
 			if (tile.getDisplayItem() == null && player.getCurrentEquippedItem() != null) {
 				tile.addItemToDisplay(player.getCurrentEquippedItem());
-				GanysSurface.proxy.handleTileWithSingleDisplayItemPacket(x, y, z, player.getCurrentEquippedItem().itemID, player.getCurrentEquippedItem().getItemDamage(), 1);
+				PacketDispatcher.sendPacketToAllPlayers(PacketTypeHandler.populatePacket(new PacketItemDisplay(x, y, z, player.getCurrentEquippedItem().copy())));
 				player.getCurrentEquippedItem().stackSize--;
 				if (player.getCurrentEquippedItem().stackSize <= 0)
 					player.setCurrentItemOrArmor(0, null);
 			} else if (tile.getDisplayItem() != null) {
 				Utils.dropStack(world, x, y + 1, z, tile.getDisplayItem().copy());
 				tile.addItemToDisplay(null);
-				GanysSurface.proxy.handleTileWithSingleDisplayItemPacket(x, y, z, 0, 0, 0);
+				PacketDispatcher.sendPacketToAllPlayers(PacketTypeHandler.populatePacket(new PacketItemDisplay(x, y, z, null)));
 			}
 			return true;
 		}

@@ -7,6 +7,8 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import net.minecraft.item.ItemStack;
+
 /**
  * Gany's Surface
  * 
@@ -14,23 +16,29 @@ import java.io.IOException;
  * 
  */
 
-public class PacketTileWithSingleDisplayItem extends CustomPacket {
+public class PacketItemDisplay extends CustomPacket {
 
-	public int x, y, z;
-	public int itemID, meta, stackSize;
+	private int x, y, z;
+	private int itemID, meta, stacksize;
 
-	public PacketTileWithSingleDisplayItem() {
-		super(PacketTypeHandler.TILE_WITH_SINGLE_DISPLAY_ITEM);
+	public PacketItemDisplay() {
+		super(PacketTypeHandler.ITEM_DISPLAY);
 	}
 
-	public PacketTileWithSingleDisplayItem(int x, int y, int z, int itemID, int meta, int stackSize) {
-		super(PacketTypeHandler.TILE_WITH_SINGLE_DISPLAY_ITEM);
+	public PacketItemDisplay(int x, int y, int z, ItemStack stack) {
+		super(PacketTypeHandler.ITEM_DISPLAY);
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.itemID = itemID;
-		this.meta = meta;
-		this.stackSize = stackSize;
+		if (stack != null) {
+			itemID = stack.itemID;
+			meta = stack.getItemDamage();
+			stacksize = stack.stackSize;
+		} else {
+			itemID = 0;
+			meta = 0;
+			stacksize = 0;
+		}
 	}
 
 	@Override
@@ -40,7 +48,7 @@ public class PacketTileWithSingleDisplayItem extends CustomPacket {
 		data.writeInt(z);
 		data.writeInt(itemID);
 		data.writeInt(meta);
-		data.writeInt(stackSize);
+		data.writeInt(stacksize);
 	}
 
 	@Override
@@ -50,11 +58,11 @@ public class PacketTileWithSingleDisplayItem extends CustomPacket {
 		z = data.readInt();
 		itemID = data.readInt();
 		meta = data.readInt();
-		stackSize = data.readInt();
+		stacksize = data.readInt();
 	}
 
 	@Override
 	public void execute() {
-		GanysSurface.proxy.handleTileWithSingleDisplayItemPacket(x, y, z, itemID, meta, stackSize);
+		GanysSurface.proxy.handleItemDisplayPacket(x, y, z, itemID, meta, stacksize);
 	}
 }

@@ -14,21 +14,20 @@ import java.io.IOException;
  * 
  */
 
-public class PacketTileWithIMultipleDisplayItems extends CustomPacket {
+public class PacketWorkTable extends CustomPacket {
 
-	public int x, y, z, invSize;
+	public int x, y, z;
 	public int[] itemID, metaData, stackSize;
 
-	public PacketTileWithIMultipleDisplayItems() {
-		super(PacketTypeHandler.TILE_WITH_MULTIPLE_DISPLAY_ITEMS);
+	public PacketWorkTable() {
+		super(PacketTypeHandler.WORK_TABLE);
 	}
 
-	public PacketTileWithIMultipleDisplayItems(int x, int y, int z, int[] itemID, int[] metaData, int[] stackSize, int invSize) {
-		super(PacketTypeHandler.TILE_WITH_MULTIPLE_DISPLAY_ITEMS);
+	public PacketWorkTable(int x, int y, int z, int[] itemID, int[] metaData, int[] stackSize) {
+		super(PacketTypeHandler.WORK_TABLE);
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.invSize = invSize;
 		this.itemID = itemID;
 		this.metaData = metaData;
 		this.stackSize = stackSize;
@@ -39,8 +38,7 @@ public class PacketTileWithIMultipleDisplayItems extends CustomPacket {
 		data.writeInt(x);
 		data.writeInt(y);
 		data.writeInt(z);
-		data.writeInt(invSize);
-		for (int i = 0; i < invSize; i++) {
+		for (int i = 0; i < 9; i++) {
 			data.writeInt(itemID[i]);
 			data.writeInt(metaData[i]);
 			data.writeInt(stackSize[i]);
@@ -52,11 +50,10 @@ public class PacketTileWithIMultipleDisplayItems extends CustomPacket {
 		x = data.readInt();
 		y = data.readInt();
 		z = data.readInt();
-		invSize = data.readInt();
-		itemID = new int[invSize];
-		metaData = new int[invSize];
-		stackSize = new int[invSize];
-		for (int i = 0; i < invSize; i++) {
+		itemID = new int[9];
+		metaData = new int[9];
+		stackSize = new int[9];
+		for (int i = 0; i < 9; i++) {
 			itemID[i] = data.readInt();
 			metaData[i] = data.readInt();
 			stackSize[i] = data.readInt();
@@ -65,6 +62,6 @@ public class PacketTileWithIMultipleDisplayItems extends CustomPacket {
 
 	@Override
 	public void execute() {
-		GanysSurface.proxy.handleTileWithMultipleDisplayItemsPacket(x, y, z, itemID, metaData, stackSize, invSize);
+		GanysSurface.proxy.handleWorkTablePacket(x, y, z, itemID, metaData, stackSize);
 	}
 }
