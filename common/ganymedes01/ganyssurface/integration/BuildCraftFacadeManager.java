@@ -1,4 +1,4 @@
-package ganymedes01.ganyssurface.modsupport;
+package ganymedes01.ganyssurface.integration;
 
 import ganymedes01.ganyssurface.blocks.ModBlocks;
 import cpw.mods.fml.common.event.FMLInterModComms;
@@ -21,6 +21,6 @@ public class BuildCraftFacadeManager {
 	}
 
 	private static void addFacade(int blockID, int meta) {
-		FMLInterModComms.sendMessage("BuildCraft|Transport", "add-facade", String.format("%d@%d", blockID, meta));
+		FMLInterModComms.sendMessage("BuildCraft|Transport", "add-facade", blockID + "@" + meta);
 	}
 }

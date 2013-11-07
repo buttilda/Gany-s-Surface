@@ -3,5 +3,6 @@
 	<classpathentry kind="src" path="common"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Minecraft"/>
+	<classpathentry kind="lib" path="/Users/Andre/Documents/Development/NotEnoughItems-dev 1.6.1.5_d1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,4 +1,4 @@
-package ganymedes01.ganyssurface.modsupport;
+package ganymedes01.ganyssurface.integration;
 
 /**
  * Gany's Surface

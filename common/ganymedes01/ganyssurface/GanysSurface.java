@@ -9,11 +9,11 @@ import ganymedes01.ganyssurface.core.handlers.VersionCheckTickHandler;
 import ganymedes01.ganyssurface.core.proxy.CommonProxy;
 import ganymedes01.ganyssurface.core.utils.VersionHelper;
 import ganymedes01.ganyssurface.creativetab.CreativeTabSurface;
+import ganymedes01.ganyssurface.integration.BuildCraftFacadeManager;
+import ganymedes01.ganyssurface.integration.EE3Manager;
+import ganymedes01.ganyssurface.integration.ThaumCraftManager;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
-import ganymedes01.ganyssurface.modsupport.BuildCraftFacadeManager;
-import ganymedes01.ganyssurface.modsupport.EE3Manager;
-import ganymedes01.ganyssurface.modsupport.ThaumCraftManager;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.recipes.ModRecipes;
 
