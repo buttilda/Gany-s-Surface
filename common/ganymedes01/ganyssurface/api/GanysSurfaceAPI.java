@@ -4,7 +4,10 @@ import java.lang.reflect.Field;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * Gany's Surface
@@ -14,6 +17,37 @@ import cpw.mods.fml.common.FMLLog;
  */
 
 public class GanysSurfaceAPI {
+
+	/**
+	 * Sets a custom yield on the Organic Matter Fabricator (OMF) for a
+	 * determined item/block.
+	 * 
+	 * Pass a yield of -1 to make the item not acceptable on the OMF.
+	 * 
+	 * Most items have a yield of 2. The amount needed for the machine to start
+	 * to work is 144.
+	 * 
+	 * This is metadata sensitive.
+	 * 
+	 * @param matter
+	 *            : ItemStack of item/block to which the yield will be
+	 *            registered
+	 * @param burnTime
+	 *            : Yield for specified matter
+	 */
+	public static final void addYieldForOrganicMatter(ItemStack matter, int yield) {
+		if (matter != null) {
+			NBTTagCompound data = new NBTTagCompound();
+
+			data.setInteger("yield", yield);
+
+			NBTTagCompound tagCompound = new NBTTagCompound();
+			matter.writeToNBT(tagCompound);
+			data.setCompoundTag("matter", tagCompound);
+
+			FMLInterModComms.sendMessage("ganyssurface", "registerOrganicMatter", data);
+		}
+	}
 
 	// BLOCKS
 	/*

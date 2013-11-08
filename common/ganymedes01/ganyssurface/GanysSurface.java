@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
 import ganymedes01.ganyssurface.core.handlers.BonemealHandler;
 import ganymedes01.ganyssurface.core.handlers.FuelHandler;
+import ganymedes01.ganyssurface.core.handlers.InterModComms;
 import ganymedes01.ganyssurface.core.handlers.PoopHandler;
 import ganymedes01.ganyssurface.core.handlers.VersionCheckTickHandler;
 import ganymedes01.ganyssurface.core.proxy.CommonProxy;
@@ -27,6 +28,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms.IMCEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
@@ -95,5 +97,10 @@ public class GanysSurface {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
+	}
+
+	@EventHandler
+	public void processIMCRequests(IMCEvent event) {
+		InterModComms.processIMC(event);
 	}
 }

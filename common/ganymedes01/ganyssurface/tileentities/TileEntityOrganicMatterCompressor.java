@@ -1,46 +1,14 @@
 package ganymedes01.ganyssurface.tileentities;
 
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
-import ganymedes01.ganyssurface.items.ModItems;
-import ganymedes01.ganyssurface.items.Rot;
 import ganymedes01.ganyssurface.lib.Strings;
+import ganymedes01.ganyssurface.recipes.OrganicMatterRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockButtonWood;
-import net.minecraft.block.BlockCarpet;
-import net.minecraft.block.BlockHalfSlab;
-import net.minecraft.block.BlockLadder;
-import net.minecraft.block.material.Material;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemBed;
-import net.minecraft.item.ItemBoat;
-import net.minecraft.item.ItemBook;
-import net.minecraft.item.ItemCarrotOnAStick;
-import net.minecraft.item.ItemCoal;
-import net.minecraft.item.ItemEditableBook;
-import net.minecraft.item.ItemEgg;
-import net.minecraft.item.ItemEmptyMap;
-import net.minecraft.item.ItemEnchantedBook;
-import net.minecraft.item.ItemFishingRod;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemHangingEntity;
-import net.minecraft.item.ItemHoe;
-import net.minecraft.item.ItemMonsterPlacer;
-import net.minecraft.item.ItemNameTag;
-import net.minecraft.item.ItemRecord;
-import net.minecraft.item.ItemSaddle;
-import net.minecraft.item.ItemSeeds;
-import net.minecraft.item.ItemSign;
-import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
-import net.minecraft.item.ItemWritableBook;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -89,10 +57,14 @@ public class TileEntityOrganicMatterCompressor extends GanysInventory implements
 		int matter = 0;
 		for (int i = 0; i < 9; i++) {
 			if (inventory[i] != null) {
-				matter += getOrganicYield(inventory[i]);
-				inventory[i].stackSize--;
-				if (inventory[i].stackSize <= 0)
-					inventory[i] = null;
+				int yield = OrganicMatterRegistry.getOrganicYield(inventory[i]);
+				if (yield > 0) {
+					matter += yield;
+					inventory[i].stackSize--;
+					if (inventory[i].stackSize <= 0)
+						inventory[i] = null;
+				} else
+					continue;
 			}
 			if (organicMatter + matter >= NEEDED_MATTER)
 				return organicMatter + matter;
@@ -113,159 +85,12 @@ public class TileEntityOrganicMatterCompressor extends GanysInventory implements
 		organicMatter -= NEEDED_MATTER;
 	}
 
-	// 144 = Block of Coal
-	// 16 = Coal
-	private int getOrganicYield(ItemStack stack) {
-		if (!isOrganicMatter(stack))
-			return 0;
-
-		Block block = null;
-		if (stack.itemID < Block.blocksList.length)
-			block = Block.blocksList[stack.itemID];
-		if (block != null) {
-			if (block.blockMaterial == Material.wood)
-				if (!(block instanceof BlockHalfSlab))
-					return 4;
-			if (block.blockMaterial == Material.cactus || block.blockMaterial == Material.pumpkin || block.blockMaterial == Material.grass)
-				return 4;
-		}
-
-		Item item = stack.getItem();
-		if (item instanceof ItemSeeds)
-			return 1;
-		else if (item instanceof ItemCoal)
-			if (stack.getItemDamage() == 1)
-				return 16;
-
-		for (ItemStack logs : OreDictionary.getOres("plankWood"))
-			if (logs.getItem() == item)
-				return 4;
-		return 2;
-	}
-
-	public static boolean isOrganicMatter(ItemStack stack) {
-		if (stack == null)
-			return false;
-		Item item = stack.getItem();
-
-		if (item instanceof ItemFood)
-			return true;
-		else if (item instanceof ItemCoal)
-			return stack.getItemDamage() == 1;
-		else if (item instanceof ItemTool)
-			return ((ItemTool) item).getToolMaterialName().compareToIgnoreCase("wood") == 0;
-		else if (item instanceof ItemSword)
-			return ((ItemSword) item).getToolMaterialName().compareToIgnoreCase("wood") == 0;
-		else if (item instanceof ItemHoe)
-			return ((ItemHoe) item).getMaterialName().compareToIgnoreCase("wood") == 0;
-		else if (item instanceof ItemSeeds)
-			return true;
-		else if (item instanceof ItemArmor)
-			return ((ItemArmor) item).getArmorMaterial() == EnumArmorMaterial.CLOTH || ((ItemArmor) item).getArmorMaterial().name().compareToIgnoreCase("wood") == 0 || ((ItemArmor) item).getArmorMaterial().name().compareToIgnoreCase("log") == 0;
-		else if (item instanceof ItemHangingEntity)
-			return true;
-		else if (item instanceof ItemSign)
-			return true;
-		else if (item instanceof ItemSaddle)
-			return true;
-		else if (item instanceof ItemBoat)
-			return true;
-		else if (item instanceof ItemBook)
-			return true;
-		else if (item instanceof ItemEgg)
-			return true;
-		else if (item instanceof ItemFishingRod)
-			return true;
-		else if (item instanceof ItemBed)
-			return true;
-		else if (item instanceof ItemMonsterPlacer)
-			return true;
-		else if (item instanceof ItemWritableBook)
-			return true;
-		else if (item instanceof ItemEditableBook)
-			return true;
-		else if (item instanceof ItemEmptyMap)
-			return true;
-		else if (item instanceof ItemSkull)
-			return true;
-		else if (item instanceof ItemCarrotOnAStick)
-			return true;
-		else if (item instanceof ItemEnchantedBook)
-			return true;
-		else if (item instanceof ItemNameTag)
-			return true;
-		else if (item instanceof ItemRecord)
-			return true;
-		else if (item instanceof Rot)
-			return true;
-		else if (item == ModItems.woodenWrench)
-			return true;
-		else if (item == ModItems.teaLeaves)
-			return true;
-		else if (item == ModItems.poop)
-			return true;
-		else if (item == Item.sugar)
-			return true;
-		else if (item == Item.cake)
-			return true;
-		else if (item == Item.bone)
-			return true;
-		else if (item == Item.slimeBall)
-			return true;
-		else if (item == Item.paper)
-			return true;
-		else if (item == Item.reed)
-			return true;
-		else if (item == Item.leather)
-			return true;
-		else if (item == Item.doorWood)
-			return true;
-		else if (item == Item.wheat)
-			return true;
-		else if (item == Item.dyePowder)
-			return stack.getItemDamage() == 0 || stack.getItemDamage() == 15;
-
-		Block block = null;
-		if (stack.itemID < Block.blocksList.length)
-			block = Block.blocksList[stack.itemID];
-		if (block != null)
-			if (block.blockMaterial == Material.cactus || block.blockMaterial == Material.leaves || block.blockMaterial == Material.plants || block.blockMaterial == Material.pumpkin || block.blockMaterial == Material.vine || block.blockMaterial == Material.wood ||
-			block.blockMaterial == Material.web || block.blockMaterial == Material.grass || block.blockMaterial == Material.cloth)
-				return true;
-			else if (block instanceof BlockLadder)
-				return true;
-			else if (block instanceof BlockButtonWood)
-				return true;
-			else if (block instanceof BlockCarpet)
-				return true;
-
-		for (ItemStack logs : OreDictionary.getOres("plankWood"))
-			if (logs.getItem() == item)
-				return true;
-		for (ItemStack logs : OreDictionary.getOres("slabWood"))
-			if (logs.getItem() == item)
-				return true;
-		for (ItemStack logs : OreDictionary.getOres("stairWood"))
-			if (logs.getItem() == item)
-				return true;
-		for (ItemStack logs : OreDictionary.getOres("treeSapling"))
-			if (logs.getItem() == item)
-				return true;
-		for (ItemStack logs : OreDictionary.getOres("treeLeaves"))
-			if (logs.getItem() == item)
-				return true;
-		for (ItemStack logs : OreDictionary.getOres("stickWood"))
-			if (logs.getItem() == item)
-				return true;
-		return false;
-	}
-
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		if (slot == 9)
 			return stack.getItem() == Item.coal && stack.getItemDamage() == 0;
 		else if (slot < 9)
-			return isOrganicMatter(stack);
+			return OrganicMatterRegistry.isOrganicMatter(stack);
 		else
 			return false;
 	}

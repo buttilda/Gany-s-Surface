@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
-import ganymedes01.ganyssurface.tileentities.TileEntityOrganicMatterCompressor;
+import ganymedes01.ganyssurface.recipes.OrganicMatterRegistry;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -20,6 +20,6 @@ public class OrganicMatterSlot extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		return TileEntityOrganicMatterCompressor.isOrganicMatter(stack);
+		return OrganicMatterRegistry.isOrganicMatter(stack);
 	}
 }

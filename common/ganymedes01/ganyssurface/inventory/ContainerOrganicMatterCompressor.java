@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
+import ganymedes01.ganyssurface.recipes.OrganicMatterRegistry;
 import ganymedes01.ganyssurface.tileentities.TileEntityOrganicMatterCompressor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -69,7 +70,7 @@ public class ContainerOrganicMatterCompressor extends Container {
 			} else if (slotItemStack.getItem() == Item.coal && slotItemStack.getItemDamage() == 0) {
 				if (!mergeItemStack(slotItemStack, 9, 10, false))
 					return null;
-			} else if (TileEntityOrganicMatterCompressor.isOrganicMatter(slotItemStack)) {
+			} else if (OrganicMatterRegistry.isOrganicMatter(slotItemStack)) {
 				if (!mergeItemStack(slotItemStack, 0, 9, false))
 					return null;
 			} else
