@@ -62,9 +62,11 @@ public class ItemDisplay extends BlockContainer {
 	public void breakBlock(World world, int x, int y, int z, int par5, int par6) {
 		TileEntityItemDisplay tile = (TileEntityItemDisplay) world.getBlockTileEntity(x, y, z);
 		if (tile != null) {
-			ItemStack stack = tile.getDisplayItem();
-			if (stack != null)
-				Utils.dropStack(world, x, y, z, stack);
+			for (int i = 0; i < tile.getSizeInventory(); i++) {
+				ItemStack stack = tile.getStackInSlot(i);
+				if (stack != null)
+					Utils.dropStack(world, x, y, z, stack);
+			}
 			world.func_96440_m(x, y, z, par5);
 		}
 		super.breakBlock(world, x, y, z, par5, par6);

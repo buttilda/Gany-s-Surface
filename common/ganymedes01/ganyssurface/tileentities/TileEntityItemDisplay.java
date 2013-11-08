@@ -1,12 +1,10 @@
 package ganymedes01.ganyssurface.tileentities;
 
+import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.PacketTypeHandler;
 import ganymedes01.ganyssurface.network.packet.PacketItemDisplay;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.packet.Packet;
-import net.minecraft.tileentity.TileEntity;
 
 /**
  * Gany's Surface
@@ -15,48 +13,28 @@ import net.minecraft.tileentity.TileEntity;
  * 
  */
 
-public class TileEntityItemDisplay extends TileEntity {
+public class TileEntityItemDisplay extends GanysInventory {
 
-	private ItemStack itemDisplay;
+	public TileEntityItemDisplay() {
+		super(1, Strings.ITEM_DISPLAY_NAME);
+	}
 
 	public ItemStack getDisplayItem() {
-		return itemDisplay;
+		return inventory[0];
 	}
 
 	public void addItemToDisplay(ItemStack item) {
 		if (item != null) {
-			itemDisplay = item.copy();
-			itemDisplay.stackSize = 1;
+			inventory[0] = item.copy();
+			inventory[0].stackSize = 1;
 		} else
-			itemDisplay = null;
-	}
-
-	@Override
-	public void readFromNBT(NBTTagCompound data) {
-		super.readFromNBT(data);
-		NBTTagList tagList = data.getTagList("Items");
-		if (tagList.tagCount() > 0) {
-			NBTTagCompound tagCompound = (NBTTagCompound) tagList.tagAt(0);
-			itemDisplay = ItemStack.loadItemStackFromNBT(tagCompound);
-		}
-	}
-
-	@Override
-	public void writeToNBT(NBTTagCompound data) {
-		super.writeToNBT(data);
-		NBTTagList tagList = new NBTTagList();
-		if (itemDisplay != null) {
-			NBTTagCompound tagCompound = new NBTTagCompound();
-			itemDisplay.writeToNBT(tagCompound);
-			tagList.appendTag(tagCompound);
-		}
-		data.setTag("Items", tagList);
+			inventory[0] = null;
 	}
 
 	@Override
 	public Packet getDescriptionPacket() {
-		if (itemDisplay != null && itemDisplay.stackSize > 0)
-			return PacketTypeHandler.populatePacket(new PacketItemDisplay(xCoord, yCoord, zCoord, itemDisplay.copy()));
+		if (inventory[0] != null && inventory[0].stackSize > 0)
+			return PacketTypeHandler.populatePacket(new PacketItemDisplay(xCoord, yCoord, zCoord, inventory[0].copy()));
 		return null;
 	}
 }

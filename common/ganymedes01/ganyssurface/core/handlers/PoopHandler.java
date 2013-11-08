@@ -19,9 +19,8 @@ public class PoopHandler {
 
 	@ForgeSubscribe
 	public void onLivingUpdate(LivingUpdateEvent event) {
-		if (event.entityLiving instanceof EntityAnimal || event.entityLiving instanceof EntityTameable || event.entityLiving instanceof EntityBat) {
-			int coolDown = event.entityLiving.worldObj.rand.nextInt(30000);
-			if (coolDown == 15000)
+		if (event.entityLiving instanceof EntityAnimal || event.entityLiving instanceof EntityTameable || event.entityLiving instanceof EntityBat)
+			if (event.entityLiving.worldObj.rand.nextInt(15000) == 7500)
 				if (!event.entityLiving.isChild() && event.entityLiving.worldObj.isDaytime())
 					if (!event.entityLiving.worldObj.isRemote) {
 						if (event.entityLiving instanceof EntityBat)
@@ -30,6 +29,5 @@ public class PoopHandler {
 							event.entityLiving.entityDropItem(new ItemStack(ModItems.poop, 1, 0), 0.0F);
 						event.entityLiving.playSound("mob.chicken.plop", 1.0F, (event.entityLiving.worldObj.rand.nextFloat() - event.entityLiving.worldObj.rand.nextFloat()) * 0.2F + 1.0F);
 					}
-		}
 	}
 }
