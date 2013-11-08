@@ -96,6 +96,7 @@ public class ModItems {
 		GameRegistry.registerItem(teaBag, Strings.TEA_BAG_NAME);
 		GameRegistry.registerItem(emptyMug, Strings.EMPTY_MUG_NAME);
 		GameRegistry.registerItem(cupOfTea, Strings.CUP_OF_TEA_NAME);
+		GameRegistry.registerItem(mankyCupOfTea, Strings.MANKY_CUP_OF_TEA_NAME);
 		GameRegistry.registerItem(poop, Strings.POOP_NAME);
 		GameRegistry.registerItem(cookedEgg, Strings.COOKED_EGG_NAME);
 		GameRegistry.registerItem(obsidianHead, Strings.OBSIDIAN_HEAD_NAME);
