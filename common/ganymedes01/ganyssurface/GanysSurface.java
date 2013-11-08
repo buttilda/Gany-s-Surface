@@ -58,6 +58,7 @@ public class GanysSurface {
 	public static boolean mobsShouldPoop = true;
 	public static boolean activateChocolate = true;
 	public static boolean shouldDoVersionCheck = true;
+	public static int maxLevelOMCWorks = 15;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.tileentities;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.recipes.OrganicMatterRegistry;
@@ -38,7 +39,7 @@ public class TileEntityOrganicMatterCompressor extends GanysInventory implements
 	public void updateEntity() {
 		if (worldObj.isRemote)
 			return;
-		if (yCoord > 15)
+		if (yCoord > GanysSurface.maxLevelOMCWorks)
 			return;
 		if (inventory[BLOCK_OF_COAL] == null || inventory[BLOCK_OF_COAL].stackSize < 64) {
 			if (organicMatter < NEEDED_MATTER)
