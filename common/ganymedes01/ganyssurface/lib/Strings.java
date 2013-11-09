@@ -62,6 +62,7 @@ public class Strings {
 	public static final String MOBS_SHOULD_POOP = "mobsShouldPoop";
 	public static final String ACTIVATE_CHOCOLATE = "activateChocolate";
 	public static final String SHOULD_DO_VERSION_CHECK = "shouldDoVersionCheck";
+	public static final String FORCE_ALL_CONTAINERS_OPEN = "forceAllContainersOpen";
 	public static final String MAX_LEVEL_OMC_WORKS = "maxLevelOMCWorks";
 
 	// Version check

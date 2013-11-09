@@ -2,7 +2,6 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
@@ -12,6 +11,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
@@ -62,32 +62,17 @@ public class ChestPropellant extends BlockContainer {
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		if (world.isRemote)
 			return true;
+		ItemStack currentItem = player.inventory.getCurrentItem();
+		if (currentItem != null && currentItem.itemID == blockID)
+			return false;
+
 		for (int i = 1; i < MAX_PILE_SIZE; i++) {
 			TileEntity tile = world.getBlockTileEntity(x, y - i, z);
 			if (tile instanceof IInventory) {
 				if (!(tile instanceof TileEntityChestPropellant))
 					if (world.getBlockId(x, y - i, z) < Block.blocksList.length) {
 						Block block = Block.blocksList[world.getBlockId(x, y - i, z)];
-						if (block.blockID == Block.chest.blockID || block.blockID == Block.chestTrapped.blockID) {
-							player.openGui(GanysSurface.instance, GUIsID.VANILLA_CHEST, world, x, y - i, z);
-							return true;
-						} else if (block.blockID == Block.furnaceIdle.blockID || block.blockID == Block.furnaceBurning.blockID) {
-							player.openGui(GanysSurface.instance, GUIsID.VANILLA_FURNACE, world, x, y - i, z);
-							return true;
-						} else if (block.blockID == Block.brewingStand.blockID) {
-							player.openGui(GanysSurface.instance, GUIsID.VANILLA_BREW_STAND, world, x, y - i, z);
-							return true;
-						} else if (block.blockID == Block.hopperBlock.blockID) {
-							player.openGui(GanysSurface.instance, GUIsID.VANILLA_HOPPER, world, x, y - i, z);
-							return true;
-						} else if (block.blockID == Block.dispenser.blockID) {
-							player.openGui(GanysSurface.instance, GUIsID.VANILLA_DISPENSER, world, x, y - i, z);
-							return true;
-						} else if (block.blockID == Block.dropper.blockID) {
-							player.openGui(GanysSurface.instance, GUIsID.VANILLA_DROPPER, world, x, y - i, z);
-							return true;
-						} else
-							return block.onBlockActivated(world, x, y - i, z, player, side, hitX, hitY, hitZ);
+						return block.onBlockActivated(world, x, y - i, z, player, side, hitX, hitY, hitZ);
 					}
 			} else
 				return false;

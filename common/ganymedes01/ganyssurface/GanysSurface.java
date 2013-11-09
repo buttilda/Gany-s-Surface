@@ -5,6 +5,7 @@ import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
 import ganymedes01.ganyssurface.core.handlers.BonemealHandler;
 import ganymedes01.ganyssurface.core.handlers.FuelHandler;
 import ganymedes01.ganyssurface.core.handlers.InterModComms;
+import ganymedes01.ganyssurface.core.handlers.OpenContainerHandler;
 import ganymedes01.ganyssurface.core.handlers.PoopHandler;
 import ganymedes01.ganyssurface.core.handlers.VersionCheckTickHandler;
 import ganymedes01.ganyssurface.core.proxy.CommonProxy;
@@ -55,6 +56,7 @@ public class GanysSurface {
 	public static boolean mobsShouldPoop = true;
 	public static boolean activateChocolate = true;
 	public static boolean shouldDoVersionCheck = true;
+	public static boolean forceAllContainersOpen = false;
 	public static int maxLevelOMCWorks = 15;
 
 	@EventHandler
@@ -81,6 +83,7 @@ public class GanysSurface {
 		if (mobsShouldPoop)
 			MinecraftForge.EVENT_BUS.register(new PoopHandler());
 		MinecraftForge.EVENT_BUS.register(new BonemealHandler());
+		MinecraftForge.EVENT_BUS.register(new OpenContainerHandler());
 
 		proxy.registerTileEntities();
 		proxy.registerRenderers();

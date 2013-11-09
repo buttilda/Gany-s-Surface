@@ -90,6 +90,7 @@ public class ConfigurationHandler {
 			GanysSurface.mobsShouldPoop = configuration.get("Others", Strings.MOBS_SHOULD_POOP, true).getBoolean(true);
 			GanysSurface.activateChocolate = configuration.get("Others", Strings.ACTIVATE_CHOCOLATE, true).getBoolean(true);
 			GanysSurface.shouldDoVersionCheck = configuration.get("Others", Strings.SHOULD_DO_VERSION_CHECK, true).getBoolean(true);
+			GanysSurface.forceAllContainersOpen = configuration.get("Others", Strings.FORCE_ALL_CONTAINERS_OPEN, false).getBoolean(false);
 			GanysSurface.maxLevelOMCWorks = configuration.get("Others", Strings.MAX_LEVEL_OMC_WORKS, 15).getInt(15);
 
 		} catch (Exception e) {
