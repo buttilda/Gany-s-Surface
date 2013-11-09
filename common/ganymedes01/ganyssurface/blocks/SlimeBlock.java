@@ -40,20 +40,20 @@ public class SlimeBlock extends Block {
 		setTickRandomly(true);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.SLIME_BLOCK_NAME));
-		setTextureName(Utils.getBlockTexture(Strings.SLIME_BLOCK_NAME, false));
 	}
 
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand) {
-		for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
-			int blockID = world.getBlockId(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
-			int blockMeta = world.getBlockMetadata(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
+		if (rand.nextInt(40) == 20)
+			for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
+				int blockID = world.getBlockId(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
+				int blockMeta = world.getBlockMetadata(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
 
-			if (blockID == Block.waterStill.blockID && blockMeta == 0) {
-				world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, this.blockID);
-				return;
+				if (blockID == Block.waterStill.blockID && blockMeta == 0) {
+					world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, this.blockID);
+					return;
+				}
 			}
-		}
 	}
 
 	@Override

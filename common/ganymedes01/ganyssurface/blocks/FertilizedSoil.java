@@ -34,12 +34,13 @@ public class FertilizedSoil extends Block {
 
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand) {
-		if (isWaterNearby(world, x, y, z))
-			if (Block.blocksList[world.getBlockId(x, y + 1, z)] instanceof IPlantable)
-				if (world.getBlockMetadata(x, y + 1, z) < 7)
-					world.setBlockMetadataWithNotify(x, y + 1, z, world.getBlockMetadata(x, y + 1, z) + 1, 2);
-				else if (rand.nextInt(50) == 25)
-					world.setBlock(x, y, z, Block.tilledField.blockID);
+		if (rand.nextInt(6) == 3)
+			if (isWaterNearby(world, x, y, z))
+				if (Block.blocksList[world.getBlockId(x, y + 1, z)] instanceof IPlantable)
+					if (world.getBlockMetadata(x, y + 1, z) < 7)
+						world.setBlockMetadataWithNotify(x, y + 1, z, world.getBlockMetadata(x, y + 1, z) + 1, 2);
+					else if (rand.nextInt(50) == 25)
+						world.setBlock(x, y, z, Block.dirt.blockID);
 	}
 
 	@Override
