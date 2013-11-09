@@ -50,6 +50,7 @@ tile.ganyssurface.fertilizedSoil.name=Fertilized Soil
 tile.ganyssurface.planter.name=Planter
 tile.ganyssurface.lantern.name=Lantern
 tile.ganyssurface.inkHarvester.name=Ink Harvester
+tile.ganyssurface.slimeBlock.name=Slime Block
 
 # GUI localizations
 container.ganyssurface:blockDetector=Block Detector

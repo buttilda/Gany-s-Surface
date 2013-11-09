@@ -5,6 +5,7 @@ import ganymedes01.ganyssurface.items.ItemChocolateCake;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -36,6 +37,7 @@ public class ModBlocks {
 	public static Block planter;
 	public static Block lantern;
 	public static Block inkHarvester;
+	public static Block slimeBlock;
 
 	public static void init() {
 		camelliaCrop = new CamelliaCrop();
@@ -58,8 +60,10 @@ public class ModBlocks {
 		planter = new Planter();
 		lantern = new Lantern();
 		inkHarvester = new InkHarvester();
+		slimeBlock = new SlimeBlock();
 
 		registerNames();
+		registerHarvestLevel();
 	}
 
 	private static void registerNames() {
@@ -84,5 +88,11 @@ public class ModBlocks {
 		GameRegistry.registerBlock(planter, Strings.PLANTER_NAME);
 		GameRegistry.registerBlock(lantern, Strings.LANTERN_NAME);
 		GameRegistry.registerBlock(inkHarvester, Strings.INK_HARVESTER_NAME);
+		GameRegistry.registerBlock(slimeBlock, Strings.SLIME_BLOCK_NAME);
+	}
+
+	private static void registerHarvestLevel() {
+		MinecraftForge.setBlockHarvestLevel(slimeBlock, "shovel", 0);
+		MinecraftForge.setBlockHarvestLevel(fertilizedSoil, "shovel", 0);
 	}
 }

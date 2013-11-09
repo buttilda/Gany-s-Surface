@@ -28,7 +28,7 @@ public class BlockLanternRender implements ISimpleBlockRenderingHandler {
 
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
-		return renderer.renderBlockTorch(block, x, y, z) && renderer.renderStandardBlock(Block.glass, x, y, z);
+		return renderer.renderBlockTorch(Block.torchWood, x, y, z) && renderer.renderStandardBlock(Block.glass, x, y, z);
 	}
 
 	@Override

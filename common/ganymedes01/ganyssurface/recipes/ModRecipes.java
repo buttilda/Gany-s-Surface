@@ -52,6 +52,7 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(Item.clay, 8), "xxx", "yzy", "xxx", 'x', Block.gravel, 'y', Block.dirt, 'z', Item.bucketWater);
 		GameRegistry.addRecipe(new ItemStack(Item.nameTag), " y ", "x  ", 'x', Item.paper, 'y', Item.silk);
 		GameRegistry.addRecipe(new ItemStack(Block.web), "x x", " y ", "x x", 'y', Item.slimeBall, 'x', Item.silk);
+		GameRegistry.addShapelessRecipe(new ItemStack(Item.slimeBall, 8), ModBlocks.slimeBlock);
 	}
 
 	private static void registerBlockRecipes() {
@@ -76,5 +77,6 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.planter), "aza", "ywy", " x ", 'x', Block.hopperBlock, 'y', new ItemStack(Block.cloth, 1, 13), 'z', Block.dispenser, 'w', ModBlocks.blockDetector, 'a', Block.stone);
 		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.lantern), Block.glass, Block.torchWood);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.inkHarvester), "xzy", "yax", "xwy", 'x', new ItemStack(Item.dyePowder), 'y', new ItemStack(Item.dyePowder, 1, 4), 'z', Item.redstone, 'w', Item.swordGold, 'a', Block.blockIron);
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.slimeBlock), "xxx", "xyx", "xxx", 'x', Item.slimeBall, 'y', Item.bucketWater);
 	}
 }

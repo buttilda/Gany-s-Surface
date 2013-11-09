@@ -33,11 +33,6 @@ public class FertilizedSoil extends Block {
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, int neighbourID) {
-		updateTick(world, x, y, z, new Random());
-	}
-
-	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand) {
 		if (isWaterNearby(world, x, y, z))
 			if (Block.blocksList[world.getBlockId(x, y + 1, z)] instanceof IPlantable)
@@ -69,5 +64,10 @@ public class FertilizedSoil extends Block {
 	@Override
 	public int idDropped(int id, Random rand, int par3) {
 		return Block.dirt.blockID;
+	}
+
+	@Override
+	protected boolean canSilkHarvest() {
+		return true;
 	}
 }
