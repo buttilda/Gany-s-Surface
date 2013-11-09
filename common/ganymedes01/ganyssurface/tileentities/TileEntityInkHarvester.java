@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.tileentities;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -13,9 +14,11 @@ import net.minecraft.command.IEntitySelector;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
 
 /**
  * Gany's Surface
@@ -33,9 +36,10 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 	9, 20, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1 };
 
 	private int coolDown = 300;
+	private int strikeCount = 0;
 
 	public TileEntityInkHarvester() {
-		super(9, Strings.INK_HARVESTER_NAME);
+		super(13, Strings.INK_HARVESTER_NAME);
 	}
 
 	@Override
@@ -43,26 +47,46 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 		if (worldObj == null || worldObj.isRemote)
 			return;
 
+		if (GanysSurface.inkHarvesterMaxStrike > 0 && strikeCount > GanysSurface.inkHarvesterMaxStrike) {
+			killOneSquid();
+			strikeCount = 0;
+			return;
+		}
+
 		coolDown--;
 		if (coolDown <= worldObj.rand.nextInt(10)) {
 			if (isFormed())
 				if (worldObj.rand.nextInt(8) == 4)
-					Utils.addStackToInventory(this, new ItemStack(Item.dyePowder));
+					if (consumeFoodItem())
+						Utils.addStackToInventory(this, new ItemStack(Item.dyePowder));
+					else
+						strikeCount++;
 			coolDown = 300;
 		}
 	}
 
-	public boolean hasSquids() {
-		int minY, maxY;
-		if (worldObj.getBlockId(xCoord, yCoord - 1, zCoord) == Block.waterStill.blockID) {
-			minY = -3;
-			maxY = 0;
-		} else {
-			minY = 0;
-			maxY = 3;
-		}
+	private void killOneSquid() {
+		List list = getSquids();
+		if (!list.isEmpty())
+			((EntitySquid) list.iterator().next()).attackEntityFrom(DamageSource.starve, 11.0F);
 
-		List list = worldObj.selectEntitiesWithinAABB(EntitySquid.class, AxisAlignedBB.getAABBPool().getAABB(xCoord - 2.0D, yCoord + minY, zCoord - 2.0D, xCoord + 2.0D, yCoord + maxY, zCoord + 2.0D), IEntitySelector.selectAnything);
+		isFormed();
+	}
+
+	private boolean consumeFoodItem() {
+		for (int i = 9; i < 13; i++) {
+			if (inventory[i] == null)
+				continue;
+			inventory[i].splitStack(1);
+			if (inventory[i].stackSize <= 0)
+				inventory[i] = null;
+			return true;
+		}
+		return false;
+	}
+
+	private boolean hasSquids() {
+		List list = getSquids();
 		if (!list.isEmpty()) {
 			Iterator iterator = list.iterator();
 			while (iterator.hasNext()) {
@@ -73,6 +97,19 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 		}
 
 		return list.size() >= 2;
+	}
+
+	private List getSquids() {
+		int minY, maxY;
+		if (worldObj.getBlockId(xCoord, yCoord - 1, zCoord) == Block.waterStill.blockID) {
+			minY = -3;
+			maxY = 0;
+		} else {
+			minY = 0;
+			maxY = 3;
+		}
+
+		return worldObj.selectEntitiesWithinAABB(EntitySquid.class, AxisAlignedBB.getAABBPool().getAABB(xCoord - 2.0D, yCoord + minY, zCoord - 2.0D, xCoord + 2.0D, yCoord + maxY, zCoord + 2.0D), IEntitySelector.selectAnything);
 	}
 
 	public boolean isFormed() {
@@ -162,26 +199,28 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 	public void readFromNBT(NBTTagCompound data) {
 		super.readFromNBT(data);
 		data.setInteger("coolDown", coolDown);
+		data.setInteger("strikeCount", strikeCount);
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
 		coolDown = data.getInteger("coolDown");
+		strikeCount = data.getInteger("strikeCount");
 	}
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
-		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
 	}
 
 	@Override
 	public boolean canInsertItem(int slot, ItemStack stack, int side) {
-		return false;
+		return slot > 8 ? stack != null && stack.getItem() instanceof ItemFood : false;
 	}
 
 	@Override
 	public boolean canExtractItem(int slot, ItemStack stack, int side) {
-		return true;
+		return slot < 9;
 	}
 }

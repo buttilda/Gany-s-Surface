@@ -58,6 +58,7 @@ public class GanysSurface {
 	public static boolean shouldDoVersionCheck = true;
 	public static boolean forceAllContainersOpen = false;
 	public static int maxLevelOMCWorks = 15;
+	public static int inkHarvesterMaxStrike = 5;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

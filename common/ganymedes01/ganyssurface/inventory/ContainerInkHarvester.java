@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -19,7 +20,11 @@ public class ContainerInkHarvester extends Container {
 	public ContainerInkHarvester(InventoryPlayer inventory, TileEntityInkHarvester tile) {
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
-				addSlotToContainer(new InvalidSlot(tile, j + i * 3, 62 + j * 18, 17 + i * 18));
+				addSlotToContainer(new InvalidSlot(tile, j + i * 3, 45 + j * 18, 17 + i * 18));
+
+		for (int i = 0; i < 2; i++)
+			for (int j = 0; j < 2; j++)
+				addSlotToContainer(new FoodSlot(tile, 9 + j + i * 2, 116 + j * 18, 35 + i * 18));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++)
@@ -38,8 +43,11 @@ public class ContainerInkHarvester extends Container {
 			ItemStack stack = slot.getStack();
 			itemstack = stack.copy();
 
-			if (slotIndex < 9)
-				if (!mergeItemStack(stack, 9, 45, true))
+			if (slotIndex < 13) {
+				if (!mergeItemStack(stack, 13, 45, true))
+					return null;
+			} else if (stack != null && stack.getItem() instanceof ItemFood)
+				if (!mergeItemStack(stack, 9, 13, false))
 					return null;
 
 			if (stack.stackSize == 0)

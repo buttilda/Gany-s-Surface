@@ -62,6 +62,7 @@ container.ganyssurface:planter=Planter
 container.ganyssurface:inkHarvester=Ink Harvester
 
 matter=Matter:
+squidFood=Food:
 
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface

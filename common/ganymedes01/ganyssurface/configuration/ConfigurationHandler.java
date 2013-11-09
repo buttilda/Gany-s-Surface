@@ -92,6 +92,7 @@ public class ConfigurationHandler {
 			GanysSurface.shouldDoVersionCheck = configuration.get("Others", Strings.SHOULD_DO_VERSION_CHECK, true).getBoolean(true);
 			GanysSurface.forceAllContainersOpen = configuration.get("Others", Strings.FORCE_ALL_CONTAINERS_OPEN, false).getBoolean(false);
 			GanysSurface.maxLevelOMCWorks = configuration.get("Others", Strings.MAX_LEVEL_OMC_WORKS, 15).getInt(15);
+			GanysSurface.inkHarvesterMaxStrike = configuration.get("Others", Strings.INK_HARVESTER_MAX_STRIKE, 5).getInt(5);
 
 		} catch (Exception e) {
 			FMLLog.log(Level.SEVERE, e, Reference.MOD_NAME + " has had a problem loading its configuration");
