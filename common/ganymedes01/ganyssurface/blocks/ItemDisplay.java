@@ -50,7 +50,8 @@ public class ItemDisplay extends BlockContainer {
 				if (player.getCurrentEquippedItem().stackSize <= 0)
 					player.setCurrentItemOrArmor(0, null);
 			} else if (tile.getDisplayItem() != null) {
-				Utils.dropStack(world, x, y + 1, z, tile.getDisplayItem().copy());
+				if (!player.inventory.addItemStackToInventory(tile.getDisplayItem().copy()))
+					Utils.dropStack(world, x, y + 1, z, tile.getDisplayItem().copy());
 				tile.addItemToDisplay(null);
 				PacketDispatcher.sendPacketToAllPlayers(PacketTypeHandler.populatePacket(new PacketItemDisplay(x, y, z, null)));
 			}
