@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
+import ganymedes01.ganyssurface.inventory.slots.SeedSlot;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

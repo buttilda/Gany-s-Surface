@@ -31,7 +31,7 @@ public class BlockDetector extends BlockContainer {
 	private Icon blockOn, blockOff;
 
 	protected BlockDetector() {
-		super(ModIDs.BLOCK_DETECTOR_ID, Material.rock);
+		super(ModIDs.BLOCK_DETECTOR_ID, Material.cloth);
 		setHardness(0.2F);
 		setStepSound(soundWoodFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);

@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
+import ganymedes01.ganyssurface.inventory.slots.BlockDetectorSlot;
 import ganymedes01.ganyssurface.tileentities.TileEntityBlockDetector;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

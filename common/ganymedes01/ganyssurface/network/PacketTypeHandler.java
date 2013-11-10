@@ -2,9 +2,10 @@ package ganymedes01.ganyssurface.network;
 
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.network.packet.CustomPacket;
+import ganymedes01.ganyssurface.network.packet.PacketItemDisplay;
+import ganymedes01.ganyssurface.network.packet.PacketMarket;
 import ganymedes01.ganyssurface.network.packet.PacketPlanter;
 import ganymedes01.ganyssurface.network.packet.PacketWorkTable;
-import ganymedes01.ganyssurface.network.packet.PacketItemDisplay;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -22,7 +23,8 @@ import net.minecraft.network.packet.Packet250CustomPayload;
 public enum PacketTypeHandler {
 	ITEM_DISPLAY(PacketItemDisplay.class),
 	WORK_TABLE(PacketWorkTable.class),
-	PLANTER(PacketPlanter.class);
+	PLANTER(PacketPlanter.class),
+	MARKET(PacketMarket.class);
 
 	private Class<? extends CustomPacket> clazz;
 

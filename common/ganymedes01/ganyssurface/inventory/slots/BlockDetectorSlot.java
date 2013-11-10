@@ -1,4 +1,4 @@
-package ganymedes01.ganyssurface.inventory;
+package ganymedes01.ganyssurface.inventory.slots;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;

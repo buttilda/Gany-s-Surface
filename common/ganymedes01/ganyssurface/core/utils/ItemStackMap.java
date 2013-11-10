@@ -39,7 +39,7 @@ public class ItemStackMap<T> extends HashMap<ItemStack, T> {
 		return null;
 	}
 
-	private boolean areItemsEqual(ItemStack stack1, ItemStack stack2) {
+	public static boolean areItemsEqual(ItemStack stack1, ItemStack stack2) {
 		if (stack1 == null || stack2 == null)
 			return false;
 

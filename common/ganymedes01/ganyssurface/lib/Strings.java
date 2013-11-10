@@ -31,6 +31,7 @@ public class Strings {
 	public static final String LANTERN_NAME = "lantern";
 	public static final String INK_HARVESTER_NAME = "inkHarvester";
 	public static final String SLIME_BLOCK_NAME = "slimeBlock";
+	public static final String MARKET_NAME = "market";
 
 	// Item names
 	public static final String ROT_NAME = "rot";

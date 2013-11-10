@@ -60,6 +60,7 @@ public class ConfigurationHandler {
 			ModIDs.LANTERN_ID = configBlock(Strings.LANTERN_NAME);
 			ModIDs.INK_HARVESTER_ID = configBlock(Strings.INK_HARVESTER_NAME);
 			ModIDs.SLIME_BLOCK_ID = configBlock(Strings.SLIME_BLOCK_NAME);
+			ModIDs.MARKET_ID = configBlock(Strings.MARKET_NAME);
 
 			// Armour
 			ModIDs.WOODEN_HELMET_ID = configItem(Strings.WOODEN_HELMET_NAME);

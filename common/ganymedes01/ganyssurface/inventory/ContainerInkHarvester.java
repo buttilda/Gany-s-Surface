@@ -1,5 +1,7 @@
 package ganymedes01.ganyssurface.inventory;
 
+import ganymedes01.ganyssurface.inventory.slots.FoodSlot;
+import ganymedes01.ganyssurface.inventory.slots.InvalidSlot;
 import ganymedes01.ganyssurface.tileentities.TileEntityInkHarvester;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

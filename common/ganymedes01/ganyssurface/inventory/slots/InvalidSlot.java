@@ -1,4 +1,4 @@
-package ganymedes01.ganyssurface.inventory;
+package ganymedes01.ganyssurface.inventory.slots;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -11,9 +11,9 @@ import net.minecraft.item.ItemStack;
  * 
  */
 
-public class CoalBlockSlot extends Slot {
+public class InvalidSlot extends Slot {
 
-	public CoalBlockSlot(IInventory inventory, int slot, int posX, int posY) {
+	public InvalidSlot(IInventory inventory, int slot, int posX, int posY) {
 		super(inventory, slot, posX, posY);
 	}
 

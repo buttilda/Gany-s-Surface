@@ -1,8 +1,9 @@
-package ganymedes01.ganyssurface.inventory;
+package ganymedes01.ganyssurface.inventory.slots;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.IPlantable;
 
 /**
  * Gany's Surface
@@ -11,14 +12,14 @@ import net.minecraft.item.ItemStack;
  * 
  */
 
-public class InvalidSlot extends Slot {
+public class SeedSlot extends Slot {
 
-	public InvalidSlot(IInventory inventory, int slot, int posX, int posY) {
+	public SeedSlot(IInventory inventory, int slot, int posX, int posY) {
 		super(inventory, slot, posX, posY);
 	}
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		return false;
+		return stack.getItem() instanceof IPlantable;
 	}
 }

@@ -16,8 +16,8 @@ import java.io.IOException;
 
 public class PacketWorkTable extends CustomPacket {
 
-	public int x, y, z;
-	public int[] itemID, metaData, stackSize;
+	private int x, y, z;
+	private int[] itemID, metaData, stackSize;
 
 	public PacketWorkTable() {
 		super(PacketTypeHandler.WORK_TABLE);

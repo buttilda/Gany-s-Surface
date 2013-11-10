@@ -14,21 +14,21 @@ import java.io.IOException;
  * 
  */
 
-public class PacketPlanter extends CustomPacket {
+public class PacketMarket extends CustomPacket {
 
 	private int x, y, z;
-	private float armExtension;
+	private String owner;
 
-	public PacketPlanter() {
-		super(PacketTypeHandler.PLANTER);
+	public PacketMarket() {
+		super(PacketTypeHandler.MARKET);
 	}
 
-	public PacketPlanter(int x, int y, int z, float armExtension) {
-		super(PacketTypeHandler.PLANTER);
+	public PacketMarket(int x, int y, int z, String owner) {
+		super(PacketTypeHandler.MARKET);
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.armExtension = armExtension;
+		this.owner = owner;
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class PacketPlanter extends CustomPacket {
 		data.writeInt(x);
 		data.writeInt(y);
 		data.writeInt(z);
-		data.writeFloat(armExtension);
+		data.writeUTF(owner);
 	}
 
 	@Override
@@ -44,11 +44,11 @@ public class PacketPlanter extends CustomPacket {
 		x = data.readInt();
 		y = data.readInt();
 		z = data.readInt();
-		armExtension = data.readFloat();
+		owner = data.readUTF();
 	}
 
 	@Override
 	public void execute() {
-		GanysSurface.proxy.handlePlanterPacket(x, y, z, armExtension);
+		GanysSurface.proxy.handleMarketPacket(x, y, z, owner);
 	}
 }

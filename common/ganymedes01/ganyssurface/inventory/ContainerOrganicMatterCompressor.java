@@ -1,5 +1,8 @@
 package ganymedes01.ganyssurface.inventory;
 
+import ganymedes01.ganyssurface.inventory.slots.CoalBlockSlot;
+import ganymedes01.ganyssurface.inventory.slots.CoalSlot;
+import ganymedes01.ganyssurface.inventory.slots.OrganicMatterSlot;
 import ganymedes01.ganyssurface.recipes.OrganicMatterRegistry;
 import ganymedes01.ganyssurface.tileentities.TileEntityOrganicMatterCompressor;
 import net.minecraft.entity.player.EntityPlayer;

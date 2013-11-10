@@ -16,6 +16,7 @@ import ganymedes01.ganyssurface.lib.ParticleEffectsID;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
+import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.client.Minecraft;
@@ -95,6 +96,17 @@ public class ClientProxy extends CommonProxy {
 			if (tileEntity != null)
 				if (tileEntity instanceof TileEntityPlanter)
 					((TileEntityPlanter) tileEntity).setArmExtension(armExtension);
+		}
+	}
+
+	@Override
+	public void handleMarketPacket(int x, int y, int z, String owner) {
+		World world = FMLClientHandler.instance().getClient().theWorld;
+		if (world != null) {
+			TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
+			if (tileEntity != null)
+				if (tileEntity instanceof TileEntityMarket)
+					((TileEntityMarket) tileEntity).setOwner(owner);
 		}
 	}
 

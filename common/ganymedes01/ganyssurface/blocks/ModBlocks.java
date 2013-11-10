@@ -38,6 +38,7 @@ public class ModBlocks {
 	public static Block lantern;
 	public static Block inkHarvester;
 	public static Block slimeBlock;
+	public static Block market;
 
 	public static void init() {
 		camelliaCrop = new CamelliaCrop();
@@ -61,6 +62,7 @@ public class ModBlocks {
 		lantern = new Lantern();
 		inkHarvester = new InkHarvester();
 		slimeBlock = new SlimeBlock();
+		market = new Market();
 
 		registerNames();
 		registerHarvestLevel();
@@ -89,6 +91,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(lantern, Strings.LANTERN_NAME);
 		GameRegistry.registerBlock(inkHarvester, Strings.INK_HARVESTER_NAME);
 		GameRegistry.registerBlock(slimeBlock, Strings.SLIME_BLOCK_NAME);
+		GameRegistry.registerBlock(market, Strings.MARKET_NAME);
 	}
 
 	private static void registerHarvestLevel() {

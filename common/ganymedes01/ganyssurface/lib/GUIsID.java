@@ -14,4 +14,6 @@ public class GUIsID {
 	public static final int ORGANIC_MATTER_COMPRESSOR = 2;
 	public static final int PLANTER = 3;
 	public static final int INK_HARVESTER = 4;
+	public static final int MARKET_PRIVATE = 5;
+	public static final int MARKET_PUBLIC = 6;
 }

@@ -51,6 +51,7 @@ tile.ganyssurface.planter.name=Planter
 tile.ganyssurface.lantern.name=Lantern
 tile.ganyssurface.inkHarvester.name=Ink Harvester
 tile.ganyssurface.slimeBlock.name=Slime Block
+tile.ganyssurface.market.name=Market
 
 # GUI localizations
 container.ganyssurface:blockDetector=Block Detector
@@ -61,9 +62,14 @@ container.ganyssurface:organicMatterCompressor=Organic Matter Compressor
 container.ganyssurface:itemDisplay=Item Display
 container.ganyssurface:planter=Planter
 container.ganyssurface:inkHarvester=Ink Harvester
+container.ganyssurface:market=Market
 
 matter=Matter:
 squidFood=Food:
+profit=Profit:
+forSale=For Sale:
+offer=Offer:
+price=Price:
 
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface

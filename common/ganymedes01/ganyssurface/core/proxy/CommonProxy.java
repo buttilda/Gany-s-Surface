@@ -3,6 +3,8 @@ package ganymedes01.ganyssurface.core.proxy;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiInkHarvester;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiMarketPrivate;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiMarketPublic;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPlanter;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
@@ -11,6 +13,8 @@ import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.inventory.ContainerBlockDetector;
 import ganymedes01.ganyssurface.inventory.ContainerInkHarvester;
+import ganymedes01.ganyssurface.inventory.ContainerMarketPrivate;
+import ganymedes01.ganyssurface.inventory.ContainerMarketPublic;
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
 import ganymedes01.ganyssurface.inventory.ContainerPlanter;
 import ganymedes01.ganyssurface.inventory.ContainerWorkTable;
@@ -23,6 +27,7 @@ import ganymedes01.ganyssurface.tileentities.TileEntityCubicSensoringDislocator;
 import ganymedes01.ganyssurface.tileentities.TileEntityDislocator;
 import ganymedes01.ganyssurface.tileentities.TileEntityInkHarvester;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
+import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
 import ganymedes01.ganyssurface.tileentities.TileEntityOrganicMatterCompressor;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityRainDetector;
@@ -56,6 +61,7 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityChestPropellant.class, Utils.getUnlocalizedName(Strings.CHEST_PROPELLANT_NAME));
 		GameRegistry.registerTileEntity(TileEntityPlanter.class, Utils.getUnlocalizedName(Strings.PLANTER_NAME));
 		GameRegistry.registerTileEntity(TileEntityInkHarvester.class, Utils.getUnlocalizedName(Strings.INK_HARVESTER_NAME));
+		GameRegistry.registerTileEntity(TileEntityMarket.class, Utils.getUnlocalizedName(Strings.MARKET_NAME));
 	}
 
 	public void registerEntities() {
@@ -86,6 +92,10 @@ public class CommonProxy implements IGuiHandler {
 
 	}
 
+	public void handleMarketPacket(int x, int y, int z, String owner) {
+
+	}
+
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
@@ -105,6 +115,12 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.INK_HARVESTER:
 				TileEntityInkHarvester tileHarvester = (TileEntityInkHarvester) tile;
 				return new ContainerInkHarvester(player.inventory, tileHarvester);
+			case GUIsID.MARKET_PUBLIC:
+				TileEntityMarket tileMarketPublic = (TileEntityMarket) tile;
+				return new ContainerMarketPublic(player.inventory, tileMarketPublic, player.username);
+			case GUIsID.MARKET_PRIVATE:
+				TileEntityMarket tileMarketPrivate = (TileEntityMarket) tile;
+				return new ContainerMarketPrivate(player.inventory, tileMarketPrivate);
 		}
 		return null;
 	}
@@ -128,6 +144,12 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.INK_HARVESTER:
 				TileEntityInkHarvester tileHarvester = (TileEntityInkHarvester) tile;
 				return new GuiInkHarvester(player.inventory, tileHarvester);
+			case GUIsID.MARKET_PUBLIC:
+				TileEntityMarket tileMarketPublic = (TileEntityMarket) tile;
+				return new GuiMarketPublic(player.inventory, tileMarketPublic, player.username);
+			case GUIsID.MARKET_PRIVATE:
+				TileEntityMarket tileMarketPrivate = (TileEntityMarket) tile;
+				return new GuiMarketPrivate(player.inventory, tileMarketPrivate);
 		}
 		return null;
 	}

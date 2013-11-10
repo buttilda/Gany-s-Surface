@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
+import ganymedes01.ganyssurface.inventory.slots.WorkTableResultSlot;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
