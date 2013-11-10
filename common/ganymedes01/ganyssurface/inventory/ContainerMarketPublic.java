@@ -2,6 +2,8 @@ package ganymedes01.ganyssurface.inventory;
 
 import ganymedes01.ganyssurface.inventory.slots.FixSlot;
 import ganymedes01.ganyssurface.inventory.slots.GhostSlot;
+import ganymedes01.ganyssurface.inventory.slots.PaymentSlot;
+import ganymedes01.ganyssurface.inventory.slots.RetrievalSlot;
 import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -33,6 +35,12 @@ public class ContainerMarketPublic extends Container {
 			addSlotToContainer(new FixSlot(tile, TileEntityMarket.OFFER_TWO, 126, 47));
 		}
 
+		addSlotToContainer(new PaymentSlot(tile, TileEntityMarket.PAYMENT_ONE, 62, 18, getSlot(0), this));
+		addSlotToContainer(new RetrievalSlot(tile, TileEntityMarket.RETRIEVE_ONE, 62, 47, getSlot(0), getSlot(1), getSlot(4), 1));
+
+		addSlotToContainer(new PaymentSlot(tile, TileEntityMarket.PAYMENT_TWO, 149, 18, getSlot(2), this));
+		addSlotToContainer(new RetrievalSlot(tile, TileEntityMarket.RETRIEVE_TWO, 149, 47, getSlot(2), getSlot(3), getSlot(6), 2));
+
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++)
 				addSlotToContainer(new Slot(inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
@@ -52,7 +60,8 @@ public class ContainerMarketPublic extends Container {
 				((GhostSlot) slot).interact(heldStack.copy(), mouseButton != 0);
 
 			return heldStack;
-		}
+		} else if (slot instanceof PaymentSlot)
+			slot.onSlotChanged();
 		return super.slotClick(slotNum, mouseButton, modifier, player);
 	}
 
@@ -64,5 +73,13 @@ public class ContainerMarketPublic extends Container {
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
 		return true;
+	}
+
+	public void updateRetrievalSlots() {
+		RetrievalSlot slotOne = (RetrievalSlot) getSlot(5);
+		RetrievalSlot slotTwo = (RetrievalSlot) getSlot(7);
+
+		slotOne.update();
+		slotTwo.update();
 	}
 }

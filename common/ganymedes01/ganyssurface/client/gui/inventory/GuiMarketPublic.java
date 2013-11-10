@@ -35,11 +35,13 @@ public class GuiMarketPublic extends GuiGanysSurface {
 		fontRenderer.drawString(price, 36 - fontRenderer.getStringWidth(price), 22, BLACK);
 		String offer = StatCollector.translateToLocal("offer");
 		fontRenderer.drawString(offer, 36 - fontRenderer.getStringWidth(offer), 51, BLACK);
+		fontRenderer.drawString("x" + market.getQuantityOfferONE(), 36 - fontRenderer.getStringWidth(offer), 60, BLACK);
 
 		price = StatCollector.translateToLocal("price");
 		fontRenderer.drawString(price, 87 + 36 - fontRenderer.getStringWidth(price), 22, BLACK);
 		offer = StatCollector.translateToLocal("offer");
 		fontRenderer.drawString(offer, 87 + 36 - fontRenderer.getStringWidth(offer), 51, BLACK);
+		fontRenderer.drawString("x" + market.getQuantityOfferTWO(), 87 + 36 - fontRenderer.getStringWidth(offer), 60, BLACK);
 
 		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
 	}

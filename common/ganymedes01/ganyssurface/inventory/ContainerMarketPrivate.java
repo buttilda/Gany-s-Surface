@@ -36,7 +36,31 @@ public class ContainerMarketPrivate extends Container {
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
-		return null;
+		ItemStack itemstack = null;
+		Slot slot = (Slot) inventorySlots.get(slotIndex);
+
+		if (slot != null && slot.getHasStack()) {
+			ItemStack stack = slot.getStack();
+			itemstack = stack.copy();
+
+			if (slotIndex < 24) {
+				if (!mergeItemStack(stack, 24, 45, true))
+					return null;
+			} else if (!mergeItemStack(stack, 0, 12, false))
+				return null;
+
+			if (stack.stackSize == 0)
+				slot.putStack((ItemStack) null);
+			else
+				slot.onSlotChanged();
+
+			if (stack.stackSize == itemstack.stackSize)
+				return null;
+
+			slot.onPickupFromSlot(player, stack);
+		}
+
+		return itemstack;
 	}
 
 	@Override

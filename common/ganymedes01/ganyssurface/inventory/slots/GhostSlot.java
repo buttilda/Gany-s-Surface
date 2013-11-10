@@ -31,11 +31,16 @@ public class GhostSlot extends Slot {
 				ghostStack.stackSize -= stack.stackSize;
 				if (ghostStack.stackSize <= 0)
 					inventory.setInventorySlotContents(slotIndex, null);
-			} else
+			} else {
 				ghostStack.stackSize += stack.stackSize;
-			//				if (ghostStack.stackSize > ghostStack.getMaxStackSize())
-			//					ghostStack.stackSize = ghostStack.getMaxStackSize();
-		} else if (!rightClick)
+				if (ghostStack.stackSize > ghostStack.getMaxStackSize())
+					ghostStack.stackSize = ghostStack.getMaxStackSize();
+			}
+		} else if (rightClick) {
+			ItemStack copy = stack.copy();
+			copy.stackSize = 1;
+			inventory.setInventorySlotContents(slotIndex, copy);
+		} else
 			inventory.setInventorySlotContents(slotIndex, stack);
 		onSlotChanged();
 	}

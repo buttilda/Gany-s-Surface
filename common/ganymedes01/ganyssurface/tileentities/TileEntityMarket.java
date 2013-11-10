@@ -1,11 +1,17 @@
 package ganymedes01.ganyssurface.tileentities;
 
+import ganymedes01.ganyssurface.core.utils.ItemStackMap;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.PacketTypeHandler;
 import ganymedes01.ganyssurface.network.packet.PacketMarket;
+import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.packet.Packet;
+import net.minecraftforge.common.ForgeDirection;
+import buildcraft.api.transport.IPipeConnection;
+import buildcraft.api.transport.IPipeTile.PipeType;
 
 /**
  * Gany's Surface
@@ -14,7 +20,7 @@ import net.minecraft.network.packet.Packet;
  * 
  */
 
-public class TileEntityMarket extends GanysInventory {
+public class TileEntityMarket extends GanysInventory implements ISidedInventory, IPipeConnection {
 
 	private String owner = null;
 
@@ -24,42 +30,15 @@ public class TileEntityMarket extends GanysInventory {
 	public static final int PRICE_ONE = 26;
 	public static final int PRICE_TWO = 27;
 
-	public TileEntityMarket() {
-		super(28, Strings.MARKET_NAME);
-	}
+	public static final int PAYMENT_ONE = 28;
+	public static final int PAYMENT_TWO = 29;
 
-//	@Override
-//	public ItemStack getStackInSlot(int slot) {
-//		switch (slot) {
-//			case OFFER_ONE:
-//				return null;
-//			case OFFER_TWO:
-//				return null;
-//			case PRICE_ONE:
-//				return null;
-//			case PRICE_TWO:
-//				return null;
-//			default:
-//				return super.getStackInSlot(slot);
-//		}
-//	}
-//
-//	@Override
-//	public void setInventorySlotContents(int slot, ItemStack stack) {
-//		switch (slot) {
-//			case OFFER_ONE:
-//				break;
-//			case OFFER_TWO:
-//				break;
-//			case PRICE_ONE:
-//				break;
-//			case PRICE_TWO:
-//				break;
-//			default:
-//				super.setInventorySlotContents(slot, stack);
-//				break;
-//		}
-//	}
+	public static final int RETRIEVE_ONE = 30;
+	public static final int RETRIEVE_TWO = 31;
+
+	public TileEntityMarket() {
+		super(32, Strings.MARKET_NAME);
+	}
 
 	public boolean isOwner(String username) {
 		if (owner == null || username == null)
@@ -74,6 +53,46 @@ public class TileEntityMarket extends GanysInventory {
 
 	public void setOwner(String owner) {
 		this.owner = owner;
+	}
+
+	private int getOfferQuantity(int offer) {
+		if (inventory[offer] == null)
+			return 0;
+
+		int count = 0;
+		for (int i = 0; i < 12; i++)
+			if (ItemStackMap.areItemsEqual(inventory[i], inventory[offer]))
+				count += inventory[i].stackSize;
+		return count / inventory[offer].stackSize;
+	}
+
+	public int getQuantityOfferONE() {
+		return getOfferQuantity(OFFER_ONE);
+	}
+
+	public int getQuantityOfferTWO() {
+		return getOfferQuantity(OFFER_TWO);
+	}
+
+	public void makePayment(ItemStack stack) {
+		for (int i = 12; i < 24; i++)
+			if (inventory[i] == null) {
+				inventory[i] = stack;
+				return;
+			} else if (ItemStackMap.areItemsEqual(inventory[i], stack))
+				if (inventory[i].stackSize + stack.stackSize <= inventory[i].getMaxStackSize()) {
+					inventory[i].stackSize += stack.stackSize;
+					stack = null;
+					return;
+				} else {
+					inventory[i].stackSize += stack.stackSize;
+					stack.stackSize = inventory[i].stackSize - inventory[i].getMaxStackSize();
+					inventory[i].stackSize = inventory[i].getMaxStackSize();
+					continue;
+				}
+
+		if (stack != null && stack.stackSize > 0)
+			Utils.dropStack(worldObj, xCoord, yCoord, zCoord, stack);
 	}
 
 	@Override
@@ -91,5 +110,25 @@ public class TileEntityMarket extends GanysInventory {
 	public void writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
 		data.setString("owner", owner);
+	}
+
+	@Override
+	public int[] getAccessibleSlotsFromSide(int side) {
+		return new int[] {};
+	}
+
+	@Override
+	public boolean canInsertItem(int slot, ItemStack stack, int side) {
+		return false;
+	}
+
+	@Override
+	public boolean canExtractItem(int slot, ItemStack stack, int side) {
+		return false;
+	}
+
+	@Override
+	public ConnectOverride overridePipeConnection(PipeType type, ForgeDirection with) {
+		return ConnectOverride.DISCONNECT;
 	}
 }
