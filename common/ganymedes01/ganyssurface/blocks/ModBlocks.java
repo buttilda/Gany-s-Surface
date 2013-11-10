@@ -91,7 +91,8 @@ public class ModBlocks {
 		GameRegistry.registerBlock(lantern, Strings.LANTERN_NAME);
 		GameRegistry.registerBlock(inkHarvester, Strings.INK_HARVESTER_NAME);
 		GameRegistry.registerBlock(slimeBlock, Strings.SLIME_BLOCK_NAME);
-		GameRegistry.registerBlock(market, Strings.MARKET_NAME);
+		if (GanysSurface.enableMarket)
+			GameRegistry.registerBlock(market, Strings.MARKET_NAME);
 	}
 
 	private static void registerHarvestLevel() {
