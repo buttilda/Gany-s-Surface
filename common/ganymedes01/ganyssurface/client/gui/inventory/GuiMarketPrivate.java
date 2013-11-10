@@ -10,6 +10,9 @@ import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 /**
  * Gany's Surface
  * 
@@ -17,6 +20,7 @@ import org.lwjgl.opengl.GL11;
  * 
  */
 
+@SideOnly(Side.CLIENT)
 public class GuiMarketPrivate extends GuiGanysSurface {
 
 	private final TileEntityMarket market;

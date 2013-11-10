@@ -32,7 +32,7 @@ public class Market extends BlockContainer {
 
 	protected Market() {
 		super(ModIDs.MARKET_ID, Material.cloth);
-		setHardness(1.0F);
+		setBlockUnbreakable();
 		setStepSound(soundMetalFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.MARKET_NAME));
@@ -42,7 +42,7 @@ public class Market extends BlockContainer {
 	public float getPlayerRelativeBlockHardness(EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
 		if (tile != null && tile instanceof TileEntityMarket)
-			return ((TileEntityMarket) tile).isOwner(player.username) ? 1.0F / blockHardness / 30.0F : -1.0F;
+			return ((TileEntityMarket) tile).isOwner(player.username) ? 1.0F / 30.0F : -1.0F;
 		return super.getPlayerRelativeBlockHardness(player, world, x, y, z);
 	}
 

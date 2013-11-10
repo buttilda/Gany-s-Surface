@@ -20,7 +20,11 @@ import net.minecraft.item.ItemStack;
 
 public class ContainerMarketPublic extends Container {
 
+	private final TileEntityMarket market;
+
 	public ContainerMarketPublic(InventoryPlayer inventory, TileEntityMarket tile, String username) {
+		market = tile;
+
 		if (tile.isOwner(username)) {
 			addSlotToContainer(new GhostSlot(tile, TileEntityMarket.PRICE_ONE, 39, 18));
 			addSlotToContainer(new GhostSlot(tile, TileEntityMarket.OFFER_ONE, 39, 47));
@@ -47,6 +51,14 @@ public class ContainerMarketPublic extends Container {
 
 		for (int i = 0; i < 9; i++)
 			addSlotToContainer(new Slot(inventory, i, 8 + i * 18, 142));
+
+		// Hacky and lazy
+		for (int i = 0; i < TileEntityMarket.PRICE_ONE; i++)
+			addSlotToContainer(new Slot(tile, i, -300, -300));
+	}
+
+	public int getCount(int num) {
+		return num == 1 ? market.getQuantityOfferONE() : market.getQuantityOfferTWO();
 	}
 
 	@Override
@@ -67,7 +79,37 @@ public class ContainerMarketPublic extends Container {
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
-		return null;
+		ItemStack itemstack = null;
+		Slot slot = (Slot) inventorySlots.get(slotIndex);
+
+		if (slot != null && slot.getHasStack()) {
+			ItemStack stack = slot.getStack();
+			itemstack = stack.copy();
+
+			if (slotIndex > 7) {
+				if (((Slot) inventorySlots.get(4)).isItemValid(itemstack)) {
+					if (!mergeItemStack(stack, 4, 5, true))
+						return null;
+				} else if (((Slot) inventorySlots.get(6)).isItemValid(itemstack))
+					if (!mergeItemStack(stack, 6, 7, true))
+						return null;
+			} else if (slotIndex >= 4 && slotIndex <= 7)
+				if (!mergeItemStack(stack, 8, inventorySlots.size() - TileEntityMarket.PRICE_ONE, true))
+					return null;
+
+			if (stack.stackSize == 0)
+				slot.putStack((ItemStack) null);
+			else
+				slot.onSlotChanged();
+
+			if (stack.stackSize == itemstack.stackSize)
+				return null;
+
+			slot.onPickupFromSlot(player, stack);
+
+		}
+
+		return itemstack;
 	}
 
 	@Override

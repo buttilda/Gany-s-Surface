@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumToolMaterial;
@@ -16,6 +17,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.crafting.CrucibleRecipe;
+import thaumcraft.api.crafting.InfusionEnchantmentRecipe;
 import thaumcraft.api.crafting.InfusionRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.crafting.ShapelessArcaneRecipe;
@@ -189,6 +191,23 @@ public class ThaumcraftApi {
     }
 	
 	/**
+	 * @param research the research key required for this recipe to work. Leave blank if it will work without research
+	 * @param enchantment the enchantment that will be applied to the item
+	 * @param instability a number that represents the N in 1000 chance for the infusion altar to spawn an
+	 * 		  instability effect each second while the crafting is in progress
+	 * @param aspects the essentia cost per aspect. 
+	 * @param recipe An array of items required to craft this. Input itemstacks are NBT sensitive. 
+	 * 				Infusion crafting components are automatically "fuzzy" and the oredict will be checked for possible matches.
+	 * 
+	 */
+	public static InfusionEnchantmentRecipe addInfusionEnchantmentRecipe(String research, Enchantment enchantment, int instability, AspectList aspects, ItemStack[] recipe)
+    {
+		InfusionEnchantmentRecipe r= new InfusionEnchantmentRecipe(research, enchantment, instability, aspects, recipe);
+        craftingRecipes.add(r);
+		return r;
+    }
+	
+	/**
 	 * @param stack the recipe result
 	 * @return the recipe
 	 */
@@ -268,7 +287,7 @@ public class ThaumcraftApi {
 	
 	//ASPECTS////////////////////////////////////////
 	
-	public static Map<List,AspectList> objectTags = new HashMap<List,AspectList>();
+	public static ConcurrentHashMap<List,AspectList> objectTags = new ConcurrentHashMap<List,AspectList>();
 	
 	/**
 	 * Checks to see if the passed item/block already has aspects associated with it.
@@ -301,6 +320,7 @@ public class ThaumcraftApi {
 	 * @param aspects A ObjectTags object of the associated aspects
 	 */
 	public static void registerObjectTag(int id, int meta, AspectList aspects) {
+		if (aspects==null) aspects=new AspectList();
 		objectTags.put(Arrays.asList(id,meta), aspects);
 	}	
 	
@@ -312,6 +332,7 @@ public class ThaumcraftApi {
 	 * @param aspects A ObjectTags object of the associated aspects
 	 */
 	public static void registerObjectTag(int id, int[] meta, AspectList aspects) {
+		if (aspects==null) aspects=new AspectList();
 		objectTags.put(Arrays.asList(id,meta), aspects);
 	}
 	
@@ -321,6 +342,7 @@ public class ThaumcraftApi {
 	 * @param aspects A ObjectTags object of the associated aspects
 	 */
 	public static void registerObjectTag(String oreDict, AspectList aspects) {
+		if (aspects==null) aspects=new AspectList();
 		ArrayList<ItemStack> ores = OreDictionary.getOres(oreDict);
 		if (ores!=null && ores.size()>0) {
 			for (ItemStack ore:ores) {

@@ -26,6 +26,7 @@ public class ItemFocusBasic extends Item  implements IWandFocus {
         super(i);
         maxStackSize = 1;
         canRepair=false;
+        this.setMaxDamage(1);
     }
 	
 	public Icon icon;
@@ -40,7 +41,12 @@ public class ItemFocusBasic extends Item  implements IWandFocus {
 	public boolean isItemTool(ItemStack par1ItemStack)
     {
         return true;
-    }
+    }	
+
+	@Override
+	public boolean isDamageable() {
+		return true;
+	}
 
 	@Override
 	public void addInformation(ItemStack stack,EntityPlayer player, List list, boolean par4) {

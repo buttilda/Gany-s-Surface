@@ -44,7 +44,7 @@ public class ContainerMarketPrivate extends Container {
 			itemstack = stack.copy();
 
 			if (slotIndex < 24) {
-				if (!mergeItemStack(stack, 24, 45, true))
+				if (!mergeItemStack(stack, 24, inventorySlots.size(), true))
 					return null;
 			} else if (!mergeItemStack(stack, 0, 12, false))
 				return null;

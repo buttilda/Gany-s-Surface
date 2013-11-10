@@ -13,6 +13,14 @@ public interface IAspectContainer {
 	public AspectList getAspects();
 	public void setAspects(AspectList aspects);
 	
+	
+	/**
+	 * This method is used to determine of a specific aspect can be added to this container.
+	 * @param tag 
+	 * @return true or false
+	 */
+	public boolean doesContainerAccept(Aspect tag);
+	
 	/**
 	 * This method is used to add a certain amount of an aspect to the tile entity.
 	 * @param tag 

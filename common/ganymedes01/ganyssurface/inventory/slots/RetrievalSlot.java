@@ -54,26 +54,26 @@ public class RetrievalSlot extends Slot {
 	}
 
 	private void charge(int price) {
-		while (price > 0) {
+		while (price > 0)
 			for (int i = 0; i < 12; i++) {
 				ItemStack pay = market.getStackInSlot(i);
 				if (pay == null)
 					continue;
 				else if (ItemStackMap.areItemsEqual(pay, offer.getStack())) {
 					pay.stackSize--;
+					price--;
 					if (pay.stackSize <= 0)
 						market.setInventorySlotContents(i, null);
+					break;
 				}
-
 			}
-			price--;
-		}
 	}
 
 	public void update() {
 		if (isOperational()) {
-			if (payment.getStack().stackSize >= price.getStack().stackSize)
-				putStack(offer.getStack().copy());
+			if (ItemStackMap.areItemsEqual(payment.getStack(), price.getStack()))
+				if (payment.getStack().stackSize >= price.getStack().stackSize)
+					putStack(offer.getStack().copy());
 		} else
 			putStack(null);
 	}
