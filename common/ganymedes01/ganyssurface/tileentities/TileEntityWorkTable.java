@@ -24,19 +24,11 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 
 	@Override
 	public Packet getDescriptionPacket() {
-		int[] itemID, meta, stackSize;
-		itemID = new int[inventory.length];
-		meta = new int[inventory.length];
-		stackSize = new int[inventory.length];
+		ItemStack[] stacks = new ItemStack[getSizeInventory()];
+		for (int i = 0; i < stacks.length; i++)
+			stacks[i] = inventory[i];
 
-		for (int i = 0; i < inventory.length; i++)
-			if (inventory[i] != null) {
-				itemID[i] = inventory[i].itemID;
-				meta[i] = inventory[i].getItemDamage();
-				stackSize[i] = inventory[i].stackSize;
-			}
-
-		return PacketTypeHandler.populatePacket(new PacketWorkTable(xCoord, yCoord, zCoord, itemID, meta, stackSize));
+		return PacketTypeHandler.populatePacket(new PacketWorkTable(xCoord, yCoord, zCoord, stacks));
 	}
 
 	@Override

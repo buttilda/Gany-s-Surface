@@ -7,6 +7,9 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.Packet;
+
 /**
  * Gany's Surface
  * 
@@ -17,20 +20,18 @@ import java.io.IOException;
 public class PacketWorkTable extends CustomPacket {
 
 	private int x, y, z;
-	private int[] itemID, metaData, stackSize;
+	private ItemStack[] inventory;
 
 	public PacketWorkTable() {
 		super(PacketTypeHandler.WORK_TABLE);
 	}
 
-	public PacketWorkTable(int x, int y, int z, int[] itemID, int[] metaData, int[] stackSize) {
+	public PacketWorkTable(int x, int y, int z, ItemStack[] inventory) {
 		super(PacketTypeHandler.WORK_TABLE);
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.itemID = itemID;
-		this.metaData = metaData;
-		this.stackSize = stackSize;
+		this.inventory = inventory;
 	}
 
 	@Override
@@ -38,11 +39,8 @@ public class PacketWorkTable extends CustomPacket {
 		data.writeInt(x);
 		data.writeInt(y);
 		data.writeInt(z);
-		for (int i = 0; i < 9; i++) {
-			data.writeInt(itemID[i]);
-			data.writeInt(metaData[i]);
-			data.writeInt(stackSize[i]);
-		}
+		for (int i = 0; i < inventory.length; i++)
+			Packet.writeItemStack(inventory[i], data);
 	}
 
 	@Override
@@ -50,18 +48,13 @@ public class PacketWorkTable extends CustomPacket {
 		x = data.readInt();
 		y = data.readInt();
 		z = data.readInt();
-		itemID = new int[9];
-		metaData = new int[9];
-		stackSize = new int[9];
-		for (int i = 0; i < 9; i++) {
-			itemID[i] = data.readInt();
-			metaData[i] = data.readInt();
-			stackSize[i] = data.readInt();
-		}
+		inventory = new ItemStack[9];
+		for (int i = 0; i < inventory.length; i++)
+			inventory[i] = Packet.readItemStack(data);
 	}
 
 	@Override
 	public void execute() {
-		GanysSurface.proxy.handleWorkTablePacket(x, y, z, itemID, metaData, stackSize);
+		GanysSurface.proxy.handleWorkTablePacket(x, y, z, inventory);
 	}
 }

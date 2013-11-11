@@ -97,7 +97,11 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 
 	@Override
 	public Packet getDescriptionPacket() {
-		return PacketTypeHandler.populatePacket(new PacketMarket(xCoord, yCoord, zCoord, owner));
+		ItemStack[] stacks = new ItemStack[getSizeInventory()];
+		for (int i = 0; i < stacks.length; i++)
+			stacks[i] = inventory[i];
+
+		return PacketTypeHandler.populatePacket(new PacketMarket(xCoord, yCoord, zCoord, owner, stacks));
 	}
 
 	@Override

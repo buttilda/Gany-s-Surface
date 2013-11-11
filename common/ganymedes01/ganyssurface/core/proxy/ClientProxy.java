@@ -63,29 +63,22 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public void handleItemDisplayPacket(int x, int y, int z, int itemID, int meta, int stackSize) {
+	public void handleItemDisplayPacket(int x, int y, int z, ItemStack stack) {
 		World world = FMLClientHandler.instance().getClient().theWorld;
 		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
 		if (tileEntity != null)
-			if (tileEntity instanceof TileEntityItemDisplay) {
-				ItemStack stack = null;
-				if (stackSize > 0)
-					stack = new ItemStack(itemID, stackSize, meta);
+			if (tileEntity instanceof TileEntityItemDisplay)
 				((TileEntityItemDisplay) tileEntity).addItemToDisplay(stack);
-			}
 	}
 
 	@Override
-	public void handleWorkTablePacket(int x, int y, int z, int[] itemID, int[] meta, int[] stackSize) {
+	public void handleWorkTablePacket(int x, int y, int z, ItemStack[] inventory) {
 		World world = FMLClientHandler.instance().getClient().theWorld;
 		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-		if (tileEntity != null)
+		if (tileEntity != null && inventory != null)
 			if (tileEntity instanceof TileEntityWorkTable)
-				for (int i = 0; i < 9; i++)
-					if (stackSize[i] > 0) {
-						ItemStack stack = new ItemStack(itemID[i], stackSize[i], meta[i]);
-						((TileEntityWorkTable) tileEntity).addToCraftMatrix(i, stack);
-					}
+				for (int i = 0; i < inventory.length; i++)
+					((TileEntityWorkTable) tileEntity).addToCraftMatrix(i, inventory[i]);
 	}
 
 	@Override
@@ -100,13 +93,16 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public void handleMarketPacket(int x, int y, int z, String owner) {
+	public void handleMarketPacket(int x, int y, int z, String owner, ItemStack[] inventory) {
 		World world = FMLClientHandler.instance().getClient().theWorld;
 		if (world != null) {
 			TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
 			if (tileEntity != null)
-				if (tileEntity instanceof TileEntityMarket)
+				if (tileEntity instanceof TileEntityMarket) {
+					for (int i = 0; i < inventory.length; i++)
+						((TileEntityMarket) tileEntity).setInventorySlotContents(i, inventory[i]);
 					((TileEntityMarket) tileEntity).setOwner(owner);
+				}
 		}
 	}
 

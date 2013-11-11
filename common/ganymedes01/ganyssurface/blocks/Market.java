@@ -28,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Market extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
-	private Icon blockOn, blockOff;
+	private Icon blockTopBottom, blockSides;
 
 	protected Market() {
 		super(ModIDs.MARKET_ID, Material.cloth);
@@ -75,17 +75,14 @@ public class Market extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int meta) {
-		if (meta == 0)
-			return blockOff;
-		else
-			return blockOn;
+		return side <= 1 ? blockTopBottom : blockSides;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockOn = reg.registerIcon(Utils.getBlockTexture(Strings.MARKET_NAME, true) + "on");
-		blockOff = reg.registerIcon(Utils.getBlockTexture(Strings.MARKET_NAME, true) + "off");
+		blockTopBottom = reg.registerIcon(Utils.getBlockTexture(Strings.MARKET_NAME, true) + "topBottom");
+		blockSides = reg.registerIcon(Utils.getBlockTexture(Strings.MARKET_NAME, true) + "sides");
 	}
 
 	@Override

@@ -51,10 +51,6 @@ public class ContainerMarketPublic extends Container {
 
 		for (int i = 0; i < 9; i++)
 			addSlotToContainer(new Slot(inventory, i, 8 + i * 18, 142));
-
-		// Hacky and lazy
-		for (int i = 0; i < TileEntityMarket.PRICE_ONE; i++)
-			addSlotToContainer(new Slot(tile, i, -300, -300));
 	}
 
 	public int getCount(int num) {

@@ -34,6 +34,7 @@ import ganymedes01.ganyssurface.tileentities.TileEntityRainDetector;
 import ganymedes01.ganyssurface.tileentities.TileEntitySensoringDislocator;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -76,11 +77,11 @@ public class CommonProxy implements IGuiHandler {
 
 	}
 
-	public void handleItemDisplayPacket(int x, int y, int z, int itemID, int meta, int stacksize) {
+	public void handleItemDisplayPacket(int x, int y, int z, ItemStack stack) {
 
 	}
 
-	public void handleWorkTablePacket(int x, int y, int z, int[] itemID, int[] meta, int[] stackSize) {
+	public void handleWorkTablePacket(int x, int y, int z, ItemStack[] inventory) {
 
 	}
 
@@ -92,7 +93,7 @@ public class CommonProxy implements IGuiHandler {
 
 	}
 
-	public void handleMarketPacket(int x, int y, int z, String owner) {
+	public void handleMarketPacket(int x, int y, int z, String owner, ItemStack[] inventory) {
 
 	}
 
