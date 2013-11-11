@@ -34,7 +34,7 @@ public class Market extends BlockContainer {
 		super(ModIDs.MARKET_ID, Material.cloth);
 		setBlockUnbreakable();
 		setStepSound(soundMetalFootstep);
-		setCreativeTab(GanysSurface.surfaceTab);
+		// setCreativeTab(GanysSurface.surfaceTab); TODO Add in when done
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.MARKET_NAME));
 	}
 
