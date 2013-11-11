@@ -90,18 +90,20 @@ public class HorseSpawner extends Item {
 			newType = new Random().nextInt(3);
 
 			try {
-				Field field = EntityHorse.class.getDeclaredField("horseJumpStrength");
-				field.setAccessible(true);
-				Attribute horseJumpStrength = (Attribute) field.get(null);
+				Attribute horseJumpStrength = null;
+				for (Field field : EntityHorse.class.getDeclaredFields()) {
+					field.setAccessible(true);
+					if (field.get(null) instanceof Attribute) {
+						horseJumpStrength = (Attribute) field.get(null);
+						break;
+					}
+				}
 
 				horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(30D);
 				horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.3375D);
 				horse.getEntityAttribute(horseJumpStrength).setAttribute(1.0D);
 
-			} catch (SecurityException e) {
-			} catch (NoSuchFieldException e) {
-			} catch (IllegalArgumentException e) {
-			} catch (IllegalAccessException e) {
+			} catch (Exception e) {
 			}
 		}
 		horse.setHorseType(newType);
