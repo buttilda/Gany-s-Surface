@@ -21,6 +21,6 @@ public class EntityBatPoop extends EntityPoop {
 
 	@Override
 	protected void spawnParticle() {
-		GanysSurface.proxy.handleParticleEffects(worldObj, posX, posY, posZ, ParticleEffectsID.BAT_POOP);
+		GanysSurface.proxy.handleParticleEffects(worldObj, posX, posY, posZ, ParticleEffectsID.POOP, 0);
 	}
 }

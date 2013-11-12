@@ -89,7 +89,7 @@ public class CommonProxy implements IGuiHandler {
 
 	}
 
-	public void handleParticleEffects(World world, double x, double y, double z, int id) {
+	public void handleParticleEffects(World world, double x, double y, double z, int id, int meta) {
 
 	}
 

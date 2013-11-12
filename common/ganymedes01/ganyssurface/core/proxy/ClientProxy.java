@@ -20,9 +20,12 @@ import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
+import net.minecraft.block.BlockColored;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityBreakingFX;
+import net.minecraft.client.particle.EntityReddustFX;
 import net.minecraft.client.renderer.entity.RenderSnowball;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -109,14 +112,47 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public void handleParticleEffects(World world, double x, double y, double z, int id) {
+	public void handleParticleEffects(World world, double x, double y, double z, int id, int meta) {
 		switch (id) {
 			case ParticleEffectsID.POOP:
-				Minecraft.getMinecraft().effectRenderer.addEffect(new EntityBreakingFX(world, x, y, z, ModItems.poop, 0));
+				Minecraft.getMinecraft().effectRenderer.addEffect(new EntityBreakingFX(world, x, y, z, ModItems.poop, meta));
 				break;
-			case ParticleEffectsID.BAT_POOP:
-				Minecraft.getMinecraft().effectRenderer.addEffect(new EntityBreakingFX(world, x, y, z, ModItems.poop, 1));
+			case ParticleEffectsID.COLOURED_REDSTONE:
+				EntityReddustFX fx = getParticle(world, x, y, z, meta);
+				if (fx != null)
+					Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 				break;
+
 		}
+	}
+
+	private EntityReddustFX getParticle(World world, double x, double y, double z, int colourIndex) {
+		int meta = world.getBlockMetadata((int) x, (int) y, (int) z);
+		if (meta > 0) {
+			double d0 = x + 0.5D + (world.rand.nextFloat() - 0.5D) * 0.2D;
+			double d1 = y + 0.0625F;
+			double d2 = z + 0.5D + (world.rand.nextFloat() - 0.5D) * 0.2D;
+			float f = meta / 15.0F;
+			float f1 = f * 0.6F + 0.4F;
+
+			if (meta == 0)
+				f1 = 0.0F;
+
+			float f2 = f * f * 0.7F - 0.5F;
+			float f3 = f * f * 0.6F - 0.7F;
+
+			if (f2 < 0.0F)
+				f2 = 0.0F;
+
+			if (f3 < 0.0F)
+				f3 = 0.0F;
+
+			EntityReddustFX fx = new EntityReddustFX(world, d0, d1, d2, f1, f2, f3);
+			float[] colour = EntitySheep.fleeceColorTable[BlockColored.getBlockFromDye(colourIndex)];
+			fx.setRBGColorF(colour[0], colour[1], colour[2]);
+
+			return fx;
+		}
+		return null;
 	}
 }

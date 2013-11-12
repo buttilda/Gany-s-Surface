@@ -35,6 +35,6 @@ public class EntityPoop extends EntityThrowable {
 	}
 
 	protected void spawnParticle() {
-		GanysSurface.proxy.handleParticleEffects(worldObj, posX, posY, posZ, ParticleEffectsID.POOP);
+		GanysSurface.proxy.handleParticleEffects(worldObj, posX, posY, posZ, ParticleEffectsID.POOP, 1);
 	}
 }

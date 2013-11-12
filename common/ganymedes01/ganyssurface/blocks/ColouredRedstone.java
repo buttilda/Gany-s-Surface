@@ -1,6 +1,8 @@
 package ganymedes01.ganyssurface.blocks;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.items.ModItems;
+import ganymedes01.ganyssurface.lib.ParticleEffectsID;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 
 import java.util.ArrayList;
@@ -38,11 +40,11 @@ public class ColouredRedstone extends Block {
 	private Set blocksNeedingUpdate = new HashSet();
 	@SideOnly(Side.CLIENT)
 	public Icon cross, line, cross_overlay, line_overlay;
-	private final int index;
+	private final int colourIndex;
 
 	public ColouredRedstone(int id, int index) {
 		super(id, Material.circuits);
-		this.index = index;
+		this.colourIndex = index;
 		disableStats();
 		setTextureName("redstone_dust");
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
@@ -323,7 +325,7 @@ public class ColouredRedstone extends Block {
 	@Override
 	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
 		ArrayList<ItemStack> list = new ArrayList<ItemStack>();
-		list.add(new ItemStack(ModItems.colouredRedstone, 1, index));
+		list.add(new ItemStack(ModItems.colouredRedstone, 1, colourIndex));
 		return list;
 	}
 
@@ -356,7 +358,7 @@ public class ColouredRedstone extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int colorMultiplier(IBlockAccess world, int x, int y, int z) {
-		return ModItems.colouredRedstone.getColorFromItemStack(new ItemStack(ModItems.colouredRedstone, 1, index), 0);
+		return ModItems.colouredRedstone.getColorFromItemStack(new ItemStack(ModItems.colouredRedstone, 1, colourIndex), 0);
 	}
 
 	@Override
@@ -372,28 +374,6 @@ public class ColouredRedstone extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random rand) {
-		int meta = world.getBlockMetadata(x, y, z);
-
-		if (meta > 0) {
-			double d0 = x + 0.5D + (rand.nextFloat() - 0.5D) * 0.2D;
-			double d1 = y + 0.0625F;
-			double d2 = z + 0.5D + (rand.nextFloat() - 0.5D) * 0.2D;
-			float f = meta / 15.0F;
-			float f1 = f * 0.6F + 0.4F;
-
-			if (meta == 0)
-				f1 = 0.0F;
-
-			float f2 = f * f * 0.7F - 0.5F;
-			float f3 = f * f * 0.6F - 0.7F;
-
-			if (f2 < 0.0F)
-				f2 = 0.0F;
-
-			if (f3 < 0.0F)
-				f3 = 0.0F;
-
-			world.spawnParticle("reddust", d0, d1, d2, f1, f2, f3);
-		}
+		GanysSurface.proxy.handleParticleEffects(world, x, y, z, ParticleEffectsID.COLOURED_REDSTONE, colourIndex);
 	}
 }

@@ -10,5 +10,5 @@ package ganymedes01.ganyssurface.lib;
 public class ParticleEffectsID {
 
 	public static final int POOP = 0;
-	public static final int BAT_POOP = 1;
+	public static final int COLOURED_REDSTONE = 1;
 }
