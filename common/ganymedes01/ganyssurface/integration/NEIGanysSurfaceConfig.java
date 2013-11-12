@@ -27,7 +27,8 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		API.hideItem(ModItems.mankyCupOfTea.itemID);
 		API.hideItem(ModBlocks.market.blockID); // TODO Add in when done
 		for (Block wire : ModBlocks.colouredRedstone)
-			API.hideItem(wire.blockID);
+			if (wire != null)
+				API.hideItem(wire.blockID);
 	}
 
 	@Override

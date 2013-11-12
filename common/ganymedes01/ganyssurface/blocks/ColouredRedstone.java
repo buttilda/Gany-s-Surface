@@ -352,7 +352,7 @@ public class ColouredRedstone extends Block {
 
 	@Override
 	public int getRenderType() {
-		return RenderIDs.COLOURED_WIRE;
+		return RenderIDs.COLOURED_REDSTONE;
 	}
 
 	@Override

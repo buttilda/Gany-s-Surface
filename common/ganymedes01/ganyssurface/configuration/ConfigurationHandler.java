@@ -62,7 +62,8 @@ public class ConfigurationHandler {
 			ModIDs.SLIME_BLOCK_ID = configBlock(Strings.SLIME_BLOCK_NAME);
 			ModIDs.MARKET_ID = configBlock(Strings.MARKET_NAME);
 			for (int i = 0; i < 16; i++)
-				ModIDs.COLOURED_STONE_ID[i] = configBlock(Strings.COLOURED_REDSTONE_NAME[i]);
+				if (i != 1) // Skip Red
+					ModIDs.COLOURED_STONE_ID[i] = configBlock(Strings.COLOURED_REDSTONE_NAME[i]);
 
 			// Armour
 			ModIDs.WOODEN_HELMET_ID = configItem(Strings.WOODEN_HELMET_NAME);

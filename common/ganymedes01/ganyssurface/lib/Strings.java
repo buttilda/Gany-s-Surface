@@ -37,7 +37,8 @@ public class Strings {
 	public static final String[] COLOURED_REDSTONE_NAME = new String[16];
 	static {
 		for (int i = 0; i < 16; i++)
-			COLOURED_REDSTONE_NAME[i] = "colouredRedstone" + ColouredRedstone.COLOURS[i].toUpperCase();
+			if (i != 1) // Skip Red
+				COLOURED_REDSTONE_NAME[i] = "colouredRedstone" + ColouredRedstone.COLOURS[i].toUpperCase();
 	}
 
 	// Item names

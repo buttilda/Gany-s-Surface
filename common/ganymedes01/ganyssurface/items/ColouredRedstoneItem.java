@@ -60,7 +60,7 @@ public class ColouredRedstoneItem extends Item {
 			if (side == 2)
 				z--;
 			if (side == 3)
-				++z;
+				z++;
 			if (side == 4)
 				x--;
 			if (side == 5)
@@ -86,6 +86,7 @@ public class ColouredRedstoneItem extends Item {
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(int itemID, CreativeTabs tabs, List list) {
 		for (int i = 0; i < ColouredRedstone.COLOURS.length; i++)
-			list.add(new ItemStack(itemID, 1, i));
+			if (i != 1) // Skip Red
+				list.add(new ItemStack(itemID, 1, i));
 	}
 }

@@ -66,7 +66,8 @@ public class ModBlocks {
 		slimeBlock = new SlimeBlock();
 		market = new Market();
 		for (int i = 0; i < 16; i++)
-			colouredRedstone[i] = new ColouredRedstone(ModIDs.COLOURED_STONE_ID[i], i).setUnlocalizedName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_NAME[i]));
+			if (i != 1) // Skip Red
+				colouredRedstone[i] = new ColouredRedstone(ModIDs.COLOURED_STONE_ID[i], i).setUnlocalizedName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_NAME[i]));
 
 		registerNames();
 		registerHarvestLevel();
@@ -98,7 +99,8 @@ public class ModBlocks {
 		if (GanysSurface.enableMarket)
 			GameRegistry.registerBlock(market, Strings.MARKET_NAME);
 		for (int i = 0; i < 16; i++)
-			GameRegistry.registerBlock(colouredRedstone[i], Strings.COLOURED_REDSTONE_NAME[i]);
+			if (i != 1) // Skip Red
+				GameRegistry.registerBlock(colouredRedstone[i], Strings.COLOURED_REDSTONE_NAME[i]);
 	}
 
 	private static void registerHarvestLevel() {

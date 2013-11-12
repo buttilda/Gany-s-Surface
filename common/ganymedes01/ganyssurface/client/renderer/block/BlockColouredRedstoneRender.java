@@ -19,7 +19,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 
 @SideOnly(Side.CLIENT)
-public class BlockColouredWireRender implements ISimpleBlockRenderingHandler {
+public class BlockColouredRedstoneRender implements ISimpleBlockRenderingHandler {
 
 	private RenderBlocks renderer = new RenderBlocks();
 
@@ -28,7 +28,7 @@ public class BlockColouredWireRender implements ISimpleBlockRenderingHandler {
 	}
 
 	private float getColourFromMeta(int meta) {
-		return 0.5F + meta / 7.5F;
+		return 0.5F + meta / 30.0F;
 	}
 
 	@Override
@@ -56,8 +56,6 @@ public class BlockColouredWireRender implements ISimpleBlockRenderingHandler {
 		float b = B * getColourFromMeta(meta);
 
 		tessellator.setColorOpaque_F(r, g, b);
-		double d0 = 0.015625D;
-		double d1 = 0.015625D;
 		boolean flag = ColouredRedstone.isPowerProviderOrWire(world, x - 1, y, z, 1, wire.blockID) || !world.isBlockNormalCube(x - 1, y, z) && ColouredRedstone.isPowerProviderOrWire(world, x - 1, y - 1, z, -1, wire.blockID);
 		boolean flag1 = ColouredRedstone.isPowerProviderOrWire(world, x + 1, y, z, 3, wire.blockID) || !world.isBlockNormalCube(x + 1, y, z) && ColouredRedstone.isPowerProviderOrWire(world, x + 1, y - 1, z, -1, wire.blockID);
 		boolean flag2 = ColouredRedstone.isPowerProviderOrWire(world, x, y, z - 1, 2, wire.blockID) || !world.isBlockNormalCube(x, y, z - 1) && ColouredRedstone.isPowerProviderOrWire(world, x, y - 1, z - 1, -1, wire.blockID);
@@ -93,29 +91,22 @@ public class BlockColouredWireRender implements ISimpleBlockRenderingHandler {
 			int i2 = 16;
 			boolean flag4 = true;
 
-			if (!flag)
+			if (!flag) {
 				f5 += 0.3125F;
-
-			if (!flag)
 				j1 += 5;
-
-			if (!flag1)
+			}
+			if (!flag1) {
 				f6 -= 0.3125F;
-
-			if (!flag1)
 				l1 -= 5;
-
-			if (!flag2)
+			}
+			if (!flag2) {
 				f7 += 0.3125F;
-
-			if (!flag2)
 				k1 += 5;
-
-			if (!flag3)
+			}
+			if (!flag3) {
 				f8 -= 0.3125F;
-
-			if (!flag3)
 				i2 -= 5;
+			}
 
 			tessellator.addVertexWithUV(f6, y + 0.015625D, f8, cross.getInterpolatedU(l1), cross.getInterpolatedV(i2));
 			tessellator.addVertexWithUV(f6, y + 0.015625D, f7, cross.getInterpolatedU(l1), cross.getInterpolatedV(k1));
@@ -213,6 +204,6 @@ public class BlockColouredWireRender implements ISimpleBlockRenderingHandler {
 
 	@Override
 	public int getRenderId() {
-		return RenderIDs.COLOURED_WIRE;
+		return RenderIDs.COLOURED_REDSTONE;
 	}
 }

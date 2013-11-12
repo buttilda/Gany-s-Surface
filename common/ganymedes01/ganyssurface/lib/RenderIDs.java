@@ -13,6 +13,6 @@ public class RenderIDs {
 
 	public static final int LANTERN = RenderingRegistry.getNextAvailableRenderId();
 	public static final int SLIME_BLOCK = RenderingRegistry.getNextAvailableRenderId();
-	public static final int COLOURED_WIRE = RenderingRegistry.getNextAvailableRenderId();
+	public static final int COLOURED_REDSTONE = RenderingRegistry.getNextAvailableRenderId();
 
 }
