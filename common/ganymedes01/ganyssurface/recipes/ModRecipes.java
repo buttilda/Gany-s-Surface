@@ -61,7 +61,6 @@ public class ModRecipes {
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Item.clay, 8), "xxx", "yzy", "xxx", 'x', Block.gravel, 'y', Block.dirt, 'z', Item.bucketWater);
 		GameRegistry.addRecipe(new ItemStack(Item.nameTag), " y ", "x  ", 'x', Item.paper, 'y', Item.silk);
-		GameRegistry.addRecipe(new ItemStack(Block.web), "x x", " y ", "x x", 'y', Item.slimeBall, 'x', Item.silk);
 		GameRegistry.addShapelessRecipe(new ItemStack(Item.slimeBall, 8), ModBlocks.slimeBlock);
 	}
 
@@ -92,12 +91,14 @@ public class ModRecipes {
 			if (i != 1)
 				GameRegistry.addRecipe(new ItemStack(ModBlocks.colouredRedstoneBlock, 1, i), "xxx", "xxx", "xxx", 'x', new ItemStack(ModItems.colouredRedstone, 1, i));
 
+		// Vanilla
+		GameRegistry.addRecipe(new ItemStack(Block.web), "x x", " y ", "x x", 'y', Item.slimeBall, 'x', Item.silk);
 	}
 
 	private static void registerOreDictionary() {
 		OreDictionary.registerOre("ganysSurfaceColouredRedstone", new ItemStack(Item.redstone));
 		for (int i = 0; i < 16; i++)
-			if (i != 1) // Skip Red
+			if (i != 1)
 				OreDictionary.registerOre("ganysSurfaceColouredRedstone", new ItemStack(ModItems.colouredRedstone, 1, i));
 	}
 }
