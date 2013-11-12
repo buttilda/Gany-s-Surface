@@ -1,4 +1,4 @@
-package ganymedes01.ganyssurface.items;
+package ganymedes01.ganyssurface.items.block;
 
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;

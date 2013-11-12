@@ -40,6 +40,7 @@ public class Strings {
 			if (i != 1) // Skip Red
 				COLOURED_REDSTONE_NAME[i] = "colouredRedstone" + ColouredRedstone.COLOURS[i].toUpperCase();
 	}
+	public static final String COLOURED_REDSTONE_BLOCK_NAME = "colouredRedstoneBlock";
 
 	// Item names
 	public static final String ROT_NAME = "rot";

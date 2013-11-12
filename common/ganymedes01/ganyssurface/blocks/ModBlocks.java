@@ -2,7 +2,8 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.items.ItemChocolateCake;
+import ganymedes01.ganyssurface.items.block.ItemChocolateCake;
+import ganymedes01.ganyssurface.items.block.ItemColouredRedstoneBlock;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
@@ -41,6 +42,7 @@ public class ModBlocks {
 	public static Block slimeBlock;
 	public static Block market;
 	public static Block[] colouredRedstone = new Block[16];
+	public static Block colouredRedstoneBlock;
 
 	public static void init() {
 		camelliaCrop = new CamelliaCrop();
@@ -67,7 +69,8 @@ public class ModBlocks {
 		market = new Market();
 		for (int i = 0; i < 16; i++)
 			if (i != 1) // Skip Red
-				colouredRedstone[i] = new ColouredRedstone(ModIDs.COLOURED_STONE_ID[i], i).setUnlocalizedName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_NAME[i]));
+				colouredRedstone[i] = new ColouredRedstone(ModIDs.COLOURED_REDSTONE_ID[i], i).setUnlocalizedName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_NAME[i]));
+		colouredRedstoneBlock = new ColouredRedstoneBlock();
 
 		registerNames();
 		registerHarvestLevel();
@@ -101,6 +104,7 @@ public class ModBlocks {
 		for (int i = 0; i < 16; i++)
 			if (i != 1) // Skip Red
 				GameRegistry.registerBlock(colouredRedstone[i], Strings.COLOURED_REDSTONE_NAME[i]);
+		GameRegistry.registerBlock(colouredRedstoneBlock, ItemColouredRedstoneBlock.class, Strings.COLOURED_REDSTONE_BLOCK_NAME);
 	}
 
 	private static void registerHarvestLevel() {

@@ -88,6 +88,10 @@ public class ModRecipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.lantern), Block.glass, Block.torchWood);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.inkHarvester), "xzy", "yax", "xwy", 'x', new ItemStack(Item.dyePowder), 'y', new ItemStack(Item.dyePowder, 1, 4), 'z', Item.redstone, 'w', Item.swordGold, 'a', Block.blockIron);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.slimeBlock), "xxx", "xyx", "xxx", 'x', Item.slimeBall, 'y', Item.bucketWater);
+		for (int i = 0; i < dyes.length; i++)
+			if (i != 1)
+				GameRegistry.addRecipe(new ItemStack(ModBlocks.colouredRedstoneBlock, 1, i), "xxx", "xxx", "xxx", 'x', new ItemStack(ModItems.colouredRedstone, 1, i));
+
 	}
 
 	private static void registerOreDictionary() {

@@ -85,6 +85,22 @@ tile.ganyssurface.colouredRedstoneMAGENTA.name=Magentastone
 tile.ganyssurface.colouredRedstoneORANGE.name=Orangestone
 tile.ganyssurface.colouredRedstoneWHITE.name=Whitestone
 
+tile.ganyssurface.colouredRedstoneBlockBLACK.name=Blackstone Block
+tile.ganyssurface.colouredRedstoneBlockGREEN.name=Greenstone Block
+tile.ganyssurface.colouredRedstoneBlockBROWN.name=Brownstone Block
+tile.ganyssurface.colouredRedstoneBlockBLUE.name=Bluestone Block
+tile.ganyssurface.colouredRedstoneBlockPURPLE.name=Purplestone Block
+tile.ganyssurface.colouredRedstoneBlockCYAN.name=Cyanstone Block
+tile.ganyssurface.colouredRedstoneBlockLIGHTGREY.name=Lightgreystone Block
+tile.ganyssurface.colouredRedstoneBlockGREY.name=Greystone Block
+tile.ganyssurface.colouredRedstoneBlockPINK.name=Pinkstone Block
+tile.ganyssurface.colouredRedstoneBlockLIME.name=Limestone Block
+tile.ganyssurface.colouredRedstoneBlockYELLOW.name=Yellowstone Block
+tile.ganyssurface.colouredRedstoneBlockLIGHTBLUE.name=Lightbluestone Block
+tile.ganyssurface.colouredRedstoneBlockMAGENTA.name=Magentastone Block
+tile.ganyssurface.colouredRedstoneBlockORANGE.name=Orangestone Block
+tile.ganyssurface.colouredRedstoneBlockWHITE.name=Whitestone Block
+
 # GUI localizations
 container.ganyssurface:blockDetector=Block Detector
 container.ganyssurface:sensoringDislocator= Sensitive Dislocator
