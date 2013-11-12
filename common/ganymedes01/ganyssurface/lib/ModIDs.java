@@ -31,6 +31,7 @@ public class ModIDs {
 	public static int INK_HARVESTER_ID;
 	public static int SLIME_BLOCK_ID;
 	public static int MARKET_ID;
+	public static int[] COLOURED_STONE_ID = new int[16];
 
 	// Armour
 	public static int WOODEN_HELMET_ID;
@@ -57,6 +58,7 @@ public class ModIDs {
 	public static int HORSALYSER_ID;
 	public static int HORSE_SPAWNER_ID;
 	public static int CHARGED_CREEPER_SPAWNER_ID;
+	public static int COLOURED_REDSTONE_ITEM_ID;
 
 	// Entities
 	public static final int ENTITY_POOP_ID = 0;

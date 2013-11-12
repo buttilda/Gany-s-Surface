@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.ItemChocolateCake;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -39,6 +40,7 @@ public class ModBlocks {
 	public static Block inkHarvester;
 	public static Block slimeBlock;
 	public static Block market;
+	public static Block[] colouredRedstone = new Block[16];
 
 	public static void init() {
 		camelliaCrop = new CamelliaCrop();
@@ -63,6 +65,8 @@ public class ModBlocks {
 		inkHarvester = new InkHarvester();
 		slimeBlock = new SlimeBlock();
 		market = new Market();
+		for (int i = 0; i < 16; i++)
+			colouredRedstone[i] = new ColouredRedstone(ModIDs.COLOURED_STONE_ID[i], i).setUnlocalizedName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_NAME[i]));
 
 		registerNames();
 		registerHarvestLevel();
@@ -93,6 +97,8 @@ public class ModBlocks {
 		GameRegistry.registerBlock(slimeBlock, Strings.SLIME_BLOCK_NAME);
 		if (GanysSurface.enableMarket)
 			GameRegistry.registerBlock(market, Strings.MARKET_NAME);
+		for (int i = 0; i < 16; i++)
+			GameRegistry.registerBlock(colouredRedstone[i], Strings.COLOURED_REDSTONE_NAME[i]);
 	}
 
 	private static void registerHarvestLevel() {

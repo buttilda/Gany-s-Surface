@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
+import net.minecraft.block.Block;
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
 import codechicken.nei.recipe.DefaultOverlayHandler;
@@ -25,6 +26,8 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		API.hideItem(ModBlocks.camelliaCrop.blockID);
 		API.hideItem(ModItems.mankyCupOfTea.itemID);
 		API.hideItem(ModBlocks.market.blockID); // TODO Add in when done
+		for (Block wire : ModBlocks.colouredRedstone)
+			API.hideItem(wire.blockID);
 	}
 
 	@Override

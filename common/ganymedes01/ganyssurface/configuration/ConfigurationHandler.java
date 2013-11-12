@@ -61,6 +61,8 @@ public class ConfigurationHandler {
 			ModIDs.INK_HARVESTER_ID = configBlock(Strings.INK_HARVESTER_NAME);
 			ModIDs.SLIME_BLOCK_ID = configBlock(Strings.SLIME_BLOCK_NAME);
 			ModIDs.MARKET_ID = configBlock(Strings.MARKET_NAME);
+			for (int i = 0; i < 16; i++)
+				ModIDs.COLOURED_STONE_ID[i] = configBlock(Strings.COLOURED_REDSTONE_NAME[i]);
 
 			// Armour
 			ModIDs.WOODEN_HELMET_ID = configItem(Strings.WOODEN_HELMET_NAME);
@@ -87,6 +89,7 @@ public class ConfigurationHandler {
 			ModIDs.HORSALYSER_ID = configItem(Strings.HORSALYSER_NAME);
 			ModIDs.HORSE_SPAWNER_ID = configItem(Strings.HORSE_SPAWNER_NAME);
 			ModIDs.CHARGED_CREEPER_SPAWNER_ID = configItem(Strings.CHARGED_CREEPER_SPAWNER_NAME);
+			ModIDs.COLOURED_REDSTONE_ITEM_ID = configItem(Strings.COLOURED_REDSTONE_ITEM_NAME);
 
 			// Others
 			GanysSurface.mobsShouldPoop = configuration.get("Others", Strings.MOBS_SHOULD_POOP, true).getBoolean(true);

@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.core.proxy;
 
 import ganymedes01.ganyssurface.blocks.ModBlocks;
+import ganymedes01.ganyssurface.client.renderer.block.BlockColouredWireRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockLanternRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockSlimeBlockRender;
 import ganymedes01.ganyssurface.client.renderer.item.ItemItemDisplayRenderer;
@@ -60,6 +61,7 @@ public class ClientProxy extends CommonProxy {
 
 		RenderingRegistry.registerBlockHandler(RenderIDs.LANTERN, new BlockLanternRender());
 		RenderingRegistry.registerBlockHandler(RenderIDs.SLIME_BLOCK, new BlockSlimeBlockRender());
+		RenderingRegistry.registerBlockHandler(RenderIDs.COLOURED_WIRE, new BlockColouredWireRender());
 	}
 
 	@Override

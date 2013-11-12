@@ -1,5 +1,7 @@
 package ganymedes01.ganyssurface.lib;
 
+import ganymedes01.ganyssurface.blocks.ColouredRedstone;
+
 /**
  * Gany's Surface
  * 
@@ -32,6 +34,11 @@ public class Strings {
 	public static final String INK_HARVESTER_NAME = "inkHarvester";
 	public static final String SLIME_BLOCK_NAME = "slimeBlock";
 	public static final String MARKET_NAME = "market";
+	public static final String[] COLOURED_REDSTONE_NAME = new String[16];
+	static {
+		for (int i = 0; i < 16; i++)
+			COLOURED_REDSTONE_NAME[i] = "colouredRedstone" + ColouredRedstone.COLOURS[i].toUpperCase();
+	}
 
 	// Item names
 	public static final String ROT_NAME = "rot";
@@ -53,6 +60,7 @@ public class Strings {
 	public static final String HORSALYSER_NAME = "horsalyser";
 	public static final String HORSE_SPAWNER_NAME = "horseSpawner";
 	public static final String CHARGED_CREEPER_SPAWNER_NAME = "chargedCreeperSpawner";
+	public static final String COLOURED_REDSTONE_ITEM_NAME = "colouredRedstone";
 
 	// Armour names
 	public static final String WOODEN_HELMET_NAME = "woodenHelmet";
