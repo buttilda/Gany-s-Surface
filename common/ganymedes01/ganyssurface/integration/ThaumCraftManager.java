@@ -24,6 +24,7 @@ public class ThaumCraftManager {
 		addAspectsToItem(ModItems.mankyCupOfTea.itemID, new Aspect[] { Aspect.POISON, Aspect.DEATH }, new int[] { 2, 1 });
 		addAspectsToItem(ModItems.horseSpawner.itemID, new Aspect[] { Aspect.SOUL, Aspect.TRAP }, new int[] { 1, 1 });
 		addAspectsToItem(ModItems.chargedCreeperSpawner.itemID, new Aspect[] { Aspect.SOUL, Aspect.TRAP }, new int[] { 1, 1 });
+		addAspectsToItem(ModItems.colouredRedstone.itemID, new Aspect[] { Aspect.ENERGY, Aspect.MECHANISM }, new int[] { 1, 1 });
 	}
 
 	private static void addAspectsToItem(int id, Aspect[] aspects, int[] amounts) {
