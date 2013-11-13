@@ -44,7 +44,7 @@ public class ColouredRedstone extends Block {
 
 	public ColouredRedstone(int id, int index) {
 		super(id, Material.circuits);
-		this.colourIndex = index;
+		colourIndex = index;
 		disableStats();
 		setTextureName("redstone_dust");
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
@@ -333,6 +333,11 @@ public class ColouredRedstone extends Block {
 	@SideOnly(Side.CLIENT)
 	public int idPicked(World world, int x, int y, int z) {
 		return ModItems.colouredRedstone.itemID;
+	}
+
+	@Override
+	public int damageDropped(int meta) {
+		return colourIndex;
 	}
 
 	@Override
