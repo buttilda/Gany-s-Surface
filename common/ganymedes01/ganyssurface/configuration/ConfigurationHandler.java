@@ -93,6 +93,11 @@ public class ConfigurationHandler {
 			ModIDs.CHARGED_CREEPER_SPAWNER_ID = configItem(Strings.CHARGED_CREEPER_SPAWNER_NAME);
 			ModIDs.COLOURED_REDSTONE_ITEM_ID = configItem(Strings.COLOURED_REDSTONE_ITEM_NAME);
 
+			ModIDs.DYED_IRON_HELMET_ID = configItem(Strings.DYED_IRON_HELMET_NAME);
+			ModIDs.DYED_IRON_CHESTPLATE_ID = configItem(Strings.DYED_IRON_CHESTPLATE_NAME);
+			ModIDs.DYED_IRON_LEGGINGS_ID = configItem(Strings.DYED_IRON_LEGGINGS_NAME);
+			ModIDs.DYED_IRON_BOOTS_ID = configItem(Strings.DYED_IRON_BOOTS_NAME);
+
 			// Others
 			GanysSurface.mobsShouldPoop = configuration.get("Others", Strings.MOBS_SHOULD_POOP, true).getBoolean(true);
 			GanysSurface.activateChocolate = configuration.get("Others", Strings.ACTIVATE_CHOCOLATE, true).getBoolean(true);

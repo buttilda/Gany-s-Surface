@@ -29,6 +29,10 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		for (Block wire : ModBlocks.colouredRedstone)
 			if (wire != null)
 				API.hideItem(wire.blockID);
+		API.hideItem(ModItems.dyedIronHelmet.itemID);
+		API.hideItem(ModItems.dyedIronChestplate.itemID);
+		API.hideItem(ModItems.dyedIronLeggings.itemID);
+		API.hideItem(ModItems.dyedIronBoots.itemID);
 	}
 
 	@Override

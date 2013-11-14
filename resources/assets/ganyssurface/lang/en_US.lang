@@ -4,6 +4,11 @@ item.ganyssurface.woodenChestplate.name=Wooden Chestplate
 item.ganyssurface.woodenLeggings.name=Wooden Leggings
 item.ganyssurface.woodenBoots.name=Wooden Boots
 
+item.ganyssurface.dyedIronHelmet.name=Iron Helmet
+item.ganyssurface.dyedIronChestplate.name=Iron Chestplate
+item.ganyssurface.dyedIronLeggings.name=Iron Leggings
+item.ganyssurface.dyedIronBoots.name=Iron Boots
+
 item.ganyssurface.rot.name=Rot
 item.ganyssurface.camelliaSeeds.name=Camellia Seeds
 item.ganyssurface.teaLeaves.name=Tea Leaves

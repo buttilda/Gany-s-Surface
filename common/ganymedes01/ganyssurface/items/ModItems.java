@@ -50,12 +50,22 @@ public class ModItems {
 	public static Item woodenLeggings;
 	public static Item woodenBoots;
 
+	public static Item dyedIronHelmet;
+	public static Item dyedIronChestplate;
+	public static Item dyedIronLeggings;
+	public static Item dyedIronBoots;
+
 	public static void init() {
 		// Armour
 		woodenHelmet = new WoodenArmour(ModIDs.WOODEN_HELMET_ID, 0);
 		woodenChestplate = new WoodenArmour(ModIDs.WOODEN_CHESTPLATE_ID, 1);
 		woodenLeggings = new WoodenArmour(ModIDs.WOODEN_LEGGINGS_ID, 2);
 		woodenBoots = new WoodenArmour(ModIDs.WOODEN_BOOTS_ID, 3);
+
+		dyedIronHelmet = new DyedIronArmour(ModIDs.DYED_IRON_HELMET_ID, 0);
+		dyedIronChestplate = new DyedIronArmour(ModIDs.DYED_IRON_CHESTPLATE_ID, 1);
+		dyedIronLeggings = new DyedIronArmour(ModIDs.DYED_IRON_LEGGINGS_ID, 2);
+		dyedIronBoots = new DyedIronArmour(ModIDs.DYED_IRON_BOOTS_ID, 3);
 
 		// Items
 		rot = new Rot();
@@ -90,6 +100,11 @@ public class ModItems {
 		GameRegistry.registerItem(woodenChestplate, Strings.WOODEN_CHESTPLATE_NAME);
 		GameRegistry.registerItem(woodenLeggings, Strings.WOODEN_LEGGINGS_NAME);
 		GameRegistry.registerItem(woodenBoots, Strings.WOODEN_BOOTS_NAME);
+
+		GameRegistry.registerItem(dyedIronHelmet, Strings.DYED_IRON_HELMET_NAME);
+		GameRegistry.registerItem(dyedIronChestplate, Strings.DYED_IRON_CHESTPLATE_NAME);
+		GameRegistry.registerItem(dyedIronLeggings, Strings.DYED_IRON_LEGGINGS_NAME);
+		GameRegistry.registerItem(dyedIronBoots, Strings.DYED_IRON_BOOTS_NAME);
 
 		// Items
 		GameRegistry.registerItem(rot, Strings.ROT_NAME);

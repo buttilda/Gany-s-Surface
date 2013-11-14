@@ -70,6 +70,11 @@ public class Strings {
 	public static final String WOODEN_LEGGINGS_NAME = "woodenLeggings";
 	public static final String WOODEN_BOOTS_NAME = "woodenBoots";
 
+	public static final String DYED_IRON_HELMET_NAME = "dyedIronHelmet";
+	public static final String DYED_IRON_CHESTPLATE_NAME = "dyedIronChestplate";
+	public static final String DYED_IRON_LEGGINGS_NAME = "dyedIronLeggings";
+	public static final String DYED_IRON_BOOTS_NAME = "dyedIronBoots";
+
 	// Others
 	public static final String MOBS_SHOULD_POOP = "mobsShouldPoop";
 	public static final String ACTIVATE_CHOCOLATE = "activateChocolate";
