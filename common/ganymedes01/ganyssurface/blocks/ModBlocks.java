@@ -43,6 +43,7 @@ public class ModBlocks {
 	public static Block market;
 	public static Block[] colouredRedstone = new Block[16];
 	public static Block colouredRedstoneBlock;
+	public static Block dualWorkTable;
 
 	public static void init() {
 		camelliaCrop = new CamelliaCrop();
@@ -71,6 +72,7 @@ public class ModBlocks {
 			if (i != 1) // Skip Red
 				colouredRedstone[i] = new ColouredRedstone(ModIDs.COLOURED_REDSTONE_ID[i], i).setUnlocalizedName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_NAME[i]));
 		colouredRedstoneBlock = new ColouredRedstoneBlock();
+		dualWorkTable = new DualWorkTable();
 
 		registerNames();
 		registerHarvestLevel();
@@ -105,6 +107,7 @@ public class ModBlocks {
 			if (i != 1) // Skip Red
 				GameRegistry.registerBlock(colouredRedstone[i], Strings.COLOURED_REDSTONE_NAME[i]);
 		GameRegistry.registerBlock(colouredRedstoneBlock, ItemColouredRedstoneBlock.class, Strings.COLOURED_REDSTONE_BLOCK_NAME);
+		GameRegistry.registerBlock(dualWorkTable, Strings.DUAL_WORK_TABLE_NAME);
 	}
 
 	private static void registerHarvestLevel() {

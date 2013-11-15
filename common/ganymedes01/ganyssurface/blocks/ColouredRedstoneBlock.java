@@ -78,23 +78,4 @@ public class ColouredRedstoneBlock extends BlockOreStorage {
 		else
 			return 15;
 	}
-
-	//	@Override
-	//	@SideOnly(Side.CLIENT)
-	//	public Icon getIcon(int side, int meta) {
-	//		if (side == 0 || side == 1)
-	//			return blockTop[meta];
-	//		return blockSide[meta];
-	//	}
-	//
-	//	@Override
-	//	@SideOnly(Side.CLIENT)
-	//	public void registerIcons(IconRegister reg) {
-	//		blockTop = new Icon[16];
-	//		blockSide = new Icon[16];
-	//		for (int i = 0; i < blockSide.length; i++) {
-	//			blockTop[i] = reg.registerIcon(Utils.getBlockTexture(Strings.COLOURED_CHISELLED_QUARTZ_BLOCK_NAME, true) + "top_" + i);
-	//			blockSide[i] = reg.registerIcon(Utils.getBlockTexture(Strings.COLOURED_CHISELLED_QUARTZ_BLOCK_NAME, true) + i);
-	//		}
-	//	}
 }

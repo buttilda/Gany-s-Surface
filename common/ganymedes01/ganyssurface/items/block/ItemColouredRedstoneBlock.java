@@ -17,6 +17,7 @@ public class ItemColouredRedstoneBlock extends ItemBlock {
 
 	public ItemColouredRedstoneBlock(int id) {
 		super(id);
+		setHasSubtypes(true);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_BLOCK_NAME + "_item_"));
 	}
 

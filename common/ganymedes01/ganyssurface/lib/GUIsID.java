@@ -16,4 +16,5 @@ public class GUIsID {
 	public static final int INK_HARVESTER = 4;
 	public static final int MARKET_PRIVATE = 5;
 	public static final int MARKET_PUBLIC = 6;
+	public static final int DUAL_WORK_TABLE = 7;
 }

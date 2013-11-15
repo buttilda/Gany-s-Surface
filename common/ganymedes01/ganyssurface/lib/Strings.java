@@ -41,6 +41,7 @@ public class Strings {
 				COLOURED_REDSTONE_NAME[i] = "colouredRedstone" + ColouredRedstone.COLOURS[i].toUpperCase();
 	}
 	public static final String COLOURED_REDSTONE_BLOCK_NAME = "colouredRedstoneBlock";
+	public static final String DUAL_WORK_TABLE_NAME = "dualWorkTable";
 
 	// Item names
 	public static final String ROT_NAME = "rot";

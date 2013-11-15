@@ -19,7 +19,18 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 	public InventoryCrafting invtCraftMatrix;
 
 	public TileEntityWorkTable() {
-		super(9, null);
+		this(9);
+	}
+
+	public TileEntityWorkTable(int size) {
+		super(size, null);
+	}
+
+	public void addToCraftMatrix(int slot, ItemStack stack) {
+		inventory[slot] = stack;
+
+		if (stack != null && stack.stackSize > getInventoryStackLimit())
+			stack.stackSize = getInventoryStackLimit();
 	}
 
 	@Override
@@ -64,13 +75,6 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 			return itemstack;
 		} else
 			return null;
-	}
-
-	public void addToCraftMatrix(int slot, ItemStack stack) {
-		inventory[slot] = stack;
-
-		if (stack != null && stack.stackSize > getInventoryStackLimit())
-			stack.stackSize = getInventoryStackLimit();
 	}
 
 	@Override

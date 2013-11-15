@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.core.proxy;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiInkHarvester;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiMarketPrivate;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiMarketPublic;
@@ -12,6 +13,7 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.inventory.ContainerBlockDetector;
+import ganymedes01.ganyssurface.inventory.ContainerDualWorkTable;
 import ganymedes01.ganyssurface.inventory.ContainerInkHarvester;
 import ganymedes01.ganyssurface.inventory.ContainerMarketPrivate;
 import ganymedes01.ganyssurface.inventory.ContainerMarketPublic;
@@ -25,6 +27,7 @@ import ganymedes01.ganyssurface.tileentities.TileEntityBlockDetector;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityCubicSensoringDislocator;
 import ganymedes01.ganyssurface.tileentities.TileEntityDislocator;
+import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityInkHarvester;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
@@ -63,6 +66,7 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityPlanter.class, Utils.getUnlocalizedName(Strings.PLANTER_NAME));
 		GameRegistry.registerTileEntity(TileEntityInkHarvester.class, Utils.getUnlocalizedName(Strings.INK_HARVESTER_NAME));
 		GameRegistry.registerTileEntity(TileEntityMarket.class, Utils.getUnlocalizedName(Strings.MARKET_NAME));
+		GameRegistry.registerTileEntity(TileEntityDualWorkTable.class, Utils.getUnlocalizedName(Strings.DUAL_WORK_TABLE_NAME));
 	}
 
 	public void registerEntities() {
@@ -122,6 +126,9 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.MARKET_PRIVATE:
 				TileEntityMarket tileMarketPrivate = (TileEntityMarket) tile;
 				return new ContainerMarketPrivate(player.inventory, tileMarketPrivate);
+			case GUIsID.DUAL_WORK_TABLE:
+				TileEntityDualWorkTable tileDualWorkTable = (TileEntityDualWorkTable) tile;
+				return new ContainerDualWorkTable(player.inventory, tileDualWorkTable);
 		}
 		return null;
 	}
@@ -151,6 +158,9 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.MARKET_PRIVATE:
 				TileEntityMarket tileMarketPrivate = (TileEntityMarket) tile;
 				return new GuiMarketPrivate(player.inventory, tileMarketPrivate);
+			case GUIsID.DUAL_WORK_TABLE:
+				TileEntityDualWorkTable tileDualWorkTable = (TileEntityDualWorkTable) tile;
+				return new GuiDualWorkTable(player.inventory, tileDualWorkTable);
 		}
 		return null;
 	}

@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.inventory.slots;
 
-import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
+import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.SlotCrafting;
@@ -13,21 +13,23 @@ import net.minecraft.item.ItemStack;
  * 
  */
 
-public class WorkTableResultSlot extends SlotCrafting {
+public class DualWorkTableResultSlot extends SlotCrafting {
 
-	private TileEntityWorkTable workTable;
+	private TileEntityDualWorkTable workTable;
 	private IInventory matrix;
+	private final int startIndex;
 
-	public WorkTableResultSlot(TileEntityWorkTable tile, EntityPlayer player, IInventory matrix, IInventory result, int slotIndex, int y, int z) {
+	public DualWorkTableResultSlot(TileEntityDualWorkTable tile, EntityPlayer player, IInventory matrix, IInventory result, int slotIndex, int y, int z, int startIndex) {
 		super(player, matrix, result, slotIndex, y, z);
 		workTable = tile;
 		this.matrix = matrix;
+		this.startIndex = startIndex;
 	}
 
 	@Override
 	public void onPickupFromSlot(EntityPlayer player, ItemStack stack) {
 		super.onPickupFromSlot(player, stack);
 		for (int i = 0; i < matrix.getSizeInventory(); i++)
-			workTable.setInventorySlotContents(i, matrix.getStackInSlot(i));
+			workTable.setInventorySlotContents(startIndex + i, matrix.getStackInSlot(i));
 	}
 }

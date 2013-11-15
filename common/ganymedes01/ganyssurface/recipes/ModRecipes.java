@@ -54,9 +54,10 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModItems.horsalyser), "xyx", "xzx", "xwx", 'x', Item.leather, 'y', Item.flint, 'z', Block.thinGlass, 'w', Item.redstone);
 
 		for (int i = 0; i < dyes.length; i++)
-			if (i != 1) // Skip Red
+			if (i != 1) { // Skip Red
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.colouredRedstone, 8, i), "xxx", "xyx", "xxx", 'x', "ganysSurfaceColouredRedstone", 'y', dyes[i]));
-			else
+				GameRegistry.addShapelessRecipe(new ItemStack(ModItems.colouredRedstone, 9, i), new ItemStack(ModBlocks.colouredRedstoneBlock, 1, i));
+			} else
 				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.redstone, 8), "xxx", "xyx", "xxx", 'x', "ganysSurfaceColouredRedstone", 'y', dyes[i]));
 
 		// Vanilla
@@ -92,6 +93,7 @@ public class ModRecipes {
 			if (i != 1)
 				GameRegistry.addRecipe(new ItemStack(ModBlocks.colouredRedstoneBlock, 1, i), "xxx", "xxx", "xxx", 'x', new ItemStack(ModItems.colouredRedstone, 1, i));
 
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.dualWorkTable), "yyy", "x x", "yyy", 'x', ModBlocks.workTable, 'y', "plankWood"));
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Block.web), "x x", " y ", "x x", 'y', Item.slimeBall, 'x', Item.silk);
 	}

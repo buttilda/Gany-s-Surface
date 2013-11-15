@@ -39,6 +39,7 @@ public class PacketWorkTable extends CustomPacket {
 		data.writeInt(x);
 		data.writeInt(y);
 		data.writeInt(z);
+		data.writeInt(inventory.length);
 		for (int i = 0; i < inventory.length; i++)
 			Packet.writeItemStack(inventory[i], data);
 	}
@@ -48,7 +49,8 @@ public class PacketWorkTable extends CustomPacket {
 		x = data.readInt();
 		y = data.readInt();
 		z = data.readInt();
-		inventory = new ItemStack[9];
+
+		inventory = new ItemStack[data.readInt()];
 		for (int i = 0; i < inventory.length; i++)
 			inventory[i] = Packet.readItemStack(data);
 	}
