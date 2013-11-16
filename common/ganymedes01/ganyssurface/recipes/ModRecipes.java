@@ -103,5 +103,10 @@ public class ModRecipes {
 		for (int i = 0; i < 16; i++)
 			if (i != 1)
 				OreDictionary.registerOre("ganysSurfaceColouredRedstone", new ItemStack(ModItems.colouredRedstone, 1, i));
+
+		OreDictionary.registerOre("ganysNetherSpawnEggs", new ItemStack(ModItems.chargedCreeperSpawner));
+		OreDictionary.registerOre("ganysNetherSpawnEggs", new ItemStack(ModItems.horseSpawner, 1, 0));
+		OreDictionary.registerOre("ganysNetherSpawnEggs", new ItemStack(ModItems.horseSpawner, 1, 1));
+		OreDictionary.registerOre("ganysNetherSpawnEggs", new ItemStack(ModItems.horseSpawner, 1, 2));
 	}
 }

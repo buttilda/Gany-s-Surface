@@ -73,7 +73,7 @@ tile.ganyssurface.lantern.name=Lantern
 tile.ganyssurface.inkHarvester.name=Ink Harvester
 tile.ganyssurface.slimeBlock.name=Slime Block
 tile.ganyssurface.market.name=Market
-tile.ganyssurface.dualWorkTable=Dual Work Table
+tile.ganyssurface.dualWorkTable.name=Dual Work Table
 
 tile.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 tile.ganyssurface.colouredRedstoneGREEN.name=Greenstone

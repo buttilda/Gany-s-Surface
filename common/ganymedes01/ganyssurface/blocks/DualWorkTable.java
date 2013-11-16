@@ -42,4 +42,9 @@ public class DualWorkTable extends WorkTable {
 	public TileEntity createNewTileEntity(World world) {
 		return new TileEntityDualWorkTable();
 	}
+
+	@Override
+	public int getRenderType() {
+		return -1;
+	}
 }
