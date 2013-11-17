@@ -36,6 +36,9 @@ import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityRainDetector;
 import ganymedes01.ganyssurface.tileentities.TileEntitySensoringDislocator;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
+
+import java.util.ArrayList;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -70,11 +73,8 @@ public class CommonProxy implements IGuiHandler {
 	}
 
 	public void registerEntities() {
-		EntityRegistry.registerGlobalEntityID(EntityPoop.class, Utils.getUnlocalizedName("EntityPoop"), EntityRegistry.findGlobalUniqueEntityId());
-		EntityRegistry.registerModEntity(EntityPoop.class, Utils.getUnlocalizedName("EntityPoop"), ModIDs.ENTITY_POOP_ID, GanysSurface.instance, 64, 1, true);
-
-		EntityRegistry.registerGlobalEntityID(EntityBatPoop.class, Utils.getUnlocalizedName("EntityBatPoop"), EntityRegistry.findGlobalUniqueEntityId());
-		EntityRegistry.registerModEntity(EntityBatPoop.class, Utils.getUnlocalizedName("EntityBatPoop"), ModIDs.ENTITY_BAT_POOP_ID, GanysSurface.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityPoop.class, Utils.getUnlocalizedName(Strings.ENTITY_POOP_NAME), ModIDs.ENTITY_POOP_ID, GanysSurface.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityBatPoop.class, Utils.getUnlocalizedName(Strings.ENTITY_BAT_POOP_NAME), ModIDs.ENTITY_BAT_POOP_ID, GanysSurface.instance, 64, 1, true);
 	}
 
 	public void registerRenderers() {
@@ -97,7 +97,7 @@ public class CommonProxy implements IGuiHandler {
 
 	}
 
-	public void handleMarketPacket(int x, int y, int z, String owner, ItemStack[] inventory) {
+	public void handleMarketPacket(int x, int y, int z, String owner, ItemStack[] inventory, ArrayList<ItemStack> extraInventory) {
 
 	}
 

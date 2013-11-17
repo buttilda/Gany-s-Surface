@@ -90,7 +90,7 @@ public class ContainerMarketPublic extends Container {
 					if (!mergeItemStack(stack, 6, 7, true))
 						return null;
 			} else if (slotIndex >= 4 && slotIndex <= 7)
-				if (!mergeItemStack(stack, 8, inventorySlots.size() - TileEntityMarket.PRICE_ONE, true))
+				if (!mergeItemStack(stack, 8, inventorySlots.size(), true))
 					return null;
 
 			if (stack.stackSize == 0)

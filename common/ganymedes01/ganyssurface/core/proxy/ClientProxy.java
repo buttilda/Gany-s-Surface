@@ -21,9 +21,11 @@ import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
+
+import java.util.ArrayList;
+
 import net.minecraft.block.BlockColored;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityBreakingFX;
 import net.minecraft.client.particle.EntityReddustFX;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.passive.EntitySheep;
@@ -100,7 +102,7 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public void handleMarketPacket(int x, int y, int z, String owner, ItemStack[] inventory) {
+	public void handleMarketPacket(int x, int y, int z, String owner, ItemStack[] inventory, ArrayList<ItemStack> extraInventory) {
 		World world = FMLClientHandler.instance().getClient().theWorld;
 		if (world != null) {
 			TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
@@ -109,6 +111,7 @@ public class ClientProxy extends CommonProxy {
 					for (int i = 0; i < inventory.length; i++)
 						((TileEntityMarket) tileEntity).setInventorySlotContents(i, inventory[i]);
 					((TileEntityMarket) tileEntity).setOwner(owner);
+					((TileEntityMarket) tileEntity).setExtraInventory(extraInventory);
 				}
 		}
 	}
@@ -117,14 +120,13 @@ public class ClientProxy extends CommonProxy {
 	public void handleParticleEffects(World world, double x, double y, double z, int id, int meta) {
 		switch (id) {
 			case ParticleEffectsID.POOP:
-				Minecraft.getMinecraft().effectRenderer.addEffect(new EntityBreakingFX(world, x, y, z, ModItems.poop, meta));
+				world.spawnParticle("iconcrack_" + ModItems.poop.itemID + "_" + meta, x, y, z, (Math.random() * 2.0D - 1.0D) * 0.2D, (Math.random() * 2.0D - 1.0D) * 0.2D, (Math.random() * 2.0D - 1.0D) * 0.2D);
 				break;
 			case ParticleEffectsID.COLOURED_REDSTONE:
 				EntityReddustFX fx = getParticle(world, x, y, z, meta);
 				if (fx != null)
 					Minecraft.getMinecraft().effectRenderer.addEffect(fx);
 				break;
-
 		}
 	}
 
@@ -136,10 +138,6 @@ public class ClientProxy extends CommonProxy {
 			double d2 = z + 0.5D + (world.rand.nextFloat() - 0.5D) * 0.2D;
 			float f = meta / 15.0F;
 			float f1 = f * 0.6F + 0.4F;
-
-			if (meta == 0)
-				f1 = 0.0F;
-
 			float f2 = f * f * 0.7F - 0.5F;
 			float f3 = f * f * 0.6F - 0.7F;
 

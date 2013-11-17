@@ -35,7 +35,7 @@ public class Market extends BlockContainer {
 		setBlockUnbreakable();
 		setResistance(Float.MAX_VALUE);
 		setStepSound(soundMetalFootstep);
-		// setCreativeTab(GanysSurface.surfaceTab); TODO Add in when done
+		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.MARKET_NAME));
 	}
 
@@ -71,6 +71,23 @@ public class Market extends BlockContainer {
 			} else
 				player.openGui(GanysSurface.instance, GUIsID.MARKET_PUBLIC, world, x, y, z);
 		return true;
+	}
+
+	@Override
+	public void breakBlock(World world, int x, int y, int z, int oldID, int oldMeta) {
+		TileEntityMarket tile = (TileEntityMarket) world.getBlockTileEntity(x, y, z);
+		if (tile != null) {
+			for (int i = 0; i < TileEntityMarket.OFFER_ONE; i++) {
+				ItemStack stack = tile.getStackInSlot(i);
+				if (stack != null)
+					Utils.dropStack(world, x, y, z, stack);
+			}
+			for (ItemStack extraStack : tile.getExtraInventory())
+				Utils.dropStack(world, x, y, z, extraStack);
+
+			world.func_96440_m(x, y, z, oldID);
+		}
+		super.breakBlock(world, x, y, z, oldID, oldMeta);
 	}
 
 	@Override

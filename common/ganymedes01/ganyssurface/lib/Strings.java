@@ -76,6 +76,10 @@ public class Strings {
 	public static final String DYED_IRON_LEGGINGS_NAME = "dyedIronLeggings";
 	public static final String DYED_IRON_BOOTS_NAME = "dyedIronBoots";
 
+	// Entities
+	public static final String ENTITY_POOP_NAME = "EntityPoop";
+	public static final String ENTITY_BAT_POOP_NAME = "EntityBatPoop";
+
 	// Others
 	public static final String MOBS_SHOULD_POOP = "mobsShouldPoop";
 	public static final String ACTIVATE_CHOCOLATE = "activateChocolate";
