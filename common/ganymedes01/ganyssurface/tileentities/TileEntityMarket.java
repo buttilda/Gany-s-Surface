@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.core.utils.ItemStackMap;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.PacketTypeHandler;
 import ganymedes01.ganyssurface.network.packet.PacketMarket;
+import ganymedes01.ganyssurface.recipes.MarketSales;
 
 import java.util.ArrayList;
 
@@ -57,6 +58,7 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 
 	public void setOwner(String owner) {
 		this.owner = owner;
+		MarketSales.addMarket(this);
 	}
 
 	public void setExtraInventory(ArrayList<ItemStack> extraInventory) {
@@ -157,7 +159,6 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 				tagList.appendTag(tagCompound);
 			}
 		data.setTag("ExtraItems", tagList);
-
 	}
 
 	@Override

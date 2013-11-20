@@ -5,6 +5,7 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
+import ganymedes01.ganyssurface.recipes.MarketSales;
 import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -85,6 +86,7 @@ public class Market extends BlockContainer {
 			for (ItemStack extraStack : tile.getExtraInventory())
 				Utils.dropStack(world, x, y, z, extraStack);
 
+			MarketSales.removeMarket(tile);
 			world.func_96440_m(x, y, z, oldID);
 		}
 		super.breakBlock(world, x, y, z, oldID, oldMeta);

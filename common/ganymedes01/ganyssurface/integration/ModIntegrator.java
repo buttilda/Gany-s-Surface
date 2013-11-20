@@ -23,5 +23,9 @@ public class ModIntegrator {
 		// Equivalent Exchange 3
 		if (Loader.isModLoaded("EE3"))
 			EE3Manager.init();
+
+		// Forestry
+		if (Loader.isModLoaded("Forestry"))
+			ForestryManager.init();
 	}
 }
