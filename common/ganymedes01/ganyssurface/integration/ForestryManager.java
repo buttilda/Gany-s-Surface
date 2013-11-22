@@ -17,7 +17,6 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class ForestryManager {
 
 	public static void init() {
-		System.out.println("FORESTRY INIT");
 		FMLInterModComms.sendMessage("Forestry", "add-farmable-crop", "farmWheat@" + ModItems.camelliaSeeds.itemID + ".0." + ModBlocks.camelliaCrop.blockID + ".7");
 
 		GameRegistry.addRecipe(getItem("fertilizerCompound", 24), "xxx", "xyx", "xxx", 'x', new ItemStack(ModItems.rot, 1, 1), 'y', new ItemStack(Item.dyePowder, 1, 4));
