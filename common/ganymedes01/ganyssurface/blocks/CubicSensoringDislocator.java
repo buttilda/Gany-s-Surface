@@ -65,13 +65,15 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 
 	@Override
 	public void doBreak(World world, int x, int y, int z) {
-		TileEntityCubicSensoringDislocator tile = (TileEntityCubicSensoringDislocator) world.getBlockTileEntity(x, y, z);
-		if (tile == null)
-			return;
+		if (!world.isBlockIndirectlyGettingPowered(x, y, z)) {
+			TileEntityCubicSensoringDislocator tile = (TileEntityCubicSensoringDislocator) world.getBlockTileEntity(x, y, z);
+			if (tile == null)
+				return;
 
-		for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
-			if (tile.checkBlock(dir))
-				breakSurroundingBlock(world, x, y, z, dir);
+			for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
+				if (tile.checkBlock(dir))
+					breakSurroundingBlock(world, x, y, z, dir);
+		}
 	}
 
 	@Override

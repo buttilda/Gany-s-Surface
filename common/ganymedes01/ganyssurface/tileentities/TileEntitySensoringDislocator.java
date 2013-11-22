@@ -19,7 +19,7 @@ public class TileEntitySensoringDislocator extends TileEntityBlockDetector imple
 
 	@Override
 	public boolean checkNearbyBlocks() {
-		return checkBlock(Dislocator.getDirectionFromMetadata(worldObj.getBlockMetadata(xCoord, yCoord, zCoord)));
+		return checkBlock(Dislocator.getDirectionFromMetadata(worldObj.getBlockMetadata(xCoord, yCoord, zCoord))) && !worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord);
 	}
 
 	@Override
@@ -37,9 +37,8 @@ public class TileEntitySensoringDislocator extends TileEntityBlockDetector imple
 	@Override
 	public ConnectOverride overridePipeConnection(PipeType type, ForgeDirection side) {
 		if (type == PipeType.ITEM) {
-			int meta = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
-			if (meta == 1 && side == ForgeDirection.UP || meta == 0 && side == ForgeDirection.DOWN || meta == 2 && side == ForgeDirection.SOUTH || meta == 3 && side == ForgeDirection.NORTH || meta == 4 && side == ForgeDirection.EAST || meta == 5 && side == ForgeDirection.WEST)
-				return ConnectOverride.CONNECT;
+			ForgeDirection dir = Dislocator.getDirectionFromMetadata(worldObj.getBlockMetadata(xCoord, yCoord, zCoord));
+			return dir.getOpposite() == side ? ConnectOverride.CONNECT : ConnectOverride.DISCONNECT;
 		}
 		return ConnectOverride.DISCONNECT;
 	}
