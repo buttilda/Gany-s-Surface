@@ -32,21 +32,21 @@ item.ganyssurface.horseSpawner1.name=Spawn Skeleton Horse
 item.ganyssurface.horseSpawner2.name=Spawn Max Stats Horse
 item.ganyssurface.chargedCreeperSpawner.name=Spawn Charged Creeper
 
-item.ganyssurface.colouredRedstoneBLACK.name=Blackstone [WIP]
-item.ganyssurface.colouredRedstoneGREEN.name=Greenstone [WIP]
-item.ganyssurface.colouredRedstoneBROWN.name=Brownstone [WIP]
-item.ganyssurface.colouredRedstoneBLUE.name=Bluestone [WIP]
-item.ganyssurface.colouredRedstonePURPLE.name=Purplestone [WIP]
-item.ganyssurface.colouredRedstoneCYAN.name=Cyanstone [WIP]
-item.ganyssurface.colouredRedstoneLIGHTGREY.name=Lightgreystone [WIP]
-item.ganyssurface.colouredRedstoneGREY.name=Greystone [WIP]
-item.ganyssurface.colouredRedstonePINK.name=Pinkstone [WIP]
-item.ganyssurface.colouredRedstoneLIME.name=Limestone [WIP]
-item.ganyssurface.colouredRedstoneYELLOW.name=Yellowstone [WIP]
-item.ganyssurface.colouredRedstoneLIGHTBLUE.name=Lightbluestone [WIP]
-item.ganyssurface.colouredRedstoneMAGENTA.name=Magentastone [WIP]
-item.ganyssurface.colouredRedstoneORANGE.name=Orangestone [WIP]
-item.ganyssurface.colouredRedstoneWHITE.name=Whitestone [WIP]
+item.ganyssurface.colouredRedstoneBLACK.name=Blackstone
+item.ganyssurface.colouredRedstoneGREEN.name=Greenstone
+item.ganyssurface.colouredRedstoneBROWN.name=Brownstone
+item.ganyssurface.colouredRedstoneBLUE.name=Bluestone
+item.ganyssurface.colouredRedstonePURPLE.name=Purplestone
+item.ganyssurface.colouredRedstoneCYAN.name=Cyanstone
+item.ganyssurface.colouredRedstoneLIGHTGREY.name=Lightgreystone
+item.ganyssurface.colouredRedstoneGREY.name=Greystone
+item.ganyssurface.colouredRedstonePINK.name=Pinkstone
+item.ganyssurface.colouredRedstoneLIME.name=Limestone
+item.ganyssurface.colouredRedstoneYELLOW.name=Yellowstone
+item.ganyssurface.colouredRedstoneLIGHTBLUE.name=Lightbluestone
+item.ganyssurface.colouredRedstoneMAGENTA.name=Magentastone
+item.ganyssurface.colouredRedstoneORANGE.name=Orangestone
+item.ganyssurface.colouredRedstoneWHITE.name=Whitestone
 
 pleaseletmefree=Please let me free!
 

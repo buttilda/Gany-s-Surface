@@ -58,8 +58,10 @@ public class ContainerDualWorkTable extends Container {
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(dualWorkTable.invtCraftMatrix, dualWorkTable.worldObj));
-		craftResultRight.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(dualWorkTable.invtCraftMatrixRight, dualWorkTable.worldObj));
+		if (inventory == dualWorkTable.invtCraftMatrix)
+			craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(dualWorkTable.invtCraftMatrix, dualWorkTable.worldObj));
+		else if (inventory == dualWorkTable.invtCraftMatrixRight)
+			craftResultRight.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(dualWorkTable.invtCraftMatrixRight, dualWorkTable.worldObj));
 		super.onCraftMatrixChanged(inventory);
 	}
 

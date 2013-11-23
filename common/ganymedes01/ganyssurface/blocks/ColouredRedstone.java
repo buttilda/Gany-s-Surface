@@ -17,6 +17,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Direction;
+import net.minecraft.util.Facing;
 import net.minecraft.util.Icon;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.IBlockAccess;
@@ -167,7 +168,7 @@ public class ColouredRedstone extends Block {
 	public boolean canConnectRedstone(IBlockAccess world, int x, int y, int z, int side) {
 		ForgeDirection dir = getDirFromSide(side);
 		int id = world.getBlockId(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
-		if (id == Block.redstoneWire.blockID || Block.blocksList[id] instanceof ColouredRedstone && id != blockID)
+		if (id == Block.redstoneWire.blockID || id == Block.blockRedstone.blockID || Block.blocksList[id] instanceof ColouredRedstone && id != blockID)
 			return false;
 		return wiresProvidePower && side != -1;
 	}
@@ -177,7 +178,7 @@ public class ColouredRedstone extends Block {
 
 		if (id == blockID)
 			return true;
-		else if (id == 0 || id == Block.redstoneWire.blockID || Block.blocksList[id] instanceof ColouredRedstone && id != blockID)
+		else if (id == 0 || id == Block.redstoneWire.blockID || id == Block.blockRedstone.blockID || Block.blocksList[id] instanceof ColouredRedstone && id != blockID)
 			return false;
 		else if (!Block.redstoneRepeaterIdle.func_94487_f(id))
 			return Block.blocksList[id] != null && Block.blocksList[id].canConnectRedstone(world, x, y, z, side);
@@ -212,11 +213,28 @@ public class ColouredRedstone extends Block {
 		}
 	}
 
+	private int getStrongestIndirectPower(World world, int x, int y, int z) {
+		int power = 0;
+
+		for (int i = 0; i < 6; i++) {
+			int id = world.getBlockId(x + Facing.offsetsXForSide[i], y + Facing.offsetsYForSide[i], z + Facing.offsetsZForSide[i]);
+			if (id != Block.blockRedstone.blockID && id != Block.redstoneWire.blockID) {
+				int indirectPower = world.getIndirectPowerLevelTo(x + Facing.offsetsXForSide[i], y + Facing.offsetsYForSide[i], z + Facing.offsetsZForSide[i], i);
+
+				if (indirectPower >= 15)
+					return 15;
+				if (indirectPower > power)
+					power = indirectPower;
+			}
+		}
+		return power;
+	}
+
 	private void calculateCurrentChanges(World world, int x, int y, int z, int otherX, int otherY, int otherZ) {
 		int meta = world.getBlockMetadata(x, y, z);
 		int strength = getMaxCurrentStrength(world, otherX, otherY, otherZ, 0);
 		wiresProvidePower = false;
-		int strongestPower = world.getStrongestIndirectPower(x, y, z);
+		int strongestPower = getStrongestIndirectPower(world, x, y, z);
 		wiresProvidePower = true;
 
 		if (strongestPower > 0 && strongestPower > strength - 1)

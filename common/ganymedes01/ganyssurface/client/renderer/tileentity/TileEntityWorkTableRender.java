@@ -64,12 +64,15 @@ public class TileEntityWorkTableRender extends TileEntitySpecialRenderer {
 				GL11.glPushMatrix();
 				ItemStack stack = workTable.getStackInSlot(start + j + i * 3);
 				if (stack != null) {
-
 					float scaleFactor;
-					if (stack.getItem() instanceof ItemBlock)
+					float rotateAngle;
+					if (stack.getItem() instanceof ItemBlock) {
 						scaleFactor = 0.5F;
-					else
+						rotateAngle = 0.0F;
+					} else {
 						scaleFactor = 0.5F * 0.6F;
+						rotateAngle = -90.0F;
+					}
 
 					EntityItem ghostEntityItem = new EntityItem(workTable.worldObj);
 					ghostEntityItem.hoverStart = 0.0F;
@@ -79,23 +82,23 @@ public class TileEntityWorkTableRender extends TileEntitySpecialRenderer {
 					switch (workTable.getBlockMetadata()) {
 						case 2:
 							GL11.glTranslatef(x - j * 0.19F + 0.69F, y + 1.05F, z + 0.69F - i * 0.19F);
-							GL11.glRotatef(0.0F, 0.0F, 1.0F, 0.0F);
+							GL11.glRotatef(rotateAngle + 90.0F, 0.0F, 1.0F, 0.0F);
 							break;
 						case 3:
 							GL11.glTranslatef(x + 0.313F + j * 0.19F, y + 1.05F, z + 0.313F + i * 0.19F);
-							GL11.glRotatef(180.0F, 0.0F, 1.0F, 0.0F);
+							GL11.glRotatef(rotateAngle + 270.0F, 0.0F, 1.0F, 0.0F);
 							break;
 						case 4:
 							GL11.glTranslatef(x + 0.69F - i * 0.19F, y + 1.05F, z + 0.313F + j * 0.19F);
-							GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
+							GL11.glRotatef(rotateAngle + 180.0F, 0.0F, 1.0F, 0.0F);
 							break;
 						case 5:
 							GL11.glTranslatef(x + 0.313F + i * 0.19F, y + 1.05F, z + 0.69F - j * 0.19F);
-							GL11.glRotatef(-90.0F, 0.0F, 1.0F, 0.0F);
+							GL11.glRotatef(rotateAngle + 0.0F, 0.0F, 1.0F, 0.0F);
 							break;
 						default:
 							GL11.glTranslatef(x - j * 0.19F + 0.69F, y + 1.05F, z + 0.69F - i * 0.19F);
-							GL11.glRotatef(0.0F, 0.0F, 1.0F, 0.0F);
+							GL11.glRotatef(rotateAngle + 90.0F, 0.0F, 1.0F, 0.0F);
 							break;
 					}
 					GL11.glScalef(scaleFactor, scaleFactor, scaleFactor);
