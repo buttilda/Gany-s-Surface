@@ -92,7 +92,7 @@ public class ItemDisplay extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockIcon = reg.registerIcon(Utils.getBlockTexture(Strings.ITEM_DISPLAY_NAME, false));
+		blockIcon = reg.registerIcon(Utils.getBlockTexture(Strings.ITEM_DISPLAY_NAME));
 	}
 
 	@Override

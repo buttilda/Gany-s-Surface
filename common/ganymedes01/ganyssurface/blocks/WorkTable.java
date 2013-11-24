@@ -72,9 +72,9 @@ public class WorkTable extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockTop = reg.registerIcon(Utils.getBlockTexture(Strings.WORK_TABLE_NAME, true) + "top");
-		blockSide = reg.registerIcon(Utils.getBlockTexture(Strings.WORK_TABLE_NAME, true) + "side");
-		blockFront = reg.registerIcon(Utils.getBlockTexture(Strings.WORK_TABLE_NAME, true) + "front");
+		blockTop = reg.registerIcon(Utils.getBlockTexture(Strings.WORK_TABLE_NAME) + "_top");
+		blockSide = reg.registerIcon(Utils.getBlockTexture(Strings.WORK_TABLE_NAME) + "_side");
+		blockFront = reg.registerIcon(Utils.getBlockTexture(Strings.WORK_TABLE_NAME) + "_front");
 	}
 
 	@Override

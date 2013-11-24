@@ -49,8 +49,8 @@ public class InkHarvester extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockOn = reg.registerIcon(Utils.getBlockTexture(Strings.INK_HARVESTER_NAME, true) + "on");
-		blockOff = reg.registerIcon(Utils.getBlockTexture(Strings.INK_HARVESTER_NAME, true) + "off");
+		blockOn = reg.registerIcon(Utils.getBlockTexture(Strings.INK_HARVESTER_NAME) + "_on");
+		blockOff = reg.registerIcon(Utils.getBlockTexture(Strings.INK_HARVESTER_NAME) + "_off");
 	}
 
 	@Override

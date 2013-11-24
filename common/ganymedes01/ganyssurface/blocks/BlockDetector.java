@@ -50,8 +50,8 @@ public class BlockDetector extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockOn = reg.registerIcon(Utils.getBlockTexture(Strings.BLOCK_DETECTOR_NAME, true) + "on");
-		blockOff = reg.registerIcon(Utils.getBlockTexture(Strings.BLOCK_DETECTOR_NAME, true) + "off");
+		blockOn = reg.registerIcon(Utils.getBlockTexture(Strings.BLOCK_DETECTOR_NAME) + "_on");
+		blockOff = reg.registerIcon(Utils.getBlockTexture(Strings.BLOCK_DETECTOR_NAME) + "_off");
 	}
 
 	@Override

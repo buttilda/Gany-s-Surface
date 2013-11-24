@@ -53,6 +53,6 @@ public class CamelliaCrop extends BlockCrops {
 	public void registerIcons(IconRegister reg) {
 		iconArray = new Icon[4];
 		for (int i = 0; i < iconArray.length; ++i)
-			iconArray[i] = reg.registerIcon(Utils.getBlockTexture(Strings.CAMELLIA_CROP_NAME + "_stage", true) + i);
+			iconArray[i] = reg.registerIcon(Utils.getBlockTexture(Strings.CAMELLIA_CROP_NAME + "_stage_") + i);
 	}
 }

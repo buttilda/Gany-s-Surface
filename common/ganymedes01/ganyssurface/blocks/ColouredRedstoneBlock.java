@@ -33,8 +33,8 @@ public class ColouredRedstoneBlock extends BlockOreStorage {
 		setResistance(10.0F);
 		setStepSound(soundMetalFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);
+		setTextureName(Utils.getBlockTexture(Strings.COLOURED_REDSTONE_BLOCK_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_BLOCK_NAME));
-		setTextureName(Utils.getBlockTexture(Strings.COLOURED_REDSTONE_BLOCK_NAME, false));
 	}
 
 	@Override

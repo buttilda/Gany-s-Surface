@@ -101,8 +101,8 @@ public class Market extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockTopBottom = reg.registerIcon(Utils.getBlockTexture(Strings.MARKET_NAME, true) + "topBottom");
-		blockSides = reg.registerIcon(Utils.getBlockTexture(Strings.MARKET_NAME, true) + "sides");
+		blockTopBottom = reg.registerIcon(Utils.getBlockTexture(Strings.MARKET_NAME) + "_topBottom");
+		blockSides = reg.registerIcon(Utils.getBlockTexture(Strings.MARKET_NAME) + "_sides");
 	}
 
 	@Override

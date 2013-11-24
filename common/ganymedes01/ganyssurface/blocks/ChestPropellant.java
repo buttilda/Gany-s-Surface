@@ -39,7 +39,7 @@ public class ChestPropellant extends BlockContainer {
 		setLightOpacity(0);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CHEST_PROPELLANT_NAME));
-		setTextureName(Utils.getBlockTexture(Strings.CHEST_PROPELLANT_NAME, false));
+		setTextureName(Utils.getBlockTexture(Strings.CHEST_PROPELLANT_NAME));
 		setBlockBounds(0.07F, 0.0F, 0.07F, 0.93F, 1.0F, 0.93F);
 	}
 
@@ -94,7 +94,7 @@ public class ChestPropellant extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockSide = reg.registerIcon(Utils.getBlockTexture(Strings.CHEST_PROPELLANT_NAME, true) + "side");
-		blockTop = reg.registerIcon(Utils.getBlockTexture(Strings.CHEST_PROPELLANT_NAME, true) + "top");
+		blockSide = reg.registerIcon(Utils.getBlockTexture(Strings.CHEST_PROPELLANT_NAME) + "_side");
+		blockTop = reg.registerIcon(Utils.getBlockTexture(Strings.CHEST_PROPELLANT_NAME) + "_top");
 	}
 }

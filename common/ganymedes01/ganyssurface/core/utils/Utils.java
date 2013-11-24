@@ -7,9 +7,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatMessageComponent;
+import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
@@ -22,12 +25,14 @@ import net.minecraft.world.World;
 
 public class Utils {
 
+	private static EntityPlayer player;
+
 	public static final String getUnlocalizedName(String name) {
 		return Reference.MOD_ID + "." + name;
 	}
 
-	public static final String getBlockTexture(String name, boolean hasSubBlocks) {
-		return Reference.ITEM_BLOCK_TEXTURE_PATH + name + (hasSubBlocks ? "_" : "");
+	public static final String getBlockTexture(String name) {
+		return Reference.ITEM_BLOCK_TEXTURE_PATH + name;
 	}
 
 	public static final String getItemTexture(String name) {
@@ -154,6 +159,29 @@ public class Utils {
 							if (iinventory.getStackInSlot(slot).stackSize < iinventory.getInventoryStackLimit())
 								return true;
 		return false;
+	}
+
+	public static EntityPlayer getPlayer(World world) {
+		if (player != null)
+			return player;
+		else {
+			player = new EntityPlayer(world, "[" + Reference.CHANNEL_NAME + "]") {
+				@Override
+				public void sendChatToPlayer(ChatMessageComponent var1) {
+				}
+
+				@Override
+				public boolean canCommandSenderUseCommand(int var1, String var2) {
+					return false;
+				}
+
+				@Override
+				public ChunkCoordinates getPlayerCoordinates() {
+					return null;
+				}
+			};
+			return player;
+		}
 	}
 
 	public static final String CHAT_COLOUR_BLACK = "\u00a70";

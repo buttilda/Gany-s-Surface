@@ -23,7 +23,7 @@ public class FertilizedSoil extends Block {
 		setStepSound(soundGravelFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9375F, 1.0F);
-		setTextureName(Utils.getBlockTexture(Strings.FERTILIZED_SOIL_NAME, false));
+		setTextureName(Utils.getBlockTexture(Strings.FERTILIZED_SOIL_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.FERTILIZED_SOIL_NAME));
 	}
 

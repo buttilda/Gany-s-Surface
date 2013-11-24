@@ -78,8 +78,8 @@ public class RainDetector extends BlockContainer {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		blockSide = reg.registerIcon(Utils.getBlockTexture(Strings.RAIN_DETECTOR_NAME, true) + "side");
-		blockTop = reg.registerIcon(Utils.getBlockTexture(Strings.RAIN_DETECTOR_NAME, true) + "top");
+		blockSide = reg.registerIcon(Utils.getBlockTexture(Strings.RAIN_DETECTOR_NAME) + "_side");
+		blockTop = reg.registerIcon(Utils.getBlockTexture(Strings.RAIN_DETECTOR_NAME) + "_top");
 	}
 
 	public void updateRainStatus(World world, int x, int y, int z, boolean isRaining) {

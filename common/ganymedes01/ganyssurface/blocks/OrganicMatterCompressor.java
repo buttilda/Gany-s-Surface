@@ -29,7 +29,7 @@ public class OrganicMatterCompressor extends BlockContainer {
 		setHardness(3.5F);
 		setStepSound(soundStoneFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setTextureName(Utils.getBlockTexture(Strings.ORGANIC_MATTER_COMPRESSOR_NAME, false));
+		setTextureName(Utils.getBlockTexture(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
 	}
 

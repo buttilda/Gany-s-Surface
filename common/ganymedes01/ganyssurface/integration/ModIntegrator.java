@@ -13,8 +13,8 @@ public class ModIntegrator {
 
 	public static void integrateMods() {
 		// BuildCraft
-		if (Loader.isModLoaded("BuildCraft|Transport"))
-			BuildCraftFacadeManager.registerFacades();
+		if (Loader.isModLoaded("BuildCraft|Transport") && Loader.isModLoaded("BuildCraft|Builders"))
+			BuildCraftManager.init();
 
 		// ThaumCraft
 		if (Loader.isModLoaded("Thaumcraft"))

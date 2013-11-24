@@ -24,7 +24,7 @@ public class Cushion extends BlockSand {
 		setHardness(0.2F);
 		setStepSound(soundClothFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setTextureName(Utils.getBlockTexture(Strings.CUSHION_NAME, false));
+		setTextureName(Utils.getBlockTexture(Strings.CUSHION_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CUSHION_NAME));
 	}
 

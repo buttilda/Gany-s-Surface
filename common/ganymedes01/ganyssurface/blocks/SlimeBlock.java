@@ -121,8 +121,8 @@ public class SlimeBlock extends Block {
 		String[] dirs = new String[] { "top", "bottom", "front", "back", "left", "right" };
 
 		for (int i = 0; i < 6; i++) {
-			blockIcons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.SLIME_BLOCK_NAME, true) + dirs[i]);
-			insideIcons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.SLIME_BLOCK_NAME, true) + "inside_" + dirs[i]);
+			blockIcons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.SLIME_BLOCK_NAME) + "_" + dirs[i]);
+			insideIcons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.SLIME_BLOCK_NAME) + "_inside_" + dirs[i]);
 		}
 	}
 }
