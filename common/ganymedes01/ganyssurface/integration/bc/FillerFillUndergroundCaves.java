@@ -71,6 +71,6 @@ public class FillerFillUndergroundCaves implements IFillerPattern {
 
 	@Override
 	public String getName() {
-		return "Fill Undergroung Caves";
+		return "Fill Underground Caves";
 	}
 }
