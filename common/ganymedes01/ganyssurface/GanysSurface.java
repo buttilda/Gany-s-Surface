@@ -5,6 +5,7 @@ import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
 import ganymedes01.ganyssurface.core.handlers.BonemealHandler;
 import ganymedes01.ganyssurface.core.handlers.FuelHandler;
 import ganymedes01.ganyssurface.core.handlers.InterModComms;
+import ganymedes01.ganyssurface.core.handlers.LoadTextureEvent;
 import ganymedes01.ganyssurface.core.handlers.OpenContainerHandler;
 import ganymedes01.ganyssurface.core.handlers.PoopHandler;
 import ganymedes01.ganyssurface.core.handlers.VersionCheckTickHandler;
@@ -86,6 +87,7 @@ public class GanysSurface {
 			MinecraftForge.EVENT_BUS.register(new PoopHandler());
 		MinecraftForge.EVENT_BUS.register(new BonemealHandler());
 		MinecraftForge.EVENT_BUS.register(new OpenContainerHandler());
+		MinecraftForge.EVENT_BUS.register(new LoadTextureEvent());
 
 		proxy.registerTileEntities();
 		proxy.registerRenderers();
