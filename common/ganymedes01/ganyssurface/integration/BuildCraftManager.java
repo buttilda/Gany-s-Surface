@@ -17,7 +17,9 @@ public class BuildCraftManager {
 
 	public static void init() {
 		addFacade(ModBlocks.cushion.blockID);
+	}
 
+	public static void postInit() {
 		FillerManager.registry.addRecipe(new FillerFillUndergroundCaves(), new Object[] { "bbb", "bbb", "bgb", 'g', Block.glass, 'b', Block.brick });
 	}
 

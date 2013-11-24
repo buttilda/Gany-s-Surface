@@ -97,6 +97,7 @@ public class GanysSurface {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
+		ModIntegrator.postIntegrateMods();
 	}
 
 	@EventHandler

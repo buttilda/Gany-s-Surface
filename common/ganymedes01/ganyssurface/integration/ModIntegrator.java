@@ -13,7 +13,7 @@ public class ModIntegrator {
 
 	public static void integrateMods() {
 		// BuildCraft
-		if (Loader.isModLoaded("BuildCraft|Transport") && Loader.isModLoaded("BuildCraft|Builders"))
+		if (Loader.isModLoaded("BuildCraft|Transport"))
 			BuildCraftManager.init();
 
 		// ThaumCraft
@@ -27,5 +27,10 @@ public class ModIntegrator {
 		// Forestry
 		if (Loader.isModLoaded("Forestry"))
 			ForestryManager.init();
+	}
+
+	public static void postIntegrateMods() {
+		if (Loader.isModLoaded("BuildCraft|Builders"))
+			BuildCraftManager.postInit();
 	}
 }
