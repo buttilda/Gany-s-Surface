@@ -57,11 +57,12 @@ public class ModItems {
 
 	public static void init() {
 		// Armour
-		woodenHelmet = new WoodenArmour(ModIDs.WOODEN_HELMET_ID, 0);
-		woodenChestplate = new WoodenArmour(ModIDs.WOODEN_CHESTPLATE_ID, 1);
-		woodenLeggings = new WoodenArmour(ModIDs.WOODEN_LEGGINGS_ID, 2);
-		woodenBoots = new WoodenArmour(ModIDs.WOODEN_BOOTS_ID, 3);
-
+		if (GanysSurface.enableWoodenArmour) {
+			woodenHelmet = new WoodenArmour(ModIDs.WOODEN_HELMET_ID, 0);
+			woodenChestplate = new WoodenArmour(ModIDs.WOODEN_CHESTPLATE_ID, 1);
+			woodenLeggings = new WoodenArmour(ModIDs.WOODEN_LEGGINGS_ID, 2);
+			woodenBoots = new WoodenArmour(ModIDs.WOODEN_BOOTS_ID, 3);
+		}
 		dyedIronHelmet = new DyedIronArmour(ModIDs.DYED_IRON_HELMET_ID, 0);
 		dyedIronChestplate = new DyedIronArmour(ModIDs.DYED_IRON_CHESTPLATE_ID, 1);
 		dyedIronLeggings = new DyedIronArmour(ModIDs.DYED_IRON_LEGGINGS_ID, 2);
@@ -96,10 +97,12 @@ public class ModItems {
 
 	private static void registerNames() {
 		// Armour
-		GameRegistry.registerItem(woodenHelmet, Strings.WOODEN_HELMET_NAME);
-		GameRegistry.registerItem(woodenChestplate, Strings.WOODEN_CHESTPLATE_NAME);
-		GameRegistry.registerItem(woodenLeggings, Strings.WOODEN_LEGGINGS_NAME);
-		GameRegistry.registerItem(woodenBoots, Strings.WOODEN_BOOTS_NAME);
+		if (GanysSurface.enableWoodenArmour) {
+			GameRegistry.registerItem(woodenHelmet, Strings.WOODEN_HELMET_NAME);
+			GameRegistry.registerItem(woodenChestplate, Strings.WOODEN_CHESTPLATE_NAME);
+			GameRegistry.registerItem(woodenLeggings, Strings.WOODEN_LEGGINGS_NAME);
+			GameRegistry.registerItem(woodenBoots, Strings.WOODEN_BOOTS_NAME);
+		}
 
 		GameRegistry.registerItem(dyedIronHelmet, Strings.DYED_IRON_HELMET_NAME);
 		GameRegistry.registerItem(dyedIronChestplate, Strings.DYED_IRON_CHESTPLATE_NAME);

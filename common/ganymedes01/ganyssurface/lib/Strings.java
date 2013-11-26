@@ -86,6 +86,7 @@ public class Strings {
 	public static final String SHOULD_DO_VERSION_CHECK = "shouldDoVersionCheck";
 	public static final String FORCE_ALL_CONTAINERS_OPEN = "forceAllContainersOpen";
 	public static final String ENABLE_MARKET = "enableMarket";
+	public static final String ENABLE_WOODEN_ARMOUR = "enableWoodenArmour";
 	public static final String MAX_LEVEL_OMC_WORKS = "maxLevelOMCWorks";
 	public static final String INK_HARVESTER_MAX_STRIKE = "inkHarvesterMaxStrike";
 

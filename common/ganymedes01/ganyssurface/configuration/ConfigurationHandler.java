@@ -105,6 +105,8 @@ public class ConfigurationHandler {
 			GanysSurface.shouldDoVersionCheck = configuration.get("Others", Strings.SHOULD_DO_VERSION_CHECK, true).getBoolean(true);
 			GanysSurface.forceAllContainersOpen = configuration.get("Others", Strings.FORCE_ALL_CONTAINERS_OPEN, false).getBoolean(false);
 			GanysSurface.enableMarket = configuration.get("Others", Strings.ENABLE_MARKET, true).getBoolean(true);
+			GanysSurface.enableWoodenArmour = configuration.get("Others", Strings.ENABLE_WOODEN_ARMOUR, true).getBoolean(true);
+
 			GanysSurface.maxLevelOMCWorks = configuration.get("Others", Strings.MAX_LEVEL_OMC_WORKS, 15).getInt(15);
 			GanysSurface.inkHarvesterMaxStrike = configuration.get("Others", Strings.INK_HARVESTER_MAX_STRIKE, 5).getInt(5);
 
