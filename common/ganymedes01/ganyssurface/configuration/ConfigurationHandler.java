@@ -32,6 +32,15 @@ public class ConfigurationHandler {
 		return configuration.getItem(name, idGen.getNextItemID()).getInt(idGen.getLastItemID());
 	}
 
+	private static int configInteger(String name, int def) {
+		int config = configuration.get("Others", name, def).getInt(def);
+		return config > 0 ? config : def;
+	}
+
+	private static boolean configBoolean(String name, boolean def) {
+		return configuration.get("Others", name, def).getBoolean(def);
+	}
+
 	public static void init(File configFile) {
 		configuration = new Configuration(configFile);
 
@@ -100,15 +109,15 @@ public class ConfigurationHandler {
 			ModIDs.DYED_IRON_BOOTS_ID = configItem(Strings.DYED_IRON_BOOTS_NAME);
 
 			// Others
-			GanysSurface.mobsShouldPoop = configuration.get("Others", Strings.MOBS_SHOULD_POOP, true).getBoolean(true);
-			GanysSurface.activateChocolate = configuration.get("Others", Strings.ACTIVATE_CHOCOLATE, true).getBoolean(true);
-			GanysSurface.shouldDoVersionCheck = configuration.get("Others", Strings.SHOULD_DO_VERSION_CHECK, true).getBoolean(true);
-			GanysSurface.forceAllContainersOpen = configuration.get("Others", Strings.FORCE_ALL_CONTAINERS_OPEN, false).getBoolean(false);
-			GanysSurface.enableMarket = configuration.get("Others", Strings.ENABLE_MARKET, true).getBoolean(true);
-			GanysSurface.enableWoodenArmour = configuration.get("Others", Strings.ENABLE_WOODEN_ARMOUR, true).getBoolean(true);
+			GanysSurface.mobsShouldPoop = configBoolean(Strings.MOBS_SHOULD_POOP, true);
+			GanysSurface.activateChocolate = configBoolean(Strings.ACTIVATE_CHOCOLATE, true);
+			GanysSurface.shouldDoVersionCheck = configBoolean(Strings.SHOULD_DO_VERSION_CHECK, true);
+			GanysSurface.forceAllContainersOpen = configBoolean(Strings.FORCE_ALL_CONTAINERS_OPEN, false);
+			GanysSurface.enableMarket = configBoolean(Strings.ENABLE_MARKET, true);
+			GanysSurface.enableWoodenArmour = configBoolean(Strings.ENABLE_WOODEN_ARMOUR, true);
 
-			GanysSurface.maxLevelOMCWorks = configuration.get("Others", Strings.MAX_LEVEL_OMC_WORKS, 15).getInt(15);
-			GanysSurface.inkHarvesterMaxStrike = configuration.get("Others", Strings.INK_HARVESTER_MAX_STRIKE, 5).getInt(5);
+			GanysSurface.maxLevelOMCWorks = configInteger(Strings.MAX_LEVEL_OMC_WORKS, 15);
+			GanysSurface.inkHarvesterMaxStrike = configInteger(Strings.INK_HARVESTER_MAX_STRIKE, 5);
 
 		} catch (Exception e) {
 			FMLLog.log(Level.SEVERE, e, Reference.MOD_NAME + " has had a problem loading its configuration");
