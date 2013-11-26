@@ -2,7 +2,6 @@ package ganymedes01.ganyssurface.integration;
 
 import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.integration.bc.FillerFillUndergroundCaves;
-import net.minecraft.block.Block;
 import buildcraft.api.filler.FillerManager;
 import cpw.mods.fml.common.event.FMLInterModComms;
 
@@ -20,7 +19,7 @@ public class BuildCraftManager {
 	}
 
 	public static void postInit() {
-		FillerManager.registry.addRecipe(new FillerFillUndergroundCaves(), new Object[] { "bbb", "bbb", "bgb", 'g', Block.glass, 'b', Block.brick });
+		FillerManager.registry.addPattern(new FillerFillUndergroundCaves());
 	}
 
 	private static void addFacade(int blockID) {
