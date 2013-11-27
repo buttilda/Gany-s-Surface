@@ -108,7 +108,7 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 							Utils.dropStack(world, x, y, z, stack);
 				} else
 					target.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-				world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, "random.click", 0.3F, 0.6F);
+				world.playAuxSFXAtEntity(null, 2001, x, y, z, target.blockID + (world.getBlockMetadata(x, y, z) << 12));
 				world.setBlockToAir(x, y, z);
 			}
 	}

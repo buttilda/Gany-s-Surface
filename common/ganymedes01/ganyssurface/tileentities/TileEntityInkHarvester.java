@@ -35,8 +35,7 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 	private final int[] multiBlocks2 = new int[] { 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9, 9, 20, 1, 20, 20, 20, 1, 1, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9, 9, 20, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9,
 	9, 20, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1 };
 
-	private int coolDown = 300;
-	private int strikeCount = 0;
+	private int coolDown = 300, strikeCount = 0, foodCoolDown = 300, coolDownModifier = -1;
 
 	public TileEntityInkHarvester() {
 		super(13, Strings.INK_HARVESTER_NAME);
@@ -53,14 +52,18 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 			return;
 		}
 
-		coolDown--;
+		foodCoolDown--;
+		if (foodCoolDown <= 0)
+			if (!consumeFoodItem()) {
+				strikeCount++;
+				return;
+			}
+
+		coolDown += coolDownModifier;
 		if (coolDown <= worldObj.rand.nextInt(10)) {
 			if (isFormed())
 				if (worldObj.rand.nextInt(8) == 4)
-					if (consumeFoodItem())
-						Utils.addStackToInventory(this, new ItemStack(Item.dyePowder));
-					else
-						strikeCount++;
+					Utils.addStackToInventory(this, new ItemStack(Item.dyePowder));
 			coolDown = 300;
 		}
 	}
@@ -74,15 +77,27 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 	}
 
 	private boolean consumeFoodItem() {
-		for (int i = 9; i < 13; i++) {
-			if (inventory[i] == null)
-				continue;
-			inventory[i].splitStack(1);
-			if (inventory[i].stackSize <= 0)
-				inventory[i] = null;
-			return true;
+		int saturationModifier = 300;
+		try {
+			for (int i = 9; i < 13; i++) {
+				if (inventory[i] == null)
+					continue;
+				Item item = inventory[i].getItem();
+				if (item instanceof ItemFood) {
+					ItemFood food = (ItemFood) item;
+					saturationModifier = (int) (5000 * food.getSaturationModifier());
+					coolDownModifier = -(int) (10 * food.getSaturationModifier());
+				}
+				inventory[i].splitStack(1);
+				if (inventory[i].stackSize <= 0)
+					inventory[i] = null;
+				return true;
+			}
+			coolDownModifier = -1;
+			return false;
+		} finally {
+			foodCoolDown = saturationModifier;
 		}
-		return false;
 	}
 
 	private boolean hasSquids() {
@@ -200,6 +215,8 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 		super.readFromNBT(data);
 		data.setInteger("coolDown", coolDown);
 		data.setInteger("strikeCount", strikeCount);
+		data.setInteger("foodCoolDown", foodCoolDown);
+		data.setInteger("coolDownModifier", coolDownModifier);
 	}
 
 	@Override
@@ -207,6 +224,8 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 		super.writeToNBT(data);
 		coolDown = data.getInteger("coolDown");
 		strikeCount = data.getInteger("strikeCount");
+		foodCoolDown = data.getInteger("foodCoolDown");
+		coolDownModifier = data.getInteger("coolDownModifier");
 	}
 
 	@Override
