@@ -28,9 +28,4 @@ public class ModIntegrator {
 		if (Loader.isModLoaded("Forestry"))
 			ForestryManager.init();
 	}
-
-	public static void postIntegrateMods() {
-		if (Loader.isModLoaded("BuildCraft|Builders"))
-			BuildCraftManager.postInit();
-	}
 }
