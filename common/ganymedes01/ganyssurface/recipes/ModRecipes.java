@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.recipes;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.blocks.ModBlocks;
+import ganymedes01.ganyssurface.items.ColouredRedstoneItem;
 import ganymedes01.ganyssurface.items.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -25,7 +26,6 @@ public class ModRecipes {
 		registerBlockRecipes();
 		registerItemRecipes();
 		registerArmourRecipes();
-		registerOreDictionary();
 	}
 
 	private static void registerArmourRecipes() {
@@ -56,11 +56,12 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModItems.horsalyser), "xyx", "xzx", "xwx", 'x', Item.leather, 'y', Item.flint, 'z', Block.thinGlass, 'w', Item.redstone);
 
 		for (int i = 0; i < dyes.length; i++)
-			if (i != 1) { // Skip Red
-				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.colouredRedstone, 8, i), "xxx", "xyx", "xxx", 'x', "ganysSurfaceColouredRedstone", 'y', dyes[i]));
-				GameRegistry.addShapelessRecipe(new ItemStack(ModItems.colouredRedstone, 9, i), new ItemStack(ModBlocks.colouredRedstoneBlock, 1, i));
-			} else
-				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Item.redstone, 8), "xxx", "xyx", "xxx", 'x', "ganysSurfaceColouredRedstone", 'y', dyes[i]));
+			for (ItemStack dye : OreDictionary.getOres(dyes[i]))
+				if (i != 1) { // Skip Red
+					GameRegistry.addRecipe(MultipleItemsRecipe.createNewRecipe(new ItemStack(ModItems.colouredRedstone, 8, i), "xxx", "xyx", "xxx", 'x', ColouredRedstoneItem.getRedstonesForRecipe(), 'y', dye));
+					GameRegistry.addShapelessRecipe(new ItemStack(ModItems.colouredRedstone, 9, i), new ItemStack(ModBlocks.colouredRedstoneBlock, 1, i));
+				} else
+					GameRegistry.addRecipe(MultipleItemsRecipe.createNewRecipe(new ItemStack(Item.redstone, 8), "xxx", "xyx", "xxx", 'x', ColouredRedstoneItem.getRedstonesForRecipe(), 'y', dye));
 
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Item.clay, 8), "xxx", "yzy", "xxx", 'x', Block.gravel, 'y', Block.dirt, 'z', Item.bucketWater);
@@ -100,17 +101,5 @@ public class ModRecipes {
 
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Block.web), "x x", " y ", "x x", 'y', Item.slimeBall, 'x', Item.silk);
-	}
-
-	private static void registerOreDictionary() {
-		OreDictionary.registerOre("ganysSurfaceColouredRedstone", new ItemStack(Item.redstone));
-		for (int i = 0; i < 16; i++)
-			if (i != 1)
-				OreDictionary.registerOre("ganysSurfaceColouredRedstone", new ItemStack(ModItems.colouredRedstone, 1, i));
-
-		OreDictionary.registerOre("ganysNetherSpawnEggs", new ItemStack(ModItems.chargedCreeperSpawner));
-		OreDictionary.registerOre("ganysNetherSpawnEggs", new ItemStack(ModItems.horseSpawner, 1, 0));
-		OreDictionary.registerOre("ganysNetherSpawnEggs", new ItemStack(ModItems.horseSpawner, 1, 1));
-		OreDictionary.registerOre("ganysNetherSpawnEggs", new ItemStack(ModItems.horseSpawner, 1, 2));
 	}
 }

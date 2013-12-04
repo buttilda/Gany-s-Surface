@@ -17,6 +17,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -28,6 +29,8 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 
 public class ColouredRedstoneItem extends Item {
+
+	private static ItemStack[] redstones;
 
 	public ColouredRedstoneItem() {
 		super(ModIDs.COLOURED_REDSTONE_ITEM_ID);
@@ -88,5 +91,11 @@ public class ColouredRedstoneItem extends Item {
 		for (int i = 0; i < ColouredRedstone.COLOURS.length; i++)
 			if (i != 1) // Skip Red
 				list.add(new ItemStack(itemID, 1, i));
+	}
+
+	public static ItemStack[] getRedstonesForRecipe() {
+		if (redstones == null)
+			redstones = new ItemStack[] { new ItemStack(ModItems.colouredRedstone, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.redstone) };
+		return redstones;
 	}
 }
