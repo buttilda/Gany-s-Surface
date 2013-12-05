@@ -81,7 +81,7 @@ public class ModRecipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.disguisedTrapDoorBirch), new ItemStack(Block.planks, 1, 2), Block.trapdoor);
 		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.disguisedTrapDoorJungle), new ItemStack(Block.planks, 1, 3), Block.trapdoor);
 		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.workTable), Block.workbench, Block.chest);
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.organicMatterCompressor), "yzy", "zxz", "zwz", 'x', Item.cauldron, 'y', Item.emerald, 'z', Block.obsidian, 'w', Block.blockIron);
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.organicMatterCompressor), "zzz", "zxz", "zyz", 'x', Item.cauldron, 'y', Item.emerald, 'z', Block.obsidian);
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.cushion), "zxz", "xyx", "zxz", 'x', Block.cloth, 'y', dyes[5], 'z', Item.goldNugget));
 		if (GanysSurface.activateChocolate)
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.chocolateCake), "xxx", "yzy", "www", 'x', Item.bucketMilk, 'y', ModItems.chocolateBar, 'z', Item.egg, 'w', Item.wheat);
