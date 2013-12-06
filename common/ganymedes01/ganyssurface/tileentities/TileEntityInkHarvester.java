@@ -54,10 +54,13 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 
 		foodCoolDown--;
 		if (foodCoolDown <= 0)
-			if (!consumeFoodItem()) {
-				strikeCount++;
-				return;
-			}
+			if (worldObj.rand.nextInt(6) == 3) {
+				if (!consumeFoodItem()) {
+					strikeCount++;
+					return;
+				}
+			} else
+				foodCoolDown = 300;
 
 		coolDown += coolDownModifier;
 		if (coolDown <= worldObj.rand.nextInt(10)) {
