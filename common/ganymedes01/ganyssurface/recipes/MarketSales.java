@@ -21,7 +21,6 @@ public class MarketSales {
 		for (TileEntityMarket aMarket : markets)
 			if (aMarket.xCoord == market.xCoord && aMarket.yCoord == market.yCoord && aMarket.zCoord == market.zCoord)
 				return;
-		System.out.println("MARKET ADDED");
 		markets.add(market);
 	}
 

@@ -27,60 +27,60 @@ public class OrganicMatterRegistry {
 
 	static {
 		addMatterYield(new ItemStack(Item.coal, 1, 1), 16);
-		addMatterYield(new ItemStack(Item.swordWood));
-		addMatterYield(new ItemStack(Item.hoeWood));
-		addMatterYield(new ItemStack(Item.axeWood));
-		addMatterYield(new ItemStack(Item.shovelWood));
-		addMatterYield(new ItemStack(Item.helmetLeather));
-		addMatterYield(new ItemStack(Item.plateLeather));
-		addMatterYield(new ItemStack(Item.legsLeather));
-		addMatterYield(new ItemStack(Item.bootsLeather));
-		addMatterYield(new ItemStack(Item.sign));
-		addMatterYield(new ItemStack(Item.saddle));
-		addMatterYield(new ItemStack(Item.book));
-		addMatterYield(new ItemStack(Item.egg));
-		addMatterYield(new ItemStack(Item.fishingRod));
-		addMatterYield(new ItemStack(Item.itemFrame));
-		addMatterYield(new ItemStack(Item.boat));
-		addMatterYield(new ItemStack(Item.bone));
-		addMatterYield(new ItemStack(Item.bed));
-		addMatterYield(new ItemStack(Item.emptyMap));
-		addMatterYield(new ItemStack(Item.map));
-		addMatterYield(new ItemStack(Item.writableBook));
-		addMatterYield(new ItemStack(Item.writtenBook));
-		addMatterYield(new ItemStack(Item.carrotOnAStick));
-		addMatterYield(new ItemStack(Item.enchantedBook));
-		addMatterYield(new ItemStack(Item.nameTag));
-		addMatterYield(new ItemStack(Item.sugar));
-		addMatterYield(new ItemStack(Item.cake));
-		addMatterYield(new ItemStack(Item.slimeBall));
-		addMatterYield(new ItemStack(Item.paper));
-		addMatterYield(new ItemStack(Item.reed));
-		addMatterYield(new ItemStack(Item.leather));
-		addMatterYield(new ItemStack(Item.doorWood));
-		addMatterYield(new ItemStack(Item.leash));
-		addMatterYield(new ItemStack(Item.wheat));
-		addMatterYield(new ItemStack(Item.dyePowder));
+		addItemYield(Item.swordWood);
+		addItemYield(Item.hoeWood);
+		addItemYield(Item.axeWood);
+		addItemYield(Item.shovelWood);
+		addItemYield(Item.helmetLeather);
+		addItemYield(Item.plateLeather);
+		addItemYield(Item.legsLeather);
+		addItemYield(Item.bootsLeather);
+		addItemYield(Item.sign);
+		addItemYield(Item.saddle);
+		addItemYield(Item.book);
+		addItemYield(Item.egg);
+		addItemYield(Item.fishingRod);
+		addItemYield(Item.itemFrame);
+		addItemYield(Item.boat);
+		addItemYield(Item.bone);
+		addItemYield(Item.bed);
+		addItemYield(Item.emptyMap);
+		addItemYield(Item.map);
+		addItemYield(Item.writableBook);
+		addItemYield(Item.writtenBook);
+		addItemYield(Item.carrotOnAStick);
+		addItemYield(Item.enchantedBook);
+		addItemYield(Item.nameTag);
+		addItemYield(Item.sugar);
+		addItemYield(Item.cake);
+		addItemYield(Item.slimeBall);
+		addItemYield(Item.paper);
+		addItemYield(Item.reed);
+		addItemYield(Item.leather);
+		addItemYield(Item.doorWood);
+		addItemYield(Item.leash);
+		addItemYield(Item.wheat);
+		addItemYield(Item.dyePowder);
 		addMatterYield(new ItemStack(Item.dyePowder, 1, 15));
 
-		addMatterYield(new ItemStack(ModItems.woodenBoots));
-		addMatterYield(new ItemStack(ModItems.woodenLeggings));
-		addMatterYield(new ItemStack(ModItems.woodenChestplate));
-		addMatterYield(new ItemStack(ModItems.woodenHelmet));
-		addMatterYield(new ItemStack(ModItems.woodenWrench));
-		addMatterYield(new ItemStack(ModItems.rot));
+		addItemYield(ModItems.woodenBoots);
+		addItemYield(ModItems.woodenLeggings);
+		addItemYield(ModItems.woodenChestplate);
+		addItemYield(ModItems.woodenHelmet);
+		addItemYield(ModItems.woodenWrench);
+		addItemYield(ModItems.rot);
 		addMatterYield(new ItemStack(ModItems.rot, 1, 1));
-		addMatterYield(new ItemStack(ModItems.teaLeaves));
-		addMatterYield(new ItemStack(ModItems.teaBag));
-		addMatterYield(new ItemStack(ModItems.poop));
+		addItemYield(ModItems.teaLeaves);
+		addItemYield(ModItems.teaBag);
+		addItemYield(ModItems.poop);
 		addMatterYield(new ItemStack(ModItems.poop, 1, 1));
-		addMatterYield(new ItemStack(ModItems.batNet));
-		addMatterYield(new ItemStack(ModItems.pocketBat), 3);
-		addMatterYield(new ItemStack(ModItems.horsalyser));
-		addMatterYield(new ItemStack(ModItems.horseSpawner));
+		addItemYield(ModItems.batNet);
+		addItemYield(ModItems.pocketBat, 3);
+		addItemYield(ModItems.horsalyser);
+		addItemYield(ModItems.horseSpawner);
 		addMatterYield(new ItemStack(ModItems.horseSpawner, 1, 1));
 		addMatterYield(new ItemStack(ModItems.horseSpawner, 1, 2));
-		addMatterYield(new ItemStack(ModItems.chargedCreeperSpawner));
+		addItemYield(ModItems.chargedCreeperSpawner);
 
 		addMatterYield(new ItemStack(Block.ladder));
 		addMatterYield(new ItemStack(Block.woodenButton));
@@ -91,6 +91,15 @@ public class OrganicMatterRegistry {
 		addMatterYield(new ItemStack(Block.melon), 4);
 		addMatterYield(new ItemStack(Block.cactus), 4);
 		addMatterYield(new ItemStack(Block.grass), 4);
+	}
+
+	private static void addItemYield(Item matter, int yield) {
+		if (matter != null)
+			addMatterYield(new ItemStack(matter), yield);
+	}
+
+	private static void addItemYield(Item matter) {
+		addItemYield(matter, 2);
 	}
 
 	public static void addMatterYield(ItemStack matter, int yield) {
