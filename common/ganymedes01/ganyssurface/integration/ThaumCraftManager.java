@@ -12,9 +12,10 @@ import thaumcraft.api.aspects.AspectList;
  * 
  */
 
-public class ThaumCraftManager {
+public class ThaumCraftManager extends Integration {
 
-	public static void init() {
+	@Override
+	public void init() {
 		addAspectsToItem(ModItems.rot.itemID, 1, new Aspect[] { Aspect.SENSES, Aspect.SLIME }, new int[] { 1, 1 });
 		addAspectsToItem(ModItems.camelliaSeeds.itemID, new Aspect[] { Aspect.SEED }, new int[] { 1 });
 		addAspectsToItem(ModItems.teaLeaves.itemID, new Aspect[] { Aspect.PLANT }, new int[] { 1 });
@@ -27,11 +28,20 @@ public class ThaumCraftManager {
 		addAspectsToItem(ModItems.colouredRedstone.itemID, new Aspect[] { Aspect.ENERGY, Aspect.MECHANISM }, new int[] { 1, 1 });
 	}
 
-	private static void addAspectsToItem(int id, Aspect[] aspects, int[] amounts) {
+	@Override
+	public void postInit() {
+	}
+
+	@Override
+	public String getModID() {
+		return "Thaumcraft";
+	}
+
+	private void addAspectsToItem(int id, Aspect[] aspects, int[] amounts) {
 		addAspectsToItem(id, -1, aspects, amounts);
 	}
 
-	private static void addAspectsToItem(int id, int meta, Aspect[] aspects, int[] amounts) {
+	private void addAspectsToItem(int id, int meta, Aspect[] aspects, int[] amounts) {
 		AspectList list = new AspectList();
 		for (int i = 0; i < aspects.length; i++)
 			list.add(aspects[i], amounts[i]);

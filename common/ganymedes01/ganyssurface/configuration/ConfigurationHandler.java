@@ -2,6 +2,8 @@ package ganymedes01.ganyssurface.configuration;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.IdGenerator;
+import ganymedes01.ganyssurface.integration.Integration;
+import ganymedes01.ganyssurface.integration.ModIntegrator;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -39,6 +41,10 @@ public class ConfigurationHandler {
 
 	private static boolean configBoolean(String name, boolean def) {
 		return configuration.get("Others", name, def).getBoolean(def);
+	}
+
+	private static boolean configIntegrationBoolean(String modID) {
+		return configuration.get("Mod Integration", "Integrate " + modID, true).getBoolean(true);
 	}
 
 	public static void init(File configFile) {
@@ -107,6 +113,10 @@ public class ConfigurationHandler {
 			ModIDs.DYED_IRON_CHESTPLATE_ID = configItem(Strings.DYED_IRON_CHESTPLATE_NAME);
 			ModIDs.DYED_IRON_LEGGINGS_ID = configItem(Strings.DYED_IRON_LEGGINGS_NAME);
 			ModIDs.DYED_IRON_BOOTS_ID = configItem(Strings.DYED_IRON_BOOTS_NAME);
+
+			// Mod Integration
+			for (Integration integration : ModIntegrator.modIntegrations)
+				integration.setShouldIntegrate(configIntegrationBoolean(integration.getModID()));
 
 			// Others
 			GanysSurface.mobsShouldPoop = configBoolean(Strings.MOBS_SHOULD_POOP, true);

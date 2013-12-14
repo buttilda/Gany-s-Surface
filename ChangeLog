@@ -56,3 +56,7 @@ v1.5.1
 -Change:All dislocators now respond to redstone signal
 -Change/Fix: Coloured redstone is no longer powered by redstone blocks
 -Change: Since no bugs were reported... remove [WIP] tag from coloured redstone
+
+v1.5.2
+-Fix: Crash when disabling wooden armour
+-Change: New recipe for Market

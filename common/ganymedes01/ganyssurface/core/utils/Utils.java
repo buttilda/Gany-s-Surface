@@ -183,21 +183,4 @@ public class Utils {
 			return player;
 		}
 	}
-
-	public static final String CHAT_COLOUR_BLACK = "\u00a70";
-	public static final String CHAT_COLOUR_DARKBLUE = "\u00a71";
-	public static final String CHAT_COLOUR_DARKGREEN = "\u00a72";
-	public static final String CHAT_COLOUR_DARKAQUA = "\u00a73";
-	public static final String CHAT_COLOUR_DARKRED = "\u00a74";
-	public static final String CHAT_COLOUR_DARKPURPLE = "\u00a75";
-	public static final String CHAT_COLOUR_GOLD = "\u00a76";
-	public static final String CHAT_COLOUR_GREY = "\u00a77";
-	public static final String CHAT_COLOUR_DARKGREY = "\u00a78";
-	public static final String CHAT_COLOUR_BLUE = "\u00a79";
-	public static final String CHAT_COLOUR_GREEN = "\u00a7a";
-	public static final String CHAT_COLOUR_AQUA = "\u00a7b";
-	public static final String CHAT_COLOUR_RED = "\u00a7c";
-	public static final String CHAT_COLOUR_PUEPLE = "\u00a7d";
-	public static final String CHAT_COLOUR_YELLOW = "\u00a7e";
-	public static final String CHAT_COLOUR_WHITE = "\u00a7f";
 }

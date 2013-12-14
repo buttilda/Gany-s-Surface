@@ -25,6 +25,9 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		API.registerGuiOverlay(GuiWorkTable.class, "crafting");
 		API.registerGuiOverlayHandler(GuiWorkTable.class, new DefaultOverlayHandler(), "crafting");
 
+		//API.registerGuiOverlay(GuiDualWorkTable.class, "crafting");
+		//API.registerGuiOverlayHandler(GuiDualWorkTable.class, new DualWorkTableOverlayHandler(), "crafting");
+
 		if (GanysSurface.enableMarket) {
 			API.registerRecipeHandler(new MarketSalesHandler());
 			API.registerUsageHandler(new MarketSalesHandler());

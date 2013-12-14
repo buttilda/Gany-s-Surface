@@ -1,6 +1,11 @@
 package ganymedes01.ganyssurface.integration;
 
-import cpw.mods.fml.common.Loader;
+import ganymedes01.ganyssurface.lib.Reference;
+
+import java.util.ArrayList;
+
+import com.google.common.reflect.ClassPath;
+import com.google.common.reflect.ClassPath.ClassInfo;
 
 /**
  * Gany's Surface
@@ -11,21 +16,30 @@ import cpw.mods.fml.common.Loader;
 
 public class ModIntegrator {
 
-	public static void integrateMods() {
-		// BuildCraft
-		if (Loader.isModLoaded("BuildCraft|Transport"))
-			BuildCraftManager.init();
+	public static ArrayList<Integration> modIntegrations;
 
-		// ThaumCraft
-		if (Loader.isModLoaded("Thaumcraft"))
-			ThaumCraftManager.init();
+	public static void preInit() {
+		modIntegrations = new ArrayList<Integration>();
 
-		// Equivalent Exchange 3
-		if (Loader.isModLoaded("EE3"))
-			EE3Manager.init();
+		try {
+			for (ClassInfo clazzInfo : ClassPath.from(ModIntegrator.class.getClassLoader()).getTopLevelClasses("ganymedes01." + Reference.MOD_ID + ".integration")) {
+				Class clazz = clazzInfo.load();
+				if (clazz != Integration.class && Integration.class.isAssignableFrom(clazz))
+					modIntegrations.add((Integration) clazz.newInstance());
+			}
+		} catch (Exception e) {
+		}
+	}
 
-		// Forestry
-		if (Loader.isModLoaded("Forestry"))
-			ForestryManager.init();
+	public static void init() {
+		for (Integration integration : modIntegrations)
+			if (integration.shouldIntegrate())
+				integration.init();
+	}
+
+	public static void postInit() {
+		for (Integration integration : modIntegrations)
+			if (integration.shouldIntegrate())
+				integration.postInit();
 	}
 }

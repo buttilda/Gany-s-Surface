@@ -9,6 +9,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import net.minecraft.util.EnumChatFormatting;
 import cpw.mods.fml.common.FMLLog;
 
 /**
@@ -101,7 +102,8 @@ public class VersionHelper implements Runnable {
 	}
 
 	public static String getResultMessageForClient() {
-		return Utils.CHAT_COLOUR_GOLD + Reference.MOD_NAME + Utils.CHAT_COLOUR_WHITE + " is " + Utils.CHAT_COLOUR_RED + "outdated" + Utils.CHAT_COLOUR_WHITE + ". Get " + Utils.CHAT_COLOUR_GOLD + Reference.LATEST_VERSION + Utils.CHAT_COLOUR_WHITE + " at: " + Utils.CHAT_COLOUR_GREEN + updateURL;
+		return EnumChatFormatting.GOLD + Reference.MOD_NAME + EnumChatFormatting.WHITE + " is " + EnumChatFormatting.RED + "outdated" + EnumChatFormatting.WHITE + ". Get " + EnumChatFormatting.GOLD + Reference.LATEST_VERSION + EnumChatFormatting.WHITE + " at: " + EnumChatFormatting.GREEN +
+		updateURL;
 	}
 
 	public static byte getResult() {

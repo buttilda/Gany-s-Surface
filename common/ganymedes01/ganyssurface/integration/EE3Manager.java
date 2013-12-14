@@ -7,9 +7,18 @@ package ganymedes01.ganyssurface.integration;
  * 
  */
 
-public class EE3Manager {
+public class EE3Manager extends Integration {
 
-	public static void init() {
+	@Override
+	public void init() {
+	}
 
+	@Override
+	public void postInit() {
+	}
+
+	@Override
+	public String getModID() {
+		return "EE3";
 	}
 }

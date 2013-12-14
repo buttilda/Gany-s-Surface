@@ -64,6 +64,8 @@ public class GanysSurface {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		ModIntegrator.preInit();
+
 		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.MASTER + File.separator + Reference.MOD_ID + ".cfg"));
 
 		if (shouldDoVersionCheck) {
@@ -91,11 +93,12 @@ public class GanysSurface {
 		proxy.registerTileEntities();
 		proxy.registerRenderers();
 
-		ModIntegrator.integrateMods();
+		ModIntegrator.init();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
+		ModIntegrator.postInit();
 	}
 
 	@EventHandler

@@ -6,12 +6,16 @@ import ganymedes01.ganyssurface.blocks.Dislocator;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
+
+import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockQuartz;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 /**
@@ -30,6 +34,11 @@ public class WoodenWrench extends Item {
 		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.WOODEN_WRENCH_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.WOODEN_WRENCH_NAME));
+	}
+
+	@Override
+	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
+		list.add(StatCollector.translateToLocal("interacttorotate"));
 	}
 
 	@Override

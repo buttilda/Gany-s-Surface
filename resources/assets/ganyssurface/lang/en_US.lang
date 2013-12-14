@@ -48,8 +48,6 @@ item.ganyssurface.colouredRedstoneMAGENTA.name=Magentastone
 item.ganyssurface.colouredRedstoneORANGE.name=Orangestone
 item.ganyssurface.colouredRedstoneWHITE.name=Whitestone
 
-pleaseletmefree=Please let me free!
-
 # Block localizations
 tile.ganyssurface.camelliaCrop.name=Camellia Crop
 tile.ganyssurface.rainDetector.name=Rain Detector
@@ -128,3 +126,8 @@ price=Price:
 
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface
+
+# Others
+pleaseletmefree=Please let me free D=
+attacktocapture=Left-Click a bat to capture it
+interacttorotate=Right-Click logs,pillars and etc. to rotate
