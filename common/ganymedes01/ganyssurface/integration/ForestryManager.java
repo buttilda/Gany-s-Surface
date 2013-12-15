@@ -29,6 +29,8 @@ public class ForestryManager extends Integration {
 		ItemStack fert = getItem("fertilizerCompound", 24);
 		if (fert != null)
 			GameRegistry.addRecipe(fert, "xxx", "xyx", "xxx", 'x', new ItemStack(ModItems.rot, 1, 1), 'y', new ItemStack(Item.dyePowder, 1, 4));
+
+		addSqueezerRecipe(new ItemStack(ModItems.camelliaSeeds), 20);
 	}
 
 	@Override
@@ -76,5 +78,17 @@ public class ForestryManager extends Integration {
 		} catch (Exception e) {
 		}
 		return null;
+	}
+
+	private void addSqueezerRecipe(ItemStack seeds, int amount) {
+		try {
+			Class<?> recipeManagers = Class.forName("forestry.api.recipes.RecipeManagers");
+			Field field = recipeManagers.getField("squeezerManager");
+			Object ret = field.get(null);
+			Method addRecipe = ret.getClass().getMethod("addRecipe", int.class, ItemStack[].class, FluidStack.class);
+			addRecipe.invoke(ret, 10, new ItemStack[] { seeds }, new FluidStack(FluidRegistry.getFluid("seedoil"), amount));
+
+		} catch (Exception e) {
+		}
 	}
 }
