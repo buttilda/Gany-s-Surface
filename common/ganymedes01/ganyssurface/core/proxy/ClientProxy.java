@@ -87,7 +87,7 @@ public class ClientProxy extends CommonProxy {
 		if (tileEntity != null && inventory != null)
 			if (tileEntity instanceof TileEntityWorkTable)
 				for (int i = 0; i < inventory.length; i++)
-					((TileEntityWorkTable) tileEntity).addToCraftMatrix(i, inventory[i]);
+					((TileEntityWorkTable) tileEntity).setInventorySlotContents(i, inventory[i]);
 	}
 
 	@Override

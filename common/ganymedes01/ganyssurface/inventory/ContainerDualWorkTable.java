@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
-import ganymedes01.ganyssurface.inventory.slots.DualWorkTableResultSlot;
+import ganymedes01.ganyssurface.inventory.slots.WorkTableResultSlot;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -35,8 +35,8 @@ public class ContainerDualWorkTable extends Container {
 		for (int i = 0; i < dualWorkTable.invtCraftMatrixRight.getSizeInventory(); i++)
 			dualWorkTable.invtCraftMatrixRight.setInventorySlotContents(i, dualWorkTable.getStackInSlot(i + dualWorkTable.invtCraftMatrix.getSizeInventory()));
 
-		addSlotToContainer(new DualWorkTableResultSlot(tile, inventory.player, dualWorkTable.invtCraftMatrix, craftResult, 0, 75, 35, 0));
-		addSlotToContainer(new DualWorkTableResultSlot(tile, inventory.player, dualWorkTable.invtCraftMatrixRight, craftResultRight, 1, 168, 35, 9));
+		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, dualWorkTable.invtCraftMatrix, craftResult, 0, 75, 35, 0));
+		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, dualWorkTable.invtCraftMatrixRight, craftResultRight, 1, 168, 35, 9));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
@@ -102,6 +102,6 @@ public class ContainerDualWorkTable extends Container {
 
 	@Override
 	public boolean func_94530_a(ItemStack stack, Slot slot) {
-		return (slot.inventory != craftResultRight || slot.inventory != craftResult) && super.func_94530_a(stack, slot);
+		return slot.inventory != craftResultRight || slot.inventory != craftResult;
 	}
 }

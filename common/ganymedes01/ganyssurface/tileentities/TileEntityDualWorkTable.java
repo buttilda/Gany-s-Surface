@@ -20,7 +20,7 @@ public class TileEntityDualWorkTable extends TileEntityWorkTable {
 
 	@Override
 	public ItemStack decrStackSize(int slot, int size) {
-		if (slot < invtCraftMatrix.getSizeInventory())
+		if (slot < 9)
 			return super.decrStackSize(slot, size);
 
 		if (inventory[slot] != null) {
@@ -49,7 +49,7 @@ public class TileEntityDualWorkTable extends TileEntityWorkTable {
 
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
-		if (slot < invtCraftMatrix.getSizeInventory())
+		if (slot < 9)
 			return super.getStackInSlotOnClosing(slot);
 
 		if (inventory[slot] != null) {
@@ -64,7 +64,7 @@ public class TileEntityDualWorkTable extends TileEntityWorkTable {
 
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
-		if (slot < invtCraftMatrix.getSizeInventory()) {
+		if (slot < 9) {
 			super.setInventorySlotContents(slot, stack);
 			return;
 		}

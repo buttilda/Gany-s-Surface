@@ -26,20 +26,9 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 		super(size, null);
 	}
 
-	public void addToCraftMatrix(int slot, ItemStack stack) {
-		inventory[slot] = stack;
-
-		if (stack != null && stack.stackSize > getInventoryStackLimit())
-			stack.stackSize = getInventoryStackLimit();
-	}
-
 	@Override
 	public Packet getDescriptionPacket() {
-		ItemStack[] stacks = new ItemStack[getSizeInventory()];
-		for (int i = 0; i < stacks.length; i++)
-			stacks[i] = inventory[i];
-
-		return PacketTypeHandler.populatePacket(new PacketWorkTable(xCoord, yCoord, zCoord, stacks));
+		return PacketTypeHandler.populatePacket(new PacketWorkTable(xCoord, yCoord, zCoord, inventory.clone()));
 	}
 
 	@Override
@@ -80,7 +69,8 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		inventory[slot] = stack;
-		invtCraftMatrix.setInventorySlotContents(slot, stack);
+		if (invtCraftMatrix != null)
+			invtCraftMatrix.setInventorySlotContents(slot, stack);
 
 		if (stack != null && stack.stackSize > getInventoryStackLimit())
 			stack.stackSize = getInventoryStackLimit();

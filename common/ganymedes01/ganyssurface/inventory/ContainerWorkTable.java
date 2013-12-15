@@ -87,6 +87,6 @@ public class ContainerWorkTable extends Container {
 
 	@Override
 	public boolean func_94530_a(ItemStack stack, Slot slot) {
-		return slot.inventory != craftResult && super.func_94530_a(stack, slot);
+		return slot.inventory != craftResult;
 	}
 }
