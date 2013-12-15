@@ -21,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 
 @SideOnly(Side.CLIENT)
-public class GuiGanysSurface extends GuiContainer {
+public abstract class GuiGanysSurface extends GuiContainer {
 
 	protected final int BLACK = Utils.getColour(0, 0, 0);
 
@@ -30,9 +30,7 @@ public class GuiGanysSurface extends GuiContainer {
 	}
 
 	@Override
-	protected void drawGuiContainerBackgroundLayer(float f, int mouseX, int mouseY) {
-		// Should be overridden by any extending classes
-	}
+	protected abstract void drawGuiContainerBackgroundLayer(float f, int mouseX, int mouseY);
 
 	protected void drawToolTip(int mouseX, int mouseY, String text) {
 		GL11.glDisable(GL12.GL_RESCALE_NORMAL);
