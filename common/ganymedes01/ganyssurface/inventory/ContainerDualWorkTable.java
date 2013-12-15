@@ -62,7 +62,6 @@ public class ContainerDualWorkTable extends Container {
 			craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(dualWorkTable.invtCraftMatrix, dualWorkTable.worldObj));
 		else if (inventory == dualWorkTable.invtCraftMatrixRight)
 			craftResultRight.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(dualWorkTable.invtCraftMatrixRight, dualWorkTable.worldObj));
-		super.onCraftMatrixChanged(inventory);
 	}
 
 	@Override
@@ -102,6 +101,6 @@ public class ContainerDualWorkTable extends Container {
 
 	@Override
 	public boolean func_94530_a(ItemStack stack, Slot slot) {
-		return slot.inventory != craftResultRight || slot.inventory != craftResult;
+		return !(slot instanceof WorkTableResultSlot);
 	}
 }
