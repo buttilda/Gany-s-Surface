@@ -121,7 +121,7 @@ public class Utils {
 	}
 
 	private static final boolean insertStackToNullSlot(int i, IInventory iinventory, ItemStack stack, int side) {
-		if (iinventory.getStackInSlot(i) == null && iinventory.isItemValidForSlot(i, stack)) {
+		if (iinventory.getStackInSlot(i) == null && iinventory.isItemValidForSlot(i, stack) && canInsert(i, iinventory, stack, side)) {
 			if (stack.stackSize > iinventory.getInventoryStackLimit()) {
 				iinventory.setInventorySlotContents(i, new ItemStack(stack.itemID, iinventory.getInventoryStackLimit(), stack.getItemDamage()));
 				stack.stackSize -= iinventory.getInventoryStackLimit();
@@ -132,6 +132,10 @@ public class Utils {
 			return true;
 		}
 		return false;
+	}
+
+	private static final boolean canInsert(int i, IInventory invt, ItemStack stack, int side) {
+		return invt instanceof ISidedInventory ? ((ISidedInventory) invt).canInsertItem(i, stack, side) : true;
 	}
 
 	private static final ArrayList<Integer> getStackSlots(IInventory iinventory, ItemStack stack, int side) {
