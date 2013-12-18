@@ -24,35 +24,25 @@ public class ForestryManager extends Integration {
 
 	@Override
 	public void init() {
-		FMLInterModComms.sendMessage("Forestry", "add-farmable-crop", "farmWheat@" + ModItems.camelliaSeeds.itemID + ".0." + ModBlocks.camelliaCrop.blockID + ".7");
+		FMLInterModComms.sendMessage(getModID(), "add-farmable-crop", "farmWheat@" + ModItems.camelliaSeeds.itemID + ".0." + ModBlocks.camelliaCrop.blockID + ".7");
+
+		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "miner@" + ModItems.colouredRedstone.itemID + ":*;");
+		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "forester@" + ModItems.camelliaSeeds.itemID + ";" + ModItems.teaLeaves.itemID + ";");
+		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "hunter@" + ModItems.poop.itemID + ":*;" + ModItems.pocketBat.itemID + ";");
 
 		ItemStack fert = getItem("fertilizerCompound", 24);
 		if (fert != null)
 			GameRegistry.addRecipe(fert, "xxx", "xyx", "xxx", 'x', new ItemStack(ModItems.rot, 1, 1), 'y', new ItemStack(Item.dyePowder, 1, 4));
-
-		addSqueezerRecipe(new ItemStack(ModItems.camelliaSeeds), 20);
 	}
 
 	@Override
 	public void postInit() {
-		addSqueezerRecipe(new ItemStack(ModItems.camelliaSeeds));
+		addSqueezerRecipe(new ItemStack(ModItems.camelliaSeeds), 20);
 	}
 
 	@Override
 	public String getModID() {
 		return "Forestry";
-	}
-
-	private void addSqueezerRecipe(ItemStack seeds) {
-		try {
-			Class<?> recipeManagers = Class.forName("forestry.api.recipes.RecipeManagers");
-			Field field = recipeManagers.getField("squeezerManager");
-			Object ret = field.get(null);
-			Method addRecipe = ret.getClass().getMethod("addRecipe", int.class, ItemStack[].class, FluidStack.class);
-			addRecipe.invoke(ret, 10, new ItemStack[] { seeds }, new FluidStack(FluidRegistry.getFluid("seedoil"), 10));
-
-		} catch (Exception e) {
-		}
 	}
 
 	private ItemStack getItem(String name, int size) {
