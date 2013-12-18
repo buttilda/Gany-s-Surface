@@ -91,7 +91,7 @@ public class Utils {
 	}
 
 	public static final boolean addStackToInventory(IInventory iinventory, ItemStack stack) {
-		return addStackToInventory(iinventory, stack, -1);
+		return addStackToInventory(iinventory, stack, 0);
 	}
 
 	public static final boolean addStackToInventory(IInventory iinventory, ItemStack stack, int side) {
