@@ -25,7 +25,7 @@ public class TileEntityOrganicMatterCompressor extends GanysInventory implements
 	private final int BLOCK_OF_COAL = 10;
 	private final int COAL = 9;
 	private final int[] SLOTS = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
-	private final int WORK_TIME = 2400;
+	private final int WORK_TIME = 900;
 	private int currentTime, organicMatter;
 	private final int NEEDED_MATTER = 144;
 
