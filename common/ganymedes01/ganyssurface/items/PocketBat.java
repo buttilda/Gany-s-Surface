@@ -60,9 +60,9 @@ public class PocketBat extends Item {
 			z += Facing.offsetsZForSide[side];
 
 			Entity entity = ItemMonsterPlacer.spawnCreature(world, 65, x + 0.5D, y + 0.5D, z + 0.5D);
-			((EntityBat) entity).func_110163_bv();
 
 			if (entity != null) {
+				((EntityBat) entity).func_110163_bv();
 				if (stack.hasDisplayName())
 					((EntityLiving) entity).setCustomNameTag(stack.getDisplayName());
 

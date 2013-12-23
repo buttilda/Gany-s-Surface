@@ -134,7 +134,7 @@ public class MultipleItemsRecipe extends ShapedRecipes {
 			return true;
 		else if (stackArray == null && stack2 != null || stackArray != null && stack2 == null)
 			return false;
-		else
+		else if (stackArray != null)
 			for (ItemStack stack1 : stackArray)
 				if (stack1.itemID == stack2.itemID)
 					if (stack1.getItemDamage() == OreDictionary.WILDCARD_VALUE || stack1.getItemDamage() == stack2.getItemDamage())
