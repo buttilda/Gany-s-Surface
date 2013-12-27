@@ -27,6 +27,9 @@ public class ChocolateCakeBlock extends BlockCake {
 
 	public ChocolateCakeBlock() {
 		super(ModIDs.CHOCOLATE_CAKE_ID);
+		disableStats();
+		setHardness(0.5F);
+		setStepSound(soundClothFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CHOCOLATE_CAKE_NAME));
 	}
