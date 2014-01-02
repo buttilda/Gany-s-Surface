@@ -15,6 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySkull;
 import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
+import cpw.mods.fml.relauncher.ReflectionHelper;
 
 /**
  * Gany's Surface
@@ -73,7 +74,7 @@ public class TileEntityBlockDetector extends GanysInventory implements ISidedInv
 				return meta >= finalMeta;
 			}
 		if (inventory[0].getItem() instanceof ItemReed)
-			return checkIdPicked(x, y, z);
+			return checkIdPicked((ItemReed) inventory[0].getItem(), x, y, z);
 		else if (inventory[0].getItem() instanceof ItemBucket) {
 			if (inventory[0].getItem().itemID == Item.bucketLava.itemID)
 				return worldObj.getBlockMaterial(x, y, z) == Material.lava;
@@ -91,10 +92,9 @@ public class TileEntityBlockDetector extends GanysInventory implements ISidedInv
 		return false;
 	}
 
-	protected boolean checkIdPicked(int x, int y, int z) {
+	protected boolean checkIdPicked(ItemReed item, int x, int y, int z) {
 		if (!worldObj.isAirBlock(x, y, z))
-			if (Block.blocksList[worldObj.getBlockId(x, y, z)].idPicked(worldObj, x, y, z) == inventory[0].itemID)
-				return true;
+			return worldObj.getBlockId(x, y, z) == (Integer) ReflectionHelper.getPrivateValue(ItemReed.class, item, "field_77830_a", "spawnID");
 		return false;
 	}
 
