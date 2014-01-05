@@ -7,6 +7,7 @@ import ganymedes01.ganyssurface.core.handlers.FuelHandler;
 import ganymedes01.ganyssurface.core.handlers.InterModComms;
 import ganymedes01.ganyssurface.core.handlers.OpenContainerHandler;
 import ganymedes01.ganyssurface.core.handlers.PoopHandler;
+import ganymedes01.ganyssurface.core.handlers.RenderCapeHandler;
 import ganymedes01.ganyssurface.core.handlers.VersionCheckTickHandler;
 import ganymedes01.ganyssurface.core.proxy.CommonProxy;
 import ganymedes01.ganyssurface.core.utils.VersionHelper;
@@ -21,6 +22,7 @@ import java.io.File;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -92,6 +94,12 @@ public class GanysSurface {
 
 		proxy.registerTileEntities();
 		proxy.registerRenderers();
+
+		if (!Loader.isModLoaded("mobsplice"))
+			if (event.getSide() == Side.CLIENT) {
+				RenderCapeHandler.getUsernames();
+				MinecraftForge.EVENT_BUS.register(new RenderCapeHandler());
+			}
 
 		ModIntegrator.init();
 	}
