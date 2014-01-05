@@ -61,6 +61,7 @@ public class GanysSurface {
 	public static boolean forceAllContainersOpen = false;
 	public static boolean enableMarket = true;
 	public static boolean enableWoodenArmour = true;
+	public static boolean enableCamilaSeedsToDropFromGrass = true;
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
 

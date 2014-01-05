@@ -133,7 +133,8 @@ public class ModItems {
 	}
 
 	private static void registerForge() {
-		MinecraftForge.addGrassSeed(new ItemStack(camelliaSeeds), 8);
+		if (GanysSurface.enableCamilaSeedsToDropFromGrass)
+			MinecraftForge.addGrassSeed(new ItemStack(camelliaSeeds), 8);
 	}
 
 	private static void registerDispenserActions() {
