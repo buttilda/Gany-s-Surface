@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModIDs;
+import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.PacketTypeHandler;
 import ganymedes01.ganyssurface.network.packet.PacketItemDisplay;
@@ -32,6 +33,7 @@ public class ItemDisplay extends BlockContainer {
 		setHardness(1.0F);
 		setStepSound(soundGlassFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);
+		setTextureName(Utils.getBlockTexture(Strings.ITEM_DISPLAY_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ITEM_DISPLAY_NAME));
 	}
 
@@ -86,7 +88,7 @@ public class ItemDisplay extends BlockContainer {
 
 	@Override
 	public int getRenderType() {
-		return -1;
+		return RenderIDs.ITEM_DISPLAY;
 	}
 
 	@Override

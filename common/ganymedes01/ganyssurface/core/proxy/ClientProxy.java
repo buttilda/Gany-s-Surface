@@ -2,10 +2,10 @@ package ganymedes01.ganyssurface.core.proxy;
 
 import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.client.renderer.block.BlockColouredRedstoneRender;
+import ganymedes01.ganyssurface.client.renderer.block.BlockItemDisplayRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockLanternRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockSlimeBlockRender;
 import ganymedes01.ganyssurface.client.renderer.item.ItemDualWorkTableRenderer;
-import ganymedes01.ganyssurface.client.renderer.item.ItemItemDisplayRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemPlanterRenderer;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityChestPropellantRender;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityItemDisplayRender;
@@ -59,7 +59,6 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRenderers() {
-		MinecraftForgeClient.registerItemRenderer(ModBlocks.itemDisplay.blockID, new ItemItemDisplayRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.planter.blockID, new ItemPlanterRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModBlocks.dualWorkTable.blockID, new ItemDualWorkTableRenderer());
 
@@ -69,6 +68,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerBlockHandler(RenderIDs.LANTERN, new BlockLanternRender());
 		RenderingRegistry.registerBlockHandler(RenderIDs.SLIME_BLOCK, new BlockSlimeBlockRender());
 		RenderingRegistry.registerBlockHandler(RenderIDs.COLOURED_REDSTONE, new BlockColouredRedstoneRender());
+		RenderingRegistry.registerBlockHandler(RenderIDs.ITEM_DISPLAY, new BlockItemDisplayRender());
 	}
 
 	@Override

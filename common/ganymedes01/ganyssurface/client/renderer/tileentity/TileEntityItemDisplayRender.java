@@ -1,8 +1,5 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
-import ganymedes01.ganyssurface.client.model.ModelItemDisplay;
-import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -12,7 +9,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -27,11 +23,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 
-	private ModelItemDisplay model;
 	private RenderItem customRenderItem;
 
 	public TileEntityItemDisplayRender() {
-		model = new ModelItemDisplay();
 		customRenderItem = new RenderItem() {
 			@Override
 			public boolean shouldBob() {
@@ -44,17 +38,6 @@ public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float angle) {
 		TileEntityItemDisplay itemDisplay = (TileEntityItemDisplay) tile;
-		bindTexture(Utils.getResource(Utils.getEntityTexture(Strings.ITEM_DISPLAY_NAME)));
-
-		GL11.glPushMatrix();
-		GL11.glDisable(GL11.GL_LIGHTING);
-		GL11.glDisable(GL11.GL_CULL_FACE);
-		GL11.glTranslatef((float) x + 1.0F, (float) y + 1.0F, (float) z + 0.0F);
-		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-		GL11.glScalef(-1.0F, -1.0F, 1.0F);
-		GL11.glEnable(GL11.GL_ALPHA_TEST);
-		model.renderAll();
-		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
 		if (itemDisplay.getDisplayItem() != null) {
@@ -77,8 +60,6 @@ public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 
 			customRenderItem.doRenderItem(ghostEntityItem, 0, 0, 0, 0, 0);
 		}
-		GL11.glEnable(GL11.GL_CULL_FACE);
-		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glPopMatrix();
 	}
 }
