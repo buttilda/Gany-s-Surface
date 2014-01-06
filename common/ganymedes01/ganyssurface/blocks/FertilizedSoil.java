@@ -18,7 +18,7 @@ public class FertilizedSoil extends Block {
 	public FertilizedSoil() {
 		super(ModIDs.FERTILIZED_SOIL_ID, Material.ground);
 		setHardness(0.6F);
-		setLightOpacity(255);
+		setLightOpacity(0);
 		setTickRandomly(true);
 		setStepSound(soundGravelFootstep);
 		setCreativeTab(GanysSurface.surfaceTab);
