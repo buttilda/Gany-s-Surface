@@ -28,48 +28,57 @@ public interface IEssentiaTransport {
 	 * @return
 	 */
 	boolean canOutputTo(ForgeDirection face);
-	
-//	/**
-//	 * Can this tile act as a source of vis?
-//	 * @return
-//	 */
-//	public boolean isVisSource();
-//	
-//	/**
-//	 * Is this tile a conduit that transports vis?
-//	 * @return
-//	 */
-//	public boolean isVisConduit();
-		
+			
 	/**
-	 * Sets the amount of vis and taint TCB this block will apply
-	 * @param suction
-	 */
-	public void setSuction(AspectList suction);
-	
-	/**
-	 * Sets the amount of vis and taint TCB this block will apply
+	 * Sets the amount of suction this block will apply
 	 * @param suction
 	 */
 	public void setSuction(Aspect aspect, int amount);
 	
 	/**
-	 * Returns the amount of vis and taint suction this block is applying. Usually should return the highest value of the two
+	 * Returns the type of suction this block is applying. 
+	 * @param loc
+	 * 		the location from where the suction is being checked
+	 * @return
+	 * 		a return type of null indicates the suction is untyped and the first thing available will be drawn
+	 */
+	public Aspect getSuctionType(ForgeDirection face);
+	
+	/**
+	 * Returns the strength of suction this block is applying. 
 	 * @param loc
 	 * 		the location from where the suction is being checked
 	 * @return
 	 */
-	public AspectList getSuction(ForgeDirection face);
-
+	public int getSuctionAmount(ForgeDirection face);
 	
 	/**
 	 * remove the specified amount of vis from this transport tile
-	 * @param suction
 	 * @return how much was actually taken
 	 */
 	public int takeVis(Aspect aspect, int amount);
-
-	public AspectList getEssentia(ForgeDirection face);
+	
+	/**
+	 * add the specified amount of vis to this transport tile
+	 * @return how much was actually added
+	 */
+	public int addVis(Aspect aspect, int amount);
+	
+	/**
+	 * What type of essentia this contains
+	 * @param face
+	 * @return
+	 */
+	public Aspect getEssentiaType(ForgeDirection face);
+	
+	/**
+	 * How much essentia this block contains
+	 * @param face
+	 * @return
+	 */
+	public int getEssentiaAmount(ForgeDirection face);
+	
+	
 
 	/**
 	 * Essentia will not be drawn from this container unless the suction exceeds this amount.
