@@ -1,9 +1,12 @@
 package ganymedes01.ganyssurface.items;
 
+import net.minecraft.block.Block;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 
 /**
  * Gany's Surface
@@ -18,6 +21,20 @@ public class ItemDyeableArmour extends ItemArmor {
 		super(id, EnumArmorMaterial.IRON, 2, armourType);
 		setMaxStackSize(1);
 		setCreativeTab(null);
+	}
+
+	@Override
+	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
+		if (!world.isRemote) {
+			int meta = world.getBlockMetadata(x, y, z);
+			if (world.getBlockId(x, y, z) == Block.cauldron.blockID && meta > 0) {
+				removeColor(stack);
+				world.setBlockMetadataWithNotify(x, y, z, meta - 1, 2);
+				world.func_96440_m(x, y, z, Block.cauldron.blockID);
+				return true;
+			}
+		}
+		return super.onItemUse(stack, player, world, x, y, z, side, hitX, hitY, hitZ);
 	}
 
 	@Override
