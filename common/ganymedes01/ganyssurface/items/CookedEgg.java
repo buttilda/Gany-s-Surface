@@ -16,7 +16,7 @@ import net.minecraft.item.ItemFood;
 public class CookedEgg extends ItemFood {
 
 	public CookedEgg() {
-		super(ModIDs.COOKED_EGG_ID, 3, false);
+		super(ModIDs.COOKED_EGG_ID, 5, false);
 		setMaxStackSize(16);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.COOKED_EGG_NAME));
