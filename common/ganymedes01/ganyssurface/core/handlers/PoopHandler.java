@@ -21,7 +21,7 @@ public class PoopHandler {
 	@ForgeSubscribe
 	public void onLivingUpdate(LivingUpdateEvent event) {
 		if (event.entityLiving instanceof EntityAnimal || event.entityLiving instanceof EntityTameable || event.entityLiving instanceof EntityBat)
-			if (event.entityLiving.worldObj.rand.nextInt(15000) == 7500)
+			if (event.entityLiving.worldObj.rand.nextInt(1500) == 7500)
 				if (!event.entityLiving.isChild() && event.entityLiving.worldObj.isDaytime())
 					if (!event.entityLiving.worldObj.isRemote) {
 						if (event.entityLiving instanceof EntityBat)
@@ -38,6 +38,7 @@ public class PoopHandler {
 				for (int k = -1; k < 2; k++)
 					if (world.isAirBlock(x + i, y + j, z + k)) {
 						world.setBlock(x + i, y + j, z + k, block.blockID, meta, 3);
+						ModBlocks.poop.onNeighborBlockChange(world, x + i, y + j, z + k, block.blockID);
 						return;
 					}
 	}
