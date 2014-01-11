@@ -34,6 +34,7 @@ public class ModIDs {
 	public static int[] COLOURED_REDSTONE_ID = new int[16];
 	public static int COLOURED_REDSTONE_BLOCK_ID;
 	public static int DUAL_WORK_TABLE_ID;
+	public static int POOP_BLOCK_ID;
 
 	// Armour
 	public static int WOODEN_HELMET_ID;

@@ -15,5 +15,4 @@ public class RenderIDs {
 	public static final int SLIME_BLOCK = RenderingRegistry.getNextAvailableRenderId();
 	public static final int COLOURED_REDSTONE = RenderingRegistry.getNextAvailableRenderId();
 	public static final int ITEM_DISPLAY = RenderingRegistry.getNextAvailableRenderId();
-
 }

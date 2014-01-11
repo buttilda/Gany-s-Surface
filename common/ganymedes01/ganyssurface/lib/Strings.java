@@ -42,6 +42,7 @@ public class Strings {
 	}
 	public static final String COLOURED_REDSTONE_BLOCK_NAME = "colouredRedstoneBlock";
 	public static final String DUAL_WORK_TABLE_NAME = "dualWorkTable";
+	public static final String POOP_BLOCK_NAME = "poopBlock";
 
 	// Item names
 	public static final String ROT_NAME = "rot";
