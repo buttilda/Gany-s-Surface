@@ -65,7 +65,7 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 		coolDown += coolDownModifier;
 		if (coolDown <= worldObj.rand.nextInt(10)) {
 			if (isFormed())
-				if (worldObj.rand.nextInt(8) == 4)
+				if (worldObj.rand.nextInt(3) == 1)
 					Utils.addStackToInventory(this, new ItemStack(Item.dyePowder));
 			coolDown = 300;
 		}

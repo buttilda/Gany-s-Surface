@@ -22,9 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ItemPlanterRenderer implements IItemRenderer {
 
-	private ModelPlanter model = new ModelPlanter();
-	private float armExtension = 0.0F;
-	private boolean isReturning = false;
+	private final ModelPlanter model = new ModelPlanter();
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -38,18 +36,6 @@ public class ItemPlanterRenderer implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
-		if (isReturning) {
-			armExtension -= 0.005F;
-			if (armExtension <= 0.0F) {
-				armExtension = 0.0F;
-				isReturning = false;
-			}
-		} else {
-			armExtension += 0.005F;
-			if (armExtension >= 0.35F)
-				isReturning = true;
-		}
-
 		switch (type) {
 			case ENTITY: {
 				renderPlanter(0.5F, 0.5F, 0.5F);
@@ -76,7 +62,7 @@ public class ItemPlanterRenderer implements IItemRenderer {
 		GL11.glTranslatef(x, y + 0.5F, z);
 		GL11.glRotatef(180, 1, 0, 0);
 		GL11.glRotatef(-90, 0, 1, 0);
-		model.moveArm(armExtension);
+		model.moveArm(0.35F);
 		model.renderAll();
 		GL11.glPopMatrix();
 	}

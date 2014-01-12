@@ -20,10 +20,10 @@ public class PoopHandler {
 
 	@ForgeSubscribe
 	public void onLivingUpdate(LivingUpdateEvent event) {
-		if (event.entityLiving instanceof EntityAnimal || event.entityLiving instanceof EntityTameable || event.entityLiving instanceof EntityBat)
-			if (event.entityLiving.worldObj.rand.nextInt(1500) == 7500)
-				if (!event.entityLiving.isChild() && event.entityLiving.worldObj.isDaytime())
-					if (!event.entityLiving.worldObj.isRemote) {
+		if (!event.entityLiving.worldObj.isRemote)
+			if (event.entityLiving instanceof EntityAnimal || event.entityLiving instanceof EntityTameable || event.entityLiving instanceof EntityBat)
+				if (event.entityLiving.worldObj.rand.nextInt(10000) == 5000)
+					if (!event.entityLiving.isChild()) {
 						if (event.entityLiving instanceof EntityBat)
 							replaceNearbyAirBlock(event.entityLiving.worldObj, (int) event.entityLiving.posX, (int) event.entityLiving.posY, (int) event.entityLiving.posZ, ModBlocks.poop, 1);
 						else
@@ -36,7 +36,7 @@ public class PoopHandler {
 		for (int i = -1; i < 2; i++)
 			for (int j = -1; j < 2; j++)
 				for (int k = -1; k < 2; k++)
-					if (world.isAirBlock(x + i, y + j, z + k)) {
+					if (world.isAirBlock(x + i, y + j, z + k) || Block.blocksList[world.getBlockId(x + i, y + j, z + k)].isBlockReplaceable(world, x + i, y + j, z + k)) {
 						world.setBlock(x + i, y + j, z + k, block.blockID, meta, 3);
 						ModBlocks.poop.onNeighborBlockChange(world, x + i, y + j, z + k, block.blockID);
 						return;
