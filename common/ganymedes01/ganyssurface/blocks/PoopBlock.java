@@ -30,7 +30,7 @@ public class PoopBlock extends Block {
 	private Icon[] icons;
 
 	public PoopBlock() {
-		super(ModIDs.POOP_BLOCK_ID, Material.clay);
+		super(ModIDs.POOP_BLOCK_ID, Material.plants);
 		float pixel = 1.0F / 16.0F;
 		setBlockBounds(5 * pixel, 0.0F, 5 * pixel, 1.0F - 5 * pixel, 6 * pixel, 1.0F - 5 * pixel);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.POOP_BLOCK_NAME));
