@@ -10,6 +10,9 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemDye;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
@@ -32,8 +35,35 @@ public class PoopBlock extends Block {
 	public PoopBlock() {
 		super(ModIDs.POOP_BLOCK_ID, Material.plants);
 		float pixel = 1.0F / 16.0F;
-		setBlockBounds(5 * pixel, 0.0F, 5 * pixel, 1.0F - 5 * pixel, 6 * pixel, 1.0F - 5 * pixel);
+		disableStats();
+		setTickRandomly(true);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.POOP_BLOCK_NAME));
+		setBlockBounds(5 * pixel, 0.0F, 5 * pixel, 1.0F - 5 * pixel, 6 * pixel, 1.0F - 5 * pixel);
+	}
+
+	@Override
+	public void updateTick(World world, int x, int y, int z, Random rand) {
+		if (world.isRemote)
+			return;
+		int groundID = world.getBlockId(x, y - 1, z);
+		if (groundID == Block.dirt.blockID || groundID == Block.grass.blockID) {
+
+			boolean flag = rand.nextInt(30) == 0;
+			if (!world.provider.hasNoSky && world.canBlockSeeTheSky(x, y + 1, z) && (world.isRaining() || world.isThundering()))
+				flag = true;
+
+			if (flag) {
+				world.setBlockToAir(x, y, z);
+
+				if (rand.nextBoolean()) {
+					world.setBlock(x, y - 1, z, Block.grass.blockID);
+					if (rand.nextInt(25) == 0)
+						world.setBlock(x, y, z, Block.sapling.blockID, rand.nextInt(4), 3);
+				} else
+					ItemDye.func_96604_a(new ItemStack(Item.dyePowder, 1, 15), world, x, y - 1, z);
+
+			}
+		}
 	}
 
 	@Override
