@@ -24,7 +24,7 @@ public class TileEntityOrganicMatterCompressor extends GanysInventory implements
 
 	private final int BLOCK_OF_COAL = 10;
 	private final int COAL = 9;
-	private final int[] SLOTS = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+	private final int[] SLOTS = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	private final int WORK_TIME = 900;
 	private int currentTime, organicMatter;
 	private final int NEEDED_MATTER = 144;
@@ -98,7 +98,7 @@ public class TileEntityOrganicMatterCompressor extends GanysInventory implements
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
-		return side == 0 ? new int[] { BLOCK_OF_COAL } : side == 1 ? new int[] { COAL } : SLOTS;
+		return SLOTS;
 	}
 
 	@Override
@@ -108,7 +108,7 @@ public class TileEntityOrganicMatterCompressor extends GanysInventory implements
 
 	@Override
 	public boolean canExtractItem(int slot, ItemStack stack, int side) {
-		return true;
+		return slot == BLOCK_OF_COAL;
 	}
 
 	@Override
