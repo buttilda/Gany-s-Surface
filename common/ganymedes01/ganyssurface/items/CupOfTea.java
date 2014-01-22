@@ -40,25 +40,38 @@ public class CupOfTea extends Item {
 
 	@Override
 	public int getMaxItemUseDuration(ItemStack item) {
-		return 50;
+		return 35;
 	}
 
 	@Override
-	public ItemStack onEaten(ItemStack item, World world, EntityPlayer player) {
-		player.removePotionEffect(Potion.moveSlowdown.id);
-		player.removePotionEffect(Potion.digSlowdown.id);
-		player.removePotionEffect(Potion.weakness.id);
+	public ItemStack onEaten(ItemStack stack, World world, EntityPlayer player) {
+		if (!world.isRemote)
+			if (stack != null && stack.stackSize > 0) {
+				player.removePotionEffect(Potion.moveSlowdown.id);
+				player.removePotionEffect(Potion.digSlowdown.id);
+				player.removePotionEffect(Potion.weakness.id);
 
-		player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 1200, 3));
-		player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 1200));
-		player.addPotionEffect(new PotionEffect(Potion.jump.id, 1200, 3));
-		player.addPotionEffect(new PotionEffect(Potion.hunger.id, 600));
-		return new ItemStack(ModItems.emptyMug);
+				player.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 1200, 3));
+				player.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 1200));
+				player.addPotionEffect(new PotionEffect(Potion.jump.id, 1200, 3));
+				player.addPotionEffect(new PotionEffect(Potion.hunger.id, 600));
+
+				if (!player.capabilities.isCreativeMode) {
+					stack.stackSize--;
+					if (stack.stackSize <= 0)
+						return new ItemStack(ModItems.emptyMug);
+
+					if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.emptyMug)))
+						player.dropItem(ModItems.emptyMug.itemID, 1);
+				}
+			}
+
+		return stack;
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack item, World world, EntityPlayer player) {
-		player.setItemInUse(item, 35);
-		return item;
+	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+		player.setItemInUse(stack, getMaxItemUseDuration(stack));
+		return stack;
 	}
 }
