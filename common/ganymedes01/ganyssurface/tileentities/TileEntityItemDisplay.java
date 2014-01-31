@@ -45,4 +45,9 @@ public class TileEntityItemDisplay extends GanysInventory implements IPipeConnec
 	public ConnectOverride overridePipeConnection(PipeType type, ForgeDirection with) {
 		return ConnectOverride.DISCONNECT;
 	}
+
+	@Override
+	public boolean canUpdate() {
+		return false;
+	}
 }

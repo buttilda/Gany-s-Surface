@@ -180,4 +180,9 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 	public ConnectOverride overridePipeConnection(PipeType type, ForgeDirection with) {
 		return ConnectOverride.DISCONNECT;
 	}
+
+	@Override
+	public boolean canUpdate() {
+		return false;
+	}
 }

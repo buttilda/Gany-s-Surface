@@ -90,4 +90,9 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 	public boolean canExtractItem(int slot, ItemStack stack, int side) {
 		return false;
 	}
+
+	@Override
+	public boolean canUpdate() {
+		return false;
+	}
 }

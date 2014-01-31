@@ -179,4 +179,9 @@ public class TileEntityChestPropellant extends TileEntity implements ISidedInven
 		}
 		return false;
 	}
+
+	@Override
+	public boolean canUpdate() {
+		return false;
+	}
 }

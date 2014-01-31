@@ -42,4 +42,9 @@ public class TileEntityDislocator extends TileEntity implements IPipeConnection 
 		}
 		return ConnectOverride.DISCONNECT;
 	}
+
+	@Override
+	public boolean canUpdate() {
+		return false;
+	}
 }
