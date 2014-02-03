@@ -22,8 +22,9 @@ item.ganyssurface.fertilizer.name=Fertilizer
 item.ganyssurface.cookedEgg.name=Cooked Egg
 item.ganyssurface.obsidianHead.name=Obsidian Head
 item.ganyssurface.woodenWrench.name=Wooden Wrench
-item.ganyssurface.batNet.name=Bat Net
+item.ganyssurface.batNet.name=Net
 item.ganyssurface.pocketBat.name=Pocket Bat
+item.ganyssurface.pocketSquid.name=Pocket Squid
 item.ganyssurface.batStew.name=Bat Stew
 item.ganyssurface.chocolateBar.name=Chocolate Bar
 item.ganyssurface.horsalyser.name=Horsalyser
@@ -129,6 +130,7 @@ price=Price:
 itemGroup.ganyssurface=Gany's Surface
 
 # Others
-pleaseletmefree=Please let me free D=
+pleaseletmefree0=Please let me free D=
+pleaseletmefree1=What does the squid say?
 attacktocapture=Left-Click a bat to capture it
 interacttorotate=Right-Click logs,pillars and etc. to rotate

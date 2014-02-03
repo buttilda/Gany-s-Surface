@@ -27,13 +27,23 @@ public class DispenserBehaviorPocketBat extends BehaviorDefaultDispenseItem {
 		double y = block.getYInt() + 0.2F;
 		double z = block.getZ() + enumfacing.getFrontOffsetZ();
 
-		Entity entity = ItemMonsterPlacer.spawnCreature(block.getWorld(), 65, x, y, z);
-		((EntityBat) entity).func_110163_bv();
+		int entityID;
+		if (stack.getItemDamage() == 0)
+			entityID = 65;
+		else if (stack.getItemDamage() == 1)
+			entityID = 94;
+		else
+			entityID = -1;
 
-		if (entity instanceof EntityLivingBase && stack.hasDisplayName())
-			((EntityLiving) entity).setCustomNameTag(stack.getDisplayName());
+		if (entityID > 0) {
+			Entity entity = ItemMonsterPlacer.spawnCreature(block.getWorld(), entityID, x, y, z);
+			((EntityBat) entity).func_110163_bv();
 
-		stack.splitStack(1);
+			if (entity instanceof EntityLivingBase && stack.hasDisplayName())
+				((EntityLiving) entity).setCustomNameTag(stack.getDisplayName());
+
+			stack.splitStack(1);
+		}
 		return stack;
 	}
 }

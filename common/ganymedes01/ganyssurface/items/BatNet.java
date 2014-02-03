@@ -8,7 +8,9 @@ import ganymedes01.ganyssurface.lib.Strings;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.passive.EntityBat;
+import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -41,10 +43,11 @@ public class BatNet extends Item implements IRepairable {
 
 	@Override
 	public boolean onLeftClickEntity(ItemStack item, EntityPlayer player, Entity target) {
-		if (target instanceof EntityBat) {
+		int meta = getMetaFromCreature(target);
+		if (meta > 0) {
 			if (!player.worldObj.isRemote) {
-				ItemStack pocketBat = new ItemStack(ModItems.pocketBat);
-				if (((EntityBat) target).hasCustomNameTag())
+				ItemStack pocketBat = new ItemStack(ModItems.pocketBat, 1, meta);
+				if (((EntityLiving) target).hasCustomNameTag())
 					pocketBat.setItemName(((EntityBat) target).getCustomNameTag());
 				target.setDead();
 				if (!player.inventory.addItemStackToInventory(pocketBat))
@@ -54,5 +57,14 @@ public class BatNet extends Item implements IRepairable {
 			return true;
 		} else
 			return false;
+	}
+
+	public int getMetaFromCreature(Entity creature) {
+		if (creature instanceof EntityBat)
+			return 0;
+		else if (creature instanceof EntitySquid)
+			return 1;
+		else
+			return -1;
 	}
 }

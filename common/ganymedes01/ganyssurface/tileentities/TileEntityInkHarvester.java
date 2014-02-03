@@ -1,7 +1,6 @@
 package ganymedes01.ganyssurface.tileentities;
 
 import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.ArrayList;
@@ -29,11 +28,9 @@ import net.minecraft.util.DamageSource;
 
 public class TileEntityInkHarvester extends GanysInventory implements ISidedInventory {
 
-	private final int[] multiBlocks = new int[] { 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9, 9, 20, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9, 9, 20, 1, 20, 20, 1, 1, 20, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9, 9,
-	20, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1 };
+	private final int[] multiBlocks = new int[] { 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9, 9, 20, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9, 9, 20, 1, 20, 20, 1, 1, 20, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9, 9, 20, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1 };
 
-	private final int[] multiBlocks2 = new int[] { 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9, 9, 20, 1, 20, 20, 20, 1, 1, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9, 9, 20, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9,
-	9, 20, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1 };
+	private final int[] multiBlocks2 = new int[] { 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9, 9, 20, 1, 20, 20, 20, 1, 1, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9, 9, 20, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 20, 9, 9, 9, 20, 20, 9, 9, 9, 20, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1, 1, 20, 20, 20, 1, 1, 20, 20, 20, 1, 1, 1, 1, 1, 1 };
 
 	private int coolDown = 300, strikeCount = 0, foodCoolDown = 300, coolDownModifier = -1;
 
@@ -62,13 +59,25 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 			} else
 				foodCoolDown = 300;
 
+		if (coolDownModifier >= 0)
+			coolDownModifier = -1;
 		coolDown += coolDownModifier;
 		if (coolDown <= worldObj.rand.nextInt(10)) {
 			if (isFormed())
-				if (worldObj.rand.nextInt(3) == 1)
-					Utils.addStackToInventory(this, new ItemStack(Item.dyePowder));
+				makeInkSac();
 			coolDown = 300;
 		}
+	}
+
+	private void makeInkSac() {
+		for (int i = 0; i < 9; i++)
+			if (inventory[i] == null) {
+				inventory[i] = new ItemStack(Item.dyePowder);
+				return;
+			} else if (inventory[i].itemID == Item.dyePowder.itemID && inventory[i].stackSize < inventory[i].getMaxStackSize()) {
+				inventory[i].stackSize++;
+				return;
+			}
 	}
 
 	private void killOneSquid() {
@@ -216,19 +225,19 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 	@Override
 	public void readFromNBT(NBTTagCompound data) {
 		super.readFromNBT(data);
-		data.setInteger("coolDown", coolDown);
-		data.setInteger("strikeCount", strikeCount);
-		data.setInteger("foodCoolDown", foodCoolDown);
-		data.setInteger("coolDownModifier", coolDownModifier);
+		coolDown = data.getInteger("coolDown");
+		strikeCount = data.getInteger("strikeCount");
+		foodCoolDown = data.getInteger("foodCoolDown");
+		coolDownModifier = data.getInteger("coolDownModifier");
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
-		coolDown = data.getInteger("coolDown");
-		strikeCount = data.getInteger("strikeCount");
-		foodCoolDown = data.getInteger("foodCoolDown");
-		coolDownModifier = data.getInteger("coolDownModifier");
+		data.setInteger("coolDown", coolDown);
+		data.setInteger("strikeCount", strikeCount);
+		data.setInteger("foodCoolDown", foodCoolDown);
+		data.setInteger("coolDownModifier", coolDownModifier);
 	}
 
 	@Override

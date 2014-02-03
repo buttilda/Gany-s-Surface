@@ -3,24 +3,25 @@ package ganymedes01.ganyssurface.items;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModIDs;
+import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
 
-import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumMovingObjectType;
 import net.minecraft.util.Facing;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Icon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
@@ -31,17 +32,29 @@ import net.minecraft.world.World;
 
 public class PocketBat extends Item {
 
+	@SideOnly(Side.CLIENT)
+	private Icon[] icon;
+
 	public PocketBat() {
 		super(ModIDs.POCKET_BAT_ID);
+		setMaxDamage(0);
 		setMaxStackSize(1);
+		setHasSubtypes(true);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setTextureName(Utils.getItemTexture(Strings.POCKET_BAT_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.POCKET_BAT_NAME));
 	}
 
 	@Override
+	public String getUnlocalizedName(ItemStack stack) {
+		if (stack.getItemDamage() == 0)
+			return super.getUnlocalizedName();
+		else
+			return "item." + Reference.MOD_ID + ".pocketSquid";
+	}
+
+	@Override
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
-		list.add(StatCollector.translateToLocal("pleaseletmefree"));
+		list.add(StatCollector.translateToLocal("pleaseletmefree" + stack.getItemDamage()));
 	}
 
 	@Override
@@ -59,15 +72,25 @@ public class PocketBat extends Item {
 			y += Facing.offsetsYForSide[side];
 			z += Facing.offsetsZForSide[side];
 
-			Entity entity = ItemMonsterPlacer.spawnCreature(world, 65, x + 0.5D, y + 0.5D, z + 0.5D);
+			int entityID;
+			if (stack.getItemDamage() == 0)
+				entityID = 65;
+			else if (stack.getItemDamage() == 1)
+				entityID = 94;
+			else
+				entityID = -1;
 
-			if (entity != null) {
-				((EntityBat) entity).func_110163_bv();
-				if (stack.hasDisplayName())
-					((EntityLiving) entity).setCustomNameTag(stack.getDisplayName());
+			if (entityID > 0) {
+				Entity entity = ItemMonsterPlacer.spawnCreature(world, entityID, x + 0.5D, y + 0.5D, z + 0.5D);
 
-				if (!player.capabilities.isCreativeMode)
-					stack.stackSize--;
+				if (entity != null) {
+					((EntityLiving) entity).func_110163_bv();
+					if (stack.hasDisplayName())
+						((EntityLiving) entity).setCustomNameTag(stack.getDisplayName());
+
+					if (!player.capabilities.isCreativeMode)
+						stack.stackSize--;
+				}
 			}
 
 			return true;
@@ -75,41 +98,23 @@ public class PocketBat extends Item {
 	}
 
 	@Override
-	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		if (world.isRemote)
-			return stack;
-		else {
-			MovingObjectPosition movingobjectposition = getMovingObjectPositionFromPlayer(world, player, true);
+	@SideOnly(Side.CLIENT)
+	public Icon getIconFromDamage(int meta) {
+		return icon[meta];
+	}
 
-			if (movingobjectposition == null)
-				return stack;
-			else {
-				if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE) {
-					int i = movingobjectposition.blockX;
-					int j = movingobjectposition.blockY;
-					int k = movingobjectposition.blockZ;
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(int itemID, CreativeTabs tabs, List list) {
+		list.add(new ItemStack(itemID, 1, 0));
+		list.add(new ItemStack(itemID, 1, 1));
+	}
 
-					if (!world.canMineBlock(player, i, j, k))
-						return stack;
-
-					if (!player.canPlayerEdit(i, j, k, movingobjectposition.sideHit, stack))
-						return stack;
-
-					if (world.getBlockMaterial(i, j, k) == Material.water) {
-						Entity entity = ItemMonsterPlacer.spawnCreature(world, 65, i, j, k);
-
-						if (entity != null) {
-							if (entity instanceof EntityLivingBase && stack.hasDisplayName())
-								((EntityLiving) entity).setCustomNameTag(stack.getDisplayName());
-
-							if (!player.capabilities.isCreativeMode)
-								--stack.stackSize;
-						}
-					}
-				}
-
-				return stack;
-			}
-		}
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister reg) {
+		icon = new Icon[2];
+		icon[0] = reg.registerIcon(Utils.getItemTexture(Strings.POCKET_BAT_NAME));
+		icon[1] = reg.registerIcon(Utils.getItemTexture("pocketSquid"));
 	}
 }
