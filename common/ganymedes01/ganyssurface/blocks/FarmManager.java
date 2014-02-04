@@ -5,7 +5,7 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
-import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
+import ganymedes01.ganyssurface.tileentities.TileEntityFarmManager;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -18,36 +18,23 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-/**
- * Gany's Surface
- * 
- * @author ganymedes01
- * 
- */
+public class FarmManager extends BlockContainer {
 
-public class Planter extends BlockContainer {
-
-	public Planter() {
-		super(ModIDs.PLANTER_ID, Material.cloth);
+	public FarmManager() {
+		super(ModIDs.FARM_MANAGER_ID, Material.cloth);
 		setHardness(1.0F);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.PLANTER_NAME));
+		setUnlocalizedName(Utils.getUnlocalizedName(Strings.FARM_MANAGER_NAME));
 	}
 
 	@Override
-	public boolean isOpaqueCube() {
-		return false;
+	public boolean hasComparatorInputOverride() {
+		return true;
 	}
 
 	@Override
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
-
-	@Override
-	public int getRenderType() {
-		return -1;
+	public int getComparatorInputOverride(World world, int x, int y, int z, int side) {
+		return Container.calcRedstoneFromInventory((TileEntityFarmManager) world.getBlockTileEntity(x, y, z));
 	}
 
 	@Override
@@ -57,16 +44,16 @@ public class Planter extends BlockContainer {
 		if (player.isSneaking())
 			return false;
 		else {
-			TileEntityPlanter tile = (TileEntityPlanter) world.getBlockTileEntity(x, y, z);
+			TileEntityFarmManager tile = (TileEntityFarmManager) world.getBlockTileEntity(x, y, z);
 			if (tile != null)
-				player.openGui(GanysSurface.instance, GUIsID.PLANTER, world, x, y, z);
+				player.openGui(GanysSurface.instance, GUIsID.FARM_MANAGER, world, x, y, z);
 			return true;
 		}
 	}
 
 	@Override
 	public void breakBlock(World world, int x, int y, int z, int par5, int par6) {
-		TileEntityPlanter tile = (TileEntityPlanter) world.getBlockTileEntity(x, y, z);
+		TileEntityFarmManager tile = (TileEntityFarmManager) world.getBlockTileEntity(x, y, z);
 		if (tile != null) {
 			for (int i = 0; i < tile.getSizeInventory(); i++) {
 				ItemStack stack = tile.getStackInSlot(i);
@@ -79,18 +66,15 @@ public class Planter extends BlockContainer {
 	}
 
 	@Override
-	public boolean hasComparatorInputOverride() {
-		return true;
-	}
-
-	@Override
-	public int getComparatorInputOverride(World world, int x, int y, int z, int side) {
-		return Container.calcRedstoneFromInventory((TileEntityPlanter) world.getBlockTileEntity(x, y, z));
-	}
-
-	@Override
 	public TileEntity createNewTileEntity(World world) {
-		return new TileEntityPlanter();
+		return new TileEntityFarmManager();
+	}
+
+	@Override
+	public void onNeighborBlockChange(World world, int x, int y, int z, int id) {
+		if (world.isRemote)
+			return;
+		((TileEntityFarmManager) world.getBlockTileEntity(x, y, z)).redstoneActive = world.isBlockIndirectlyGettingPowered(x, y, z);
 	}
 
 	@Override

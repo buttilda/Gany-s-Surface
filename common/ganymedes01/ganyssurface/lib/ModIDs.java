@@ -35,6 +35,7 @@ public class ModIDs {
 	public static int COLOURED_REDSTONE_BLOCK_ID;
 	public static int DUAL_WORK_TABLE_ID;
 	public static int POOP_BLOCK_ID;
+	public static int FARM_MANAGER_ID;
 
 	// Armour
 	public static int WOODEN_HELMET_ID;
@@ -71,4 +72,5 @@ public class ModIDs {
 	// Entities
 	public static final int ENTITY_POOP_ID = 0;
 	public static final int ENTITY_BAT_POOP_ID = 1;
+	public static final int ENTITY_SEED_ID = 2;
 }

@@ -27,6 +27,10 @@ public class TileEntityPlanter extends GanysInventory {
 		super(9, Strings.PLANTER_NAME);
 	}
 
+	protected TileEntityPlanter(String name) {
+		super(9, name);
+	}
+
 	@Override
 	public void updateEntity() {
 		if (worldObj.isRemote)

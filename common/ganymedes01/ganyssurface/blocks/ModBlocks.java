@@ -45,6 +45,7 @@ public class ModBlocks {
 	public static Block colouredRedstoneBlock;
 	public static Block dualWorkTable;
 	public static Block poop;
+	public static Block farmManager;
 
 	public static void init() {
 		camelliaCrop = new CamelliaCrop();
@@ -75,6 +76,7 @@ public class ModBlocks {
 		colouredRedstoneBlock = new ColouredRedstoneBlock();
 		dualWorkTable = new DualWorkTable();
 		poop = new PoopBlock();
+		farmManager = new FarmManager();
 
 		registerNames();
 		registerHarvestLevel();
@@ -111,6 +113,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(colouredRedstoneBlock, ItemColouredRedstoneBlock.class, Strings.COLOURED_REDSTONE_BLOCK_NAME);
 		GameRegistry.registerBlock(dualWorkTable, Strings.DUAL_WORK_TABLE_NAME);
 		GameRegistry.registerBlock(poop, Strings.POOP_BLOCK_NAME);
+		GameRegistry.registerBlock(farmManager, Strings.FARM_MANAGER_NAME);
 	}
 
 	private static void registerHarvestLevel() {

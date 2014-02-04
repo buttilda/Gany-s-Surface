@@ -74,6 +74,7 @@ tile.ganyssurface.slimeBlock.name=Slime Block
 tile.ganyssurface.market.name=Market
 tile.ganyssurface.dualWorkTable.name=Dual Work Table
 tile.ganyssurface.poopBlock.name=Poop
+tile.ganyssurface.farmManager.name=Farm Manager
 
 tile.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 tile.ganyssurface.colouredRedstoneGREEN.name=Greenstone
@@ -118,6 +119,7 @@ container.ganyssurface:planter=Planter
 container.ganyssurface:inkHarvester=Ink Harvester
 container.ganyssurface:market=Market
 container.ganyssurface:dualWorkTable=Dual Work Table
+container.ganyssurface:farmManager=Farm Manager
 
 matter=Matter:
 squidFood=Food:

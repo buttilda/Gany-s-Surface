@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.core.proxy;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiFarmManager;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiInkHarvester;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiMarketPrivate;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiMarketPublic;
@@ -14,6 +15,7 @@ import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.inventory.ContainerBlockDetector;
 import ganymedes01.ganyssurface.inventory.ContainerDualWorkTable;
+import ganymedes01.ganyssurface.inventory.ContainerFarmManager;
 import ganymedes01.ganyssurface.inventory.ContainerInkHarvester;
 import ganymedes01.ganyssurface.inventory.ContainerMarketPrivate;
 import ganymedes01.ganyssurface.inventory.ContainerMarketPublic;
@@ -28,6 +30,7 @@ import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityCubicSensoringDislocator;
 import ganymedes01.ganyssurface.tileentities.TileEntityDislocator;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
+import ganymedes01.ganyssurface.tileentities.TileEntityFarmManager;
 import ganymedes01.ganyssurface.tileentities.TileEntityInkHarvester;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
@@ -70,6 +73,7 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityInkHarvester.class, Utils.getUnlocalizedName(Strings.INK_HARVESTER_NAME));
 		GameRegistry.registerTileEntity(TileEntityMarket.class, Utils.getUnlocalizedName(Strings.MARKET_NAME));
 		GameRegistry.registerTileEntity(TileEntityDualWorkTable.class, Utils.getUnlocalizedName(Strings.DUAL_WORK_TABLE_NAME));
+		GameRegistry.registerTileEntity(TileEntityFarmManager.class, Utils.getUnlocalizedName(Strings.FARM_MANAGER_NAME));
 	}
 
 	public void registerEntities() {
@@ -106,29 +110,23 @@ public class CommonProxy implements IGuiHandler {
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
 		switch (ID) {
 			case GUIsID.BLOCK_DETECTOR:
-				TileEntityBlockDetector tileBlockDetector = (TileEntityBlockDetector) tile;
-				return new ContainerBlockDetector(player.inventory, tileBlockDetector);
+				return new ContainerBlockDetector(player.inventory, (TileEntityBlockDetector) tile);
 			case GUIsID.WORK_TABLE:
-				TileEntityWorkTable tileWorkTable = (TileEntityWorkTable) tile;
-				return new ContainerWorkTable(player.inventory, tileWorkTable);
+				return new ContainerWorkTable(player.inventory, (TileEntityWorkTable) tile);
 			case GUIsID.ORGANIC_MATTER_COMPRESSOR:
-				TileEntityOrganicMatterCompressor tileCompressor = (TileEntityOrganicMatterCompressor) tile;
-				return new ContainerOrganicMatterCompressor(player.inventory, tileCompressor);
+				return new ContainerOrganicMatterCompressor(player.inventory, (TileEntityOrganicMatterCompressor) tile);
 			case GUIsID.PLANTER:
-				TileEntityPlanter tilePlanter = (TileEntityPlanter) tile;
-				return new ContainerPlanter(player.inventory, tilePlanter);
+				return new ContainerPlanter(player.inventory, (TileEntityPlanter) tile);
 			case GUIsID.INK_HARVESTER:
-				TileEntityInkHarvester tileHarvester = (TileEntityInkHarvester) tile;
-				return new ContainerInkHarvester(player.inventory, tileHarvester);
+				return new ContainerInkHarvester(player.inventory, (TileEntityInkHarvester) tile);
 			case GUIsID.MARKET_PUBLIC:
-				TileEntityMarket tileMarketPublic = (TileEntityMarket) tile;
-				return new ContainerMarketPublic(player.inventory, tileMarketPublic, player.username);
+				return new ContainerMarketPublic(player.inventory, (TileEntityMarket) tile, player.username);
 			case GUIsID.MARKET_PRIVATE:
-				TileEntityMarket tileMarketPrivate = (TileEntityMarket) tile;
-				return new ContainerMarketPrivate(player.inventory, tileMarketPrivate);
+				return new ContainerMarketPrivate(player.inventory, (TileEntityMarket) tile);
 			case GUIsID.DUAL_WORK_TABLE:
-				TileEntityDualWorkTable tileDualWorkTable = (TileEntityDualWorkTable) tile;
-				return new ContainerDualWorkTable(player.inventory, tileDualWorkTable);
+				return new ContainerDualWorkTable(player.inventory, (TileEntityDualWorkTable) tile);
+			case GUIsID.FARM_MANAGER:
+				return new ContainerFarmManager(player.inventory, (TileEntityFarmManager) tile);
 		}
 		return null;
 	}
@@ -138,29 +136,23 @@ public class CommonProxy implements IGuiHandler {
 		TileEntity tile = world.getBlockTileEntity(x, y, z);
 		switch (ID) {
 			case GUIsID.BLOCK_DETECTOR:
-				TileEntityBlockDetector tileBlockDetector = (TileEntityBlockDetector) tile;
-				return new GuiBlockDetector(player.inventory, tileBlockDetector);
+				return new GuiBlockDetector(player.inventory, (TileEntityBlockDetector) tile);
 			case GUIsID.WORK_TABLE:
-				TileEntityWorkTable tileWorkTable = (TileEntityWorkTable) tile;
-				return new GuiWorkTable(player.inventory, tileWorkTable);
+				return new GuiWorkTable(player.inventory, (TileEntityWorkTable) tile);
 			case GUIsID.ORGANIC_MATTER_COMPRESSOR:
-				TileEntityOrganicMatterCompressor tileCompressor = (TileEntityOrganicMatterCompressor) tile;
-				return new GuiOrganicMatterCompressor(player.inventory, tileCompressor);
+				return new GuiOrganicMatterCompressor(player.inventory, (TileEntityOrganicMatterCompressor) tile);
 			case GUIsID.PLANTER:
-				TileEntityPlanter tilePlanter = (TileEntityPlanter) tile;
-				return new GuiPlanter(player.inventory, tilePlanter);
+				return new GuiPlanter(player.inventory, (TileEntityPlanter) tile);
 			case GUIsID.INK_HARVESTER:
-				TileEntityInkHarvester tileHarvester = (TileEntityInkHarvester) tile;
-				return new GuiInkHarvester(player.inventory, tileHarvester);
+				return new GuiInkHarvester(player.inventory, (TileEntityInkHarvester) tile);
 			case GUIsID.MARKET_PUBLIC:
-				TileEntityMarket tileMarketPublic = (TileEntityMarket) tile;
-				return new GuiMarketPublic(player.inventory, tileMarketPublic, player.username);
+				return new GuiMarketPublic(player.inventory, (TileEntityMarket) tile, player.username);
 			case GUIsID.MARKET_PRIVATE:
-				TileEntityMarket tileMarketPrivate = (TileEntityMarket) tile;
-				return new GuiMarketPrivate(player.inventory, tileMarketPrivate);
+				return new GuiMarketPrivate(player.inventory, (TileEntityMarket) tile);
 			case GUIsID.DUAL_WORK_TABLE:
-				TileEntityDualWorkTable tileDualWorkTable = (TileEntityDualWorkTable) tile;
-				return new GuiDualWorkTable(player.inventory, tileDualWorkTable);
+				return new GuiDualWorkTable(player.inventory, (TileEntityDualWorkTable) tile);
+			case GUIsID.FARM_MANAGER:
+				return new GuiFarmManager(player.inventory, (TileEntityFarmManager) tile);
 		}
 		return null;
 	}

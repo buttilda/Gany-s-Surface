@@ -82,6 +82,7 @@ public class ConfigurationHandler {
 			ModIDs.COLOURED_REDSTONE_BLOCK_ID = configBlock(Strings.COLOURED_REDSTONE_BLOCK_NAME);
 			ModIDs.DUAL_WORK_TABLE_ID = configBlock(Strings.DUAL_WORK_TABLE_NAME);
 			ModIDs.POOP_BLOCK_ID = configBlock(Strings.POOP_BLOCK_NAME);
+			ModIDs.FARM_MANAGER_ID = configBlock(Strings.FARM_MANAGER_NAME);
 
 			// Armour
 			ModIDs.WOODEN_HELMET_ID = configItem(Strings.WOODEN_HELMET_NAME);
