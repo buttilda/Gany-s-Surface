@@ -6,17 +6,13 @@ import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityFarmManager;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class FarmManager extends BlockContainer {
 
@@ -24,6 +20,7 @@ public class FarmManager extends BlockContainer {
 		super(ModIDs.FARM_MANAGER_ID, Material.cloth);
 		setHardness(1.0F);
 		setCreativeTab(GanysSurface.surfaceTab);
+		setTextureName(Utils.getBlockTexture(Strings.FARM_MANAGER_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.FARM_MANAGER_NAME));
 	}
 
@@ -75,11 +72,5 @@ public class FarmManager extends BlockContainer {
 		if (world.isRemote)
 			return;
 		((TileEntityFarmManager) world.getBlockTileEntity(x, y, z)).redstoneActive = world.isBlockIndirectlyGettingPowered(x, y, z);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
-		blockIcon = Block.cloth.getIcon(0, 13);
 	}
 }

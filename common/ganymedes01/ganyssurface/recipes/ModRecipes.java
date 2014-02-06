@@ -108,6 +108,7 @@ public class ModRecipes {
 
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.dualWorkTable), "yyy", "x x", "yyy", 'x', ModBlocks.workTable, 'y', "plankWood"));
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.market), "xzx", "xyx", "xzx", 'x', Item.ingotIron, 'y', new ItemStack(Item.dyePowder), 'z', Block.chest);
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.farmManager), "xyx", "xzx", "xyx", 'x', ModBlocks.planter, 'y', Block.chest, 'z', Item.ingotGold);
 
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Block.web), "x x", " y ", "x x", 'y', Item.slimeBall, 'x', Item.silk);
