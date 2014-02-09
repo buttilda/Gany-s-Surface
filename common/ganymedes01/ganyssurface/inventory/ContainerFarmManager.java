@@ -18,9 +18,13 @@ import net.minecraft.item.ItemStack;
 public class ContainerFarmManager extends Container {
 
 	public ContainerFarmManager(InventoryPlayer inventory, TileEntityFarmManager tile) {
+
+		int index = 0;
 		for (int i = 0; i < 3; i++)
-			for (int j = 0; j < 6; j++)
-				addSlotToContainer(new SeedSlot(tile, j + i * 3, 35 + j * 18, 17 + i * 18));
+			for (int j = 0; j < 6; j++) {
+				addSlotToContainer(new SeedSlot(tile, index, 35 + j * 18, 17 + i * 18));
+				index++;
+			}
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++)
@@ -39,10 +43,10 @@ public class ContainerFarmManager extends Container {
 			ItemStack stack = slot.getStack();
 			itemstack = stack.copy();
 
-			if (slotIndex < 9) {
-				if (!mergeItemStack(stack, 9, 45, true))
+			if (slotIndex < 18) {
+				if (!mergeItemStack(stack, 18, 45, true))
 					return null;
-			} else if (!mergeItemStack(stack, 0, 9, false))
+			} else if (!mergeItemStack(stack, 0, 18, false))
 				return null;
 
 			if (stack.stackSize == 0)
