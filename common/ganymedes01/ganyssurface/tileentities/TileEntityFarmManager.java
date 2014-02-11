@@ -56,6 +56,7 @@ public class TileEntityFarmManager extends GanysInventory {
 							inventory[j].stackSize--;
 							if (inventory[j].stackSize <= 0)
 								inventory[j] = null;
+							break;
 						}
 					}
 				}
