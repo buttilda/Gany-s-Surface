@@ -8,6 +8,7 @@ package ganymedes01.ganyssurface.lib;
  */
 
 public class ModIDs {
+
 	// Blocks
 	public static int CAMELLIA_CROP_ID;
 	public static int RAIN_DETECTOR_ID;
@@ -68,9 +69,10 @@ public class ModIDs {
 	public static int HORSE_SPAWNER_ID;
 	public static int CHARGED_CREEPER_SPAWNER_ID;
 	public static int COLOURED_REDSTONE_ITEM_ID;
+	public static int VILLAGE_FINDER_ID;
 
 	// Entities
 	public static final int ENTITY_POOP_ID = 0;
 	public static final int ENTITY_BAT_POOP_ID = 1;
-	public static final int ENTITY_SEED_ID = 2;
+	public static final int ENTITY_VILLAGE_FINDER_ID = 2;
 }

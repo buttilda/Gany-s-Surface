@@ -66,6 +66,7 @@ public class Strings {
 	public static final String HORSE_SPAWNER_NAME = "horseSpawner";
 	public static final String CHARGED_CREEPER_SPAWNER_NAME = "chargedCreeperSpawner";
 	public static final String COLOURED_REDSTONE_ITEM_NAME = "colouredRedstone";
+	public static final String VILLAGE_FINDER = "villageFinder";
 
 	// Armour names
 	public static final String WOODEN_HELMET_NAME = "woodenHelmet";

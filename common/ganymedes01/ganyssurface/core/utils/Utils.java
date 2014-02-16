@@ -5,6 +5,8 @@ import ganymedes01.ganyssurface.lib.Reference;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,7 +16,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.village.Village;
+import net.minecraft.village.VillageCollection;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.ReflectionHelper;
 
 /**
  * Gany's Surface
@@ -186,5 +191,29 @@ public class Utils {
 			};
 			return player;
 		}
+	}
+
+	public static ChunkCoordinates findNearestVillage(World world, int x, int y, int z) {
+		try {
+			Village village = null;
+			float nearestDistance = Float.MAX_VALUE;
+			List villageList = (List) ReflectionHelper.findField(VillageCollection.class, new String[] { "villageList", "field_75552_d" }).get(world.villageCollectionObj);
+			Iterator iterator = villageList.iterator();
+
+			while (iterator.hasNext()) {
+				Village next = (Village) iterator.next();
+				float distance = next.getCenter().getDistanceSquared(x, y, z);
+
+				if (distance < nearestDistance) {
+					village = next;
+					nearestDistance = distance;
+				}
+			}
+
+			return village != null ? village.getCenter() : null;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

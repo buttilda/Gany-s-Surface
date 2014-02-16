@@ -72,6 +72,7 @@ public class ModRecipes {
 					GameRegistry.addShapelessRecipe(new ItemStack(ModItems.colouredRedstone, 9, i), new ItemStack(ModBlocks.colouredRedstoneBlock, 1, i));
 				} else
 					GameRegistry.addRecipe(MultipleItemsRecipe.createNewRecipe(new ItemStack(Item.redstone, 8), "xxx", "xyx", "xxx", 'x', ColouredRedstoneItem.getRedstonesForRecipe(), 'y', dye));
+		GameRegistry.addRecipe(new ItemStack(ModItems.villageFinder), "xxx", "xyx", "xxx", 'x', Item.leather, 'y', Item.enderPearl);
 
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Item.clay, 8), "xxx", "yzy", "xxx", 'x', Block.gravel, 'y', Block.dirt, 'z', Item.bucketWater);

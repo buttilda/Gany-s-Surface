@@ -13,6 +13,7 @@ import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
+import ganymedes01.ganyssurface.entities.EntityVillageFinder;
 import ganymedes01.ganyssurface.inventory.ContainerBlockDetector;
 import ganymedes01.ganyssurface.inventory.ContainerDualWorkTable;
 import ganymedes01.ganyssurface.inventory.ContainerFarmManager;
@@ -79,6 +80,7 @@ public class CommonProxy implements IGuiHandler {
 	public void registerEntities() {
 		EntityRegistry.registerModEntity(EntityPoop.class, Utils.getUnlocalizedName(Strings.ENTITY_POOP_NAME), ModIDs.ENTITY_POOP_ID, GanysSurface.instance, 64, 1, true);
 		EntityRegistry.registerModEntity(EntityBatPoop.class, Utils.getUnlocalizedName(Strings.ENTITY_BAT_POOP_NAME), ModIDs.ENTITY_BAT_POOP_ID, GanysSurface.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityVillageFinder.class, Utils.getUnlocalizedName(Strings.VILLAGE_FINDER), ModIDs.ENTITY_VILLAGE_FINDER_ID, GanysSurface.instance, 64, 1, true);
 	}
 
 	public void registerRenderers() {

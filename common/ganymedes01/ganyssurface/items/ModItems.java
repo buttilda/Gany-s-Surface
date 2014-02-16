@@ -43,6 +43,7 @@ public class ModItems {
 	public static Item horseSpawner;
 	public static Item chargedCreeperSpawner;
 	public static Item colouredRedstone;
+	public static Item villageFinder;
 
 	// Armour
 	public static Item woodenHelmet;
@@ -89,6 +90,7 @@ public class ModItems {
 		horseSpawner = new HorseSpawner();
 		chargedCreeperSpawner = new ChargedCreeperSpawner();
 		colouredRedstone = new ColouredRedstoneItem();
+		villageFinder = new VillageFinder();
 
 		registerNames();
 		registerForge();
@@ -130,6 +132,7 @@ public class ModItems {
 		GameRegistry.registerItem(horseSpawner, Strings.HORSE_SPAWNER_NAME);
 		GameRegistry.registerItem(chargedCreeperSpawner, Strings.CHARGED_CREEPER_SPAWNER_NAME);
 		GameRegistry.registerItem(colouredRedstone, Strings.COLOURED_REDSTONE_ITEM_NAME);
+		GameRegistry.registerItem(villageFinder, Strings.VILLAGE_FINDER);
 	}
 
 	private static void registerForge() {

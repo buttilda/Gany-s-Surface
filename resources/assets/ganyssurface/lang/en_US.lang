@@ -32,6 +32,7 @@ item.ganyssurface.horseSpawner0.name=Spawn Undead Horse
 item.ganyssurface.horseSpawner1.name=Spawn Skeleton Horse
 item.ganyssurface.horseSpawner2.name=Spawn Max Stats Horse
 item.ganyssurface.chargedCreeperSpawner.name=Spawn Charged Creeper
+item.ganyssurface.villageFinder.name=Village Finder
 
 item.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 item.ganyssurface.colouredRedstoneGREEN.name=Greenstone

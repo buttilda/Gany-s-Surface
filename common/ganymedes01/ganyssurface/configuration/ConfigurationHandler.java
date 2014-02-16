@@ -110,11 +110,11 @@ public class ConfigurationHandler {
 			ModIDs.HORSE_SPAWNER_ID = configItem(Strings.HORSE_SPAWNER_NAME);
 			ModIDs.CHARGED_CREEPER_SPAWNER_ID = configItem(Strings.CHARGED_CREEPER_SPAWNER_NAME);
 			ModIDs.COLOURED_REDSTONE_ITEM_ID = configItem(Strings.COLOURED_REDSTONE_ITEM_NAME);
-
 			ModIDs.DYED_IRON_HELMET_ID = configItem(Strings.DYED_IRON_HELMET_NAME);
 			ModIDs.DYED_IRON_CHESTPLATE_ID = configItem(Strings.DYED_IRON_CHESTPLATE_NAME);
 			ModIDs.DYED_IRON_LEGGINGS_ID = configItem(Strings.DYED_IRON_LEGGINGS_NAME);
 			ModIDs.DYED_IRON_BOOTS_ID = configItem(Strings.DYED_IRON_BOOTS_NAME);
+			ModIDs.VILLAGE_FINDER_ID = configItem(Strings.VILLAGE_FINDER);
 
 			// Mod Integration
 			for (Integration integration : ModIntegrator.modIntegrations)
