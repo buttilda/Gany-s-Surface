@@ -115,6 +115,7 @@ public class ConfigurationHandler {
 			ModIDs.DYED_IRON_LEGGINGS_ID = configItem(Strings.DYED_IRON_LEGGINGS_NAME);
 			ModIDs.DYED_IRON_BOOTS_ID = configItem(Strings.DYED_IRON_BOOTS_NAME);
 			ModIDs.VILLAGE_FINDER_ID = configItem(Strings.VILLAGE_FINDER);
+			ModIDs.PORTABLE_DUAL_WORK_TABLE_ID = configItem(Strings.PORTABLE_DUAL_WORK_TABLE_NAME);
 
 			// Mod Integration
 			for (Integration integration : ModIntegrator.modIntegrations)

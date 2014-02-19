@@ -70,6 +70,7 @@ public class ModIDs {
 	public static int CHARGED_CREEPER_SPAWNER_ID;
 	public static int COLOURED_REDSTONE_ITEM_ID;
 	public static int VILLAGE_FINDER_ID;
+	public static int PORTABLE_DUAL_WORK_TABLE_ID;
 
 	// Entities
 	public static final int ENTITY_POOP_ID = 0;

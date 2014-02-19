@@ -9,6 +9,7 @@ import ganymedes01.ganyssurface.client.gui.inventory.GuiMarketPrivate;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiMarketPublic;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPlanter;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiPortableDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.entities.EntityBatPoop;
@@ -22,6 +23,7 @@ import ganymedes01.ganyssurface.inventory.ContainerMarketPrivate;
 import ganymedes01.ganyssurface.inventory.ContainerMarketPublic;
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
 import ganymedes01.ganyssurface.inventory.ContainerPlanter;
+import ganymedes01.ganyssurface.inventory.ContainerPortableDualWorkTable;
 import ganymedes01.ganyssurface.inventory.ContainerWorkTable;
 import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.ModIDs;
@@ -129,6 +131,8 @@ public class CommonProxy implements IGuiHandler {
 				return new ContainerDualWorkTable(player.inventory, (TileEntityDualWorkTable) tile);
 			case GUIsID.FARM_MANAGER:
 				return new ContainerFarmManager(player.inventory, (TileEntityFarmManager) tile);
+			case GUIsID.PORTABLE_DUAL_WORK_TABLE:
+				return new ContainerPortableDualWorkTable(player);
 		}
 		return null;
 	}
@@ -155,6 +159,8 @@ public class CommonProxy implements IGuiHandler {
 				return new GuiDualWorkTable(player.inventory, (TileEntityDualWorkTable) tile);
 			case GUIsID.FARM_MANAGER:
 				return new GuiFarmManager(player.inventory, (TileEntityFarmManager) tile);
+			case GUIsID.PORTABLE_DUAL_WORK_TABLE:
+				return new GuiPortableDualWorkTable(player);
 		}
 		return null;
 	}

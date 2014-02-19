@@ -33,7 +33,7 @@ public class PoopBlock extends Block {
 	private Icon[] icons;
 
 	public PoopBlock() {
-		super(ModIDs.POOP_BLOCK_ID, Material.plants);
+		super(ModIDs.POOP_BLOCK_ID, Material.circuits);
 		float pixel = 1.0F / 16.0F;
 		disableStats();
 		setTickRandomly(true);

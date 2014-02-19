@@ -21,11 +21,15 @@ import net.minecraft.item.crafting.CraftingManager;
 
 public class ContainerDualWorkTable extends Container {
 
-	public IInventory craftResult = new InventoryCraftResult();
-	public IInventory craftResultRight = new InventoryCraftResult();
-	public TileEntityDualWorkTable dualWorkTable;
+	protected IInventory craftResult = new InventoryCraftResult();
+	protected IInventory craftResultRight = new InventoryCraftResult();
+	protected TileEntityDualWorkTable dualWorkTable;
 
 	public ContainerDualWorkTable(InventoryPlayer inventory, TileEntityDualWorkTable tile) {
+		this(inventory, tile, true);
+	}
+
+	public ContainerDualWorkTable(InventoryPlayer inventory, TileEntityDualWorkTable tile, boolean addPlayerInventory) {
 		dualWorkTable = tile;
 		dualWorkTable.invtCraftMatrix = new InventoryCrafting(this, 3, 3);
 		dualWorkTable.invtCraftMatrixRight = new InventoryCrafting(this, 3, 3);
@@ -46,11 +50,13 @@ public class ContainerDualWorkTable extends Container {
 			for (int j = 0; j < 3; j++)
 				addSlotToContainer(new Slot(dualWorkTable, dualWorkTable.invtCraftMatrix.getSizeInventory() + j + i * 3, 105 + j * 18, 17 + i * 18));
 
-		for (int i = 0; i < 3; i++)
-			for (int j = 0; j < 9; j++)
-				addSlotToContainer(new Slot(inventory, j + i * 9 + 9, 19 + j * 18, 84 + i * 18));
-		for (int i = 0; i < 9; i++)
-			addSlotToContainer(new Slot(inventory, i, 19 + i * 18, 142));
+		if (addPlayerInventory) {
+			for (int i = 0; i < 3; i++)
+				for (int j = 0; j < 9; j++)
+					addSlotToContainer(new Slot(inventory, j + i * 9 + 9, 19 + j * 18, 84 + i * 18));
+			for (int i = 0; i < 9; i++)
+				addSlotToContainer(new Slot(inventory, i, 19 + i * 18, 142));
+		}
 
 		onCraftMatrixChanged(dualWorkTable.invtCraftMatrix);
 		onCraftMatrixChanged(dualWorkTable.invtCraftMatrixRight);

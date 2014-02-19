@@ -24,7 +24,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class GuiDualWorkTable extends GuiGanysSurface {
 
 	public GuiDualWorkTable(InventoryPlayer inventory, TileEntityDualWorkTable tile) {
-		super(new ContainerDualWorkTable(inventory, tile));
+		this(new ContainerDualWorkTable(inventory, tile));
+	}
+
+	public GuiDualWorkTable(ContainerDualWorkTable container) {
+		super(container);
 		xSize = 200;
 	}
 

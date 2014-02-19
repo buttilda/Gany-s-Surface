@@ -44,6 +44,7 @@ public class ModItems {
 	public static Item chargedCreeperSpawner;
 	public static Item colouredRedstone;
 	public static Item villageFinder;
+	public static Item portalDualWorkTable;
 
 	// Armour
 	public static Item woodenHelmet;
@@ -91,6 +92,7 @@ public class ModItems {
 		chargedCreeperSpawner = new ChargedCreeperSpawner();
 		colouredRedstone = new ColouredRedstoneItem();
 		villageFinder = new VillageFinder();
+		portalDualWorkTable = new PortableDualWorkTable();
 
 		registerNames();
 		registerForge();
@@ -133,6 +135,7 @@ public class ModItems {
 		GameRegistry.registerItem(chargedCreeperSpawner, Strings.CHARGED_CREEPER_SPAWNER_NAME);
 		GameRegistry.registerItem(colouredRedstone, Strings.COLOURED_REDSTONE_ITEM_NAME);
 		GameRegistry.registerItem(villageFinder, Strings.VILLAGE_FINDER);
+		GameRegistry.registerItem(portalDualWorkTable, Strings.PORTABLE_DUAL_WORK_TABLE_NAME);
 	}
 
 	private static void registerForge() {
