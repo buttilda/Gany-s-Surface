@@ -20,6 +20,7 @@ public class PortableDualWorkTable extends Item {
 
 	public PortableDualWorkTable() {
 		super(ModIDs.PORTABLE_DUAL_WORK_TABLE_ID);
+		setMaxStackSize(1);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.PORTABLE_DUAL_WORK_TABLE_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.PORTABLE_DUAL_WORK_TABLE_NAME));
