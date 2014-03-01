@@ -1,7 +1,6 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.core.proxy.ClientProxy;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.ModSounds;
@@ -21,6 +20,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.common.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -109,7 +109,7 @@ public class SlimeBlock extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public boolean canRenderInPass(int pass) {
-		ClientProxy.renderPass = pass;
+		ForgeHooksClient.setRenderPass(pass);
 		return true;
 	}
 

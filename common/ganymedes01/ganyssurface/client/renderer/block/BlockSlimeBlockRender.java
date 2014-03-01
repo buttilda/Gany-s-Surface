@@ -1,12 +1,12 @@
 package ganymedes01.ganyssurface.client.renderer.block;
 
 import ganymedes01.ganyssurface.blocks.ModBlocks;
-import ganymedes01.ganyssurface.core.proxy.ClientProxy;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.client.MinecraftForgeClient;
 
 import org.lwjgl.opengl.GL11;
 
@@ -24,7 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class BlockSlimeBlockRender implements ISimpleBlockRenderingHandler {
 
-	private RenderBlocks renderer = new RenderBlocks();
+	private final RenderBlocks renderer = new RenderBlocks();
 
 	@Override
 	public void renderInventoryBlock(Block block, int meta, int modelID, RenderBlocks renderer) {
@@ -69,7 +69,7 @@ public class BlockSlimeBlockRender implements ISimpleBlockRenderingHandler {
 
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
-		if (ClientProxy.renderPass == 0) {
+		if (MinecraftForgeClient.getRenderPass() == 0) {
 			float f = 0.0625F;
 			renderer.enableAO = false;
 

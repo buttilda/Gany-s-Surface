@@ -3,8 +3,8 @@
 	<classpathentry kind="src" path="common"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/Minecraft"/>
-	<classpathentry kind="lib" path="/Users/Andre/Documents/Development/CodeChickenCore-dev 0.9.0.7.jar"/>
-	<classpathentry kind="lib" path="/Users/Andre/Documents/Development/NotEnoughItems-dev 1.6.1.8.jar"/>
 	<classpathentry kind="lib" path="/Users/Andre/Documents/Development/forge/mcp/lib/Thaumcraft4.1.0.jar"/>
+	<classpathentry kind="lib" path="/Users/Andre/Documents/Development/forge/mcp/lib/CodeChickenCore-dev 0.9.0.7.jar"/>
+	<classpathentry kind="lib" path="/Users/Andre/Documents/Development/forge/mcp/lib/NotEnoughItems-dev 1.6.1.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
