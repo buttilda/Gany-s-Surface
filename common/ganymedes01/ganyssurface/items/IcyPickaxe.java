@@ -37,11 +37,12 @@ public class IcyPickaxe extends ItemPickaxe {
 	public boolean onBlockStartBreak(ItemStack stack, int x, int y, int z, EntityPlayer player) {
 		if (player.worldObj.isRemote)
 			return false;
-		if (player.worldObj.getBlockId(x, y, z) == Block.ice.blockID) {
-			player.worldObj.setBlockToAir(x, y, z);
-			Utils.dropStack(player.worldObj, x, y, z, new ItemStack(Block.ice));
-			return true;
-		}
+		if (!player.capabilities.isCreativeMode)
+			if (player.worldObj.getBlockId(x, y, z) == Block.ice.blockID) {
+				player.worldObj.setBlockToAir(x, y, z);
+				Utils.dropStack(player.worldObj, x, y, z, new ItemStack(Block.ice));
+				return true;
+			}
 		return false;
 	}
 
