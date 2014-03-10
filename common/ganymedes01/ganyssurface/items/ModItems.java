@@ -45,6 +45,8 @@ public class ModItems {
 	public static Item colouredRedstone;
 	public static Item villageFinder;
 	public static Item portalDualWorkTable;
+	public static Item icyPickaxe;
+	public static Item roastedSquid;
 
 	// Armour
 	public static Item woodenHelmet;
@@ -93,6 +95,8 @@ public class ModItems {
 		colouredRedstone = new ColouredRedstoneItem();
 		villageFinder = new VillageFinder();
 		portalDualWorkTable = new PortableDualWorkTable();
+		icyPickaxe = new IcyPickaxe();
+		roastedSquid = new RoastedSquid();
 
 		registerNames();
 		registerForge();
@@ -136,11 +140,14 @@ public class ModItems {
 		GameRegistry.registerItem(colouredRedstone, Strings.COLOURED_REDSTONE_ITEM_NAME);
 		GameRegistry.registerItem(villageFinder, Strings.VILLAGE_FINDER);
 		GameRegistry.registerItem(portalDualWorkTable, Strings.PORTABLE_DUAL_WORK_TABLE_NAME);
+		GameRegistry.registerItem(icyPickaxe, Strings.ICY_PICKAXE_NAME);
+		MinecraftForge.setToolClass(icyPickaxe, "pickaxe", 2);
+		GameRegistry.registerItem(roastedSquid, Strings.ROASTED_SQUID_NAME);
 	}
 
 	private static void registerForge() {
 		if (GanysSurface.enableCamilaSeedsToDropFromGrass)
-			MinecraftForge.addGrassSeed(new ItemStack(camelliaSeeds), 8);
+			MinecraftForge.addGrassSeed(new ItemStack(camelliaSeeds), 5);
 	}
 
 	private static void registerDispenserActions() {

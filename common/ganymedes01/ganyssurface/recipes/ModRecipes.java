@@ -74,6 +74,8 @@ public class ModRecipes {
 					GameRegistry.addRecipe(MultipleItemsRecipe.createNewRecipe(new ItemStack(Item.redstone, 8), "xxx", "xyx", "xxx", 'x', ColouredRedstoneItem.getRedstonesForRecipe(), 'y', dye));
 		GameRegistry.addRecipe(new ItemStack(ModItems.villageFinder), "xxx", "xyx", "xxx", 'x', Item.leather, 'y', Item.enderPearl);
 		GameRegistry.addRecipe(new ItemStack(ModItems.portalDualWorkTable), "y ", " x", 'x', ModItems.batNet, 'y', ModBlocks.dualWorkTable);
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.icyPickaxe), "xxx", " y ", " y ", 'x', Block.ice, 'y', "stickWood"));
+		FurnaceRecipes.smelting().addSmelting(ModItems.pocketBat.itemID, 1, new ItemStack(ModItems.roastedSquid), 0.5F);
 
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Item.clay, 8), "xxx", "yzy", "xxx", 'x', Block.gravel, 'y', Block.dirt, 'z', Item.bucketWater);

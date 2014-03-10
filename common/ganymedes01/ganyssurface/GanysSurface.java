@@ -2,7 +2,6 @@ package ganymedes01.ganyssurface;
 
 import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
-import ganymedes01.ganyssurface.core.handlers.BonemealHandler;
 import ganymedes01.ganyssurface.core.handlers.FuelHandler;
 import ganymedes01.ganyssurface.core.handlers.InterModComms;
 import ganymedes01.ganyssurface.core.handlers.OpenContainerHandler;
@@ -64,6 +63,7 @@ public class GanysSurface {
 	public static boolean enableCamilaSeedsToDropFromGrass = true;
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
+	public static int poopingChance = 15000;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -90,7 +90,6 @@ public class GanysSurface {
 
 		if (mobsShouldPoop)
 			MinecraftForge.EVENT_BUS.register(new PoopHandler());
-		MinecraftForge.EVENT_BUS.register(new BonemealHandler());
 		MinecraftForge.EVENT_BUS.register(new OpenContainerHandler());
 
 		proxy.registerTileEntities();

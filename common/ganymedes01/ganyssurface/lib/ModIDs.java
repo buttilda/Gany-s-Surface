@@ -71,6 +71,8 @@ public class ModIDs {
 	public static int COLOURED_REDSTONE_ITEM_ID;
 	public static int VILLAGE_FINDER_ID;
 	public static int PORTABLE_DUAL_WORK_TABLE_ID;
+	public static int ICY_PICKAXE_ID;
+	public static int ROASTED_SQUID_ID;
 
 	// Entities
 	public static final int ENTITY_POOP_ID = 0;

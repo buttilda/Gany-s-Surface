@@ -116,6 +116,8 @@ public class ConfigurationHandler {
 			ModIDs.DYED_IRON_BOOTS_ID = configItem(Strings.DYED_IRON_BOOTS_NAME);
 			ModIDs.VILLAGE_FINDER_ID = configItem(Strings.VILLAGE_FINDER);
 			ModIDs.PORTABLE_DUAL_WORK_TABLE_ID = configItem(Strings.PORTABLE_DUAL_WORK_TABLE_NAME);
+			ModIDs.ICY_PICKAXE_ID = configItem(Strings.ICY_PICKAXE_NAME);
+			ModIDs.ROASTED_SQUID_ID = configItem(Strings.ROASTED_SQUID_NAME);
 
 			// Mod Integration
 			for (Integration integration : ModIntegrator.modIntegrations)
@@ -132,6 +134,7 @@ public class ConfigurationHandler {
 
 			GanysSurface.maxLevelOMCWorks = configInteger(Strings.MAX_LEVEL_OMC_WORKS, 15);
 			GanysSurface.inkHarvesterMaxStrike = configInteger(Strings.INK_HARVESTER_MAX_STRIKE, 5);
+			GanysSurface.poopingChance = configInteger(Strings.POOPING_CHANCE, 15000);
 
 		} catch (Exception e) {
 			FMLLog.log(Level.SEVERE, e, Reference.MOD_NAME + " has had a problem loading its configuration");

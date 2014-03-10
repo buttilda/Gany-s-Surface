@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.core.handlers;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.ModItems;
@@ -25,7 +26,7 @@ public class PoopHandler {
 	public void onLivingUpdate(LivingUpdateEvent event) {
 		if (!event.entityLiving.worldObj.isRemote)
 			if (event.entityLiving instanceof EntityAnimal || event.entityLiving instanceof EntityTameable || event.entityLiving instanceof EntityBat)
-				if (event.entityLiving.worldObj.rand.nextInt(15000) == 7500)
+				if (event.entityLiving.worldObj.rand.nextInt(GanysSurface.poopingChance) == 0)
 					if (!event.entityLiving.isChild()) {
 						if (event.entityLiving instanceof EntityBat)
 							replaceNearbyAirBlock(event.entityLiving.worldObj, (int) event.entityLiving.posX, (int) event.entityLiving.posY, (int) event.entityLiving.posZ, ModBlocks.poop, 1);

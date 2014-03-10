@@ -68,6 +68,8 @@ public class Strings {
 	public static final String COLOURED_REDSTONE_ITEM_NAME = "colouredRedstone";
 	public static final String VILLAGE_FINDER = "villageFinder";
 	public static final String PORTABLE_DUAL_WORK_TABLE_NAME = "portableDualWorkTable";
+	public static final String ICY_PICKAXE_NAME = "icyPickaxe";
+	public static final String ROASTED_SQUID_NAME = "roastedSquid";
 
 	// Armour names
 	public static final String WOODEN_HELMET_NAME = "woodenHelmet";
@@ -94,6 +96,7 @@ public class Strings {
 	public static final String ENABLE_CAMILA_SEEDS_TO_DROP_FROM_GRASS = "enableCamilaSeedsToDropFromGrass";
 	public static final String MAX_LEVEL_OMC_WORKS = "maxLevelOMCWorks";
 	public static final String INK_HARVESTER_MAX_STRIKE = "inkHarvesterMaxStrike";
+	public static final String POOPING_CHANCE = "poopingChance";
 
 	// Version check
 	public static final String VERSION_CHECK_INIT = "Starting version check.";
