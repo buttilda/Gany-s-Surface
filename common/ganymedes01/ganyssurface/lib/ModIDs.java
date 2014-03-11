@@ -37,6 +37,8 @@ public class ModIDs {
 	public static int DUAL_WORK_TABLE_ID;
 	public static int POOP_BLOCK_ID;
 	public static int FARM_MANAGER_ID;
+	public static int ENCASING_BENCH_ID;
+	public static int AUTO_ENCASER_ID;
 
 	// Armour
 	public static int WOODEN_HELMET_ID;
@@ -73,6 +75,7 @@ public class ModIDs {
 	public static int PORTABLE_DUAL_WORK_TABLE_ID;
 	public static int ICY_PICKAXE_ID;
 	public static int ROASTED_SQUID_ID;
+	public static int STORAGE_CASE_ID;
 
 	// Entities
 	public static final int ENTITY_POOP_ID = 0;

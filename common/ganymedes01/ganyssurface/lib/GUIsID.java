@@ -19,4 +19,6 @@ public class GUIsID {
 	public static final int DUAL_WORK_TABLE = 7;
 	public static final int FARM_MANAGER = 8;
 	public static final int PORTABLE_DUAL_WORK_TABLE = 9;
+	public static final int ENCASING_BENCH = 10;
+	public static final int AUTO_ENCASER = 11;
 }

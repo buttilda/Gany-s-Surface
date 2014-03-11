@@ -36,6 +36,7 @@ item.ganyssurface.villageFinder.name=Village Finder
 item.ganyssurface.portableDualWorkTable.name=Portable Dual Work Table
 item.ganyssurface.icyPickaxe.name=Icy Pickaxe
 item.ganyssurface.roastedSquid.name=Roasted Squid
+item.ganyssurface.storageCase.name=Storage Case (%s)
 
 item.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 item.ganyssurface.colouredRedstoneGREEN.name=Greenstone
@@ -79,6 +80,8 @@ tile.ganyssurface.market.name=Market
 tile.ganyssurface.dualWorkTable.name=Dual Work Table
 tile.ganyssurface.poopBlock.name=Poop
 tile.ganyssurface.farmManager.name=Farm Manager
+tile.ganyssurface.encasingBench.name=Encasing Bench
+tile.ganyssurface.autoEncaser.name=Auto Encaser
 
 tile.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 tile.ganyssurface.colouredRedstoneGREEN.name=Greenstone
@@ -124,6 +127,8 @@ container.ganyssurface:inkHarvester=Ink Harvester
 container.ganyssurface:market=Market
 container.ganyssurface:dualWorkTable=Dual Work Table
 container.ganyssurface:farmManager=Farm Manager
+container.ganyssurface:encasingBench=Encasing Bench
+container.ganyssurface:autoEncaser=Auto Encaser
 
 matter=Matter:
 squidFood=Food:

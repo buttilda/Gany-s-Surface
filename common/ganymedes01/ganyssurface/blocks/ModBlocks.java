@@ -46,6 +46,8 @@ public class ModBlocks {
 	public static Block dualWorkTable;
 	public static Block poop;
 	public static Block farmManager;
+	public static Block encasingBench;
+	public static Block autoEncaser;
 
 	public static void init() {
 		camelliaCrop = new CamelliaCrop();
@@ -77,6 +79,8 @@ public class ModBlocks {
 		dualWorkTable = new DualWorkTable();
 		poop = new PoopBlock();
 		farmManager = new FarmManager();
+		encasingBench = new EncasingBench();
+		autoEncaser = new AutoEncaser();
 
 		registerNames();
 		registerHarvestLevel();
@@ -114,6 +118,8 @@ public class ModBlocks {
 		GameRegistry.registerBlock(dualWorkTable, Strings.DUAL_WORK_TABLE_NAME);
 		GameRegistry.registerBlock(poop, Strings.POOP_BLOCK_NAME);
 		GameRegistry.registerBlock(farmManager, Strings.FARM_MANAGER_NAME);
+		GameRegistry.registerBlock(encasingBench, Strings.ENCASING_BENCH_NAME);
+		GameRegistry.registerBlock(autoEncaser, Strings.AUTO_ENCASER_NAME);
 	}
 
 	private static void registerHarvestLevel() {

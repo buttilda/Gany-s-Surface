@@ -1,8 +1,10 @@
 package ganymedes01.ganyssurface.core.proxy;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiAutoEncaser;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiEncasingBench;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiFarmManager;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiInkHarvester;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiMarketPrivate;
@@ -15,8 +17,10 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.entities.EntityVillageFinder;
+import ganymedes01.ganyssurface.inventory.ContainerAutoEncaser;
 import ganymedes01.ganyssurface.inventory.ContainerBlockDetector;
 import ganymedes01.ganyssurface.inventory.ContainerDualWorkTable;
+import ganymedes01.ganyssurface.inventory.ContainerEncasingBench;
 import ganymedes01.ganyssurface.inventory.ContainerFarmManager;
 import ganymedes01.ganyssurface.inventory.ContainerInkHarvester;
 import ganymedes01.ganyssurface.inventory.ContainerMarketPrivate;
@@ -28,6 +32,7 @@ import ganymedes01.ganyssurface.inventory.ContainerWorkTable;
 import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
+import ganymedes01.ganyssurface.tileentities.TileEntityAutoEncaser;
 import ganymedes01.ganyssurface.tileentities.TileEntityBlockDetector;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityCubicSensoringDislocator;
@@ -77,6 +82,7 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityMarket.class, Utils.getUnlocalizedName(Strings.MARKET_NAME));
 		GameRegistry.registerTileEntity(TileEntityDualWorkTable.class, Utils.getUnlocalizedName(Strings.DUAL_WORK_TABLE_NAME));
 		GameRegistry.registerTileEntity(TileEntityFarmManager.class, Utils.getUnlocalizedName(Strings.FARM_MANAGER_NAME));
+		GameRegistry.registerTileEntity(TileEntityAutoEncaser.class, Utils.getUnlocalizedName(Strings.AUTO_ENCASER_NAME));
 	}
 
 	public void registerEntities() {
@@ -133,6 +139,10 @@ public class CommonProxy implements IGuiHandler {
 				return new ContainerFarmManager(player.inventory, (TileEntityFarmManager) tile);
 			case GUIsID.PORTABLE_DUAL_WORK_TABLE:
 				return new ContainerPortableDualWorkTable(player);
+			case GUIsID.ENCASING_BENCH:
+				return new ContainerEncasingBench(player.inventory);
+			case GUIsID.AUTO_ENCASER:
+				return new ContainerAutoEncaser(player.inventory, (TileEntityAutoEncaser) tile);
 		}
 		return null;
 	}
@@ -161,6 +171,10 @@ public class CommonProxy implements IGuiHandler {
 				return new GuiFarmManager(player.inventory, (TileEntityFarmManager) tile);
 			case GUIsID.PORTABLE_DUAL_WORK_TABLE:
 				return new GuiPortableDualWorkTable(player);
+			case GUIsID.ENCASING_BENCH:
+				return new GuiEncasingBench(player.inventory);
+			case GUIsID.AUTO_ENCASER:
+				return new GuiAutoEncaser(player.inventory, (TileEntityAutoEncaser) tile);
 		}
 		return null;
 	}

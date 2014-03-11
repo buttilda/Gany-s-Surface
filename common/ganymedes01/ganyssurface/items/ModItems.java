@@ -47,6 +47,7 @@ public class ModItems {
 	public static Item portalDualWorkTable;
 	public static Item icyPickaxe;
 	public static Item roastedSquid;
+	public static Item storageCase;
 
 	// Armour
 	public static Item woodenHelmet;
@@ -97,6 +98,7 @@ public class ModItems {
 		portalDualWorkTable = new PortableDualWorkTable();
 		icyPickaxe = new IcyPickaxe();
 		roastedSquid = new RoastedSquid();
+		storageCase = new StorageCase();
 
 		registerNames();
 		registerForge();

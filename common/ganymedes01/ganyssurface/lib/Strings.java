@@ -44,6 +44,8 @@ public class Strings {
 	public static final String DUAL_WORK_TABLE_NAME = "dualWorkTable";
 	public static final String POOP_BLOCK_NAME = "poopBlock";
 	public static final String FARM_MANAGER_NAME = "farmManager";
+	public static final String ENCASING_BENCH_NAME = "encasingBench";
+	public static final String AUTO_ENCASER_NAME = "autoEncaser";
 
 	// Item names
 	public static final String ROT_NAME = "rot";
@@ -70,6 +72,7 @@ public class Strings {
 	public static final String PORTABLE_DUAL_WORK_TABLE_NAME = "portableDualWorkTable";
 	public static final String ICY_PICKAXE_NAME = "icyPickaxe";
 	public static final String ROASTED_SQUID_NAME = "roastedSquid";
+	public static final String STORAGE_CASE_NAME = "storageCase";
 
 	// Armour names
 	public static final String WOODEN_HELMET_NAME = "woodenHelmet";

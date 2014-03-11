@@ -22,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ItemDualWorkTableRenderer implements IItemRenderer {
 
-	private ModelDualWorkTable model = new ModelDualWorkTable();
+	private final ModelDualWorkTable model = new ModelDualWorkTable();
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -53,6 +53,8 @@ public class ItemDualWorkTableRenderer implements IItemRenderer {
 				renderPlanter(0.0F, 0.075F, 0.0F);
 				break;
 			}
+			default:
+				break;
 		}
 	}
 

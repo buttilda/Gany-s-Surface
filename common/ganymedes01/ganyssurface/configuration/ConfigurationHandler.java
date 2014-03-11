@@ -83,6 +83,8 @@ public class ConfigurationHandler {
 			ModIDs.DUAL_WORK_TABLE_ID = configBlock(Strings.DUAL_WORK_TABLE_NAME);
 			ModIDs.POOP_BLOCK_ID = configBlock(Strings.POOP_BLOCK_NAME);
 			ModIDs.FARM_MANAGER_ID = configBlock(Strings.FARM_MANAGER_NAME);
+			ModIDs.ENCASING_BENCH_ID = configBlock(Strings.ENCASING_BENCH_NAME);
+			ModIDs.AUTO_ENCASER_ID = configBlock(Strings.AUTO_ENCASER_NAME);
 
 			// Armour
 			ModIDs.WOODEN_HELMET_ID = configItem(Strings.WOODEN_HELMET_NAME);
@@ -118,6 +120,7 @@ public class ConfigurationHandler {
 			ModIDs.PORTABLE_DUAL_WORK_TABLE_ID = configItem(Strings.PORTABLE_DUAL_WORK_TABLE_NAME);
 			ModIDs.ICY_PICKAXE_ID = configItem(Strings.ICY_PICKAXE_NAME);
 			ModIDs.ROASTED_SQUID_ID = configItem(Strings.ROASTED_SQUID_NAME);
+			ModIDs.STORAGE_CASE_ID = configItem(Strings.STORAGE_CASE_NAME);
 
 			// Mod Integration
 			for (Integration integration : ModIntegrator.modIntegrations)

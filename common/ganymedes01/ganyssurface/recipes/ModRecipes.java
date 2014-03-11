@@ -76,6 +76,7 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModItems.portalDualWorkTable), "y ", " x", 'x', ModItems.batNet, 'y', ModBlocks.dualWorkTable);
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.icyPickaxe), "xxx", " y ", " y ", 'x', Block.ice, 'y', "stickWood"));
 		FurnaceRecipes.smelting().addSmelting(ModItems.pocketBat.itemID, 1, new ItemStack(ModItems.roastedSquid), 0.5F);
+		GameRegistry.addRecipe(new StorageCaseRecipe());
 
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Item.clay, 8), "xxx", "yzy", "xxx", 'x', Block.gravel, 'y', Block.dirt, 'z', Item.bucketWater);
@@ -113,6 +114,8 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.dualWorkTable), "yyy", "x x", "yyy", 'x', ModBlocks.workTable, 'y', "plankWood"));
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.market), "xzx", "xyx", "xzx", 'x', Item.ingotIron, 'y', new ItemStack(Item.dyePowder), 'z', Block.chest);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.farmManager), "xyx", "xzx", "xyx", 'x', ModBlocks.planter, 'y', Block.chest, 'z', Item.ingotGold);
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.encasingBench), "xyx", "yzy", "xyx", 'x', Item.ingotGold, 'y', Block.pistonBase, 'z', Block.chest);
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.autoEncaser), "xyx", "yzy", "xyx", 'x', Item.diamond, 'y', Block.pistonBase, 'z', ModBlocks.encasingBench);
 
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Block.web), "x x", " y ", "x x", 'y', Item.slimeBall, 'x', Item.silk);

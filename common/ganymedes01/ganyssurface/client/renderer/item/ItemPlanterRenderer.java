@@ -53,6 +53,8 @@ public class ItemPlanterRenderer implements IItemRenderer {
 				renderPlanter(0.0F, 0.075F, 0.0F);
 				break;
 			}
+			default:
+				break;
 		}
 	}
 
