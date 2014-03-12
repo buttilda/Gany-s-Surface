@@ -48,14 +48,7 @@ public class EncasingBench extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int meta) {
-		switch (side) {
-			case 0:
-				return Block.planks.getIcon(0, 0);
-			case 1:
-				return icons[0];
-			default:
-				return icons[1];
-		}
+		return side == 1 ? icons[0] : icons[1];
 	}
 
 	@Override

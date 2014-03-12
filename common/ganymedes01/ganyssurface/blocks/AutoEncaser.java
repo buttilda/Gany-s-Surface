@@ -8,10 +8,14 @@ import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityAutoEncaser;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
@@ -21,6 +25,9 @@ import net.minecraft.world.World;
  */
 
 public class AutoEncaser extends BlockContainer {
+
+	@SideOnly(Side.CLIENT)
+	private Icon[] icons;
 
 	public AutoEncaser() {
 		super(ModIDs.AUTO_ENCASER_ID, Material.iron);
@@ -58,5 +65,19 @@ public class AutoEncaser extends BlockContainer {
 			world.func_96440_m(x, y, z, par5);
 		}
 		super.breakBlock(world, x, y, z, par5, par6);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int side, int meta) {
+		return side == 1 ? icons[0] : icons[1];
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister reg) {
+		icons = new Icon[2];
+		for (int i = 0; i < icons.length; i++)
+			icons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.AUTO_ENCASER_NAME) + i);
 	}
 }
