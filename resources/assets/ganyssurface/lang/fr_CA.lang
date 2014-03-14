@@ -1,0 +1,133 @@
+# Item localizations
+item.ganyssurface.woodenHelmet.name=Casque en Bois
+item.ganyssurface.woodenChestplate.name=Plastron en Bois
+item.ganyssurface.woodenLeggings.name=Pantalon en Bois
+item.ganyssurface.woodenBoots.name=Bottes en Bois
+
+item.ganyssurface.dyedIronHelmet.name=Casque en Fer
+item.ganyssurface.dyedIronChestplate.name=Plastron en Fer
+item.ganyssurface.dyedIronLeggings.name=Pantalons en Fer
+item.ganyssurface.dyedIronBoots.name=Bottes en Fer
+
+item.ganyssurface.rot.name=Pourriture
+item.ganyssurface.camelliaSeeds.name=Graines de Camélia
+item.ganyssurface.teaLeaves.name=Feuilles de Thé
+item.ganyssurface.teaBag.name=Sac de Thé
+item.ganyssurface.emptyMug.name=Gobelet Vide
+item.ganyssurface.cupOfTea.name=Tasse de Thé
+item.ganyssurface.mankyCupOfTea.name=Tasse de Thé Manky
+item.ganyssurface.poop.name=Crotte
+item.ganyssurface.batPoop.name=Crotte de Chauve-Souris
+item.ganyssurface.fertilizer.name=Fertilisant
+item.ganyssurface.cookedEgg.name=Oeuf Cuit
+item.ganyssurface.obsidianHead.name=Tête en Obsidienne
+item.ganyssurface.woodenWrench.name=Clé Anglaise en Bois
+item.ganyssurface.batNet.name=Filet à Chauve-Souris
+item.ganyssurface.pocketBat.name=Chauve-Souris de Poche
+item.ganyssurface.batStew.name=Ragoût de Chauve-Souris
+item.ganyssurface.chocolateBar.name=Barre de Chocolat
+item.ganyssurface.horsalyser.name=Chevanaliseur
+item.ganyssurface.horseSpawner0.name=Oeuf de Cheval Zombie
+item.ganyssurface.horseSpawner1.name=Oeuf de Cheval Squelette
+item.ganyssurface.horseSpawner2.name=Oeuf de Cheval Max Stats
+item.ganyssurface.chargedCreeperSpawner.name=Oeuf de Creeper Électrifié
+
+item.ganyssurface.colouredRedstoneBLACK.name=Noirstone
+item.ganyssurface.colouredRedstoneGREEN.name=Vertstone
+item.ganyssurface.colouredRedstoneBROWN.name=Brunstone
+item.ganyssurface.colouredRedstoneBLUE.name=Bleustone
+item.ganyssurface.colouredRedstonePURPLE.name=Mauvestone
+item.ganyssurface.colouredRedstoneCYAN.name=Cyanstone
+item.ganyssurface.colouredRedstoneLIGHTGREY.name=Grisclairstone
+item.ganyssurface.colouredRedstoneGREY.name=Gristone
+item.ganyssurface.colouredRedstonePINK.name=Rosestone
+item.ganyssurface.colouredRedstoneLIME.name=Limestone
+item.ganyssurface.colouredRedstoneYELLOW.name=Jaunestone
+item.ganyssurface.colouredRedstoneLIGHTBLUE.name=Bleupâlestone
+item.ganyssurface.colouredRedstoneMAGENTA.name=Magentastone
+item.ganyssurface.colouredRedstoneORANGE.name=Orangestone
+item.ganyssurface.colouredRedstoneWHITE.name=Blancstone
+
+# Block localizations
+tile.ganyssurface.camelliaCrop.name=Plant de Camélia
+tile.ganyssurface.rainDetector.name=Détecteur de Pluie
+tile.ganyssurface.blockDetector.name=Détecteur de Bloc
+tile.ganyssurface.dislocator.name=Dislocateur
+tile.ganyssurface.sensoringDislocator.name=Dislocateur Sensible
+tile.ganyssurface.cubicSensoringDislocator.name=Dislocateur Cubique Sensible
+tile.ganyssurface.disguisedTrapDoorOak.name=Trappe Déguisée en Chêne
+tile.ganyssurface.disguisedTrapDoorSpruce.name=Trappe Déguisée en Épicéa
+tile.ganyssurface.disguisedTrapDoorBirch.name=Trappe Déguisée en Bouleau
+tile.ganyssurface.disguisedTrapDoorJungle.name=Trappe Déguisée en Baobab
+tile.ganyssurface.workTable.name=Table de Travail
+tile.ganyssurface.organicMatterCompressor.name=Compresseur de Matière Organique
+tile.ganyssurface.cushion.name=Coussin
+tile.ganyssurface.chocolateCake.name=Gâteau au Chocolat
+tile.ganyssurface.itemDisplay.name=Afficheur d'Items
+tile.ganyssurface.chestPropellant.name=Propulseur de Coffre
+tile.ganyssurface.fertilizedSoil.name=Sol Fertile
+tile.ganyssurface.planter.name=Planteur
+tile.ganyssurface.lantern.name=Lanterne
+tile.ganyssurface.inkHarvester.name=Récolteur d'Encre
+tile.ganyssurface.slimeBlock.name=Slime Block
+tile.ganyssurface.market.name=Market
+tile.ganyssurface.dualWorkTable.name=Dual Work Table
+
+tile.ganyssurface.colouredRedstoneBLACK.name=Noirstone
+tile.ganyssurface.colouredRedstoneGREEN.name=Vertstone
+tile.ganyssurface.colouredRedstoneBROWN.name=Brunstone
+tile.ganyssurface.colouredRedstoneBLUE.name=Bleustone
+tile.ganyssurface.colouredRedstonePURPLE.name=Mauvestone
+tile.ganyssurface.colouredRedstoneCYAN.name=Cyanstone
+tile.ganyssurface.colouredRedstoneLIGHTGREY.name=Grisclairstone
+tile.ganyssurface.colouredRedstoneGREY.name=Gristone
+tile.ganyssurface.colouredRedstonePINK.name=Rosestone
+tile.ganyssurface.colouredRedstoneLIME.name=Limestone
+tile.ganyssurface.colouredRedstoneYELLOW.name=Jaunestone
+tile.ganyssurface.colouredRedstoneLIGHTBLUE.name=Bleupâlestone
+tile.ganyssurface.colouredRedstoneMAGENTA.name=Magentastone
+tile.ganyssurface.colouredRedstoneORANGE.name=Orangestone
+tile.ganyssurface.colouredRedstoneWHITE.name=Blancstone
+
+tile.ganyssurface.colouredRedstoneBlockBLACK.name=Bloc de Noirstone
+tile.ganyssurface.colouredRedstoneBlockGREEN.name=Bloc de Vertstone
+tile.ganyssurface.colouredRedstoneBlockBROWN.name=Bloc de Brunstone
+tile.ganyssurface.colouredRedstoneBlockBLUE.name=Bloc de Bleustone
+tile.ganyssurface.colouredRedstoneBlockPURPLE.name=Purplestone Block
+tile.ganyssurface.colouredRedstoneBlockCYAN.name=Bloc de Cyanstone
+tile.ganyssurface.colouredRedstoneBlockLIGHTGREY.name=Bloc de Grisclairstone
+tile.ganyssurface.colouredRedstoneBlockGREY.name=Bloc de Gristone
+tile.ganyssurface.colouredRedstoneBlockPINK.name=Bloc de Rosestone
+tile.ganyssurface.colouredRedstoneBlockLIME.name=Bloc de Limestone
+tile.ganyssurface.colouredRedstoneBlockYELLOW.name=Bloc de Jaunestone
+tile.ganyssurface.colouredRedstoneBlockLIGHTBLUE.name=Bloc de Bleupâlestone
+tile.ganyssurface.colouredRedstoneBlockMAGENTA.name=Bloc de Magentastone
+tile.ganyssurface.colouredRedstoneBlockORANGE.name=Bloc de Orangestone
+tile.ganyssurface.colouredRedstoneBlockWHITE.name=Bloc de Blancstone
+
+# GUI localizations
+container.ganyssurface:blockDetector=Détecteur de Bloc
+container.ganyssurface:sensoringDislocator=Dislocateur Sensible
+container.ganyssurface:cubicSensoringDislocator=Dislocateur Cubique Sensible
+container.ganyssurface:workTable=Table de Travail
+container.ganyssurface:organicMatterCompressor=Compresseur de Matière Organique
+container.ganyssurface:itemDisplay=Afficheur d'Items
+container.ganyssurface:planter=Planteur
+container.ganyssurface:inkHarvester=Récolteur d'Encre
+container.ganyssurface:market=Marché
+container.ganyssurface:dualWorkTable= DoubleTable de Travail
+
+matter=Matière:
+squidFood=Nourriture:
+profit=Profit:
+forSale=À Vendre:
+offer=Offre:
+price=Prix:
+
+# Creative Tab localizations
+itemGroup.ganyssurface=Gany's Surface
+
+# Others
+pleaseletmefree=Libérez-moi D=
+attacktocapture=Clic-Gauche sur une chauve-souris pour la capturer
+interacttorotate=Clic-Droit sur les bûches, piliers, etc. pour les tourner
