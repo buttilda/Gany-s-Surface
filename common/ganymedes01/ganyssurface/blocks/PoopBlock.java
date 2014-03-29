@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.ModIDs;
+import ganymedes01.ganyssurface.lib.ModSounds;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.Random;
@@ -37,6 +38,7 @@ public class PoopBlock extends Block {
 		float pixel = 1.0F / 16.0F;
 		disableStats();
 		setTickRandomly(true);
+		setStepSound(ModSounds.soundSlime);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.POOP_BLOCK_NAME));
 		setBlockBounds(5 * pixel, 0.0F, 5 * pixel, 1.0F - 5 * pixel, 6 * pixel, 1.0F - 5 * pixel);
 	}

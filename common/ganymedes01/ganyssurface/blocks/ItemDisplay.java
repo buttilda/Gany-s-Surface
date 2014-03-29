@@ -8,9 +8,13 @@ import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.PacketTypeHandler;
 import ganymedes01.ganyssurface.network.packet.PacketItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
+
+import java.util.List;
+
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -35,6 +39,18 @@ public class ItemDisplay extends BlockContainer {
 		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getBlockTexture(Strings.ITEM_DISPLAY_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ITEM_DISPLAY_NAME));
+	}
+
+	@Override
+	public int damageDropped(int meta) {
+		return meta;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(int id, CreativeTabs tab, List list) {
+		for (int i = 0; i < 16; i++)
+			list.add(new ItemStack(id, 1, i));
 	}
 
 	@Override

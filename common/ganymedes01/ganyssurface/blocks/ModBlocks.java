@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.block.ItemChocolateCake;
 import ganymedes01.ganyssurface.items.block.ItemColouredRedstoneBlock;
+import ganymedes01.ganyssurface.items.block.ItemItemDisplay;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
@@ -102,7 +103,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(cushion, Strings.CUSHION_NAME);
 		if (GanysSurface.activateChocolate)
 			GameRegistry.registerBlock(chocolateCake, ItemChocolateCake.class, Strings.CHOCOLATE_CAKE_NAME);
-		GameRegistry.registerBlock(itemDisplay, Strings.ITEM_DISPLAY_NAME);
+		GameRegistry.registerBlock(itemDisplay, ItemItemDisplay.class, Strings.ITEM_DISPLAY_NAME);
 		GameRegistry.registerBlock(chestPropellant, Strings.CHEST_PROPELLANT_NAME);
 		GameRegistry.registerBlock(fertilizedSoil, Strings.FERTILIZED_SOIL_NAME);
 		GameRegistry.registerBlock(planter, Strings.PLANTER_NAME);

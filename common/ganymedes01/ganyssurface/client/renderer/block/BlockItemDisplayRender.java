@@ -35,77 +35,76 @@ public class BlockItemDisplayRender implements ISimpleBlockRenderingHandler {
 
 		Icon icon = block.getIcon(0, 0);
 		float pixel = 1.0F / 16.0F;
-		float offset = pixel * 0.1F;
 
-		//INSIDE
+		// INSIDE
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, -1.0F, 0.0F);
-		renderer.renderFaceYNeg(block, x, y + 1.0F - offset, z, icon);
+		renderer.renderFaceYNeg(block, x, y + 1.0F, z, icon);
 		tessellator.draw();
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, 1.0F, 0.0F);
-		renderer.renderFaceYPos(block, x, y - 1.0F + offset, z, icon);
+		renderer.renderFaceYPos(block, x, y - 1.0F, z, icon);
 		tessellator.draw();
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, 0.0F, -1.0F);
-		renderer.renderFaceZNeg(block, x, y, z + 1.0F - offset, icon);
+		renderer.renderFaceZNeg(block, x, y, z + 1.0F, icon);
 		tessellator.draw();
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, 0.0F, 1.0F);
-		renderer.renderFaceZPos(block, x, y, z - 1.0F + offset, icon);
+		renderer.renderFaceZPos(block, x, y, z - 1.0F, icon);
 		tessellator.draw();
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(-1.0F, 0.0F, 0.0F);
-		renderer.renderFaceXPos(block, x - 1.0F + offset, y, z, icon);
+		renderer.renderFaceXPos(block, x - 1.0F, y, z, icon);
 		tessellator.draw();
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(1.0F, 0.0F, 0.0F);
-		renderer.renderFaceXNeg(block, x + 1.0F - offset, y, z, icon);
+		renderer.renderFaceXNeg(block, x + 1.0F, y, z, icon);
 		tessellator.draw();
 
-		//OUTSIDE
+		// OUTSIDE
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, -1.0F, 0.0F);
-		renderer.renderFaceYPos(block, x, y - offset, z, icon);
+		renderer.renderFaceYPos(block, x, y, z, icon);
 		tessellator.draw();
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, 1.0F, 0.0F);
-		renderer.renderFaceYNeg(block, x, y + offset, z, icon);
+		renderer.renderFaceYNeg(block, x, y, z, icon);
 		tessellator.draw();
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, 0.0F, -1.0F);
-		renderer.renderFaceZPos(block, x, y, z - offset, icon);
+		renderer.renderFaceZPos(block, x, y, z, icon);
 		tessellator.draw();
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, 0.0F, 1.0F);
-		renderer.renderFaceZNeg(block, x, y, z + offset, icon);
+		renderer.renderFaceZNeg(block, x, y, z, icon);
 		tessellator.draw();
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(-1.0F, 0.0F, 0.0F);
-		renderer.renderFaceXNeg(block, x + offset, y, z, icon);
+		renderer.renderFaceXNeg(block, x, y, z, icon);
 		tessellator.draw();
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(1.0F, 0.0F, 0.0F);
-		renderer.renderFaceXPos(block, x - offset, y, z, icon);
+		renderer.renderFaceXPos(block, x, y, z, icon);
 		tessellator.draw();
 
-		//BOTTOM
+		// BOTTOM
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, -1.0F, 0.0F);
-		renderer.renderFaceYPos(block, x, y - 1.0F + pixel, z, Block.carpet.getIcon(0, 14));
+		renderer.renderFaceYPos(block, x, y - 1.0F + pixel, z, Block.carpet.getIcon(0, metadata));
 		tessellator.draw();
 
 		GL11.glEnable(GL11.GL_LIGHTING);
@@ -128,16 +127,15 @@ public class BlockItemDisplayRender implements ISimpleBlockRenderingHandler {
 		tessellator.setColorOpaque_F(r, g, b);
 		Icon icon = block.getIcon(0, 0);
 		float pixel = 1.0F / 16.0F;
-		float offset = pixel * 0.1F;
-		renderer.renderFaceXPos(block, x - 1.0F + offset, y, z, icon);
-		renderer.renderFaceXNeg(block, x + 1.0F - offset, y, z, icon);
-		renderer.renderFaceYPos(block, x, y - 1.0F + offset, z, icon);
-		renderer.renderFaceYNeg(block, x, y + 1.0F - offset, z, icon);
-		renderer.renderFaceZPos(block, x, y, z - 1.0F + offset, icon);
-		renderer.renderFaceZNeg(block, x, y, z + 1.0F - offset, icon);
+		renderer.renderFaceXPos(block, x - 1.0F, y, z, icon);
+		renderer.renderFaceXNeg(block, x + 1.0F, y, z, icon);
+		renderer.renderFaceYPos(block, x, y - 1.0F, z, icon);
+		renderer.renderFaceYNeg(block, x, y + 1.0F, z, icon);
+		renderer.renderFaceZPos(block, x, y, z - 1.0F, icon);
+		renderer.renderFaceZNeg(block, x, y, z + 1.0F, icon);
 
-		icon = Block.carpet.getIcon(0, 14);
-		renderer.renderFaceYPos(block, x, y - 1.0F + pixel, z, icon);
+		icon = Block.carpet.getIcon(0, world.getBlockMetadata(x, y, z));
+		renderer.renderFaceYPos(block, x, y - 1.0F, z, icon);
 
 		return renderer.renderStandardBlock(block, x, y, z);
 	}
