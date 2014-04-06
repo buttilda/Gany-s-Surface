@@ -25,7 +25,7 @@ public class DispenserBehaviorHorseSpawner extends BehaviorDefaultDispenseItem {
 		double x = block.getX() + enumfacing.getFrontOffsetX();
 		double y = block.getYInt() + 0.2F;
 		double z = block.getZ() + enumfacing.getFrontOffsetZ();
-		Entity entity = HorseSpawner.spawnHorse(block.getWorld(), x, y, z, stack.getItemDamage() + 3);
+		Entity entity = HorseSpawner.spawnHorse(block.getWorld(), x, y, z, stack.getItemDamage() + 3, null);
 
 		if (entity instanceof EntityLivingBase && stack.hasDisplayName())
 			((EntityLiving) entity).setCustomNameTag(stack.getDisplayName());

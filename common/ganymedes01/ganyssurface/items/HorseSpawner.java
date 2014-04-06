@@ -62,7 +62,7 @@ public class HorseSpawner extends Item {
 		return "item." + Utils.getUnlocalizedName(Strings.HORSE_SPAWNER_NAME) + stack.getItemDamage();
 	}
 
-	public static Entity spawnHorse(World world, double x, double y, double z, int type) {
+	public static Entity spawnHorse(World world, double x, double y, double z, int type, String username) {
 		if (!EntityList.entityEggs.containsKey(Integer.valueOf(100)))
 			return null;
 		else {
@@ -76,6 +76,10 @@ public class HorseSpawner extends Item {
 					horse.renderYawOffset = horse.rotationYaw;
 					horse.onSpawnWithEgg((EntityLivingData) null);
 					setHorseType(horse, type);
+					if (username != null) {
+						horse.setOwnerName(username);
+						horse.setHorseTamed(true);
+					}
 					world.spawnEntityInWorld(horse);
 					horse.playLivingSound();
 				}
@@ -123,7 +127,7 @@ public class HorseSpawner extends Item {
 			if (side == 1 && Block.blocksList[id] != null && Block.blocksList[id].getRenderType() == 11)
 				yOffSet = 0.5D;
 
-			Entity entity = spawnHorse(world, x + 0.5D, y + yOffSet, z + 0.5D, stack.getItemDamage() + 3);
+			Entity entity = spawnHorse(world, x + 0.5D, y + yOffSet, z + 0.5D, stack.getItemDamage() + 3, player.getCommandSenderName());
 
 			if (entity != null) {
 				if (entity instanceof EntityLivingBase && stack.hasDisplayName())
