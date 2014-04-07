@@ -35,7 +35,7 @@ public class ModRecipes {
 		if (OreDictionary.getOres("egg").isEmpty())
 			OreDictionary.registerOre("egg", new ItemStack(Item.egg));
 		OreDictionary.registerOre("mobEgg", ModItems.chargedCreeperSpawner);
-		OreDictionary.registerOre("mobEgg", ModItems.horseSpawner);
+		OreDictionary.registerOre("mobEgg", new ItemStack(ModItems.horseSpawner, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
 	private static void registerArmourRecipes() {
