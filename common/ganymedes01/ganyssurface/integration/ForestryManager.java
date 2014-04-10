@@ -28,7 +28,7 @@ public class ForestryManager extends Integration {
 
 		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "miner@" + ModItems.colouredRedstone.itemID + ":*;");
 		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "forester@" + ModItems.camelliaSeeds.itemID + ";" + ModItems.teaLeaves.itemID + ";");
-		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "hunter@" + ModItems.poop.itemID + ":*;" + ModItems.pocketBat.itemID + ";");
+		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "hunter@" + ModItems.poop.itemID + ":*;" + ModItems.pocketCritter.itemID + ";");
 
 		ItemStack fert = getItem("fertilizerCompound", 24);
 		if (fert != null)

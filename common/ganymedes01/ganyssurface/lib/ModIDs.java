@@ -64,7 +64,7 @@ public class ModIDs {
 	public static int OBSIDIAN_HEAD_ID;
 	public static int WOODEN_WRENCH_ID;
 	public static int BAT_NET_ID;
-	public static int POCKET_BAT_ID;
+	public static int POCKET_CRITTER_ID;
 	public static int BAT_STEW_ID;
 	public static int CHOCOLATE_BAR_ID;
 	public static int HORSALYSER_ID;

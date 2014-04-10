@@ -61,7 +61,7 @@ public class Strings {
 	public static final String OBSIDIAN_HEAD_NAME = "obsidianHead";
 	public static final String WOODEN_WRENCH_NAME = "woodenWrench";
 	public static final String BAT_NET_NAME = "batNet";
-	public static final String POCKET_BAT_NAME = "pocketBat";
+	public static final String POCKET_CRITTER_NAME = "pocketCritter";
 	public static final String BAT_STEW_NAME = "batStew";
 	public static final String CHOCOLATE_BAR_NAME = "chocolateBar";
 	public static final String HORSALYSER_NAME = "horsalyser";

@@ -75,7 +75,7 @@ public class OrganicMatterRegistry {
 		addItemYield(ModItems.poop);
 		addMatterYield(new ItemStack(ModItems.poop, 1, 1));
 		addItemYield(ModItems.batNet);
-		addItemYield(ModItems.pocketBat, 3);
+		addItemYield(ModItems.pocketCritter, 3);
 		addItemYield(ModItems.horsalyser);
 		addItemYield(ModItems.horseSpawner);
 		addMatterYield(new ItemStack(ModItems.horseSpawner, 1, 1));

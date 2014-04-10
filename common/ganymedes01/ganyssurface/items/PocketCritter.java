@@ -1,10 +1,8 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Reference;
-import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
 
@@ -17,7 +15,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Facing;
-import net.minecraft.util.Icon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -30,24 +27,20 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  */
 
-public class PocketBat extends Item {
+public class PocketCritter extends Item {
 
-	@SideOnly(Side.CLIENT)
-	private Icon[] icon;
-
-	public PocketBat() {
-		super(ModIDs.POCKET_BAT_ID);
+	public PocketCritter() {
+		super(ModIDs.POCKET_CRITTER_ID);
 		setMaxDamage(0);
 		setMaxStackSize(1);
 		setHasSubtypes(true);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.POCKET_BAT_NAME));
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
 		if (stack.getItemDamage() == 0)
-			return super.getUnlocalizedName();
+			return "item." + Reference.MOD_ID + ".pocketBat";
 		else
 			return "item." + Reference.MOD_ID + ".pocketSquid";
 	}
@@ -100,12 +93,6 @@ public class PocketBat extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int meta) {
-		return icon[meta];
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
 	public void getSubItems(int itemID, CreativeTabs tabs, List list) {
 		list.add(new ItemStack(itemID, 1, 0));
 		list.add(new ItemStack(itemID, 1, 1));
@@ -114,8 +101,5 @@ public class PocketBat extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister reg) {
-		icon = new Icon[2];
-		icon[0] = reg.registerIcon(Utils.getItemTexture(Strings.POCKET_BAT_NAME));
-		icon[1] = reg.registerIcon(Utils.getItemTexture("pocketSquid"));
 	}
 }

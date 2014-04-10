@@ -46,7 +46,7 @@ public class BatNet extends Item implements IRepairable {
 		int meta = getMetaFromCreature(target);
 		if (meta > 0) {
 			if (!player.worldObj.isRemote) {
-				ItemStack pocketBat = new ItemStack(ModItems.pocketBat, 1, meta);
+				ItemStack pocketBat = new ItemStack(ModItems.pocketCritter, 1, meta);
 				if (((EntityLiving) target).hasCustomNameTag())
 					pocketBat.setItemName(((EntityBat) target).getCustomNameTag());
 				target.setDead();

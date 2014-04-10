@@ -21,8 +21,8 @@ public class ThaumCraftManager extends Integration {
 		addAspectsToItem(ModItems.teaLeaves.itemID, new Aspect[] { Aspect.PLANT }, new int[] { 1 });
 		addAspectsToItem(ModItems.poop.itemID, new Aspect[] { Aspect.SLIME }, new int[] { 2 });
 		addAspectsToItem(ModItems.cookedEgg.itemID, new Aspect[] { Aspect.SEED, Aspect.LIFE, Aspect.BEAST }, new int[] { 1, 1, 1 });
-		addAspectsToItem(ModItems.pocketBat.itemID, new Aspect[] { Aspect.TRAP, Aspect.BEAST }, new int[] { 3, 1 });
-		addAspectsToItem(ModItems.pocketBat.itemID, 1, new Aspect[] { Aspect.TRAP, Aspect.BEAST }, new int[] { 3, 1 });
+		addAspectsToItem(ModItems.pocketCritter.itemID, new Aspect[] { Aspect.TRAP, Aspect.BEAST }, new int[] { 3, 1 });
+		addAspectsToItem(ModItems.pocketCritter.itemID, 1, new Aspect[] { Aspect.TRAP, Aspect.BEAST }, new int[] { 3, 1 });
 		addAspectsToItem(ModItems.mankyCupOfTea.itemID, new Aspect[] { Aspect.POISON, Aspect.DEATH }, new int[] { 2, 1 });
 		addAspectsToItem(ModItems.horseSpawner.itemID, new Aspect[] { Aspect.SOUL, Aspect.TRAP }, new int[] { 1, 1 });
 		addAspectsToItem(ModItems.chargedCreeperSpawner.itemID, new Aspect[] { Aspect.SOUL, Aspect.TRAP }, new int[] { 1, 1 });

@@ -25,8 +25,8 @@ public class EE3Manager extends Integration {
 		addEMCValue(new ItemStack(ModItems.poop, 1, 1), 16);
 		addEMCValue(new ItemStack(ModItems.poop, 1, 0), 8);
 		addEMCValueToItem(ModItems.cookedEgg, 34);
-		addEMCValue(new ItemStack(ModItems.pocketBat, 1, OreDictionary.WILDCARD_VALUE), 64);
-		addEMCValueToItem(ModItems.pocketBat, 64);
+		addEMCValue(new ItemStack(ModItems.pocketCritter, 1, OreDictionary.WILDCARD_VALUE), 64);
+		addEMCValueToItem(ModItems.pocketCritter, 64);
 		addEMCValueToItem(ModItems.camelliaSeeds, 20);
 		addEMCValueToItem(ModItems.teaLeaves, 40);
 		addEMCValueToItem(ModItems.roastedSquid, 64);

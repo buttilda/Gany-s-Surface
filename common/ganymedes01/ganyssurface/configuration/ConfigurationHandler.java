@@ -105,7 +105,7 @@ public class ConfigurationHandler {
 			ModIDs.OBSIDIAN_HEAD_ID = configItem(Strings.OBSIDIAN_HEAD_NAME);
 			ModIDs.WOODEN_WRENCH_ID = configItem(Strings.WOODEN_WRENCH_NAME);
 			ModIDs.BAT_NET_ID = configItem(Strings.BAT_NET_NAME);
-			ModIDs.POCKET_BAT_ID = configItem(Strings.POCKET_BAT_NAME);
+			ModIDs.POCKET_CRITTER_ID = configItem(Strings.POCKET_CRITTER_NAME);
 			ModIDs.BAT_STEW_ID = configItem(Strings.BAT_STEW_NAME);
 			ModIDs.CHOCOLATE_BAR_ID = configItem(Strings.CHOCOLATE_BAR_NAME);
 			ModIDs.HORSALYSER_ID = configItem(Strings.HORSALYSER_NAME);

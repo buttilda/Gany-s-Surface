@@ -36,7 +36,7 @@ public class ModItems {
 	public static Item obsidianHead;
 	public static Item woodenWrench;
 	public static Item batNet;
-	public static Item pocketBat;
+	public static Item pocketCritter;
 	public static Item batStew;
 	public static Item chocolateBar;
 	public static Item horsalyser;
@@ -86,7 +86,7 @@ public class ModItems {
 		obsidianHead = new ObsidianHead();
 		woodenWrench = new WoodenWrench();
 		batNet = new BatNet();
-		pocketBat = new PocketBat();
+		pocketCritter = new PocketCritter();
 		batStew = new BatStew();
 		if (GanysSurface.activateChocolate)
 			chocolateBar = new ChocolateBar();
@@ -132,7 +132,7 @@ public class ModItems {
 		GameRegistry.registerItem(obsidianHead, Strings.OBSIDIAN_HEAD_NAME);
 		GameRegistry.registerItem(woodenWrench, Strings.WOODEN_WRENCH_NAME);
 		GameRegistry.registerItem(batNet, Strings.BAT_NET_NAME);
-		GameRegistry.registerItem(pocketBat, Strings.POCKET_BAT_NAME);
+		GameRegistry.registerItem(pocketCritter, Strings.POCKET_CRITTER_NAME);
 		GameRegistry.registerItem(batStew, Strings.BAT_STEW_NAME);
 		if (GanysSurface.activateChocolate)
 			GameRegistry.registerItem(chocolateBar, Strings.CHOCOLATE_BAR_NAME);
@@ -153,7 +153,7 @@ public class ModItems {
 	}
 
 	private static void registerDispenserActions() {
-		BlockDispenser.dispenseBehaviorRegistry.putObject(pocketBat, new DispenserBehaviorPocketBat());
+		BlockDispenser.dispenseBehaviorRegistry.putObject(pocketCritter, new DispenserBehaviorPocketBat());
 		BlockDispenser.dispenseBehaviorRegistry.putObject(poop, new DispenserBehaviorPoop());
 		BlockDispenser.dispenseBehaviorRegistry.putObject(rot, new DispenserBehaviorRot());
 		BlockDispenser.dispenseBehaviorRegistry.putObject(horseSpawner, new DispenserBehaviorHorseSpawner());
