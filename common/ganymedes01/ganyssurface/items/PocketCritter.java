@@ -66,13 +66,13 @@ public class PocketCritter extends Item {
 			y += Facing.offsetsYForSide[side];
 			z += Facing.offsetsZForSide[side];
 
-			int entityID;
-			if (stack.getItemDamage() == 0)
-				entityID = 65;
-			else if (stack.getItemDamage() == 1)
-				entityID = 94;
-			else
-				entityID = -1;
+			int entityID = -1;
+			switch (stack.getItemDamage()) {
+				case 0:
+					entityID = 65;
+				case 1:
+					entityID = 94;
+			}
 
 			if (entityID > 0) {
 				Entity entity = ItemMonsterPlacer.spawnCreature(world, entityID, x + 0.5D, y + 0.5D, z + 0.5D);

@@ -60,6 +60,11 @@ public class ModItems {
 	public static Item dyedIronLeggings;
 	public static Item dyedIronBoots;
 
+	public static Item dyedChainHelmet;
+	public static Item dyedChainChestplate;
+	public static Item dyedChainLeggings;
+	public static Item dyedChainBoots;
+
 	public static void init() {
 		// Armour
 		if (GanysSurface.enableWoodenArmour) {
@@ -72,6 +77,11 @@ public class ModItems {
 		dyedIronChestplate = new DyedIronArmour(ModIDs.DYED_IRON_CHESTPLATE_ID, 1);
 		dyedIronLeggings = new DyedIronArmour(ModIDs.DYED_IRON_LEGGINGS_ID, 2);
 		dyedIronBoots = new DyedIronArmour(ModIDs.DYED_IRON_BOOTS_ID, 3);
+
+		dyedChainHelmet = new DyedChainArmour(ModIDs.DYED_CHAIN_HELMET_ID, 0);
+		dyedChainChestplate = new DyedChainArmour(ModIDs.DYED_CHAIN_CHESTPLATE_ID, 1);
+		dyedChainLeggings = new DyedChainArmour(ModIDs.DYED_CHAIN_LEGGINGS_ID, 2);
+		dyedChainBoots = new DyedChainArmour(ModIDs.DYED_CHAIN_BOOTS_ID, 3);
 
 		// Items
 		rot = new Rot();
@@ -118,6 +128,11 @@ public class ModItems {
 		GameRegistry.registerItem(dyedIronChestplate, Strings.DYED_IRON_CHESTPLATE_NAME);
 		GameRegistry.registerItem(dyedIronLeggings, Strings.DYED_IRON_LEGGINGS_NAME);
 		GameRegistry.registerItem(dyedIronBoots, Strings.DYED_IRON_BOOTS_NAME);
+
+		GameRegistry.registerItem(dyedChainHelmet, Strings.DYED_CHAIN_HELMET_NAME);
+		GameRegistry.registerItem(dyedChainChestplate, Strings.DYED_CHAIN_CHESTPLATE_NAME);
+		GameRegistry.registerItem(dyedChainLeggings, Strings.DYED_CHAIN_LEGGINGS_NAME);
+		GameRegistry.registerItem(dyedChainBoots, Strings.DYED_CHAIN_BOOTS_NAME);
 
 		// Items
 		GameRegistry.registerItem(rot, Strings.ROT_NAME);

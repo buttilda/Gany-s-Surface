@@ -35,7 +35,7 @@ public class RecipesIronArmourDyes extends RecipesArmorDyes {
 			if (stack2 != null)
 				if (stack2.getItem() instanceof ItemArmor) {
 					ItemArmor armour = (ItemArmor) stack2.getItem();
-					if (armour.getArmorMaterial() != EnumArmorMaterial.IRON || stack != null)
+					if (!isDyeableMaterial(armour.getArmorMaterial()) || stack != null)
 						return false;
 					stack = stack2;
 				} else {
@@ -46,6 +46,10 @@ public class RecipesIronArmourDyes extends RecipesArmorDyes {
 		}
 
 		return stack != null && !list.isEmpty();
+	}
+
+	private boolean isDyeableMaterial(EnumArmorMaterial material) {
+		return material == EnumArmorMaterial.IRON || material == EnumArmorMaterial.CHAIN;
 	}
 
 	// Messy and stolen from vanilla
@@ -84,7 +88,7 @@ public class RecipesIronArmourDyes extends RecipesArmorDyes {
 						j++;
 					}
 				} else if (craftStack.getItem() instanceof ItemArmor) {
-					if (((ItemArmor) craftStack.getItem()).getArmorMaterial() != EnumArmorMaterial.IRON)
+					if (!isDyeableMaterial(((ItemArmor) craftStack.getItem()).getArmorMaterial()))
 						return null;
 
 					result = craftStack.copy();
@@ -96,6 +100,14 @@ public class RecipesIronArmourDyes extends RecipesArmorDyes {
 						armour = (ItemDyeableArmour) ModItems.dyedIronLeggings;
 					else if (craftStack.getItem() == Item.bootsIron)
 						armour = (ItemDyeableArmour) ModItems.dyedIronBoots;
+					else if (craftStack.getItem() == Item.helmetChain)
+						armour = (ItemDyeableArmour) ModItems.dyedChainHelmet;
+					else if (craftStack.getItem() == Item.plateChain)
+						armour = (ItemDyeableArmour) ModItems.dyedChainChestplate;
+					else if (craftStack.getItem() == Item.legsChain)
+						armour = (ItemDyeableArmour) ModItems.dyedChainLeggings;
+					else if (craftStack.getItem() == Item.bootsChain)
+						armour = (ItemDyeableArmour) ModItems.dyedChainBoots;
 
 					result.itemID = armour.itemID;
 					result.stackSize = 1;

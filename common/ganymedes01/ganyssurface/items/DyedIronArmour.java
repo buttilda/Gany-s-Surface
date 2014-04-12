@@ -4,7 +4,7 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
+import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -17,7 +17,7 @@ import net.minecraft.item.ItemStack;
 public class DyedIronArmour extends ItemDyeableArmour {
 
 	public DyedIronArmour(int id, int type) {
-		super(id, type);
+		super(id, EnumArmorMaterial.IRON, type);
 
 		switch (type) {
 			case 0:
@@ -40,14 +40,9 @@ public class DyedIronArmour extends ItemDyeableArmour {
 	}
 
 	@Override
-	public boolean getIsRepairable(ItemStack item, ItemStack material) {
-		return material.getItem() == Item.ingotIron;
-	}
-
-	@Override
 	public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type) {
 		if (type != null)
-			return Reference.ARMOUR_TEXTURE_PATH + "dyedIronArmour_Overlay.png";
+			return Reference.ARMOUR_TEXTURE_PATH + "dyedArmour_Overlay.png";
 
 		if (slot == 2)
 			return "textures/models/armor/iron_layer_2.png";

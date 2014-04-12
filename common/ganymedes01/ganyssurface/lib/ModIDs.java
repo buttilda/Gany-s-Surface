@@ -51,6 +51,11 @@ public class ModIDs {
 	public static int DYED_IRON_LEGGINGS_ID;
 	public static int DYED_IRON_BOOTS_ID;
 
+	public static int DYED_CHAIN_HELMET_ID;
+	public static int DYED_CHAIN_CHESTPLATE_ID;
+	public static int DYED_CHAIN_LEGGINGS_ID;
+	public static int DYED_CHAIN_BOOTS_ID;
+
 	// Items
 	public static int ROT_ID;
 	public static int CAMELLIA_SEEDS_ID;

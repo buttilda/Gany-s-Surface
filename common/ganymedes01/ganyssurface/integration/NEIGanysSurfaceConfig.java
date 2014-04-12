@@ -47,6 +47,10 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		API.hideItem(ModItems.dyedIronLeggings.itemID);
 		API.hideItem(ModItems.dyedIronBoots.itemID);
 		API.hideItem(ModBlocks.poop.blockID);
+		API.hideItem(ModItems.dyedChainHelmet.itemID);
+		API.hideItem(ModItems.dyedChainChestplate.itemID);
+		API.hideItem(ModItems.dyedChainLeggings.itemID);
+		API.hideItem(ModItems.dyedChainBoots.itemID);
 	}
 
 	@Override

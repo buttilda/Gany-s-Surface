@@ -86,13 +86,11 @@ public class ConfigurationHandler {
 			ModIDs.ENCASING_BENCH_ID = configBlock(Strings.ENCASING_BENCH_NAME);
 			ModIDs.AUTO_ENCASER_ID = configBlock(Strings.AUTO_ENCASER_NAME);
 
-			// Armour
+			// Items
 			ModIDs.WOODEN_HELMET_ID = configItem(Strings.WOODEN_HELMET_NAME);
 			ModIDs.WOODEN_CHESTPLATE_ID = configItem(Strings.WOODEN_CHESTPLATE_NAME);
 			ModIDs.WOODEN_LEGGINGS_ID = configItem(Strings.WOODEN_LEGGINGS_NAME);
 			ModIDs.WOODEN_BOOTS_ID = configItem(Strings.WOODEN_BOOTS_NAME);
-
-			// Items
 			ModIDs.ROT_ID = configItem(Strings.ROT_NAME);
 			ModIDs.CAMELLIA_SEEDS_ID = configItem(Strings.CAMELLIA_SEEDS_NAME);
 			ModIDs.TEA_LEAVES_ID = configItem(Strings.TEA_LEAVES_NAME);
@@ -121,6 +119,10 @@ public class ConfigurationHandler {
 			ModIDs.ICY_PICKAXE_ID = configItem(Strings.ICY_PICKAXE_NAME);
 			ModIDs.ROASTED_SQUID_ID = configItem(Strings.ROASTED_SQUID_NAME);
 			ModIDs.STORAGE_CASE_ID = configItem(Strings.STORAGE_CASE_NAME);
+			ModIDs.DYED_CHAIN_HELMET_ID = configItem(Strings.DYED_CHAIN_HELMET_NAME);
+			ModIDs.DYED_CHAIN_CHESTPLATE_ID = configItem(Strings.DYED_CHAIN_CHESTPLATE_NAME);
+			ModIDs.DYED_CHAIN_LEGGINGS_ID = configItem(Strings.DYED_CHAIN_LEGGINGS_NAME);
+			ModIDs.DYED_CHAIN_BOOTS_ID = configItem(Strings.DYED_CHAIN_BOOTS_NAME);
 
 			// Mod Integration
 			for (Integration integration : ModIntegrator.modIntegrations)
@@ -134,6 +136,7 @@ public class ConfigurationHandler {
 			GanysSurface.enableMarket = configBoolean(Strings.ENABLE_MARKET, true);
 			GanysSurface.enableWoodenArmour = configBoolean(Strings.ENABLE_WOODEN_ARMOUR, true);
 			GanysSurface.enableCamilaSeedsToDropFromGrass = configBoolean(Strings.ENABLE_CAMILA_SEEDS_TO_DROP_FROM_GRASS, true);
+			GanysSurface.enableNormalWitchSpawn = configBoolean(Strings.ENABLE_NORMAL_WITCH_SPAWN, true);
 
 			GanysSurface.maxLevelOMCWorks = configInteger(Strings.MAX_LEVEL_OMC_WORKS, 15);
 			GanysSurface.inkHarvesterMaxStrike = configInteger(Strings.INK_HARVESTER_MAX_STRIKE, 5);

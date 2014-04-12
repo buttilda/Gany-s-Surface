@@ -9,6 +9,11 @@ item.ganyssurface.dyedIronChestplate.name=Iron Chestplate
 item.ganyssurface.dyedIronLeggings.name=Iron Leggings
 item.ganyssurface.dyedIronBoots.name=Iron Boots
 
+item.ganyssurface.dyedChainHelmet.name=Chain Helmet
+item.ganyssurface.dyedChainChestplate.name=Chain Chestplate
+item.ganyssurface.dyedChainLeggings.name=Chain Leggings
+item.ganyssurface.dyedChainBoots.name=Chain Boots
+
 item.ganyssurface.rot.name=Rot
 item.ganyssurface.camelliaSeeds.name=Camellia Seeds
 item.ganyssurface.teaLeaves.name=Tea Leaves

@@ -85,6 +85,11 @@ public class Strings {
 	public static final String DYED_IRON_LEGGINGS_NAME = "dyedIronLeggings";
 	public static final String DYED_IRON_BOOTS_NAME = "dyedIronBoots";
 
+	public static final String DYED_CHAIN_HELMET_NAME = "dyedChainHelmet";
+	public static final String DYED_CHAIN_CHESTPLATE_NAME = "dyedChainChestplate";
+	public static final String DYED_CHAIN_LEGGINGS_NAME = "dyedChainLeggings";
+	public static final String DYED_CHAIN_BOOTS_NAME = "dyedChainBoots";
+
 	// Entities
 	public static final String ENTITY_POOP_NAME = "EntityPoop";
 	public static final String ENTITY_BAT_POOP_NAME = "EntityBatPoop";
@@ -97,6 +102,7 @@ public class Strings {
 	public static final String ENABLE_MARKET = "enableMarket";
 	public static final String ENABLE_WOODEN_ARMOUR = "enableWoodenArmour";
 	public static final String ENABLE_CAMILA_SEEDS_TO_DROP_FROM_GRASS = "enableCamilaSeedsToDropFromGrass";
+	public static final String ENABLE_NORMAL_WITCH_SPAWN = "enableNormalWitchSpawn";
 	public static final String MAX_LEVEL_OMC_WORKS = "maxLevelOMCWorks";
 	public static final String INK_HARVESTER_MAX_STRIKE = "inkHarvesterMaxStrike";
 	public static final String POOPING_CHANCE = "poopingChance";

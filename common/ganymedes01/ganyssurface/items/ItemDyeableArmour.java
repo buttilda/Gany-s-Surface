@@ -17,8 +17,8 @@ import net.minecraft.world.World;
 
 public class ItemDyeableArmour extends ItemArmor {
 
-	public ItemDyeableArmour(int id, int armourType) {
-		super(id, EnumArmorMaterial.IRON, 2, armourType);
+	public ItemDyeableArmour(int id, EnumArmorMaterial material, int armourType) {
+		super(id, material, 2, armourType);
 		setMaxStackSize(1);
 		setCreativeTab(null);
 	}
@@ -35,6 +35,11 @@ public class ItemDyeableArmour extends ItemArmor {
 			}
 		}
 		return super.onItemUse(stack, player, world, x, y, z, side, hitX, hitY, hitZ);
+	}
+
+	@Override
+	public boolean getIsRepairable(ItemStack item, ItemStack material) {
+		return material.getItem().itemID == getArmorMaterial().getArmorCraftingMaterial();
 	}
 
 	@Override
