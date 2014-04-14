@@ -70,7 +70,12 @@ public class MarketSalesHandler extends TemplateRecipeHandler {
 		GuiDraw.fontRenderer.drawString("Z: " + sale.z, 55, 33, Utils.getColour(0, 0, 0));
 
 		Entity p = Minecraft.getMinecraft().thePlayer;
-		GuiDraw.fontRenderer.drawString("D: " + Math.sqrt(Math.pow(sale.x - p.posX, 2) + Math.pow(sale.y - p.posY, 2) + Math.pow(sale.z - p.posZ, 2)), 55, 51, Utils.getColour(0, 0, 0));
+		int x = (int) p.posX;
+		int y = (int) p.posY - 1;
+		int z = (int) p.posZ;
+
+		float d = (float) Math.sqrt(Math.pow(sale.x - x, 2) + Math.pow(sale.y - y, 2) + Math.pow(sale.z - z, 2));
+		GuiDraw.fontRenderer.drawString("D: " + String.format("%,3.2f", d), 55, 51, Utils.getColour(0, 0, 0));
 	}
 
 	@Override
