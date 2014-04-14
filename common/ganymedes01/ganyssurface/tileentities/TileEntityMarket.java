@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.tileentities;
 
-import ganymedes01.ganyssurface.core.utils.ItemStackMap;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.PacketTypeHandler;
 import ganymedes01.ganyssurface.network.packet.PacketMarket;
@@ -75,7 +75,7 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 
 		int count = 0;
 		for (int i = 0; i < 12; i++)
-			if (ItemStackMap.areItemsEqual(inventory[i], inventory[offer]))
+			if (Utils.areStacksTheSame(inventory[i], inventory[offer], false))
 				count += inventory[i].stackSize;
 		return count / inventory[offer].stackSize;
 	}
@@ -93,7 +93,7 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 			if (inventory[i] == null) {
 				inventory[i] = stack;
 				return;
-			} else if (ItemStackMap.areItemsEqual(inventory[i], stack))
+			} else if (Utils.areStacksTheSame(inventory[i], stack, false))
 				if (inventory[i].stackSize + stack.stackSize <= inventory[i].getMaxStackSize()) {
 					inventory[i].stackSize += stack.stackSize;
 					stack = null;

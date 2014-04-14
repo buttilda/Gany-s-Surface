@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.inventory.slots;
 
-import ganymedes01.ganyssurface.core.utils.ItemStackMap;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -26,7 +26,7 @@ public class GhostSlot extends Slot {
 		ItemStack ghostStack = inventory.getStackInSlot(slotIndex);
 		if (stack == null)
 			inventory.setInventorySlotContents(slotIndex, null);
-		else if (ItemStackMap.areItemsEqual(ghostStack, stack)) {
+		else if (Utils.areStacksTheSame(ghostStack, stack, false)) {
 			if (rightClick) {
 				ghostStack.stackSize -= stack.stackSize;
 				if (ghostStack.stackSize <= 0)

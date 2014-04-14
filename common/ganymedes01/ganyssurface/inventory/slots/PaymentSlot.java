@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.inventory.slots;
 
-import ganymedes01.ganyssurface.core.utils.ItemStackMap;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerMarketPublic;
 import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
 import net.minecraft.inventory.Slot;
@@ -26,7 +26,7 @@ public class PaymentSlot extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		return ItemStackMap.areItemsEqual(reference.getStack(), stack);
+		return Utils.areStacksTheSame(reference.getStack(), stack, false);
 	}
 
 	@Override

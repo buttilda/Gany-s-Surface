@@ -12,7 +12,9 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.ResourceLocation;
@@ -88,7 +90,44 @@ public class Utils {
 		return list;
 	}
 
+	public static final int[] getSlotsFromSide(IInventory iinventory, int side) {
+		if (iinventory == null)
+			return null;
+
+		if (iinventory instanceof ISidedInventory)
+			return ((ISidedInventory) iinventory).getAccessibleSlotsFromSide(side);
+		else {
+			int[] slots = new int[iinventory.getSizeInventory()];
+			for (int i = 0; i < slots.length; i++)
+				slots[i] = i;
+			return slots;
+		}
+	}
+
+	public static final ItemStack extractFromInventory(IInventory iinventory, int side) {
+		if (iinventory instanceof TileEntityChest)
+			return extractFromInventory(getInventoryFromChest((TileEntityChest) iinventory), side);
+		return extractFromSlots(iinventory, side, getSlotsFromSide(iinventory, side));
+	}
+
+	private static ItemStack extractFromSlots(IInventory iinventory, int side, int[] slots) {
+		for (int slot : slots) {
+			ItemStack invtStack = iinventory.getStackInSlot(slot);
+			if (invtStack != null)
+				if (iinventory instanceof ISidedInventory ? ((ISidedInventory) iinventory).canExtractItem(slot, invtStack, side) : true) {
+					ItemStack copy = invtStack.copy();
+					invtStack.stackSize--;
+					copy.stackSize = 1;
+					return copy;
+				}
+		}
+		return null;
+	}
+
 	public static final boolean addEntitytoInventory(IInventory iinventory, EntityItem item) {
+		if (item == null)
+			return false;
+
 		boolean flag = addStackToInventory(iinventory, item.getEntityItem());
 		if (item.getEntityItem().stackSize <= 0)
 			item.setDead();
@@ -100,74 +139,71 @@ public class Utils {
 	}
 
 	public static final boolean addStackToInventory(IInventory iinventory, ItemStack stack, int side) {
+		if (iinventory == null)
+			return false;
+
 		if (stack == null || stack.stackSize <= 0)
 			return false;
-		ArrayList<Integer> slots = getStackSlots(iinventory, stack, side);
+		if (iinventory instanceof TileEntityChest)
+			return addStackToInventory(getInventoryFromChest((TileEntityChest) iinventory), stack, side);
 
-		while (!slots.isEmpty() && stack.stackSize > 0) {
-			for (Integer slot : slots)
-				while (iinventory.getStackInSlot(slot).stackSize < iinventory.getStackInSlot(slot).getMaxStackSize() && iinventory.getStackInSlot(slot).stackSize < iinventory.getInventoryStackLimit() && stack.stackSize > 0) {
-					iinventory.getStackInSlot(slot).stackSize++;
-					stack.stackSize--;
-				}
-			slots = getStackSlots(iinventory, stack, side);
-		}
-		if (stack.stackSize <= 0)
-			return true;
-		else if (iinventory instanceof ISidedInventory) {
-			for (int slot : ((ISidedInventory) iinventory).getAccessibleSlotsFromSide(side))
-				if (insertStackToNullSlot(slot, iinventory, stack, side))
-					return true;
-		} else
-			for (int i = 0; i < iinventory.getSizeInventory(); i++)
-				if (insertStackToNullSlot(i, iinventory, stack, side))
-					return true;
-		return false;
+		return addToSlots(iinventory, stack, side, getSlotsFromSide(iinventory, side));
 	}
 
-	private static final boolean insertStackToNullSlot(int i, IInventory iinventory, ItemStack stack, int side) {
-		if (iinventory.getStackInSlot(i) == null && iinventory.isItemValidForSlot(i, stack) && canInsert(i, iinventory, stack, side)) {
-			if (stack.stackSize > iinventory.getInventoryStackLimit()) {
-				iinventory.setInventorySlotContents(i, new ItemStack(stack.itemID, iinventory.getInventoryStackLimit(), stack.getItemDamage()));
-				stack.stackSize -= iinventory.getInventoryStackLimit();
+	private static final boolean addToSlots(IInventory iinventory, ItemStack stack, int side, int[] slots) {
+		for (int slot : slots) {
+			if (iinventory instanceof ISidedInventory) {
+				if (!((ISidedInventory) iinventory).canInsertItem(slot, stack, side))
+					continue;
+			} else if (!iinventory.isItemValidForSlot(slot, stack))
+				continue;
+
+			if (iinventory.getStackInSlot(slot) == null) {
+				iinventory.setInventorySlotContents(slot, stack.copy());
+				return true;
 			} else {
-				iinventory.setInventorySlotContents(i, stack.copy());
-				stack.stackSize = 0;
+				ItemStack invtStack = iinventory.getStackInSlot(slot);
+				if (areStacksTheSame(invtStack, stack, false) && invtStack.stackSize < invtStack.getMaxStackSize()) {
+					invtStack.stackSize += stack.stackSize;
+					if (invtStack.stackSize > invtStack.getMaxStackSize()) {
+						stack.stackSize = invtStack.stackSize - invtStack.getMaxStackSize();
+						invtStack.stackSize = invtStack.getMaxStackSize();
+					} else
+						stack.stackSize = 0;
+					return true;
+				}
 			}
-			return true;
 		}
 		return false;
 	}
 
-	private static final boolean canInsert(int i, IInventory invt, ItemStack stack, int side) {
-		return invt instanceof ISidedInventory ? ((ISidedInventory) invt).canInsertItem(i, stack, side) : true;
-	}
-
-	private static final ArrayList<Integer> getStackSlots(IInventory iinventory, ItemStack stack, int side) {
-		ArrayList<Integer> slots = new ArrayList<Integer>();
-		if (stack.stackSize <= 0)
-			return slots;
-
-		if (iinventory instanceof ISidedInventory && side > -1) {
-			for (int slot : ((ISidedInventory) iinventory).getAccessibleSlotsFromSide(side))
-				if (checkForStackSlots(slot, iinventory, stack))
-					slots.add(slot);
-		} else
-			for (int i = 0; i < iinventory.getSizeInventory(); i++)
-				if (checkForStackSlots(i, iinventory, stack))
-					slots.add(i);
-		return slots;
-	}
-
-	private static final boolean checkForStackSlots(int slot, IInventory iinventory, ItemStack stack) {
-		if (iinventory.getStackInSlot(slot) != null && stack != null)
-			if (iinventory.isItemValidForSlot(slot, stack))
-				if (iinventory.getStackInSlot(slot).getItem() == stack.getItem())
-					if (iinventory.getStackInSlot(slot).isItemEqual(stack))
-						if (iinventory.getStackInSlot(slot).stackSize < iinventory.getStackInSlot(slot).getMaxStackSize())
-							if (iinventory.getStackInSlot(slot).stackSize < iinventory.getInventoryStackLimit())
-								return true;
+	public static final boolean areStacksTheSame(ItemStack stack1, ItemStack stack2, boolean matchSize) {
+		if (stack1.itemID == stack2.itemID)
+			if (stack1.getItemDamage() == stack2.getItemDamage())
+				if (!matchSize || stack1.stackSize == stack2.stackSize) {
+					if (stack1.hasTagCompound())
+						return stack2.hasTagCompound() ? stack1.getTagCompound().equals(stack2.getTagCompound()) : false;
+					return true;
+				}
 		return false;
+	}
+
+	public static final IInventory getInventoryFromChest(TileEntityChest chest) {
+		TileEntityChest adjacent = null;
+		if (chest.adjacentChestXNeg != null)
+			adjacent = chest.adjacentChestXNeg;
+		if (chest.adjacentChestXNeg != null)
+			adjacent = chest.adjacentChestXNeg;
+		if (chest.adjacentChestXPos != null)
+			adjacent = chest.adjacentChestXPos;
+		if (chest.adjacentChestZNeg != null)
+			adjacent = chest.adjacentChestZNeg;
+		if (chest.adjacentChestZPosition != null)
+			adjacent = chest.adjacentChestZPosition;
+		if (adjacent != null)
+			return new InventoryLargeChest("", chest, adjacent);
+
+		return chest;
 	}
 
 	public static EntityPlayer getPlayer(World world) {
