@@ -1,16 +1,17 @@
 package ganymedes01.ganyssurface.recipes;
 
-import ganymedes01.ganyssurface.core.utils.ItemStackMap;
+import ganymedes01.ganyssurface.core.utils.UnsizedStack;
 import ganymedes01.ganyssurface.items.ModItems;
+
+import java.util.HashMap;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemMonsterPlacer;
-import net.minecraft.item.ItemRecord;
 import net.minecraft.item.ItemSeeds;
-import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -23,10 +24,12 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class OrganicMatterRegistry {
 
-	private static ItemStackMap<Integer> matterYield = new ItemStackMap<Integer>();
+	private static HashMap<UnsizedStack, Integer> matterYield = new HashMap<UnsizedStack, Integer>();
+	private static HashMap<Integer, Integer> oreYield = new HashMap<Integer, Integer>();
+	private static HashMap<Material, Integer> materialYield = new HashMap<Material, Integer>();
 
 	static {
-		addMatterYield(new ItemStack(Item.coal, 1, 1), 16);
+		addMatterYield(new ItemStack(Item.coal), -1);
 		addItemYield(Item.swordWood);
 		addItemYield(Item.hoeWood);
 		addItemYield(Item.axeWood);
@@ -38,7 +41,6 @@ public class OrganicMatterRegistry {
 		addItemYield(Item.sign);
 		addItemYield(Item.saddle);
 		addItemYield(Item.book);
-		addItemYield(Item.egg);
 		addItemYield(Item.fishingRod);
 		addItemYield(Item.itemFrame);
 		addItemYield(Item.boat);
@@ -77,20 +79,33 @@ public class OrganicMatterRegistry {
 		addItemYield(ModItems.batNet);
 		addItemYield(ModItems.pocketCritter, 3);
 		addItemYield(ModItems.horsalyser);
-		addItemYield(ModItems.horseSpawner);
-		addMatterYield(new ItemStack(ModItems.horseSpawner, 1, 1));
-		addMatterYield(new ItemStack(ModItems.horseSpawner, 1, 2));
-		addItemYield(ModItems.chargedCreeperSpawner);
 
 		addMatterYield(new ItemStack(Block.ladder));
 		addMatterYield(new ItemStack(Block.woodenButton));
-		addMatterYield(new ItemStack(Block.carpet));
-		addMatterYield(new ItemStack(Block.hay));
-		addMatterYield(new ItemStack(Block.pumpkin), 4);
-		addMatterYield(new ItemStack(Block.pumpkinLantern), 4);
-		addMatterYield(new ItemStack(Block.melon), 4);
-		addMatterYield(new ItemStack(Block.cactus), 4);
-		addMatterYield(new ItemStack(Block.grass), 4);
+
+		addOreYield("mobEgg", 2);
+		addOreYield("mobHead", 8);
+		addOreYield("record", 4);
+		addOreYield("plankWood", 4);
+		addOreYield("slabWood", 2);
+		addOreYield("stairWood", 2);
+		addOreYield("treeSapling", 2);
+		addOreYield("treeLeaves", 1);
+		addOreYield("stickWood", 1);
+		addOreYield("egg", 1);
+
+		addMaterialYield(Material.cactus, 4);
+		addMaterialYield(Material.leaves, 3);
+		addMaterialYield(Material.plants, 3);
+		addMaterialYield(Material.pumpkin, 3);
+		addMaterialYield(Material.vine, 3);
+		addMaterialYield(Material.web, 3);
+		addMaterialYield(Material.grass, 4);
+		addMaterialYield(Material.cloth, 3);
+		addMaterialYield(Material.cake, 3);
+		addMaterialYield(Material.materialCarpet, 2);
+		addMaterialYield(Material.pumpkin, 4);
+		addMaterialYield(Material.wood, 4);
 	}
 
 	private static void addItemYield(Item matter, int yield) {
@@ -103,71 +118,55 @@ public class OrganicMatterRegistry {
 	}
 
 	public static void addMatterYield(ItemStack matter, int yield) {
-		if (matter != null) {
-			matter.stackSize = 1;
-
-			matterYield.put(matter, yield);
-		}
+		if (matter != null)
+			matterYield.put(new UnsizedStack(matter), yield);
 	}
 
 	private static void addMatterYield(ItemStack matter) {
 		addMatterYield(matter, 2);
 	}
 
+	private static void addOreYield(String ore, int yield) {
+		int oreID = OreDictionary.getOreID(ore);
+		if (!oreYield.containsKey(oreID))
+			oreYield.put(oreID, yield);
+	}
+
+	private static void addMaterialYield(Material material, int yield) {
+		if (!materialYield.containsKey(material))
+			materialYield.put(material, yield);
+	}
+
 	public static boolean isOrganicMatter(ItemStack stack) {
-		if (stack == null)
-			return false;
-		else
-			return getOrganicYield(stack) > 0;
+		return getOrganicYield(stack) > 0;
 	}
 
 	public static int getOrganicYield(ItemStack stack) {
-		if (matterYield.containsKey(stack))
-			return matterYield.get(stack);
-		else {
+		if (stack == null)
+			return -1;
+		if (stack.getItem().itemID == Block.coalBlock.blockID)
+			return -1;
+
+		if (matterYield.containsKey(new UnsizedStack(stack)))
+			return matterYield.get(new UnsizedStack(stack));
+		else if (oreYield.containsKey(OreDictionary.getOreID(stack)))
+			return oreYield.get(OreDictionary.getOreID(stack));
+
+		int ret = -1;
+
+		if (stack.getItem() instanceof ItemBlock && stack.itemID < Block.blocksList.length) {
+			Block block = Block.blocksList[stack.itemID];
+			Integer matYield = materialYield.get(block.blockMaterial);
+			matYield = matYield == null ? -1 : matYield;
+			ret = block instanceof BlockHalfSlab ? (int) (matYield / 2.0F) : matYield;
+		} else {
 			Item item = stack.getItem();
-
 			if (item instanceof ItemFood)
-				return 1;
+				ret = (int) (10 * ((ItemFood) item).getSaturationModifier());
 			else if (item instanceof ItemSeeds)
-				return 1;
-			else if (item instanceof ItemMonsterPlacer)
-				return 2;
-			else if (item instanceof ItemSkull)
-				return 2;
-			else if (item instanceof ItemRecord)
-				return 2;
-
-			Block block = null;
-			if (stack.itemID < Block.blocksList.length)
-				block = Block.blocksList[stack.itemID];
-			if (block != null)
-				if (block.blockMaterial == Material.wood) {
-					if (!(block instanceof BlockHalfSlab))
-						return 4;
-				} else if (block.blockMaterial == Material.cactus || block.blockMaterial == Material.leaves || block.blockMaterial == Material.plants || block.blockMaterial == Material.pumpkin || block.blockMaterial == Material.vine || block.blockMaterial == Material.web ||
-				block.blockMaterial == Material.grass || block.blockMaterial == Material.cloth)
-					return 3;
-
-			for (ItemStack logs : OreDictionary.getOres("plankWood"))
-				if (logs.getItem() == item)
-					return 4;
-			for (ItemStack logs : OreDictionary.getOres("slabWood"))
-				if (logs.getItem() == item)
-					return 2;
-			for (ItemStack logs : OreDictionary.getOres("stairWood"))
-				if (logs.getItem() == item)
-					return 2;
-			for (ItemStack logs : OreDictionary.getOres("treeSapling"))
-				if (logs.getItem() == item)
-					return 2;
-			for (ItemStack logs : OreDictionary.getOres("treeLeaves"))
-				if (logs.getItem() == item)
-					return 1;
-			for (ItemStack logs : OreDictionary.getOres("stickWood"))
-				if (logs.getItem() == item)
-					return 1;
+				ret = 1;
 		}
-		return -1;
+
+		return ret;
 	}
 }

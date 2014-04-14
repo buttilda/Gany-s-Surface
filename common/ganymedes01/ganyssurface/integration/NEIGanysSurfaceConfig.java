@@ -6,6 +6,7 @@ import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPortableDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
 import ganymedes01.ganyssurface.integration.nei.MarketSalesHandler;
+import ganymedes01.ganyssurface.integration.nei.OMCYieldHandler;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.block.Block;
@@ -36,6 +37,9 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.registerRecipeHandler(new MarketSalesHandler());
 			API.registerUsageHandler(new MarketSalesHandler());
 		}
+
+		API.registerRecipeHandler(new OMCYieldHandler());
+		API.registerUsageHandler(new OMCYieldHandler());
 
 		API.hideItem(ModBlocks.camelliaCrop.blockID);
 		API.hideItem(ModItems.mankyCupOfTea.itemID);
