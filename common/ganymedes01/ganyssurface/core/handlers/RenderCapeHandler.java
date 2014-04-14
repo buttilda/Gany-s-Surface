@@ -34,6 +34,7 @@ public class RenderCapeHandler {
 			Scanner scanner = new Scanner(new URL(Reference.USERS_WITH_CAPES_FILE).openStream());
 			while (scanner.hasNext())
 				usersWithCapes.add(scanner.nextLine());
+			scanner.close();
 		} catch (Exception e) {
 		}
 	}
