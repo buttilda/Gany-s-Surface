@@ -94,8 +94,14 @@ public class IcyPickaxe extends ItemPickaxe {
 			int x = (int) player.posX;
 			int z = (int) player.posZ;
 
-			if (world.rand.nextInt(80) == 0 && world.getBiomeGenForCoords(x, z).temperature < 0.2F)
-				stack.setItemDamage(stack.getItemDamage() - 1);
+			int dam = 0;
+			if (world.getBiomeGenForCoords(x, z).temperature < 0.2F)
+				dam = -1;
+			else if (world.getBiomeGenForCoords(x, z).temperature > 1.1F)
+				dam = 1;
+
+			if (world.rand.nextInt(80) == 0)
+				stack.setItemDamage(stack.getItemDamage() + dam);
 		}
 	}
 
