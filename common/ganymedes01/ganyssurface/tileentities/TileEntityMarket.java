@@ -2,8 +2,6 @@ package ganymedes01.ganyssurface.tileentities;
 
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
-import ganymedes01.ganyssurface.network.PacketTypeHandler;
-import ganymedes01.ganyssurface.network.packet.PacketMarket;
 import ganymedes01.ganyssurface.recipes.MarketSales;
 
 import java.util.ArrayList;
@@ -12,7 +10,6 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.packet.Packet;
 import net.minecraftforge.common.ForgeDirection;
 import buildcraft.api.transport.IPipeConnection;
 import buildcraft.api.transport.IPipeTile.PipeType;
@@ -119,15 +116,6 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 					inventory[j] = extraInventory.get(i).copy();
 					extraInventory.remove(i);
 				}
-	}
-
-	@Override
-	public Packet getDescriptionPacket() {
-		ItemStack[] stacks = new ItemStack[getSizeInventory()];
-		for (int i = 0; i < stacks.length; i++)
-			stacks[i] = inventory[i];
-
-		return PacketTypeHandler.populatePacket(new PacketMarket(xCoord, yCoord, zCoord, owner, stacks, extraInventory));
 	}
 
 	@Override

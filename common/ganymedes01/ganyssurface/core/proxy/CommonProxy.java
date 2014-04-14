@@ -47,9 +47,6 @@ import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityRainDetector;
 import ganymedes01.ganyssurface.tileentities.TileEntitySensoringDislocator;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
-
-import java.util.ArrayList;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -108,10 +105,6 @@ public class CommonProxy implements IGuiHandler {
 	}
 
 	public void handleParticleEffects(World world, double x, double y, double z, int id, int meta) {
-
-	}
-
-	public void handleMarketPacket(int x, int y, int z, String owner, ItemStack[] inventory, ArrayList<ItemStack> extraInventory) {
 
 	}
 

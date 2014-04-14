@@ -21,12 +21,8 @@ import ganymedes01.ganyssurface.lib.ParticleEffectsID;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
-import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
-
-import java.util.ArrayList;
-
 import net.minecraft.block.BlockColored;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityReddustFX;
@@ -103,21 +99,6 @@ public class ClientProxy extends CommonProxy {
 			if (tileEntity != null)
 				if (tileEntity instanceof TileEntityPlanter)
 					((TileEntityPlanter) tileEntity).setArmExtension(armExtension);
-		}
-	}
-
-	@Override
-	public void handleMarketPacket(int x, int y, int z, String owner, ItemStack[] inventory, ArrayList<ItemStack> extraInventory) {
-		World world = FMLClientHandler.instance().getClient().theWorld;
-		if (world != null) {
-			TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-			if (tileEntity != null)
-				if (tileEntity instanceof TileEntityMarket) {
-					for (int i = 0; i < inventory.length; i++)
-						((TileEntityMarket) tileEntity).setInventorySlotContents(i, inventory[i]);
-					((TileEntityMarket) tileEntity).setOwner(owner);
-					((TileEntityMarket) tileEntity).setExtraInventory(extraInventory);
-				}
 		}
 	}
 

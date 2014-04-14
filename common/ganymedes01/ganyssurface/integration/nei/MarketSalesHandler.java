@@ -11,7 +11,9 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
@@ -66,6 +68,9 @@ public class MarketSalesHandler extends TemplateRecipeHandler {
 		GuiDraw.fontRenderer.drawString("X: " + sale.x, 55, 15, Utils.getColour(0, 0, 0));
 		GuiDraw.fontRenderer.drawString("Y: " + sale.y, 55, 24, Utils.getColour(0, 0, 0));
 		GuiDraw.fontRenderer.drawString("Z: " + sale.z, 55, 33, Utils.getColour(0, 0, 0));
+
+		Entity p = Minecraft.getMinecraft().thePlayer;
+		GuiDraw.fontRenderer.drawString("D: " + Math.sqrt(Math.pow(sale.x - p.posX, 2) + Math.pow(sale.y - p.posY, 2) + Math.pow(sale.z - p.posZ, 2)), 55, 51, Utils.getColour(0, 0, 0));
 	}
 
 	@Override
