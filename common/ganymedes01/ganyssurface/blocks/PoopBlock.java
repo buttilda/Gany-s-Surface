@@ -47,8 +47,8 @@ public class PoopBlock extends Block {
 	public void updateTick(World world, int x, int y, int z, Random rand) {
 		if (world.isRemote)
 			return;
-		int groundID = world.getBlockId(x, y - 1, z);
-		if (groundID == Block.dirt.blockID || groundID == Block.grass.blockID) {
+		Material groundMaterial = world.getBlockMaterial(x, y - 1, z);
+		if (groundMaterial == Material.ground || groundMaterial == Material.grass || groundMaterial == Material.sand) {
 
 			boolean flag = rand.nextInt(30) == 0;
 			if (!world.provider.hasNoSky && world.canBlockSeeTheSky(x, y + 1, z) && (world.isRaining() || world.isThundering()))
@@ -56,14 +56,7 @@ public class PoopBlock extends Block {
 
 			if (flag) {
 				world.setBlockToAir(x, y, z);
-
-				if (rand.nextBoolean()) {
-					world.setBlock(x, y - 1, z, Block.grass.blockID);
-					if (rand.nextInt(25) == 0)
-						world.setBlock(x, y, z, Block.sapling.blockID, rand.nextInt(4), 3);
-				} else
-					ItemDye.func_96604_a(new ItemStack(Item.dyePowder, 1, 15), world, x, y - 1, z);
-
+				ItemDye.func_96604_a(new ItemStack(Item.dyePowder, 1, 15), world, x, y - 1, z);
 			}
 		}
 	}
