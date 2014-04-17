@@ -47,18 +47,22 @@ public class PoopBlock extends Block {
 	public void updateTick(World world, int x, int y, int z, Random rand) {
 		if (world.isRemote)
 			return;
-		Material groundMaterial = world.getBlockMaterial(x, y - 1, z);
-		if (groundMaterial == Material.ground || groundMaterial == Material.grass || groundMaterial == Material.sand) {
 
-			boolean flag = rand.nextInt(30) == 0;
-			if (!world.provider.hasNoSky && world.canBlockSeeTheSky(x, y + 1, z) && (world.isRaining() || world.isThundering()))
-				flag = true;
+		boolean flag = rand.nextInt(getBonemealchance(world, x, y - 1, z)) == 0;
+		if (!world.provider.hasNoSky && world.canBlockSeeTheSky(x, y + 1, z) && (world.isRaining() || world.isThundering()))
+			flag = true;
 
-			if (flag) {
-				world.setBlockToAir(x, y, z);
-				ItemDye.func_96604_a(new ItemStack(Item.dyePowder, 1, 15), world, x, y - 1, z);
-			}
+		if (flag) {
+			world.setBlockToAir(x, y, z);
+			ItemDye.func_96604_a(new ItemStack(Item.dyePowder, 1, 15), world, x, y - 1, z);
 		}
+	}
+
+	private int getBonemealchance(World world, int x, int y, int z) {
+		Material groundMaterial = world.getBlockMaterial(x, y - 1, z);
+		if (groundMaterial == Material.ground || groundMaterial == Material.grass || groundMaterial == Material.sand)
+			return 30;
+		return 50;
 	}
 
 	@Override
