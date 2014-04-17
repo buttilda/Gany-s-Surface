@@ -18,7 +18,6 @@ import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.entities.EntityVillageFinder;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.ParticleEffectsID;
-import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
@@ -66,10 +65,10 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityBatPoop.class, new RenderSnowball(ModItems.poop, 1));
 		RenderingRegistry.registerEntityRenderingHandler(EntityVillageFinder.class, new RenderSnowball(ModItems.villageFinder));
 
-		RenderingRegistry.registerBlockHandler(RenderIDs.LANTERN, new BlockLanternRender());
-		RenderingRegistry.registerBlockHandler(RenderIDs.SLIME_BLOCK, new BlockSlimeBlockRender());
-		RenderingRegistry.registerBlockHandler(RenderIDs.COLOURED_REDSTONE, new BlockColouredRedstoneRender());
-		RenderingRegistry.registerBlockHandler(RenderIDs.ITEM_DISPLAY, new BlockItemDisplayRender());
+		RenderingRegistry.registerBlockHandler(new BlockLanternRender());
+		RenderingRegistry.registerBlockHandler(new BlockSlimeBlockRender());
+		RenderingRegistry.registerBlockHandler(new BlockColouredRedstoneRender());
+		RenderingRegistry.registerBlockHandler(new BlockItemDisplayRender());
 	}
 
 	@Override
