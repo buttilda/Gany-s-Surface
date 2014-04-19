@@ -45,7 +45,7 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.woodenLeggings), "xxx", "x x", "x x", 'x', "logWood"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.woodenBoots), "x x", "x x", 'x', "logWood"));
 		}
-		GameRegistry.addRecipe(new RecipesIronArmourDyes());
+		GameRegistry.addRecipe(new RecipeArmourDyes());
 	}
 
 	private static void registerItemRecipes() {

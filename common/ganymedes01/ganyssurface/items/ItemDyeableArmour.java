@@ -43,13 +43,13 @@ public class ItemDyeableArmour extends ItemArmor {
 	}
 
 	@Override
-	public boolean hasColor(ItemStack par1ItemStack) {
-		return getArmorMaterial() != EnumArmorMaterial.IRON ? false : !par1ItemStack.hasTagCompound() ? false : !par1ItemStack.getTagCompound().hasKey("display") ? false : par1ItemStack.getTagCompound().getCompoundTag("display").hasKey("color");
+	public boolean hasColor(ItemStack stack) {
+		return !isValidMaterial() ? false : !stack.hasTagCompound() ? false : !stack.getTagCompound().hasKey("display") ? false : stack.getTagCompound().getCompoundTag("display").hasKey("color");
 	}
 
 	@Override
 	public int getColor(ItemStack stack) {
-		if (getArmorMaterial() != EnumArmorMaterial.IRON)
+		if (!isValidMaterial())
 			return -1;
 		else {
 			NBTTagCompound data = stack.getTagCompound();
@@ -57,44 +57,48 @@ public class ItemDyeableArmour extends ItemArmor {
 			if (data == null)
 				return -1;
 			else {
-				NBTTagCompound colourData = data.getCompoundTag("display");
-				return colourData == null ? -1 : colourData.hasKey("color") ? colourData.getInteger("color") : -1;
+				NBTTagCompound nbtColour = data.getCompoundTag("display");
+				return nbtColour == null ? -1 : nbtColour.hasKey("color") ? nbtColour.getInteger("color") : -1;
 			}
 		}
 	}
 
 	@Override
 	public void removeColor(ItemStack stack) {
-		if (getArmorMaterial() == EnumArmorMaterial.IRON) {
-			NBTTagCompound nbttagcompound = stack.getTagCompound();
+		if (isValidMaterial()) {
+			NBTTagCompound nbt = stack.getTagCompound();
 
-			if (nbttagcompound != null) {
-				NBTTagCompound nbttagcompound1 = nbttagcompound.getCompoundTag("display");
+			if (nbt != null) {
+				NBTTagCompound nbtDisplay = nbt.getCompoundTag("display");
 
-				if (nbttagcompound1.hasKey("color"))
-					nbttagcompound1.removeTag("color");
+				if (nbtDisplay.hasKey("color"))
+					nbtDisplay.removeTag("color");
 			}
 		}
 	}
 
 	@Override
 	public void func_82813_b(ItemStack stack, int colour) {
-		if (getArmorMaterial() != EnumArmorMaterial.IRON)
-			throw new UnsupportedOperationException("Can\'t dye non-iron!");
+		if (!isValidMaterial())
+			throw new UnsupportedOperationException("Can\'t dye non-iron or non-chain!");
 		else {
-			NBTTagCompound nbttagcompound = stack.getTagCompound();
+			NBTTagCompound nbt = stack.getTagCompound();
 
-			if (nbttagcompound == null) {
-				nbttagcompound = new NBTTagCompound();
-				stack.setTagCompound(nbttagcompound);
+			if (nbt == null) {
+				nbt = new NBTTagCompound();
+				stack.setTagCompound(nbt);
 			}
 
-			NBTTagCompound nbttagcompound1 = nbttagcompound.getCompoundTag("display");
+			NBTTagCompound nbtDisplay = nbt.getCompoundTag("display");
 
-			if (!nbttagcompound.hasKey("display"))
-				nbttagcompound.setCompoundTag("display", nbttagcompound1);
+			if (!nbt.hasKey("display"))
+				nbt.setCompoundTag("display", nbtDisplay);
 
-			nbttagcompound1.setInteger("color", colour);
+			nbtDisplay.setInteger("color", colour);
 		}
+	}
+
+	private boolean isValidMaterial() {
+		return getArmorMaterial() == EnumArmorMaterial.IRON || getArmorMaterial() == EnumArmorMaterial.CHAIN;
 	}
 }

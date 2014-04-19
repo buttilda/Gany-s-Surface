@@ -22,7 +22,7 @@ import net.minecraft.world.World;
  * 
  */
 
-public class RecipesIronArmourDyes extends RecipesArmorDyes {
+public class RecipeArmourDyes extends RecipesArmorDyes {
 
 	@Override
 	public boolean matches(InventoryCrafting inventory, World world) {
