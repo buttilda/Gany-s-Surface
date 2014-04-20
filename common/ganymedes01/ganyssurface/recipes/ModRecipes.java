@@ -35,6 +35,7 @@ public class ModRecipes {
 		if (OreDictionary.getOres("egg").isEmpty())
 			OreDictionary.registerOre("egg", new ItemStack(Item.egg));
 		OreDictionary.registerOre("mobEgg", ModItems.chargedCreeperSpawner);
+		OreDictionary.registerOre("slimeball", Item.slimeBall);
 		OreDictionary.registerOre("mobEgg", new ItemStack(ModItems.horseSpawner, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
@@ -107,7 +108,7 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.planter), "aza", "ywy", " x ", 'x', Block.hopperBlock, 'y', new ItemStack(Block.cloth, 1, 13), 'z', Block.dispenser, 'w', ModBlocks.blockDetector, 'a', Block.stone);
 		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.lantern), Block.glass, Block.torchWood);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.inkHarvester), "xyx", "xzx", "xwx", 'x', new ItemStack(ModItems.pocketCritter, 1, 1), 'y', Item.redstone, 'z', Block.blockIron, 'w', Item.swordGold);
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.slimeBlock), "xxx", "xyx", "xxx", 'x', Item.slimeBall, 'y', Item.bucketWater);
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.slimeBlock), "xxx", "xyx", "xxx", 'x', "slimeball", 'y', Item.bucketWater));
 		for (int i = 0; i < dyes.length; i++) {
 			if (i != 1)
 				GameRegistry.addRecipe(new ItemStack(ModBlocks.colouredRedstoneBlock, 1, i), "xxx", "xxx", "xxx", 'x', new ItemStack(ModItems.colouredRedstone, 1, i));
