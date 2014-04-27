@@ -1,0 +1,22 @@
+[
+{
+  "modid": "ganysend",
+  "name": "Gany's End",
+  "description": "This is one of the three mods in the Gany's Mods collection. Gany's End adds blocks and functionalities related to the end (duh).
+Decorate your house with a better looking End Stone! or use Ender Pearls bricks!
+Use blocks to teleport other blocks! Make blocks disappear! Have an infinite bucket with all the water you'll need! Or behead your enemies using a scythe and gather their heads!",
+  "version": "1.6.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "ganymedes01"
+  ],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]

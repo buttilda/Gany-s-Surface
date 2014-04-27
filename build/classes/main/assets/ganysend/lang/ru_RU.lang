@@ -1,0 +1,81 @@
+# Item localizations
+item.ganysend.endiumHelmet.name=Эндиумовый Шлем
+item.ganysend.endiumChestplate.name=Эндиумовый Кираса
+item.ganysend.endiumLeggings.name=Эндиумовые Поножи
+item.ganysend.endiumBoots.name=Эндиумовый Ботинки
+
+item.ganysend.enderTag.name=Метка Края
+item.ganysend.endiumIngot.name=Эндиумовый Слиток
+item.ganysend.endstoneRod.name=Стержень Камня Края
+item.ganysend.enderScythe.name=Эндер Коса
+item.ganysend.infiniteBucket.name=Ведро Бесконечности
+item.ganysend.itemNewSkullpigmanHead.name=Голова Свинозомби
+item.ganysend.itemNewSkullblazeHead.name=Голова Ифрита
+item.ganysend.itemNewSkullendermanHead.name=Голова странника Края
+item.ganysend.itemNewSkullplayerHead.name=Голова
+item.ganysend.itemNewSkullspiderHead.name=Голова Паука
+item.ganysend.itemNewSkullcaveSpiderHead.name=Голова пещерного Паука
+item.ganysend.itemNewSkullpigHead.name=Голова Свиньи
+item.ganysend.itemNewSkullcowHead.name=Cow Head
+item.ganysend.itemNewSkullmooshroomHead.name=Голова Грибной Коровы
+item.ganysend.itemNewSkullsheepHead.name=Голова Овцы
+item.ganysend.itemNewSkullwolfHead.name=Голова Волка
+item.ganysend.itemNewSkullvillagerHead.name=Голова Деревенского жителя
+item.ganysend.itemNewSkullchickenHead.name=Голова Курицы
+item.ganysend.itemNewSkullwitchHead.name=Голова Ведьмы
+item.ganysend.itemNewSkullzombieVillagerHead.name=Голова Зомби Деревенского жителя
+item.ganysend.itemNewSkullironGolemHead.name=Голова Железного Голема
+item.ganysend.itemNewSkullsquidHead.name=Голова Спрута 
+item.ganysend.itemNewSkullwitherHead.name=Голова Иссушителя
+item.ganysend.infusedGem_night.name=Проникнутый камень Ночи
+item.ganysend.infusedGem_day.name=Проникрутый камень Дня
+item.ganysend.endiumPickaxe.name=Эндиумовая Кирка
+item.ganysend.endiumAxe.name=Эндиумовый Топор
+item.ganysend.endiumShovel.name=Эндиумовая Лопата
+item.ganysend.endiumNugget.name=Эндиумовый Самородок
+
+nottagged=Not Tagged
+
+# Block localizations
+tile.ganysend.enderFlower.name=Цветок Края
+tile.ganysend.endstoneBrick.name=Кирпич Камня Края
+tile.ganysend.enderpearlBlock.name=Блок жемчуга Края
+tile.ganysend.enderpearlBrick.name=Кирпич жемчуга Края
+tile.ganysend.endstoneStairs.name=Ступеньки Камня Края
+tile.ganysend.enderpearlBrickStairs.name=Ступеньки кирпича жемчуга Края
+tile.ganysend.enderToggler.name=Переключатель Края
+tile.ganysend.blockShifter.name=Сдвигатель Края
+tile.ganysend.rawEndium.name=Сырой Эндиум
+tile.ganysend.endiumBlock.name=Блок Эндия
+tile.ganysend.emulator.name=Эмулятор
+tile.ganysend.basicFilteringHopper.name=Обычная настраиваемая воронка
+tile.ganysend.exclusiveFilteringHopper.name=Особая настраиваемая воронка
+tile.ganysend.speedyBasicFilteringHopper.name=Обычная ускоренная настраиваемая воронка
+tile.ganysend.speedyExclusiveFilteringHopper.name=Особая ускоренная настраиваемая воронка
+tile.ganysend.speedyHopper.name=Ускоренная воронка
+tile.ganysend.advancedFilteringHopper.name=Сверх настраиваемая воронка
+tile.ganysend.advancedExclusiveFilteringHopper.name=Сверх особая настраиваемая воронка
+tile.ganysend.timeManipulator.name=Машина Времени
+tile.ganysend.entityShifter.name=Сдвигатель существ
+tile.ganysend.inventoryBinder.name=Связыватель инвентаря
+tile.ganysend.infiniteWaterSource.name=Бесконечный источник воды
+tile.ganysend.endWalls0.name=Стена Кирпича из Камня Края
+tile.ganysend.endWalls1.name=Стена Кирпича из жемчуга Края
+
+# GUI localizations
+container.ganysend:basicFilteringHopper=Обычная настраиваемая воронка
+container.ganysend:exclusiveFilteringHopper=Особая настраиваемая воронка
+container.ganysend:speedyHopper=Ускоренная воронка
+container.ganysend:speedyBasicFilteringHopper=Обычная ускоренная настраиваемая воронка
+container.ganysend:speedyExclusiveFilteringHopper=Особая ускоренная настраиваемая воронка
+container.ganysend:advancedFilteringHopper=Сверх настраиваемая воронка
+container.ganysend:advancedExclusiveFilteringHopper=Сверх особая настраиваемая воронка
+container.ganysend:enderFurnace=Печка Края
+
+pullallbut=Pull all but:
+pullonly=Pull Only:
+
+# Others localizations
+itemGroup.ganysend=Край Gany 
+death.attack.ganysEndBehead=%1$s was beheaded
+death.attack.ganysEndBehead.player=%1$s was beheaded by %2$s

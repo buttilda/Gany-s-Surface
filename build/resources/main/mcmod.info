@@ -1,0 +1,20 @@
+[
+{
+  "modid": "zzzzzcustomconfigs",
+  "name": "ZZZZZ Custom Configs",
+  "description": "Allows for changing several aspects of the game. Create recipes, remove recipes, prevent spawns and several other things",
+  "version": "1.3.0",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "ganymedes01"
+  ],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]

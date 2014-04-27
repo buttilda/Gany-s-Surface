@@ -1,0 +1,115 @@
+# Item localizations
+item.ganysend.endiumHelmet.name=Endium Helmet
+item.ganysend.endiumChestplate.name=Endium Chestplate
+item.ganysend.endiumLeggings.name=Endium Leggings
+item.ganysend.endiumBoots.name=Endium Boots
+
+item.ganysend.enderTag.name=Ender Tag
+item.ganysend.endiumIngot.name=Endium Ingot
+item.ganysend.endstoneRod.name=End Stone Rod
+item.ganysend.enderScythe.name=Ender Scythe
+item.ganysend.infiniteBucket.name=Infinite Bucket
+item.ganysend.infusedGem_night.name=Night Infused Gem
+item.ganysend.infusedGem_day.name=Day Infused Gem
+item.ganysend.endiumPickaxe.name=Endium Pickaxe
+item.ganysend.endiumAxe.name=Endium Axe
+item.ganysend.endiumShovel.name=Endium Shovel
+item.ganysend.endiumNugget.name=Endium Nugget
+item.ganysend.reinforcedEndiumPickaxe.name=Reinforced Endium Pickaxe
+item.ganysend.reinforcedEndiumAxe.name=Reinforced Endium Axe
+item.ganysend.reinforcedEndiumShovel.name=Reinforced Endium Shovel
+item.ganysend.enderBag.name=Ender Bag
+
+# Heads
+item.ganysend.itemNewSkullpigmanHead.name=Pigman Head
+item.ganysend.itemNewSkullblazeHead.name=Blaze Head
+item.ganysend.itemNewSkullendermanHead.name=Enderman Head
+item.ganysend.itemNewSkullplayerHead.name=Head
+item.ganysend.itemNewSkullspiderHead.name=Spider Head
+item.ganysend.itemNewSkullcaveSpiderHead.name=Cave Spider Head
+item.ganysend.itemNewSkullpigHead.name=Pig Head
+item.ganysend.itemNewSkullcowHead.name=Cow Head
+item.ganysend.itemNewSkullmooshroomHead.name=Mooshroom Head
+item.ganysend.itemNewSkullsheepHead.name=Sheep Head
+item.ganysend.itemNewSkullwolfHead.name=Wolf Head
+item.ganysend.itemNewSkullvillagerHead.name=Villager Head
+item.ganysend.itemNewSkullchickenHead.name=Chicken Head
+item.ganysend.itemNewSkullwitchHead.name=Witch Head
+item.ganysend.itemNewSkullzombieVillagerHead.name=Zombie Villager Head
+item.ganysend.itemNewSkullironGolemHead.name=Iron Golem Head
+item.ganysend.itemNewSkullsquidHead.name=Squid Head
+item.ganysend.itemNewSkullwitherHead.name=Wither Head
+item.ganysend.itemNewSkullghastHead.name=Ghast Head
+item.ganysend.itemNewSkullmistWolfHead.name=Mist Wolf Head
+item.ganysend.itemNewSkullminiGhastHead.name=Carminite Ghastling Head
+item.ganysend.itemNewSkullguardGhastHead.name=Carminite Ghastguard Head
+item.ganysend.itemNewSkullkingSpiderHead.name=King Spider Head
+item.ganysend.itemNewSkullkoboldHead.name=Kobold Head
+item.ganysend.itemNewSkullslimeBeetleHead.name=Slime Beetle Head
+item.ganysend.itemNewSkullfireBeetleHead.name=Fire Beetle Head
+item.ganysend.itemNewSkullpinchBeetleHead.name=Pinch Beetle Head
+item.ganysend.itemNewSkulltowerGolemHead.name=Carminite Golem Head
+item.ganysend.itemNewSkullbunnyDutchHead.name=Dutch Bunny Head
+item.ganysend.itemNewSkullbunnyBrownHead.name=Brown Bunny Head
+item.ganysend.itemNewSkullbunnyWhiteHead.name=White Bunny Head
+item.ganysend.itemNewSkullpenguinHead.name=Penguin Head
+item.ganysend.itemNewSkullbighornHead.name=Bighorn Sheep Head
+item.ganysend.itemNewSkullwildDeerHead.name=Wild Deer Head
+item.ganysend.itemNewSkullwildBoarHead.name=Wild Boar Head
+item.ganysend.itemNewSkullredcapHead.name=Redcap Head
+item.ganysend.itemNewSkulldruidHead.name=Skeleton Druid Head
+item.ganysend.itemNewSkullhedgeSpiderHead.name=Hedge Spider Head
+item.ganysend.itemNewSkullblizzHead.name=Blizz Head
+item.ganysend.itemNewSkullenderDragonHead.name=Ender Dragon Head
+item.ganysend.itemNewSkullhostileWolfHead.name=Hostile Wolf Head
+item.ganysend.itemNewSkullsquirrelHead.name=Forest Squirrel Head
+
+# Block localizations
+tile.ganysend.enderFlower.name=Ender Flower
+tile.ganysend.endstoneBrick.name=End Stone Brick
+tile.ganysend.enderpearlBlock.name=Ender Pearl Block
+tile.ganysend.enderpearlBrick.name=Ender Pearl Brick
+tile.ganysend.endstoneStairs.name=End Stone Stairs
+tile.ganysend.enderpearlBrickStairs.name=Ender Pearl Brick Stairs
+tile.ganysend.enderToggler.name=Ender Toggler
+tile.ganysend.blockShifter.name=Block Shifter
+tile.ganysend.rawEndium.name=Raw Endium
+tile.ganysend.endiumBlock.name=Block of Endium
+tile.ganysend.emulator.name=Emulator
+tile.ganysend.basicFilteringHopper.name=Basic Filtering Hopper
+tile.ganysend.exclusiveFilteringHopper.name=Exclusive Filtering Hopper
+tile.ganysend.speedyBasicFilteringHopper.name=Speedy Basic Filtering Hopper
+tile.ganysend.speedyExclusiveFilteringHopper.name=Speedy Exclusive Filtering Hopper
+tile.ganysend.speedyHopper.name=Speedy Hopper
+tile.ganysend.advancedFilteringHopper.name=Advanced Filtering Hopper
+tile.ganysend.advancedExclusiveFilteringHopper.name=Advanced Exclusive Filtering Hopper
+tile.ganysend.timeManipulator.name=Time Manipulator
+tile.ganysend.entityShifter.name=Entity Shifter
+tile.ganysend.inventoryBinder.name=Inventory Binder
+tile.ganysend.infiniteWaterSource.name=Infinite Water Source
+tile.ganysend.endWalls0.name=End Stone Brick Wall
+tile.ganysend.endWalls1.name=Ender Pearl Brick Wall
+tile.ganysend.voidCrate.name=Void Crate
+tile.ganysend.enderFurnace.name=Ender Furnace
+
+# GUI localizations
+container.ganysend:basicFilteringHopper=Basic Filtering Hopper
+container.ganysend:exclusiveFilteringHopper=Exclusive Filtering Hopper
+container.ganysend:speedyHopper=Speedy Hopper
+container.ganysend:speedyBasicFilteringHopper=Speedy Basic Filtering Hopper
+container.ganysend:speedyExclusiveFilteringHopper=Speedy Excl. Filtering Hopper
+container.ganysend:advancedFilteringHopper=Advanced Filtering Hopper
+container.ganysend:advancedExclusiveFilteringHopper=Advanced Excl. Filtering Hopper
+container.ganysend:voidCrate=Void Crate
+container.ganysend:enderFurnace=Ender Furnace
+
+# Enchantments
+enchantment.imperviousness=Imperviousness
+
+# Others localizations
+itemGroup.ganysend=Gany's End
+death.attack.ganysEndBehead=%1$s was beheaded
+death.attack.ganysEndBehead.player=%1$s was beheaded by %2$s
+nottagged=Not Tagged
+pullallbut=Pull all but:
+pullonly=Pull Only:

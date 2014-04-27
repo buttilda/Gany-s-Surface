@@ -1,0 +1,86 @@
+# Item localizations
+item.ganysend.endiumHelmet.name=Endiumhelm
+item.ganysend.endiumChestplate.name=Endiumbrustplatte
+item.ganysend.endiumLeggings.name=Endiumhose
+item.ganysend.endiumBoots.name=Endiumstiefel
+
+item.ganysend.enderTag.name=Enderschild
+item.ganysend.endiumIngot.name=Endiumbarren
+item.ganysend.endstoneRod.name=Endsteinrute
+item.ganysend.enderScythe.name=Endersense
+item.ganysend.infiniteBucket.name=Unendlicher Eimer
+item.ganysend.itemNewSkullpigmanHead.name=Pigmankopf
+item.ganysend.itemNewSkullblazeHead.name=Lohenkopf
+item.ganysend.itemNewSkullendermanHead.name=Endermankopf
+item.ganysend.itemNewSkullplayerHead.name=Kopf
+item.ganysend.itemNewSkullspiderHead.name=Spinnenkopf
+item.ganysend.itemNewSkullcaveSpiderHead.name=Hˆhlenspinnenkopf
+item.ganysend.itemNewSkullpigHead.name=Schweinekopf
+item.ganysend.itemNewSkullcowHead.name=Kuhkopf
+item.ganysend.itemNewSkullmooshroomHead.name=Pilzkuhkopf
+item.ganysend.itemNewSkullsheepHead.name=Schafskopf
+item.ganysend.itemNewSkullwolfHead.name=Wolfskopf
+item.ganysend.itemNewSkullvillagerHead.name=Dorfbewohnerkopf
+item.ganysend.itemNewSkullchickenHead.name=H¸hnerkopf
+item.ganysend.itemNewSkullwitchHead.name=Hexenkopf
+item.ganysend.itemNewSkullzombieVillagerHead.name=Zombie-Dorfbewohner-Kopf
+item.ganysend.itemNewSkullironGolemHead.name=Eisengolemkopf
+item.ganysend.itemNewSkullsquidHead.name=Tintenfischkopf
+item.ganysend.itemNewSkullwitherHead.name=Witherkopf
+item.ganysend.infusedGem_night.name=Nachtdurchzogener Edelstein
+item.ganysend.infusedGem_day.name=Tagdurchzogener Edelstein
+item.ganysend.endiumPickaxe.name=Endiumspitzhacke
+item.ganysend.endiumAxe.name=Endiumaxt
+item.ganysend.endiumShovel.name=Endiumschaufel
+item.ganysend.endiumNugget.name=Endiumnugget
+item.ganysend.spawnerCapturer.name=Spawnerf‰nger
+
+nottagged=Nicht gekennzeichnet
+
+# Block localizations
+tile.ganysend.enderFlower.name=Enderblume
+tile.ganysend.endstoneBrick.name=Endsteinziegel
+tile.ganysend.enderpearlBlock.name=Enderperlenblock
+tile.ganysend.enderpearlBrick.name=Enderperlensteinziegel
+tile.ganysend.endstoneStairs.name=Endsteintreppe
+tile.ganysend.enderpearlBrickStairs.name=Enderperlensteinziegeltreppe
+tile.ganysend.enderToggler.name=Enderumschalter
+tile.ganysend.blockShifter.name=Blockverschieber
+tile.ganysend.rawEndium.name=Rohes Endium
+tile.ganysend.endiumBlock.name=Endiumblock
+tile.ganysend.emulator.name=Emulator
+tile.ganysend.basicFilteringHopper.name=Grundlegender Filtertrichter
+tile.ganysend.exclusiveFilteringHopper.name=Exklusiver Filtertrichter
+tile.ganysend.speedyBasicFilteringHopper.name=Schneller grundlegender Filtertrichter
+tile.ganysend.speedyExclusiveFilteringHopper.name=Schneller exklusiver Filtertrichter
+tile.ganysend.speedyHopper.name=Schneller Trichter
+tile.ganysend.advancedFilteringHopper.name=Erweiterter Filtertrichter
+tile.ganysend.advancedExclusiveFilteringHopper.name=Erweiterter exklusiver Filtertrichter
+tile.ganysend.timeManipulator.name=Zeitmanipulator
+tile.ganysend.entityShifter.name=Einheitenverschieber
+tile.ganysend.inventoryBinder.name=Inventarverkn¸pfer
+tile.ganysend.infiniteWaterSource.name=Unendliche Wasserquelle
+tile.ganysend.endWalls0.name=Endsteinziegelmauer
+tile.ganysend.endWalls1.name=Enderperlensteinziegelmauer
+tile.ganysend.energyPortal.name=Energieportal
+
+# GUI localizations
+container.ganysend:basicFilteringHopper=Grundlegender Filtertrichter
+container.ganysend:exclusiveFilteringHopper=Exklusiver Filtertrichter
+container.ganysend:speedyHopper=Schneller Trichter
+container.ganysend:speedyBasicFilteringHopper=Schneller grundlegender Filtertrichter
+container.ganysend:speedyExclusiveFilteringHopper=Schneller exkl. Filtertrichter
+container.ganysend:advancedFilteringHopper=Erweiterter Filtertrichter
+container.ganysend:advancedExclusiveFilteringHopper=Erweiterter exkl. Filtertrichter
+container.ganysend:enderFurnace=Enderofen
+
+pullallbut=Entziehe alles auﬂer:
+pullonly=Entziehe nur:
+
+# Enchantments
+enchantment.imperviousness=Undurchl‰ssigkeit
+
+# Others localizations
+itemGroup.ganysend=Gany's End
+death.attack.ganysEndBehead=%1$s wurde gekˆpft
+death.attack.ganysEndBehead.player=%1$s wurde gekˆpft von %2$s
