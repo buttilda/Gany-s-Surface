@@ -32,8 +32,8 @@ public class GuiFarmManager extends GuiGanysSurface {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
-		fontRenderer.drawString(StatCollector.translateToLocal(farmManager.getInventoryName()), xSize / 2 - fontRenderer.getStringWidth(StatCollector.translateToLocal(farmManager.getInventoryName())) / 2, 6, BLACK);
-		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal(farmManager.getInventoryName()), xSize / 2 - fontRendererObj.getStringWidth(StatCollector.translateToLocal(farmManager.getInventoryName())) / 2, 6, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
 	}
 
 	@Override

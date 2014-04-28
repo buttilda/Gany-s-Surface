@@ -65,6 +65,7 @@ public class OrganicMatterRegistry {
 		addItemYield(Items.lead);
 		addItemYield(Items.wheat);
 		addItemYield(Items.dye);
+		addItemYield(Items.reeds);
 		addMatterYield(new ItemStack(Items.dye, 1, 15));
 
 		addItemYield(ModItems.woodenBoots);
@@ -84,7 +85,6 @@ public class OrganicMatterRegistry {
 
 		addMatterYield(new ItemStack(Blocks.ladder));
 		addMatterYield(new ItemStack(Blocks.wooden_button));
-		addMatterYield(new ItemStack(Blocks.reeds));
 
 		addOreYield("mobEgg", 2);
 		addOreYield("mobHead", 8);

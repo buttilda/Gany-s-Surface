@@ -1,7 +1,9 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Reference;
+import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
 
@@ -33,6 +35,7 @@ public class PocketCritter extends Item {
 		setMaxStackSize(1);
 		setHasSubtypes(true);
 		setCreativeTab(GanysSurface.surfaceTab);
+		setUnlocalizedName(Utils.getUnlocalizedName(Strings.POCKET_CRITTER_NAME));
 	}
 
 	@Override

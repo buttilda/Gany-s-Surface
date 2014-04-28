@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.FMLCommonHandler;
 
 /**
  * Gany's Surface
@@ -52,7 +52,7 @@ public class SlotEncaser extends Slot {
 
 	@Override
 	public void onPickupFromSlot(EntityPlayer player, ItemStack stack) {
-		GameRegistry.onItemCrafted(player, stack, craftMatrix);
+		FMLCommonHandler.instance().firePlayerCraftingEvent(player, stack, craftMatrix);
 		this.onCrafting(stack);
 
 		for (int i = 0; i < craftMatrix.getSizeInventory(); ++i) {

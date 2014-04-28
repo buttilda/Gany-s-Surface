@@ -20,10 +20,8 @@ import net.minecraft.network.packet.Packet250CustomPayload;
  */
 
 public enum PacketTypeHandler {
-	
-	ITEM_DISPLAY(PacketItemDisplay.class),
-	WORK_TABLE(PacketWorkTable.class),
-	PLANTER(PacketPlanter.class);
+
+	ITEM_DISPLAY(PacketItemDisplay.class), WORK_TABLE(PacketWorkTable.class), PLANTER(PacketPlanter.class);
 
 	private Class<? extends CustomPacket> clazz;
 

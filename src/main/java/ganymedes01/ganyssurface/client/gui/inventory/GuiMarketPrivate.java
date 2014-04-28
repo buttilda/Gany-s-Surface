@@ -29,9 +29,9 @@ public class GuiMarketPrivate extends GuiGanysSurface {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
-		fontRenderer.drawString(StatCollector.translateToLocal("forSale"), 8, 6, BLACK);
-		fontRenderer.drawString(StatCollector.translateToLocal("profit"), 97, 6, BLACK);
-		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal("forSale"), 8, 6, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal("profit"), 97, 6, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
 	}
 
 	@Override

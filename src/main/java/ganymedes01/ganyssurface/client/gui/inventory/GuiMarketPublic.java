@@ -33,21 +33,21 @@ public class GuiMarketPublic extends GuiGanysSurface {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
 		String title = StatCollector.translateToLocal(market.getInventoryName()) + ": " + market.getOwner();
-		fontRenderer.drawString(title, 6, 6, BLACK);
+		fontRendererObj.drawString(title, 6, 6, BLACK);
 
 		String price = StatCollector.translateToLocal("price");
-		fontRenderer.drawString(price, 36 - fontRenderer.getStringWidth(price), 22, BLACK);
+		fontRendererObj.drawString(price, 36 - fontRendererObj.getStringWidth(price), 22, BLACK);
 		String offer = StatCollector.translateToLocal("offer");
-		fontRenderer.drawString(offer, 36 - fontRenderer.getStringWidth(offer), 51, BLACK);
-		fontRenderer.drawString("x" + market.getQuantityOfferONE(), 36 - fontRenderer.getStringWidth(offer), 60, BLACK);
+		fontRendererObj.drawString(offer, 36 - fontRendererObj.getStringWidth(offer), 51, BLACK);
+		fontRendererObj.drawString("x" + market.getQuantityOfferONE(), 36 - fontRendererObj.getStringWidth(offer), 60, BLACK);
 
 		price = StatCollector.translateToLocal("price");
-		fontRenderer.drawString(price, 87 + 36 - fontRenderer.getStringWidth(price), 22, BLACK);
+		fontRendererObj.drawString(price, 87 + 36 - fontRendererObj.getStringWidth(price), 22, BLACK);
 		offer = StatCollector.translateToLocal("offer");
-		fontRenderer.drawString(offer, 87 + 36 - fontRenderer.getStringWidth(offer), 51, BLACK);
-		fontRenderer.drawString("x" + market.getQuantityOfferTWO(), 87 + 36 - fontRenderer.getStringWidth(offer), 60, BLACK);
+		fontRendererObj.drawString(offer, 87 + 36 - fontRendererObj.getStringWidth(offer), 51, BLACK);
+		fontRendererObj.drawString("x" + market.getQuantityOfferTWO(), 87 + 36 - fontRendererObj.getStringWidth(offer), 60, BLACK);
 
-		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
 	}
 
 	@Override

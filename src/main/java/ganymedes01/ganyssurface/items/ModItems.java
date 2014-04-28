@@ -119,6 +119,8 @@ public class ModItems {
 	}
 
 	private static void registerItem(Item item) {
-		GameRegistry.registerItem(item, item.getUnlocalizedName());
+		String name = item.getUnlocalizedName();
+		String[] strings = name.split("\\.");
+		GameRegistry.registerItem(item, strings[strings.length - 1]);
 	}
 }

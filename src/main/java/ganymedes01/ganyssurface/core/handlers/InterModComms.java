@@ -34,7 +34,7 @@ public class InterModComms {
 			int yield = data.getInteger("yield");
 			ItemStack matter = ItemStack.loadItemStackFromNBT(data.getCompoundTag("matter"));
 
-			if (matter != null)
+			if (matter != null && matter.getItem() != null)
 				OrganicMatterRegistry.addMatterYield(matter, yield);
 		} catch (Exception e) {
 			Logger.getLogger(Reference.MOD_ID).log(Level.WARNING, String.format("%s failed to register a organic matter yield", message.getSender()));

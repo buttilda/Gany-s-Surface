@@ -28,7 +28,7 @@ public class DisguisedTrapDoor extends BlockTrapDoor {
 		setHardness(3.0F);
 		setStepSound(soundTypeWood);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setBlockName(Utils.getUnlocalizedName(Strings.DISGUISED_TRAP_DOOR_NAME + BlockWood.field_150096_a[type]));
+		setBlockName(Utils.getUnlocalizedName(Strings.DISGUISED_TRAP_DOOR_NAME + "_" + BlockWood.field_150096_a[type]));
 	}
 
 	@Override

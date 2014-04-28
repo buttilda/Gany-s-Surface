@@ -32,9 +32,9 @@ public class GuiOrganicMatterCompressor extends GuiGanysSurface {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
-		fontRenderer.drawString(StatCollector.translateToLocal(compressor.getInventoryName()), xSize / 2 - fontRenderer.getStringWidth(StatCollector.translateToLocal(compressor.getInventoryName())) / 2, 6, BLACK);
-		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
-		fontRenderer.drawString(StatCollector.translateToLocal("matter"), 89, ySize - 94, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal(compressor.getInventoryName()), xSize / 2 - fontRendererObj.getStringWidth(StatCollector.translateToLocal(compressor.getInventoryName())) / 2, 6, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal("matter"), 89, ySize - 94, BLACK);
 	}
 
 	@Override
@@ -46,6 +46,6 @@ public class GuiOrganicMatterCompressor extends GuiGanysSurface {
 
 		drawTexturedModalRect(j, k, 0, 0, xSize, ySize);
 		drawTexturedModalRect(j + 95, k + 36, 177, 14, compressor.getScaledWorkTime(24), 16);
-		fontRenderer.drawString(Integer.toString(Math.round(compressor.getOrganicMatter() * 100)) + "%", fontRenderer.getStringWidth(StatCollector.translateToLocal("matter")) + j + 94, k + 72, 4210752);
+		fontRendererObj.drawString(Integer.toString(Math.round(compressor.getOrganicMatter() * 100)) + "%", fontRendererObj.getStringWidth(StatCollector.translateToLocal("matter")) + j + 94, k + 72, 4210752);
 	}
 }

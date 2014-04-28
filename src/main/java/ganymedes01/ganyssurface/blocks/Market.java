@@ -87,7 +87,6 @@ public class Market extends BlockContainer {
 				Utils.dropStack(world, x, y, z, extraStack);
 
 			MarketSales.removeMarket(tile);
-			world.func_96440_m(x, y, z, block);
 		}
 		super.breakBlock(world, x, y, z, block, meta);
 	}

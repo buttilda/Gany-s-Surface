@@ -4,10 +4,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Gany's Nether
+ * Gany's Surface
  * 
  * @author ganymedes01
  * 
@@ -43,16 +44,15 @@ public class UnsizedStack implements Comparable<UnsizedStack> {
 
 	@Override
 	public int hashCode() {
-		HashCodeBuilder hash = new HashCodeBuilder(17, 31);
-		hash.append(item);
-		hash.append(meta);
-		hash.append(nbt);
-		return hash.toHashCode();
+		return new HashCodeBuilder().append(item).append(meta).append(nbt).hashCode();
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		return hashCode() == obj.hashCode();
+		if (!(obj instanceof UnsizedStack))
+			return false;
+
+		return new EqualsBuilder().append(item, ((UnsizedStack) obj).item).append(meta, ((UnsizedStack) obj).meta).append(nbt, ((UnsizedStack) obj).nbt).build();
 	}
 
 	@Override

@@ -33,6 +33,7 @@ public class Rot extends Item {
 		setMaxDamage(0);
 		setHasSubtypes(true);
 		setCreativeTab(GanysSurface.surfaceTab);
+		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ROT_NAME));
 	}
 
 	@Override

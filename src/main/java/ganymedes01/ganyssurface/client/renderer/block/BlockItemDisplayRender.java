@@ -29,7 +29,7 @@ public class BlockItemDisplayRender implements ISimpleBlockRenderingHandler {
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
 		Tessellator tessellator = Tessellator.instance;
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-
+		GL11.glDisable(GL11.GL_LIGHTING);
 		float x = 0.0F;
 		float y = 0.0F;
 		float z = 0.0F;
@@ -107,6 +107,8 @@ public class BlockItemDisplayRender implements ISimpleBlockRenderingHandler {
 		tessellator.setNormal(0.0F, -1.0F, 0.0F);
 		renderer.renderFaceYPos(block, x, y - 1.0F + pixel, z, Blocks.carpet.getIcon(0, metadata));
 		tessellator.draw();
+
+		GL11.glEnable(GL11.GL_LIGHTING);
 	}
 
 	@Override
@@ -141,7 +143,7 @@ public class BlockItemDisplayRender implements ISimpleBlockRenderingHandler {
 
 	@Override
 	public boolean shouldRender3DInInventory(int modelId) {
-		return false;
+		return true;
 	}
 
 	@Override

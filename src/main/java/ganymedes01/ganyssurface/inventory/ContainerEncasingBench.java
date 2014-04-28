@@ -76,7 +76,7 @@ public class ContainerEncasingBench extends Container {
 			for (int i = 0; i < craftMatrix.getSizeInventory(); i++) {
 				ItemStack stack = craftMatrix.getStackInSlotOnClosing(i);
 				if (stack != null)
-					player.dropPlayerItem(stack);
+					player.dropPlayerItemWithRandomChoice(stack, false);
 			}
 	}
 

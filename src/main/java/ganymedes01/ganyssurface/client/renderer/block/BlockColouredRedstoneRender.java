@@ -21,8 +21,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class BlockColouredRedstoneRender implements ISimpleBlockRenderingHandler {
 
-	private final RenderBlocks renderer = new RenderBlocks();
-
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
 	}

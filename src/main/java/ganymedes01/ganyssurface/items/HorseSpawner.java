@@ -101,9 +101,9 @@ public class HorseSpawner extends Item {
 					}
 				}
 
-				horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(30D);
-				horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.3375D);
-				horse.getEntityAttribute(horseJumpStrength).setAttribute(1.0D);
+				horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(30D);
+				horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3375D);
+				horse.getEntityAttribute(horseJumpStrength).setBaseValue(1.0D);
 
 			} catch (Exception e) {
 			}
