@@ -2,7 +2,6 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.ModSounds;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -12,16 +11,16 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.ForgeHooksClient;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -35,15 +34,16 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class SlimeBlock extends Block {
 
 	@SideOnly(Side.CLIENT)
-	private Icon[] blockIcons, insideIcons;
+	private IIcon[] blockIcons, insideIcons;
 
 	protected SlimeBlock() {
-		super(ModIDs.SLIME_BLOCK_ID, Material.cloth);
+		super(Material.cloth);
 		setHardness(2.0F);
 		setTickRandomly(true);
+		setHarvestLevel("shovel", 0);
 		setStepSound(ModSounds.soundSlime);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.SLIME_BLOCK_NAME));
+		setBlockName(Utils.getUnlocalizedName(Strings.SLIME_BLOCK_NAME));
 	}
 
 	@Override
@@ -63,20 +63,20 @@ public class SlimeBlock extends Block {
 	public void updateTick(World world, int x, int y, int z, Random rand) {
 		if (rand.nextInt(40) == 20)
 			for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
-				int blockID = world.getBlockId(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
-				int blockMeta = world.getBlockMetadata(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
+				Block block = world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
+				int meta = world.getBlockMetadata(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
 
-				if (blockID == Block.waterStill.blockID && blockMeta == 0) {
-					world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, this.blockID);
+				if (block.getMaterial() == Material.water && meta == 0) {
+					world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, this);
 					return;
 				}
 			}
 	}
 
 	@Override
-	public ArrayList<ItemStack> getBlockDropped(World world, int x, int y, int z, int metadata, int fortune) {
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
 		ArrayList<ItemStack> list = new ArrayList<ItemStack>();
-		list.add(new ItemStack(Item.slimeBall, 4));
+		list.add(new ItemStack(Items.slime_ball, 4));
 		return list;
 	}
 
@@ -126,15 +126,15 @@ public class SlimeBlock extends Block {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta) {
+	public IIcon getIcon(int side, int meta) {
 		return meta == 0 ? blockIcons[side] : insideIcons[side];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
-		blockIcons = new Icon[6];
-		insideIcons = new Icon[6];
+	public void registerBlockIcons(IIconRegister reg) {
+		blockIcons = new IIcon[6];
+		insideIcons = new IIcon[6];
 		String[] dirs = new String[] { "top", "bottom", "front", "back", "left", "right" };
 
 		for (int i = 0; i < 6; i++) {

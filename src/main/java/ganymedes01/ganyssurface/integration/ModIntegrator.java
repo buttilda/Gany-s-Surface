@@ -18,6 +18,7 @@ public class ModIntegrator {
 
 	public static ArrayList<Integration> modIntegrations;
 
+	@SuppressWarnings("rawtypes")
 	public static void preInit() {
 		modIntegrations = new ArrayList<Integration>();
 

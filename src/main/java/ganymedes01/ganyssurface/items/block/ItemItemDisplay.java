@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.items.block;
 
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
@@ -14,8 +15,8 @@ import net.minecraft.item.ItemStack;
 
 public class ItemItemDisplay extends ItemBlock {
 
-	public ItemItemDisplay(int id) {
-		super(id);
+	public ItemItemDisplay(Block block) {
+		super(block);
 		setHasSubtypes(true);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ITEM_DISPLAY_NAME + "_item_"));
 	}

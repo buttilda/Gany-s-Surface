@@ -2,7 +2,6 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -22,13 +21,8 @@ import net.minecraft.world.World;
 public class CupOfTea extends Item {
 
 	public CupOfTea() {
-		this(ModIDs.CUP_OF_TEA_ID);
-		setCreativeTab(GanysSurface.surfaceTab);
-	}
-
-	public CupOfTea(int id) {
-		super(id);
 		setMaxStackSize(1);
+		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.CUP_OF_TEA_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CUP_OF_TEA_NAME));
 	}
@@ -62,7 +56,7 @@ public class CupOfTea extends Item {
 						return new ItemStack(ModItems.emptyMug);
 
 					if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.emptyMug)))
-						player.dropItem(ModItems.emptyMug.itemID, 1);
+						player.dropItem(ModItems.emptyMug, 1);
 				}
 			}
 

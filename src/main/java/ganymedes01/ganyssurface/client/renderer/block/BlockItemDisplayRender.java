@@ -5,7 +5,8 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.util.Icon;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 
 import org.lwjgl.opengl.GL11;
@@ -28,12 +29,12 @@ public class BlockItemDisplayRender implements ISimpleBlockRenderingHandler {
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
 		Tessellator tessellator = Tessellator.instance;
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		GL11.glDisable(GL11.GL_LIGHTING);
+
 		float x = 0.0F;
 		float y = 0.0F;
 		float z = 0.0F;
 
-		Icon icon = block.getIcon(0, 0);
+		IIcon icon = block.getIcon(0, 0);
 		float pixel = 1.0F / 16.0F;
 
 		// INSIDE
@@ -104,10 +105,8 @@ public class BlockItemDisplayRender implements ISimpleBlockRenderingHandler {
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, -1.0F, 0.0F);
-		renderer.renderFaceYPos(block, x, y - 1.0F + pixel, z, Block.carpet.getIcon(0, metadata));
+		renderer.renderFaceYPos(block, x, y - 1.0F + pixel, z, Blocks.carpet.getIcon(0, metadata));
 		tessellator.draw();
-
-		GL11.glEnable(GL11.GL_LIGHTING);
 	}
 
 	@Override
@@ -125,8 +124,8 @@ public class BlockItemDisplayRender implements ISimpleBlockRenderingHandler {
 		}
 
 		tessellator.setColorOpaque_F(r, g, b);
-		Icon icon = block.getIcon(0, 0);
-		float pixel = 1.0F / 16.0F;
+		IIcon icon = block.getIcon(0, 0);
+
 		renderer.renderFaceXPos(block, x - 1.0F, y, z, icon);
 		renderer.renderFaceXNeg(block, x + 1.0F, y, z, icon);
 		renderer.renderFaceYPos(block, x, y - 1.0F, z, icon);
@@ -134,15 +133,15 @@ public class BlockItemDisplayRender implements ISimpleBlockRenderingHandler {
 		renderer.renderFaceZPos(block, x, y, z - 1.0F, icon);
 		renderer.renderFaceZNeg(block, x, y, z + 1.0F, icon);
 
-		icon = Block.carpet.getIcon(0, world.getBlockMetadata(x, y, z));
+		icon = Blocks.carpet.getIcon(0, world.getBlockMetadata(x, y, z));
 		renderer.renderFaceYPos(block, x, y - 1.0F, z, icon);
 
 		return renderer.renderStandardBlock(block, x, y, z);
 	}
 
 	@Override
-	public boolean shouldRender3DInInventory() {
-		return true;
+	public boolean shouldRender3DInInventory(int modelId) {
+		return false;
 	}
 
 	@Override

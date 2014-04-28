@@ -3,18 +3,18 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -30,18 +30,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class WorkTable extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
-	private Icon blockTop, blockSide, blockFront;
+	private IIcon blockTop, blockSide, blockFront;
 
-	public WorkTable() {
-		this(ModIDs.WORK_TABLE_ID);
-	}
-
-	protected WorkTable(int id) {
-		super(id, Material.wood);
+	protected WorkTable() {
+		super(Material.wood);
 		setHardness(2.5F);
-		setStepSound(soundWoodFootstep);
+		setStepSound(soundTypeWood);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.WORK_TABLE_NAME));
+		setBlockName(Utils.getUnlocalizedName(Strings.WORK_TABLE_NAME));
 	}
 
 	@Override
@@ -65,13 +61,13 @@ public class WorkTable extends BlockContainer {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta) {
-		return side == 1 ? blockTop : side == 0 ? Block.planks.getBlockTextureFromSide(side) : side != meta ? blockSide : blockFront;
+	public IIcon getIcon(int side, int meta) {
+		return side == 1 ? blockTop : side == 0 ? Blocks.planks.getBlockTextureFromSide(side) : side != meta ? blockSide : blockFront;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
+	public void registerBlockIcons(IIconRegister reg) {
 		blockTop = reg.registerIcon(Utils.getBlockTexture(Strings.WORK_TABLE_NAME) + "_top");
 		blockSide = reg.registerIcon(Utils.getBlockTexture(Strings.WORK_TABLE_NAME) + "_side");
 		blockFront = reg.registerIcon(Utils.getBlockTexture(Strings.WORK_TABLE_NAME) + "_front");
@@ -84,7 +80,7 @@ public class WorkTable extends BlockContainer {
 		if (player.isSneaking())
 			return false;
 		else {
-			TileEntityWorkTable tile = (TileEntityWorkTable) world.getBlockTileEntity(x, y, z);
+			TileEntityWorkTable tile = Utils.getTileEntity(world, x, y, z, TileEntityWorkTable.class);
 			if (tile != null)
 				player.openGui(GanysSurface.instance, GUIsID.WORK_TABLE, world, x, y, z);
 			return true;
@@ -92,21 +88,13 @@ public class WorkTable extends BlockContainer {
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, int par5, int par6) {
-		TileEntityWorkTable tile = (TileEntityWorkTable) world.getBlockTileEntity(x, y, z);
-		if (tile != null) {
-			for (int i = 0; i < tile.getSizeInventory(); i++) {
-				ItemStack stack = tile.getStackInSlot(i);
-				if (stack != null)
-					Utils.dropStack(world, x, y, z, stack);
-			}
-			world.func_96440_m(x, y, z, par5);
-		}
-		super.breakBlock(world, x, y, z, par5, par6);
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+		Utils.dropInventoryContents(world.getTileEntity(x, y, z));
+		super.breakBlock(world, x, y, z, block, meta);
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityWorkTable();
 	}
 }

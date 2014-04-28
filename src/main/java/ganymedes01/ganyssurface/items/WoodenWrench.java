@@ -4,7 +4,6 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.blocks.CubicSensoringDislocator;
 import ganymedes01.ganyssurface.blocks.Dislocator;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
@@ -17,6 +16,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
@@ -28,7 +29,6 @@ import net.minecraft.world.World;
 public class WoodenWrench extends Item {
 
 	public WoodenWrench() {
-		super(ModIDs.WOODEN_WRENCH_ID);
 		setFull3D();
 		setMaxStackSize(1);
 		setCreativeTab(GanysSurface.surfaceTab);
@@ -37,17 +37,15 @@ public class WoodenWrench extends Item {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
 		list.add(StatCollector.translateToLocal("interacttorotate"));
 	}
 
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
-		int blockID = world.getBlockId(x, y, z);
-		if (blockID >= Block.blocksList.length)
-			return false;
-
-		Block block = Block.blocksList[blockID];
+		Block block = world.getBlock(x, y, z);
 		if (block instanceof BlockRotatedPillar) {
 			int meta = world.getBlockMetadata(x, y, z);
 			switch (meta) {
@@ -85,7 +83,7 @@ public class WoodenWrench extends Item {
 				meta = 0;
 			else
 				meta = meta + 1;
-			world.notifyBlocksOfNeighborChange(x, y, z, blockID);
+			world.notifyBlocksOfNeighborChange(x, y, z, block);
 			world.setBlockMetadataWithNotify(x, y, z, meta, 2);
 			return true;
 		}

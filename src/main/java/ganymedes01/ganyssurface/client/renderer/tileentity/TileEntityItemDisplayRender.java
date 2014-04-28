@@ -51,14 +51,14 @@ public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 			}
 			float rotationAngle = (float) (720.0 * (System.currentTimeMillis() & 0x3FFFL) / 0x3FFFL);
 
-			EntityItem ghostEntityItem = new EntityItem(itemDisplay.worldObj);
+			EntityItem ghostEntityItem = new EntityItem(itemDisplay.getWorldObj());
 			ghostEntityItem.hoverStart = 0.0F;
 			ghostEntityItem.setEntityItemStack(itemDisplay.getDisplayItem());
 			GL11.glTranslatef((float) x + 0.5F, (float) (y + translate), (float) z + 0.5F);
 			GL11.glScalef(scaleFactor, scaleFactor, scaleFactor);
 			GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);
 
-			customRenderItem.doRenderItem(ghostEntityItem, 0, 0, 0, 0, 0);
+			customRenderItem.doRender(ghostEntityItem, 0, 0, 0, 0, 0);
 		}
 		GL11.glPopMatrix();
 	}

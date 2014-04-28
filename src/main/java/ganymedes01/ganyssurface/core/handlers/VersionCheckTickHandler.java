@@ -1,13 +1,13 @@
 package ganymedes01.ganyssurface.core.handlers;
 
 import ganymedes01.ganyssurface.core.utils.VersionHelper;
-import ganymedes01.ganyssurface.lib.Reference;
-
-import java.util.EnumSet;
-
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.ChatComponentText;
 import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.ITickHandler;
-import cpw.mods.fml.common.TickType;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
+import cpw.mods.fml.common.gameevent.TickEvent.Phase;
+import cpw.mods.fml.common.gameevent.TickEvent.Type;
 
 /**
  * Gany's Surface
@@ -16,35 +16,19 @@ import cpw.mods.fml.common.TickType;
  * 
  */
 
-public class VersionCheckTickHandler implements ITickHandler {
+public class VersionCheckTickHandler {
 
-	private static boolean initialized = false;
+	private boolean sent = false;
 
-	@Override
-	public void tickStart(EnumSet<TickType> type, Object... tickData) {
-
-	}
-
-	@Override
-	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
-		if (!initialized)
-			for (TickType tickType : type)
-				if (tickType == TickType.CLIENT)
-					if (FMLClientHandler.instance().getClient().currentScreen == null)
-						if (VersionHelper.getResult() != VersionHelper.UNINITIALIZED || VersionHelper.getResult() != VersionHelper.FINAL_ERROR) {
-							initialized = true;
-							if (VersionHelper.getResult() == VersionHelper.OUTDATED)
-								FMLClientHandler.instance().getClient().ingameGUI.getChatGUI().printChatMessage(VersionHelper.getResultMessageForClient());
-						}
-	}
-
-	@Override
-	public EnumSet<TickType> ticks() {
-		return EnumSet.of(TickType.CLIENT);
-	}
-
-	@Override
-	public String getLabel() {
-		return Reference.MOD_NAME + ": " + this.getClass().getSimpleName();
+	@SubscribeEvent
+	public void tickEnd(ClientTickEvent event) {
+		if (!sent)
+			if (event.type == Type.CLIENT && event.phase == Phase.END)
+				if (FMLClientHandler.instance().getClient().currentScreen == null)
+					if (VersionHelper.getResult() != VersionHelper.UNINITIALIZED) {
+						if (VersionHelper.getResult() == VersionHelper.OUTDATED)
+							Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(VersionHelper.getResultMessageForClient()));
+						sent = true;
+					}
 	}
 }

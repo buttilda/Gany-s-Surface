@@ -20,7 +20,7 @@ public class StorageCaseRecipe implements IRecipe {
 		ItemStack storageCase = null;
 		for (int i = 0; i < craft.getSizeInventory(); i++) {
 			ItemStack stack = craft.getStackInSlot(i);
-			if (stack != null && stack.getItem().itemID == ModItems.storageCase.itemID)
+			if (stack != null && stack.getItem() == ModItems.storageCase)
 				if (storageCase == null)
 					storageCase = stack;
 				else
@@ -34,7 +34,7 @@ public class StorageCaseRecipe implements IRecipe {
 		ItemStack storageCase = null;
 		for (int i = 0; i < craft.getSizeInventory(); i++) {
 			ItemStack stack = craft.getStackInSlot(i);
-			if (stack != null && stack.getItem().itemID == ModItems.storageCase.itemID)
+			if (stack != null && stack.getItem() == ModItems.storageCase)
 				if (storageCase == null)
 					storageCase = stack;
 				else

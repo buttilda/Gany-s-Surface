@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
 import ganymedes01.ganyssurface.core.utils.Utils;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -24,6 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public abstract class GuiGanysSurface extends GuiContainer {
 
 	protected final int BLACK = Utils.getColour(0, 0, 0);
+	protected FontRenderer fontRenderer = fontRendererObj;
 
 	public GuiGanysSurface(Container container) {
 		super(container);
@@ -54,7 +56,7 @@ public abstract class GuiGanysSurface extends GuiContainer {
 			j1 = height - k1 - 6;
 
 		zLevel = 300.0F;
-		itemRenderer.zLevel = 300.0F;
+		itemRender.zLevel = 300.0F;
 		int l1 = -267386864;
 		drawGradientRect(i1 - 3, j1 - 4, i1 + k + 3, j1 - 3, l1, l1);
 		drawGradientRect(i1 - 3, j1 + k1 + 3, i1 + k + 3, j1 + k1 + 4, l1, l1);
@@ -71,7 +73,7 @@ public abstract class GuiGanysSurface extends GuiContainer {
 		fontRenderer.drawStringWithShadow(text, i1, j1, -1);
 
 		zLevel = 0.0F;
-		itemRenderer.zLevel = 0.0F;
+		itemRender.zLevel = 0.0F;
 		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glEnable(GL11.GL_DEPTH_TEST);
 		RenderHelper.enableStandardItemLighting();

@@ -4,18 +4,17 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -30,10 +29,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Poop extends Item {
 
 	@SideOnly(Side.CLIENT)
-	private Icon[] icon;
+	private IIcon[] icon;
 
 	public Poop() {
-		super(ModIDs.POOP_ID);
 		setMaxDamage(0);
 		setHasSubtypes(true);
 		setCreativeTab(GanysSurface.surfaceTab);
@@ -65,22 +63,23 @@ public class Poop extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int meta) {
+	public IIcon getIconFromDamage(int meta) {
 		return icon[meta];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int itemID, CreativeTabs tabs, List list) {
-		list.add(new ItemStack(itemID, 1, 0));
-		list.add(new ItemStack(itemID, 1, 1));
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public void getSubItems(Item item, CreativeTabs tabs, List list) {
+		for (int i = 0; i < 2; i++)
+			list.add(new ItemStack(item, 1, i));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
-		icon = new Icon[2];
-		icon[0] = reg.registerIcon(Utils.getItemTexture(Strings.POOP_NAME) + "_0");
-		icon[1] = reg.registerIcon(Utils.getItemTexture(Strings.POOP_NAME) + "_1");
+	public void registerIcons(IIconRegister reg) {
+		icon = new IIcon[2];
+		for (int i = 0; i < icon.length; i++)
+			icon[i] = reg.registerIcon(Utils.getItemTexture(Strings.POOP_NAME) + "_" + i);
 	}
 }

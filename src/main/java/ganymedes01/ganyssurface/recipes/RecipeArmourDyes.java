@@ -7,13 +7,14 @@ import java.util.ArrayList;
 
 import net.minecraft.block.BlockColored;
 import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.EnumArmorMaterial;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipesArmorDyes;
 import net.minecraft.world.World;
+import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * Gany's Surface
@@ -27,7 +28,7 @@ public class RecipeArmourDyes extends RecipesArmorDyes {
 	@Override
 	public boolean matches(InventoryCrafting inventory, World world) {
 		ItemStack stack = null;
-		ArrayList list = new ArrayList();
+		ArrayList<ItemStack> list = new ArrayList<ItemStack>();
 
 		for (int i = 0; i < inventory.getSizeInventory(); i++) {
 			ItemStack stack2 = inventory.getStackInSlot(i);
@@ -39,7 +40,7 @@ public class RecipeArmourDyes extends RecipesArmorDyes {
 						return false;
 					stack = stack2;
 				} else {
-					if (stack2.itemID != Item.dyePowder.itemID)
+					if (!isDye(stack2))
 						return false;
 					list.add(stack2);
 				}
@@ -48,8 +49,12 @@ public class RecipeArmourDyes extends RecipesArmorDyes {
 		return stack != null && !list.isEmpty();
 	}
 
-	private boolean isDyeableMaterial(EnumArmorMaterial material) {
-		return material == EnumArmorMaterial.IRON || material == EnumArmorMaterial.CHAIN;
+	private boolean isDyeableMaterial(ArmorMaterial material) {
+		return material == ArmorMaterial.IRON || material == ArmorMaterial.CHAIN;
+	}
+
+	private boolean isDye(ItemStack stack) {
+		return OreDictionary.getOreName(OreDictionary.getOreID(stack)).contains("dye");
 	}
 
 	// Messy and stolen from vanilla
@@ -92,25 +97,24 @@ public class RecipeArmourDyes extends RecipesArmorDyes {
 						return null;
 
 					result = craftStack.copy();
-					if (craftStack.getItem() == Item.helmetIron)
+					if (craftStack.getItem() == Items.iron_helmet)
 						armour = (ItemDyeableArmour) ModItems.dyedIronHelmet;
-					else if (craftStack.getItem() == Item.plateIron)
+					else if (craftStack.getItem() == Items.iron_chestplate)
 						armour = (ItemDyeableArmour) ModItems.dyedIronChestplate;
-					else if (craftStack.getItem() == Item.legsIron)
+					else if (craftStack.getItem() == Items.iron_leggings)
 						armour = (ItemDyeableArmour) ModItems.dyedIronLeggings;
-					else if (craftStack.getItem() == Item.bootsIron)
+					else if (craftStack.getItem() == Items.iron_boots)
 						armour = (ItemDyeableArmour) ModItems.dyedIronBoots;
-					else if (craftStack.getItem() == Item.helmetChain)
+					else if (craftStack.getItem() == Items.chainmail_helmet)
 						armour = (ItemDyeableArmour) ModItems.dyedChainHelmet;
-					else if (craftStack.getItem() == Item.plateChain)
+					else if (craftStack.getItem() == Items.chainmail_chestplate)
 						armour = (ItemDyeableArmour) ModItems.dyedChainChestplate;
-					else if (craftStack.getItem() == Item.legsChain)
+					else if (craftStack.getItem() == Items.chainmail_leggings)
 						armour = (ItemDyeableArmour) ModItems.dyedChainLeggings;
-					else if (craftStack.getItem() == Item.bootsChain)
+					else if (craftStack.getItem() == Items.chainmail_boots)
 						armour = (ItemDyeableArmour) ModItems.dyedChainBoots;
 
-					result.itemID = armour.itemID;
-					result.stackSize = 1;
+					result = new ItemStack(armour, 1, result.getItemDamage());
 
 					if (armour.hasColor(craftStack)) {
 						colour = armour.getColor(result);
@@ -124,10 +128,10 @@ public class RecipeArmourDyes extends RecipesArmorDyes {
 						j++;
 					}
 				} else {
-					if (craftStack.itemID != Item.dyePowder.itemID)
+					if (!isDye(craftStack))
 						return null;
 
-					float[] afloat = EntitySheep.fleeceColorTable[BlockColored.getBlockFromDye(craftStack.getItemDamage())];
+					float[] afloat = EntitySheep.fleeceColorTable[BlockColored.func_150031_c(craftStack.getItemDamage())];
 					int j1 = (int) (afloat[0] * 255.0F);
 					int k1 = (int) (afloat[1] * 255.0F);
 					i1 = (int) (afloat[2] * 255.0F);

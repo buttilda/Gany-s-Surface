@@ -3,7 +3,7 @@ package ganymedes01.ganyssurface.tileentities;
 import ganymedes01.ganyssurface.blocks.CubicSensoringDislocator;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import buildcraft.api.transport.IPipeTile.PipeType;
 
 /**
@@ -23,7 +23,7 @@ public class TileEntityCubicSensoringDislocator extends TileEntitySensoringDislo
 	}
 
 	@Override
-	public String getInvName() {
+	public String getInventoryName() {
 		return Utils.getConainerName(Strings.CUBIC_SENSORING_DISLOCATOR_NAME);
 	}
 

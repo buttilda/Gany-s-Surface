@@ -6,10 +6,9 @@ import ganymedes01.ganyssurface.network.packet.PacketPlanter;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.packet.Packet;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraft.network.Packet;
 import net.minecraftforge.common.IPlantable;
-import cpw.mods.fml.common.network.PacketDispatcher;
+import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * Gany's Surface
@@ -51,11 +50,11 @@ public class TileEntityPlanter extends GanysInventory {
 							continue;
 						if (inventory[i].getItem() instanceof IPlantable) {
 							IPlantable seed = (IPlantable) inventory[i].getItem();
-							Block soil = Block.blocksList[worldObj.getBlockId(xCoord, yCoord - 2, zCoord)];
+							Block soil = worldObj.getBlock(xCoord, yCoord - 2, zCoord);
 							if (soil.canSustainPlant(worldObj, xCoord, yCoord - 2, zCoord, ForgeDirection.UP, seed)) {
 								armExtension += 0.01F;
 								if (armExtension >= 0.5F) {
-									worldObj.setBlock(xCoord, yCoord - 1, zCoord, seed.getPlantID(worldObj, xCoord, yCoord, zCoord));
+									worldObj.setBlock(xCoord, yCoord - 1, zCoord, seed.getPlant(worldObj, xCoord, yCoord, zCoord));
 									inventory[i].stackSize--;
 									if (inventory[i].stackSize <= 0)
 										inventory[i] = null;
@@ -83,7 +82,7 @@ public class TileEntityPlanter extends GanysInventory {
 	}
 
 	private void update() {
-		PacketDispatcher.sendPacketToAllPlayers(PacketTypeHandler.populatePacket(new PacketPlanter(xCoord, yCoord, zCoord, armExtension)));
+		PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
 	}
 
 	@Override

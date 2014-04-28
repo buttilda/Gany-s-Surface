@@ -28,6 +28,6 @@ public class FixSlot extends Slot {
 
 	@Override
 	public boolean canTakeStack(EntityPlayer player) {
-		return owner.compareTo(player.username) == 0;
+		return owner.compareTo(player.getCommandSenderName()) == 0;
 	}
 }

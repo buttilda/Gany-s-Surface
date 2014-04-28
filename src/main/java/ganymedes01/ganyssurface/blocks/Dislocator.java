@@ -2,7 +2,6 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityDislocator;
 
@@ -12,14 +11,14 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import buildcraft.api.transport.IPipeTile;
 import buildcraft.api.transport.IPipeTile.PipeType;
 import cpw.mods.fml.relauncher.Side;
@@ -35,17 +34,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Dislocator extends BlockContainer {
 
 	@SideOnly(Side.CLIENT)
-	protected Icon blockSide, blockFront, blockBack;
+	protected IIcon blockSide, blockFront, blockBack;
 
 	public Dislocator() {
-		this(ModIDs.DISLOCATOR_ID);
-	}
-
-	public Dislocator(int id) {
-		super(id, Material.cloth);
+		super(Material.cloth);
 		setHardness(0.2F);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.DISLOCATOR_NAME));
+		setBlockName(Utils.getUnlocalizedName(Strings.DISLOCATOR_NAME));
 	}
 
 	public static ForgeDirection getDirectionFromMetadata(int meta) {
@@ -67,10 +62,10 @@ public class Dislocator extends BlockContainer {
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, int id) {
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbour) {
 		if (world.isRemote)
 			return;
-		TileEntityDislocator tile = (TileEntityDislocator) world.getBlockTileEntity(x, y, z);
+		TileEntityDislocator tile = Utils.getTileEntity(world, x, y, z, TileEntityDislocator.class);
 		if (tile == null)
 			return;
 
@@ -87,22 +82,22 @@ public class Dislocator extends BlockContainer {
 		int x = xCoord + dir.offsetX;
 		int y = yCoord + dir.offsetY;
 		int z = zCoord + dir.offsetZ;
-		Block target = Block.blocksList[world.getBlockId(x, y, z)];
+		Block target = world.getBlock(x, y, z);
 		if (target != null)
-			if (target.getBlockHardness(world, x, y, z) >= 0 && target.blockMaterial != Material.water && target.blockMaterial != Material.lava) {
+			if (target.getBlockHardness(world, x, y, z) >= 0 && target.getMaterial() != Material.water && target.getMaterial() != Material.lava) {
 				IInventory tile = getInventory(world, xCoord, yCoord, zCoord, dir);
 				IPipeTile pipe = getPipe(world, xCoord, yCoord, zCoord, dir);
 				if (tile != null) {
-					for (ItemStack stack : target.getBlockDropped(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
+					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
 						if (!addStacktoInventory(tile, stack))
 							Utils.dropStack(world, x, y, z, stack);
 				} else if (pipe != null) {
-					for (ItemStack stack : target.getBlockDropped(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
+					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
 						if (!addStackToPipe(pipe, stack, dir))
 							Utils.dropStack(world, x, y, z, stack);
 				} else
 					target.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-				world.playAuxSFXAtEntity(null, 2001, x, y, z, target.blockID + (world.getBlockMetadata(x, y, z) << 12));
+				world.playAuxSFXAtEntity(null, 2001, x, y, z, Block.getIdFromBlock(target) + (world.getBlockMetadata(x, y, z) << 12));
 				world.setBlockToAir(x, y, z);
 			}
 	}
@@ -149,20 +144,13 @@ public class Dislocator extends BlockContainer {
 
 	protected IPipeTile getPipe(World world, int x, int y, int z, ForgeDirection dir) {
 		ForgeDirection direction = dir.getOpposite();
-		TileEntity tile = world.getBlockTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
-		if (tile instanceof IPipeTile)
-			if (((IPipeTile) tile).getPipeType() == PipeType.ITEM)
-				return (IPipeTile) tile;
-		return null;
+		IPipeTile pipe = Utils.getTileEntity(world, x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, IPipeTile.class);
+		return pipe != null && pipe.getPipeType() == PipeType.ITEM ? pipe : null;
 	}
 
 	protected IInventory getInventory(World world, int x, int y, int z, ForgeDirection dir) {
 		ForgeDirection direction = dir.getOpposite();
-		TileEntity tile = world.getBlockTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
-		if (tile instanceof IInventory)
-			return (IInventory) tile;
-		else
-			return null;
+		return Utils.getTileEntity(world, x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, IInventory.class);
 	}
 
 	@Override
@@ -177,7 +165,7 @@ public class Dislocator extends BlockContainer {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta) {
+	public IIcon getIcon(int side, int meta) {
 		if (meta == 0)
 			return side == 1 ? blockFront : side == 0 ? blockBack : blockSide;
 		if (meta == 1)
@@ -191,14 +179,20 @@ public class Dislocator extends BlockContainer {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
+	public void registerBlockIcons(IIconRegister reg) {
 		blockSide = reg.registerIcon(Utils.getBlockTexture(Strings.DISLOCATOR_NAME) + "_side");
 		blockFront = reg.registerIcon(Utils.getBlockTexture(Strings.DISLOCATOR_NAME) + "_front");
 		blockBack = reg.registerIcon(Utils.getBlockTexture(Strings.DISLOCATOR_NAME) + "_back");
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityDislocator();
+	}
+
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+		Utils.dropInventoryContents(world.getTileEntity(x, y, z));
+		super.breakBlock(world, x, y, z, block, meta);
 	}
 }

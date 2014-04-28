@@ -32,8 +32,8 @@ public class GuiBlockDetector extends GuiGanysSurface {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
-		fontRenderer.drawString(StatCollector.translateToLocal(detector.getInvName()), xSize / 2 - fontRenderer.getStringWidth(StatCollector.translateToLocal(detector.getInvName())) / 2, 6, BLACK);
-		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal(detector.getInventoryName()), xSize / 2 - fontRendererObj.getStringWidth(StatCollector.translateToLocal(detector.getInventoryName())) / 2, 6, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
 	}
 
 	@Override

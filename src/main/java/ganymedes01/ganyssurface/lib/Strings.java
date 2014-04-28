@@ -18,10 +18,7 @@ public class Strings {
 	public static final String DISLOCATOR_NAME = "dislocator";
 	public static final String SENSORING_DISLOCATOR_NAME = "sensoringDislocator";
 	public static final String CUBIC_SENSORING_DISLOCATOR_NAME = "cubicSensoringDislocator";
-	public static final String DISGUISED_TRAP_DOOR_OAK_NAME = "disguisedTrapDoorOak";
-	public static final String DISGUISED_TRAP_DOOR_SPRUCE_NAME = "disguisedTrapDoorSpruce";
-	public static final String DISGUISED_TRAP_DOOR_BIRCH_NAME = "disguisedTrapDoorBirch";
-	public static final String DISGUISED_TRAP_DOOR_JUNGLE_NAME = "disguisedTrapDoorJungle";
+	public static final String DISGUISED_TRAP_DOOR_NAME = "disguisedTrapDoor";
 	public static final String WORK_TABLE_NAME = "workTable";
 	public static final String ORGANIC_MATTER_COMPRESSOR_NAME = "organicMatterCompressor";
 	public static final String CUSHION_NAME = "cushion";

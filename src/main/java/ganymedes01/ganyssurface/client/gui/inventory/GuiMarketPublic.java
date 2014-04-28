@@ -32,7 +32,7 @@ public class GuiMarketPublic extends GuiGanysSurface {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
-		String title = StatCollector.translateToLocal(market.getInvName()) + ": " + market.getOwner();
+		String title = StatCollector.translateToLocal(market.getInventoryName()) + ": " + market.getOwner();
 		fontRenderer.drawString(title, 6, 6, BLACK);
 
 		String price = StatCollector.translateToLocal("price");

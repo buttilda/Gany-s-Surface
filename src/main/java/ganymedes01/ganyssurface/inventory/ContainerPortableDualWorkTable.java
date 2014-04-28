@@ -47,13 +47,13 @@ public class ContainerPortableDualWorkTable extends ContainerDualWorkTable {
 	public void onContainerClosed(EntityPlayer player) {
 		super.onContainerClosed(player);
 		NBTTagCompound data = new NBTTagCompound();
-		data.setCompoundTag("Inventory", new NBTTagCompound());
+		data.setTag("Inventory", new NBTTagCompound());
 		dualWorkTable.writeToNBT(data.getCompoundTag("Inventory"));
 
-		if (player.getHeldItem() == null || player.getHeldItem().itemID != ModItems.portalDualWorkTable.itemID) {
+		if (player.getHeldItem() == null || player.getHeldItem().getItem() != ModItems.portalDualWorkTable) {
 			for (int i = 0; i < player.inventory.mainInventory.length; i++)
 				if (player.inventory.mainInventory[i] != null)
-					if (player.inventory.mainInventory[i].itemID == ModItems.portalDualWorkTable.itemID)
+					if (player.inventory.mainInventory[i].getItem() == ModItems.portalDualWorkTable)
 						player.inventory.mainInventory[i].setTagCompound(data);
 		} else
 			player.getHeldItem().setTagCompound(data);

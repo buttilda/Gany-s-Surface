@@ -6,8 +6,10 @@ import ganymedes01.ganyssurface.items.ModItems;
 import java.util.HashMap;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemFood;
@@ -29,41 +31,41 @@ public class OrganicMatterRegistry {
 	private static HashMap<Material, Integer> materialYield = new HashMap<Material, Integer>();
 
 	static {
-		addMatterYield(new ItemStack(Item.coal), -1);
-		addItemYield(Item.swordWood);
-		addItemYield(Item.hoeWood);
-		addItemYield(Item.axeWood);
-		addItemYield(Item.shovelWood);
-		addItemYield(Item.helmetLeather);
-		addItemYield(Item.plateLeather);
-		addItemYield(Item.legsLeather);
-		addItemYield(Item.bootsLeather);
-		addItemYield(Item.sign);
-		addItemYield(Item.saddle);
-		addItemYield(Item.book);
-		addItemYield(Item.fishingRod);
-		addItemYield(Item.itemFrame);
-		addItemYield(Item.boat);
-		addItemYield(Item.bone);
-		addItemYield(Item.bed);
-		addItemYield(Item.emptyMap);
-		addItemYield(Item.map);
-		addItemYield(Item.writableBook);
-		addItemYield(Item.writtenBook);
-		addItemYield(Item.carrotOnAStick);
-		addItemYield(Item.enchantedBook);
-		addItemYield(Item.nameTag);
-		addItemYield(Item.sugar);
-		addItemYield(Item.cake);
-		addItemYield(Item.slimeBall);
-		addItemYield(Item.paper);
-		addItemYield(Item.reed);
-		addItemYield(Item.leather);
-		addItemYield(Item.doorWood);
-		addItemYield(Item.leash);
-		addItemYield(Item.wheat);
-		addItemYield(Item.dyePowder);
-		addMatterYield(new ItemStack(Item.dyePowder, 1, 15));
+		addMatterYield(new ItemStack(Items.coal), -1);
+		addItemYield(Items.wooden_sword);
+		addItemYield(Items.wooden_hoe);
+		addItemYield(Items.wooden_axe);
+		addItemYield(Items.wooden_shovel);
+		addItemYield(Items.leather_helmet);
+		addItemYield(Items.leather_chestplate);
+		addItemYield(Items.leather_leggings);
+		addItemYield(Items.leather_boots);
+		addItemYield(Items.sign);
+		addItemYield(Items.saddle);
+		addItemYield(Items.book);
+		addItemYield(Items.fishing_rod);
+		addItemYield(Items.item_frame);
+		addItemYield(Items.boat);
+		addItemYield(Items.bone);
+		addItemYield(Items.bed);
+		addItemYield(Items.filled_map);
+		addItemYield(Items.map);
+		addItemYield(Items.writable_book);
+		addItemYield(Items.written_book);
+		addItemYield(Items.carrot_on_a_stick);
+		addItemYield(Items.enchanted_book);
+		addItemYield(Items.name_tag);
+		addItemYield(Items.sugar);
+		addItemYield(Items.cake);
+		addItemYield(Items.slime_ball);
+		addItemYield(Items.paper);
+		addItemYield(Items.sugar);
+		addItemYield(Items.leather);
+		addItemYield(Items.wooden_door);
+		addItemYield(Items.lead);
+		addItemYield(Items.wheat);
+		addItemYield(Items.dye);
+		addMatterYield(new ItemStack(Items.dye, 1, 15));
 
 		addItemYield(ModItems.woodenBoots);
 		addItemYield(ModItems.woodenLeggings);
@@ -80,8 +82,9 @@ public class OrganicMatterRegistry {
 		addItemYield(ModItems.pocketCritter, 3);
 		addItemYield(ModItems.horsalyser);
 
-		addMatterYield(new ItemStack(Block.ladder));
-		addMatterYield(new ItemStack(Block.woodenButton));
+		addMatterYield(new ItemStack(Blocks.ladder));
+		addMatterYield(new ItemStack(Blocks.wooden_button));
+		addMatterYield(new ItemStack(Blocks.reeds));
 
 		addOreYield("mobEgg", 2);
 		addOreYield("mobHead", 8);
@@ -97,14 +100,13 @@ public class OrganicMatterRegistry {
 		addMaterialYield(Material.cactus, 4);
 		addMaterialYield(Material.leaves, 3);
 		addMaterialYield(Material.plants, 3);
-		addMaterialYield(Material.pumpkin, 3);
 		addMaterialYield(Material.vine, 3);
 		addMaterialYield(Material.web, 3);
 		addMaterialYield(Material.grass, 4);
 		addMaterialYield(Material.cloth, 3);
 		addMaterialYield(Material.cake, 3);
-		addMaterialYield(Material.materialCarpet, 2);
-		addMaterialYield(Material.pumpkin, 4);
+		addMaterialYield(Material.carpet, 2);
+		addMaterialYield(Material.gourd, 4);
 		addMaterialYield(Material.wood, 4);
 	}
 
@@ -144,7 +146,7 @@ public class OrganicMatterRegistry {
 	public static int getOrganicYield(ItemStack stack) {
 		if (stack == null)
 			return -1;
-		if (stack.getItem().itemID == Block.coalBlock.blockID)
+		if (stack.getItem() == Item.getItemFromBlock(Blocks.coal_block))
 			return -1;
 
 		if (matterYield.containsKey(new UnsizedStack(stack)))
@@ -154,15 +156,15 @@ public class OrganicMatterRegistry {
 
 		int ret = -1;
 
-		if (stack.getItem() instanceof ItemBlock && stack.itemID < Block.blocksList.length) {
-			Block block = Block.blocksList[stack.itemID];
-			Integer matYield = materialYield.get(block.blockMaterial);
+		if (stack.getItem() instanceof ItemBlock) {
+			Block block = Block.getBlockFromItem(stack.getItem());
+			Integer matYield = materialYield.get(block.getMaterial());
 			matYield = matYield == null ? -1 : matYield;
-			ret = block instanceof BlockHalfSlab ? (int) (matYield / 2.0F) : matYield;
+			ret = block instanceof BlockSlab ? (int) (matYield / 2.0F) : matYield;
 		} else {
 			Item item = stack.getItem();
 			if (item instanceof ItemFood)
-				ret = (int) (10 * ((ItemFood) item).getSaturationModifier());
+				ret = (int) (10 * ((ItemFood) item).func_150906_h(stack));
 			else if (item instanceof ItemSeeds)
 				ret = 1;
 		}

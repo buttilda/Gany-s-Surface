@@ -1,8 +1,8 @@
 package ganymedes01.ganyssurface.inventory.slots;
 
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -20,6 +20,6 @@ public class CoalSlot extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		return stack.getItem() == Item.coal && stack.getItemDamage() == 0;
+		return stack.getItem() == Items.coal && stack.getItemDamage() == 0;
 	}
 }

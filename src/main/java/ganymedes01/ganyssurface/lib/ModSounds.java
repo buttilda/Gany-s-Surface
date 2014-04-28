@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.lib;
 
-import net.minecraft.block.StepSound;
+import net.minecraft.block.Block.SoundType;
 
 /**
  * Gany's Surface
@@ -11,9 +11,9 @@ import net.minecraft.block.StepSound;
 
 public class ModSounds {
 
-	public static final StepSound soundSlime = new CustomSound("mob.slime.big");
+	public static final SoundType soundSlime = new CustomSound("mob.slime.big");
 
-	private static final class CustomSound extends StepSound {
+	private static final class CustomSound extends SoundType {
 
 		private final boolean useDefaults;
 
@@ -28,12 +28,12 @@ public class ModSounds {
 
 		@Override
 		public String getBreakSound() {
-			return useDefaults ? super.getBreakSound() : stepSoundName;
+			return useDefaults ? super.getBreakSound() : soundName;
 		}
 
 		@Override
-		public String getStepSound() {
-			return useDefaults ? super.getStepSound() : stepSoundName;
+		public String getStepResourcePath() {
+			return useDefaults ? super.getStepResourcePath() : soundName;
 		}
 	}
 }

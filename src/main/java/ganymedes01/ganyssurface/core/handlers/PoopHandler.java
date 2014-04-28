@@ -10,8 +10,8 @@ import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * Gany's Surface
@@ -22,7 +22,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
 public class PoopHandler {
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onLivingUpdate(LivingUpdateEvent event) {
 		if (!event.entityLiving.worldObj.isRemote)
 			if (event.entityLiving instanceof EntityAnimal || event.entityLiving instanceof EntityTameable || event.entityLiving instanceof EntityBat)
@@ -39,9 +39,9 @@ public class PoopHandler {
 	private void replaceNearbyAirBlock(World world, int x, int y, int z, Block block, int meta) {
 		for (int i = -1; i < 2; i++)
 			for (int k = -1; k < 2; k++)
-				if (world.isAirBlock(x + i, y, z + k) || Block.blocksList[world.getBlockId(x + i, y, z + k)].isBlockReplaceable(world, x + i, y, z + k)) {
-					world.setBlock(x + i, y, z + k, block.blockID, meta, 3);
-					ModBlocks.poop.onNeighborBlockChange(world, x + i, y, z + k, block.blockID);
+				if (world.isAirBlock(x + i, y, z + k) || world.getBlock(x + i, y, z + k).isReplaceable(world, x + i, y, z + k)) {
+					world.setBlock(x + i, y, z + k, block, meta, 3);
+					ModBlocks.poop.onNeighborBlockChange(world, x + i, y, z + k, block);
 					return;
 				}
 		Utils.dropStack(world, x, y, z, new ItemStack(ModItems.poop, 1, meta));

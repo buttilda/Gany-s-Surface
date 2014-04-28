@@ -6,7 +6,7 @@ import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.BlockWood;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -21,32 +21,19 @@ public class DisguisedTrapDoor extends BlockTrapDoor {
 
 	private final int type;
 
-	public DisguisedTrapDoor(int id, int type) {
-		super(id, Material.wood);
+	public DisguisedTrapDoor(int type) {
+		super(Material.wood);
 		disableStats();
 		this.type = type;
 		setHardness(3.0F);
-		setStepSound(soundWoodFootstep);
+		setStepSound(soundTypeWood);
 		setCreativeTab(GanysSurface.surfaceTab);
-		switch (type) {
-			case 0:
-				setUnlocalizedName(Utils.getUnlocalizedName(Strings.DISGUISED_TRAP_DOOR_OAK_NAME));
-				break;
-			case 1:
-				setUnlocalizedName(Utils.getUnlocalizedName(Strings.DISGUISED_TRAP_DOOR_SPRUCE_NAME));
-				break;
-			case 2:
-				setUnlocalizedName(Utils.getUnlocalizedName(Strings.DISGUISED_TRAP_DOOR_BIRCH_NAME));
-				break;
-			case 3:
-				setUnlocalizedName(Utils.getUnlocalizedName(Strings.DISGUISED_TRAP_DOOR_JUNGLE_NAME));
-				break;
-		}
+		setBlockName(Utils.getUnlocalizedName(Strings.DISGUISED_TRAP_DOOR_NAME + BlockWood.field_150096_a[type]));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
-		blockIcon = reg.registerIcon("planks_" + BlockWood.woodType[type]);
+	public void registerBlockIcons(IIconRegister reg) {
+		blockIcon = reg.registerIcon("planks_" + BlockWood.field_150096_a[type]);
 	}
 }

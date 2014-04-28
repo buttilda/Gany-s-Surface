@@ -23,11 +23,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiMarketPrivate extends GuiGanysSurface {
 
-	private final TileEntityMarket market;
-
 	public GuiMarketPrivate(InventoryPlayer inventory, TileEntityMarket tile) {
 		super(new ContainerMarketPrivate(inventory, tile));
-		market = tile;
 	}
 
 	@Override

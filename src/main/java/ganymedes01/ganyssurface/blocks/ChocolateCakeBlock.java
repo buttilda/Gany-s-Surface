@@ -2,13 +2,13 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.BlockCake;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.Icon;
+import net.minecraft.item.Item;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -23,15 +23,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ChocolateCakeBlock extends BlockCake {
 
 	@SideOnly(Side.CLIENT)
-	private Icon cakeTopIcon, cakeBottomIcon, cakeInner;
+	private IIcon cakeTopIcon, cakeBottomIcon, cakeInner;
 
 	public ChocolateCakeBlock() {
-		super(ModIDs.CHOCOLATE_CAKE_ID);
+		super();
 		disableStats();
 		setHardness(0.5F);
-		setStepSound(soundClothFootstep);
+		setStepSound(soundTypeCloth);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CHOCOLATE_CAKE_NAME));
+		setBlockName(Utils.getUnlocalizedName(Strings.CHOCOLATE_CAKE_NAME));
 	}
 
 	@Override
@@ -65,19 +65,19 @@ public class ChocolateCakeBlock extends BlockCake {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int idPicked(World world, int x, int y, int z) {
-		return ModBlocks.chocolateCake.blockID;
+	public Item getItem(World world, int x, int y, int z) {
+		return Item.getItemFromBlock(ModBlocks.chocolateCake);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta) {
+	public IIcon getIcon(int side, int meta) {
 		return side == 1 ? cakeTopIcon : side == 0 ? cakeBottomIcon : meta > 0 && side == 4 ? cakeInner : blockIcon;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
+	public void registerBlockIcons(IIconRegister reg) {
 		blockIcon = reg.registerIcon(Utils.getBlockTexture(Strings.CHOCOLATE_CAKE_NAME) + "_side");
 		cakeInner = reg.registerIcon(Utils.getBlockTexture(Strings.CHOCOLATE_CAKE_NAME) + "_inner");
 		cakeTopIcon = reg.registerIcon(Utils.getBlockTexture(Strings.CHOCOLATE_CAKE_NAME) + "_top");

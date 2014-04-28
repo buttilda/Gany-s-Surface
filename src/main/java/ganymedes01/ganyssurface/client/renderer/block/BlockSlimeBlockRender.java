@@ -24,8 +24,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class BlockSlimeBlockRender implements ISimpleBlockRenderingHandler {
 
-	private final RenderBlocks renderer = new RenderBlocks();
-
 	@Override
 	public void renderInventoryBlock(Block block, int meta, int modelID, RenderBlocks renderer) {
 		Tessellator tessellator = Tessellator.instance;
@@ -87,13 +85,9 @@ public class BlockSlimeBlockRender implements ISimpleBlockRenderingHandler {
 		return true;
 	}
 
-	private void drawBlock(Block block, int meta, RenderBlocks renderer) {
-
-	}
-
 	@Override
-	public boolean shouldRender3DInInventory() {
-		return true;
+	public boolean shouldRender3DInInventory(int modelId) {
+		return false;
 	}
 
 	@Override

@@ -4,10 +4,10 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.recipes.OrganicMatterRegistry;
-import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import cpw.mods.fml.relauncher.Side;
@@ -75,7 +75,7 @@ public class TileEntityOrganicMatterCompressor extends GanysInventory implements
 
 	private void generateBlockOfCoal() {
 		if (inventory[BLOCK_OF_COAL] == null)
-			inventory[BLOCK_OF_COAL] = new ItemStack(Block.coalBlock);
+			inventory[BLOCK_OF_COAL] = new ItemStack(Blocks.coal_block);
 		else
 			inventory[BLOCK_OF_COAL].stackSize++;
 
@@ -89,7 +89,7 @@ public class TileEntityOrganicMatterCompressor extends GanysInventory implements
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		if (slot == 9)
-			return stack.getItem() == Item.coal && stack.getItemDamage() == 0;
+			return stack.getItem() == Items.coal && stack.getItemDamage() == 0;
 		else if (slot < 9)
 			return OrganicMatterRegistry.isOrganicMatter(stack);
 		else

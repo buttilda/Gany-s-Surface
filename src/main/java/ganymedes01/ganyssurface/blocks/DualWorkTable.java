@@ -3,7 +3,6 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,8 +19,8 @@ import net.minecraft.world.World;
 public class DualWorkTable extends WorkTable {
 
 	public DualWorkTable() {
-		super(ModIDs.DUAL_WORK_TABLE_ID);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.DUAL_WORK_TABLE_NAME));
+		super();
+		setBlockName(Utils.getUnlocalizedName(Strings.DUAL_WORK_TABLE_NAME));
 	}
 
 	@Override
@@ -31,7 +30,7 @@ public class DualWorkTable extends WorkTable {
 		if (player.isSneaking())
 			return false;
 		else {
-			TileEntityDualWorkTable tile = (TileEntityDualWorkTable) world.getBlockTileEntity(x, y, z);
+			TileEntityDualWorkTable tile = Utils.getTileEntity(world, x, y, z, TileEntityDualWorkTable.class);
 			if (tile != null)
 				player.openGui(GanysSurface.instance, GUIsID.DUAL_WORK_TABLE, world, x, y, z);
 			return true;
@@ -39,7 +38,7 @@ public class DualWorkTable extends WorkTable {
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityDualWorkTable();
 	}
 

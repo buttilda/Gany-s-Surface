@@ -3,13 +3,12 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -24,13 +23,13 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class EncasingBench extends Block {
 
 	@SideOnly(Side.CLIENT)
-	private Icon[] icons;
+	private IIcon[] icons;
 
 	public EncasingBench() {
-		super(ModIDs.ENCASING_BENCH_ID, Material.wood);
+		super(Material.wood);
 		setHardness(1.0F);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ENCASING_BENCH_NAME));
+		setBlockName(Utils.getUnlocalizedName(Strings.ENCASING_BENCH_NAME));
 	}
 
 	@Override
@@ -47,14 +46,14 @@ public class EncasingBench extends Block {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta) {
+	public IIcon getIcon(int side, int meta) {
 		return side == 1 ? icons[0] : icons[1];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
-		icons = new Icon[2];
+	public void registerBlockIcons(IIconRegister reg) {
+		icons = new IIcon[2];
 		for (int i = 0; i < icons.length; i++)
 			icons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.ENCASING_BENCH_NAME) + i);
 	}

@@ -4,7 +4,7 @@ import ganymedes01.ganyssurface.blocks.Dislocator;
 import ganymedes01.ganyssurface.blocks.SensoringDislocator;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import buildcraft.api.transport.IPipeConnection;
 import buildcraft.api.transport.IPipeTile.PipeType;
 
@@ -30,7 +30,7 @@ public class TileEntitySensoringDislocator extends TileEntityBlockDetector imple
 	}
 
 	@Override
-	public String getInvName() {
+	public String getInventoryName() {
 		return Utils.getConainerName(Strings.SENSORING_DISLOCATOR_NAME);
 	}
 

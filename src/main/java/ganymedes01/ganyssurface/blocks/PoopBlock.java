@@ -2,22 +2,24 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.ModItems;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.ModSounds;
 import ganymedes01.ganyssurface.lib.Strings;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -31,15 +33,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class PoopBlock extends Block {
 
 	@SideOnly(Side.CLIENT)
-	private Icon[] icons;
+	private IIcon[] icons;
 
 	public PoopBlock() {
-		super(ModIDs.POOP_BLOCK_ID, Material.circuits);
+		super(Material.circuits);
 		float pixel = 1.0F / 16.0F;
 		disableStats();
 		setTickRandomly(true);
 		setStepSound(ModSounds.soundSlime);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.POOP_BLOCK_NAME));
+		setBlockName(Utils.getUnlocalizedName(Strings.POOP_BLOCK_NAME));
 		setBlockBounds(5 * pixel, 0.0F, 5 * pixel, 1.0F - 5 * pixel, 6 * pixel, 1.0F - 5 * pixel);
 	}
 
@@ -54,12 +56,12 @@ public class PoopBlock extends Block {
 
 		if (flag) {
 			world.setBlockToAir(x, y, z);
-			ItemDye.func_96604_a(new ItemStack(Item.dyePowder, 1, 15), world, x, y - 1, z);
+			ItemDye.func_150919_a(new ItemStack(Items.dye, 1, 15), world, x, y - 1, z);
 		}
 	}
 
 	private int getBonemealchance(World world, int x, int y, int z) {
-		Material groundMaterial = world.getBlockMaterial(x, y - 1, z);
+		Material groundMaterial = world.getBlock(x, y - 1, z).getMaterial();
 		if (groundMaterial == Material.ground || groundMaterial == Material.grass || groundMaterial == Material.sand)
 			return 30;
 		return 50;
@@ -71,17 +73,16 @@ public class PoopBlock extends Block {
 	}
 
 	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, int neighbourID) {
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbour) {
 		if (!canBlockStay(world, x, y, z)) {
 			dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-			world.setBlock(x, y, z, 0, 0, 2);
+			world.setBlockToAir(x, y, z);
 		}
 	}
 
 	@Override
 	public boolean canBlockStay(World world, int x, int y, int z) {
-		Block block = Block.blocksList[world.getBlockId(x, y - 1, z)];
-		return block != null && block.isBlockSolidOnSide(world, x, y, z, ForgeDirection.UP);
+		return world.getBlock(x, y - 1, z).isSideSolid(world, x, y, z, ForgeDirection.UP);
 	}
 
 	@Override
@@ -90,7 +91,7 @@ public class PoopBlock extends Block {
 	}
 
 	@Override
-	public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side) {
+	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
 		return false;
 	}
 
@@ -110,8 +111,10 @@ public class PoopBlock extends Block {
 	}
 
 	@Override
-	public int idDropped(int id, Random rand, int fortune) {
-		return ModItems.poop.itemID;
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int meta, int fortune) {
+		ArrayList<ItemStack> list = new ArrayList<ItemStack>();
+		list.add(new ItemStack(ModItems.poop, 1, meta));
+		return list;
 	}
 
 	@Override
@@ -126,14 +129,14 @@ public class PoopBlock extends Block {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int idPicked(World world, int x, int y, int z) {
-		return ModItems.poop.itemID;
+	public Item getItem(World world, int x, int y, int z) {
+		return ModItems.poop;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
-		icons = new Icon[2];
+	public void registerBlockIcons(IIconRegister reg) {
+		icons = new IIcon[2];
 
 		icons[0] = reg.registerIcon(Utils.getBlockTexture(Strings.POOP_BLOCK_NAME + "0"));
 		icons[1] = reg.registerIcon(Utils.getBlockTexture(Strings.POOP_BLOCK_NAME + "1"));
@@ -141,7 +144,7 @@ public class PoopBlock extends Block {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta) {
+	public IIcon getIcon(int side, int meta) {
 		if (meta > icons.length)
 			meta = 0;
 		return icons[meta];

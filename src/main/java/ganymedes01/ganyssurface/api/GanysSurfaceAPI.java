@@ -35,7 +35,7 @@ public class GanysSurfaceAPI {
 	 * @param burnTime
 	 *            : Yield for specified matter
 	 */
-	public static final void addYieldForOrganicMatter(ItemStack matter, int yield) {
+	public static void addYieldForOrganicMatter(ItemStack matter, int yield) {
 		if (matter != null) {
 			NBTTagCompound data = new NBTTagCompound();
 
@@ -43,7 +43,7 @@ public class GanysSurfaceAPI {
 
 			NBTTagCompound tagCompound = new NBTTagCompound();
 			matter.writeToNBT(tagCompound);
-			data.setCompoundTag("matter", tagCompound);
+			data.setTag("matter", tagCompound);
 
 			FMLInterModComms.sendMessage("ganyssurface", "registerOrganicMatter", data);
 		}
@@ -75,7 +75,7 @@ public class GanysSurfaceAPI {
 	 * inkHarvester;
 	 * 
 	 */
-	public static final Block getBlock(String blockName) {
+	public static Block getBlock(String blockName) {
 		try {
 			Class<?> modBlocks = Class.forName("ganymedes01.ganyssurface.blocks.ModBlocks");
 			Field block = modBlocks.getField(blockName);
@@ -115,7 +115,7 @@ public class GanysSurfaceAPI {
 	 * woodenBoots
 	 * 
 	 */
-	public static final Item getItem(String itemName) {
+	public static Item getItem(String itemName) {
 		try {
 			Class<?> modBlocks = Class.forName("ganymedes01.ganyssurface.items.ModItems");
 			Field item = modBlocks.getField(itemName);

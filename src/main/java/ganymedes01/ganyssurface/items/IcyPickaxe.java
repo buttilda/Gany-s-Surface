@@ -2,35 +2,37 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.ModMaterials;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumMovingObjectType;
 import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
 
 public class IcyPickaxe extends ItemPickaxe {
 
 	public IcyPickaxe() {
-		super(ModIDs.ICY_PICKAXE_ID, ModMaterials.ICE);
+		super(ModMaterials.ICE);
+		setHarvestLevel("pickaxe", 2);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.ICY_PICKAXE_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ICY_PICKAXE_NAME));
 	}
 
 	@Override
-	public boolean canHarvestBlock(Block block) {
-		return block == Block.ice;
+	public boolean func_150897_b(Block block) {
+		return block == Blocks.ice;
 	}
 
 	@Override
 	public boolean getIsRepairable(ItemStack tool, ItemStack material) {
-		return material.itemID == Block.ice.blockID;
+		return material.getItem() == Item.getItemFromBlock(Blocks.ice);
 	}
 
 	@Override
@@ -38,9 +40,9 @@ public class IcyPickaxe extends ItemPickaxe {
 		if (player.worldObj.isRemote)
 			return false;
 		if (!player.capabilities.isCreativeMode)
-			if (player.worldObj.getBlockId(x, y, z) == Block.ice.blockID) {
+			if (player.worldObj.getBlock(x, y, z) == Blocks.ice) {
 				player.worldObj.setBlockToAir(x, y, z);
-				Utils.dropStack(player.worldObj, x, y, z, new ItemStack(Block.ice));
+				Utils.dropStack(player.worldObj, x, y, z, new ItemStack(Blocks.ice));
 				return true;
 			}
 		return false;
@@ -52,7 +54,7 @@ public class IcyPickaxe extends ItemPickaxe {
 		if (hit == null)
 			return stack;
 
-		if (hit.typeOfHit == EnumMovingObjectType.TILE) {
+		if (hit.typeOfHit == MovingObjectType.BLOCK) {
 			int x = hit.blockX;
 			int y = hit.blockY;
 			int z = hit.blockZ;
@@ -62,21 +64,21 @@ public class IcyPickaxe extends ItemPickaxe {
 				for (int i = -1; i <= 1; i++)
 					for (int j = -1; j <= 1; j++)
 						for (int k = -1; k <= 1; k++) {
-							int blockID = world.getBlockId(x + i, y + j, z + k);
-							if (blockID == Block.waterMoving.blockID || blockID == Block.waterStill.blockID) {
+							Block block = world.getBlock(x + i, y + j, z + k);
+							if (block == Blocks.water) {
 								if (world.getBlockMetadata(x + i, y + j, z + k) == 0) {
-									world.playAuxSFXAtEntity(null, 2001, x + i, y + j, z + k, Block.ice.blockID + (0 << 12));
-									world.setBlock(x + i, y + j, z + k, Block.ice.blockID);
+									world.playAuxSFXAtEntity(null, 2001, x + i, y + j, z + k, Block.getIdFromBlock(Blocks.ice) + (0 << 12));
+									world.setBlock(x + i, y + j, z + k, Blocks.ice);
 									freezes++;
 								}
-							} else if (blockID == Block.lavaMoving.blockID || blockID == Block.lavaStill.blockID)
+							} else if (block == Blocks.lava)
 								if (world.getBlockMetadata(x + i, y + j, z + k) == 0) {
-									world.playAuxSFXAtEntity(null, 2001, x + i, y + j, z + k, Block.obsidian.blockID + (0 << 12));
-									world.setBlock(x + i, y + j, z + k, Block.obsidian.blockID);
+									world.playAuxSFXAtEntity(null, 2001, x + i, y + j, z + k, Block.getIdFromBlock(Blocks.obsidian) + (0 << 12));
+									world.setBlock(x + i, y + j, z + k, Blocks.obsidian);
 									freezes++;
 								} else {
-									world.playAuxSFXAtEntity(null, 2001, x + i, y + j, z + k, Block.cobblestone.blockID + (0 << 12));
-									world.setBlock(x + i, y + j, z + k, Block.cobblestone.blockID);
+									world.playAuxSFXAtEntity(null, 2001, x + i, y + j, z + k, Block.getIdFromBlock(Blocks.cobblestone) + (0 << 12));
+									world.setBlock(x + i, y + j, z + k, Blocks.cobblestone);
 									freezes++;
 								}
 						}
@@ -106,9 +108,7 @@ public class IcyPickaxe extends ItemPickaxe {
 	}
 
 	@Override
-	public float getStrVsBlock(ItemStack stack, Block block, int meta) {
-		if (canHarvestBlock(block))
-			return efficiencyOnProperMaterial;
-		return 0.0F;
+	public float func_150893_a(ItemStack stack, Block block) {
+		return func_150897_b(block) ? efficiencyOnProperMaterial : 0.0F;
 	}
 }

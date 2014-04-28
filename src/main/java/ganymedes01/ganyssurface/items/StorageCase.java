@@ -2,7 +2,6 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
@@ -23,7 +22,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class StorageCase extends Item {
 
 	public StorageCase() {
-		super(ModIDs.STORAGE_CASE_ID);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.STORAGE_CASE_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.STORAGE_CASE_NAME));
@@ -31,6 +29,7 @@ public class StorageCase extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addInformation(ItemStack stack, EntityPlayer player, List tooltip, boolean isComplex) {
 		if (stack.hasTagCompound()) {
 			ItemStack s = getStoredStack(stack);
@@ -48,11 +47,9 @@ public class StorageCase extends Item {
 
 	public static int getStorageception(ItemStack stack) {
 		ItemStack s = getStoredStack(stack);
-		ItemStack prev = null;
 
 		int count = 0;
 		while (s != null) {
-			prev = s;
 			s = getStoredStack(s);
 			count++;
 		}
@@ -60,14 +57,14 @@ public class StorageCase extends Item {
 	}
 
 	public static ItemStack getStoredStack(ItemStack storageCase) {
-		if (storageCase != null && storageCase.hasTagCompound() && storageCase.itemID == ModItems.storageCase.itemID)
+		if (storageCase != null && storageCase.hasTagCompound() && storageCase.getItem() == ModItems.storageCase)
 			return ItemStack.loadItemStackFromNBT(storageCase.getTagCompound().getCompoundTag("stack"));
 		return null;
 	}
 
 	@Override
-	public String getItemDisplayName(ItemStack stack) {
-		String name = super.getItemDisplayName(stack);
+	public String getItemStackDisplayName(ItemStack stack) {
+		String name = super.getItemStackDisplayName(stack);
 		ItemStack s = getStoredStack(stack);
 
 		int count = 0;

@@ -1,7 +1,6 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -19,7 +18,7 @@ import net.minecraft.world.World;
 public class MankyCupOfTea extends CupOfTea {
 
 	public MankyCupOfTea() {
-		super(ModIDs.MANKY_CUP_OF_TEA_ID);
+		setCreativeTab(null);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.MANKY_CUP_OF_TEA_NAME));
 	}
 

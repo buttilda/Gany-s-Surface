@@ -22,7 +22,7 @@ public class DispenserBehaviorPocketBat extends BehaviorDefaultDispenseItem {
 
 	@Override
 	public ItemStack dispenseStack(IBlockSource block, ItemStack stack) {
-		EnumFacing enumfacing = BlockDispenser.getFacing(block.getBlockMetadata());
+		EnumFacing enumfacing = BlockDispenser.func_149937_b(block.getBlockMetadata());
 		double x = block.getX() + enumfacing.getFrontOffsetX();
 		double y = block.getYInt() + 0.2F;
 		double z = block.getZ() + enumfacing.getFrontOffsetZ();

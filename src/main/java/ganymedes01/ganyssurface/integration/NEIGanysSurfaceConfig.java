@@ -10,6 +10,7 @@ import ganymedes01.ganyssurface.integration.nei.OMCYieldHandler;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import codechicken.nei.api.API;
 import codechicken.nei.api.IConfigureNEI;
 import codechicken.nei.recipe.DefaultOverlayHandler;
@@ -41,20 +42,20 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		API.registerRecipeHandler(new OMCYieldHandler());
 		API.registerUsageHandler(new OMCYieldHandler());
 
-		API.hideItem(ModBlocks.camelliaCrop.blockID);
-		API.hideItem(ModItems.mankyCupOfTea.itemID);
+		API.hideItem(new ItemStack(ModBlocks.camelliaCrop));
+		API.hideItem(new ItemStack(ModItems.mankyCupOfTea));
 		for (Block wire : ModBlocks.colouredRedstone)
 			if (wire != null)
-				API.hideItem(wire.blockID);
-		API.hideItem(ModItems.dyedIronHelmet.itemID);
-		API.hideItem(ModItems.dyedIronChestplate.itemID);
-		API.hideItem(ModItems.dyedIronLeggings.itemID);
-		API.hideItem(ModItems.dyedIronBoots.itemID);
-		API.hideItem(ModBlocks.poop.blockID);
-		API.hideItem(ModItems.dyedChainHelmet.itemID);
-		API.hideItem(ModItems.dyedChainChestplate.itemID);
-		API.hideItem(ModItems.dyedChainLeggings.itemID);
-		API.hideItem(ModItems.dyedChainBoots.itemID);
+				API.hideItem(new ItemStack(wire));
+		API.hideItem(new ItemStack(ModItems.dyedIronHelmet));
+		API.hideItem(new ItemStack(ModItems.dyedIronChestplate));
+		API.hideItem(new ItemStack(ModItems.dyedIronLeggings));
+		API.hideItem(new ItemStack(ModItems.dyedIronBoots));
+		API.hideItem(new ItemStack(ModBlocks.poop));
+		API.hideItem(new ItemStack(ModItems.dyedChainHelmet));
+		API.hideItem(new ItemStack(ModItems.dyedChainChestplate));
+		API.hideItem(new ItemStack(ModItems.dyedChainLeggings));
+		API.hideItem(new ItemStack(ModItems.dyedChainBoots));
 	}
 
 	@Override

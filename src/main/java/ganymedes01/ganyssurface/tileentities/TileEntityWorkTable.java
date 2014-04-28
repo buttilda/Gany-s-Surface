@@ -5,7 +5,7 @@ import ganymedes01.ganyssurface.network.packet.PacketWorkTable;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.packet.Packet;
+import net.minecraft.network.Packet;
 
 /**
  * Gany's Surface

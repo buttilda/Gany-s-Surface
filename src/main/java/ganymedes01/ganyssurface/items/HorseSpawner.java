@@ -2,7 +2,6 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.lang.reflect.Field;
@@ -10,21 +9,21 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EntityLivingData;
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.Attribute;
+import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Facing;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -40,10 +39,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class HorseSpawner extends Item {
 
 	@SideOnly(Side.CLIENT)
-	private Icon overlay;
+	private IIcon overlay;
 
 	public HorseSpawner() {
-		super(ModIDs.HORSE_SPAWNER_ID);
 		setMaxDamage(0);
 		setHasSubtypes(true);
 		setTextureName("spawn_egg");
@@ -74,7 +72,7 @@ public class HorseSpawner extends Item {
 					horse.setLocationAndAngles(x, y, z, MathHelper.wrapAngleTo180_float(world.rand.nextFloat() * 360.0F), 0.0F);
 					horse.rotationYawHead = horse.rotationYaw;
 					horse.renderYawOffset = horse.rotationYaw;
-					horse.onSpawnWithEgg((EntityLivingData) null);
+					horse.onSpawnWithEgg((IEntityLivingData) null);
 					setHorseType(horse, type);
 					if (username != null) {
 						horse.setOwnerName(username);
@@ -94,11 +92,11 @@ public class HorseSpawner extends Item {
 			newType = new Random().nextInt(3);
 
 			try {
-				Attribute horseJumpStrength = null;
+				IAttribute horseJumpStrength = null;
 				for (Field field : EntityHorse.class.getDeclaredFields()) {
 					field.setAccessible(true);
-					if (field.get(null) instanceof Attribute) {
-						horseJumpStrength = (Attribute) field.get(null);
+					if (field.get(null) instanceof IAttribute) {
+						horseJumpStrength = (IAttribute) field.get(null);
 						break;
 					}
 				}
@@ -118,13 +116,13 @@ public class HorseSpawner extends Item {
 		if (world.isRemote)
 			return true;
 		else {
-			int id = world.getBlockId(x, y, z);
+			Block block = world.getBlock(x, y, z);
 			x += Facing.offsetsXForSide[side];
 			y += Facing.offsetsYForSide[side];
 			z += Facing.offsetsZForSide[side];
 			double yOffSet = 0.0D;
 
-			if (side == 1 && Block.blocksList[id] != null && Block.blocksList[id].getRenderType() == 11)
+			if (side == 1 && block != null && block.getRenderType() == 11)
 				yOffSet = 0.5D;
 
 			Entity entity = spawnHorse(world, x + 0.5D, y + yOffSet, z + 0.5D, stack.getItemDamage() + 3, player.getCommandSenderName());
@@ -149,23 +147,23 @@ public class HorseSpawner extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
+	public void registerIcons(IIconRegister reg) {
 		super.registerIcons(reg);
 		overlay = reg.registerIcon("spawn_egg_overlay");
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamageForRenderPass(int meta, int pass) {
+	public IIcon getIconFromDamageForRenderPass(int meta, int pass) {
 		return pass > 0 ? overlay : super.getIconFromDamageForRenderPass(meta, pass);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int itemID, CreativeTabs tab, List list) {
-		list.add(new ItemStack(itemID, 1, 0));
-		list.add(new ItemStack(itemID, 1, 1));
-		list.add(new ItemStack(itemID, 1, 2));
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public void getSubItems(Item item, CreativeTabs tab, List list) {
+		for (int i = 0; i < 3; i++)
+			list.add(new ItemStack(item, 1, i));
 	}
 
 	@Override

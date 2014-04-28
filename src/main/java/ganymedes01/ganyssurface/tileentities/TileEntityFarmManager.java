@@ -8,8 +8,8 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * Gany's Surface
@@ -48,11 +48,11 @@ public class TileEntityFarmManager extends GanysInventory {
 						continue;
 					if (inventory[j].getItem() instanceof IPlantable) {
 						IPlantable seed = (IPlantable) inventory[j].getItem();
-						Block soil = Block.blocksList[worldObj.getBlockId(xCoord + p.x, yCoord - i, zCoord + p.y)];
+						Block soil = worldObj.getBlock(xCoord + p.x, yCoord - i, zCoord + p.y);
 						if (soil.canSustainPlant(worldObj, xCoord + p.x, yCoord - i, zCoord + p.y, ForgeDirection.UP, seed)) {
-							Block crop = Block.blocksList[seed.getPlantID(worldObj, xCoord, yCoord, zCoord)];
-							worldObj.setBlock(xCoord + p.x, yCoord - i + 1, zCoord + p.y, crop.blockID);
-							worldObj.playSoundEffect(xCoord + p.x + 0.5F, yCoord - i + 1, zCoord + p.y + 0.5F, crop.stepSound.getPlaceSound(), (crop.stepSound.getVolume() + 1.0F) / 2.0F, crop.stepSound.getPitch() * 0.8F);
+							Block crop = seed.getPlant(worldObj, xCoord, yCoord, zCoord);
+							worldObj.setBlock(xCoord + p.x, yCoord - i + 1, zCoord + p.y, crop);
+							worldObj.playSoundEffect(xCoord + p.x + 0.5F, yCoord - i + 1, zCoord + p.y + 0.5F, crop.stepSound.soundName, (crop.stepSound.getVolume() + 1.0F) / 2.0F, crop.stepSound.getPitch() * 0.8F);
 							inventory[j].stackSize--;
 							if (inventory[j].stackSize <= 0)
 								inventory[j] = null;

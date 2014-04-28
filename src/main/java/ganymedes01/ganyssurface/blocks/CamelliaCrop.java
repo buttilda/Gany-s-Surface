@@ -2,11 +2,11 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.ModItems;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.BlockCrops;
-import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.util.Icon;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.Item;
+import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -20,26 +20,26 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class CamelliaCrop extends BlockCrops {
 
 	@SideOnly(Side.CLIENT)
-	private Icon[] iconArray;
+	private IIcon[] iconArray;
 
 	protected CamelliaCrop() {
-		super(ModIDs.CAMELLIA_CROP_ID);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CAMELLIA_CROP_NAME));
+		super();
+		setBlockName(Utils.getUnlocalizedName(Strings.CAMELLIA_CROP_NAME));
 	}
 
 	@Override
-	protected int getSeedItem() {
-		return ModItems.camelliaSeeds.itemID;
+	protected Item func_149866_i() {
+		return ModItems.camelliaSeeds;
 	}
 
 	@Override
-	protected int getCropItem() {
-		return ModItems.teaLeaves.itemID;
+	protected Item func_149865_P() {
+		return ModItems.teaLeaves;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta) {
+	public IIcon getIcon(int side, int meta) {
 		if (meta < 7) {
 			if (meta == 6)
 				meta = 5;
@@ -50,8 +50,8 @@ public class CamelliaCrop extends BlockCrops {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
-		iconArray = new Icon[4];
+	public void registerBlockIcons(IIconRegister reg) {
+		iconArray = new IIcon[4];
 		for (int i = 0; i < iconArray.length; ++i)
 			iconArray[i] = reg.registerIcon(Utils.getBlockTexture(Strings.CAMELLIA_CROP_NAME + "_stage_") + i);
 	}

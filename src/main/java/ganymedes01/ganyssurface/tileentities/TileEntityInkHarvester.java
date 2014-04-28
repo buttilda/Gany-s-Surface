@@ -10,7 +10,10 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.command.IEntitySelector;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntitySquid;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
@@ -72,16 +75,16 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 	private void makeInkSac() {
 		for (int i = 0; i < 9; i++)
 			if (inventory[i] == null) {
-				inventory[i] = new ItemStack(Item.dyePowder);
+				inventory[i] = new ItemStack(Items.dye);
 				return;
-			} else if (inventory[i].itemID == Item.dyePowder.itemID && inventory[i].stackSize < inventory[i].getMaxStackSize()) {
+			} else if (inventory[i].getItem() == Items.dye && inventory[i].stackSize < inventory[i].getMaxStackSize()) {
 				inventory[i].stackSize++;
 				return;
 			}
 	}
 
 	private void killOneSquid() {
-		List list = getSquids();
+		List<Entity> list = getSquids();
 		if (!list.isEmpty())
 			((EntitySquid) list.iterator().next()).attackEntityFrom(DamageSource.starve, 11.0F);
 
@@ -97,8 +100,8 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 				Item item = inventory[i].getItem();
 				if (item instanceof ItemFood) {
 					ItemFood food = (ItemFood) item;
-					saturationModifier = (int) (5000 * food.getSaturationModifier());
-					coolDownModifier = -(int) (10 * food.getSaturationModifier());
+					saturationModifier = (int) (5000 * food.func_150906_h(inventory[i]));
+					coolDownModifier = -(int) (10 * food.func_150906_h(inventory[i]));
 				}
 				inventory[i].splitStack(1);
 				if (inventory[i].stackSize <= 0)
@@ -113,9 +116,9 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 	}
 
 	private boolean hasSquids() {
-		List list = getSquids();
+		List<Entity> list = getSquids();
 		if (!list.isEmpty()) {
-			Iterator iterator = list.iterator();
+			Iterator<Entity> iterator = list.iterator();
 			while (iterator.hasNext()) {
 				EntitySquid squid = (EntitySquid) iterator.next();
 				if (!squid.isNoDespawnRequired())
@@ -126,9 +129,10 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 		return list.size() >= 2;
 	}
 
-	private List getSquids() {
+	@SuppressWarnings("unchecked")
+	private List<Entity> getSquids() {
 		int minY, maxY;
-		if (worldObj.getBlockId(xCoord, yCoord - 1, zCoord) == Block.waterStill.blockID) {
+		if (worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.water) {
 			minY = -3;
 			maxY = 0;
 		} else {
@@ -148,20 +152,19 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 		return formed;
 	}
 
-	private ArrayList<Integer> getMultiBlockList() {
-		ArrayList<Integer> list = new ArrayList<Integer>();
+	private ArrayList<Block> getMultiBlockList() {
+		ArrayList<Block> list = new ArrayList<Block>();
 
 		int minY, maxY;
-		if (worldObj.getBlockId(xCoord, yCoord - 1, zCoord) == Block.waterStill.blockID) {
+		if (worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.water) {
 			minY = -3;
 			maxY = 0;
-		} else if (worldObj.getBlockId(xCoord, yCoord + 1, zCoord) == Block.waterStill.blockID) {
+		} else if (worldObj.getBlock(xCoord, yCoord + 1, zCoord) == Blocks.water) {
 			minY = 0;
 			maxY = 3;
 		} else
 			return list;
 
-		boolean flag = false;
 		for (int i = -2; i <= 2; i++)
 			for (int j = minY; j <= maxY; j++)
 				for (int k = -2; k <= 2; k++)
@@ -169,39 +172,36 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 						int x = xCoord + i;
 						int y = yCoord + j;
 						int z = zCoord + k;
-						list.add(worldObj.getBlockId(x, y, z));
+						list.add(worldObj.getBlock(x, y, z));
 					}
 		return list;
 	}
 
 	private boolean checkMultiBlock() {
-		ArrayList<Integer> list = getMultiBlockList();
+		ArrayList<Block> list = getMultiBlockList();
 		if (list.isEmpty())
 			return false;
 
 		int[] checkList;
 
-		if (worldObj.getBlockId(xCoord, yCoord - 1, zCoord) == Block.waterStill.blockID)
+		if (worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.water)
 			checkList = multiBlocks;
 		else
 			checkList = multiBlocks2;
 
 		for (int i = 0; i < checkList.length; i++) {
-			int blockID = list.get(i);
-			if (blockID >= Block.blocksList.length || blockID <= 0)
-				return false;
-
+			Block block = list.get(i);
 			switch (checkList[i]) {
 				case 1: // Outline
-					if (!isOutline(Block.blocksList[blockID]))
+					if (!isOutline(block))
 						return false;
 					break;
 				case 9: // Water
-					if (!isWater(Block.blocksList[blockID]))
+					if (!isWater(block))
 						return false;
 					break;
 				case 20: // Walls
-					if (!isWall(Block.blocksList[blockID]))
+					if (!isWall(block))
 						return false;
 					break;
 			}
@@ -210,16 +210,16 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 	}
 
 	private boolean isOutline(Block block) {
-		Material mat = block.blockMaterial;
+		Material mat = block.getMaterial();
 		return mat == Material.iron || mat == Material.rock;
 	}
 
 	private boolean isWall(Block block) {
-		return isOutline(block) || block.blockMaterial == Material.glass;
+		return isOutline(block) || block.getMaterial() == Material.glass;
 	}
 
 	private boolean isWater(Block block) {
-		return block == Block.waterStill;
+		return block == Blocks.water;
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.items.block;
 import ganymedes01.ganyssurface.blocks.ColouredRedstone;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
@@ -15,8 +16,8 @@ import net.minecraft.item.ItemStack;
 
 public class ItemColouredRedstoneBlock extends ItemBlock {
 
-	public ItemColouredRedstoneBlock(int id) {
-		super(id);
+	public ItemColouredRedstoneBlock(Block block) {
+		super(block);
 		setHasSubtypes(true);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_BLOCK_NAME + "_item_"));
 	}

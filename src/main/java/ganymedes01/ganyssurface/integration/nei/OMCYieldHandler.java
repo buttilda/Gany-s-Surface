@@ -17,8 +17,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 
@@ -104,6 +104,7 @@ public class OMCYieldHandler extends TemplateRecipeHandler {
 			super.loadCraftingRecipes(outputId, results);
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public <T, V> LinkedHashMap<T, V> sortHashMapByValues(LinkedHashMap<T, V> map) {
 		List mapKeys = new ArrayList(map.keySet());
 		List mapValues = new ArrayList(map.values());
@@ -168,7 +169,7 @@ public class OMCYieldHandler extends TemplateRecipeHandler {
 
 		@Override
 		public PositionedStack getResult() {
-			return new PositionedStack(new ItemStack(Block.coalBlock), 130, 40);
+			return new PositionedStack(new ItemStack(Blocks.coal_block), 130, 40);
 		}
 	}
 }

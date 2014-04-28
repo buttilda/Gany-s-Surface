@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
@@ -74,10 +74,10 @@ public class ItemStorageCaseRenderer implements IItemRenderer {
 			GL11.glScaled(scale, scale, scale);
 		Tessellator tessellator = Tessellator.instance;
 
-		Icon[] icons = new Icon[6];
+		IIcon[] icons = new IIcon[6];
 		if (stack.getItem() instanceof ItemBlock) {
 			FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-			Block block = Block.blocksList[stack.itemID];
+			Block block = Block.getBlockFromItem(stack.getItem());
 			for (int i = 0; i < 6; i++)
 				icons[i] = block.getIcon(i, stack.getItemDamage());
 		} else

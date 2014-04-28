@@ -1,8 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.EnumArmorMaterial;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -17,8 +16,8 @@ import net.minecraft.world.World;
 
 public class ItemDyeableArmour extends ItemArmor {
 
-	public ItemDyeableArmour(int id, EnumArmorMaterial material, int armourType) {
-		super(id, material, 2, armourType);
+	public ItemDyeableArmour(ArmorMaterial material, int armourType) {
+		super(material, 2, armourType);
 		setMaxStackSize(1);
 		setCreativeTab(null);
 	}
@@ -27,10 +26,9 @@ public class ItemDyeableArmour extends ItemArmor {
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
 		if (!world.isRemote) {
 			int meta = world.getBlockMetadata(x, y, z);
-			if (world.getBlockId(x, y, z) == Block.cauldron.blockID && meta > 0) {
+			if (world.getBlock(x, y, z) == Blocks.cauldron && meta > 0) {
 				removeColor(stack);
-				world.setBlockMetadataWithNotify(x, y, z, meta - 1, 2);
-				world.func_96440_m(x, y, z, Block.cauldron.blockID);
+				world.setBlockMetadataWithNotify(x, y, z, meta - 1, 3);
 				return true;
 			}
 		}
@@ -39,7 +37,7 @@ public class ItemDyeableArmour extends ItemArmor {
 
 	@Override
 	public boolean getIsRepairable(ItemStack item, ItemStack material) {
-		return material.getItem().itemID == getArmorMaterial().getArmorCraftingMaterial();
+		return material.getItem() == getArmorMaterial().customCraftingMaterial;
 	}
 
 	@Override
@@ -92,13 +90,13 @@ public class ItemDyeableArmour extends ItemArmor {
 			NBTTagCompound nbtDisplay = nbt.getCompoundTag("display");
 
 			if (!nbt.hasKey("display"))
-				nbt.setCompoundTag("display", nbtDisplay);
+				nbt.setTag("display", nbtDisplay);
 
 			nbtDisplay.setInteger("color", colour);
 		}
 	}
 
 	private boolean isValidMaterial() {
-		return getArmorMaterial() == EnumArmorMaterial.IRON || getArmorMaterial() == EnumArmorMaterial.CHAIN;
+		return getArmorMaterial() == ArmorMaterial.IRON || getArmorMaterial() == ArmorMaterial.CHAIN;
 	}
 }

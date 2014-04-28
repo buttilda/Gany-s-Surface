@@ -44,7 +44,7 @@ public class UnsizedStack implements Comparable<UnsizedStack> {
 	@Override
 	public int hashCode() {
 		HashCodeBuilder hash = new HashCodeBuilder(17, 31);
-		hash.append(item.itemID);
+		hash.append(item);
 		hash.append(meta);
 		hash.append(nbt);
 		return hash.toHashCode();

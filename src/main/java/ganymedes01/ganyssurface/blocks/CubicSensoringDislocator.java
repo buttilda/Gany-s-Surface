@@ -3,19 +3,18 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityCubicSensoringDislocator;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import buildcraft.api.transport.IPipeTile;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -30,23 +29,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class CubicSensoringDislocator extends SensoringDislocator {
 
 	public CubicSensoringDislocator() {
-		super(ModIDs.CUBIC_SENSORING_DISLOCATOR_ID);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CUBIC_SENSORING_DISLOCATOR_NAME));
-	}
-
-	@Override
-	public void breakBlock(World world, int x, int y, int z, int par5, int par6) {
-		TileEntityCubicSensoringDislocator tile = (TileEntityCubicSensoringDislocator) world.getBlockTileEntity(x, y, z);
-		if (tile != null) {
-			for (int i = 0; i < tile.getSizeInventory(); i++) {
-				ItemStack itemstack = tile.getStackInSlot(i);
-
-				if (itemstack != null)
-					Utils.dropStack(world, x, y, z, itemstack);
-			}
-			world.func_96440_m(x, y, z, par5);
-		}
-		super.breakBlock(world, x, y, z, par5, par6);
+		super();
+		setBlockName(Utils.getUnlocalizedName(Strings.CUBIC_SENSORING_DISLOCATOR_NAME));
 	}
 
 	@Override
@@ -56,7 +40,7 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 		if (player.isSneaking())
 			return false;
 		else {
-			TileEntityCubicSensoringDislocator tile = (TileEntityCubicSensoringDislocator) world.getBlockTileEntity(x, y, z);
+			TileEntityCubicSensoringDislocator tile = Utils.getTileEntity(world, x, y, z, TileEntityCubicSensoringDislocator.class);
 			if (tile != null)
 				player.openGui(GanysSurface.instance, GUIsID.BLOCK_DETECTOR, world, x, y, z);
 			return true;
@@ -66,7 +50,7 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 	@Override
 	public void doBreak(World world, int x, int y, int z) {
 		if (!world.isBlockIndirectlyGettingPowered(x, y, z)) {
-			TileEntityCubicSensoringDislocator tile = (TileEntityCubicSensoringDislocator) world.getBlockTileEntity(x, y, z);
+			TileEntityCubicSensoringDislocator tile = Utils.getTileEntity(world, x, y, z, TileEntityCubicSensoringDislocator.class);
 			if (tile == null)
 				return;
 
@@ -81,7 +65,7 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 		int x = xCoord + dir.offsetX;
 		int y = yCoord + dir.offsetY;
 		int z = zCoord + dir.offsetZ;
-		int blockID = world.getBlockId(x, y, z);
+		Block target = world.getBlock(x, y, z);
 		if (world.isAirBlock(x, y, z))
 			return;
 
@@ -95,20 +79,19 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 				break;
 		}
 
-		Block target = Block.blocksList[blockID];
 		if (target != null)
-			if (target.getBlockHardness(world, x, y, z) >= 0 && target.blockMaterial != Material.water && target.blockMaterial != Material.lava) {
+			if (target.getBlockHardness(world, x, y, z) >= 0 && target.getMaterial() != Material.water && target.getMaterial() != Material.lava) {
 				if (inventory != null) {
-					for (ItemStack stack : target.getBlockDropped(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
+					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
 						if (!addStacktoInventory(inventory, stack))
 							Utils.dropStack(world, x, y, z, stack);
 				} else if (pipe != null) {
-					for (ItemStack stack : target.getBlockDropped(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
+					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
 						if (!addStackToPipe(pipe, stack, pipeDir))
 							Utils.dropStack(world, x, y, z, stack);
 				} else
 					target.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-				world.playAuxSFXAtEntity(null, 2001, x, y, z, target.blockID + (world.getBlockMetadata(x, y, z) << 12));
+				world.playAuxSFXAtEntity(null, 2001, x, y, z, Block.getIdFromBlock(target) + (world.getBlockMetadata(x, y, z) << 12));
 				world.setBlockToAir(x, y, z);
 			}
 	}
@@ -117,9 +100,9 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 	protected IInventory getInventory(World world, int x, int y, int z, ForgeDirection dir) {
 		for (int num : Utils.getRandomizedList(0, 6)) {
 			ForgeDirection direction = getDirectionFromMetadata(num);
-			TileEntity tile = world.getBlockTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
-			if (tile instanceof IInventory)
-				return (IInventory) tile;
+			IInventory invt = Utils.getTileEntity(world, x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, IInventory.class);
+			if (invt != null)
+				return invt;
 		}
 		return null;
 	}
@@ -131,18 +114,18 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int meta) {
+	public IIcon getIcon(int side, int meta) {
 		return blockFront;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
+	public void registerBlockIcons(IIconRegister reg) {
 		blockFront = reg.registerIcon(Utils.getBlockTexture(Strings.CUBIC_SENSORING_DISLOCATOR_NAME));
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityCubicSensoringDislocator();
 	}
 }

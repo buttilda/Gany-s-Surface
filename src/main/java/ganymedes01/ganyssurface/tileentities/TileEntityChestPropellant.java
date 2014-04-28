@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.tileentities;
 
 import ganymedes01.ganyssurface.blocks.ChestPropellant;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
@@ -17,12 +18,12 @@ import net.minecraft.tileentity.TileEntity;
 public class TileEntityChestPropellant extends TileEntity implements ISidedInventory {
 
 	public ItemStack getInventoryToRender() {
-		if (worldObj.getBlockTileEntity(xCoord, yCoord - (ChestPropellant.MAX_PILE_SIZE - 1), zCoord) instanceof TileEntityChestPropellant)
+		if (Utils.getTileEntity(worldObj, xCoord, yCoord - (ChestPropellant.MAX_PILE_SIZE - 1), zCoord, TileEntityChestPropellant.class) != null)
 			return null;
-		TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - 1, zCoord);
-		if (tile instanceof IInventory)
+		IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - 1, zCoord, IInventory.class);
+		if (tile != null)
 			if (!(tile instanceof TileEntityChestPropellant))
-				return new ItemStack(worldObj.getBlockId(xCoord, yCoord - 1, zCoord), 1, worldObj.getBlockMetadata(xCoord, yCoord - 1, zCoord));
+				return new ItemStack(worldObj.getBlock(xCoord, yCoord - 1, zCoord), 1, worldObj.getBlockMetadata(xCoord, yCoord - 1, zCoord));
 			else
 				return tile == null ? null : ((TileEntityChestPropellant) tile).getInventoryToRender();
 		else
@@ -32,9 +33,9 @@ public class TileEntityChestPropellant extends TileEntity implements ISidedInven
 	@Override
 	public int getSizeInventory() {
 		for (int i = 0; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory && !(tile instanceof TileEntityChestPropellant))
-				return ((IInventory) tile).getSizeInventory();
+			IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - i, zCoord, IInventory.class);
+			if (tile != null && !(tile instanceof TileEntityChestPropellant))
+				return tile.getSizeInventory();
 		}
 		return 0;
 	}
@@ -42,9 +43,9 @@ public class TileEntityChestPropellant extends TileEntity implements ISidedInven
 	@Override
 	public ItemStack getStackInSlot(int slot) {
 		for (int i = 0; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory && !(tile instanceof TileEntityChestPropellant))
-				return ((IInventory) tile).getStackInSlot(slot);
+			IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - i, zCoord, IInventory.class);
+			if (tile != null && !(tile instanceof TileEntityChestPropellant))
+				return tile.getStackInSlot(slot);
 		}
 		return null;
 	}
@@ -52,9 +53,9 @@ public class TileEntityChestPropellant extends TileEntity implements ISidedInven
 	@Override
 	public ItemStack decrStackSize(int slot, int size) {
 		for (int i = 0; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory && !(tile instanceof TileEntityChestPropellant))
-				return ((IInventory) tile).decrStackSize(slot, size);
+			IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - i, zCoord, IInventory.class);
+			if (tile != null && !(tile instanceof TileEntityChestPropellant))
+				return tile.decrStackSize(slot, size);
 		}
 		return null;
 	}
@@ -62,9 +63,9 @@ public class TileEntityChestPropellant extends TileEntity implements ISidedInven
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
 		for (int i = 0; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory && !(tile instanceof TileEntityChestPropellant))
-				return ((IInventory) tile).getStackInSlotOnClosing(slot);
+			IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - i, zCoord, IInventory.class);
+			if (tile != null && !(tile instanceof TileEntityChestPropellant))
+				return tile.getStackInSlotOnClosing(slot);
 		}
 		return null;
 	}
@@ -72,28 +73,28 @@ public class TileEntityChestPropellant extends TileEntity implements ISidedInven
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		for (int i = 0; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory && !(tile instanceof TileEntityChestPropellant))
-				((IInventory) tile).setInventorySlotContents(slot, stack);
+			IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - i, zCoord, IInventory.class);
+			if (tile != null && !(tile instanceof TileEntityChestPropellant))
+				tile.setInventorySlotContents(slot, stack);
 		}
 	}
 
 	@Override
-	public String getInvName() {
+	public String getInventoryName() {
 		return null;
 	}
 
 	@Override
-	public boolean isInvNameLocalized() {
+	public boolean hasCustomInventoryName() {
 		return false;
 	}
 
 	@Override
 	public int getInventoryStackLimit() {
 		for (int i = 0; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory && !(tile instanceof TileEntityChestPropellant))
-				return ((IInventory) tile).getInventoryStackLimit();
+			IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - i, zCoord, IInventory.class);
+			if (tile != null && !(tile instanceof TileEntityChestPropellant))
+				return tile.getInventoryStackLimit();
 		}
 		return 0;
 	}
@@ -101,37 +102,37 @@ public class TileEntityChestPropellant extends TileEntity implements ISidedInven
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
 		for (int i = 0; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory && !(tile instanceof TileEntityChestPropellant))
-				return ((IInventory) tile).isUseableByPlayer(player);
+			IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - i, zCoord, IInventory.class);
+			if (tile != null && !(tile instanceof TileEntityChestPropellant))
+				return tile.isUseableByPlayer(player);
 		}
 		return false;
 	}
 
 	@Override
-	public void openChest() {
+	public void openInventory() {
 		for (int i = 0; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory && !(tile instanceof TileEntityChestPropellant))
-				((IInventory) tile).openChest();
+			IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - i, zCoord, IInventory.class);
+			if (tile != null && !(tile instanceof TileEntityChestPropellant))
+				tile.openInventory();
 		}
 	}
 
 	@Override
-	public void closeChest() {
+	public void closeInventory() {
 		for (int i = 0; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory && !(tile instanceof TileEntityChestPropellant))
-				((IInventory) tile).closeChest();
+			IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - i, zCoord, IInventory.class);
+			if (tile != null && !(tile instanceof TileEntityChestPropellant))
+				tile.closeInventory();
 		}
 	}
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		for (int i = 0; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory && !(tile instanceof TileEntityChestPropellant))
-				return ((IInventory) tile).isItemValidForSlot(slot, stack);
+			IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - i, zCoord, IInventory.class);
+			if (tile != null && !(tile instanceof TileEntityChestPropellant))
+				return tile.isItemValidForSlot(slot, stack);
 		}
 		return false;
 	}
@@ -139,12 +140,12 @@ public class TileEntityChestPropellant extends TileEntity implements ISidedInven
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
 		for (int i = 0; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory && !(tile instanceof TileEntityChestPropellant))
+			IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - i, zCoord, IInventory.class);
+			if (tile != null && !(tile instanceof TileEntityChestPropellant))
 				if (tile instanceof ISidedInventory)
 					return ((ISidedInventory) tile).getAccessibleSlotsFromSide(side);
 				else {
-					int size = ((IInventory) tile).getSizeInventory();
+					int size = tile.getSizeInventory();
 					int[] array = new int[size];
 					for (int j = 0; j < size; j++)
 						array[j] = j;
@@ -157,8 +158,8 @@ public class TileEntityChestPropellant extends TileEntity implements ISidedInven
 	@Override
 	public boolean canInsertItem(int slot, ItemStack stack, int side) {
 		for (int i = 0; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory && !(tile instanceof TileEntityChestPropellant))
+			IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - i, zCoord, IInventory.class);
+			if (tile != null && !(tile instanceof TileEntityChestPropellant))
 				if (tile instanceof ISidedInventory)
 					return ((ISidedInventory) tile).canInsertItem(slot, stack, side);
 				else
@@ -170,8 +171,8 @@ public class TileEntityChestPropellant extends TileEntity implements ISidedInven
 	@Override
 	public boolean canExtractItem(int slot, ItemStack stack, int side) {
 		for (int i = 0; i < ChestPropellant.MAX_PILE_SIZE; i++) {
-			TileEntity tile = worldObj.getBlockTileEntity(xCoord, yCoord - i, zCoord);
-			if (tile instanceof IInventory && !(tile instanceof TileEntityChestPropellant))
+			IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - i, zCoord, IInventory.class);
+			if (tile != null && !(tile instanceof TileEntityChestPropellant))
 				if (tile instanceof ISidedInventory)
 					return ((ISidedInventory) tile).canExtractItem(slot, stack, side);
 				else

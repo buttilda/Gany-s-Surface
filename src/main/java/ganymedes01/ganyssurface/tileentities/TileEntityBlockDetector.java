@@ -1,20 +1,20 @@
 package ganymedes01.ganyssurface.tileentities;
 
 import ganymedes01.ganyssurface.blocks.BlockDetector;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCocoa;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemReed;
 import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntitySkull;
-import net.minecraftforge.common.ForgeDirection;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 
 /**
@@ -41,7 +41,7 @@ public class TileEntityBlockDetector extends GanysInventory implements ISidedInv
 	@Override
 	public void updateEntity() {
 		if (inventory[0] != null)
-			if (inventory[0].getItem() instanceof IPlantable || inventory[0].getItem() == Item.dyePowder && inventory[0].getItemDamage() == 3) {
+			if (inventory[0].getItem() instanceof IPlantable || inventory[0].getItem() == Items.dye && inventory[0].getItemDamage() == 3) {
 				coolDown--;
 				if (coolDown <= 0) {
 					updateRedstoneSignalStatus(checkNearbyBlocks());
@@ -62,39 +62,39 @@ public class TileEntityBlockDetector extends GanysInventory implements ISidedInv
 		int y = yCoord + dir.offsetY;
 		int z = zCoord + dir.offsetZ;
 
-		int id = worldObj.getBlockId(x, y, z);
+		Block id = worldObj.getBlock(x, y, z);
 		int meta = worldObj.getBlockMetadata(x, y, z);
 
 		if (inventory[0] == null)
 			return false;
 		if (inventory[0].getItem() instanceof IPlantable)
-			if (id == ((IPlantable) inventory[0].getItem()).getPlantID(worldObj, xCoord, yCoord, zCoord)) {
+			if (id == ((IPlantable) inventory[0].getItem()).getPlant(worldObj, xCoord, yCoord, zCoord)) {
 				coolDown = 0;
-				int finalMeta = inventory[0].getItem() != Item.netherStalkSeeds ? 7 : 3;
+				int finalMeta = inventory[0].getItem() != Items.nether_wart ? 7 : 3;
 				return meta >= finalMeta;
 			}
 		if (inventory[0].getItem() instanceof ItemReed)
 			return checkIdPicked((ItemReed) inventory[0].getItem(), x, y, z);
 		else if (inventory[0].getItem() instanceof ItemBucket) {
-			if (inventory[0].getItem().itemID == Item.bucketLava.itemID)
-				return worldObj.getBlockMaterial(x, y, z) == Material.lava;
-			else if (inventory[0].getItem().itemID == Item.bucketWater.itemID)
-				return worldObj.getBlockMaterial(x, y, z) == Material.water;
+			if (inventory[0].getItem() == Items.lava_bucket)
+				return worldObj.getBlock(x, y, z).getMaterial() == Material.lava;
+			else if (inventory[0].getItem() == Items.water_bucket)
+				return worldObj.getBlock(x, y, z).getMaterial() == Material.water;
 		} else if (inventory[0].getItem() instanceof ItemSkull) {
-			TileEntity tile = worldObj.getBlockTileEntity(x, y, z);
-			if (tile != null && tile instanceof TileEntitySkull)
-				return ((TileEntitySkull) tile).getSkullType() == inventory[0].getItemDamage();
-		} else if (inventory[0].getItem() == Item.dyePowder && inventory[0].getItemDamage() == 3) {
+			TileEntitySkull skull = Utils.getTileEntity(worldObj, x, y, z, TileEntitySkull.class);
+			if (skull != null)
+				return skull.func_145904_a() == inventory[0].getItemDamage();
+		} else if (inventory[0].getItem() == Items.dye && inventory[0].getItemDamage() == 3) {
 			coolDown = 0;
-			return Block.blocksList[id] instanceof BlockCocoa && BlockCocoa.func_72219_c(meta) >= 2;
+			return id instanceof BlockCocoa && BlockCocoa.func_149987_c(meta) >= 2;
 		} else
-			return id == inventory[0].itemID && meta == inventory[0].getItemDamage();
+			return id == Block.getBlockFromItem(inventory[0].getItem()) && meta == inventory[0].getItemDamage();
 		return false;
 	}
 
 	protected boolean checkIdPicked(ItemReed item, int x, int y, int z) {
 		if (!worldObj.isAirBlock(x, y, z))
-			return worldObj.getBlockId(x, y, z) == (Integer) ReflectionHelper.getPrivateValue(ItemReed.class, item, "field_77830_a", "spawnID");
+			return worldObj.getBlock(x, y, z) == (Block) ReflectionHelper.getPrivateValue(ItemReed.class, item, "field_150935_a");
 		return false;
 	}
 
@@ -104,8 +104,8 @@ public class TileEntityBlockDetector extends GanysInventory implements ISidedInv
 	}
 
 	@Override
-	public void onInventoryChanged() {
-		super.onInventoryChanged();
+	public void markDirty() {
+		super.markDirty();
 		updateRedstoneSignalStatus(checkNearbyBlocks());
 	}
 

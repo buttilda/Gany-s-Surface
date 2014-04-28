@@ -45,11 +45,11 @@ public class MarketSales {
 	}
 
 	private static Sale getSaleONEFromMarket(TileEntityMarket market) {
-		return new Sale(market.getStackInSlot(TileEntityMarket.PRICE_ONE), market.getStackInSlot(TileEntityMarket.OFFER_ONE), market.xCoord, market.yCoord, market.zCoord, market.worldObj.provider.dimensionId, market.getOwner());
+		return new Sale(market.getStackInSlot(TileEntityMarket.PRICE_ONE), market.getStackInSlot(TileEntityMarket.OFFER_ONE), market.xCoord, market.yCoord, market.zCoord, market.getWorldObj().provider.dimensionId, market.getOwner());
 	}
 
 	private static Sale getSaleTWOFromMarket(TileEntityMarket market) {
-		return new Sale(market.getStackInSlot(TileEntityMarket.PRICE_TWO), market.getStackInSlot(TileEntityMarket.OFFER_TWO), market.xCoord, market.yCoord, market.zCoord, market.worldObj.provider.dimensionId, market.getOwner());
+		return new Sale(market.getStackInSlot(TileEntityMarket.PRICE_TWO), market.getStackInSlot(TileEntityMarket.OFFER_TWO), market.xCoord, market.yCoord, market.zCoord, market.getWorldObj().provider.dimensionId, market.getOwner());
 	}
 
 	public static class Sale {

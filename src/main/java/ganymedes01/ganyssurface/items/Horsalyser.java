@@ -2,20 +2,17 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import thaumcraft.api.IRepairable;
@@ -32,7 +29,6 @@ public class Horsalyser extends Item implements IRepairable {
 	private final DecimalFormat decForm = new DecimalFormat("##.##");
 
 	public Horsalyser() {
-		super(ModIDs.HORSALYSER_ID);
 		setMaxDamage(64);
 		setMaxStackSize(1);
 		setCreativeTab(GanysSurface.surfaceTab);
@@ -47,17 +43,17 @@ public class Horsalyser extends Item implements IRepairable {
 
 		if (target instanceof EntityHorse) {
 			EntityHorse horse = (EntityHorse) target;
-			String name = horse.getEntityName();
+			String name = horse.getCommandSenderName();
 
 			if (world.isRemote) {
-				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText(String.format("----- Analysing %s's Data -----", name)));
-				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Tamed: " + isTamed(horse.isTame(), horse.getOwnerName())));
-				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Type: " + getType(horse.getHorseType())));
-				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Jump Strength: " + getHorseJumpStrength(horse.getHorseJumpStrength())));
-				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Size: " + getHorseSize(horse.getHorseSize())));
-				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Max Health: " + getHorseHealth(horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).getBaseValue())));
-				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("Max Speed: " + getHorseMaxSpeed(horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getBaseValue())));
-				Minecraft.getMinecraft().thePlayer.sendChatToPlayer(ChatMessageComponent.createFromText("----- End -----"));
+				Utils.sendMessageToPlayer(player, String.format("----- Analysing %s's Data -----", name));
+				Utils.sendMessageToPlayer(player, "Tamed: " + isTamed(horse.isTame(), horse.getOwnerName()));
+				Utils.sendMessageToPlayer(player, "Type: " + getType(horse.getHorseType()));
+				Utils.sendMessageToPlayer(player, "Jump Strength: " + getHorseJumpStrength(horse.getHorseJumpStrength()));
+				Utils.sendMessageToPlayer(player, "Size: " + getHorseSize(horse.getHorseSize()));
+				Utils.sendMessageToPlayer(player, "Max Health: " + getHorseHealth(horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).getBaseValue()));
+				Utils.sendMessageToPlayer(player, "Max Speed: " + getHorseMaxSpeed(horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getBaseValue()));
+				Utils.sendMessageToPlayer(player, "----- End -----");
 			} else {
 				if (!player.capabilities.isCreativeMode)
 					horse.attackEntityFrom(DamageSource.generic, 1.0F);

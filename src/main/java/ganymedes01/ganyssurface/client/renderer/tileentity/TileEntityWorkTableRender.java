@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class TileEntityWorkTableRender extends TileEntitySpecialRenderer {
 
 	private RenderItem customRenderItem;
-	private ModelDualWorkTable model = new ModelDualWorkTable();
+	private final ModelDualWorkTable model = new ModelDualWorkTable();
 
 	public TileEntityWorkTableRender() {
 		customRenderItem = new RenderItem() {
@@ -74,7 +74,7 @@ public class TileEntityWorkTableRender extends TileEntitySpecialRenderer {
 						rotateAngle = -90.0F;
 					}
 
-					EntityItem ghostEntityItem = new EntityItem(workTable.worldObj);
+					EntityItem ghostEntityItem = new EntityItem(workTable.getWorldObj());
 					ghostEntityItem.hoverStart = 0.0F;
 					ItemStack stackToRender = stack.copy();
 					stackToRender.stackSize = 1;
@@ -103,7 +103,7 @@ public class TileEntityWorkTableRender extends TileEntitySpecialRenderer {
 					}
 					GL11.glScalef(scaleFactor, scaleFactor, scaleFactor);
 
-					customRenderItem.doRenderItem(ghostEntityItem, 0, 0, 0, 0, 0);
+					customRenderItem.doRender(ghostEntityItem, 0, 0, 0, 0, 0);
 				}
 				GL11.glPopMatrix();
 			}

@@ -1,16 +1,15 @@
 package ganymedes01.ganyssurface.integration;
 
-import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.items.ModItems;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -24,15 +23,15 @@ public class ForestryManager extends Integration {
 
 	@Override
 	public void init() {
-		FMLInterModComms.sendMessage(getModID(), "add-farmable-crop", "farmWheat@" + ModItems.camelliaSeeds.itemID + ".0." + ModBlocks.camelliaCrop.blockID + ".7");
-
-		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "miner@" + ModItems.colouredRedstone.itemID + ":*;");
-		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "forester@" + ModItems.camelliaSeeds.itemID + ";" + ModItems.teaLeaves.itemID + ";");
-		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "hunter@" + ModItems.poop.itemID + ":*;" + ModItems.pocketCritter.itemID + ";");
+		//		FMLInterModComms.sendMessage(getModID(), "add-farmable-crop", "farmWheat@" + ModItems.camelliaSeeds.itemID + ".0." + ModBlocks.camelliaCrop.blockID + ".7");
+		//
+		//		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "miner@" + ModItems.colouredRedstone.itemID + ":*;");
+		//		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "forester@" + ModItems.camelliaSeeds.itemID + ";" + ModItems.teaLeaves.itemID + ";");
+		//		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "hunter@" + ModItems.poop.itemID + ":*;" + ModItems.pocketCritter.itemID + ";");
 
 		ItemStack fert = getItem("fertilizerCompound", 24);
 		if (fert != null)
-			GameRegistry.addRecipe(fert, "xxx", "xyx", "xxx", 'x', new ItemStack(ModItems.rot, 1, 1), 'y', new ItemStack(Item.dyePowder, 1, 4));
+			GameRegistry.addRecipe(fert, "xxx", "xyx", "xxx", 'x', new ItemStack(ModItems.rot, 1, 1), 'y', new ItemStack(Items.dye, 1, 4));
 	}
 
 	@Override

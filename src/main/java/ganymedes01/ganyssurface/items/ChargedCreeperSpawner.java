@@ -2,21 +2,20 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EntityLivingData;
+import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSimpleFoiled;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Facing;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -32,10 +31,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class ChargedCreeperSpawner extends ItemSimpleFoiled {
 
 	@SideOnly(Side.CLIENT)
-	private Icon overlay;
+	private IIcon overlay;
 
 	public ChargedCreeperSpawner() {
-		super(ModIDs.CHARGED_CREEPER_SPAWNER_ID);
 		setTextureName("spawn_egg");
 		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CHARGED_CREEPER_SPAWNER_NAME));
@@ -53,7 +51,7 @@ public class ChargedCreeperSpawner extends ItemSimpleFoiled {
 					creeper.setLocationAndAngles(x, y, z, MathHelper.wrapAngleTo180_float(world.rand.nextFloat() * 360.0F), 0.0F);
 					creeper.rotationYawHead = creeper.rotationYaw;
 					creeper.renderYawOffset = creeper.rotationYaw;
-					creeper.onSpawnWithEgg((EntityLivingData) null);
+					creeper.onSpawnWithEgg((IEntityLivingData) null);
 					creeper.getDataWatcher().updateObject(17, Byte.valueOf((byte) 1));
 					world.spawnEntityInWorld(creeper);
 					creeper.playLivingSound();
@@ -68,13 +66,13 @@ public class ChargedCreeperSpawner extends ItemSimpleFoiled {
 		if (world.isRemote)
 			return true;
 		else {
-			int id = world.getBlockId(x, y, z);
+			Block block = world.getBlock(x, y, z);
 			x += Facing.offsetsXForSide[side];
 			y += Facing.offsetsYForSide[side];
 			z += Facing.offsetsZForSide[side];
 			double yOffSet = 0.0D;
 
-			if (side == 1 && Block.blocksList[id] != null && Block.blocksList[id].getRenderType() == 11)
+			if (side == 1 && block != null && block.getRenderType() == 11)
 				yOffSet = 0.5D;
 
 			Entity entity = spawnCreeper(world, x + 0.5D, y + yOffSet, z + 0.5D);
@@ -99,14 +97,14 @@ public class ChargedCreeperSpawner extends ItemSimpleFoiled {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
+	public void registerIcons(IIconRegister reg) {
 		super.registerIcons(reg);
 		overlay = reg.registerIcon("spawn_egg_overlay");
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamageForRenderPass(int meta, int pass) {
+	public IIcon getIconFromDamageForRenderPass(int meta, int pass) {
 		return pass > 0 ? overlay : super.getIconFromDamageForRenderPass(meta, pass);
 	}
 

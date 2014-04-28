@@ -3,7 +3,6 @@ package ganymedes01.ganyssurface.items;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 
@@ -19,7 +18,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class PortableDualWorkTable extends Item {
 
 	public PortableDualWorkTable() {
-		super(ModIDs.PORTABLE_DUAL_WORK_TABLE_ID);
 		setMaxStackSize(1);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.PORTABLE_DUAL_WORK_TABLE_NAME));
@@ -34,6 +32,7 @@ public class PortableDualWorkTable extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
 		TileEntityDualWorkTable tile = getTile(stack);
 		for (int i = 0; i < tile.getSizeInventory(); i++) {

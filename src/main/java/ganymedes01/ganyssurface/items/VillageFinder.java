@@ -3,7 +3,6 @@ package ganymedes01.ganyssurface.items;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.entities.EntityVillageFinder;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -14,7 +13,6 @@ import net.minecraft.world.World;
 public class VillageFinder extends Item {
 
 	public VillageFinder() {
-		super(ModIDs.VILLAGE_FINDER_ID);
 		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.VILLAGE_FINDER));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.VILLAGE_FINDER));

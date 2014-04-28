@@ -2,7 +2,6 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
@@ -27,7 +26,6 @@ import thaumcraft.api.IRepairable;
 public class BatNet extends Item implements IRepairable {
 
 	public BatNet() {
-		super(ModIDs.BAT_NET_ID);
 		setFull3D();
 		setMaxDamage(32);
 		setMaxStackSize(1);
@@ -37,6 +35,7 @@ public class BatNet extends Item implements IRepairable {
 	}
 
 	@Override
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
 		list.add(StatCollector.translateToLocal("attacktocapture"));
 	}
@@ -48,7 +47,7 @@ public class BatNet extends Item implements IRepairable {
 			if (!player.worldObj.isRemote) {
 				ItemStack pocketBat = new ItemStack(ModItems.pocketCritter, 1, meta);
 				if (((EntityLiving) target).hasCustomNameTag())
-					pocketBat.setItemName(((EntityBat) target).getCustomNameTag());
+					pocketBat.setStackDisplayName(((EntityBat) target).getCustomNameTag());
 				target.setDead();
 				if (!player.inventory.addItemStackToInventory(pocketBat))
 					target.entityDropItem(pocketBat, 1.0F);

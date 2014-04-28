@@ -1,12 +1,11 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Reference;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -30,7 +29,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class PocketCritter extends Item {
 
 	public PocketCritter() {
-		super(ModIDs.POCKET_CRITTER_ID);
 		setMaxDamage(0);
 		setMaxStackSize(1);
 		setHasSubtypes(true);
@@ -47,12 +45,13 @@ public class PocketCritter extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
 		list.add(StatCollector.translateToLocal("pleaseletmefree" + stack.getItemDamage()));
 	}
 
 	@Override
-	public String getItemDisplayName(ItemStack stack) {
+	public String getItemStackDisplayName(ItemStack stack) {
 		return ("" + StatCollector.translateToLocal(getUnlocalizedNameInefficiently(stack) + ".name")).trim();
 	}
 
@@ -61,7 +60,6 @@ public class PocketCritter extends Item {
 		if (world.isRemote)
 			return true;
 		else {
-			int blockID = world.getBlockId(x, y, z);
 			x += Facing.offsetsXForSide[side];
 			y += Facing.offsetsYForSide[side];
 			z += Facing.offsetsZForSide[side];
@@ -93,13 +91,14 @@ public class PocketCritter extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int itemID, CreativeTabs tabs, List list) {
-		list.add(new ItemStack(itemID, 1, 0));
-		list.add(new ItemStack(itemID, 1, 1));
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public void getSubItems(Item item, CreativeTabs tabs, List list) {
+		for (int i = 0; i < 2; i++)
+			list.add(new ItemStack(item, 1, i));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister reg) {
+	public void registerIcons(IIconRegister reg) {
 	}
 }

@@ -4,8 +4,8 @@ import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.PacketTypeHandler;
 import ganymedes01.ganyssurface.network.packet.PacketItemDisplay;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.packet.Packet;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraft.network.Packet;
+import net.minecraftforge.common.util.ForgeDirection;
 import buildcraft.api.transport.IPipeConnection;
 import buildcraft.api.transport.IPipeTile.PipeType;
 

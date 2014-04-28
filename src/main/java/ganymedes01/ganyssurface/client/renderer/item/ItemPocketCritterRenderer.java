@@ -101,10 +101,10 @@ public class ItemPocketCritterRenderer implements IItemRenderer {
 	}
 
 	private boolean isSquid(ItemStack stack) {
-		return stack.itemID == ModItems.roastedSquid.itemID || stack.getItemDamage() == 1;
+		return stack.getItem() == ModItems.roastedSquid || stack.getItemDamage() == 1;
 	}
 
 	private boolean isBat(ItemStack stack) {
-		return stack.itemID == ModItems.pocketCritter.itemID && stack.getItemDamage() == 0;
+		return stack.getItem() == ModItems.pocketCritter && stack.getItemDamage() == 0;
 	}
 }

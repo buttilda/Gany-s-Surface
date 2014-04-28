@@ -47,7 +47,7 @@ public class EE3Manager extends Integration {
 		String className = null;
 		if (obj instanceof ItemStack) {
 			ItemStack s = (ItemStack) obj;
-			stack = "\"stackSize\":" + s.stackSize + ",\"itemID\":" + s.itemID + ",\"itemDamage\":" + s.getItemDamage();
+			stack = "\"stackSize\":" + s.stackSize + ",\"itemID\":" + s.getItem() + ",\"itemDamage\":" + s.getItemDamage();
 			className = "ItemStack";
 		} else if (obj instanceof String) {
 			stack = "\"oreName\":\"" + (String) obj + "\",\"stackSize\":1";

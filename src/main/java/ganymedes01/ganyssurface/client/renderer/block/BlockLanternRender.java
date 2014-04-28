@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.client.renderer.block;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -18,22 +19,22 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class BlockLanternRender implements ISimpleBlockRenderingHandler {
 
-	private RenderBlocks renderer = new RenderBlocks();
-
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
-		renderer.renderBlockAsItem(Block.torchWood, 0, 1.0F);
-		renderer.renderBlockAsItem(Block.glass, 0, 1.0F);
+		renderer.renderBlockAsItem(Blocks.torch, 0, 1.0F);
+		renderer.renderBlockAsItem(Blocks.glass, 0, 1.0F);
 	}
 
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
-		return renderer.renderBlockTorch(Block.torchWood, x, y, z) && renderer.renderStandardBlock(Block.glass, x, y, z);
+		boolean torch = renderer.renderBlockTorch(Blocks.torch, x, y, z);
+		boolean glass = renderer.renderStandardBlock(Blocks.glass, x, y, z);
+		return torch || glass;
 	}
 
 	@Override
-	public boolean shouldRender3DInInventory() {
-		return true;
+	public boolean shouldRender3DInInventory(int modelId) {
+		return false;
 	}
 
 	@Override

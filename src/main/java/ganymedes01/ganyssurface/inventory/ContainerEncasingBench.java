@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.slots.SlotEncaser;
 import ganymedes01.ganyssurface.items.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
@@ -43,32 +44,18 @@ public class ContainerEncasingBench extends Container {
 		for (int i = 0; i < craftMatrix.getSizeInventory(); i++)
 			for (int j = 0; j < craftMatrix.getSizeInventory(); j++)
 				if (i != j)
-					if (!areStacksEqual(craftMatrix.getStackInSlot(i), craftMatrix.getStackInSlot(j)))
+					if (!Utils.areStacksTheSame(craftMatrix.getStackInSlot(i), craftMatrix.getStackInSlot(j), false))
 						return null;
 
 		ItemStack storageCase = new ItemStack(ModItems.storageCase);
-		storageCase.setTagCompound(new NBTTagCompound("tag"));
+		storageCase.setTagCompound(new NBTTagCompound());
 
-		NBTTagCompound stackData = new NBTTagCompound("data");
+		NBTTagCompound stackData = new NBTTagCompound();
 		ItemStack sCopy = craftMatrix.getStackInSlot(0).copy();
 		sCopy.stackSize = 1;
 		sCopy.writeToNBT(stackData);
-		storageCase.getTagCompound().setCompoundTag("stack", stackData);
+		storageCase.getTagCompound().setTag("stack", stackData);
 		return storageCase;
-	}
-
-	private boolean areStacksEqual(ItemStack s1, ItemStack s2) {
-		if (s1 == null || s2 == null)
-			return false;
-		if (s1.hasTagCompound() != s2.hasTagCompound())
-			return false;
-		if (s1.itemID == s2.itemID)
-			if (s1.getItemDamage() == s2.getItemDamage()) {
-				if (s1.hasTagCompound() || s2.hasTagCompound())
-					return s1.getTagCompound().equals(s2.getTagCompound());
-				return true;
-			}
-		return false;
 	}
 
 	@Override

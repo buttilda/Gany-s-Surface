@@ -14,7 +14,6 @@ import ganymedes01.ganyssurface.creativetab.CreativeTabSurface;
 import ganymedes01.ganyssurface.integration.ModIntegrator;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
-import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.recipes.ModRecipes;
 
 import java.io.File;
@@ -25,6 +24,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -34,11 +34,9 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms.IMCEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
 import cpw.mods.fml.relauncher.Side;
 
 /**
@@ -49,7 +47,6 @@ import cpw.mods.fml.relauncher.Side;
  */
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION_NUMBER, dependencies = Reference.DEPENDENCIES)
-@NetworkMod(channels = { Reference.CHANNEL_NAME }, clientSideRequired = true, serverSideRequired = true, packetHandler = PacketHandler.class)
 public class GanysSurface {
 
 	@Instance(Reference.MOD_ID)
@@ -79,7 +76,7 @@ public class GanysSurface {
 
 		if (shouldDoVersionCheck) {
 			VersionHelper.execute();
-			TickRegistry.registerTickHandler(new VersionCheckTickHandler(), Side.CLIENT);
+			FMLCommonHandler.instance().bus().register(new VersionCheckTickHandler());
 		}
 
 		proxy.registerEntities();
@@ -117,7 +114,7 @@ public class GanysSurface {
 
 	@EventHandler
 	public void load(FMLInitializationEvent event) {
-		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 		GameRegistry.registerFuelHandler(new FuelHandler());
 
 		if (mobsShouldPoop)
@@ -127,7 +124,7 @@ public class GanysSurface {
 		proxy.registerTileEntities();
 		proxy.registerRenderers();
 
-		if (!Loader.isModLoaded("mobsplice"))
+		if (!Loader.isModLoaded("mobsplice") && !Loader.isModLoaded("ganysend") && !Loader.isModLoaded("ganysnether"))
 			if (event.getSide() == Side.CLIENT) {
 				RenderCapeHandler.getUsernames();
 				MinecraftForge.EVENT_BUS.register(new RenderCapeHandler());

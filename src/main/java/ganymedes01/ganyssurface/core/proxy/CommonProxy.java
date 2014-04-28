@@ -110,7 +110,7 @@ public class CommonProxy implements IGuiHandler {
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		TileEntity tile = world.getBlockTileEntity(x, y, z);
+		TileEntity tile = world.getTileEntity(x, y, z);
 		switch (ID) {
 			case GUIsID.BLOCK_DETECTOR:
 				return new ContainerBlockDetector(player.inventory, (TileEntityBlockDetector) tile);
@@ -123,7 +123,7 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.INK_HARVESTER:
 				return new ContainerInkHarvester(player.inventory, (TileEntityInkHarvester) tile);
 			case GUIsID.MARKET_PUBLIC:
-				return new ContainerMarketPublic(player.inventory, (TileEntityMarket) tile, player.username);
+				return new ContainerMarketPublic(player.inventory, (TileEntityMarket) tile, player.getCommandSenderName());
 			case GUIsID.MARKET_PRIVATE:
 				return new ContainerMarketPrivate(player.inventory, (TileEntityMarket) tile);
 			case GUIsID.DUAL_WORK_TABLE:
@@ -142,7 +142,7 @@ public class CommonProxy implements IGuiHandler {
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		TileEntity tile = world.getBlockTileEntity(x, y, z);
+		TileEntity tile = world.getTileEntity(x, y, z);
 		switch (ID) {
 			case GUIsID.BLOCK_DETECTOR:
 				return new GuiBlockDetector(player.inventory, (TileEntityBlockDetector) tile);
@@ -155,7 +155,7 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.INK_HARVESTER:
 				return new GuiInkHarvester(player.inventory, (TileEntityInkHarvester) tile);
 			case GUIsID.MARKET_PUBLIC:
-				return new GuiMarketPublic(player.inventory, (TileEntityMarket) tile, player.username);
+				return new GuiMarketPublic(player.inventory, (TileEntityMarket) tile, player.getCommandSenderName());
 			case GUIsID.MARKET_PRIVATE:
 				return new GuiMarketPrivate(player.inventory, (TileEntityMarket) tile);
 			case GUIsID.DUAL_WORK_TABLE:

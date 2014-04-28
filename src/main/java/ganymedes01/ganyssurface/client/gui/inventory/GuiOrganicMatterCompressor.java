@@ -32,7 +32,7 @@ public class GuiOrganicMatterCompressor extends GuiGanysSurface {
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
-		fontRenderer.drawString(StatCollector.translateToLocal(compressor.getInvName()), xSize / 2 - fontRenderer.getStringWidth(StatCollector.translateToLocal(compressor.getInvName())) / 2, 6, BLACK);
+		fontRenderer.drawString(StatCollector.translateToLocal(compressor.getInventoryName()), xSize / 2 - fontRenderer.getStringWidth(StatCollector.translateToLocal(compressor.getInventoryName())) / 2, 6, BLACK);
 		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
 		fontRenderer.drawString(StatCollector.translateToLocal("matter"), 89, ySize - 94, BLACK);
 	}

@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.core.handlers;
 import ganymedes01.ganyssurface.client.renderer.DownloadImageData;
 import ganymedes01.ganyssurface.lib.Reference;
 
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,7 +11,7 @@ import java.util.Scanner;
 import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.ThreadDownloadImageData;
 import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.event.ForgeSubscribe;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -39,17 +40,28 @@ public class RenderCapeHandler {
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onPreRenderSpecials(RenderPlayerEvent.Specials.Pre event) {
-		if (event.entityPlayer instanceof AbstractClientPlayer && CAPE_DATA instanceof DownloadImageData && JEBJEB_CAPE_DATA instanceof DownloadImageData && KPR_CAPE_DATA instanceof DownloadImageData)
-			if (usersWithCapes.contains(event.entityPlayer.username)) {
-				if (event.entityPlayer.username.equals("Jeb_Jeb"))
-					((AbstractClientPlayer) event.entityPlayer).getTextureCape().getBufferedImage(((DownloadImageData) JEBJEB_CAPE_DATA).getBufferedImage());
-				else if (event.entityPlayer.username.equals("KingPurpleRaptor"))
-					((AbstractClientPlayer) event.entityPlayer).getTextureCape().getBufferedImage(((DownloadImageData) KPR_CAPE_DATA).getBufferedImage());
-				else
-					((AbstractClientPlayer) event.entityPlayer).getTextureCape().getBufferedImage(((DownloadImageData) CAPE_DATA).getBufferedImage());
-				event.renderCape = true;
-			}
+		try {
+			if (event.entityPlayer instanceof AbstractClientPlayer && CAPE_DATA instanceof DownloadImageData && JEBJEB_CAPE_DATA instanceof DownloadImageData && KPR_CAPE_DATA instanceof DownloadImageData)
+				if (usersWithCapes.contains(event.entityPlayer.getCommandSenderName())) {
+					AbstractClientPlayer player = (AbstractClientPlayer) event.entityPlayer;
+					if (!player.getTextureCape().isTextureUploaded()) {
+						Field textureUploaded = player.getTextureCape().getClass().getField("textureUploaded");
+						textureUploaded.setAccessible(true);
+						textureUploaded.set(((AbstractClientPlayer) event.entityPlayer).getTextureCape(), true);
+					}
+					if (event.entityPlayer.getCommandSenderName().equals("Jeb_Jeb"))
+						player.getTextureCape().setBufferedImage(((DownloadImageData) JEBJEB_CAPE_DATA).getBufferedImage());
+					else if (event.entityPlayer.getCommandSenderName().equals("KingPurpleRaptor"))
+						player.getTextureCape().setBufferedImage(((DownloadImageData) KPR_CAPE_DATA).getBufferedImage());
+					else
+						player.getTextureCape().setBufferedImage(((DownloadImageData) CAPE_DATA).getBufferedImage());
+
+					event.renderCape = true;
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

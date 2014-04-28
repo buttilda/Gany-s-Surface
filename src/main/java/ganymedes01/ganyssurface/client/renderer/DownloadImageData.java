@@ -10,11 +10,11 @@ import javax.imageio.ImageIO;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.IImageBuffer;
 import net.minecraft.client.renderer.ThreadDownloadImageData;
+import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.client.renderer.texture.SimpleTexture;
 import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.renderer.texture.TextureObject;
 import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.client.resources.ResourceManager;
+import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,7 +33,7 @@ public class DownloadImageData extends ThreadDownloadImageData {
 	private final IImageBuffer imageBuffer;
 	private BufferedImage bufferedImage;
 	private Thread imageThread;
-	private SimpleTexture imageLocation;
+	private final SimpleTexture imageLocation;
 	private boolean textureUploaded;
 
 	public DownloadImageData(String imageUrl, ResourceLocation imageLoc, IImageBuffer imageBuffer) {
@@ -59,12 +59,13 @@ public class DownloadImageData extends ThreadDownloadImageData {
 		return bufferedImage;
 	}
 
+	@Override
 	public void setBufferedImage(BufferedImage buffer) {
 		bufferedImage = buffer;
 	}
 
 	@Override
-	public void loadTexture(ResourceManager manager) throws IOException {
+	public void loadTexture(IResourceManager manager) throws IOException {
 		if (bufferedImage == null) {
 			if (imageLocation != null) {
 				imageLocation.loadTexture(manager);
@@ -83,7 +84,7 @@ public class DownloadImageData extends ThreadDownloadImageData {
 
 	public static ThreadDownloadImageData getDownloadImage(ResourceLocation resourceLoc, String textureURL, ResourceLocation imageLoc, IImageBuffer imageBuffer) {
 		TextureManager texturemanager = Minecraft.getMinecraft().getTextureManager();
-		TextureObject tex = texturemanager.getTexture(resourceLoc);
+		ITextureObject tex = texturemanager.getTexture(resourceLoc);
 		if (tex == null) {
 			tex = new DownloadImageData(textureURL, imageLoc, imageBuffer);
 			texturemanager.loadTexture(resourceLoc, tex);

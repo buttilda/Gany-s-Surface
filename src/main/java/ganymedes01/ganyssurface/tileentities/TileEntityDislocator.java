@@ -3,7 +3,7 @@ package ganymedes01.ganyssurface.tileentities;
 import ganymedes01.ganyssurface.blocks.Dislocator;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import buildcraft.api.transport.IPipeConnection;
 import buildcraft.api.transport.IPipeTile.PipeType;
 

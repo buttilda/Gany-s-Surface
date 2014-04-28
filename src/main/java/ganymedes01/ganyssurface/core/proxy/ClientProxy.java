@@ -27,11 +27,9 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityReddustFX;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.item.Item;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
-import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
@@ -55,11 +53,11 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRenderers() {
-		MinecraftForgeClient.registerItemRenderer(ModBlocks.planter.blockID, new ItemPlanterRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModBlocks.dualWorkTable.blockID, new ItemDualWorkTableRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModItems.storageCase.itemID, new ItemStorageCaseRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModItems.pocketCritter.itemID, new ItemPocketCritterRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModItems.roastedSquid.itemID, new ItemPocketCritterRenderer());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.planter), new ItemPlanterRenderer());
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.dualWorkTable), new ItemDualWorkTableRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModItems.storageCase, new ItemStorageCaseRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModItems.pocketCritter, new ItemPocketCritterRenderer());
+		MinecraftForgeClient.registerItemRenderer(ModItems.roastedSquid, new ItemPocketCritterRenderer());
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityPoop.class, new RenderSnowball(ModItems.poop, 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBatPoop.class, new RenderSnowball(ModItems.poop, 1));
@@ -71,41 +69,41 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerBlockHandler(new BlockItemDisplayRender());
 	}
 
-	@Override
-	public void handleItemDisplayPacket(int x, int y, int z, ItemStack stack) {
-		World world = FMLClientHandler.instance().getClient().theWorld;
-		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-		if (tileEntity != null)
-			if (tileEntity instanceof TileEntityItemDisplay)
-				((TileEntityItemDisplay) tileEntity).addItemToDisplay(stack);
-	}
-
-	@Override
-	public void handleWorkTablePacket(int x, int y, int z, ItemStack[] inventory) {
-		World world = FMLClientHandler.instance().getClient().theWorld;
-		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-		if (tileEntity != null && inventory != null)
-			if (tileEntity instanceof TileEntityWorkTable)
-				for (int i = 0; i < inventory.length; i++)
-					((TileEntityWorkTable) tileEntity).setInventorySlotContents(i, inventory[i]);
-	}
-
-	@Override
-	public void handlePlanterPacket(int x, int y, int z, float armExtension) {
-		World world = FMLClientHandler.instance().getClient().theWorld;
-		if (world != null) {
-			TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-			if (tileEntity != null)
-				if (tileEntity instanceof TileEntityPlanter)
-					((TileEntityPlanter) tileEntity).setArmExtension(armExtension);
-		}
-	}
+	//	@Override
+	//	public void handleItemDisplayPacket(int x, int y, int z, ItemStack stack) {
+	//		World world = FMLClientHandler.instance().getClient().theWorld;
+	//		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
+	//		if (tileEntity != null)
+	//			if (tileEntity instanceof TileEntityItemDisplay)
+	//				((TileEntityItemDisplay) tileEntity).addItemToDisplay(stack);
+	//	}
+	//
+	//	@Override
+	//	public void handleWorkTablePacket(int x, int y, int z, ItemStack[] inventory) {
+	//		World world = FMLClientHandler.instance().getClient().theWorld;
+	//		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
+	//		if (tileEntity != null && inventory != null)
+	//			if (tileEntity instanceof TileEntityWorkTable)
+	//				for (int i = 0; i < inventory.length; i++)
+	//					((TileEntityWorkTable) tileEntity).setInventorySlotContents(i, inventory[i]);
+	//	}
+	//
+	//	@Override
+	//	public void handlePlanterPacket(int x, int y, int z, float armExtension) {
+	//		World world = FMLClientHandler.instance().getClient().theWorld;
+	//		if (world != null) {
+	//			TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
+	//			if (tileEntity != null)
+	//				if (tileEntity instanceof TileEntityPlanter)
+	//					((TileEntityPlanter) tileEntity).setArmExtension(armExtension);
+	//		}
+	//	}
 
 	@Override
 	public void handleParticleEffects(World world, double x, double y, double z, int id, int meta) {
 		switch (id) {
 			case ParticleEffectsID.POOP:
-				world.spawnParticle("iconcrack_" + ModItems.poop.itemID + "_" + meta, x, y, z, (Math.random() * 2.0D - 1.0D) * 0.2D, (Math.random() * 2.0D - 1.0D) * 0.2D, (Math.random() * 2.0D - 1.0D) * 0.2D);
+				world.spawnParticle("iconcrack_" + ModItems.poop + "_" + meta, x, y, z, (Math.random() * 2.0D - 1.0D) * 0.2D, (Math.random() * 2.0D - 1.0D) * 0.2D, (Math.random() * 2.0D - 1.0D) * 0.2D);
 				break;
 			case ParticleEffectsID.COLOURED_REDSTONE:
 				EntityReddustFX fx = getParticle(world, x, y, z, meta);
@@ -133,7 +131,7 @@ public class ClientProxy extends CommonProxy {
 				f3 = 0.0F;
 
 			EntityReddustFX fx = new EntityReddustFX(world, d0, d1, d2, f1, f2, f3);
-			float[] colour = EntitySheep.fleeceColorTable[BlockColored.getBlockFromDye(colourIndex)];
+			float[] colour = EntitySheep.fleeceColorTable[BlockColored.func_150031_c(colourIndex)];
 			fx.setRBGColorF(colour[0], colour[1], colour[2]);
 
 			return fx;

@@ -24,8 +24,8 @@ public class DispenserBehaviorPoop extends BehaviorDefaultDispenseItem {
 	@Override
 	public ItemStack dispenseStack(IBlockSource block, ItemStack stack) {
 		World world = block.getWorld();
-		IPosition iposition = BlockDispenser.getIPositionFromBlockSource(block);
-		EnumFacing enumfacing = BlockDispenser.getFacing(block.getBlockMetadata());
+		IPosition iposition = BlockDispenser.func_149939_a(block);
+		EnumFacing enumfacing = BlockDispenser.func_149937_b(block.getBlockMetadata());
 		IProjectile iprojectile = null;
 		if (stack.getItemDamage() == 0)
 			iprojectile = new EntityPoop(world, iposition.getX(), iposition.getY(), iposition.getZ());

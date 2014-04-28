@@ -3,15 +3,13 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityOrganicMatterCompressor;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
@@ -25,16 +23,16 @@ import net.minecraft.world.World;
 public class OrganicMatterCompressor extends BlockContainer {
 
 	public OrganicMatterCompressor() {
-		super(ModIDs.ORGANIC_MATTER_COMPRESSOR_ID, Material.rock);
+		super(Material.rock);
 		setHardness(3.5F);
-		setStepSound(soundStoneFootstep);
+		setStepSound(soundTypeStone);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setTextureName(Utils.getBlockTexture(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
+		setBlockName(Utils.getUnlocalizedName(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
+		setBlockTextureName(Utils.getBlockTexture(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world) {
+	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityOrganicMatterCompressor();
 	}
 
@@ -45,7 +43,7 @@ public class OrganicMatterCompressor extends BlockContainer {
 		if (player.isSneaking())
 			return false;
 		else {
-			TileEntityOrganicMatterCompressor tile = (TileEntityOrganicMatterCompressor) world.getBlockTileEntity(x, y, z);
+			TileEntityOrganicMatterCompressor tile = Utils.getTileEntity(world, x, y, z, TileEntityOrganicMatterCompressor.class);
 			if (tile != null)
 				player.openGui(GanysSurface.instance, GUIsID.ORGANIC_MATTER_COMPRESSOR, world, x, y, z);
 			return true;
@@ -53,17 +51,9 @@ public class OrganicMatterCompressor extends BlockContainer {
 	}
 
 	@Override
-	public void breakBlock(World world, int x, int y, int z, int par5, int par6) {
-		TileEntityOrganicMatterCompressor tile = (TileEntityOrganicMatterCompressor) world.getBlockTileEntity(x, y, z);
-		if (tile != null) {
-			for (int j1 = 0; j1 < tile.getSizeInventory(); ++j1) {
-				ItemStack stack = tile.getStackInSlot(j1);
-				if (stack != null)
-					Utils.dropStack(world, x, y, z, stack);
-			}
-			world.func_96440_m(x, y, z, par5);
-		}
-		super.breakBlock(world, x, y, z, par5, par6);
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
+		Utils.dropInventoryContents(world.getTileEntity(x, y, z));
+		super.breakBlock(world, x, y, z, block, meta);
 	}
 
 	@Override
@@ -73,6 +63,6 @@ public class OrganicMatterCompressor extends BlockContainer {
 
 	@Override
 	public int getComparatorInputOverride(World world, int x, int y, int z, int side) {
-		return Container.calcRedstoneFromInventory((IInventory) world.getBlockTileEntity(x, y, z));
+		return Container.calcRedstoneFromInventory(Utils.getTileEntity(world, x, y, z, TileEntityOrganicMatterCompressor.class));
 	}
 }

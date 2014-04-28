@@ -47,7 +47,7 @@ public class ContainerWorkTable extends Container {
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(workTable.invtCraftMatrix, workTable.worldObj));
+		craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(workTable.invtCraftMatrix, workTable.getWorldObj()));
 	}
 
 	@Override

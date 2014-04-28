@@ -4,20 +4,18 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.blocks.ColouredRedstone;
 import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockColored;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -30,10 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ColouredRedstoneItem extends Item {
 
-	private static ItemStack[] redstones;
-
 	public ColouredRedstoneItem() {
-		super(ModIDs.COLOURED_REDSTONE_ITEM_ID);
 		setMaxDamage(0);
 		setHasSubtypes(true);
 		setCreativeTab(GanysSurface.surfaceTab);
@@ -44,7 +39,7 @@ public class ColouredRedstoneItem extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack stack, int pass) {
-		float[] colour = EntitySheep.fleeceColorTable[BlockColored.getBlockFromDye(stack.getItemDamage())];
+		float[] colour = EntitySheep.fleeceColorTable[BlockColored.func_150031_c(stack.getItemDamage())];
 		return Utils.getColour((int) (colour[0] * 255), (int) (colour[1] * 255), (int) (colour[2] * 255));
 	}
 
@@ -55,7 +50,7 @@ public class ColouredRedstoneItem extends Item {
 
 	@Override
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float hitX, float hitY, float hitZ) {
-		if (world.getBlockId(x, y, z) != Block.snow.blockID) {
+		if (world.getBlock(x, y, z) != Blocks.snow) {
 			if (side == 0)
 				y--;
 			if (side == 1)
@@ -78,7 +73,7 @@ public class ColouredRedstoneItem extends Item {
 		else {
 			if (ModBlocks.colouredRedstone[stack.getItemDamage()].canPlaceBlockAt(world, x, y, z)) {
 				stack.stackSize--;
-				world.setBlock(x, y, z, ModBlocks.colouredRedstone[stack.getItemDamage()].blockID);
+				world.setBlock(x, y, z, ModBlocks.colouredRedstone[stack.getItemDamage()]);
 			}
 
 			return true;
@@ -87,15 +82,10 @@ public class ColouredRedstoneItem extends Item {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(int itemID, CreativeTabs tabs, List list) {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void getSubItems(Item item, CreativeTabs tabs, List list) {
 		for (int i = 0; i < ColouredRedstone.COLOURS.length; i++)
 			if (i != 1) // Skip Red
-				list.add(new ItemStack(itemID, 1, i));
-	}
-
-	public static ItemStack[] getRedstonesForRecipe() {
-		if (redstones == null)
-			redstones = new ItemStack[] { new ItemStack(ModItems.colouredRedstone, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Item.redstone) };
-		return redstones;
+				list.add(new ItemStack(item, 1, i));
 	}
 }

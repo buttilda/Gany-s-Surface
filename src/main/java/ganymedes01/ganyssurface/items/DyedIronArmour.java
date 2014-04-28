@@ -4,7 +4,6 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemStack;
 
 /**
@@ -16,8 +15,8 @@ import net.minecraft.item.ItemStack;
 
 public class DyedIronArmour extends ItemDyeableArmour {
 
-	public DyedIronArmour(int id, int type) {
-		super(id, EnumArmorMaterial.IRON, type);
+	public DyedIronArmour(int type) {
+		super(ArmorMaterial.IRON, type);
 
 		switch (type) {
 			case 0:

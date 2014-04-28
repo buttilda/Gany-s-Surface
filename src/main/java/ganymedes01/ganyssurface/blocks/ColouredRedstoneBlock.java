@@ -2,20 +2,21 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockColored;
-import net.minecraft.block.BlockOreStorage;
+import net.minecraft.block.BlockCompressed;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
-import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -26,16 +27,21 @@ import cpw.mods.fml.relauncher.SideOnly;
  * 
  */
 
-public class ColouredRedstoneBlock extends BlockOreStorage {
+public class ColouredRedstoneBlock extends BlockCompressed {
 
 	protected ColouredRedstoneBlock() {
-		super(ModIDs.COLOURED_REDSTONE_BLOCK_ID);
+		super(null);
 		setHardness(5.0F);
 		setResistance(10.0F);
-		setStepSound(soundMetalFootstep);
+		setStepSound(soundTypeMetal);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setTextureName(Utils.getBlockTexture(Strings.COLOURED_REDSTONE_BLOCK_NAME));
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_BLOCK_NAME));
+		setBlockName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_BLOCK_NAME));
+		setBlockTextureName(Utils.getBlockTexture(Strings.COLOURED_REDSTONE_BLOCK_NAME));
+	}
+
+	@Override
+	public MapColor getMapColor(int meta) {
+		return MapColor.getMapColorForBlockColored(meta);
 	}
 
 	@Override
@@ -47,7 +53,7 @@ public class ColouredRedstoneBlock extends BlockOreStorage {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public int getRenderColor(int meta) {
-		float[] colour = EntitySheep.fleeceColorTable[BlockColored.getBlockFromDye(meta)];
+		float[] colour = EntitySheep.fleeceColorTable[BlockColored.func_150031_c(meta)];
 		return Utils.getColour((int) (colour[0] * 255), (int) (colour[1] * 255), (int) (colour[2] * 255));
 	}
 
@@ -58,10 +64,11 @@ public class ColouredRedstoneBlock extends BlockOreStorage {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int id, CreativeTabs tab, List list) {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
 		for (int i = 0; i < 16; i++)
 			if (i != 1) // Skip Red
-				list.add(new ItemStack(id, 1, i));
+				list.add(new ItemStack(item, 1, i));
 	}
 
 	@Override
@@ -73,15 +80,15 @@ public class ColouredRedstoneBlock extends BlockOreStorage {
 	public int isProvidingWeakPower(IBlockAccess world, int x, int y, int z, int side) {
 		int meta = world.getBlockMetadata(x, y, z);
 		ForgeDirection dir = ForgeDirection.VALID_DIRECTIONS[side].getOpposite();
-		int id = world.getBlockId(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
-		if (id == Block.redstoneWire.blockID || Block.blocksList[id] instanceof ColouredRedstone && id != ModBlocks.colouredRedstone[meta].blockID)
+		Block block = world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
+		if (block == Blocks.redstone_wire || block instanceof ColouredRedstone && block != ModBlocks.colouredRedstone[meta])
 			return 0;
 		else
 			return 15;
 	}
 
 	@Override
-	public boolean isBlockSolidOnSide(World world, int x, int y, int z, ForgeDirection side) {
+	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
 		return true;
 	}
 }

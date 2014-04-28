@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.tileentities;
 
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -49,7 +50,7 @@ public class TileEntityAutoEncaser extends GanysInventory implements ISidedInven
 		if (inventory[9] == null) {
 			inventory[9] = encased;
 			added = true;
-		} else if (areStacksEqual(encased, inventory[9]) && inventory[9].stackSize < 64) {
+		} else if (Utils.areStacksTheSame(encased, inventory[9], false) && inventory[9].stackSize < 64) {
 			inventory[9].stackSize++;
 			added = true;
 		}
@@ -63,28 +64,14 @@ public class TileEntityAutoEncaser extends GanysInventory implements ISidedInven
 
 	private ItemStack getEncasedItem() {
 		ItemStack storageCase = new ItemStack(ModItems.storageCase);
-		storageCase.setTagCompound(new NBTTagCompound("tag"));
+		storageCase.setTagCompound(new NBTTagCompound());
 
-		NBTTagCompound stackData = new NBTTagCompound("data");
+		NBTTagCompound stackData = new NBTTagCompound();
 		ItemStack sCopy = inventory[0];
 		sCopy.stackSize = 1;
 		sCopy.writeToNBT(stackData);
-		storageCase.getTagCompound().setCompoundTag("stack", stackData);
+		storageCase.getTagCompound().setTag("stack", stackData);
 		return storageCase;
-	}
-
-	private boolean areStacksEqual(ItemStack s1, ItemStack s2) {
-		if (s1 == null || s2 == null)
-			return false;
-		if (s1.hasTagCompound() != s2.hasTagCompound())
-			return false;
-		if (s1.itemID == s2.itemID)
-			if (s1.getItemDamage() == s2.getItemDamage()) {
-				if (s1.hasTagCompound() || s2.hasTagCompound())
-					return s1.getTagCompound().equals(s2.getTagCompound());
-				return true;
-			}
-		return false;
 	}
 
 	@Override
@@ -104,7 +91,7 @@ public class TileEntityAutoEncaser extends GanysInventory implements ISidedInven
 			if (stacks.isEmpty())
 				return true;
 			for (ItemStack s : stacks)
-				if (!areStacksEqual(s, stack))
+				if (!Utils.areStacksTheSame(s, stack, false))
 					return false;
 			return true;
 		}

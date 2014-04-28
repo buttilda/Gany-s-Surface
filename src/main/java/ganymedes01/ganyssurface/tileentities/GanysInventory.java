@@ -20,11 +20,6 @@ public class GanysInventory extends TileEntity implements IInventory {
 	protected ItemStack[] inventory;
 	private final String invName;
 
-	public GanysInventory() {
-		invName = null;
-		inventory = new ItemStack[1];
-	}
-
 	public GanysInventory(int invSize, String invName) {
 		this.invName = invName;
 		inventory = new ItemStack[invSize];
@@ -37,35 +32,47 @@ public class GanysInventory extends TileEntity implements IInventory {
 
 	@Override
 	public ItemStack getStackInSlot(int slot) {
-		return inventory[slot];
+		try {
+			return inventory[slot];
+		} finally {
+			markDirty();
+		}
 	}
 
 	@Override
 	public ItemStack decrStackSize(int slot, int size) {
-		if (inventory[slot] != null) {
-			ItemStack itemstack;
-			if (inventory[slot].stackSize <= size) {
-				itemstack = inventory[slot];
-				inventory[slot] = null;
-				return itemstack;
-			} else {
-				itemstack = inventory[slot].splitStack(size);
-				if (inventory[slot].stackSize == 0)
+		try {
+			if (inventory[slot] != null) {
+				ItemStack itemstack;
+				if (inventory[slot].stackSize <= size) {
+					itemstack = inventory[slot];
 					inventory[slot] = null;
-				return itemstack;
-			}
-		} else
-			return null;
+					return itemstack;
+				} else {
+					itemstack = inventory[slot].splitStack(size);
+					if (inventory[slot].stackSize == 0)
+						inventory[slot] = null;
+					return itemstack;
+				}
+			} else
+				return null;
+		} finally {
+			markDirty();
+		}
 	}
 
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
-		if (inventory[slot] != null) {
-			ItemStack itemstack = inventory[slot];
-			inventory[slot] = null;
-			return itemstack;
-		} else
-			return null;
+		try {
+			if (inventory[slot] != null) {
+				ItemStack itemstack = inventory[slot];
+				inventory[slot] = null;
+				return itemstack;
+			} else
+				return null;
+		} finally {
+			markDirty();
+		}
 	}
 
 	@Override
@@ -74,15 +81,17 @@ public class GanysInventory extends TileEntity implements IInventory {
 
 		if (stack != null && stack.stackSize > getInventoryStackLimit())
 			stack.stackSize = getInventoryStackLimit();
+
+		markDirty();
 	}
 
 	@Override
-	public String getInvName() {
+	public String getInventoryName() {
 		return Utils.getConainerName(invName);
 	}
 
 	@Override
-	public boolean isInvNameLocalized() {
+	public boolean hasCustomInventoryName() {
 		return false;
 	}
 
@@ -97,11 +106,11 @@ public class GanysInventory extends TileEntity implements IInventory {
 	}
 
 	@Override
-	public void openChest() {
+	public void openInventory() {
 	}
 
 	@Override
-	public void closeChest() {
+	public void closeInventory() {
 	}
 
 	@Override
@@ -110,29 +119,33 @@ public class GanysInventory extends TileEntity implements IInventory {
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound data) {
-		super.readFromNBT(data);
-		NBTTagList tagList = data.getTagList("Items");
+	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+		NBTTagList tags = nbt.getTagList("Items", 10);
 		inventory = new ItemStack[getSizeInventory()];
-		for (int i = 0; i < tagList.tagCount(); i++) {
-			NBTTagCompound tagCompound = (NBTTagCompound) tagList.tagAt(i);
-			byte slot = tagCompound.getByte("Slot");
-			if (slot >= 0 && slot < inventory.length)
-				inventory[slot] = ItemStack.loadItemStackFromNBT(tagCompound);
+
+		for (int i = 0; i < tags.tagCount(); i++) {
+			NBTTagCompound data = tags.getCompoundTagAt(i);
+			int j = data.getByte("Slot") & 255;
+
+			if (j >= 0 && j < inventory.length)
+				inventory[j] = ItemStack.loadItemStackFromNBT(data);
 		}
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound data) {
-		super.writeToNBT(data);
-		NBTTagList tagList = new NBTTagList();
+	public void writeToNBT(NBTTagCompound nbt) {
+		super.writeToNBT(nbt);
+		NBTTagList tags = new NBTTagList();
+
 		for (int i = 0; i < inventory.length; i++)
 			if (inventory[i] != null) {
-				NBTTagCompound tagCompound = new NBTTagCompound();
-				tagCompound.setByte("Slot", (byte) i);
-				inventory[i].writeToNBT(tagCompound);
-				tagList.appendTag(tagCompound);
+				NBTTagCompound data = new NBTTagCompound();
+				data.setByte("Slot", (byte) i);
+				inventory[i].writeToNBT(data);
+				tags.appendTag(data);
 			}
-		data.setTag("Items", tagList);
+
+		nbt.setTag("Items", tags);
 	}
 }
