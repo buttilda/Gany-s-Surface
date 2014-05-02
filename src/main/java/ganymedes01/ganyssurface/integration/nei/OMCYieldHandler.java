@@ -1,7 +1,5 @@
 package ganymedes01.ganyssurface.integration.nei;
 
-import static codechicken.core.gui.GuiDraw.changeTexture;
-import static codechicken.core.gui.GuiDraw.drawTexturedModalRect;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
 import ganymedes01.ganyssurface.core.utils.UnsizedStack;
 import ganymedes01.ganyssurface.core.utils.Utils;
@@ -24,7 +22,7 @@ import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
-import codechicken.core.gui.GuiDraw;
+import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.ItemList;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
@@ -71,9 +69,9 @@ public class OMCYieldHandler extends TemplateRecipeHandler {
 	public void drawBackground(int index) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 
-		changeTexture(getGuiTexture());
-		drawTexturedModalRect(-2, -5, 5, 11, 120, 65);
-		drawTexturedModalRect(88, 20, 177, 14, cycleticks % 25, 15);
+		GuiDraw.changeTexture(getGuiTexture());
+		GuiDraw.drawTexturedModalRect(-2, -5, 5, 11, 120, 65);
+		GuiDraw.drawTexturedModalRect(88, 20, 177, 14, cycleticks % 25, 15);
 
 		CachedRecipe recipe = arecipes.get(index);
 		if (recipe instanceof CachedMatterYield) {

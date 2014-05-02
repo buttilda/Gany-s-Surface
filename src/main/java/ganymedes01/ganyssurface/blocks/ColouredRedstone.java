@@ -78,22 +78,22 @@ public class ColouredRedstone extends Block {
 			notifyWireNeighborsOfNeighborChange(world, x, y, z - 1);
 			notifyWireNeighborsOfNeighborChange(world, x, y, z + 1);
 
-			if (world.isBlockNormalCube(x - 1, y, z))
+			if (world.getBlock(x - 1, y, z).isNormalCube())
 				notifyWireNeighborsOfNeighborChange(world, x - 1, y + 1, z);
 			else
 				notifyWireNeighborsOfNeighborChange(world, x - 1, y - 1, z);
 
-			if (world.isBlockNormalCube(x + 1, y, z))
+			if (world.getBlock(x + 1, y, z).isNormalCube())
 				notifyWireNeighborsOfNeighborChange(world, x + 1, y + 1, z);
 			else
 				notifyWireNeighborsOfNeighborChange(world, x + 1, y - 1, z);
 
-			if (world.isBlockNormalCube(x, y, z - 1))
+			if (world.getBlock(x, y, z - 1).isNormalCube())
 				notifyWireNeighborsOfNeighborChange(world, x, y + 1, z - 1);
 			else
 				notifyWireNeighborsOfNeighborChange(world, x, y - 1, z - 1);
 
-			if (world.isBlockNormalCube(x, y, z + 1))
+			if (world.getBlock(x, y, z + 1).isNormalCube())
 				notifyWireNeighborsOfNeighborChange(world, x, y + 1, z + 1);
 			else
 				notifyWireNeighborsOfNeighborChange(world, x, y - 1, z + 1);
@@ -131,19 +131,19 @@ public class ColouredRedstone extends Block {
 			else if (id instanceof BlockRedstoneWire)
 				return meta;
 
-			boolean flag = isPoweredOrRepeater(world, x - 1, y, z, 1, this) || !world.isBlockNormalCube(x - 1, y, z) && isPoweredOrRepeater(world, x - 1, y - 1, z, -1, this);
-			boolean flag1 = isPoweredOrRepeater(world, x + 1, y, z, 3, this) || !world.isBlockNormalCube(x + 1, y, z) && isPoweredOrRepeater(world, x + 1, y - 1, z, -1, this);
-			boolean flag2 = isPoweredOrRepeater(world, x, y, z - 1, 2, this) || !world.isBlockNormalCube(x, y, z - 1) && isPoweredOrRepeater(world, x, y - 1, z - 1, -1, this);
-			boolean flag3 = isPoweredOrRepeater(world, x, y, z + 1, 0, this) || !world.isBlockNormalCube(x, y, z + 1) && isPoweredOrRepeater(world, x, y - 1, z + 1, -1, this);
+			boolean flag = isPoweredOrRepeater(world, x - 1, y, z, 1, this) || !world.getBlock(x - 1, y, z).isNormalCube() && isPoweredOrRepeater(world, x - 1, y - 1, z, -1, this);
+			boolean flag1 = isPoweredOrRepeater(world, x + 1, y, z, 3, this) || !world.getBlock(x + 1, y, z).isNormalCube() && isPoweredOrRepeater(world, x + 1, y - 1, z, -1, this);
+			boolean flag2 = isPoweredOrRepeater(world, x, y, z - 1, 2, this) || !world.getBlock(x, y, z - 1).isNormalCube() && isPoweredOrRepeater(world, x, y - 1, z - 1, -1, this);
+			boolean flag3 = isPoweredOrRepeater(world, x, y, z + 1, 0, this) || !world.getBlock(x, y, z + 1).isNormalCube() && isPoweredOrRepeater(world, x, y - 1, z + 1, -1, this);
 
-			if (!world.isBlockNormalCube(x, y + 1, z)) {
-				if (world.isBlockNormalCube(x - 1, y, z) && isPoweredOrRepeater(world, x - 1, y + 1, z, -1, this))
+			if (!world.getBlock(x, y + 1, z).isNormalCube()) {
+				if (world.getBlock(x - 1, y, z).isNormalCube() && isPoweredOrRepeater(world, x - 1, y + 1, z, -1, this))
 					flag = true;
-				if (world.isBlockNormalCube(x + 1, y, z) && isPoweredOrRepeater(world, x + 1, y + 1, z, -1, this))
+				if (world.getBlock(x + 1, y, z).isNormalCube() && isPoweredOrRepeater(world, x + 1, y + 1, z, -1, this))
 					flag1 = true;
-				if (world.isBlockNormalCube(x, y, z - 1) && isPoweredOrRepeater(world, x, y + 1, z - 1, -1, this))
+				if (world.getBlock(x, y, z - 1).isNormalCube() && isPoweredOrRepeater(world, x, y + 1, z - 1, -1, this))
 					flag2 = true;
-				if (world.isBlockNormalCube(x, y, z + 1) && isPoweredOrRepeater(world, x, y + 1, z + 1, -1, this))
+				if (world.getBlock(x, y, z + 1).isNormalCube() && isPoweredOrRepeater(world, x, y + 1, z + 1, -1, this))
 					flag3 = true;
 			}
 			return !flag2 && !flag1 && !flag && !flag3 && side >= 2 && side <= 5 ? meta : side == 2 && flag2 && !flag && !flag1 ? meta : side == 3 && flag3 && !flag && !flag1 ? meta : side == 4 && flag && !flag2 && !flag3 ? meta : side == 5 && flag1 && !flag2 && !flag3 ? meta : 0;
@@ -260,10 +260,10 @@ public class ColouredRedstone extends Block {
 			if (newX != otherX || newZ != otherZ)
 				maxStrength = getMaxCurrentStrength(world, newX, y, newZ, maxStrength);
 
-			if (world.isBlockNormalCube(newX, y, newZ) && !world.isBlockNormalCube(x, y + 1, z)) {
+			if (world.getBlock(newX, y, newZ).isNormalCube() && !world.getBlock(x, y + 1, z).isNormalCube()) {
 				if ((newX != otherX || newZ != otherZ) && y >= otherY)
 					maxStrength = getMaxCurrentStrength(world, newX, y + 1, newZ, maxStrength);
-			} else if (!world.isBlockNormalCube(newX, y, newZ) && (newX != otherX || newZ != otherZ) && y <= otherY)
+			} else if (!world.getBlock(newX, y, newZ).isNormalCube() && (newX != otherX || newZ != otherZ) && y <= otherY)
 				maxStrength = getMaxCurrentStrength(world, newX, y - 1, newZ, maxStrength);
 		}
 
@@ -315,22 +315,22 @@ public class ColouredRedstone extends Block {
 			notifyWireNeighborsOfNeighborChange(world, x, y, z - 1);
 			notifyWireNeighborsOfNeighborChange(world, x, y, z + 1);
 
-			if (world.isBlockNormalCube(x - 1, y, z))
+			if (world.getBlock(x - 1, y, z).isNormalCube())
 				notifyWireNeighborsOfNeighborChange(world, x - 1, y + 1, z);
 			else
 				notifyWireNeighborsOfNeighborChange(world, x - 1, y - 1, z);
 
-			if (world.isBlockNormalCube(x + 1, y, z))
+			if (world.getBlock(x + 1, y, z).isNormalCube())
 				notifyWireNeighborsOfNeighborChange(world, x + 1, y + 1, z);
 			else
 				notifyWireNeighborsOfNeighborChange(world, x + 1, y - 1, z);
 
-			if (world.isBlockNormalCube(x, y, z - 1))
+			if (world.getBlock(x, y, z - 1).isNormalCube())
 				notifyWireNeighborsOfNeighborChange(world, x, y + 1, z - 1);
 			else
 				notifyWireNeighborsOfNeighborChange(world, x, y - 1, z - 1);
 
-			if (world.isBlockNormalCube(x, y, z + 1))
+			if (world.getBlock(x, y, z + 1).isNormalCube())
 				notifyWireNeighborsOfNeighborChange(world, x, y + 1, z + 1);
 			else
 				notifyWireNeighborsOfNeighborChange(world, x, y - 1, z + 1);
@@ -339,7 +339,7 @@ public class ColouredRedstone extends Block {
 
 	@Override
 	public boolean canPlaceBlockAt(World world, int x, int y, int z) {
-		return world.doesBlockHaveSolidTopSurface(x, y - 1, z) || world.getBlock(x, y - 1, z) == Blocks.glowstone;
+		return World.doesBlockHaveSolidTopSurface(world, x, y - 1, z) || world.getBlock(x, y - 1, z) == Blocks.glowstone;
 	}
 
 	@Override

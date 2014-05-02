@@ -168,6 +168,7 @@ public class Utils {
 
 			if (iinventory.getStackInSlot(slot) == null) {
 				iinventory.setInventorySlotContents(slot, stack.copy());
+				stack.stackSize = 0;
 				return true;
 			} else {
 				ItemStack invtStack = iinventory.getStackInSlot(slot);

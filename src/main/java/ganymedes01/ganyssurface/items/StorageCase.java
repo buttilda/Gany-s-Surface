@@ -1,6 +1,5 @@
 package ganymedes01.ganyssurface.items;
 
-import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -22,7 +21,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class StorageCase extends Item {
 
 	public StorageCase() {
-		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.STORAGE_CASE_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.STORAGE_CASE_NAME));
 	}

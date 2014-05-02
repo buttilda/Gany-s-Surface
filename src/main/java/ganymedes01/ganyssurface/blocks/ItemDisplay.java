@@ -4,8 +4,6 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.lib.Strings;
-import ganymedes01.ganyssurface.network.PacketTypeHandler;
-import ganymedes01.ganyssurface.network.packet.PacketItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 
 import java.util.List;
@@ -64,7 +62,9 @@ public class ItemDisplay extends BlockContainer {
 			TileEntityItemDisplay tile = Utils.getTileEntity(world, x, y, z, TileEntityItemDisplay.class);
 			if (tile.getDisplayItem() == null && player.getCurrentEquippedItem() != null) {
 				tile.addItemToDisplay(player.getCurrentEquippedItem());
-				PacketDispatcher.sendPacketToAllPlayers(PacketTypeHandler.populatePacket(new PacketItemDisplay(x, y, z, player.getCurrentEquippedItem().copy())));
+				tile.markDirty();
+				System.out.println("insert");
+				//PacketDispatcher.sendPacketToAllPlayers(PacketTypeHandler.populatePacket(new PacketItemDisplay(x, y, z, player.getCurrentEquippedItem().copy())));
 				player.getCurrentEquippedItem().stackSize--;
 				if (player.getCurrentEquippedItem().stackSize <= 0)
 					player.setCurrentItemOrArmor(0, null);
@@ -72,7 +72,8 @@ public class ItemDisplay extends BlockContainer {
 				if (!player.inventory.addItemStackToInventory(tile.getDisplayItem().copy()))
 					Utils.dropStack(world, x, y + 1, z, tile.getDisplayItem().copy());
 				tile.addItemToDisplay(null);
-				PacketDispatcher.sendPacketToAllPlayers(PacketTypeHandler.populatePacket(new PacketItemDisplay(x, y, z, null)));
+				world.func_147479_m(x, y, z);
+				//PacketDispatcher.sendPacketToAllPlayers(PacketTypeHandler.populatePacket(new PacketItemDisplay(x, y, z, null)));
 			}
 			return true;
 		}

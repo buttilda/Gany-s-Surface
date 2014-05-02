@@ -1,8 +1,6 @@
 package ganymedes01.ganyssurface.tileentities;
 
 import ganymedes01.ganyssurface.lib.Strings;
-import ganymedes01.ganyssurface.network.PacketTypeHandler;
-import ganymedes01.ganyssurface.network.packet.PacketPlanter;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;

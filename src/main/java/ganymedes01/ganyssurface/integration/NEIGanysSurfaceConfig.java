@@ -56,6 +56,7 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		API.hideItem(new ItemStack(ModItems.dyedChainChestplate));
 		API.hideItem(new ItemStack(ModItems.dyedChainLeggings));
 		API.hideItem(new ItemStack(ModItems.dyedChainBoots));
+		API.hideItem(new ItemStack(ModItems.storageCase));
 	}
 
 	@Override

@@ -1,11 +1,11 @@
 package ganymedes01.ganyssurface.tileentities;
 
-import ganymedes01.ganyssurface.network.PacketTypeHandler;
-import ganymedes01.ganyssurface.network.packet.PacketWorkTable;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 
 /**
  * Gany's Surface
@@ -28,7 +28,9 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 
 	@Override
 	public Packet getDescriptionPacket() {
-		return PacketTypeHandler.populatePacket(new PacketWorkTable(xCoord, yCoord, zCoord, inventory.clone()));
+		NBTTagCompound nbt = new NBTTagCompound();
+		writeToNBT(nbt);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, nbt);
 	}
 
 	@Override

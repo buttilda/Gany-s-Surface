@@ -54,19 +54,19 @@ public class BlockColouredRedstoneRender implements ISimpleBlockRenderingHandler
 		float b = B * getColourFromMeta(meta);
 
 		tessellator.setColorOpaque_F(r, g, b);
-		boolean flag = ColouredRedstone.isPowerProviderOrWire(world, x - 1, y, z, 1, wire) || !world.isBlockNormalCube(x - 1, y, z) && ColouredRedstone.isPowerProviderOrWire(world, x - 1, y - 1, z, -1, wire);
-		boolean flag1 = ColouredRedstone.isPowerProviderOrWire(world, x + 1, y, z, 3, wire) || !world.isBlockNormalCube(x + 1, y, z) && ColouredRedstone.isPowerProviderOrWire(world, x + 1, y - 1, z, -1, wire);
-		boolean flag2 = ColouredRedstone.isPowerProviderOrWire(world, x, y, z - 1, 2, wire) || !world.isBlockNormalCube(x, y, z - 1) && ColouredRedstone.isPowerProviderOrWire(world, x, y - 1, z - 1, -1, wire);
-		boolean flag3 = ColouredRedstone.isPowerProviderOrWire(world, x, y, z + 1, 0, wire) || !world.isBlockNormalCube(x, y, z + 1) && ColouredRedstone.isPowerProviderOrWire(world, x, y - 1, z + 1, -1, wire);
+		boolean flag = ColouredRedstone.isPowerProviderOrWire(world, x - 1, y, z, 1, wire) || !world.getBlock(x - 1, y, z).isNormalCube() && ColouredRedstone.isPowerProviderOrWire(world, x - 1, y - 1, z, -1, wire);
+		boolean flag1 = ColouredRedstone.isPowerProviderOrWire(world, x + 1, y, z, 3, wire) || !world.getBlock(x + 1, y, z).isNormalCube() && ColouredRedstone.isPowerProviderOrWire(world, x + 1, y - 1, z, -1, wire);
+		boolean flag2 = ColouredRedstone.isPowerProviderOrWire(world, x, y, z - 1, 2, wire) || !world.getBlock(x, y, z - 1).isNormalCube() && ColouredRedstone.isPowerProviderOrWire(world, x, y - 1, z - 1, -1, wire);
+		boolean flag3 = ColouredRedstone.isPowerProviderOrWire(world, x, y, z + 1, 0, wire) || !world.getBlock(x, y, z + 1).isNormalCube() && ColouredRedstone.isPowerProviderOrWire(world, x, y - 1, z + 1, -1, wire);
 
-		if (!world.isBlockNormalCube(x, y + 1, z)) {
-			if (world.isBlockNormalCube(x - 1, y, z) && ColouredRedstone.isPowerProviderOrWire(world, x - 1, y + 1, z, -1, wire))
+		if (!world.getBlock(x, y + 1, z).isNormalCube()) {
+			if (world.getBlock(x - 1, y, z).isNormalCube() && ColouredRedstone.isPowerProviderOrWire(world, x - 1, y + 1, z, -1, wire))
 				flag = true;
-			if (world.isBlockNormalCube(x + 1, y, z) && ColouredRedstone.isPowerProviderOrWire(world, x + 1, y + 1, z, -1, wire))
+			if (world.getBlock(x + 1, y, z).isNormalCube() && ColouredRedstone.isPowerProviderOrWire(world, x + 1, y + 1, z, -1, wire))
 				flag1 = true;
-			if (world.isBlockNormalCube(x, y, z - 1) && ColouredRedstone.isPowerProviderOrWire(world, x, y + 1, z - 1, -1, wire))
+			if (world.getBlock(x, y, z - 1).isNormalCube() && ColouredRedstone.isPowerProviderOrWire(world, x, y + 1, z - 1, -1, wire))
 				flag2 = true;
-			if (world.isBlockNormalCube(x, y, z + 1) && ColouredRedstone.isPowerProviderOrWire(world, x, y + 1, z + 1, -1, wire))
+			if (world.getBlock(x, y, z + 1).isNormalCube() && ColouredRedstone.isPowerProviderOrWire(world, x, y + 1, z + 1, -1, wire))
 				flag3 = true;
 		}
 
@@ -87,7 +87,6 @@ public class BlockColouredRedstoneRender implements ISimpleBlockRenderingHandler
 			int k1 = 0;
 			int l1 = 16;
 			int i2 = 16;
-			boolean flag4 = true;
 
 			if (!flag) {
 				f5 += 0.3125F;
@@ -137,10 +136,8 @@ public class BlockColouredRedstoneRender implements ISimpleBlockRenderingHandler
 			tessellator.addVertexWithUV(f5, y + 0.015625D, f8, line_overlay.getMaxU(), line_overlay.getMinV());
 		}
 
-		if (!world.isBlockNormalCube(x, y + 1, z)) {
-			float f9 = 0.021875F;
-
-			if (world.isBlockNormalCube(x - 1, y, z) && world.getBlockId(x - 1, y + 1, z) == wire) {
+		if (!world.getBlock(x, y + 1, z).isNormalCube()) {
+			if (world.getBlock(x - 1, y, z).isNormalCube() && world.getBlock(x - 1, y + 1, z) == wire) {
 				tessellator.setColorOpaque_F(r, g, b);
 				tessellator.addVertexWithUV(x + 0.015625D, y + 1 + 0.021875F, z + 1, line.getMaxU(), line.getMinV());
 				tessellator.addVertexWithUV(x + 0.015625D, y + 0, z + 1, line.getMinU(), line.getMinV());
@@ -153,7 +150,7 @@ public class BlockColouredRedstoneRender implements ISimpleBlockRenderingHandler
 				tessellator.addVertexWithUV(x + 0.015625D, y + 1 + 0.021875F, z + 0, line_overlay.getMaxU(), line_overlay.getMaxV());
 			}
 
-			if (world.isBlockNormalCube(x + 1, y, z) && world.getBlockId(x + 1, y + 1, z) == wire) {
+			if (world.getBlock(x + 1, y, z).isNormalCube() && world.getBlock(x + 1, y + 1, z) == wire) {
 				tessellator.setColorOpaque_F(r, g, b);
 				tessellator.addVertexWithUV(x + 1 - 0.015625D, y + 0, z + 1, line.getMinU(), line.getMaxV());
 				tessellator.addVertexWithUV(x + 1 - 0.015625D, y + 1 + 0.021875F, z + 1, line.getMaxU(), line.getMaxV());
@@ -166,7 +163,7 @@ public class BlockColouredRedstoneRender implements ISimpleBlockRenderingHandler
 				tessellator.addVertexWithUV(x + 1 - 0.015625D, y + 0, z + 0, line_overlay.getMinU(), line_overlay.getMinV());
 			}
 
-			if (world.isBlockNormalCube(x, y, z - 1) && world.getBlockId(x, y + 1, z - 1) == wire) {
+			if (world.getBlock(x, y, z - 1).isNormalCube() && world.getBlock(x, y + 1, z - 1) == wire) {
 				tessellator.setColorOpaque_F(r, g, b);
 				tessellator.addVertexWithUV(x + 1, y + 0, z + 0.015625D, line.getMinU(), line.getMaxV());
 				tessellator.addVertexWithUV(x + 1, y + 1 + 0.021875F, z + 0.015625D, line.getMaxU(), line.getMaxV());
@@ -179,7 +176,7 @@ public class BlockColouredRedstoneRender implements ISimpleBlockRenderingHandler
 				tessellator.addVertexWithUV(x + 0, y + 0, z + 0.015625D, line_overlay.getMinU(), line_overlay.getMinV());
 			}
 
-			if (world.isBlockNormalCube(x, y, z + 1) && world.getBlock(x, y + 1, z + 1) == wire) {
+			if (world.getBlock(x, y, z + 1).isNormalCube() && world.getBlock(x, y + 1, z + 1) == wire) {
 				tessellator.setColorOpaque_F(r, g, b);
 				tessellator.addVertexWithUV(x + 1, y + 1 + 0.021875F, z + 1 - 0.015625D, line.getMaxU(), line.getMinV());
 				tessellator.addVertexWithUV(x + 1, y + 0, z + 1 - 0.015625D, line.getMinU(), line.getMinV());

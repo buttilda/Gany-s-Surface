@@ -107,6 +107,7 @@ public class ModItems {
 		registerItem(portalDualWorkTable);
 		registerItem(icyPickaxe);
 		registerItem(roastedSquid);
+		registerItem(storageCase);
 
 		if (GanysSurface.enableCamilaSeedsToDropFromGrass)
 			MinecraftForge.addGrassSeed(new ItemStack(camelliaSeeds), 5);

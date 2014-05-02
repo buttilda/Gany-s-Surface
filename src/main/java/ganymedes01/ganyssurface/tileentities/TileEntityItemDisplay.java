@@ -1,10 +1,10 @@
 package ganymedes01.ganyssurface.tileentities;
 
 import ganymedes01.ganyssurface.lib.Strings;
-import ganymedes01.ganyssurface.network.PacketTypeHandler;
-import ganymedes01.ganyssurface.network.packet.PacketItemDisplay;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import buildcraft.api.transport.IPipeConnection;
 import buildcraft.api.transport.IPipeTile.PipeType;
@@ -36,9 +36,9 @@ public class TileEntityItemDisplay extends GanysInventory implements IPipeConnec
 
 	@Override
 	public Packet getDescriptionPacket() {
-		if (inventory[0] != null && inventory[0].stackSize > 0)
-			return PacketTypeHandler.populatePacket(new PacketItemDisplay(xCoord, yCoord, zCoord, inventory[0].copy()));
-		return null;
+		NBTTagCompound nbt = new NBTTagCompound();
+		writeToNBT(nbt);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, nbt);
 	}
 
 	@Override
