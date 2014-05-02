@@ -138,19 +138,19 @@ tile.ganyssurface.colouredRedstoneBlockORANGE.name=Orangestone Block
 tile.ganyssurface.colouredRedstoneBlockWHITE.name=Whitestone Block
 
 # GUI localizations
-container.ganyssurface:blockDetector=Block Detector
-container.ganyssurface:sensoringDislocator= Sensitive Dislocator
-container.ganyssurface:cubicSensoringDislocator=Cubic Sensitive Dislocator
-container.ganyssurface:workTable=Work Table
-container.ganyssurface:organicMatterCompressor=Organic Matter Compressor
-container.ganyssurface:itemDisplay=Item Display
-container.ganyssurface:planter=Planter
-container.ganyssurface:inkHarvester=Ink Harvester
-container.ganyssurface:market=Market
-container.ganyssurface:dualWorkTable=Dual Work Table
-container.ganyssurface:farmManager=Farm Manager
-container.ganyssurface:encasingBench=Encasing Bench
-container.ganyssurface:autoEncaser=Auto Encaser
+container.ganyssurface.blockDetector=Block Detector
+container.ganyssurface.sensoringDislocator= Sensitive Dislocator
+container.ganyssurface.cubicSensoringDislocator=Cubic Sensitive Dislocator
+container.ganyssurface.workTable=Work Table
+container.ganyssurface.organicMatterCompressor=Organic Matter Compressor
+container.ganyssurface.itemDisplay=Item Display
+container.ganyssurface.planter=Planter
+container.ganyssurface.inkHarvester=Ink Harvester
+container.ganyssurface.market=Market
+container.ganyssurface.dualWorkTable=Dual Work Table
+container.ganyssurface.farmManager=Farm Manager
+container.ganyssurface.encasingBench=Encasing Bench
+container.ganyssurface.autoEncaser=Auto Encaser
 
 matter=Matter:
 squidFood=Food:
