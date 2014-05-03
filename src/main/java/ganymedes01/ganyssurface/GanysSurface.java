@@ -14,15 +14,12 @@ import ganymedes01.ganyssurface.creativetab.CreativeTabSurface;
 import ganymedes01.ganyssurface.integration.ModIntegrator;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
+import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.recipes.ModRecipes;
 
 import java.io.File;
-import java.util.ArrayList;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.entity.monster.EntityWitch;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
@@ -35,7 +32,6 @@ import cpw.mods.fml.common.event.FMLInterModComms.IMCEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
@@ -63,7 +59,6 @@ public class GanysSurface {
 	public static boolean enableMarket = true;
 	public static boolean enableWoodenArmour = true;
 	public static boolean enableCamilaSeedsToDropFromGrass = true;
-	public static boolean enableNormalWitchSpawn = true;
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
 	public static int poopingChance = 15000;
@@ -81,39 +76,14 @@ public class GanysSurface {
 
 		proxy.registerEntities();
 
-		if (enableNormalWitchSpawn) {
-			ArrayList<BiomeGenBase> biomes = new ArrayList<BiomeGenBase>();
-			biomes.add(BiomeGenBase.beach);
-			biomes.add(BiomeGenBase.desert);
-			biomes.add(BiomeGenBase.desertHills);
-			biomes.add(BiomeGenBase.forest);
-			biomes.add(BiomeGenBase.forestHills);
-			biomes.add(BiomeGenBase.extremeHills);
-			biomes.add(BiomeGenBase.extremeHillsEdge);
-			biomes.add(BiomeGenBase.jungle);
-			biomes.add(BiomeGenBase.jungleHills);
-			biomes.add(BiomeGenBase.mushroomIsland);
-			biomes.add(BiomeGenBase.mushroomIslandShore);
-			biomes.add(BiomeGenBase.ocean);
-			biomes.add(BiomeGenBase.frozenOcean);
-			biomes.add(BiomeGenBase.plains);
-			biomes.add(BiomeGenBase.river);
-			biomes.add(BiomeGenBase.icePlains);
-			biomes.add(BiomeGenBase.iceMountains);
-			biomes.add(BiomeGenBase.taiga);
-			biomes.add(BiomeGenBase.taigaHills);
-
-			EntityRegistry.addSpawn(EntityWitch.class, 5, 1, 1, EnumCreatureType.monster, biomes.toArray(new BiomeGenBase[0]));
-			EntityRegistry.addSpawn(EntityWitch.class, 10, 1, 1, EnumCreatureType.monster, BiomeGenBase.swampland);
-		}
-
 		ModBlocks.init();
 		ModItems.init();
 		ModRecipes.init();
 	}
 
 	@EventHandler
-	public void load(FMLInitializationEvent event) {
+	public void init(FMLInitializationEvent event) {
+		PacketHandler.INSTANCE.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 		GameRegistry.registerFuelHandler(new FuelHandler());
 

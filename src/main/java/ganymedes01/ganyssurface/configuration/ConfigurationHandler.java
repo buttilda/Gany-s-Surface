@@ -53,7 +53,6 @@ public class ConfigurationHandler {
 			GanysSurface.enableMarket = configBoolean(Strings.ENABLE_MARKET, true);
 			GanysSurface.enableWoodenArmour = configBoolean(Strings.ENABLE_WOODEN_ARMOUR, true);
 			GanysSurface.enableCamilaSeedsToDropFromGrass = configBoolean(Strings.ENABLE_CAMILA_SEEDS_TO_DROP_FROM_GRASS, true);
-			GanysSurface.enableNormalWitchSpawn = configBoolean(Strings.ENABLE_NORMAL_WITCH_SPAWN, true);
 
 			GanysSurface.maxLevelOMCWorks = configInteger(Strings.MAX_LEVEL_OMC_WORKS, 15);
 			GanysSurface.inkHarvesterMaxStrike = configInteger(Strings.INK_HARVESTER_MAX_STRIKE, 5);

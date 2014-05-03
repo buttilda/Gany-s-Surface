@@ -1,10 +1,16 @@
 package ganymedes01.ganyssurface.tileentities;
 
 import ganymedes01.ganyssurface.lib.Strings;
+import ganymedes01.ganyssurface.network.IPacketHandlingTile;
+import ganymedes01.ganyssurface.network.PacketHandler;
+import ganymedes01.ganyssurface.network.packet.PacketTileEntity;
+import ganymedes01.ganyssurface.network.packet.PacketTileEntity.TileData;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -15,7 +21,7 @@ import net.minecraftforge.common.util.ForgeDirection;
  * 
  */
 
-public class TileEntityPlanter extends GanysInventory {
+public class TileEntityPlanter extends GanysInventory implements IPacketHandlingTile {
 
 	private float armExtension = 0.0F;
 	private boolean isReturning;
@@ -76,11 +82,26 @@ public class TileEntityPlanter extends GanysInventory {
 
 	@Override
 	public Packet getDescriptionPacket() {
-		return PacketTypeHandler.populatePacket(new PacketPlanter(xCoord, yCoord, zCoord, armExtension));
+		NBTTagCompound nbt = new NBTTagCompound();
+		writeToNBT(nbt);
+		nbt.removeTag("isReturning");
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 1, nbt);
 	}
 
 	private void update() {
-		PacketDispatcher.sendPacketToAllPlayers(getDescriptionPacket());
+		PacketHandler.INSTANCE.sendToAll(new PacketTileEntity(this, new TileData() {
+
+			@Override
+			public void writeData(ByteBuf buffer) {
+				buffer.writeFloat(armExtension);
+			}
+
+		}));
+	}
+
+	@Override
+	public void readPacketData(ByteBuf buffer) {
+		armExtension = buffer.readFloat();
 	}
 
 	@Override

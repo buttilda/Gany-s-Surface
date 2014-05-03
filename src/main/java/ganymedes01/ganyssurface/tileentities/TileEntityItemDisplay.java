@@ -1,6 +1,11 @@
 package ganymedes01.ganyssurface.tileentities;
 
 import ganymedes01.ganyssurface.lib.Strings;
+import ganymedes01.ganyssurface.network.IPacketHandlingTile;
+import ganymedes01.ganyssurface.network.packet.CustomPacket;
+import ganymedes01.ganyssurface.network.packet.PacketTileEntity;
+import ganymedes01.ganyssurface.network.packet.PacketTileEntity.TileData;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
@@ -8,6 +13,7 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import buildcraft.api.transport.IPipeConnection;
 import buildcraft.api.transport.IPipeTile.PipeType;
+import cpw.mods.fml.common.network.ByteBufUtils;
 
 /**
  * Gany's Surface
@@ -16,7 +22,7 @@ import buildcraft.api.transport.IPipeTile.PipeType;
  * 
  */
 
-public class TileEntityItemDisplay extends GanysInventory implements IPipeConnection {
+public class TileEntityItemDisplay extends GanysInventory implements IPipeConnection, IPacketHandlingTile {
 
 	public TileEntityItemDisplay() {
 		super(1, Strings.ITEM_DISPLAY_NAME);
@@ -49,5 +55,20 @@ public class TileEntityItemDisplay extends GanysInventory implements IPipeConnec
 	@Override
 	public boolean canUpdate() {
 		return false;
+	}
+
+	public CustomPacket getPacket() {
+		return new PacketTileEntity(this, new TileData() {
+
+			@Override
+			public void writeData(ByteBuf buffer) {
+				ByteBufUtils.writeItemStack(buffer, inventory[0]);
+			}
+		});
+	}
+
+	@Override
+	public void readPacketData(ByteBuf buffer) {
+		inventory[0] = ByteBufUtils.readItemStack(buffer);
 	}
 }

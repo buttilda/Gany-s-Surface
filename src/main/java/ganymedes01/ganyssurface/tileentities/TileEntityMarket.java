@@ -108,7 +108,7 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 
 	@Override
 	public void markDirty() {
-		super.getPlant();
+		super.markDirty();
 
 		for (int i = 0; i < extraInventory.size(); i++)
 			for (int j = 12; j < 24; j++)
@@ -123,10 +123,10 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 		super.readFromNBT(data);
 		owner = data.getString("owner");
 
-		NBTTagList tagList = data.getTagList("ExtraItems");
+		NBTTagList tagList = data.getTagList("ExtraItems", 10);
 		extraInventory = new ArrayList<ItemStack>();
 		for (int i = 0; i < tagList.tagCount(); i++) {
-			NBTTagCompound tagCompound = (NBTTagCompound) tagList.tagAt(i);
+			NBTTagCompound tagCompound = tagList.getCompoundTagAt(i);
 			byte slot = tagCompound.getByte("Slot");
 			if (slot >= 0 && slot < inventory.length)
 				extraInventory.add(ItemStack.loadItemStackFromNBT(tagCompound));
