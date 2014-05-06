@@ -43,7 +43,7 @@ public class BatNet extends Item implements IRepairable {
 	@Override
 	public boolean onLeftClickEntity(ItemStack item, EntityPlayer player, Entity target) {
 		int meta = getMetaFromCreature(target);
-		if (meta > 0) {
+		if (meta >= 0) {
 			if (!player.worldObj.isRemote) {
 				ItemStack pocketBat = new ItemStack(ModItems.pocketCritter, 1, meta);
 				if (((EntityLiving) target).hasCustomNameTag())

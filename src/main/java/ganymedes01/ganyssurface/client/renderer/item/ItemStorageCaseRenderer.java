@@ -74,18 +74,29 @@ public class ItemStorageCaseRenderer implements IItemRenderer {
 			GL11.glScaled(scale, scale, scale);
 		Tessellator tessellator = Tessellator.instance;
 
+		int colour = 0;
 		IIcon[] icons = new IIcon[6];
 		if (stack.getItem() instanceof ItemBlock) {
 			FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 			Block block = Block.getBlockFromItem(stack.getItem());
 			for (int i = 0; i < 6; i++)
 				icons[i] = block.getIcon(i, stack.getItemDamage());
-		} else
+
+			colour = block.getRenderColor(stack.getItemDamage());
+		} else {
 			for (int i = 0; i < 6; i++)
 				icons[i] = stack.getIconIndex();
+			colour = stack.getItem().getColorFromItemStack(stack, 0);
+		}
 
 		renderer.setRenderBounds(0.0, 0.0, 0.0, 1.0, 1.0, 1.0);
 		GL11.glTranslated(x, y, z);
+
+		float R = (colour >> 16 & 255) / 255.0F;
+		float G = (colour >> 8 & 255) / 255.0F;
+		float B = (colour & 255) / 255.0F;
+		GL11.glColor3f(R, G, B);
+
 		tessellator.startDrawingQuads();
 		if (icons[0] != null) {
 			tessellator.setNormal(0.0F, -1.0F, 0.0F);

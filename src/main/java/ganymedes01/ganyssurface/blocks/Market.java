@@ -36,7 +36,8 @@ public class Market extends BlockContainer {
 		setBlockUnbreakable();
 		setResistance(Float.MAX_VALUE);
 		setStepSound(soundTypeMetal);
-		setCreativeTab(GanysSurface.surfaceTab);
+		if (GanysSurface.enableMarket)
+			setCreativeTab(GanysSurface.surfaceTab);
 		setBlockName(Utils.getUnlocalizedName(Strings.MARKET_NAME));
 	}
 

@@ -10,6 +10,10 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
+
+import org.apache.commons.lang3.ArrayUtils;
+
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -41,6 +45,10 @@ public class ModRecipes {
 		OreDictionary.registerOre("slimeball", Items.slime_ball);
 		OreDictionary.registerOre("dustRedstone", new ItemStack(ModItems.colouredRedstone, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("mobEgg", new ItemStack(ModItems.horseSpawner, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("paneGlass", new ItemStack(Blocks.stained_glass_pane, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("paneGlass", new ItemStack(Blocks.glass_pane, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("clayHardened", new ItemStack(Blocks.hardened_clay));
+		OreDictionary.registerOre("clayHardened", new ItemStack(Blocks.stained_hardened_clay, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
 	private static void registerArmourRecipes() {
@@ -68,7 +76,7 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModItems.woodenWrench), "x x", " x ", " x ", 'x', Blocks.planks);
 		GameRegistry.addRecipe(new ItemStack(ModItems.batNet), "xyx", " x ", " x ", 'x', Items.stick, 'y', Items.string);
 		GameRegistry.addRecipe(new ItemStack(ModItems.batStew), "xyz", " w ", 'x', Blocks.brown_mushroom, 'z', Blocks.red_mushroom, 'y', ModItems.pocketCritter, 'w', Items.bowl);
-		if (GanysSurface.activateChocolate)
+		if (GanysSurface.enableChocolate)
 			GameRegistry.addRecipe(new ItemStack(ModItems.chocolateBar, 4), "xxx", "xyx", "xxx", 'x', new ItemStack(Items.dye, 1, 3), 'y', Items.milk_bucket);
 		GameRegistry.addRecipe(new ItemStack(ModItems.horsalyser), "xyx", "xzx", "xwx", 'x', Items.leather, 'y', Items.flint, 'z', Blocks.glass_pane, 'w', Items.redstone);
 
@@ -104,7 +112,7 @@ public class ModRecipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.workTable), Blocks.crafting_table, Blocks.chest);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.organicMatterCompressor), "zzz", "zxz", "zyz", 'x', Items.cauldron, 'y', Items.emerald, 'z', Blocks.obsidian);
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.cushion), "zxz", "xyx", "zxz", 'x', Blocks.wool, 'y', dyes[5], 'z', Items.gold_nugget));
-		if (GanysSurface.activateChocolate)
+		if (GanysSurface.enableChocolate)
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chocolateCake), "xxx", "yzy", "www", 'x', Items.milk_bucket, 'y', ModItems.chocolateBar, 'z', "egg", 'w', Items.wheat));
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.chestPropellant), "ywy", "xzx", "xyx", 'x', Items.iron_ingot, 'y', Items.gold_nugget, 'z', new ItemStack(Blocks.sandstone, 1, 2), 'w', Items.redstone);
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.fertilizedSoil), "yyy", "xzx", "yyy", 'x', new ItemStack(ModItems.poop, 1, 1), 'y', new ItemStack(ModItems.rot, 1, 1), 'z', Blocks.dirt);
@@ -126,5 +134,15 @@ public class ModRecipes {
 
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Blocks.web), "x x", " y ", "x x", 'y', Items.slime_ball, 'x', Items.string);
+
+		String[] reDyes = dyes.clone();
+		ArrayUtils.reverse(reDyes);
+		for (int i = 0; i < 16; i++) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.stained_glass_pane, 8, i), "xxx", "xyx", "xxx", 'x', "paneGlass", 'y', reDyes[i]));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.stained_glass_pane, 1, i), "paneGlass", reDyes[i]));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.stained_hardened_clay, 8, i), "xxx", "xyx", "xxx", 'x', "clayHardened", 'y', reDyes[i]));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.stained_hardened_clay, 1, i), "clayHardened", reDyes[i]));
+		}
 	}
 }

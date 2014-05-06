@@ -32,6 +32,7 @@ public class OrganicMatterRegistry {
 
 	static {
 		addMatterYield(new ItemStack(Items.coal), -1);
+		addMatterYield(new ItemStack(Items.coal, 1, 1), 16);
 		addItemYield(Items.wooden_sword);
 		addItemYield(Items.wooden_hoe);
 		addItemYield(Items.wooden_axe);

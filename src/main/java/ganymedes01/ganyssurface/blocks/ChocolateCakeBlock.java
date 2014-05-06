@@ -30,7 +30,8 @@ public class ChocolateCakeBlock extends BlockCake {
 		disableStats();
 		setHardness(0.5F);
 		setStepSound(soundTypeCloth);
-		setCreativeTab(GanysSurface.surfaceTab);
+		if (GanysSurface.enableChocolate)
+			setCreativeTab(GanysSurface.surfaceTab);
 		setBlockName(Utils.getUnlocalizedName(Strings.CHOCOLATE_CAKE_NAME));
 	}
 

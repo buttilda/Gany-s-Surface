@@ -1,6 +1,5 @@
 package ganymedes01.ganyssurface.blocks;
 
-import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.items.block.ItemChocolateCake;
 import ganymedes01.ganyssurface.items.block.ItemColouredRedstoneBlock;
 import ganymedes01.ganyssurface.items.block.ItemItemDisplay;
@@ -65,8 +64,7 @@ public class ModBlocks {
 		registerBlock(workTable);
 		registerBlock(organicMatterCompressor);
 		registerBlock(cushion);
-		if (GanysSurface.activateChocolate)
-			registerBlock(chocolateCake, ItemChocolateCake.class);
+		registerBlock(chocolateCake, ItemChocolateCake.class);
 		registerBlock(itemDisplay, ItemItemDisplay.class);
 		registerBlock(chestPropellant);
 		registerBlock(fertilizedSoil);
@@ -74,8 +72,7 @@ public class ModBlocks {
 		registerBlock(lantern);
 		registerBlock(inkHarvester);
 		registerBlock(slimeBlock);
-		if (GanysSurface.enableMarket)
-			registerBlock(market);
+		registerBlock(market);
 		for (int i = 0; i < 16; i++)
 			if (i != 1) // Skip Red
 				registerBlock(colouredRedstone[i]);

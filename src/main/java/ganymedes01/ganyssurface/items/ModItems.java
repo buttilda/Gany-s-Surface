@@ -97,8 +97,7 @@ public class ModItems {
 		registerItem(batNet);
 		registerItem(pocketCritter);
 		registerItem(batStew);
-		if (GanysSurface.activateChocolate)
-			registerItem(chocolateBar);
+		registerItem(chocolateBar);
 		registerItem(horsalyser);
 		registerItem(horseSpawner);
 		registerItem(chargedCreeperSpawner);

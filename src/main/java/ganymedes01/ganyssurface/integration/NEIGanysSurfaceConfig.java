@@ -37,7 +37,8 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		if (GanysSurface.enableMarket) {
 			API.registerRecipeHandler(new MarketSalesHandler());
 			API.registerUsageHandler(new MarketSalesHandler());
-		}
+		} else
+			API.hideItem(new ItemStack(ModBlocks.market));
 
 		API.registerRecipeHandler(new OMCYieldHandler());
 		API.registerUsageHandler(new OMCYieldHandler());
@@ -57,6 +58,10 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		API.hideItem(new ItemStack(ModItems.dyedChainLeggings));
 		API.hideItem(new ItemStack(ModItems.dyedChainBoots));
 		API.hideItem(new ItemStack(ModItems.storageCase));
+		if (!GanysSurface.enableChocolate) {
+			API.hideItem(new ItemStack(ModBlocks.chocolateCake));
+			API.hideItem(new ItemStack(ModItems.chocolateBar));
+		}
 	}
 
 	@Override

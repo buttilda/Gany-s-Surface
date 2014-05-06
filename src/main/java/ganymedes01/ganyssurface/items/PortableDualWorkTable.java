@@ -28,7 +28,8 @@ public class PortableDualWorkTable extends Item {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
-		player.openGui(GanysSurface.instance, GUIsID.PORTABLE_DUAL_WORK_TABLE, world, (int) player.posX, (int) player.posY, (int) player.posZ);
+		if (!world.isRemote)
+			player.openGui(GanysSurface.instance, GUIsID.PORTABLE_DUAL_WORK_TABLE, world, (int) player.posX, (int) player.posY, (int) player.posZ);
 		return stack;
 	}
 

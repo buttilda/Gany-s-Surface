@@ -70,7 +70,7 @@ public class Utils {
 	}
 
 	public static void dropStack(World world, int x, int y, int z, ItemStack stack) {
-		if (!world.isRemote && world.getGameRules().getGameRuleBooleanValue("doTileDrops")) {
+		if (!world.isRemote && stack != null && world.getGameRules().getGameRuleBooleanValue("doTileDrops")) {
 			float f = 0.7F;
 			double d0 = world.rand.nextFloat() * f + (1.0F - f) * 0.5D;
 			double d1 = world.rand.nextFloat() * f + (1.0F - f) * 0.5D;

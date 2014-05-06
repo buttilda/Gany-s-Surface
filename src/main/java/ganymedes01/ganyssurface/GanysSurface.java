@@ -53,7 +53,7 @@ public class GanysSurface {
 
 	public static CreativeTabs surfaceTab = new CreativeTabSurface();
 	public static boolean mobsShouldPoop = true;
-	public static boolean activateChocolate = true;
+	public static boolean enableChocolate = true;
 	public static boolean shouldDoVersionCheck = true;
 	public static boolean forceAllContainersOpen = false;
 	public static boolean enableMarket = true;

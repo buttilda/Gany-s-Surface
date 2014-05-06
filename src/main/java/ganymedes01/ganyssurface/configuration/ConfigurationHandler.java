@@ -47,7 +47,7 @@ public class ConfigurationHandler {
 
 			// Others
 			GanysSurface.mobsShouldPoop = configBoolean(Strings.MOBS_SHOULD_POOP, true);
-			GanysSurface.activateChocolate = configBoolean(Strings.ACTIVATE_CHOCOLATE, true);
+			GanysSurface.enableChocolate = configBoolean(Strings.ACTIVATE_CHOCOLATE, true);
 			GanysSurface.shouldDoVersionCheck = configBoolean(Strings.SHOULD_DO_VERSION_CHECK, true);
 			GanysSurface.forceAllContainersOpen = configBoolean(Strings.FORCE_ALL_CONTAINERS_OPEN, false);
 			GanysSurface.enableMarket = configBoolean(Strings.ENABLE_MARKET, true);

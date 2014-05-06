@@ -65,13 +65,13 @@ public class IcyPickaxe extends ItemPickaxe {
 					for (int j = -1; j <= 1; j++)
 						for (int k = -1; k <= 1; k++) {
 							Block block = world.getBlock(x + i, y + j, z + k);
-							if (block == Blocks.water) {
+							if (block == Blocks.water || block == Blocks.flowing_water) {
 								if (world.getBlockMetadata(x + i, y + j, z + k) == 0) {
 									world.playAuxSFXAtEntity(null, 2001, x + i, y + j, z + k, Block.getIdFromBlock(Blocks.ice) + (0 << 12));
 									world.setBlock(x + i, y + j, z + k, Blocks.ice);
 									freezes++;
 								}
-							} else if (block == Blocks.lava)
+							} else if (block == Blocks.lava || block == Blocks.flowing_lava)
 								if (world.getBlockMetadata(x + i, y + j, z + k) == 0) {
 									world.playAuxSFXAtEntity(null, 2001, x + i, y + j, z + k, Block.getIdFromBlock(Blocks.obsidian) + (0 << 12));
 									world.setBlock(x + i, y + j, z + k, Blocks.obsidian);

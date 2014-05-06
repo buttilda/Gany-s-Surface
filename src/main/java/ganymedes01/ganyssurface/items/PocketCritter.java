@@ -71,8 +71,10 @@ public class PocketCritter extends Item {
 			switch (stack.getItemDamage()) {
 				case 0:
 					entityID = 65;
+					break;
 				case 1:
 					entityID = 94;
+					break;
 			}
 
 			if (entityID > 0) {
