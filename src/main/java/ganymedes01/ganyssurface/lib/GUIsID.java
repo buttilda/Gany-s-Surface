@@ -21,4 +21,5 @@ public class GUIsID {
 	public static final int PORTABLE_DUAL_WORK_TABLE = 9;
 	public static final int ENCASING_BENCH = 10;
 	public static final int AUTO_ENCASER = 11;
+	public static final int GEARALYSER = 12;
 }

@@ -46,6 +46,7 @@ public class ModItems {
 	public static final Item icyPickaxe = new IcyPickaxe();
 	public static final Item roastedSquid = new RoastedSquid();
 	public static final Item storageCase = new StorageCase();
+	public static final Item gearalyser = new Gearalyser();
 
 	// Armour
 	public static final Item woodenHelmet = new WoodenArmour(0);
@@ -65,12 +66,10 @@ public class ModItems {
 
 	public static void init() {
 		// Armour
-		if (GanysSurface.enableWoodenArmour) {
-			registerItem(woodenHelmet);
-			registerItem(woodenChestplate);
-			registerItem(woodenLeggings);
-			registerItem(woodenBoots);
-		}
+		registerItem(woodenHelmet);
+		registerItem(woodenChestplate);
+		registerItem(woodenLeggings);
+		registerItem(woodenBoots);
 
 		registerItem(dyedIronHelmet);
 		registerItem(dyedIronChestplate);
@@ -107,6 +106,7 @@ public class ModItems {
 		registerItem(icyPickaxe);
 		registerItem(roastedSquid);
 		registerItem(storageCase);
+		registerItem(gearalyser);
 
 		if (GanysSurface.enableCamilaSeedsToDropFromGrass)
 			MinecraftForge.addGrassSeed(new ItemStack(camelliaSeeds), 5);

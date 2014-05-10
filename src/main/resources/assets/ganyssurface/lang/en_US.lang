@@ -42,6 +42,7 @@ item.ganyssurface.portableDualWorkTable.name=Portable Dual Work Table
 item.ganyssurface.icyPickaxe.name=Icy Pickaxe
 item.ganyssurface.roastedSquid.name=Roasted Squid
 item.ganyssurface.storageCase.name=Storage Case (%s)
+item.ganyssurface.gearalyser.name=Gearalyser
 
 item.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 item.ganyssurface.colouredRedstoneGREEN.name=Greenstone
@@ -151,6 +152,7 @@ container.ganyssurface.dualWorkTable=Dual Work Table
 container.ganyssurface.farmManager=Farm Manager
 container.ganyssurface.encasingBench=Encasing Bench
 container.ganyssurface.autoEncaser=Auto Encaser
+container.ganyssurface.gearalyser=Gearalyser
 
 matter=Matter:
 squidFood=Food:

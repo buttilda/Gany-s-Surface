@@ -6,6 +6,7 @@ import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiEncasingBench;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiFarmManager;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiGearalyser;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiInkHarvester;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiMarketPrivate;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiMarketPublic;
@@ -22,6 +23,7 @@ import ganymedes01.ganyssurface.inventory.ContainerBlockDetector;
 import ganymedes01.ganyssurface.inventory.ContainerDualWorkTable;
 import ganymedes01.ganyssurface.inventory.ContainerEncasingBench;
 import ganymedes01.ganyssurface.inventory.ContainerFarmManager;
+import ganymedes01.ganyssurface.inventory.ContainerGearalyser;
 import ganymedes01.ganyssurface.inventory.ContainerInkHarvester;
 import ganymedes01.ganyssurface.inventory.ContainerMarketPrivate;
 import ganymedes01.ganyssurface.inventory.ContainerMarketPublic;
@@ -121,6 +123,8 @@ public class CommonProxy implements IGuiHandler {
 				return new ContainerEncasingBench(player.inventory);
 			case GUIsID.AUTO_ENCASER:
 				return new ContainerAutoEncaser(player.inventory, (TileEntityAutoEncaser) tile);
+			case GUIsID.GEARALYSER:
+				return new ContainerGearalyser(player.inventory);
 		}
 		return null;
 	}
@@ -153,6 +157,8 @@ public class CommonProxy implements IGuiHandler {
 				return new GuiEncasingBench(player.inventory);
 			case GUIsID.AUTO_ENCASER:
 				return new GuiAutoEncaser(player.inventory, (TileEntityAutoEncaser) tile);
+			case GUIsID.GEARALYSER:
+				return new GuiGearalyser(player.inventory);
 		}
 		return null;
 	}

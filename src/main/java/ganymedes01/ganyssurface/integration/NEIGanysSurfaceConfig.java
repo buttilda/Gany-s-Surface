@@ -62,6 +62,12 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModBlocks.chocolateCake));
 			API.hideItem(new ItemStack(ModItems.chocolateBar));
 		}
+		if (!GanysSurface.enableWoodenArmour) {
+			API.hideItem(new ItemStack(ModItems.woodenHelmet));
+			API.hideItem(new ItemStack(ModItems.woodenChestplate));
+			API.hideItem(new ItemStack(ModItems.woodenLeggings));
+			API.hideItem(new ItemStack(ModItems.woodenBoots));
+		}
 	}
 
 	@Override

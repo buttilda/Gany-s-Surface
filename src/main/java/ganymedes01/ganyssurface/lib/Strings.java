@@ -70,6 +70,7 @@ public class Strings {
 	public static final String ICY_PICKAXE_NAME = "icyPickaxe";
 	public static final String ROASTED_SQUID_NAME = "roastedSquid";
 	public static final String STORAGE_CASE_NAME = "storageCase";
+	public static final String GEARALYSER_NAME = "gearalyser";
 
 	// Armour names
 	public static final String WOODEN_HELMET_NAME = "woodenHelmet";

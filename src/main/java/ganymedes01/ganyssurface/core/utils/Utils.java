@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -77,14 +76,6 @@ public class Utils {
 			double d2 = world.rand.nextFloat() * f + (1.0F - f) * 0.5D;
 			EntityItem entityItem = new EntityItem(world, x + d0, y + d1, z + d2, stack);
 			entityItem.delayBeforeCanPickup = 10;
-
-			if (stack.getItem().hasCustomEntity(stack)) {
-				Entity customEntity = stack.getItem().createEntity(world, entityItem, stack);
-				if (customEntity != null) {
-					world.spawnEntityInWorld(customEntity);
-					return;
-				}
-			}
 			world.spawnEntityInWorld(entityItem);
 		}
 	}
@@ -179,7 +170,7 @@ public class Utils {
 				return true;
 			} else {
 				ItemStack invtStack = iinventory.getStackInSlot(slot);
-				if (areStacksTheSame(invtStack, stack, false) && invtStack.stackSize < invtStack.getMaxStackSize()) {
+				if (invtStack.stackSize < invtStack.getMaxStackSize() && areStacksTheSame(invtStack, stack, false)) {
 					invtStack.stackSize += stack.stackSize;
 					if (invtStack.stackSize > invtStack.getMaxStackSize()) {
 						stack.stackSize = invtStack.stackSize - invtStack.getMaxStackSize();
@@ -200,9 +191,9 @@ public class Utils {
 		if (stack1.getItem() == stack2.getItem())
 			if (stack1.getItemDamage() == stack2.getItemDamage())
 				if (!matchSize || stack1.stackSize == stack2.stackSize) {
-					if (stack1.hasTagCompound())
-						return stack2.hasTagCompound() ? stack1.getTagCompound().equals(stack2.getTagCompound()) : false;
-					return true;
+					if (stack1.hasTagCompound() && stack2.hasTagCompound())
+						return stack1.getTagCompound().equals(stack2.getTagCompound());
+					return stack1.hasTagCompound() == stack2.hasTagCompound();
 				}
 		return false;
 	}
