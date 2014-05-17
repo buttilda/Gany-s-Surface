@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -70,7 +71,7 @@ public class ItemDisplay extends BlockContainer {
 					player.setCurrentItemOrArmor(0, null);
 			} else if (tile.getDisplayItem() != null) {
 				if (!player.inventory.addItemStackToInventory(tile.getDisplayItem().copy()))
-					Utils.dropStack(world, x, y + 1, z, tile.getDisplayItem().copy());
+					InventoryUtils.dropStack(world, x, y + 1, z, tile.getDisplayItem().copy());
 				tile.addItemToDisplay(null);
 				PacketHandler.INSTANCE.sendToAll(tile.getPacket());
 			}
@@ -80,7 +81,7 @@ public class ItemDisplay extends BlockContainer {
 
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
-		Utils.dropInventoryContents(world.getTileEntity(x, y, z));
+		InventoryUtils.dropInventoryContents(world.getTileEntity(x, y, z));
 		super.breakBlock(world, x, y, z, block, meta);
 	}
 

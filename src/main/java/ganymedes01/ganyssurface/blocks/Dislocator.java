@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityDislocator;
@@ -90,11 +91,11 @@ public class Dislocator extends BlockContainer {
 				if (tile != null) {
 					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
 						if (!addStacktoInventory(tile, stack))
-							Utils.dropStack(world, x, y, z, stack);
+							InventoryUtils.dropStack(world, x, y, z, stack);
 				} else if (pipe != null) {
 					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
 						if (!addStackToPipe(pipe, stack, dir))
-							Utils.dropStack(world, x, y, z, stack);
+							InventoryUtils.dropStack(world, x, y, z, stack);
 				} else
 					target.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
 				world.playAuxSFXAtEntity(null, 2001, x, y, z, Block.getIdFromBlock(target) + (world.getBlockMetadata(x, y, z) << 12));
@@ -192,7 +193,7 @@ public class Dislocator extends BlockContainer {
 
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
-		Utils.dropInventoryContents(world.getTileEntity(x, y, z));
+		InventoryUtils.dropInventoryContents(world.getTileEntity(x, y, z));
 		super.breakBlock(world, x, y, z, block, meta);
 	}
 }

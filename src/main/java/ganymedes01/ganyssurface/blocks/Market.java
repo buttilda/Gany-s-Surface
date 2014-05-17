@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -79,14 +80,7 @@ public class Market extends BlockContainer {
 	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
 		TileEntityMarket tile = Utils.getTileEntity(world, x, y, z, TileEntityMarket.class);
 		if (tile != null) {
-			for (int i = 0; i < TileEntityMarket.OFFER_ONE; i++) {
-				ItemStack stack = tile.getStackInSlot(i);
-				if (stack != null)
-					Utils.dropStack(world, x, y, z, stack);
-			}
-			for (ItemStack extraStack : tile.getExtraInventory())
-				Utils.dropStack(world, x, y, z, extraStack);
-
+			InventoryUtils.dropInventoryContents(world.getTileEntity(x, y, z));
 			MarketSales.removeMarket(tile);
 		}
 		super.breakBlock(world, x, y, z, block, meta);

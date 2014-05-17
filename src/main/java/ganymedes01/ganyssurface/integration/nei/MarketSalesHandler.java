@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.integration.nei;
 
 import ganymedes01.ganyssurface.client.gui.inventory.GuiMarketPublic;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -90,14 +91,14 @@ public class MarketSalesHandler extends TemplateRecipeHandler {
 	@Override
 	public void loadCraftingRecipes(ItemStack result) {
 		for (Sale sale : MarketSales.getSales())
-			if (Utils.areStacksTheSame(sale.offer, result, false))
+			if (InventoryUtils.areStacksTheSame(sale.offer, result, false))
 				arecipes.add(new CachedMarketSale(sale));
 	}
 
 	@Override
 	public void loadUsageRecipes(ItemStack ingredient) {
 		for (Sale sale : MarketSales.getSales())
-			if (Utils.areStacksTheSame(sale.price, ingredient, false))
+			if (InventoryUtils.areStacksTheSame(sale.price, ingredient, false))
 				arecipes.add(new CachedMarketSale(sale));
 	}
 

@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
-import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.inventory.slots.SlotEncaser;
 import ganymedes01.ganyssurface.items.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
@@ -44,7 +44,7 @@ public class ContainerEncasingBench extends Container {
 		for (int i = 0; i < craftMatrix.getSizeInventory(); i++)
 			for (int j = 0; j < craftMatrix.getSizeInventory(); j++)
 				if (i != j)
-					if (!Utils.areStacksTheSame(craftMatrix.getStackInSlot(i), craftMatrix.getStackInSlot(j), false))
+					if (!InventoryUtils.areStacksTheSame(craftMatrix.getStackInSlot(i), craftMatrix.getStackInSlot(j), false))
 						return null;
 
 		ItemStack storageCase = new ItemStack(ModItems.storageCase);

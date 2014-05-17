@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModMaterials;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -42,7 +43,7 @@ public class IcyPickaxe extends ItemPickaxe {
 		if (!player.capabilities.isCreativeMode)
 			if (player.worldObj.getBlock(x, y, z) == Blocks.ice) {
 				player.worldObj.setBlockToAir(x, y, z);
-				Utils.dropStack(player.worldObj, x, y, z, new ItemStack(Blocks.ice));
+				InventoryUtils.dropStack(player.worldObj, x, y, z, new ItemStack(Blocks.ice));
 				return true;
 			}
 		return false;

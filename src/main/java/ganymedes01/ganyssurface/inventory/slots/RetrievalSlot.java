@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.inventory.slots;
 
-import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
@@ -59,7 +59,7 @@ public class RetrievalSlot extends Slot {
 				ItemStack pay = market.getStackInSlot(i);
 				if (pay == null)
 					continue;
-				else if (Utils.areStacksTheSame(pay, offer.getStack(), false)) {
+				else if (InventoryUtils.areStacksTheSame(pay, offer.getStack(), false)) {
 					pay.stackSize--;
 					price--;
 					if (pay.stackSize <= 0)
@@ -71,7 +71,7 @@ public class RetrievalSlot extends Slot {
 
 	public void update() {
 		if (isOperational()) {
-			if (Utils.areStacksTheSame(payment.getStack(), price.getStack(), false))
+			if (InventoryUtils.areStacksTheSame(payment.getStack(), price.getStack(), false))
 				if (payment.getStack().stackSize >= price.getStack().stackSize)
 					putStack(offer.getStack().copy());
 		} else

@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.tileentities;
 
-import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -50,7 +50,7 @@ public class TileEntityAutoEncaser extends GanysInventory implements ISidedInven
 		if (inventory[9] == null) {
 			inventory[9] = encased;
 			added = true;
-		} else if (Utils.areStacksTheSame(encased, inventory[9], false) && inventory[9].stackSize < 64) {
+		} else if (InventoryUtils.areStacksTheSame(encased, inventory[9], false) && inventory[9].stackSize < 64) {
 			inventory[9].stackSize++;
 			added = true;
 		}
@@ -91,7 +91,7 @@ public class TileEntityAutoEncaser extends GanysInventory implements ISidedInven
 			if (stacks.isEmpty())
 				return true;
 			for (ItemStack s : stacks)
-				if (!Utils.areStacksTheSame(s, stack, false))
+				if (!InventoryUtils.areStacksTheSame(s, stack, false))
 					return false;
 			return true;
 		}

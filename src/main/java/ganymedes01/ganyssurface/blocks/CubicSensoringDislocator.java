@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -84,11 +85,11 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 				if (inventory != null) {
 					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
 						if (!addStacktoInventory(inventory, stack))
-							Utils.dropStack(world, x, y, z, stack);
+							InventoryUtils.dropStack(world, x, y, z, stack);
 				} else if (pipe != null) {
 					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
 						if (!addStackToPipe(pipe, stack, pipeDir))
-							Utils.dropStack(world, x, y, z, stack);
+							InventoryUtils.dropStack(world, x, y, z, stack);
 				} else
 					target.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
 				world.playAuxSFXAtEntity(null, 2001, x, y, z, Block.getIdFromBlock(target) + (world.getBlockMetadata(x, y, z) << 12));

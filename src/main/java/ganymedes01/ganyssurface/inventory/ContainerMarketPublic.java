@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.inventory.slots.FixSlot;
 import ganymedes01.ganyssurface.inventory.slots.GhostSlot;
 import ganymedes01.ganyssurface.inventory.slots.PaymentSlot;
 import ganymedes01.ganyssurface.inventory.slots.RetrievalSlot;
+import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -24,6 +25,7 @@ public class ContainerMarketPublic extends Container {
 
 	public ContainerMarketPublic(InventoryPlayer inventory, TileEntityMarket tile, String username) {
 		market = tile;
+		PacketHandler.INSTANCE.sendToAll(market.getPacket());
 
 		if (tile.isOwner(username)) {
 			addSlotToContainer(new GhostSlot(tile, TileEntityMarket.PRICE_ONE, 39, 18));
@@ -75,37 +77,7 @@ public class ContainerMarketPublic extends Container {
 
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) {
-		ItemStack itemstack = null;
-		Slot slot = (Slot) inventorySlots.get(slotIndex);
-
-		if (slot != null && slot.getHasStack()) {
-			ItemStack stack = slot.getStack();
-			itemstack = stack.copy();
-
-			if (slotIndex > 7) {
-				if (((Slot) inventorySlots.get(4)).isItemValid(itemstack)) {
-					if (!mergeItemStack(stack, 4, 5, true))
-						return null;
-				} else if (((Slot) inventorySlots.get(6)).isItemValid(itemstack))
-					if (!mergeItemStack(stack, 6, 7, true))
-						return null;
-			} else if (slotIndex >= 4 && slotIndex <= 7)
-				if (!mergeItemStack(stack, 8, inventorySlots.size(), true))
-					return null;
-
-			if (stack.stackSize == 0)
-				slot.putStack((ItemStack) null);
-			else
-				slot.onSlotChanged();
-
-			if (stack.stackSize == itemstack.stackSize)
-				return null;
-
-			slot.onPickupFromSlot(player, stack);
-
-		}
-
-		return itemstack;
+		return null;
 	}
 
 	@Override
@@ -114,10 +86,7 @@ public class ContainerMarketPublic extends Container {
 	}
 
 	public void updateRetrievalSlots() {
-		RetrievalSlot slotOne = (RetrievalSlot) getSlot(5);
-		RetrievalSlot slotTwo = (RetrievalSlot) getSlot(7);
-
-		slotOne.update();
-		slotTwo.update();
+		((RetrievalSlot) getSlot(5)).update();
+		((RetrievalSlot) getSlot(7)).update();
 	}
 }

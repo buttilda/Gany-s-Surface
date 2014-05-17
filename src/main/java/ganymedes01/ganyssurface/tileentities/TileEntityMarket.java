@@ -1,18 +1,18 @@
 package ganymedes01.ganyssurface.tileentities;
 
-import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.lib.Strings;
+import ganymedes01.ganyssurface.network.IPacketHandlingTile;
+import ganymedes01.ganyssurface.network.PacketHandler;
+import ganymedes01.ganyssurface.network.packet.CustomPacket;
+import ganymedes01.ganyssurface.network.packet.PacketTileEntity;
+import ganymedes01.ganyssurface.network.packet.PacketTileEntity.TileData;
 import ganymedes01.ganyssurface.recipes.MarketSales;
-
-import java.util.ArrayList;
-
+import io.netty.buffer.ByteBuf;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraftforge.common.util.ForgeDirection;
-import buildcraft.api.transport.IPipeConnection;
-import buildcraft.api.transport.IPipeTile.PipeType;
+import cpw.mods.fml.common.network.ByteBufUtils;
 
 /**
  * Gany's Surface
@@ -21,10 +21,9 @@ import buildcraft.api.transport.IPipeTile.PipeType;
  * 
  */
 
-public class TileEntityMarket extends GanysInventory implements ISidedInventory, IPipeConnection {
+public class TileEntityMarket extends GanysInventory implements ISidedInventory, IPacketHandlingTile {
 
 	private String owner = null;
-	private ArrayList<ItemStack> extraInventory = new ArrayList<ItemStack>();
 
 	public static final int OFFER_ONE = 24;
 	public static final int OFFER_TWO = 25;
@@ -43,27 +42,25 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 	}
 
 	public boolean isOwner(String username) {
-		if (owner == null || username == null)
-			return false;
-		else
-			return username.compareTo(owner) == 0;
+		return owner != null && username != null && username.equals(owner);
 	}
 
 	public String getOwner() {
 		return owner;
 	}
 
-	public void setOwner(String owner) {
+	public void setOwner(final String owner) {
 		this.owner = owner;
 		MarketSales.addMarket(this);
-	}
 
-	public void setExtraInventory(ArrayList<ItemStack> extraInventory) {
-		this.extraInventory = extraInventory;
-	}
+		PacketHandler.INSTANCE.sendToAll(new PacketTileEntity(this, new TileData() {
 
-	public ArrayList<ItemStack> getExtraInventory() {
-		return extraInventory;
+			@Override
+			public void writeData(ByteBuf buffer) {
+				buffer.writeByte((byte) 0);
+				ByteBufUtils.writeUTF8String(buffer, owner);
+			}
+		}));
 	}
 
 	private int getOfferQuantity(int offer) {
@@ -72,7 +69,7 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 
 		int count = 0;
 		for (int i = 0; i < 12; i++)
-			if (Utils.areStacksTheSame(inventory[i], inventory[offer], false))
+			if (InventoryUtils.areStacksTheSame(inventory[i], inventory[offer], false))
 				count += inventory[i].stackSize;
 		return count / inventory[offer].stackSize;
 	}
@@ -90,7 +87,7 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 			if (inventory[i] == null) {
 				inventory[i] = stack;
 				return;
-			} else if (Utils.areStacksTheSame(inventory[i], stack, false))
+			} else if (InventoryUtils.areStacksTheSame(inventory[i], stack, false))
 				if (inventory[i].stackSize + stack.stackSize <= inventory[i].getMaxStackSize()) {
 					inventory[i].stackSize += stack.stackSize;
 					stack = null;
@@ -101,52 +98,18 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 					inventory[i].stackSize = inventory[i].getMaxStackSize();
 					continue;
 				}
-
-		if (stack != null && stack.stackSize > 0)
-			extraInventory.add(stack);
-	}
-
-	@Override
-	public void markDirty() {
-		super.markDirty();
-
-		for (int i = 0; i < extraInventory.size(); i++)
-			for (int j = 12; j < 24; j++)
-				if (inventory[j] == null) {
-					inventory[j] = extraInventory.get(i).copy();
-					extraInventory.remove(i);
-				}
 	}
 
 	@Override
 	public void readFromNBT(NBTTagCompound data) {
 		super.readFromNBT(data);
 		owner = data.getString("owner");
-
-		NBTTagList tagList = data.getTagList("ExtraItems", 10);
-		extraInventory = new ArrayList<ItemStack>();
-		for (int i = 0; i < tagList.tagCount(); i++) {
-			NBTTagCompound tagCompound = tagList.getCompoundTagAt(i);
-			byte slot = tagCompound.getByte("Slot");
-			if (slot >= 0 && slot < inventory.length)
-				extraInventory.add(ItemStack.loadItemStackFromNBT(tagCompound));
-		}
 	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound data) {
 		super.writeToNBT(data);
 		data.setString("owner", owner);
-
-		NBTTagList tagList = new NBTTagList();
-		for (int i = 0; i < extraInventory.size(); i++)
-			if (extraInventory.get(i) != null) {
-				NBTTagCompound tagCompound = new NBTTagCompound();
-				tagCompound.setByte("Slot", (byte) i);
-				extraInventory.get(i).writeToNBT(tagCompound);
-				tagList.appendTag(tagCompound);
-			}
-		data.setTag("ExtraItems", tagList);
 	}
 
 	@Override
@@ -165,12 +128,34 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 	}
 
 	@Override
-	public ConnectOverride overridePipeConnection(PipeType type, ForgeDirection with) {
-		return ConnectOverride.DISCONNECT;
+	public boolean canUpdate() {
+		return false;
 	}
 
 	@Override
-	public boolean canUpdate() {
-		return false;
+	public void readPacketData(ByteBuf buffer) {
+		switch (buffer.readByte()) {
+			case 0:
+				owner = ByteBufUtils.readUTF8String(buffer);
+				break;
+			case 1:
+				owner = ByteBufUtils.readUTF8String(buffer);
+				for (int i = 0; i < getSizeInventory(); i++)
+					inventory[i] = ByteBufUtils.readItemStack(buffer);
+				break;
+		}
+	}
+
+	public CustomPacket getPacket() {
+		return new PacketTileEntity(this, new TileData() {
+
+			@Override
+			public void writeData(ByteBuf buffer) {
+				buffer.writeByte((byte) 1);
+				ByteBufUtils.writeUTF8String(buffer, owner);
+				for (int i = 0; i < TileEntityMarket.this.getSizeInventory(); i++)
+					ByteBufUtils.writeItemStack(buffer, inventory[i]);
+			}
+		});
 	}
 }

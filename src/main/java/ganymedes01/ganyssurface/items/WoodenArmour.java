@@ -34,7 +34,8 @@ public class WoodenArmour extends ItemArmor {
 		super(ModMaterials.WOOD, 0, type);
 		setMaxStackSize(1);
 		setArmourType(type);
-		setCreativeTab(GanysSurface.surfaceTab);
+		if (GanysSurface.enableWoodenArmour)
+			setCreativeTab(GanysSurface.surfaceTab);
 	}
 
 	@Override

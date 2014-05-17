@@ -2,7 +2,7 @@ package ganymedes01.ganyssurface.core.handlers;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.blocks.ModBlocks;
-import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.items.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.passive.EntityAnimal;
@@ -44,6 +44,6 @@ public class PoopHandler {
 					ModBlocks.poop.onNeighborBlockChange(world, x + i, y, z + k, block);
 					return;
 				}
-		Utils.dropStack(world, x, y, z, new ItemStack(ModItems.poop, 1, meta));
+		InventoryUtils.dropStack(world, x, y, z, new ItemStack(ModItems.poop, 1, meta));
 	}
 }
