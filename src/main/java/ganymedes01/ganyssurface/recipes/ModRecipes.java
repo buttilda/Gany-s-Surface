@@ -45,8 +45,6 @@ public class ModRecipes {
 		OreDictionary.registerOre("slimeball", Items.slime_ball);
 		OreDictionary.registerOre("dustRedstone", new ItemStack(ModItems.colouredRedstone, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("mobEgg", new ItemStack(ModItems.horseSpawner, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("paneGlass", new ItemStack(Blocks.stained_glass_pane, 1, OreDictionary.WILDCARD_VALUE));
-		OreDictionary.registerOre("paneGlass", new ItemStack(Blocks.glass_pane, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("clayHardened", new ItemStack(Blocks.hardened_clay));
 		OreDictionary.registerOre("clayHardened", new ItemStack(Blocks.stained_hardened_clay, 1, OreDictionary.WILDCARD_VALUE));
 	}
