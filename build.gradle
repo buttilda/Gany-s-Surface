@@ -17,14 +17,20 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.6.3"
+version = "1.7.0"
 group = "ganymedes01.ganyssurface" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Ganys Surface"
 
 minecraft {
-    version = "1.7.2-10.12.0.1056"
+    version = "1.7.2-10.12.1.1111"
     assetDir = "eclipse/assets"
 }
+
+dependencies {
+	compile files("libs/NEI.jar")
+	compile files("libs/CodeChickenLib.jar")
+}
+
 processResources
         {
             // replace stuff in mcmod.info, nothing else

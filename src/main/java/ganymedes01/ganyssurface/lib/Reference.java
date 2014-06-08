@@ -11,11 +11,11 @@ public class Reference {
 
 	public static final String MOD_ID = "ganyssurface";
 	public static final String MOD_NAME = "Gany's Surface";
-	public static final String DEPENDENCIES = "required-after:Forge@[10.12.1.1061,)";
+	public static final String DEPENDENCIES = "required-after:Forge@[10.12.1.1111,)";
 	public static final String CHANNEL = "GanysSurface";
 	public static final String MASTER = "GanysMods";
-	public static final String VERSION_NUMBER = "1.6.3";
-	public static final int RAW_VERSION_NUMBER = 163;
+	public static final String VERSION_NUMBER = "1.7.0";
+	public static final int RAW_VERSION_NUMBER = 170;
 	public static String LATEST_VERSION;
 	public static final String ITEM_BLOCK_TEXTURE_PATH = MOD_ID + ":";
 	public static final String ARMOUR_TEXTURE_PATH = ITEM_BLOCK_TEXTURE_PATH + "textures/models/armor/";

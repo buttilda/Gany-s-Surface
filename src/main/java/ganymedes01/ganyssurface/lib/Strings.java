@@ -100,6 +100,7 @@ public class Strings {
 	public static final String ENABLE_MARKET = "enableMarket";
 	public static final String ENABLE_WOODEN_ARMOUR = "enableWoodenArmour";
 	public static final String ENABLE_CAMILA_SEEDS_TO_DROP_FROM_GRASS = "enableCamilaSeedsToDropFromGrass";
+	public static final String POOP_RANDOM_BONEMEALS = "poopRandomBonemeals";
 	public static final String MAX_LEVEL_OMC_WORKS = "maxLevelOMCWorks";
 	public static final String INK_HARVESTER_MAX_STRIKE = "inkHarvesterMaxStrike";
 	public static final String POOPING_CHANCE = "poopingChance";
