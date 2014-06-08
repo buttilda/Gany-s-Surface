@@ -53,7 +53,7 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory,
 		this.owner = owner;
 		MarketSales.addMarket(this);
 
-		PacketHandler.INSTANCE.sendToAll(new PacketTileEntity(this, new TileData() {
+		PacketHandler.sendToAll(new PacketTileEntity(this, new TileData() {
 
 			@Override
 			public void writeData(ByteBuf buffer) {

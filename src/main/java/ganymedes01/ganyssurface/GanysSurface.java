@@ -84,7 +84,7 @@ public class GanysSurface {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		PacketHandler.INSTANCE.init();
+		PacketHandler.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 		GameRegistry.registerFuelHandler(new FuelHandler());
 

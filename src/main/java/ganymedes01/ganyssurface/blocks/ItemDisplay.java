@@ -65,7 +65,7 @@ public class ItemDisplay extends BlockContainer {
 			if (tile.getDisplayItem() == null && player.getCurrentEquippedItem() != null) {
 				tile.addItemToDisplay(player.getCurrentEquippedItem());
 				tile.markDirty();
-				PacketHandler.INSTANCE.sendToAll(tile.getPacket());
+				PacketHandler.sendToAll(tile.getPacket());
 				player.getCurrentEquippedItem().stackSize--;
 				if (player.getCurrentEquippedItem().stackSize <= 0)
 					player.setCurrentItemOrArmor(0, null);
@@ -73,7 +73,7 @@ public class ItemDisplay extends BlockContainer {
 				if (!player.inventory.addItemStackToInventory(tile.getDisplayItem().copy()))
 					InventoryUtils.dropStack(world, x, y + 1, z, tile.getDisplayItem().copy());
 				tile.addItemToDisplay(null);
-				PacketHandler.INSTANCE.sendToAll(tile.getPacket());
+				PacketHandler.sendToAll(tile.getPacket());
 			}
 			return true;
 		}

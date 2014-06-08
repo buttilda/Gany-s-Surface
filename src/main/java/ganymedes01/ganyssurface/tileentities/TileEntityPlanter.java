@@ -89,7 +89,7 @@ public class TileEntityPlanter extends GanysInventory implements IPacketHandling
 	}
 
 	private void update() {
-		PacketHandler.INSTANCE.sendToAll(new PacketTileEntity(this, new TileData() {
+		PacketHandler.sendToAll(new PacketTileEntity(this, new TileData() {
 
 			@Override
 			public void writeData(ByteBuf buffer) {

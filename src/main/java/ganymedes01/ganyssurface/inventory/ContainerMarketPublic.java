@@ -25,7 +25,7 @@ public class ContainerMarketPublic extends Container {
 
 	public ContainerMarketPublic(InventoryPlayer inventory, TileEntityMarket tile, String username) {
 		market = tile;
-		PacketHandler.INSTANCE.sendToAll(market.getPacket());
+		PacketHandler.sendToAll(market.getPacket());
 
 		if (tile.isOwner(username)) {
 			addSlotToContainer(new GhostSlot(tile, TileEntityMarket.PRICE_ONE, 39, 18));
