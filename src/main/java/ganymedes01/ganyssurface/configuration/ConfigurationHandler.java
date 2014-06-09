@@ -50,7 +50,6 @@ public class ConfigurationHandler {
 			GanysSurface.enableChocolate = configBoolean(Strings.ACTIVATE_CHOCOLATE, true);
 			GanysSurface.shouldDoVersionCheck = configBoolean(Strings.SHOULD_DO_VERSION_CHECK, true);
 			GanysSurface.forceAllContainersOpen = configBoolean(Strings.FORCE_ALL_CONTAINERS_OPEN, false);
-			GanysSurface.enableMarket = configBoolean(Strings.ENABLE_MARKET, true);
 			GanysSurface.enableWoodenArmour = configBoolean(Strings.ENABLE_WOODEN_ARMOUR, true);
 			GanysSurface.enableCamilaSeedsToDropFromGrass = configBoolean(Strings.ENABLE_CAMILA_SEEDS_TO_DROP_FROM_GRASS, true);
 			GanysSurface.poopRandomBonemeals = configBoolean(Strings.POOP_RANDOM_BONEMEALS, true);

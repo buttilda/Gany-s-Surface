@@ -30,7 +30,6 @@ public class Strings {
 	public static final String LANTERN_NAME = "lantern";
 	public static final String INK_HARVESTER_NAME = "inkHarvester";
 	public static final String SLIME_BLOCK_NAME = "slimeBlock";
-	public static final String MARKET_NAME = "market";
 	public static final String[] COLOURED_REDSTONE_NAME = new String[16];
 	static {
 		for (int i = 0; i < 16; i++)
@@ -97,7 +96,6 @@ public class Strings {
 	public static final String ACTIVATE_CHOCOLATE = "activateChocolate";
 	public static final String SHOULD_DO_VERSION_CHECK = "shouldDoVersionCheck";
 	public static final String FORCE_ALL_CONTAINERS_OPEN = "forceAllContainersOpen";
-	public static final String ENABLE_MARKET = "enableMarket";
 	public static final String ENABLE_WOODEN_ARMOUR = "enableWoodenArmour";
 	public static final String ENABLE_CAMILA_SEEDS_TO_DROP_FROM_GRASS = "enableCamilaSeedsToDropFromGrass";
 	public static final String POOP_RANDOM_BONEMEALS = "poopRandomBonemeals";

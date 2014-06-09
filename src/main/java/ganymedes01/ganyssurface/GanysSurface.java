@@ -56,7 +56,6 @@ public class GanysSurface {
 	public static boolean enableChocolate = true;
 	public static boolean shouldDoVersionCheck = true;
 	public static boolean forceAllContainersOpen = false;
-	public static boolean enableMarket = true;
 	public static boolean enableWoodenArmour = true;
 	public static boolean enableCamilaSeedsToDropFromGrass = true;
 	public static boolean poopRandomBonemeals = true;

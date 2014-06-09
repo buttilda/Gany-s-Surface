@@ -35,7 +35,6 @@ public class ModBlocks {
 	public static final Block lantern = new Lantern();
 	public static final Block inkHarvester = new InkHarvester();
 	public static final Block slimeBlock = new SlimeBlock();
-	public static final Block market = new Market();
 	public static final Block[] colouredRedstone = new Block[16];
 	public static final Block colouredRedstoneBlock = new ColouredRedstoneBlock();
 	public static final Block dualWorkTable = new DualWorkTable();
@@ -72,7 +71,6 @@ public class ModBlocks {
 		registerBlock(lantern);
 		registerBlock(inkHarvester);
 		registerBlock(slimeBlock);
-		registerBlock(market);
 		for (int i = 0; i < 16; i++)
 			if (i != 1) // Skip Red
 				registerBlock(colouredRedstone[i]);

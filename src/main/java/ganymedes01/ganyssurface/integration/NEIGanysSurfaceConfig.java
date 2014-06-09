@@ -5,7 +5,6 @@ import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPortableDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
-import ganymedes01.ganyssurface.integration.nei.MarketSalesHandler;
 import ganymedes01.ganyssurface.integration.nei.OMCYieldHandler;
 import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
@@ -33,12 +32,6 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		API.registerGuiOverlayHandler(GuiDualWorkTable.class, new DefaultOverlayHandler(5 + 75, 11), "crafting");
 		API.registerGuiOverlay(GuiPortableDualWorkTable.class, "crafting", 5 + 75, 11);
 		API.registerGuiOverlayHandler(GuiPortableDualWorkTable.class, new DefaultOverlayHandler(5 + 75, 11), "crafting");
-
-		if (GanysSurface.enableMarket) {
-			API.registerRecipeHandler(new MarketSalesHandler());
-			API.registerUsageHandler(new MarketSalesHandler());
-		} else
-			API.hideItem(new ItemStack(ModBlocks.market));
 
 		API.registerRecipeHandler(new OMCYieldHandler());
 		API.registerUsageHandler(new OMCYieldHandler());
