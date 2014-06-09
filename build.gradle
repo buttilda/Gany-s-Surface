@@ -29,6 +29,7 @@ minecraft {
 dependencies {
 	compile files("libs/NEI.jar")
 	compile files("libs/CodeChickenLib.jar")
+	compile files("libs/Thaumcraft.jar")
 }
 
 processResources
