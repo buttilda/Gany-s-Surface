@@ -69,7 +69,6 @@ public class BlockSlimeBlockRender implements ISimpleBlockRenderingHandler {
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
 		if (MinecraftForgeClient.getRenderPass() == 0) {
 			float f = 0.0625F;
-			renderer.enableAO = false;
 
 			renderer.setRenderBounds(f * 2, f * 2, f * 2, f * 14, f * 14, f * 14);
 
@@ -80,9 +79,9 @@ public class BlockSlimeBlockRender implements ISimpleBlockRenderingHandler {
 			renderer.renderFaceXNeg(block, x, y, z, ModBlocks.slimeBlock.getIcon(4, 1));
 			renderer.renderFaceYNeg(block, x, y, z, ModBlocks.slimeBlock.getIcon(0, 1));
 			renderer.renderFaceZNeg(block, x, y, z, ModBlocks.slimeBlock.getIcon(2, 1));
+			return true;
 		} else
-			renderer.renderStandardBlock(ModBlocks.slimeBlock, x, y, z);
-		return true;
+			return renderer.renderStandardBlock(ModBlocks.slimeBlock, x, y, z);
 	}
 
 	@Override
