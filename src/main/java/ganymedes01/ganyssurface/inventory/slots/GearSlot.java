@@ -24,7 +24,13 @@ public class GearSlot extends Slot {
 
 	@Override
 	public boolean isItemValid(ItemStack stack) {
-		String oreName = OreDictionary.getOreName(OreDictionary.getOreID(stack));
-		return oreName.startsWith("gear") || stack.getItem() instanceof ItemArmor || stack.getItem() instanceof ItemTool || stack.getItem() instanceof ItemHoe || stack.getItem() instanceof ItemSword;
+		return isRegisteredGear(stack) || stack.getItem() instanceof ItemArmor || stack.getItem() instanceof ItemTool || stack.getItem() instanceof ItemHoe || stack.getItem() instanceof ItemSword;
+	}
+
+	private boolean isRegisteredGear(ItemStack stack) {
+		for (int id : OreDictionary.getOreIDs(stack))
+			if (OreDictionary.getOreName(id).startsWith("gear"))
+				return true;
+		return false;
 	}
 }

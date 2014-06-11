@@ -144,6 +144,22 @@ public class OrganicMatterRegistry {
 		return getOrganicYield(stack) > 0;
 	}
 
+	private static boolean mapContainsKeys(HashMap<Integer, Integer> map, ItemStack stack) {
+		for (int id : OreDictionary.getOreIDs(stack))
+			if (map.containsKey(id))
+				return true;
+		return false;
+	}
+
+	private static int getValue(HashMap<Integer, Integer> map, ItemStack stack) {
+		for (int id : OreDictionary.getOreIDs(stack)) {
+			Integer value = map.get(id);
+			if (value != null)
+				return value;
+		}
+		return -1;
+	}
+
 	public static int getOrganicYield(ItemStack stack) {
 		if (stack == null)
 			return -1;
@@ -152,8 +168,8 @@ public class OrganicMatterRegistry {
 
 		if (matterYield.containsKey(new UnsizedStack(stack)))
 			return matterYield.get(new UnsizedStack(stack));
-		else if (oreYield.containsKey(OreDictionary.getOreID(stack)))
-			return oreYield.get(OreDictionary.getOreID(stack));
+		else if (mapContainsKeys(oreYield, stack))
+			return getValue(oreYield, stack);
 
 		int ret = -1;
 

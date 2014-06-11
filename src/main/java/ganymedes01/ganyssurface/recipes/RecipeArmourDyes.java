@@ -54,7 +54,12 @@ public class RecipeArmourDyes extends RecipesArmorDyes {
 	}
 
 	private boolean isDye(ItemStack stack) {
-		return OreDictionary.getOreName(OreDictionary.getOreID(stack)).contains("dye");
+		for (int id : OreDictionary.getOreIDs(stack)) {
+			String name = OreDictionary.getOreName(id);
+			if (!"dye".equals(name) && name.startsWith("dye"))
+				return true;
+		}
+		return false;
 	}
 
 	// Messy and stolen from vanilla
