@@ -140,7 +140,7 @@ public class TileEntityInkHarvester extends GanysInventory implements ISidedInve
 			maxY = 3;
 		}
 
-		return worldObj.selectEntitiesWithinAABB(EntitySquid.class, AxisAlignedBB.getAABBPool().getAABB(xCoord - 2.0D, yCoord + minY, zCoord - 2.0D, xCoord + 2.0D, yCoord + maxY, zCoord + 2.0D), IEntitySelector.selectAnything);
+		return worldObj.selectEntitiesWithinAABB(EntitySquid.class, AxisAlignedBB.getBoundingBox(xCoord - 2.0D, yCoord + minY, zCoord - 2.0D, xCoord + 2.0D, yCoord + maxY, zCoord + 2.0D), IEntitySelector.selectAnything);
 	}
 
 	public boolean isFormed() {
