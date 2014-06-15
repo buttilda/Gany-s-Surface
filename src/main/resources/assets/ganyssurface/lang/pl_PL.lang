@@ -1,0 +1,133 @@
+# Item localizations
+item.ganyssurface.woodenHelmet.name=Drewniany Hełm
+item.ganyssurface.woodenChestplate.name=Drewniany Napierśnik
+item.ganyssurface.woodenLeggings.name=Drewniane Nogawice
+item.ganyssurface.woodenBoots.name=Drewniane Buty
+
+item.ganyssurface.dyedIronHelmet.name=Żelazny Hełm
+item.ganyssurface.dyedIronChestplate.name=Żelazny Napierśnik
+item.ganyssurface.dyedIronLeggings.name=Żelazne Nogawice
+item.ganyssurface.dyedIronBoots.name=Żelazne Buty
+
+item.ganyssurface.rot.name=Zgnilizna
+item.ganyssurface.camelliaSeeds.name=Nasiona Kamelii
+item.ganyssurface.teaLeaves.name=Liście Herbaty
+item.ganyssurface.teaBag.name=Torebka Herbaty
+item.ganyssurface.emptyMug.name=Pusty Kubek
+item.ganyssurface.cupOfTea.name=Kubek Herbaty
+item.ganyssurface.mankyCupOfTea.name=Niesmaczna Herbata
+item.ganyssurface.poop.name=Gówno
+item.ganyssurface.batPoop.name=Gówno nietoperza
+item.ganyssurface.fertilizer.name=Nawóz
+item.ganyssurface.cookedEgg.name=Pieczone jajko
+item.ganyssurface.obsidianHead.name=Obsydianowa Głowa
+item.ganyssurface.woodenWrench.name=Drewniany Klucz
+item.ganyssurface.batNet.name=Sieć Nietoperza
+item.ganyssurface.pocketBat.name=Przenośny Nietoperz
+item.ganyssurface.batStew.name=Zupa z Nietoperza
+item.ganyssurface.chocolateBar.name=Czekolada
+item.ganyssurface.horsalyser.name=Horsalyser
+item.ganyssurface.horseSpawner0.name=Spawn Nieumarły Koń
+item.ganyssurface.horseSpawner1.name=Spawn Koń Kościej
+item.ganyssurface.horseSpawner2.name=Spawn Najlepszy Koń
+item.ganyssurface.chargedCreeperSpawner.name=Spawn Naładowany Creeper
+
+item.ganyssurface.colouredRedstoneBLACK.name=Czarny kamień
+item.ganyssurface.colouredRedstoneGREEN.name=Zielony kamień
+item.ganyssurface.colouredRedstoneBROWN.name=Brązowy kamień
+item.ganyssurface.colouredRedstoneBLUE.name=Niebieski kamień
+item.ganyssurface.colouredRedstonePURPLE.name=Fioletowy kamień
+item.ganyssurface.colouredRedstoneCYAN.name=Morski kamień
+item.ganyssurface.colouredRedstoneLIGHTGREY.name=Jasnoszary kamień
+item.ganyssurface.colouredRedstoneGREY.name=Szary kamień
+item.ganyssurface.colouredRedstonePINK.name=Różowy kamień
+item.ganyssurface.colouredRedstoneLIME.name=Limonkowy kamień
+item.ganyssurface.colouredRedstoneYELLOW.name=Żółty kamień
+item.ganyssurface.colouredRedstoneLIGHTBLUE.name=Jasnoniebieski kamień
+item.ganyssurface.colouredRedstoneMAGENTA.name=Magenta kamień
+item.ganyssurface.colouredRedstoneORANGE.name=Pomarańczowy kamień
+item.ganyssurface.colouredRedstoneWHITE.name=Biały kamień
+
+# Block localizations
+tile.ganyssurface.camelliaCrop.name=Roślina Kamelii
+tile.ganyssurface.rainDetector.name=Detektor Deszczu
+tile.ganyssurface.blockDetector.name=Detektor Bloków
+tile.ganyssurface.dislocator.name=Dyslokator
+tile.ganyssurface.sensoringDislocator.name=Czuły Dyslokator
+tile.ganyssurface.cubicSensoringDislocator.name=Sześcienny Czuły Dyslokator
+tile.ganyssurface.disguisedTrapDoorOak.name=Zamaskowany Dębowy Właz
+tile.ganyssurface.disguisedTrapDoorSpruce.name=Zamaskowany Świerkowy Właz
+tile.ganyssurface.disguisedTrapDoorBirch.name=Zamaskowany Brzozowy Właz
+tile.ganyssurface.disguisedTrapDoorJungle.name=Zamaskowany Właz z Drewna Dżunglowego
+tile.ganyssurface.workTable.name=Stół pracowniczy
+tile.ganyssurface.organicMatterCompressor.name=Kompresor Materii Organicznej
+tile.ganyssurface.cushion.name=Poduszka
+tile.ganyssurface.chocolateCake.name=Ciasto czekoladowe
+tile.ganyssurface.itemDisplay.name=Wystawa
+tile.ganyssurface.chestPropellant.name=Napędzacz skrzyń
+tile.ganyssurface.fertilizedSoil.name=Zaorana ziemia z nawozem
+tile.ganyssurface.planter.name=Wysiewacz
+tile.ganyssurface.lantern.name=Latarnia
+tile.ganyssurface.inkHarvester.name=Zbieracz Tuszu
+tile.ganyssurface.slimeBlock.name=Blok szlamu
+tile.ganyssurface.market.name=Market
+tile.ganyssurface.dualWorkTable.name=Podwójny stół pracowniczy
+
+tile.ganyssurface.colouredRedstoneBLACK.name=Czarny proszek
+tile.ganyssurface.colouredRedstoneGREEN.name=Zielony proszek
+tile.ganyssurface.colouredRedstoneBROWN.name=Brazowy proszek
+tile.ganyssurface.colouredRedstoneBLUE.name=Niebieski proszek
+tile.ganyssurface.colouredRedstonePURPLE.name=Fioletowy proszek
+tile.ganyssurface.colouredRedstoneCYAN.name=Morski proszek
+tile.ganyssurface.colouredRedstoneLIGHTGREY.name=Jasnoszary proszek
+tile.ganyssurface.colouredRedstoneGREY.name=Szary proszek
+tile.ganyssurface.colouredRedstonePINK.name=Różowy proszek
+tile.ganyssurface.colouredRedstoneLIME.name=Limonkowy proszek
+tile.ganyssurface.colouredRedstoneYELLOW.name=Żółty proszek
+tile.ganyssurface.colouredRedstoneLIGHTBLUE.name=Jasnoniebieski proszek
+tile.ganyssurface.colouredRedstoneMAGENTA.name=Magenta proszek
+tile.ganyssurface.colouredRedstoneORANGE.name=Pomarańczowy proszek
+tile.ganyssurface.colouredRedstoneWHITE.name=Biały proszek
+
+tile.ganyssurface.colouredRedstoneBlockBLACK.name=Blok z czarnego proszku
+tile.ganyssurface.colouredRedstoneBlockGREEN.name=Blok z zielonego proszku
+tile.ganyssurface.colouredRedstoneBlockBROWN.name=Blok z brązowego proszku
+tile.ganyssurface.colouredRedstoneBlockBLUE.name=Blok z niebieskiego proszku
+tile.ganyssurface.colouredRedstoneBlockPURPLE.name=Blok z fioletowego proszku
+tile.ganyssurface.colouredRedstoneBlockCYAN.name=Blok z morskiego proszku
+tile.ganyssurface.colouredRedstoneBlockLIGHTGREY.name=Blok z jasnoszarego proszku
+tile.ganyssurface.colouredRedstoneBlockGREY.name=Blok z szarego proszku
+tile.ganyssurface.colouredRedstoneBlockPINK.name=Blok z różowego proszku
+tile.ganyssurface.colouredRedstoneBlockLIME.name=Blok z limonkowego proszku
+tile.ganyssurface.colouredRedstoneBlockYELLOW.name=Blok z żółtego proszku
+tile.ganyssurface.colouredRedstoneBlockLIGHTBLUE.name=Blok z jasnoniebieskiego proszku
+tile.ganyssurface.colouredRedstoneBlockMAGENTA.name=Blok z magenta proszku
+tile.ganyssurface.colouredRedstoneBlockORANGE.name=Blok z pomarańczowego proszku
+tile.ganyssurface.colouredRedstoneBlockWHITE.name=Blok z białego proszku
+
+# GUI localizations
+container.ganyssurface:blockDetector=Detektor Bloków
+container.ganyssurface:sensoringDislocator= Czuły dyslokator
+container.ganyssurface:cubicSensoringDislocator=Sześcienny czuły dyslokator
+container.ganyssurface:workTable=Stół pracowniczy
+container.ganyssurface:organicMatterCompressor=Kompresor materii organicznej
+container.ganyssurface:itemDisplay=Wystawa
+container.ganyssurface:planter=Wysiewacz
+container.ganyssurface:inkHarvester=Zbieracz Tuszu
+container.ganyssurface:market=Market
+container.ganyssurface:dualWorkTable=Podwójny stół pracowniczy
+
+matter=Matter:
+squidFood=Food:
+profit=Profit:
+forSale=For Sale:
+offer=Offer:
+price=Price:
+
+# Creative Tab localizations
+itemGroup.ganyssurface=Gany's Surface
+
+# Others
+pleaseletmefree=Please let me free D=
+attacktocapture=Left-Click a bat to capture it
+interacttorotate=Right-Click logs,pillars and etc. to rotate
