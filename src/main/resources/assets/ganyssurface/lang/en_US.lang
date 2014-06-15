@@ -99,7 +99,6 @@ tile.ganyssurface.planter.name=Planter
 tile.ganyssurface.lantern.name=Lantern
 tile.ganyssurface.inkHarvester.name=Ink Harvester
 tile.ganyssurface.slimeBlock.name=Slime Block
-tile.ganyssurface.market.name=Market
 tile.ganyssurface.dualWorkTable.name=Dual Work Table
 tile.ganyssurface.poopBlock.name=Poop
 tile.ganyssurface.farmManager.name=Farm Manager
@@ -147,7 +146,6 @@ container.ganyssurface.organicMatterCompressor=Organic Matter Compressor
 container.ganyssurface.itemDisplay=Item Display
 container.ganyssurface.planter=Planter
 container.ganyssurface.inkHarvester=Ink Harvester
-container.ganyssurface.market=Market
 container.ganyssurface.dualWorkTable=Dual Work Table
 container.ganyssurface.farmManager=Farm Manager
 container.ganyssurface.encasingBench=Encasing Bench
@@ -156,10 +154,6 @@ container.ganyssurface.gearalyser=Gearalyser
 
 matter=Matter:
 squidFood=Food:
-profit=Profit:
-forSale=For Sale:
-offer=Offer:
-price=Price:
 
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface

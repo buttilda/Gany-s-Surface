@@ -70,7 +70,6 @@ tile.ganyssurface.planter.name=Wysiewacz
 tile.ganyssurface.lantern.name=Latarnia
 tile.ganyssurface.inkHarvester.name=Zbieracz Tuszu
 tile.ganyssurface.slimeBlock.name=Blok szlamu
-tile.ganyssurface.market.name=Market
 tile.ganyssurface.dualWorkTable.name=Podwójny stół pracowniczy
 
 tile.ganyssurface.colouredRedstoneBLACK.name=Czarny proszek
@@ -114,15 +113,10 @@ container.ganyssurface:organicMatterCompressor=Kompresor materii organicznej
 container.ganyssurface:itemDisplay=Wystawa
 container.ganyssurface:planter=Wysiewacz
 container.ganyssurface:inkHarvester=Zbieracz Tuszu
-container.ganyssurface:market=Market
 container.ganyssurface:dualWorkTable=Podwójny stół pracowniczy
 
 matter=Matter:
 squidFood=Food:
-profit=Profit:
-forSale=For Sale:
-offer=Offer:
-price=Price:
 
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface

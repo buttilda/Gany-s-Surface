@@ -67,7 +67,6 @@ tile.ganyssurface.planter.name=Plantador
 tile.ganyssurface.lantern.name=Linterna
 tile.ganyssurface.inkHarvester.name=Cosechador de Tinta
 tile.ganyssurface.slimeBlock.name=Bloque de Slime
-tile.ganyssurface.market.name=Tienda
 tile.ganyssurface.dualWorkTable.name=Mesa de Trabajo Dual
 tile.ganyssurface.colouredRedstoneBLACK.name=Piedra Negra
 tile.ganyssurface.colouredRedstoneGREEN.name=Piedra Verde
@@ -109,15 +108,10 @@ container.ganyssurface:organicMatterCompressor=Compresor de Materia Orgánica
 container.ganyssurface:itemDisplay=Exhibidor de Ítems
 container.ganyssurface:planter=Plantador
 container.ganyssurface:inkHarvester=Cosechador de Tinta
-container.ganyssurface:market=Tienda
 container.ganyssurface:dualWorkTable=Mesa de Trabajo Dual
 
 matter=Materia:
 squidFood=Alimento:
-profit=Ganancia:
-forSale=En Venta:
-offer=Oferta:
-price=Precio:
 
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface
