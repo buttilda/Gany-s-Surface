@@ -21,9 +21,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ColouredRedstoneItem extends Item {
@@ -45,7 +45,12 @@ public class ColouredRedstoneItem extends Item {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName() + ColouredRedstone.COLOURS[stack.getItemDamage()].toUpperCase();
+		int meta = stack.getItemDamage();
+		if (meta >= ColouredRedstone.COLOURS.length)
+			meta = ColouredRedstone.COLOURS.length - 1;
+		if (meta < 0)
+			meta = 0;
+		return super.getUnlocalizedName() + ColouredRedstone.COLOURS[meta].toUpperCase();
 	}
 
 	@Override
