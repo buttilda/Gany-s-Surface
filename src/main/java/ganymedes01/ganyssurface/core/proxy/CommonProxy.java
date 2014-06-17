@@ -53,9 +53,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class CommonProxy implements IGuiHandler {
@@ -84,9 +84,6 @@ public class CommonProxy implements IGuiHandler {
 	}
 
 	public void registerRenderers() {
-	}
-
-	public void handleParticleEffects(World world, double x, double y, double z, int id, int meta) {
 	}
 
 	@Override

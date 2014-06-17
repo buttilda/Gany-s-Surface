@@ -1,9 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
-import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.ModItems;
-import ganymedes01.ganyssurface.lib.ParticleEffectsID;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -13,10 +11,12 @@ import java.util.Random;
 import java.util.Set;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockColored;
 import net.minecraft.block.BlockRedstoneDiode;
 import net.minecraft.block.BlockRedstoneWire;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -33,9 +33,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ColouredRedstone extends Block {
@@ -399,6 +399,15 @@ public class ColouredRedstone extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random rand) {
-		GanysSurface.proxy.handleParticleEffects(world, x, y, z, ParticleEffectsID.COLOURED_REDSTONE, colourIndex);
+		int meta = world.getBlockMetadata(x, y, z);
+
+		if (meta > 0) {
+			double d0 = x + 0.5D + (rand.nextFloat() - 0.5D) * 0.2D;
+			double d1 = y + 0.0625F;
+			double d2 = z + 0.5D + (rand.nextFloat() - 0.5D) * 0.2D;
+
+			float[] colour = EntitySheep.fleeceColorTable[BlockColored.func_150031_c(colourIndex)];
+			world.spawnParticle("reddust", d0, d1, d2, colour[0], colour[1], colour[2]);
+		}
 	}
 }

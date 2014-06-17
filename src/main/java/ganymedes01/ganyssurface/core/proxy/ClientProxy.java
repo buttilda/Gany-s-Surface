@@ -17,27 +17,21 @@ import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.entities.EntityVillageFinder;
 import ganymedes01.ganyssurface.items.ModItems;
-import ganymedes01.ganyssurface.lib.ParticleEffectsID;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
-import net.minecraft.block.BlockColored;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityReddustFX;
 import net.minecraft.client.renderer.entity.RenderSnowball;
-import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.item.Item;
-import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ClientProxy extends CommonProxy {
@@ -67,75 +61,5 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerBlockHandler(new BlockSlimeBlockRender());
 		RenderingRegistry.registerBlockHandler(new BlockColouredRedstoneRender());
 		RenderingRegistry.registerBlockHandler(new BlockItemDisplayRender());
-	}
-
-	//	@Override
-	//	public void handleItemDisplayPacket(int x, int y, int z, ItemStack stack) {
-	//		World world = FMLClientHandler.instance().getClient().theWorld;
-	//		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-	//		if (tileEntity != null)
-	//			if (tileEntity instanceof TileEntityItemDisplay)
-	//				((TileEntityItemDisplay) tileEntity).addItemToDisplay(stack);
-	//	}
-	//
-	//	@Override
-	//	public void handleWorkTablePacket(int x, int y, int z, ItemStack[] inventory) {
-	//		World world = FMLClientHandler.instance().getClient().theWorld;
-	//		TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-	//		if (tileEntity != null && inventory != null)
-	//			if (tileEntity instanceof TileEntityWorkTable)
-	//				for (int i = 0; i < inventory.length; i++)
-	//					((TileEntityWorkTable) tileEntity).setInventorySlotContents(i, inventory[i]);
-	//	}
-	//
-	//	@Override
-	//	public void handlePlanterPacket(int x, int y, int z, float armExtension) {
-	//		World world = FMLClientHandler.instance().getClient().theWorld;
-	//		if (world != null) {
-	//			TileEntity tileEntity = world.getBlockTileEntity(x, y, z);
-	//			if (tileEntity != null)
-	//				if (tileEntity instanceof TileEntityPlanter)
-	//					((TileEntityPlanter) tileEntity).setArmExtension(armExtension);
-	//		}
-	//	}
-
-	@Override
-	public void handleParticleEffects(World world, double x, double y, double z, int id, int meta) {
-		switch (id) {
-			case ParticleEffectsID.POOP:
-				world.spawnParticle("iconcrack_" + ModItems.poop + "_" + meta, x, y, z, (Math.random() * 2.0D - 1.0D) * 0.2D, (Math.random() * 2.0D - 1.0D) * 0.2D, (Math.random() * 2.0D - 1.0D) * 0.2D);
-				break;
-			case ParticleEffectsID.COLOURED_REDSTONE:
-				EntityReddustFX fx = getParticle(world, x, y, z, meta);
-				if (fx != null)
-					Minecraft.getMinecraft().effectRenderer.addEffect(fx);
-				break;
-		}
-	}
-
-	private EntityReddustFX getParticle(World world, double x, double y, double z, int colourIndex) {
-		int meta = world.getBlockMetadata((int) x, (int) y, (int) z);
-		if (meta > 0) {
-			double d0 = x + 0.5D + (world.rand.nextFloat() - 0.5D) * 0.2D;
-			double d1 = y + 0.0625F;
-			double d2 = z + 0.5D + (world.rand.nextFloat() - 0.5D) * 0.2D;
-			float f = meta / 15.0F;
-			float f1 = f * 0.6F + 0.4F;
-			float f2 = f * f * 0.7F - 0.5F;
-			float f3 = f * f * 0.6F - 0.7F;
-
-			if (f2 < 0.0F)
-				f2 = 0.0F;
-
-			if (f3 < 0.0F)
-				f3 = 0.0F;
-
-			EntityReddustFX fx = new EntityReddustFX(world, d0, d1, d2, f1, f2, f3);
-			float[] colour = EntitySheep.fleeceColorTable[BlockColored.func_150031_c(colourIndex)];
-			fx.setRBGColorF(colour[0], colour[1], colour[2]);
-
-			return fx;
-		}
-		return null;
 	}
 }
