@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.entities;
 
 import ganymedes01.ganyssurface.items.ModItems;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
 public class EntityBatPoop extends EntityPoop {
@@ -20,7 +21,9 @@ public class EntityBatPoop extends EntityPoop {
 
 	@Override
 	protected void spawnParticle() {
-		if (worldObj.isRemote)
-			worldObj.spawnParticle("iconcrack_" + ModItems.poop + "_" + 1, posX, posY, posZ, (Math.random() * 2.0D - 1.0D) * 0.2D, (Math.random() * 2.0D - 1.0D) * 0.2D, (Math.random() * 2.0D - 1.0D) * 0.2D);
+		if (worldObj.isRemote) {
+			worldObj.spawnParticle("iconcrack_" + Item.getIdFromItem(ModItems.poop) + "_0", posX, posY, posZ, (Math.random() * 2.0D - 1.0D) * 0.2D, (Math.random() * 2.0D - 1.0D) * 0.2D, (Math.random() * 2.0D - 1.0D) * 0.2D);
+			worldObj.spawnParticle("mobSpell", posX, posY, posZ, 45.0D / 255.0D, 104.0D / 255.0D, 20.0D / 255.0D);
+		}
 	}
 }
