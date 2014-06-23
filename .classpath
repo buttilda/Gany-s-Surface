@@ -3,8 +3,8 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/forge17"/>
-	<classpathentry kind="lib" path="/Users/Andre/Documents/Development/forge17/mods/NotEnoughItems-1.7.2-1.0.1-dev.jar"/>
-	<classpathentry kind="lib" path="/Users/Andre/Documents/Development/forge17/mods/Thaumcraft-1.7.2-4.1.1.14.jar"/>
-	<classpathentry kind="lib" path="/Users/Andre/Documents/Development/forge17/mods/1.7.2/CodeChickenLib-1.7.2-1.1.1.80-dev.jar"/>
+	<classpathentry kind="lib" path="libs/CodeChickenLib.jar"/>
+	<classpathentry kind="lib" path="libs/NEI.jar"/>
+	<classpathentry kind="lib" path="libs/Thaumcraft.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
