@@ -37,9 +37,9 @@ import cpw.mods.fml.relauncher.Side;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION_NUMBER, dependencies = Reference.DEPENDENCIES)
@@ -94,11 +94,9 @@ public class GanysSurface {
 		proxy.registerTileEntities();
 		proxy.registerRenderers();
 
-		if (!Loader.isModLoaded("mobsplice") && !Loader.isModLoaded("ganysend") && !Loader.isModLoaded("ganysnether"))
-			if (event.getSide() == Side.CLIENT) {
-				RenderCapeHandler.getUsernames();
+		if (event.getSide() == Side.CLIENT)
+			if (!Loader.isModLoaded("ganysend") && !Loader.isModLoaded("ganysnether"))
 				MinecraftForge.EVENT_BUS.register(new RenderCapeHandler());
-			}
 
 		ModIntegrator.init();
 	}

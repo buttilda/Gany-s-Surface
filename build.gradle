@@ -18,11 +18,11 @@ buildscript {
 apply plugin: 'forge'
 
 version = "1.7.1"
-group = "ganymedes01.ganyssurface" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = "ganymedes01.ganyssurface"
 archivesBaseName = "Ganys Surface"
 
 minecraft {
-    version = "1.7.2-10.12.2.1124"
+    version = "1.7.2-10.12.2.1133"
     assetDir = "eclipse/assets"
 }
 
@@ -32,18 +32,13 @@ dependencies {
 	compile files("libs/Thaumcraft.jar")
 }
 
-processResources
-        {
-            // replace stuff in mcmod.info, nothing else
-            from(sourceSets.main.resources.srcDirs) {
-                include 'mcmod.info'
+processResources {
+     from(sourceSets.main.resources.srcDirs) {
+          include 'mcmod.info'
+          expand 'version': project.version, 'mcversion': project.minecraft.version
+     }
 
-                // replace version and mcversion
-                expand 'version': project.version, 'mcversion': project.minecraft.version
-            }
-
-            // copy everything else, thats not the mcmod.info
-            from(sourceSets.main.resources.srcDirs) {
-                exclude 'mcmod.info'
-            }
-        }
+     from(sourceSets.main.resources.srcDirs) {
+          exclude 'mcmod.info'
+     }
+}

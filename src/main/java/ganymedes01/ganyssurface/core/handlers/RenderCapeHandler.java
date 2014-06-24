@@ -32,16 +32,6 @@ public class RenderCapeHandler {
 	private static BufferedImage KPR_CAPE_DATA = null;
 	private static boolean started = false;
 
-	public static void getUsernames() {
-		try {
-			Scanner scanner = new Scanner(new URL(Reference.USERS_WITH_CAPES_FILE).openStream());
-			while (scanner.hasNext())
-				usersWithCapes.add(scanner.nextLine());
-			scanner.close();
-		} catch (Exception e) {
-		}
-	}
-
 	@SubscribeEvent
 	public void onPreRenderSpecials(RenderPlayerEvent.Specials.Pre event) {
 		if (!started) {
@@ -74,13 +64,23 @@ public class RenderCapeHandler {
 		@Override
 		public void run() {
 			try {
+				Scanner scanner = new Scanner(new URL(Reference.USERS_WITH_CAPES_FILE).openStream());
+				while (scanner.hasNext())
+					usersWithCapes.add(scanner.nextLine());
+				scanner.close();
+			} catch (Exception e) {
+			}
+
+			try {
 				CAPE_DATA = ImageIO.read(new URL(Reference.CAPE_IMAGE_FILE));
 			} catch (IOException e) {
 			}
+
 			try {
 				JEBJEB_CAPE_DATA = ImageIO.read(new URL(Reference.JEBJEB_CAPE_IMAGE_FILE));
 			} catch (IOException e) {
 			}
+
 			try {
 				KPR_CAPE_DATA = ImageIO.read(new URL(Reference.KPR_CAPE_IMAGE_FILE));
 			} catch (IOException e) {
