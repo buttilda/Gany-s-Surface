@@ -19,9 +19,9 @@ import thaumcraft.api.IRepairable;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class Horsalyser extends Item implements IRepairable {
@@ -47,7 +47,7 @@ public class Horsalyser extends Item implements IRepairable {
 
 			if (world.isRemote) {
 				Utils.sendMessageToPlayer(player, String.format("----- Analysing %s's Data -----", name));
-				Utils.sendMessageToPlayer(player, "Tamed: " + isTamed(horse.isTame(), horse.getOwnerName()));
+				Utils.sendMessageToPlayer(player, "Tamed: " + isTamed(horse.isTame(), horse.func_152119_ch()));
 				Utils.sendMessageToPlayer(player, "Type: " + getType(horse.getHorseType()));
 				Utils.sendMessageToPlayer(player, "Jump Strength: " + getHorseJumpStrength(horse.getHorseJumpStrength()));
 				Utils.sendMessageToPlayer(player, "Size: " + getHorseSize(horse.getHorseSize()));

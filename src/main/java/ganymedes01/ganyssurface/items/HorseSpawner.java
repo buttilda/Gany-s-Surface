@@ -31,9 +31,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class HorseSpawner extends Item {
@@ -75,7 +75,7 @@ public class HorseSpawner extends Item {
 					horse.onSpawnWithEgg((IEntityLivingData) null);
 					setHorseType(horse, type);
 					if (username != null) {
-						horse.setOwnerName(username);
+						horse.func_152120_b(username);
 						horse.setHorseTamed(true);
 					}
 					world.spawnEntityInWorld(horse);
