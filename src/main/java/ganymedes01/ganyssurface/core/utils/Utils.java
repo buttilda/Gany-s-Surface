@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -25,9 +26,9 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class Utils {
@@ -82,7 +83,7 @@ public class Utils {
 		if (player != null)
 			return player;
 		else {
-			player = new EntityPlayer(world, new GameProfile(Reference.MOD_ID, "[" + Reference.CHANNEL + "]")) {
+			player = new EntityPlayer(world, new GameProfile(UUID.fromString(Reference.MOD_ID), "[" + Reference.CHANNEL + "]")) {
 
 				@Override
 				public boolean canCommandSenderUseCommand(int var1, String var2) {

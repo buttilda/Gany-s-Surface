@@ -10,10 +10,8 @@ import java.util.Random;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.relauncher.Side;
@@ -21,9 +19,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class WoodenArmour extends ItemArmor {
@@ -51,17 +49,6 @@ public class WoodenArmour extends ItemArmor {
 
 	private void renderBrokenItemStack(EntityPlayer player, ItemStack stack, Random rand) {
 		player.playSound("random.bowhit", 0.8F, 0.8F + player.worldObj.rand.nextFloat() * 0.4F);
-
-		for (int i = 0; i < 5; i++) {
-			Vec3 vec3 = player.worldObj.getWorldVec3Pool().getVecFromPool((rand.nextFloat() - 0.5D) * 0.1D, Math.random() * 0.1D + 0.1D, 0.0D);
-			vec3.rotateAroundX(-player.rotationPitch * (float) Math.PI / 180.0F);
-			vec3.rotateAroundY(-player.rotationYaw * (float) Math.PI / 180.0F);
-			Vec3 vec31 = player.worldObj.getWorldVec3Pool().getVecFromPool((rand.nextFloat() - 0.5D) * 0.3D, -rand.nextFloat() * 0.6D - 0.3D, 0.6D);
-			vec31.rotateAroundX(-player.rotationPitch * (float) Math.PI / 180.0F);
-			vec31.rotateAroundY(-player.rotationYaw * (float) Math.PI / 180.0F);
-			vec31 = vec31.addVector(player.posX, player.posY + player.getEyeHeight(), player.posZ);
-			player.worldObj.spawnParticle("iconcrack_" + Item.getIdFromItem(stack.getItem()), vec31.xCoord, vec31.yCoord, vec31.zCoord, vec3.xCoord, vec3.yCoord + 0.05D, vec3.zCoord);
-		}
 	}
 
 	@Override

@@ -18,9 +18,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ModRecipes {
@@ -47,6 +47,8 @@ public class ModRecipes {
 		OreDictionary.registerOre("mobEgg", new ItemStack(ModItems.horseSpawner, 1, OreDictionary.WILDCARD_VALUE));
 		OreDictionary.registerOre("clayHardened", new ItemStack(Blocks.hardened_clay));
 		OreDictionary.registerOre("clayHardened", new ItemStack(Blocks.stained_hardened_clay, 1, OreDictionary.WILDCARD_VALUE));
+		if (GanysSurface.enableChocolate)
+			OreDictionary.registerOre("beansCocoa", new ItemStack(Items.dye, 1, 3));
 	}
 
 	private static void registerArmourRecipes() {
@@ -75,7 +77,7 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModItems.batNet), "xyx", " x ", " x ", 'x', Items.stick, 'y', Items.string);
 		GameRegistry.addRecipe(new ItemStack(ModItems.batStew), "xyz", " w ", 'x', Blocks.brown_mushroom, 'z', Blocks.red_mushroom, 'y', ModItems.pocketCritter, 'w', Items.bowl);
 		if (GanysSurface.enableChocolate)
-			GameRegistry.addRecipe(new ItemStack(ModItems.chocolateBar, 4), "xxx", "xyx", "xxx", 'x', new ItemStack(Items.dye, 1, 3), 'y', Items.milk_bucket);
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.chocolateBar, 4), "xxx", "xyx", "xxx", 'x', "beansCocoa", 'y', Items.milk_bucket));
 		GameRegistry.addRecipe(new ItemStack(ModItems.horsalyser), "xyx", "xzx", "xwx", 'x', Items.leather, 'y', Items.flint, 'z', Blocks.glass_pane, 'w', Items.redstone);
 
 		for (int i = 0; i < dyes.length; i++)
