@@ -11,7 +11,7 @@ public class Reference {
 
 	public static final String MOD_ID = "ganyssurface";
 	public static final String MOD_NAME = "Gany's Surface";
-	public static final String DEPENDENCIES = "required-after:Forge@[10.12.2.1139,);";
+	public static final String DEPENDENCIES = "required-after:Forge@[10.13.0.1151,);";
 	public static final String CHANNEL = "GanysSurface";
 	public static final String MASTER = "GanysMods";
 	public static final String VERSION_NUMBER = "1.7.1";
@@ -22,6 +22,7 @@ public class Reference {
 	public static final String ENTITY_TEXTURE_PATH = ITEM_BLOCK_TEXTURE_PATH + "textures/entities/";
 	public static final String GUI_TEXTURE_PATH = ITEM_BLOCK_TEXTURE_PATH + "textures/gui/container/";
 
+	public static final String GUI_FACTORY_CLASS = "ganymedes01.ganyssurface.configuration.ConfigGuiFactory";
 	public static final String SERVER_PROXY_CLASS = "ganymedes01.ganyssurface.core.proxy.CommonProxy";
 	public static final String CLIENT_PROXY_CLASS = "ganymedes01.ganyssurface.core.proxy.ClientProxy";
 	public static final String VERSION_CHECK_FILE = "https://raw.github.com/ganymedes01/Version-Checks/master/Version.xml";

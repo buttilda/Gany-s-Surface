@@ -42,7 +42,7 @@ import cpw.mods.fml.relauncher.Side;
  *
  */
 
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION_NUMBER, dependencies = Reference.DEPENDENCIES)
+@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION_NUMBER, dependencies = Reference.DEPENDENCIES, guiFactory = Reference.GUI_FACTORY_CLASS)
 public class GanysSurface {
 
 	@Instance(Reference.MOD_ID)
@@ -67,7 +67,8 @@ public class GanysSurface {
 	public void preInit(FMLPreInitializationEvent event) {
 		ModIntegrator.preInit();
 
-		ConfigurationHandler.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.MASTER + File.separator + Reference.MOD_ID + ".cfg"));
+		ConfigurationHandler.INSTANCE.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.MASTER + File.separator + Reference.MOD_ID + ".cfg"));
+		FMLCommonHandler.instance().bus().register(ConfigurationHandler.INSTANCE);
 
 		if (shouldDoVersionCheck) {
 			VersionHelper.execute();
