@@ -105,7 +105,7 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.FARM_MANAGER:
 				return new ContainerFarmManager(player.inventory, (TileEntityFarmManager) tile);
 			case GUIsID.PORTABLE_DUAL_WORK_TABLE:
-				return new ContainerPortableDualWorkTable(player);
+				return new ContainerPortableDualWorkTable(player, x);
 			case GUIsID.ENCASING_BENCH:
 				return new ContainerEncasingBench(player.inventory);
 			case GUIsID.AUTO_ENCASER:
@@ -135,7 +135,7 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.FARM_MANAGER:
 				return new GuiFarmManager(player.inventory, (TileEntityFarmManager) tile);
 			case GUIsID.PORTABLE_DUAL_WORK_TABLE:
-				return new GuiPortableDualWorkTable(player);
+				return new GuiPortableDualWorkTable(player, x);
 			case GUIsID.ENCASING_BENCH:
 				return new GuiEncasingBench(player.inventory);
 			case GUIsID.AUTO_ENCASER:

@@ -7,15 +7,15 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 @SideOnly(Side.CLIENT)
 public class GuiPortableDualWorkTable extends GuiDualWorkTable {
 
-	public GuiPortableDualWorkTable(EntityPlayer player) {
-		super(new ContainerPortableDualWorkTable(player));
+	public GuiPortableDualWorkTable(EntityPlayer player, int slot) {
+		super(new ContainerPortableDualWorkTable(player, slot));
 	}
 }

@@ -12,17 +12,17 @@ import net.minecraft.world.World;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ContainerPortableDualWorkTable extends ContainerDualWorkTable {
 
 	private final World world;
 
-	public ContainerPortableDualWorkTable(EntityPlayer player) {
-		super(player.inventory, PortableDualWorkTable.getTile(player.getHeldItem()), false);
+	public ContainerPortableDualWorkTable(EntityPlayer player, int slot) {
+		super(player.inventory, PortableDualWorkTable.getTile(player.inventory.getStackInSlot(slot)), false);
 		world = player.worldObj;
 
 		for (int i = 0; i < 3; i++)

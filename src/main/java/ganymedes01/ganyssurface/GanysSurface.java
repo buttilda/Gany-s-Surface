@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
 import ganymedes01.ganyssurface.core.handlers.FuelHandler;
 import ganymedes01.ganyssurface.core.handlers.InterModComms;
+import ganymedes01.ganyssurface.core.handlers.KeyBindingHandler;
 import ganymedes01.ganyssurface.core.handlers.OpenContainerHandler;
 import ganymedes01.ganyssurface.core.handlers.PoopHandler;
 import ganymedes01.ganyssurface.core.handlers.RenderCapeHandler;
@@ -91,6 +92,7 @@ public class GanysSurface {
 		if (mobsShouldPoop)
 			MinecraftForge.EVENT_BUS.register(new PoopHandler());
 		MinecraftForge.EVENT_BUS.register(new OpenContainerHandler());
+		FMLCommonHandler.instance().bus().register(new KeyBindingHandler());
 
 		proxy.registerTileEntities();
 		proxy.registerRenderers();

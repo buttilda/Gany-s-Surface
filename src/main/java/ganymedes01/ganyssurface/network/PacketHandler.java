@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.network;
 
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.network.packet.CustomPacket;
+import ganymedes01.ganyssurface.network.packet.PacketPortWorkTable;
 import ganymedes01.ganyssurface.network.packet.PacketTileEntity;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandler.Sharable;
@@ -28,9 +29,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 @Sharable
@@ -40,7 +41,8 @@ public final class PacketHandler {
 	private static final EnumMap<Side, FMLEmbeddedChannel> CHANNELS = Maps.newEnumMap(Side.class);
 
 	public enum PacketType {
-		TILE_ENTITY(PacketTileEntity.class);
+		TILE_ENTITY(PacketTileEntity.class),
+		PORT_WORKTABLE(PacketPortWorkTable.class);
 
 		final Class<? extends CustomPacket> cls;
 
