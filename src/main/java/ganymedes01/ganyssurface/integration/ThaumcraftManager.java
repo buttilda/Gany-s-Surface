@@ -1,23 +1,28 @@
 package ganymedes01.ganyssurface.integration;
 
+import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.items.ModItems;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
+import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ThaumcraftManager extends Integration {
 
 	@Override
 	public void init() {
+		FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(ModBlocks.poop, 1, OreDictionary.WILDCARD_VALUE));
+
 		addAspectsToItem(ModItems.rot, new Aspect[] { Aspect.SENSES, Aspect.SLIME }, new int[] { 1, 1 });
 		addAspectsToItem(ModItems.camelliaSeeds, new Aspect[] { Aspect.PLANT }, new int[] { 1 });
 		addAspectsToItem(ModItems.teaLeaves, new Aspect[] { Aspect.PLANT }, new int[] { 1 });
