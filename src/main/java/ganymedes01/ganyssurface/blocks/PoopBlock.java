@@ -26,9 +26,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class PoopBlock extends Block {
@@ -50,16 +50,13 @@ public class PoopBlock extends Block {
 	public void updateTick(World world, int x, int y, int z, Random rand) {
 		if (world.isRemote)
 			return;
-		if (GanysSurface.poopRandomBonemeals) {
-			boolean flag = rand.nextInt(getBonemealchance(world, x, y - 1, z)) == 0;
-			if (!world.provider.hasNoSky && world.canBlockSeeTheSky(x, y + 1, z) && (world.isRaining() || world.isThundering()))
-				flag = true;
+		boolean flag = rand.nextInt(getBonemealchance(world, x, y - 1, z)) == 0;
+		if (!world.provider.hasNoSky && world.canBlockSeeTheSky(x, y + 1, z) && (world.isRaining() || world.isThundering()))
+			flag = true;
 
-			if (flag) {
-				world.setBlockToAir(x, y, z);
-				ItemDye.func_150919_a(new ItemStack(Items.dye, 1, 15), world, x, y - 1, z);
-			}
-		}
+		world.setBlockToAir(x, y, z);
+		if (GanysSurface.poopRandomBonemeals && flag)
+			ItemDye.func_150919_a(new ItemStack(Items.dye, 1, 15), world, x, y - 1, z);
 	}
 
 	private int getBonemealchance(World world, int x, int y, int z) {
