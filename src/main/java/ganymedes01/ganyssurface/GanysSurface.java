@@ -8,6 +8,7 @@ import ganymedes01.ganyssurface.core.handlers.KeyBindingHandler;
 import ganymedes01.ganyssurface.core.handlers.OpenContainerHandler;
 import ganymedes01.ganyssurface.core.handlers.PoopHandler;
 import ganymedes01.ganyssurface.core.handlers.RenderCapeHandler;
+import ganymedes01.ganyssurface.core.handlers.SnowTickHandler;
 import ganymedes01.ganyssurface.core.handlers.VersionCheckTickHandler;
 import ganymedes01.ganyssurface.core.proxy.CommonProxy;
 import ganymedes01.ganyssurface.core.utils.VersionHelper;
@@ -53,6 +54,7 @@ public class GanysSurface {
 	public static CommonProxy proxy;
 
 	public static CreativeTabs surfaceTab = new CreativeTabSurface();
+	public static boolean enableCumulativeSnow = true;
 	public static boolean mobsShouldPoop = true;
 	public static boolean enableChocolate = true;
 	public static boolean shouldDoVersionCheck = true;
@@ -75,6 +77,8 @@ public class GanysSurface {
 			VersionHelper.execute();
 			FMLCommonHandler.instance().bus().register(new VersionCheckTickHandler());
 		}
+
+		FMLCommonHandler.instance().bus().register(new SnowTickHandler());
 
 		proxy.registerEntities();
 

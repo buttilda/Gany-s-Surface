@@ -4,9 +4,9 @@ import ganymedes01.ganyssurface.blocks.ColouredRedstone;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class Strings {
@@ -102,6 +102,7 @@ public class Strings {
 	public static final String MAX_LEVEL_OMC_WORKS = "maxLevelOMCWorks";
 	public static final String INK_HARVESTER_MAX_STRIKE = "inkHarvesterMaxStrike";
 	public static final String POOPING_CHANCE = "poopingChance";
+	public static final String CUMULATIVE_SNOW = "enableCumulativeSnow";
 
 	// Version check
 	public static final String VERSION_CHECK_INIT = "Starting version check.";
