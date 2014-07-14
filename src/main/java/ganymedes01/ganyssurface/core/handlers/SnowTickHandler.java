@@ -28,30 +28,31 @@ public class SnowTickHandler {
 			return;
 
 		World world = event.world;
-		if (world.isRaining())
-			for (Iterator<ChunkCoordIntPair> iterator = getActiveChunks(world); iterator.hasNext();) {
-				ChunkCoordIntPair chunkcoordintpair = iterator.next();
-				int chunkX = chunkcoordintpair.chunkXPos * 16;
-				int chunkZ = chunkcoordintpair.chunkZPos * 16;
-				Chunk chunk = world.getChunkFromChunkCoords(chunkcoordintpair.chunkXPos, chunkcoordintpair.chunkZPos);
-				world.theProfiler.endStartSection("iceandsnow");
+		for (Iterator<ChunkCoordIntPair> iterator = getActiveChunks(world); iterator.hasNext();) {
+			ChunkCoordIntPair chunkcoordintpair = iterator.next();
+			int chunkX = chunkcoordintpair.chunkXPos * 16;
+			int chunkZ = chunkcoordintpair.chunkZPos * 16;
+			Chunk chunk = world.getChunkFromChunkCoords(chunkcoordintpair.chunkXPos, chunkcoordintpair.chunkZPos);
+			world.theProfiler.endStartSection("iceandsnow");
 
-				if (world.provider.canDoRainSnowIce(chunk) && world.rand.nextInt(24) == 0) {
-					int rand = world.rand.nextInt() - world.rand.nextInt();
-					int x = rand & 15;
-					int z = rand >> 8 & 15;
-					int y = world.getPrecipitationHeight(x + chunkX, z + chunkZ);
-					if (world.getBlock(x + chunkX, y, z + chunkZ) == Blocks.snow_layer) {
-						int meta = world.getBlockMetadata(x + chunkX, y, z + chunkZ);
+			if (world.provider.canDoRainSnowIce(chunk) && world.rand.nextInt(24) == 0) {
+				int rand = world.rand.nextInt() - world.rand.nextInt();
+				int x = rand & 15;
+				int z = rand >> 8 & 15;
+				int y = world.getPrecipitationHeight(x + chunkX, z + chunkZ);
+				if (world.getBlock(x + chunkX, y, z + chunkZ) == Blocks.snow_layer) {
+					int meta = world.getBlockMetadata(x + chunkX, y, z + chunkZ);
+					if (world.isRaining()) {
 						if (meta < 6)
 							world.setBlockMetadataWithNotify(x + chunkX, y, z + chunkZ, meta + 1, 3);
-						else
-							world.setBlock(x + chunkX, y, z + chunkZ, Blocks.snow);
-					}
+					} else if (world.rand.nextInt(4) == 0)
+						if (meta > 0)
+							world.setBlockMetadataWithNotify(x + chunkX, y, z + chunkZ, meta - 1, 3);
 				}
-
-				world.theProfiler.endSection();
 			}
+
+			world.theProfiler.endSection();
+		}
 	}
 
 	@SuppressWarnings("unchecked")
