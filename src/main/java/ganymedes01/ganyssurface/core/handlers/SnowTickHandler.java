@@ -24,7 +24,7 @@ public class SnowTickHandler {
 
 	@SubscribeEvent
 	public void tick(WorldTickEvent event) {
-		if (!GanysSurface.enableCumulativeSnow)
+		if (!GanysSurface.enableDynamicSnow)
 			return;
 
 		World world = event.world;

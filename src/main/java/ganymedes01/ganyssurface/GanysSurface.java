@@ -54,7 +54,7 @@ public class GanysSurface {
 	public static CommonProxy proxy;
 
 	public static CreativeTabs surfaceTab = new CreativeTabSurface();
-	public static boolean enableCumulativeSnow = true;
+	public static boolean enableDynamicSnow = true;
 	public static boolean mobsShouldPoop = true;
 	public static boolean enableChocolate = true;
 	public static boolean shouldDoVersionCheck = true;

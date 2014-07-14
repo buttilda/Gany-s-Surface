@@ -102,7 +102,7 @@ public class Strings {
 	public static final String MAX_LEVEL_OMC_WORKS = "maxLevelOMCWorks";
 	public static final String INK_HARVESTER_MAX_STRIKE = "inkHarvesterMaxStrike";
 	public static final String POOPING_CHANCE = "poopingChance";
-	public static final String CUMULATIVE_SNOW = "enableCumulativeSnow";
+	public static final String DYNAMIC_SNOW = "enableDynamicSnow";
 
 	// Version check
 	public static final String VERSION_CHECK_INIT = "Starting version check.";

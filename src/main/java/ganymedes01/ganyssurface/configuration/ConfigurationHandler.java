@@ -61,7 +61,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableWoodenArmour = configBoolean(Strings.ENABLE_WOODEN_ARMOUR, true, true);
 		GanysSurface.enableCamilaSeedsToDropFromGrass = configBoolean(Strings.ENABLE_CAMILA_SEEDS_TO_DROP_FROM_GRASS, true, true);
 		GanysSurface.poopRandomBonemeals = configBoolean(Strings.POOP_RANDOM_BONEMEALS, false, true);
-		GanysSurface.enableCumulativeSnow = configBoolean(Strings.CUMULATIVE_SNOW, "Snow layers will get taller when it snows", false, true);
+		GanysSurface.enableDynamicSnow = configBoolean(Strings.DYNAMIC_SNOW, "Snow layers will get taller when it snows and shorter when it stops snowing", false, true);
 
 		GanysSurface.maxLevelOMCWorks = configInteger(Strings.MAX_LEVEL_OMC_WORKS, false, 15);
 		GanysSurface.inkHarvesterMaxStrike = configInteger(Strings.INK_HARVESTER_MAX_STRIKE, false, 5);
