@@ -14,16 +14,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
-import thaumcraft.api.IRepairable;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
-public class BatNet extends Item implements IRepairable {
+public class BatNet extends Item {
 
 	public BatNet() {
 		setFull3D();

@@ -15,7 +15,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import thaumcraft.api.IRepairable;
 
 /**
  * Gany's Surface
@@ -24,7 +23,7 @@ import thaumcraft.api.IRepairable;
  *
  */
 
-public class Horsalyser extends Item implements IRepairable {
+public class Horsalyser extends Item {
 
 	private final DecimalFormat decForm = new DecimalFormat("##.##");
 
