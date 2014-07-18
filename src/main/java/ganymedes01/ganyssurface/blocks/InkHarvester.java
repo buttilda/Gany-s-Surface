@@ -19,9 +19,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class InkHarvester extends BlockContainer {
@@ -29,7 +29,7 @@ public class InkHarvester extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	private IIcon blockOn, blockOff;
 
-	protected InkHarvester() {
+	public InkHarvester() {
 		super(Material.ground);
 		setHardness(0.2F);
 		setStepSound(soundTypeStone);

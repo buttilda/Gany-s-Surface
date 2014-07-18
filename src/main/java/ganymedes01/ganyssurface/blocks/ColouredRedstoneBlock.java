@@ -1,7 +1,10 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.ModBlocks;
+import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.items.block.ItemColouredRedstoneBlock;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
@@ -14,6 +17,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -22,14 +26,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
-public class ColouredRedstoneBlock extends BlockCompressed {
+public class ColouredRedstoneBlock extends BlockCompressed implements ISubBlocksBlock {
 
-	protected ColouredRedstoneBlock() {
+	public ColouredRedstoneBlock() {
 		super(null);
 		setHardness(5.0F);
 		setResistance(10.0F);
@@ -90,5 +94,10 @@ public class ColouredRedstoneBlock extends BlockCompressed {
 	@Override
 	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
 		return true;
+	}
+
+	@Override
+	public Class<? extends ItemBlock> getItemBlockClass() {
+		return ItemColouredRedstoneBlock.class;
 	}
 }

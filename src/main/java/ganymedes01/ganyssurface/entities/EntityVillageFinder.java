@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.entities;
 
-import ganymedes01.ganyssurface.items.ModItems;
+import ganymedes01.ganyssurface.ModItems;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;

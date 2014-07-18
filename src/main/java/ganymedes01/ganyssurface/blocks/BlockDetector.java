@@ -20,9 +20,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class BlockDetector extends BlockContainer {
@@ -30,7 +30,7 @@ public class BlockDetector extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	private IIcon blockOn, blockOff;
 
-	protected BlockDetector() {
+	public BlockDetector() {
 		super(Material.cloth);
 		setHardness(0.2F);
 		setStepSound(soundTypeWood);

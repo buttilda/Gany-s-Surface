@@ -1,7 +1,7 @@
 package ganymedes01.ganyssurface.recipes;
 
+import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.items.ItemDyeableArmour;
-import ganymedes01.ganyssurface.items.ModItems;
 
 import java.util.ArrayList;
 

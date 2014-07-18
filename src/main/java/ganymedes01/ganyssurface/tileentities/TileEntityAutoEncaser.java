@@ -1,7 +1,7 @@
 package ganymedes01.ganyssurface.tileentities;
 
+import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.InventoryUtils;
-import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.ArrayList;

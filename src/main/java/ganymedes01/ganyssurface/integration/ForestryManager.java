@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.integration;
 
-import ganymedes01.ganyssurface.items.ModItems;
+import ganymedes01.ganyssurface.ModItems;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

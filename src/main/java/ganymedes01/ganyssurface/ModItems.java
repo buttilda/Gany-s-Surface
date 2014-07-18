@@ -1,11 +1,43 @@
-package ganymedes01.ganyssurface.items;
+package ganymedes01.ganyssurface;
 
-import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorChargedCreeperSpawner;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorHorseSpawner;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorPocketBat;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorPoop;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorRot;
+import ganymedes01.ganyssurface.items.BatNet;
+import ganymedes01.ganyssurface.items.BatStew;
+import ganymedes01.ganyssurface.items.CamelliaSeeds;
+import ganymedes01.ganyssurface.items.ChargedCreeperSpawner;
+import ganymedes01.ganyssurface.items.ChocolateBar;
+import ganymedes01.ganyssurface.items.ColouredRedstoneItem;
+import ganymedes01.ganyssurface.items.CookedEgg;
+import ganymedes01.ganyssurface.items.CupOfTea;
+import ganymedes01.ganyssurface.items.DyedChainArmour;
+import ganymedes01.ganyssurface.items.DyedIronArmour;
+import ganymedes01.ganyssurface.items.EmptyMug;
+import ganymedes01.ganyssurface.items.Gearalyser;
+import ganymedes01.ganyssurface.items.Horsalyser;
+import ganymedes01.ganyssurface.items.HorseSpawner;
+import ganymedes01.ganyssurface.items.IcyPickaxe;
+import ganymedes01.ganyssurface.items.MankyCupOfTea;
+import ganymedes01.ganyssurface.items.MuttonCooked;
+import ganymedes01.ganyssurface.items.MuttonRaw;
+import ganymedes01.ganyssurface.items.ObsidianHead;
+import ganymedes01.ganyssurface.items.PocketCritter;
+import ganymedes01.ganyssurface.items.Poop;
+import ganymedes01.ganyssurface.items.PortableDualWorkTable;
+import ganymedes01.ganyssurface.items.RoastedSquid;
+import ganymedes01.ganyssurface.items.Rot;
+import ganymedes01.ganyssurface.items.StorageCase;
+import ganymedes01.ganyssurface.items.TeaBag;
+import ganymedes01.ganyssurface.items.TeaLeaves;
+import ganymedes01.ganyssurface.items.VillageFinder;
+import ganymedes01.ganyssurface.items.WoodenArmour;
+import ganymedes01.ganyssurface.items.WoodenWrench;
+
+import java.lang.reflect.Field;
+
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,9 +46,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ModItems {
@@ -47,6 +79,8 @@ public class ModItems {
 	public static final Item roastedSquid = new RoastedSquid();
 	public static final Item storageCase = new StorageCase();
 	public static final Item gearalyser = new Gearalyser();
+	public static final Item rawMutton = new MuttonRaw();
+	public static final Item cookedMutton = new MuttonCooked();
 
 	// Armour
 	public static final Item woodenHelmet = new WoodenArmour(0);
@@ -65,48 +99,18 @@ public class ModItems {
 	public static final Item dyedChainBoots = new DyedChainArmour(3);
 
 	public static void init() {
-		// Armour
-		registerItem(woodenHelmet);
-		registerItem(woodenChestplate);
-		registerItem(woodenLeggings);
-		registerItem(woodenBoots);
-
-		registerItem(dyedIronHelmet);
-		registerItem(dyedIronChestplate);
-		registerItem(dyedIronLeggings);
-		registerItem(dyedIronBoots);
-
-		registerItem(dyedChainHelmet);
-		registerItem(dyedChainChestplate);
-		registerItem(dyedChainLeggings);
-		registerItem(dyedChainBoots);
-
-		// Items
-		registerItem(rot);
-		registerItem(camelliaSeeds);
-		registerItem(teaLeaves);
-		registerItem(teaBag);
-		registerItem(emptyMug);
-		registerItem(cupOfTea);
-		registerItem(mankyCupOfTea);
-		registerItem(poop);
-		registerItem(cookedEgg);
-		registerItem(obsidianHead);
-		registerItem(woodenWrench);
-		registerItem(batNet);
-		registerItem(pocketCritter);
-		registerItem(batStew);
-		registerItem(chocolateBar);
-		registerItem(horsalyser);
-		registerItem(horseSpawner);
-		registerItem(chargedCreeperSpawner);
-		registerItem(colouredRedstone);
-		registerItem(villageFinder);
-		registerItem(portalDualWorkTable);
-		registerItem(icyPickaxe);
-		registerItem(roastedSquid);
-		registerItem(storageCase);
-		registerItem(gearalyser);
+		try {
+			for (Field f : ModItems.class.getDeclaredFields()) {
+				Object obj = f.get(null);
+				if (obj instanceof Item)
+					registerItem((Item) obj);
+				else if (obj instanceof Item[])
+					for (Item item : (Item[]) obj)
+						registerItem(item);
+			}
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(e);
+		}
 
 		if (GanysSurface.enableCamilaSeedsToDropFromGrass)
 			MinecraftForge.addGrassSeed(new ItemStack(camelliaSeeds), 5);

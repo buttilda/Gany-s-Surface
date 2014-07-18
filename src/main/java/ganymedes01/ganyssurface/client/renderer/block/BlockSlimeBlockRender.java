@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.block;
 
-import ganymedes01.ganyssurface.blocks.ModBlocks;
+import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;

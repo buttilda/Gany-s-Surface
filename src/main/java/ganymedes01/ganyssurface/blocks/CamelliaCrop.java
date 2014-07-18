@@ -1,7 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
+import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -12,9 +12,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class CamelliaCrop extends BlockCrops {
@@ -22,7 +22,7 @@ public class CamelliaCrop extends BlockCrops {
 	@SideOnly(Side.CLIENT)
 	private IIcon[] iconArray;
 
-	protected CamelliaCrop() {
+	public CamelliaCrop() {
 		super();
 		setBlockName(Utils.getUnlocalizedName(Strings.CAMELLIA_CROP_NAME));
 	}

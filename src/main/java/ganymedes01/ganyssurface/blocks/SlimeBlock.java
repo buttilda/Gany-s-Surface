@@ -26,9 +26,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class SlimeBlock extends Block {
@@ -36,7 +36,7 @@ public class SlimeBlock extends Block {
 	@SideOnly(Side.CLIENT)
 	private IIcon[] blockIcons, insideIcons;
 
-	protected SlimeBlock() {
+	public SlimeBlock() {
 		super(Material.cloth);
 		setHardness(2.0F);
 		setTickRandomly(true);

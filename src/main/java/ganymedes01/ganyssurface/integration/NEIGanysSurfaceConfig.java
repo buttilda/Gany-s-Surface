@@ -1,12 +1,12 @@
 package ganymedes01.ganyssurface.integration;
 
 import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.blocks.ModBlocks;
+import ganymedes01.ganyssurface.ModBlocks;
+import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPortableDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
 import ganymedes01.ganyssurface.integration.nei.OMCYieldHandler;
-import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;

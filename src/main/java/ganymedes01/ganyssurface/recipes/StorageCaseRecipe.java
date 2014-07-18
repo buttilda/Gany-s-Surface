@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.recipes;
 
-import ganymedes01.ganyssurface.items.ModItems;
+import ganymedes01.ganyssurface.ModItems;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;

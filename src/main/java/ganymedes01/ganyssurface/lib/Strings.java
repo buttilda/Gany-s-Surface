@@ -18,7 +18,7 @@ public class Strings {
 	public static final String DISLOCATOR_NAME = "dislocator";
 	public static final String SENSORING_DISLOCATOR_NAME = "sensoringDislocator";
 	public static final String CUBIC_SENSORING_DISLOCATOR_NAME = "cubicSensoringDislocator";
-	public static final String DISGUISED_TRAP_DOOR_NAME = "disguisedTrapDoor";
+	public static final String DISGUISED_TRAPDOOR_NAME = "disguisedTrapDoor";
 	public static final String WORK_TABLE_NAME = "workTable";
 	public static final String ORGANIC_MATTER_COMPRESSOR_NAME = "organicMatterCompressor";
 	public static final String CUSHION_NAME = "cushion";
@@ -43,6 +43,7 @@ public class Strings {
 	public static final String ENCASING_BENCH_NAME = "encasingBench";
 	public static final String AUTO_ENCASER_NAME = "autoEncaser";
 	public static final String NEW_STONES_NAME = "18Stones";
+	public static final String IRON_TRAPDOOR = "ironTrapdoor";
 
 	// Item names
 	public static final String ROT_NAME = "rot";
@@ -71,6 +72,8 @@ public class Strings {
 	public static final String ROASTED_SQUID_NAME = "roastedSquid";
 	public static final String STORAGE_CASE_NAME = "storageCase";
 	public static final String GEARALYSER_NAME = "gearalyser";
+	public static final String RAW_MUTTON = "mutton_raw";
+	public static final String COOKED_MUTTON = "mutton_cooked";
 
 	// Armour names
 	public static final String WOODEN_HELMET_NAME = "woodenHelmet";

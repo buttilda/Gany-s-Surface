@@ -23,9 +23,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class WorkTable extends BlockContainer {
@@ -33,7 +33,7 @@ public class WorkTable extends BlockContainer {
 	@SideOnly(Side.CLIENT)
 	private IIcon blockTop, blockSide, blockFront;
 
-	protected WorkTable() {
+	public WorkTable() {
 		super(Material.wood);
 		setHardness(2.5F);
 		setStepSound(soundTypeWood);

@@ -1,8 +1,8 @@
 package ganymedes01.ganyssurface.recipes;
 
 import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.blocks.ModBlocks;
-import ganymedes01.ganyssurface.items.ModItems;
+import ganymedes01.ganyssurface.ModBlocks;
+import ganymedes01.ganyssurface.ModItems;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -155,14 +155,21 @@ public class ModRecipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.stonebrick, 1, 1), new ItemStack(Blocks.stonebrick), new ItemStack(Blocks.vine));
 		GameRegistry.addRecipe(new ItemStack(Blocks.stonebrick, 1, 3), "x", "x", 'x', new ItemStack(Blocks.stone_slab, 1, 5));
 
+		// Mutton
+		GameRegistry.addSmelting(ModItems.rawMutton, new ItemStack(ModItems.cookedMutton), 1.0F);
+
+		// Iron Trapdoor
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ironTrapdoor), "xx", "xx", 'x', "ingotIron"));
+
+		// Stones
 		GameRegistry.addRecipe(new ItemStack(Blocks.stone_slab, 6), "xxx", 'x', new ItemStack(ModBlocks.newStones, 1, OreDictionary.WILDCARD_VALUE));
 
-		int GRANITE = 0;
-		int POLISHED_GRANITE = 1;
-		int DIORITE = 2;
-		int POLISHED_DIORITE = 3;
-		int ANDESITE = 4;
-		int POLISHED_ANDESITE = 5;
+		int GRANITE = 1;
+		int POLISHED_GRANITE = 2;
+		int DIORITE = 3;
+		int POLISHED_DIORITE = 4;
+		int ANDESITE = 5;
+		int POLISHED_ANDESITE = 6;
 
 		// Diorite
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 2, DIORITE), "xy", "yx", 'x', new ItemStack(Blocks.cobblestone), 'y', Items.quartz);

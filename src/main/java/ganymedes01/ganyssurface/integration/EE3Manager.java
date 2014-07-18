@@ -1,7 +1,7 @@
 package ganymedes01.ganyssurface.integration;
 
-import ganymedes01.ganyssurface.blocks.ModBlocks;
-import ganymedes01.ganyssurface.items.ModItems;
+import ganymedes01.ganyssurface.ModBlocks;
+import ganymedes01.ganyssurface.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

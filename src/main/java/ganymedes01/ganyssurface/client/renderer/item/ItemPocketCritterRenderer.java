@@ -1,9 +1,9 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
+import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.client.model.ModelPocketBat;
 import ganymedes01.ganyssurface.client.model.ModelPocketSquid;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

@@ -1,8 +1,8 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.blocks.ColouredRedstone;
-import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 

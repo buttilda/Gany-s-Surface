@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.core.proxy;
 
-import ganymedes01.ganyssurface.blocks.ModBlocks;
+import ganymedes01.ganyssurface.ModBlocks;
+import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.client.renderer.block.BlockColouredRedstoneRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockItemDisplayRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockLanternRender;
@@ -16,7 +17,6 @@ import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWorkTableRe
 import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.entities.EntityVillageFinder;
-import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;

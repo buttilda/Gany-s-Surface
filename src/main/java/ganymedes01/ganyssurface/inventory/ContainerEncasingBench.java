@@ -1,8 +1,8 @@
 package ganymedes01.ganyssurface.inventory;
 
+import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.inventory.slots.SlotEncaser;
-import ganymedes01.ganyssurface.items.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;

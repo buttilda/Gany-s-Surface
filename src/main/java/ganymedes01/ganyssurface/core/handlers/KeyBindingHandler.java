@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.core.handlers;
 
-import ganymedes01.ganyssurface.items.ModItems;
+import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketPortWorkTable;

@@ -1,7 +1,7 @@
 package ganymedes01.ganyssurface;
 
-import ganymedes01.ganyssurface.blocks.ModBlocks;
 import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
+import ganymedes01.ganyssurface.core.handlers.EntityDropEvent;
 import ganymedes01.ganyssurface.core.handlers.FuelHandler;
 import ganymedes01.ganyssurface.core.handlers.InterModComms;
 import ganymedes01.ganyssurface.core.handlers.KeyBindingHandler;
@@ -11,10 +11,10 @@ import ganymedes01.ganyssurface.core.handlers.RenderCapeHandler;
 import ganymedes01.ganyssurface.core.handlers.SnowTickHandler;
 import ganymedes01.ganyssurface.core.handlers.VersionCheckTickHandler;
 import ganymedes01.ganyssurface.core.proxy.CommonProxy;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.core.utils.VersionHelper;
 import ganymedes01.ganyssurface.creativetab.CreativeTabSurface;
 import ganymedes01.ganyssurface.integration.ModIntegrator;
-import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.recipes.ModRecipes;
@@ -22,6 +22,7 @@ import ganymedes01.ganyssurface.recipes.ModRecipes;
 import java.io.File;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
@@ -85,6 +86,8 @@ public class GanysSurface {
 		ModBlocks.init();
 		ModItems.init();
 		ModRecipes.init();
+
+		Blocks.sponge.setBlockTextureName(Utils.getBlockTexture("sponge"));
 	}
 
 	@EventHandler
@@ -96,6 +99,7 @@ public class GanysSurface {
 		if (mobsShouldPoop)
 			MinecraftForge.EVENT_BUS.register(new PoopHandler());
 		MinecraftForge.EVENT_BUS.register(new OpenContainerHandler());
+		MinecraftForge.EVENT_BUS.register(new EntityDropEvent());
 		FMLCommonHandler.instance().bus().register(new KeyBindingHandler());
 
 		proxy.registerTileEntities();

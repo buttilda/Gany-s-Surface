@@ -1,7 +1,7 @@
 package ganymedes01.ganyssurface.inventory;
 
+import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.inventory.slots.PlaceholderSlot;
-import ganymedes01.ganyssurface.items.ModItems;
 import ganymedes01.ganyssurface.items.PortableDualWorkTable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;

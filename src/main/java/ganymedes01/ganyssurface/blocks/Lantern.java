@@ -17,14 +17,14 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class Lantern extends Block {
 
-	protected Lantern() {
+	public Lantern() {
 		super(Material.glass);
 		setHardness(0.3F);
 		setLightLevel(0.9375F);

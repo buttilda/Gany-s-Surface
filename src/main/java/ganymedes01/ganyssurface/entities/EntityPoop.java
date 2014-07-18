@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.entities;
 
-import ganymedes01.ganyssurface.items.ModItems;
+import ganymedes01.ganyssurface.ModItems;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.item.Item;
