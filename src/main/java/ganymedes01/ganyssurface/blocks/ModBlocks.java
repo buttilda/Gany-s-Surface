@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.blocks;
 
+import ganymedes01.ganyssurface.items.block.Item18Stones;
 import ganymedes01.ganyssurface.items.block.ItemChocolateCake;
 import ganymedes01.ganyssurface.items.block.ItemColouredRedstoneBlock;
 import ganymedes01.ganyssurface.items.block.ItemItemDisplay;
@@ -10,9 +11,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ModBlocks {
@@ -42,6 +43,7 @@ public class ModBlocks {
 	public static final Block farmManager = new FarmManager();
 	public static final Block encasingBench = new EncasingBench();
 	public static final Block autoEncaser = new AutoEncaser();
+	public static final Block newStones = new Block18Stones();
 
 	static {
 		for (int i = 0; i < disguisedTrapDoor.length; i++)
@@ -80,6 +82,7 @@ public class ModBlocks {
 		registerBlock(farmManager);
 		registerBlock(encasingBench);
 		registerBlock(autoEncaser);
+		registerBlock(newStones, Item18Stones.class);
 	}
 
 	private static void registerBlock(Block block) {

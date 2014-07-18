@@ -42,6 +42,7 @@ public class Strings {
 	public static final String FARM_MANAGER_NAME = "farmManager";
 	public static final String ENCASING_BENCH_NAME = "encasingBench";
 	public static final String AUTO_ENCASER_NAME = "autoEncaser";
+	public static final String NEW_STONES_NAME = "18Stones";
 
 	// Item names
 	public static final String ROT_NAME = "rot";

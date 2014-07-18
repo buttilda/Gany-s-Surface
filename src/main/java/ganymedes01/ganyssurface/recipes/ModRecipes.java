@@ -36,6 +36,8 @@ public class ModRecipes {
 		registerBlockRecipes();
 		registerItemRecipes();
 		registerArmourRecipes();
+
+		add18Recipes();
 	}
 
 	private static void registerOreDictionary() {
@@ -145,5 +147,31 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.stained_hardened_clay, 8, i), "xxx", "xyx", "xxx", 'x', "clayHardened", 'y', reDyes[i]));
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.stained_hardened_clay, 1, i), "clayHardened", reDyes[i]));
 		}
+	}
+
+	private static void add18Recipes() {
+		GameRegistry.addRecipe(new ItemStack(Blocks.dirt, 4, 1), "xy", "yx", 'x', new ItemStack(Blocks.dirt), 'y', new ItemStack(Blocks.gravel));
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.mossy_cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.vine));
+		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.stonebrick, 1, 1), new ItemStack(Blocks.stonebrick), new ItemStack(Blocks.vine));
+		GameRegistry.addRecipe(new ItemStack(Blocks.stonebrick, 1, 3), "x", "x", 'x', new ItemStack(Blocks.stone_slab, 1, 5));
+
+		GameRegistry.addRecipe(new ItemStack(Blocks.stone_slab, 6), "xxx", 'x', new ItemStack(ModBlocks.newStones, 1, OreDictionary.WILDCARD_VALUE));
+
+		int GRANITE = 0;
+		int POLISHED_GRANITE = 1;
+		int DIORITE = 2;
+		int POLISHED_DIORITE = 3;
+		int ANDESITE = 4;
+		int POLISHED_ANDESITE = 5;
+
+		// Diorite
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 2, DIORITE), "xy", "yx", 'x', new ItemStack(Blocks.cobblestone), 'y', Items.quartz);
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_DIORITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, DIORITE));
+		// Andesite
+		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, ANDESITE), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.newStones, 1, DIORITE));
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_ANDESITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, ANDESITE));
+		// Granite
+		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, GRANITE), Items.quartz, new ItemStack(ModBlocks.newStones, 1, DIORITE));
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_GRANITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, GRANITE));
 	}
 }

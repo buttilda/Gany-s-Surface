@@ -104,6 +104,12 @@ tile.ganyssurface.poopBlock.name=Poop
 tile.ganyssurface.farmManager.name=Farm Manager
 tile.ganyssurface.encasingBench.name=Encasing Bench
 tile.ganyssurface.autoEncaser.name=Auto Encaser
+tile.ganyssurface.18Stones0.name=Granite
+tile.ganyssurface.18Stones1.name=Polished Granite
+tile.ganyssurface.18Stones2.name=Diorite
+tile.ganyssurface.18Stones3.name=Polished Diorite
+tile.ganyssurface.18Stones4.name=Andesite
+tile.ganyssurface.18Stones5.name=Polished Andesite
 
 tile.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 tile.ganyssurface.colouredRedstoneGREEN.name=Greenstone
