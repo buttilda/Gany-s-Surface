@@ -3,7 +3,7 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.items.block.Item18Stones;
+import ganymedes01.ganyssurface.items.block.ItemPrismarineBlocks;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
@@ -26,21 +26,21 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class Stones18 extends Block implements ISubBlocksBlock {
+public class PrismarineBlocks extends Block implements ISubBlocksBlock {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
 
-	public Stones18() {
+	public PrismarineBlocks() {
 		super(Material.rock);
 		setHardness(1.5F);
 		setResistance(10.0F);
-		setStepSound(soundTypePiston);
-		if (GanysSurface.enable18Stones)
+		if (GanysSurface.enablePrismarineStuff)
 			setCreativeTab(GanysSurface.surfaceTab);
 		else
 			setCreativeTab(null);
-		setBlockName(Utils.getUnlocalizedName(Strings.NEW_STONES_NAME));
+		setBlockName(Utils.getUnlocalizedName(Strings.PRISMARINE_BLOCKS));
+		setBlockTextureName(Utils.getBlockTexture(Strings.PRISMARINE_BLOCKS));
 	}
 
 	@Override
@@ -52,26 +52,26 @@ public class Stones18 extends Block implements ISubBlocksBlock {
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-		for (int i = 1; i <= 6; i++)
+		for (int i = 0; i < 3; i++)
 			list.add(new ItemStack(item, 1, i));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
-		return icons[Math.max(Math.min(meta, icons.length - 1), 1)];
+		return icons[Math.max(Math.min(meta, icons.length - 1), 0)];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister reg) {
-		icons = new IIcon[7];
-		for (int i = 1; i <= 6; i++)
-			icons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.NEW_STONES_NAME + i));
+		icons = new IIcon[3];
+		for (int i = 0; i < 3; i++)
+			icons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.PRISMARINE_BLOCKS + i));
 	}
 
 	@Override
 	public Class<? extends ItemBlock> getItemBlockClass() {
-		return Item18Stones.class;
+		return ItemPrismarineBlocks.class;
 	}
 }

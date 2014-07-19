@@ -51,6 +51,10 @@ public class ModRecipes {
 		OreDictionary.registerOre("clayHardened", new ItemStack(Blocks.stained_hardened_clay, 1, OreDictionary.WILDCARD_VALUE));
 		if (GanysSurface.enableChocolate)
 			OreDictionary.registerOre("beansCocoa", new ItemStack(Items.dye, 1, 3));
+		if (GanysSurface.enablePrismarineStuff) {
+			OreDictionary.registerOre("shardPrismarine", new ItemStack(ModItems.prismarineItems, 1, 0));
+			OreDictionary.registerOre("crystalPrismarine", new ItemStack(ModItems.prismarineItems, 1, 1));
+		}
 	}
 
 	private static void registerArmourRecipes() {
@@ -155,30 +159,42 @@ public class ModRecipes {
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.stonebrick, 1, 1), new ItemStack(Blocks.stonebrick), new ItemStack(Blocks.vine));
 		GameRegistry.addRecipe(new ItemStack(Blocks.stonebrick, 1, 3), "x", "x", 'x', new ItemStack(Blocks.stone_slab, 1, 5));
 
-		// Mutton
-		GameRegistry.addSmelting(ModItems.rawMutton, new ItemStack(ModItems.cookedMutton), 1.0F);
+		if (GanysSurface.enableMutton)
+			GameRegistry.addSmelting(ModItems.rawMutton, new ItemStack(ModItems.cookedMutton), 1.0F);
 
-		// Iron Trapdoor
-		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ironTrapdoor), "xx", "xx", 'x', "ingotIron"));
+		if (GanysSurface.enableIronTrapdoor)
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ironTrapdoor), "xx", "xx", 'x', "ingotIron"));
 
-		// Stones
-		GameRegistry.addRecipe(new ItemStack(Blocks.stone_slab, 6), "xxx", 'x', new ItemStack(ModBlocks.newStones, 1, OreDictionary.WILDCARD_VALUE));
+		if (GanysSurface.enable18Stones) {
+			GameRegistry.addRecipe(new ItemStack(Blocks.stone_slab, 6), "xxx", 'x', new ItemStack(ModBlocks.newStones, 1, OreDictionary.WILDCARD_VALUE));
 
-		int GRANITE = 1;
-		int POLISHED_GRANITE = 2;
-		int DIORITE = 3;
-		int POLISHED_DIORITE = 4;
-		int ANDESITE = 5;
-		int POLISHED_ANDESITE = 6;
+			int GRANITE = 1;
+			int POLISHED_GRANITE = 2;
+			int DIORITE = 3;
+			int POLISHED_DIORITE = 4;
+			int ANDESITE = 5;
+			int POLISHED_ANDESITE = 6;
 
-		// Diorite
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 2, DIORITE), "xy", "yx", 'x', new ItemStack(Blocks.cobblestone), 'y', Items.quartz);
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_DIORITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, DIORITE));
-		// Andesite
-		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, ANDESITE), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.newStones, 1, DIORITE));
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_ANDESITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, ANDESITE));
-		// Granite
-		GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, GRANITE), Items.quartz, new ItemStack(ModBlocks.newStones, 1, DIORITE));
-		GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_GRANITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, GRANITE));
+			// Diorite
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 2, DIORITE), "xy", "yx", 'x', new ItemStack(Blocks.cobblestone), 'y', Items.quartz);
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_DIORITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, DIORITE));
+			// Andesite
+			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, ANDESITE), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.newStones, 1, DIORITE));
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_ANDESITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, ANDESITE));
+			// Granite
+			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, GRANITE), Items.quartz, new ItemStack(ModBlocks.newStones, 1, DIORITE));
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_GRANITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, GRANITE));
+		}
+
+		if (GanysSurface.enablePrismarineStuff) {
+			int PLAIN = 0;
+			int BRICKS = 1;
+			int DARK = 2;
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.prismarineBlocks, 1, DARK), "xxx", "xyx", "xxx", 'x', "shardPrismarine", 'y', "dyeBlack"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.prismarineBlocks, 1, PLAIN), "xx", "xx", 'x', "shardPrismarine"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.prismarineBlocks, 1, BRICKS), "xxx", "xxx", "xxx", 'x', "shardPrismarine"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.seaLantern), "xyx", "yyy", "xyx", 'x', "shardPrismarine", 'y', "crystalPrismarine"));
+		}
 	}
 }

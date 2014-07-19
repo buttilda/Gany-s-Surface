@@ -27,6 +27,7 @@ import ganymedes01.ganyssurface.items.ObsidianHead;
 import ganymedes01.ganyssurface.items.PocketCritter;
 import ganymedes01.ganyssurface.items.Poop;
 import ganymedes01.ganyssurface.items.PortableDualWorkTable;
+import ganymedes01.ganyssurface.items.PrismarineItems;
 import ganymedes01.ganyssurface.items.RoastedSquid;
 import ganymedes01.ganyssurface.items.Rot;
 import ganymedes01.ganyssurface.items.StorageCase;
@@ -81,6 +82,7 @@ public class ModItems {
 	public static final Item gearalyser = new Gearalyser();
 	public static final Item rawMutton = new MuttonRaw();
 	public static final Item cookedMutton = new MuttonCooked();
+	public static final Item prismarineItems = new PrismarineItems();
 
 	// Armour
 	public static final Item woodenHelmet = new WoodenArmour(0);

@@ -67,6 +67,12 @@ public class GanysSurface {
 	public static int inkHarvesterMaxStrike = 5;
 	public static int poopingChance = 15000;
 
+	public static boolean enable18Stones = true;
+	public static boolean enableIronTrapdoor = true;
+	public static boolean enableMutton = true;
+	public static boolean enableSpongeTexture = true;
+	public static boolean enablePrismarineStuff = true;
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		ModIntegrator.preInit();
@@ -87,7 +93,8 @@ public class GanysSurface {
 		ModItems.init();
 		ModRecipes.init();
 
-		Blocks.sponge.setBlockTextureName(Utils.getBlockTexture("sponge"));
+		if (enableSpongeTexture)
+			Blocks.sponge.setBlockTextureName(Utils.getBlockTexture("sponge"));
 	}
 
 	@EventHandler
@@ -99,7 +106,8 @@ public class GanysSurface {
 		if (mobsShouldPoop)
 			MinecraftForge.EVENT_BUS.register(new PoopHandler());
 		MinecraftForge.EVENT_BUS.register(new OpenContainerHandler());
-		MinecraftForge.EVENT_BUS.register(new EntityDropEvent());
+		if (enableMutton)
+			MinecraftForge.EVENT_BUS.register(new EntityDropEvent());
 		FMLCommonHandler.instance().bus().register(new KeyBindingHandler());
 
 		proxy.registerTileEntities();

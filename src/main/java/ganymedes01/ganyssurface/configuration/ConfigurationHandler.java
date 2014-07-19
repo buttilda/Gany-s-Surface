@@ -4,7 +4,6 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.integration.Integration;
 import ganymedes01.ganyssurface.integration.ModIntegrator;
 import ganymedes01.ganyssurface.lib.Reference;
-import ganymedes01.ganyssurface.lib.Strings;
 
 import java.io.File;
 
@@ -54,18 +53,24 @@ public class ConfigurationHandler {
 			integration.setShouldIntegrate(configIntegrationBoolean(integration.getModID()));
 
 		// Others
-		GanysSurface.mobsShouldPoop = configBoolean(Strings.MOBS_SHOULD_POOP, false, true);
-		GanysSurface.enableChocolate = configBoolean(Strings.ACTIVATE_CHOCOLATE, true, true);
-		GanysSurface.shouldDoVersionCheck = configBoolean(Strings.SHOULD_DO_VERSION_CHECK, true, true);
-		GanysSurface.forceAllContainersOpen = configBoolean(Strings.FORCE_ALL_CONTAINERS_OPEN, false, false);
-		GanysSurface.enableWoodenArmour = configBoolean(Strings.ENABLE_WOODEN_ARMOUR, true, true);
-		GanysSurface.enableCamilaSeedsToDropFromGrass = configBoolean(Strings.ENABLE_CAMILA_SEEDS_TO_DROP_FROM_GRASS, true, true);
-		GanysSurface.poopRandomBonemeals = configBoolean(Strings.POOP_RANDOM_BONEMEALS, false, true);
-		GanysSurface.enableDynamicSnow = configBoolean(Strings.DYNAMIC_SNOW, "Snow layers will get taller when it snows and shorter when it stops snowing", false, true);
+		GanysSurface.mobsShouldPoop = configBoolean("mobsShouldPoop", false, true);
+		GanysSurface.enableChocolate = configBoolean("activateChocolate", true, true);
+		GanysSurface.shouldDoVersionCheck = configBoolean("shouldDoVersionCheck", true, true);
+		GanysSurface.forceAllContainersOpen = configBoolean("forceAllContainersOpen", false, false);
+		GanysSurface.enableWoodenArmour = configBoolean("enableWoodenArmour", true, true);
+		GanysSurface.enableCamilaSeedsToDropFromGrass = configBoolean("enableCamilaSeedsToDropFromGrass", true, true);
+		GanysSurface.poopRandomBonemeals = configBoolean("poopRandomBonemeals", false, true);
+		GanysSurface.enableDynamicSnow = configBoolean("enableDynamicSnow", "Snow layers will get taller when it snows and shorter when it stops snowing", false, true);
 
-		GanysSurface.maxLevelOMCWorks = configInteger(Strings.MAX_LEVEL_OMC_WORKS, false, 15);
-		GanysSurface.inkHarvesterMaxStrike = configInteger(Strings.INK_HARVESTER_MAX_STRIKE, false, 5);
-		GanysSurface.poopingChance = configInteger(Strings.POOPING_CHANCE, false, 15000);
+		GanysSurface.maxLevelOMCWorks = configInteger("maxLevelOMCWorks", false, 15);
+		GanysSurface.inkHarvesterMaxStrike = configInteger("inkHarvesterMaxStrike", false, 5);
+		GanysSurface.poopingChance = configInteger("poopingChance", false, 15000);
+
+		GanysSurface.enable18Stones = configBoolean("Enable 1.8 Stones", true, true);
+		GanysSurface.enableIronTrapdoor = configBoolean("Enable Iron Trapdoor", true, true);
+		GanysSurface.enableMutton = configBoolean("Enable Mutton", true, true);
+		GanysSurface.enableSpongeTexture = configBoolean("Enable new sponge texture", true, true);
+		GanysSurface.enablePrismarineStuff = configBoolean("Enable Prismarine stuff", true, true);
 
 		if (configFile.hasChanged())
 			configFile.save();

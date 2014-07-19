@@ -22,7 +22,9 @@ import ganymedes01.ganyssurface.blocks.Lantern;
 import ganymedes01.ganyssurface.blocks.OrganicMatterCompressor;
 import ganymedes01.ganyssurface.blocks.Planter;
 import ganymedes01.ganyssurface.blocks.PoopBlock;
+import ganymedes01.ganyssurface.blocks.PrismarineBlocks;
 import ganymedes01.ganyssurface.blocks.RainDetector;
+import ganymedes01.ganyssurface.blocks.SeaLantern;
 import ganymedes01.ganyssurface.blocks.SensoringDislocator;
 import ganymedes01.ganyssurface.blocks.SlimeBlock;
 import ganymedes01.ganyssurface.blocks.Stones18;
@@ -71,6 +73,8 @@ public class ModBlocks {
 	public static final Block autoEncaser = new AutoEncaser();
 	public static final Block newStones = new Stones18();
 	public static final Block ironTrapdoor = new IronTrapdoor();
+	public static final Block prismarineBlocks = new PrismarineBlocks();
+	public static final Block seaLantern = new SeaLantern();
 
 	static {
 		for (int i = 0; i < disguisedTrapDoor.length; i++)

@@ -43,7 +43,9 @@ public class Strings {
 	public static final String ENCASING_BENCH_NAME = "encasingBench";
 	public static final String AUTO_ENCASER_NAME = "autoEncaser";
 	public static final String NEW_STONES_NAME = "18Stones";
-	public static final String IRON_TRAPDOOR = "ironTrapdoor";
+	public static final String IRON_TRAPDOOR = "iron_trapdoor";
+	public static final String PRISMARINE_BLOCKS = "prismarineBlocks";
+	public static final String SEA_LANTERN = "sea_lantern";
 
 	// Item names
 	public static final String ROT_NAME = "rot";
@@ -74,6 +76,7 @@ public class Strings {
 	public static final String GEARALYSER_NAME = "gearalyser";
 	public static final String RAW_MUTTON = "mutton_raw";
 	public static final String COOKED_MUTTON = "mutton_cooked";
+	public static final String PRISMARINE_ITEMS = "prismarineItems";
 
 	// Armour names
 	public static final String WOODEN_HELMET_NAME = "woodenHelmet";
@@ -94,19 +97,6 @@ public class Strings {
 	// Entities
 	public static final String ENTITY_POOP_NAME = "EntityPoop";
 	public static final String ENTITY_BAT_POOP_NAME = "EntityBatPoop";
-
-	// Others
-	public static final String MOBS_SHOULD_POOP = "mobsShouldPoop";
-	public static final String ACTIVATE_CHOCOLATE = "activateChocolate";
-	public static final String SHOULD_DO_VERSION_CHECK = "shouldDoVersionCheck";
-	public static final String FORCE_ALL_CONTAINERS_OPEN = "forceAllContainersOpen";
-	public static final String ENABLE_WOODEN_ARMOUR = "enableWoodenArmour";
-	public static final String ENABLE_CAMILA_SEEDS_TO_DROP_FROM_GRASS = "enableCamilaSeedsToDropFromGrass";
-	public static final String POOP_RANDOM_BONEMEALS = "poopRandomBonemeals";
-	public static final String MAX_LEVEL_OMC_WORKS = "maxLevelOMCWorks";
-	public static final String INK_HARVESTER_MAX_STRIKE = "inkHarvesterMaxStrike";
-	public static final String POOPING_CHANCE = "poopingChance";
-	public static final String DYNAMIC_SNOW = "enableDynamicSnow";
 
 	// Version check
 	public static final String VERSION_CHECK_INIT = "Starting version check.";
