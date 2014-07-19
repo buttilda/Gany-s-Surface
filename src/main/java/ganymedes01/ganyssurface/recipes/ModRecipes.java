@@ -195,6 +195,9 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.prismarineBlocks, 1, PLAIN), "xx", "xx", 'x', "shardPrismarine"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.prismarineBlocks, 1, BRICKS), "xxx", "xxx", "xxx", 'x', "shardPrismarine"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.seaLantern), "xyx", "yyy", "xyx", 'x', "shardPrismarine", 'y', "crystalPrismarine"));
+
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.prismarineItems, 2), "gemQuartz", "gemLapis"));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModItems.prismarineItems, 1, 1), "shardPrismarine", "dustGlowstone"));
 		}
 	}
 }
