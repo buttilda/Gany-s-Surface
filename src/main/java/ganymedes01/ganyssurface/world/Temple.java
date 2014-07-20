@@ -60,11 +60,11 @@ public class Temple {
 		return map;
 	}
 
-	public static void buildTemple(World world, int x, int y, int z) {
+	public static void buildTemple(World world, int x, int y, int z, int height) {
 		if (world.isRemote)
 			return;
 
-		int height = 4 + world.rand.nextInt(6);
+		height = Math.max(Math.min(height, 9), 0);
 
 		for (Entry<WorldCoord, Integer> entry : Temple.getMap().entrySet()) {
 			WorldCoord pos = entry.getKey();
@@ -93,25 +93,25 @@ public class Temple {
 					break;
 			}
 
-			if (block != null)
-				world.setBlock(pos.x + x, pos.y + y + height, pos.z + z, block, meta, 3);
+			if (block != null && block != Blocks.water)
+				world.setBlock(pos.x + x, pos.y + y + height, pos.z + z, block, meta, 2);
 		}
 
 		for (int i = 0; i < 7; i++) {
-			generatePillar(world, x + 5 * i + 4 * i, y, z, height);
-			generatePillar(world, x, y, z + 5 * i + 4 * i, height);
-			generatePillar(world, x + 54, y, z + 5 * i + 4 * i, height);
+			generatePillar(world, x + 5 * i + 4 * i, y, z, height, ModBlocks.prismarineBlocks, 1);
+			generatePillar(world, x, y, z + 5 * i + 4 * i, height, ModBlocks.prismarineBlocks, 1);
+			generatePillar(world, x + 54, y, z + 5 * i + 4 * i, height, ModBlocks.prismarineBlocks, 1);
 			if (i != 3)
-				generatePillar(world, x + 5 * i + 4 * i, y, z + 54, height);
+				generatePillar(world, x + 5 * i + 4 * i, y, z + 54, height, ModBlocks.prismarineBlocks, 1);
 		}
 	}
 
-	private static void generatePillar(World world, int x, int y, int z, int height) {
+	private static void generatePillar(World world, int x, int y, int z, int height, Block block, int meta) {
 		for (int i = 0; i < 4; i++)
 			for (int j = 0; j < height; j++)
 				for (int k = 0; k < 4; k++)
 					if (world.getBlock(x + i, y + j, z + k).isReplaceable(world, x + i, y + j, z + k))
-						world.setBlock(x + i, y + j, z + k, ModBlocks.prismarineBlocks, 1, 2);
+						world.setBlock(x + i, y + j, z + k, block, meta, 2);
 	}
 
 	public static void generateFile(World world, int x, int y, int z, String path) {
