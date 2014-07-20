@@ -18,6 +18,8 @@ import ganymedes01.ganyssurface.integration.ModIntegrator;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.recipes.ModRecipes;
+import ganymedes01.ganyssurface.world.SurfaceWorldGen;
+import ganymedes01.ganyssurface.world.Temple;
 
 import java.io.File;
 
@@ -75,6 +77,8 @@ public class GanysSurface {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		Temple.makeMap();
+
 		ModIntegrator.preInit();
 
 		ConfigurationHandler.INSTANCE.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.MASTER + File.separator + Reference.MOD_ID + ".cfg"));
@@ -86,6 +90,7 @@ public class GanysSurface {
 		}
 
 		FMLCommonHandler.instance().bus().register(new SnowTickHandler());
+		GameRegistry.registerWorldGenerator(new SurfaceWorldGen(), 0);
 
 		proxy.registerEntities();
 

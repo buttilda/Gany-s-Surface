@@ -13,12 +13,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.util.IChatComponent;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.village.Village;
 import net.minecraft.village.VillageCollection;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.util.FakePlayerFactory;
 
 import com.mojang.authlib.GameProfile;
 
@@ -32,8 +33,6 @@ import cpw.mods.fml.relauncher.ReflectionHelper;
  */
 
 public class Utils {
-
-	private static EntityPlayer player;
 
 	public static String getUnlocalizedName(String name) {
 		return Reference.MOD_ID + "." + name;
@@ -80,27 +79,9 @@ public class Utils {
 	}
 
 	public static EntityPlayer getPlayer(World world) {
-		if (player != null)
-			return player;
-		else {
-			player = new EntityPlayer(world, new GameProfile(UUID.fromString(Reference.MOD_ID), "[" + Reference.CHANNEL + "]")) {
-
-				@Override
-				public boolean canCommandSenderUseCommand(int var1, String var2) {
-					return false;
-				}
-
-				@Override
-				public ChunkCoordinates getPlayerCoordinates() {
-					return null;
-				}
-
-				@Override
-				public void addChatMessage(IChatComponent var1) {
-				}
-			};
-			return player;
-		}
+		if (world.isRemote || !(world instanceof WorldServer))
+			return null;
+		return FakePlayerFactory.get((WorldServer) world, new GameProfile(UUID.nameUUIDFromBytes(Reference.MOD_ID.getBytes()), "[" + Reference.CHANNEL + "]"));
 	}
 
 	@SuppressWarnings("unchecked")

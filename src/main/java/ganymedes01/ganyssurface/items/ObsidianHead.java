@@ -7,9 +7,9 @@ import net.minecraft.item.Item;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ObsidianHead extends Item {
