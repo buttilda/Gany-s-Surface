@@ -65,6 +65,7 @@ public class Temple {
 			return;
 
 		height = Math.max(Math.min(height, 9), 0);
+		y += height;
 
 		for (Entry<WorldCoord, Integer> entry : Temple.getMap().entrySet()) {
 			WorldCoord pos = entry.getKey();
@@ -93,25 +94,25 @@ public class Temple {
 					break;
 			}
 
-			if (block != null && block != Blocks.water)
-				world.setBlock(pos.x + x, pos.y + y + height, pos.z + z, block, meta, 2);
+			if (block != null)
+				world.setBlock(pos.x + x, pos.y + y, pos.z + z, block, meta, 2);
 		}
 
 		for (int i = 0; i < 7; i++) {
-			generatePillar(world, x + 5 * i + 4 * i, y, z, height, ModBlocks.prismarineBlocks, 1);
-			generatePillar(world, x, y, z + 5 * i + 4 * i, height, ModBlocks.prismarineBlocks, 1);
-			generatePillar(world, x + 54, y, z + 5 * i + 4 * i, height, ModBlocks.prismarineBlocks, 1);
+			generatePillar(world, x + 5 * i + 4 * i, y, z, ModBlocks.prismarineBlocks, 1);
+			generatePillar(world, x, y, z + 5 * i + 4 * i, ModBlocks.prismarineBlocks, 1);
+			generatePillar(world, x + 54, y, z + 5 * i + 4 * i, ModBlocks.prismarineBlocks, 1);
 			if (i != 3)
-				generatePillar(world, x + 5 * i + 4 * i, y, z + 54, height, ModBlocks.prismarineBlocks, 1);
+				generatePillar(world, x + 5 * i + 4 * i, y, z + 54, ModBlocks.prismarineBlocks, 1);
 		}
 	}
 
-	private static void generatePillar(World world, int x, int y, int z, int height, Block block, int meta) {
+	private static void generatePillar(World world, int x, int y, int z, Block block, int meta) {
 		for (int i = 0; i < 4; i++)
-			for (int j = 0; j < height; j++)
+			for (int j = y; j >= 0; j--)
 				for (int k = 0; k < 4; k++)
-					if (world.getBlock(x + i, y + j, z + k).isReplaceable(world, x + i, y + j, z + k))
-						world.setBlock(x + i, y + j, z + k, block, meta, 2);
+					if (world.getBlock(x + i, j, z + k).isReplaceable(world, x + i, j, z + k))
+						world.setBlock(x + i, j, z + k, block, meta, 2);
 	}
 
 	public static void generateFile(World world, int x, int y, int z, String path) {
@@ -133,11 +134,15 @@ public class Temple {
 							s += 4;
 						else if (b == Blocks.sponge)
 							s += 5;
-						else if (b.isAir(world, x + i, y + j, z + k))
+						else if (b == Blocks.stained_glass)
 							s += 6;
+						else
+							s = null;
 
-						bw.write(s);
-						bw.newLine();
+						if (s != null) {
+							bw.write(s);
+							bw.newLine();
+						}
 					}
 
 			bw.close();
