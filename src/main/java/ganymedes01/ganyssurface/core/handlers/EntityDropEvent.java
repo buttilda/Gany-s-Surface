@@ -10,6 +10,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**
@@ -21,7 +22,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EntityDropEvent {
 
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void dropEvent(LivingDropsEvent event) {
 		if (event.entityLiving.worldObj.isRemote)
 			return;
