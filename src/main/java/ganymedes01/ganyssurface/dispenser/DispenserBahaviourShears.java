@@ -9,6 +9,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.EnumFacing;
@@ -62,7 +64,7 @@ public class DispenserBahaviourShears extends BehaviorDefaultDispenseItem {
 
 	private boolean shear(IShearable shearable, ItemStack stack, World world, int x, int y, int z) {
 		if (shearable.isShearable(stack, world, x, y, z)) {
-			List<ItemStack> drops = shearable.onSheared(stack, world, x, y, z, 0);
+			List<ItemStack> drops = shearable.onSheared(stack, world, x, y, z, EnchantmentHelper.getEnchantmentLevel(Enchantment.fortune.effectId, stack));
 			if (drops != null && !drops.isEmpty())
 				for (ItemStack drop : drops)
 					InventoryUtils.dropStack(world, x, y, z, drop);
