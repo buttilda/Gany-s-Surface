@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface;
 
+import ganymedes01.ganyssurface.dispenser.DispenserBahaviourShears;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorChargedCreeperSpawner;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorHorseSpawner;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorPocketBat;
@@ -40,6 +41,7 @@ import ganymedes01.ganyssurface.items.WoodenWrench;
 import java.lang.reflect.Field;
 
 import net.minecraft.block.BlockDispenser;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -122,6 +124,8 @@ public class ModItems {
 		BlockDispenser.dispenseBehaviorRegistry.putObject(rot, new DispenserBehaviorRot());
 		BlockDispenser.dispenseBehaviorRegistry.putObject(horseSpawner, new DispenserBehaviorHorseSpawner());
 		BlockDispenser.dispenseBehaviorRegistry.putObject(chargedCreeperSpawner, new DispenserBehaviorChargedCreeperSpawner());
+		if (GanysSurface.enableDispenserShears)
+			BlockDispenser.dispenseBehaviorRegistry.putObject(Items.shears, new DispenserBahaviourShears());
 	}
 
 	private static void registerItem(Item item) {

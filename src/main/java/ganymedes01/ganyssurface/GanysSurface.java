@@ -43,6 +43,7 @@ public class GanysSurface {
 	public static CommonProxy proxy;
 
 	public static CreativeTabs surfaceTab = new CreativeTabSurface();
+
 	public static boolean enableDynamicSnow = true;
 	public static boolean mobsShouldPoop = true;
 	public static boolean enableChocolate = true;
@@ -54,12 +55,12 @@ public class GanysSurface {
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
 	public static int poopingChance = 15000;
-
 	public static boolean enable18Stones = true;
 	public static boolean enableIronTrapdoor = true;
 	public static boolean enableMutton = true;
 	public static boolean enableSpongeTexture = true;
 	public static boolean enablePrismarineStuff = true;
+	public static boolean enableDispenserShears = true;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

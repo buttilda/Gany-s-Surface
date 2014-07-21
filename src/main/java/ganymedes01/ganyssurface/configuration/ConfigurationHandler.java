@@ -65,12 +65,12 @@ public class ConfigurationHandler {
 		GanysSurface.maxLevelOMCWorks = configInteger("maxLevelOMCWorks", false, 15);
 		GanysSurface.inkHarvesterMaxStrike = configInteger("inkHarvesterMaxStrike", false, 5);
 		GanysSurface.poopingChance = configInteger("poopingChance", false, 15000);
-
 		GanysSurface.enable18Stones = configBoolean("Enable 1.8 Stones", true, true);
 		GanysSurface.enableIronTrapdoor = configBoolean("Enable Iron Trapdoor", true, true);
 		GanysSurface.enableMutton = configBoolean("Enable Mutton", true, true);
 		GanysSurface.enableSpongeTexture = configBoolean("Enable new sponge texture", true, true);
 		GanysSurface.enablePrismarineStuff = configBoolean("Enable Prismarine stuff", true, true);
+		GanysSurface.enableDispenserShears = configBoolean("Enable dispenser action for shears", true, true);
 
 		if (configFile.hasChanged())
 			configFile.save();
