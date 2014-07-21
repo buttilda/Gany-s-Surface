@@ -61,6 +61,7 @@ public class GanysSurface {
 	public static boolean enableSpongeTexture = true;
 	public static boolean enablePrismarineStuff = true;
 	public static boolean enableDispenserShears = true;
+	public static int prismarineTempleChance = 1000;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

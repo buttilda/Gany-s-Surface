@@ -52,13 +52,12 @@ public class SurfaceWorldGen implements IWorldGenerator {
 			}
 
 		if (GanysSurface.enablePrismarineStuff)
-			if (rand.nextInt(1500) == 0) {
+			if (rand.nextInt(GanysSurface.prismarineTempleChance) == 0) {
 				int x = chunkX * 16 + rand.nextInt(16);
 				int z = chunkZ * 16 + rand.nextInt(16);
 				int height = world.getHeightValue(x, z);
 				int y = height;
 
-				//TODO check if temple fits
 				for (; y > 0; y--) {
 					Block block = world.getBlock(x, y, z);
 					if (block.getMaterial() != Material.water && !block.isAir(world, x, y, z))
@@ -70,11 +69,18 @@ public class SurfaceWorldGen implements IWorldGenerator {
 				if (pillarHeight >= 0)
 					for (BiomeDictionary.Type type : BiomeDictionary.getTypesForBiome(world.getBiomeGenForCoords(x, z)))
 						if (type == BiomeDictionary.Type.OCEAN) {
-							System.out.println("Temple at: " + x + ", " + y + ", " + z);
+
+							// Check if temple fits
+							for (int i = 0; i < 58; i++)
+								for (int j = 0; j < 22; j++)
+									for (int k = 0; k < 58; k++)
+										if (!world.getBlock(x + i, y + j + pillarHeight, z + k).isReplaceable(world, x + i, y + j + pillarHeight, z + k))
+											return;
+
+							//System.out.println("Temple at: " + x + ", " + y + ", " + z);
 							Temple.buildTemple(world, x, y, z, pillarHeight);
 							return;
-						} else
-							continue;
+						}
 			}
 	}
 }
