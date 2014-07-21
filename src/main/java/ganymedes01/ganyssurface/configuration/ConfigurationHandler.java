@@ -25,7 +25,7 @@ public class ConfigurationHandler {
 	public String[] usedCategories = { Configuration.CATEGORY_GENERAL, "mod integration" };
 
 	private int configInteger(String name, boolean requireRestart, int def) {
-		return configInteger(name, requireRestart, def);
+		return configInteger(name, null, requireRestart, def);
 	}
 
 	private int configInteger(String name, String tooltip, boolean requireRestart, int def) {
