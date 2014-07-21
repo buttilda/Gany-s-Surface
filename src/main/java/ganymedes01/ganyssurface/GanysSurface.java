@@ -1,18 +1,9 @@
 package ganymedes01.ganyssurface;
 
 import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
-import ganymedes01.ganyssurface.core.handlers.EntityDropEvent;
 import ganymedes01.ganyssurface.core.handlers.FuelHandler;
 import ganymedes01.ganyssurface.core.handlers.InterModComms;
-import ganymedes01.ganyssurface.core.handlers.KeyBindingHandler;
-import ganymedes01.ganyssurface.core.handlers.OpenContainerHandler;
-import ganymedes01.ganyssurface.core.handlers.PoopHandler;
-import ganymedes01.ganyssurface.core.handlers.RenderCapeHandler;
-import ganymedes01.ganyssurface.core.handlers.SnowTickHandler;
-import ganymedes01.ganyssurface.core.handlers.VersionCheckTickHandler;
 import ganymedes01.ganyssurface.core.proxy.CommonProxy;
-import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.core.utils.VersionHelper;
 import ganymedes01.ganyssurface.creativetab.CreativeTabSurface;
 import ganymedes01.ganyssurface.integration.ModIntegrator;
 import ganymedes01.ganyssurface.lib.Reference;
@@ -24,10 +15,6 @@ import ganymedes01.ganyssurface.world.Temple;
 import java.io.File;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -38,7 +25,6 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
 
 /**
  * Gany's Surface
@@ -77,50 +63,31 @@ public class GanysSurface {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		Temple.makeMap();
-
 		ModIntegrator.preInit();
 
 		ConfigurationHandler.INSTANCE.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.MASTER + File.separator + Reference.MOD_ID + ".cfg"));
-		FMLCommonHandler.instance().bus().register(ConfigurationHandler.INSTANCE);
 
-		if (shouldDoVersionCheck) {
-			VersionHelper.execute();
-			FMLCommonHandler.instance().bus().register(new VersionCheckTickHandler());
-		}
-
-		FMLCommonHandler.instance().bus().register(new SnowTickHandler());
 		GameRegistry.registerWorldGenerator(new SurfaceWorldGen(), 0);
-
-		proxy.registerEntities();
 
 		ModBlocks.init();
 		ModItems.init();
 		ModRecipes.init();
 
-		if (enableSpongeTexture)
-			Blocks.sponge.setBlockTextureName(Utils.getBlockTexture("sponge"));
+		Temple.makeMap();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		PacketHandler.init();
+
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
+
 		GameRegistry.registerFuelHandler(new FuelHandler());
 
-		if (mobsShouldPoop)
-			MinecraftForge.EVENT_BUS.register(new PoopHandler());
-		MinecraftForge.EVENT_BUS.register(new OpenContainerHandler());
-		if (enableMutton)
-			MinecraftForge.EVENT_BUS.register(new EntityDropEvent());
-		FMLCommonHandler.instance().bus().register(new KeyBindingHandler());
-
+		proxy.registerEvents();
 		proxy.registerTileEntities();
 		proxy.registerRenderers();
-
-		if (event.getSide() == Side.CLIENT)
-			if (!Loader.isModLoaded("ganysend") && !Loader.isModLoaded("ganysnether"))
-				MinecraftForge.EVENT_BUS.register(new RenderCapeHandler());
+		proxy.registerEntities();
 
 		ModIntegrator.init();
 	}

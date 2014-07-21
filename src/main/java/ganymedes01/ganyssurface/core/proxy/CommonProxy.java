@@ -12,6 +12,11 @@ import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPlanter;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPortableDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
+import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
+import ganymedes01.ganyssurface.core.handlers.EntityDropEvent;
+import ganymedes01.ganyssurface.core.handlers.OpenContainerHandler;
+import ganymedes01.ganyssurface.core.handlers.PoopHandler;
+import ganymedes01.ganyssurface.core.handlers.SnowTickHandler;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
@@ -47,6 +52,8 @@ import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -59,6 +66,16 @@ import cpw.mods.fml.common.registry.GameRegistry;
  */
 
 public class CommonProxy implements IGuiHandler {
+
+	public void registerEvents() {
+		FMLCommonHandler.instance().bus().register(ConfigurationHandler.INSTANCE);
+		FMLCommonHandler.instance().bus().register(new SnowTickHandler());
+		MinecraftForge.EVENT_BUS.register(new OpenContainerHandler());
+		if (GanysSurface.enableMutton)
+			MinecraftForge.EVENT_BUS.register(new EntityDropEvent());
+		if (GanysSurface.mobsShouldPoop)
+			MinecraftForge.EVENT_BUS.register(new PoopHandler());
+	}
 
 	public void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileEntityRainDetector.class, Utils.getUnlocalizedName(Strings.RAIN_DETECTOR_NAME));
