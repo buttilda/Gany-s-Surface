@@ -36,13 +36,10 @@ public class WorldCoord implements Comparable<WorldCoord> {
 
 	@Override
 	public int compareTo(WorldCoord wc) {
-		if (x == wc.x) {
-			if (y == wc.y)
-				return z - wc.z;
-			return y - wc.y;
-		}
+		int legthThis = x * x + y * y + z * z;
+		int legthOther = wc.x * wc.x + wc.y * wc.y + wc.z * wc.z;
 
-		return x - wc.x;
+		return Integer.compare(legthThis, legthOther);
 	}
 
 	@Override

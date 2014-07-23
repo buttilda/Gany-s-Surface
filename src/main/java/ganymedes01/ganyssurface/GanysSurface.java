@@ -14,6 +14,7 @@ import ganymedes01.ganyssurface.world.Temple;
 
 import java.io.File;
 
+import net.minecraft.block.BlockDirt;
 import net.minecraft.creativetab.CreativeTabs;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -55,6 +56,7 @@ public class GanysSurface {
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
 	public static int poopingChance = 15000;
+
 	public static boolean enable18Stones = true;
 	public static boolean enableIronTrapdoor = true;
 	public static boolean enableMutton = true;
@@ -76,6 +78,8 @@ public class GanysSurface {
 		ModRecipes.init();
 
 		Temple.makeMap();
+
+		BlockDirt.field_150009_a[1] = "coarse";
 	}
 
 	@EventHandler

@@ -9,6 +9,7 @@ import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
 import ganymedes01.ganyssurface.integration.nei.OMCYieldHandler;
 import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import codechicken.nei.api.API;
@@ -62,6 +63,11 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModItems.woodenLeggings));
 			API.hideItem(new ItemStack(ModItems.woodenBoots));
 		}
+
+		// 1.8 Stuff
+		API.addItemListEntry(new ItemStack(Blocks.dirt, 1, 0));
+		API.addItemListEntry(new ItemStack(Blocks.dirt, 1, 1));
+		API.addItemListEntry(new ItemStack(Blocks.dirt, 1, 2));
 		if (!GanysSurface.enableMutton) {
 			API.hideItem(new ItemStack(ModItems.rawMutton));
 			API.hideItem(new ItemStack(ModItems.cookedMutton));
