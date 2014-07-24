@@ -13,7 +13,7 @@ import ganymedes01.ganyssurface.client.gui.inventory.GuiPlanter;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPortableDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
 import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
-import ganymedes01.ganyssurface.core.handlers.EntityDropEvent;
+import ganymedes01.ganyssurface.core.handlers.EntityEvents;
 import ganymedes01.ganyssurface.core.handlers.OpenContainerHandler;
 import ganymedes01.ganyssurface.core.handlers.PoopHandler;
 import ganymedes01.ganyssurface.core.handlers.SnowTickHandler;
@@ -72,7 +72,7 @@ public class CommonProxy implements IGuiHandler {
 		FMLCommonHandler.instance().bus().register(new SnowTickHandler());
 		MinecraftForge.EVENT_BUS.register(new OpenContainerHandler());
 		if (GanysSurface.enableMutton)
-			MinecraftForge.EVENT_BUS.register(new EntityDropEvent());
+			MinecraftForge.EVENT_BUS.register(new EntityEvents());
 		if (GanysSurface.mobsShouldPoop)
 			MinecraftForge.EVENT_BUS.register(new PoopHandler());
 	}

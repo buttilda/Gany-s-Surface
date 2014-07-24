@@ -65,6 +65,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableCamilaSeedsToDropFromGrass = configBoolean("enableCamilaSeedsToDropFromGrass", true, true);
 		GanysSurface.poopRandomBonemeals = configBoolean("poopRandomBonemeals", false, true);
 		GanysSurface.enableDynamicSnow = configBoolean("enableDynamicSnow", "Snow layers will get taller when it snows and shorter when it stops snowing", false, true);
+		GanysSurface.radiusInWhichItemsDontDespawn = configInteger("noDespawnRadius", "If there are any players within this radius of an item thrown on the ground that item will not despawn. Set it to 0 to disable this feature.", false, 16);
 
 		GanysSurface.maxLevelOMCWorks = configInteger("maxLevelOMCWorks", false, 15);
 		GanysSurface.inkHarvesterMaxStrike = configInteger("inkHarvesterMaxStrike", false, 5);

@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.core.handlers;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModItems;
 
 import java.util.List;
@@ -8,7 +9,11 @@ import java.util.Random;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.World;
+import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -20,7 +25,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
  *
  */
 
-public class EntityDropEvent {
+public class EntityEvents {
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void dropEvent(LivingDropsEvent event) {
@@ -34,6 +39,27 @@ public class EntityDropEvent {
 					addDrop(new ItemStack(ModItems.cookedMutton), event.entityLiving, event.drops);
 				else
 					addDrop(new ItemStack(ModItems.rawMutton), event.entityLiving, event.drops);
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public void itemExpire(ItemExpireEvent event) {
+		int radius = GanysSurface.radiusInWhichItemsDontDespawn;
+		if (radius <= 0 || event.isCanceled())
+			return;
+		System.out.println(event.entityItem.getEntityItem());
+
+		World world = event.entityItem.worldObj;
+		double posX = event.entityItem.posX;
+		double posY = event.entityItem.posY;
+		double posZ = event.entityItem.posZ;
+		List<EntityPlayerMP> playersNearby = world.getEntitiesWithinAABB(EntityPlayerMP.class, AxisAlignedBB.getBoundingBox(posX - radius, posY - radius, posZ - radius, posX + radius, posY + radius, posZ + radius));
+		System.out.println(playersNearby.size());
+
+		if (!playersNearby.isEmpty()) {
+			event.extraLife = event.entityItem.lifespan;
+			event.setCanceled(true);
 		}
 	}
 
