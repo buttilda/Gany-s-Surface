@@ -45,17 +45,21 @@ public class EntityEvents {
 	@SuppressWarnings("unchecked")
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void itemExpire(ItemExpireEvent event) {
-		int radius = GanysSurface.radiusInWhichItemsDontDespawn;
-		if (radius <= 0 || event.isCanceled())
+		int radius = GanysSurface.noDespawnRadius;
+		if (radius == 0 || event.isCanceled())
 			return;
-		System.out.println(event.entityItem.getEntityItem());
+
+		if (radius < 0) {
+			event.extraLife = event.entityItem.lifespan;
+			event.setCanceled(true);
+			return;
+		}
 
 		World world = event.entityItem.worldObj;
 		double posX = event.entityItem.posX;
 		double posY = event.entityItem.posY;
 		double posZ = event.entityItem.posZ;
 		List<EntityPlayerMP> playersNearby = world.getEntitiesWithinAABB(EntityPlayerMP.class, AxisAlignedBB.getBoundingBox(posX - radius, posY - radius, posZ - radius, posX + radius, posY + radius, posZ + radius));
-		System.out.println(playersNearby.size());
 
 		if (!playersNearby.isEmpty()) {
 			event.extraLife = event.entityItem.lifespan;
