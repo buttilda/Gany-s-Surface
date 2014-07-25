@@ -1,0 +1,167 @@
+# Item localizations
+item.ganyssurface.woodenHelmet.name=Elmo di Legno
+item.ganyssurface.woodenChestplate.name=Corazza di Legno
+item.ganyssurface.woodenLeggings.name=Gambali di Legno
+item.ganyssurface.woodenBoots.name=Stivali di Legno
+
+item.ganyssurface.dyedIronHelmet.name=Elmo di Ferro
+item.ganyssurface.dyedIronChestplate.name=Corazza di Ferro
+item.ganyssurface.dyedIronLeggings.name=Gambali di Ferro
+item.ganyssurface.dyedIronBoots.name=Stivali di Ferro
+
+item.ganyssurface.dyedChainHelmet.name=Elmo di Maglia
+item.ganyssurface.dyedChainChestplate.name=Corazza di Maglia
+item.ganyssurface.dyedChainLeggings.name=Gambali di Maglia
+item.ganyssurface.dyedChainBoots.name=Stivali di Maglia
+
+item.ganyssurface.rot.name=Muffa
+item.ganyssurface.camelliaSeeds.name=Semi di Camellia
+item.ganyssurface.teaLeaves.name=Foglie di Tè
+item.ganyssurface.teaBag.name=Borsa del Tè
+item.ganyssurface.emptyMug.name=Tazza Vuota
+item.ganyssurface.cupOfTea.name=Tazza di Tè
+item.ganyssurface.mankyCupOfTea.name=Tazza di Tè Schifosa
+item.ganyssurface.poop.name=Cacca
+item.ganyssurface.batPoop.name=Cacca di Pipistrello
+item.ganyssurface.fertilizer.name=Fertilizzante
+item.ganyssurface.cookedEgg.name=Uovo Cotto
+item.ganyssurface.obsidianHead.name=Testa di Ossidiana
+item.ganyssurface.woodenWrench.name=Chiave Inglese di Legno
+item.ganyssurface.batNet.name=Ragnatela
+item.ganyssurface.pocketBat.name=Pipistrello Portatile
+item.ganyssurface.pocketSquid.name=Calamaro Portatile
+item.ganyssurface.batStew.name=Zuppa di Pipistrello
+item.ganyssurface.chocolateBar.name=Barra di Cioccolato
+item.ganyssurface.horsalyser.name=Cavanalizzatore
+item.ganyssurface.horseSpawner0.name=Uovo di Cavallo Non-Morto
+item.ganyssurface.horseSpawner1.name=Uovo di Cavallo Scheletrico
+item.ganyssurface.horseSpawner2.name=Uovo di Cavallo Potentissimo
+item.ganyssurface.chargedCreeperSpawner.name=Uovo di Creeper Sovraccarico
+item.ganyssurface.villageFinder.name=Ceratorer di Villaggi
+item.ganyssurface.portableDualWorkTable.name=Tavolo da Lavoro Doppio Portatile
+item.ganyssurface.icyPickaxe.name=Piccone di Ghiaccio
+item.ganyssurface.roastedSquid.name=Calamaro Arrostito
+item.ganyssurface.storageCase.name=Cassa di Immagazzinamento (%s)
+
+item.ganyssurface.colouredRedstoneBLACK.name=Pietranera
+item.ganyssurface.colouredRedstoneGREEN.name=Pietraverde
+item.ganyssurface.colouredRedstoneBROWN.name=Pietramarrone
+item.ganyssurface.colouredRedstoneBLUE.name=Pietrablu
+item.ganyssurface.colouredRedstonePURPLE.name=Pietraviola
+item.ganyssurface.colouredRedstoneCYAN.name=Pietraciano
+item.ganyssurface.colouredRedstoneLIGHTGREY.name=Pietragrigiochiaro
+item.ganyssurface.colouredRedstoneGREY.name=Pietragrigia
+item.ganyssurface.colouredRedstonePINK.name=Pietrarosa
+item.ganyssurface.colouredRedstoneLIME.name=Pietralime
+item.ganyssurface.colouredRedstoneYELLOW.name=Pietragialla
+item.ganyssurface.colouredRedstoneLIGHTBLUE.name=Pietrazzurra
+item.ganyssurface.colouredRedstoneMAGENTA.name=Pietramagenta
+item.ganyssurface.colouredRedstoneORANGE.name=Pietrarancione
+item.ganyssurface.colouredRedstoneWHITE.name=Pietrabianca
+
+# Block localizations
+tile.ganyssurface.camelliaCrop.name=Coltura di Camellia
+tile.ganyssurface.rainDetector.name=Sensore di Pioggia
+tile.ganyssurface.blockDetector.name=Sensore di Blocco
+tile.ganyssurface.dislocator.name=Dislocatore
+tile.ganyssurface.sensoringDislocator.name=Dislocatore Sensitivo
+tile.ganyssurface.cubicSensoringDislocator.name=Dislocatore Sensitivo Cubico
+tile.ganyssurface.disguisedTrapDoorOak.name=Botola Imitatrice in Legno di Quercia
+tile.ganyssurface.disguisedTrapDoorSpruce.name=Botola Imitatrice in Legno di Abete
+tile.ganyssurface.disguisedTrapDoorBirch.name=Botola Imitatrice in Legno di Betulla
+tile.ganyssurface.disguisedTrapDoorJungle.name=Botola Imitatrice in Legno della Giungla
+tile.ganyssurface.workTable.name=Tavolo da Lavoro
+tile.ganyssurface.organicMatterCompressor.name=Compressore di Materia Organica
+tile.ganyssurface.cushion.name=Cuscino
+tile.ganyssurface.chocolateCake.name=Torta di Cioccolato
+tile.ganyssurface.itemDisplay0.name=Espositore Oggetto (Bianco)
+tile.ganyssurface.itemDisplay1.name=Espositore Oggetto (Arancione)
+tile.ganyssurface.itemDisplay2.name=Espositore Oggetto (Magenta)
+tile.ganyssurface.itemDisplay3.name=Espositore Oggetto (Azzurro)
+tile.ganyssurface.itemDisplay4.name=Espositore Oggetto (Giallo)
+tile.ganyssurface.itemDisplay5.name=Espositore Oggetto (Lime)
+tile.ganyssurface.itemDisplay6.name=Espositore Oggetto (Rosa)
+tile.ganyssurface.itemDisplay7.name=Espositore Oggetto (Grigio)
+tile.ganyssurface.itemDisplay8.name=Espositore Oggetto (Grigio Chiaro)
+tile.ganyssurface.itemDisplay9.name=Espositore Oggetto (Ciano)
+tile.ganyssurface.itemDisplay10.name=Espositore Oggetto (Viola)
+tile.ganyssurface.itemDisplay11.name=Espositore Oggetto (Blu)
+tile.ganyssurface.itemDisplay12.name=Espositore Oggetto (Marrone)
+tile.ganyssurface.itemDisplay13.name=Espositore Oggetto (Verde)
+tile.ganyssurface.itemDisplay14.name=Espositore Oggetto (Rosso)
+tile.ganyssurface.itemDisplay15.name=Espositore Oggetto (Nero)
+tile.ganyssurface.chestPropellant.name=Propellente di Casse
+tile.ganyssurface.fertilizedSoil.name=Terra Fertilizzata
+tile.ganyssurface.planter.name=Piantatrice
+tile.ganyssurface.lantern.name=Lanterna
+tile.ganyssurface.inkHarvester.name=Raccoglitore di Inchiostro
+tile.ganyssurface.slimeBlock.name=Blocco di Slime
+tile.ganyssurface.market.name=Mercatino
+tile.ganyssurface.dualWorkTable.name=Tavolo da Lavoro Doppio
+tile.ganyssurface.poopBlock.name=Cacca
+tile.ganyssurface.farmManager.name=Gestore della Fattoria
+tile.ganyssurface.encasingBench.name=Banco Restringente
+tile.ganyssurface.autoEncaser.name=Restringente Automatico
+
+tile.ganyssurface.colouredRedstoneBLACK.name=Pietranera
+tile.ganyssurface.colouredRedstoneGREEN.name=Pietraverde
+tile.ganyssurface.colouredRedstoneBROWN.name=Pietramarrone
+tile.ganyssurface.colouredRedstoneBLUE.name=Pietrablu
+tile.ganyssurface.colouredRedstonePURPLE.name=Pietraviola
+tile.ganyssurface.colouredRedstoneCYAN.name=Pietraciano
+tile.ganyssurface.colouredRedstoneLIGHTGREY.name=Pietragrigiochiaro
+tile.ganyssurface.colouredRedstoneGREY.name=Pietragrigia
+tile.ganyssurface.colouredRedstonePINK.name=Pietrarosa
+tile.ganyssurface.colouredRedstoneLIME.name=Pietralime
+tile.ganyssurface.colouredRedstoneYELLOW.name=Pietragialla
+tile.ganyssurface.colouredRedstoneLIGHTBLUE.name=Pietrazzurra
+tile.ganyssurface.colouredRedstoneMAGENTA.name=Pietramagenta
+tile.ganyssurface.colouredRedstoneORANGE.name=Pietrarancione
+tile.ganyssurface.colouredRedstoneWHITE.name=Pietrabianca
+
+tile.ganyssurface.colouredRedstoneBlockBLACK.name=Blocco di Pietranera
+tile.ganyssurface.colouredRedstoneBlockGREEN.name=Blocco di Pietraverde
+tile.ganyssurface.colouredRedstoneBlockBROWN.name=Blocco di Pietramarrone
+tile.ganyssurface.colouredRedstoneBlockBLUE.name=Blocco di Pietrablu
+tile.ganyssurface.colouredRedstoneBlockPURPLE.name=Blocco di Pietraviola
+tile.ganyssurface.colouredRedstoneBlockCYAN.name=Blocco di Pietraciano
+tile.ganyssurface.colouredRedstoneBlockLIGHTGREY.name=Blocco di Pietragrigiochiaro
+tile.ganyssurface.colouredRedstoneBlockGREY.name=Blocco di Pietragrigia
+tile.ganyssurface.colouredRedstoneBlockPINK.name=Blocco di Pietrarosa
+tile.ganyssurface.colouredRedstoneBlockLIME.name=Blocco di Pietralime
+tile.ganyssurface.colouredRedstoneBlockYELLOW.name=Blocco di Pietragialla
+tile.ganyssurface.colouredRedstoneBlockLIGHTBLUE.name=Blocco di Pietrazzurra
+tile.ganyssurface.colouredRedstoneBlockMAGENTA.name=Blocco di Pietramagenta
+tile.ganyssurface.colouredRedstoneBlockORANGE.name=Blocco di Pietrarancione
+tile.ganyssurface.colouredRedstoneBlockWHITE.name=Blocco di Pietrabianca
+
+# GUI localizations
+container.ganyssurface:blockDetector=Sensore di Blocco
+container.ganyssurface:sensoringDislocator=Dislocatore Sensitivo
+container.ganyssurface:cubicSensoringDislocator=Dislocatore Sensitivo Cubico
+container.ganyssurface:workTable=Tavolo Da Lavoro
+container.ganyssurface:organicMatterCompressor=Compressore di Materia Organica
+container.ganyssurface:itemDisplay=Espositore Oggetto
+container.ganyssurface:planter=Piantatrice
+container.ganyssurface:inkHarvester=Raccoglitore di Inchiostro
+container.ganyssurface:market=Mercatino
+container.ganyssurface:dualWorkTable=Tavolo da Lavoro Doppio
+container.ganyssurface:farmManager=Gestore della Fattoria
+container.ganyssurface:encasingBench=Banco Restringente
+container.ganyssurface:autoEncaser=Restringente Automatico
+
+matter=Materiale:
+squidFood=Cibo:
+profit=Profitto:
+forSale=In Sconto:
+offer=Offerta:
+price=Prezzo:
+
+# Creative Tab localizations
+itemGroup.ganyssurface=Gany's Surface
+
+# Others
+pleaseletmefree0=Ti prego, liberami D=
+pleaseletmefree1=What does the squid say?
+attacktocapture=Tasto sinistro su un pipistrello o un calamaro per catturarlo
+interacttorotate=Tasto destro su un tronco, pilastro, ecc. per ruotarlo
