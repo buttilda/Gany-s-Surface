@@ -29,9 +29,9 @@ public class SurfaceWorldGen implements IWorldGenerator {
 	private final List<WorldGenMinable> generators = new LinkedList<WorldGenMinable>();
 
 	public SurfaceWorldGen() {
-		generators.add(new WorldGenMinable(ModBlocks.newStones, 1, 10, Blocks.stone));
-		generators.add(new WorldGenMinable(ModBlocks.newStones, 3, 10, Blocks.stone));
-		generators.add(new WorldGenMinable(ModBlocks.newStones, 5, 10, Blocks.stone));
+		generators.add(new WorldGenMinable(ModBlocks.newStones, 1, 40, Blocks.stone));
+		generators.add(new WorldGenMinable(ModBlocks.newStones, 3, 40, Blocks.stone));
+		generators.add(new WorldGenMinable(ModBlocks.newStones, 5, 40, Blocks.stone));
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class SurfaceWorldGen implements IWorldGenerator {
 		if (GanysSurface.enable18Stones)
 			for (Iterator<WorldGenMinable> iterator = generators.iterator(); iterator.hasNext();) {
 				WorldGenMinable generator = iterator.next();
-				for (int i = 0; i < 10; i++) {
+				for (int i = 0; i < 3; i++) {
 					int x = chunkX * 16 + rand.nextInt(16);
 					int y = rand.nextInt(256);
 					int z = chunkZ * 16 + rand.nextInt(16);

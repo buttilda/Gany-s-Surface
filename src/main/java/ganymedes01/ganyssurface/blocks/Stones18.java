@@ -12,10 +12,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -41,6 +43,11 @@ public class Stones18 extends Block implements ISubBlocksBlock {
 		else
 			setCreativeTab(null);
 		setBlockName(Utils.getUnlocalizedName(Strings.NEW_STONES_NAME));
+	}
+
+	@Override
+	public boolean isReplaceableOreGen(World world, int x, int y, int z, Block target) {
+		return this == target || target == Blocks.stone;
 	}
 
 	@Override
