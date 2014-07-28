@@ -5,7 +5,6 @@ import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.block.ItemChocolateCake;
-import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.BlockCake;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -60,12 +59,6 @@ public class ChocolateCakeBlock extends BlockCake implements ISubBlocksBlock {
 			else
 				world.setBlockMetadataWithNotify(x, y, z, l, 2);
 		}
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public String getItemIconName() {
-		return Reference.ITEM_BLOCK_TEXTURE_PATH + Strings.CHOCOLATE_CAKE_NAME;
 	}
 
 	@Override
