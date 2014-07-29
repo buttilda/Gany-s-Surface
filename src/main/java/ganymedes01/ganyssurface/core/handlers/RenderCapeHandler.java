@@ -57,11 +57,11 @@ public class RenderCapeHandler {
 		}
 
 		if (finished && !loaded) {
+			loaded = true;
 			TextureManager manager = Minecraft.getMinecraft().renderEngine;
 			manager.loadTexture(CAPE_DATA, new CapeTexture(CAPE_IMAGE));
 			manager.loadTexture(JEBJEB_CAPE_DATA, new CapeTexture(JEBJEB_CAPE_IMAGE));
 			manager.loadTexture(KPR_CAPE_DATA, new CapeTexture(KPR_CAPE_IMAGE));
-			loaded = true;
 		}
 
 		if (!loaded)
