@@ -19,9 +19,9 @@ import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class OrganicMatterRegistry {
@@ -88,7 +88,7 @@ public class OrganicMatterRegistry {
 		addMatterYield(new ItemStack(Blocks.wooden_button));
 
 		addOreYield("mobEgg", 2);
-		addOreYield("mobHead", 8);
+		addOreYield("itemSkull", 8);
 		addOreYield("record", 4);
 		addOreYield("plankWood", 4);
 		addOreYield("slabWood", 2);

@@ -41,8 +41,8 @@ public class ModRecipes {
 	}
 
 	private static void registerOreDictionary() {
-		if (OreDictionary.getOres("egg").isEmpty())
-			OreDictionary.registerOre("egg", new ItemStack(Items.egg));
+		OreDictionary.registerOre("itemSkull", new ItemStack(Items.skull, 1, OreDictionary.WILDCARD_VALUE));
+		OreDictionary.registerOre("egg", new ItemStack(Items.egg));
 		OreDictionary.registerOre("mobEgg", ModItems.chargedCreeperSpawner);
 		OreDictionary.registerOre("slimeball", Items.slime_ball);
 		OreDictionary.registerOre("dustRedstone", new ItemStack(ModItems.colouredRedstone, 1, OreDictionary.WILDCARD_VALUE));
