@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.core.proxy;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
+import ganymedes01.ganyssurface.client.renderer.block.BlockChestRenderer;
 import ganymedes01.ganyssurface.client.renderer.block.BlockColouredRedstoneRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockItemDisplayRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockLanternRender;
@@ -89,5 +90,6 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerBlockHandler(new BlockSlimeBlockRender());
 		RenderingRegistry.registerBlockHandler(new BlockColouredRedstoneRender());
 		RenderingRegistry.registerBlockHandler(new BlockItemDisplayRender());
+		RenderingRegistry.registerBlockHandler(new BlockChestRenderer());
 	}
 }
