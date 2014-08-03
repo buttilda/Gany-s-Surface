@@ -15,25 +15,27 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class PoopHandler {
 
 	@SubscribeEvent
 	public void onLivingUpdate(LivingUpdateEvent event) {
-		if (!event.entityLiving.worldObj.isRemote)
-			if (event.entityLiving instanceof EntityAnimal || event.entityLiving instanceof EntityTameable || event.entityLiving instanceof EntityBat)
-				if (event.entityLiving.worldObj.rand.nextInt(GanysSurface.poopingChance) == 0)
-					if (!event.entityLiving.isChild()) {
-						if (event.entityLiving instanceof EntityBat)
-							replaceNearbyAirBlock(event.entityLiving.worldObj, (int) event.entityLiving.posX, (int) event.entityLiving.posY, (int) event.entityLiving.posZ, ModBlocks.poop, 1);
-						else
-							replaceNearbyAirBlock(event.entityLiving.worldObj, (int) event.entityLiving.posX, (int) event.entityLiving.posY, (int) event.entityLiving.posZ, ModBlocks.poop, 0);
-						event.entityLiving.playSound("mob.chicken.plop", 1.0F, (event.entityLiving.worldObj.rand.nextFloat() - event.entityLiving.worldObj.rand.nextFloat()) * 0.2F + 1.0F);
-					}
+		if (event.entityLiving.worldObj.isRemote)
+			return;
+
+		if (event.entityLiving instanceof EntityAnimal || event.entityLiving instanceof EntityTameable || event.entityLiving instanceof EntityBat)
+			if (event.entityLiving.worldObj.rand.nextInt(GanysSurface.poopingChance) == 0)
+				if (!event.entityLiving.isChild()) {
+					if (event.entityLiving instanceof EntityBat)
+						replaceNearbyAirBlock(event.entityLiving.worldObj, (int) event.entityLiving.posX, (int) event.entityLiving.posY, (int) event.entityLiving.posZ, ModBlocks.poop, 1);
+					else
+						replaceNearbyAirBlock(event.entityLiving.worldObj, (int) event.entityLiving.posX, (int) event.entityLiving.posY, (int) event.entityLiving.posZ, ModBlocks.poop, 0);
+					event.entityLiving.playSound("mob.chicken.plop", 1.0F, (event.entityLiving.worldObj.rand.nextFloat() - event.entityLiving.worldObj.rand.nextFloat()) * 0.2F + 1.0F);
+				}
 	}
 
 	private void replaceNearbyAirBlock(World world, int x, int y, int z, Block block, int meta) {

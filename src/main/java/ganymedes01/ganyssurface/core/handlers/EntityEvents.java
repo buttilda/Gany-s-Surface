@@ -8,6 +8,8 @@ import java.util.Random;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -15,6 +17,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
@@ -26,6 +29,23 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
  */
 
 public class EntityEvents {
+
+	@SubscribeEvent
+	@SuppressWarnings("unchecked")
+	public void onLivingUpdate(LivingUpdateEvent event) {
+		if (event.entityLiving.worldObj.isRemote)
+			return;
+		if (!GanysSurface.enableBabyZombiesOnChickens)
+			return;
+
+		World world = event.entityLiving.worldObj;
+		if (event.entityLiving instanceof EntityZombie)
+			if (((EntityZombie) event.entityLiving).isChild() && event.entityLiving.boundingBox != null && event.entityLiving.ridingEntity == null) {
+				List<EntityChicken> chickens = world.getEntitiesWithinAABB(EntityChicken.class, event.entityLiving.boundingBox.expand(1, 1, 1));
+				if (!chickens.isEmpty())
+					event.entityLiving.mountEntity(chickens.get(world.rand.nextInt(chickens.size())));
+			}
+	}
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void dropEvent(LivingDropsEvent event) {
