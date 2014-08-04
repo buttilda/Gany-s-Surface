@@ -30,6 +30,8 @@ public class PoopHandler {
 		if (event.entityLiving instanceof EntityAnimal || event.entityLiving instanceof EntityTameable || event.entityLiving instanceof EntityBat)
 			if (event.entityLiving.worldObj.rand.nextInt(GanysSurface.poopingChance) == 0)
 				if (!event.entityLiving.isChild()) {
+					if (hasPoopNearby(event.entityLiving.worldObj, (int) event.entityLiving.posX, (int) event.entityLiving.posY, (int) event.entityLiving.posZ))
+						return;
 					if (event.entityLiving instanceof EntityBat)
 						replaceNearbyAirBlock(event.entityLiving.worldObj, (int) event.entityLiving.posX, (int) event.entityLiving.posY, (int) event.entityLiving.posZ, ModBlocks.poop, 1);
 					else
@@ -47,5 +49,15 @@ public class PoopHandler {
 					return;
 				}
 		InventoryUtils.dropStack(world, x, y, z, new ItemStack(ModItems.poop, 1, meta));
+	}
+
+	private boolean hasPoopNearby(World world, int x, int y, int z) {
+		int count = 0;
+		for (int i = -1; i <= 1; i++)
+			for (int j = -1; j <= 1; j++)
+				for (int k = -1; k <= 1; k++)
+					if (world.getBlock(x + i, y + j, z + k) == ModBlocks.poop)
+						count++;
+		return count > 4;
 	}
 }
