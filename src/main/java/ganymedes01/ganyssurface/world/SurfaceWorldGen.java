@@ -76,8 +76,6 @@ public class SurfaceWorldGen implements IWorldGenerator {
 									for (int k = 0; k < 58; k++)
 										if (!world.getBlock(x + i, y + j + pillarHeight, z + k).isReplaceable(world, x + i, y + j + pillarHeight, z + k))
 											return;
-
-							//System.out.println("Temple at: " + x + ", " + y + ", " + z);
 							Temple.buildTemple(world, x, y, z, pillarHeight);
 							return;
 						}

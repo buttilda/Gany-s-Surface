@@ -16,6 +16,7 @@ public class FishingHandler {
 
 		addJunk(new ItemStack(ModItems.poop), 8);
 		addFish(new ItemStack(ModItems.pocketCritter, 1, 1), 30);
+		addTreasure(new ItemStack(ModItems.icyPickaxe, 1, 1), 1);
 	}
 
 	public static void addFish(ItemStack stack, int weight) {

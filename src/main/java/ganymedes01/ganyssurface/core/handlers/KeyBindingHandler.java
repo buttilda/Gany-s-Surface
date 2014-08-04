@@ -6,6 +6,7 @@ import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketPortWorkTable;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 
 import org.lwjgl.input.Keyboard;
@@ -36,9 +37,11 @@ public class KeyBindingHandler {
 			EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
 			if (player == null)
 				return;
-			for (ItemStack stack : player.inventory.mainInventory)
+			for (int i = 0; i < InventoryPlayer.getHotbarSize(); i++) {
+				ItemStack stack = player.inventory.getStackInSlot(i);
 				if (stack != null && stack.getItem() == ModItems.portalDualWorkTable)
-					PacketHandler.sendToServer(new PacketPortWorkTable());
+					PacketHandler.sendToServer(new PacketPortWorkTable(i));
+			}
 		}
 	}
 }
