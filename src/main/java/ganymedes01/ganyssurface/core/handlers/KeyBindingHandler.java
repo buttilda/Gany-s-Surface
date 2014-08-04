@@ -8,6 +8,7 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 import org.lwjgl.input.Keyboard;
 
@@ -25,7 +26,7 @@ import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 
 public class KeyBindingHandler {
 
-	public static KeyBinding worktable = new KeyBinding("Portable Worktable", Keyboard.KEY_P, Reference.MOD_NAME);
+	public static KeyBinding worktable = new KeyBinding(StatCollector.translateToLocal("item.ganyssurface.portableDualWorkTable.name"), Keyboard.KEY_P, Reference.MOD_NAME);
 
 	public KeyBindingHandler() {
 		ClientRegistry.registerKeyBinding(worktable);
