@@ -71,16 +71,20 @@ public class RenderCapeHandler {
 			if (usersWithCapes.contains(event.entityPlayer.getCommandSenderName())) {
 				AbstractClientPlayer player = (AbstractClientPlayer) event.entityPlayer;
 
-				if (player.getLocationCape() == null)
-					if (event.entityPlayer.getCommandSenderName().equals("Jeb_Jeb"))
-						player.func_152121_a(MinecraftProfileTexture.Type.CAPE, JEBJEB_CAPE_DATA);
-					else if (event.entityPlayer.getCommandSenderName().equals("KingPurpleRaptor"))
-						player.func_152121_a(MinecraftProfileTexture.Type.CAPE, KPR_CAPE_DATA);
-					else
-						player.func_152121_a(MinecraftProfileTexture.Type.CAPE, CAPE_DATA);
+				if (event.entityPlayer.getCommandSenderName().equals("Jeb_Jeb"))
+					setCape(player, JEBJEB_CAPE_DATA);
+				else if (event.entityPlayer.getCommandSenderName().equals("KingPurpleRaptor"))
+					setCape(player, KPR_CAPE_DATA);
+				else
+					setCape(player, CAPE_DATA);
 
 				event.renderCape = true;
 			}
+	}
+
+	private void setCape(AbstractClientPlayer player, ResourceLocation resource) {
+		if (player.getLocationCape() == null || !player.getLocationCape().equals(resource))
+			player.func_152121_a(MinecraftProfileTexture.Type.CAPE, resource);
 	}
 
 	private void downloadCapes() {
