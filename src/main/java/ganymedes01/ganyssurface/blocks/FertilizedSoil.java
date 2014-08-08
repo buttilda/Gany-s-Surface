@@ -39,12 +39,9 @@ public class FertilizedSoil extends Block {
 
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand) {
-		if (isWaterNearby(world, x, y, z))
-			if (world.getBlock(x, y + 1, z) instanceof IPlantable)
-				if (world.getBlockMetadata(x, y + 1, z) < 7)
-					world.setBlockMetadataWithNotify(x, y + 1, z, world.getBlockMetadata(x, y + 1, z) + 1, 2);
-				else if (rand.nextInt(50) == 25)
-					world.setBlock(x, y, z, Blocks.dirt);
+		Block top = world.getBlock(x, y + 1, z);
+		if (top instanceof IPlantable)
+			top.updateTick(world, x, y + 1, z, rand);
 	}
 
 	@Override
@@ -54,15 +51,6 @@ public class FertilizedSoil extends Block {
 
 	@Override
 	public boolean renderAsNormalBlock() {
-		return false;
-	}
-
-	private boolean isWaterNearby(World world, int x, int y, int z) {
-		for (int i = x - 4; i <= x + 4; i++)
-			for (int j = y; j <= y + 1; j++)
-				for (int k = z - 4; k <= z + 4; k++)
-					if (world.getBlock(i, j, k).getMaterial() == Material.water)
-						return true;
 		return false;
 	}
 
