@@ -1,16 +1,15 @@
 package ganymedes01.ganyssurface.core.proxy;
 
 import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.client.renderer.block.BlockChestRenderer;
 import ganymedes01.ganyssurface.client.renderer.block.BlockColouredRedstoneRender;
+import ganymedes01.ganyssurface.client.renderer.block.BlockDualWorkTableRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockItemDisplayRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockLanternRender;
+import ganymedes01.ganyssurface.client.renderer.block.BlockPlanterRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockSlimeBlockRender;
-import ganymedes01.ganyssurface.client.renderer.item.ItemDualWorkTableRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemIcyPickaxeRenderer;
-import ganymedes01.ganyssurface.client.renderer.item.ItemPlanterRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemPocketCritterRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemStorageCaseRenderer;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityChestPropellantRender;
@@ -31,7 +30,6 @@ import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -77,8 +75,6 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRenderers() {
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.planter), new ItemPlanterRenderer());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.dualWorkTable), new ItemDualWorkTableRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.storageCase, new ItemStorageCaseRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.pocketCritter, new ItemPocketCritterRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.roastedSquid, new ItemPocketCritterRenderer());
@@ -93,5 +89,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerBlockHandler(new BlockColouredRedstoneRender());
 		RenderingRegistry.registerBlockHandler(new BlockItemDisplayRender());
 		RenderingRegistry.registerBlockHandler(new BlockChestRenderer());
+		RenderingRegistry.registerBlockHandler(new BlockDualWorkTableRender());
+		RenderingRegistry.registerBlockHandler(new BlockPlanterRender());
 	}
 }

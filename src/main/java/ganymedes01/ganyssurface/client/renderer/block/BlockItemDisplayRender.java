@@ -17,9 +17,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 @SideOnly(Side.CLIENT)
@@ -29,7 +29,6 @@ public class BlockItemDisplayRender implements ISimpleBlockRenderingHandler {
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
 		Tessellator tessellator = Tessellator.instance;
 		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-		GL11.glDisable(GL11.GL_LIGHTING);
 		float x = 0.0F;
 		float y = 0.0F;
 		float z = 0.0F;
@@ -104,11 +103,14 @@ public class BlockItemDisplayRender implements ISimpleBlockRenderingHandler {
 		// BOTTOM
 
 		tessellator.startDrawingQuads();
-		tessellator.setNormal(0.0F, -1.0F, 0.0F);
+		tessellator.setNormal(0.0F, 1.0F, 0.0F);
 		renderer.renderFaceYPos(block, x, y - 1.0F + pixel, z, Blocks.carpet.getIcon(0, metadata));
 		tessellator.draw();
 
-		GL11.glEnable(GL11.GL_LIGHTING);
+		tessellator.startDrawingQuads();
+		tessellator.setNormal(0.0F, 1.0F, 0.0F);
+		renderer.renderFaceYNeg(block, x, y + pixel, z, Blocks.carpet.getIcon(0, metadata));
+		tessellator.draw();
 	}
 
 	@Override
@@ -137,6 +139,7 @@ public class BlockItemDisplayRender implements ISimpleBlockRenderingHandler {
 
 		icon = Blocks.carpet.getIcon(0, world.getBlockMetadata(x, y, z));
 		renderer.renderFaceYPos(block, x, y - 1.0F, z, icon);
+		renderer.renderFaceYNeg(block, x, y, z, icon);
 
 		return renderer.renderStandardBlock(block, x, y, z);
 	}

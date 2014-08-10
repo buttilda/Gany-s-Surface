@@ -21,9 +21,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ChestPropellant extends BlockContainer {
@@ -55,7 +55,7 @@ public class ChestPropellant extends BlockContainer {
 
 	@Override
 	public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
-		return side == ForgeDirection.UP || side == ForgeDirection.DOWN;
+		return false;
 	}
 
 	@Override

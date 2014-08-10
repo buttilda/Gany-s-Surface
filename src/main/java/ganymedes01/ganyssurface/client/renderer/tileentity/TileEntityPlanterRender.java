@@ -6,6 +6,7 @@ import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
@@ -14,19 +15,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 @SideOnly(Side.CLIENT)
 public class TileEntityPlanterRender extends TileEntitySpecialRenderer {
 
+	private final ModelPlanter model = new ModelPlanter();
+	private final ResourceLocation texture = Utils.getResource(Utils.getEntityTexture(Strings.PLANTER_NAME));
+
 	@Override
 	public void renderTileEntityAt(TileEntity tile, double x, double y, double z, float angle) {
 		TileEntityPlanter planter = (TileEntityPlanter) tile;
-		ModelPlanter model = new ModelPlanter();
-		bindTexture(Utils.getResource(Utils.getEntityTexture(Strings.PLANTER_NAME)));
+		bindTexture(texture);
 
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) x + 1.0F, (float) y + 1.0F, (float) z + 0.0F);

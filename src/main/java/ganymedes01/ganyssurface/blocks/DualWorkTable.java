@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
+import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,9 +12,9 @@ import net.minecraft.world.World;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class DualWorkTable extends WorkTable {
@@ -44,6 +45,6 @@ public class DualWorkTable extends WorkTable {
 
 	@Override
 	public int getRenderType() {
-		return -1;
+		return RenderIDs.DUAL_WORK_TABLE;
 	}
 }

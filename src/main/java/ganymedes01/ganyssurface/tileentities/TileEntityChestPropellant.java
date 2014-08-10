@@ -2,22 +2,28 @@ package ganymedes01.ganyssurface.tileentities;
 
 import ganymedes01.ganyssurface.blocks.ChestPropellant;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class TileEntityChestPropellant extends TileEntity implements ISidedInventory {
 
-	public ItemStack getInventoryToRender() {
+	@SideOnly(Side.CLIENT)
+	private EntityItem entityItem;
+
+	private ItemStack getInventoryToRender() {
 		if (Utils.getTileEntity(worldObj, xCoord, yCoord - (ChestPropellant.MAX_PILE_SIZE - 1), zCoord, TileEntityChestPropellant.class) != null)
 			return null;
 		IInventory tile = Utils.getTileEntity(worldObj, xCoord, yCoord - 1, zCoord, IInventory.class);
@@ -28,6 +34,20 @@ public class TileEntityChestPropellant extends TileEntity implements ISidedInven
 				return tile == null ? null : ((TileEntityChestPropellant) tile).getInventoryToRender();
 		else
 			return null;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public EntityItem getEntityItem() {
+		ItemStack stack = getInventoryToRender();
+		if (stack == null)
+			return null;
+
+		if (entityItem == null) {
+			entityItem = new EntityItem(worldObj);
+			entityItem.hoverStart = 0;
+		}
+		entityItem.setEntityItemStack(stack);
+		return entityItem;
 	}
 
 	@Override
