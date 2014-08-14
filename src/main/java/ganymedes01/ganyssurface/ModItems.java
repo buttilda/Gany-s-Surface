@@ -25,6 +25,8 @@ import ganymedes01.ganyssurface.items.MankyCupOfTea;
 import ganymedes01.ganyssurface.items.MuttonCooked;
 import ganymedes01.ganyssurface.items.MuttonRaw;
 import ganymedes01.ganyssurface.items.ObsidianHead;
+import ganymedes01.ganyssurface.items.PineCone;
+import ganymedes01.ganyssurface.items.PineNuts;
 import ganymedes01.ganyssurface.items.PocketCritter;
 import ganymedes01.ganyssurface.items.Poop;
 import ganymedes01.ganyssurface.items.PortableDualWorkTable;
@@ -85,6 +87,8 @@ public class ModItems {
 	public static final Item rawMutton = new MuttonRaw();
 	public static final Item cookedMutton = new MuttonCooked();
 	public static final Item prismarineItems = new PrismarineItems();
+	public static final Item pineCone = new PineCone();
+	public static final Item pineNuts = new PineNuts();
 
 	// Armour
 	public static final Item woodenHelmet = new WoodenArmour(0);

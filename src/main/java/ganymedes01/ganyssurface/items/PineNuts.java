@@ -1,0 +1,23 @@
+package ganymedes01.ganyssurface.items;
+
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.Strings;
+import net.minecraft.item.ItemFood;
+
+/**
+ * Gany's Surface
+ *
+ * @author ganymedes01
+ *
+ */
+
+public class PineNuts extends ItemFood {
+
+	public PineNuts() {
+		super(4, 0.32F, false);
+		setCreativeTab(GanysSurface.surfaceTab);
+		setTextureName(Utils.getItemTexture(Strings.PINE_NUTS_NAME));
+		setUnlocalizedName(Utils.getUnlocalizedName(Strings.PINE_NUTS_NAME));
+	}
+}

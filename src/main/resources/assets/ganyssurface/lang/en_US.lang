@@ -47,6 +47,8 @@ item.ganyssurface.mutton_raw.name=Raw Mutton
 item.ganyssurface.mutton_cooked.name=Cooked Mutton
 item.ganyssurface.prismarineItems0.name=Prismarine Shard
 item.ganyssurface.prismarineItems1.name=Prismarine Crystals
+item.ganyssurface.pineCone.name=Pine Cone
+item.ganyssurface.pineNuts.name=Pine Nuts
 
 item.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 item.ganyssurface.colouredRedstoneGREEN.name=Greenstone
