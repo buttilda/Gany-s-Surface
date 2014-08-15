@@ -81,6 +81,19 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModBlocks.prismarineBlocks, 1, OreDictionary.WILDCARD_VALUE));
 			API.hideItem(new ItemStack(ModBlocks.seaLantern));
 		}
+
+		API.hideItem(new ItemStack(ModBlocks.doorAcacia));
+		API.hideItem(new ItemStack(ModBlocks.doorBirch));
+		API.hideItem(new ItemStack(ModBlocks.doorDarkOak));
+		API.hideItem(new ItemStack(ModBlocks.doorJungle));
+		API.hideItem(new ItemStack(ModBlocks.doorSpruce));
+		if (!GanysSurface.enableDoors) {
+			API.hideItem(new ItemStack(ModItems.doorAcacia));
+			API.hideItem(new ItemStack(ModItems.doorBirch));
+			API.hideItem(new ItemStack(ModItems.doorDarkOak));
+			API.hideItem(new ItemStack(ModItems.doorJungle));
+			API.hideItem(new ItemStack(ModItems.doorSpruce));
+		}
 	}
 
 	@Override

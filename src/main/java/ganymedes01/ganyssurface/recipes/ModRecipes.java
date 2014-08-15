@@ -55,6 +55,13 @@ public class ModRecipes {
 			OreDictionary.registerOre("shardPrismarine", new ItemStack(ModItems.prismarineItems, 1, 0));
 			OreDictionary.registerOre("crystalPrismarine", new ItemStack(ModItems.prismarineItems, 1, 1));
 		}
+
+		OreDictionary.registerOre("plankAcacia", new ItemStack(Blocks.planks, 1, 4));
+		OreDictionary.registerOre("plankBirch", new ItemStack(Blocks.planks, 1, 2));
+		OreDictionary.registerOre("plankDarkOak", new ItemStack(Blocks.planks, 1, 5));
+		OreDictionary.registerOre("plankJungle", new ItemStack(Blocks.planks, 1, 3));
+		OreDictionary.registerOre("plankSpruce", new ItemStack(Blocks.planks, 1, 1));
+		OreDictionary.registerOre("plankOak", new ItemStack(Blocks.planks, 1, 0));
 	}
 
 	private static void registerArmourRecipes() {
@@ -196,6 +203,15 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.prismarineBlocks, 1, PLAIN), "xx", "xx", 'x', "shardPrismarine"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.prismarineBlocks, 1, BRICKS), "xxx", "xxx", "xxx", 'x', "shardPrismarine"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.seaLantern), "xyx", "yyy", "xyx", 'x', "shardPrismarine", 'y', "crystalPrismarine"));
+		}
+
+		if (GanysSurface.enableDoors) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doorAcacia, 3), "xx", "xx", "xx", 'x', "plankAcacia"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doorBirch, 3), "xx", "xx", "xx", 'x', "plankBirch"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doorDarkOak, 3), "xx", "xx", "xx", 'x', "plankDarkOak"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doorJungle, 3), "xx", "xx", "xx", 'x', "plankJungle"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doorSpruce, 3), "xx", "xx", "xx", 'x', "plankSpruce"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.wooden_door, 3), "xx", "xx", "xx", 'x', "plankWood"));
 		}
 	}
 }

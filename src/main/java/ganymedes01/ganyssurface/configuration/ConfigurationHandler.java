@@ -78,6 +78,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableDispenserShears = configBoolean("Enable dispenser action for shears", true, true);
 		GanysSurface.prismarineTempleChance = configInteger("prismarineTempleChance", "Larger number means temples are LESS likely to happen", false, GanysSurface.prismarineTempleChance);
 		GanysSurface.enableBabyZombiesOnChickens = configBoolean("Enable Baby Zombies riding chickens", true, true);
+		GanysSurface.enableDoors = configBoolean("Enable 1.8 style doors", true, true);
 
 		if (configFile.hasChanged())
 			configFile.save();

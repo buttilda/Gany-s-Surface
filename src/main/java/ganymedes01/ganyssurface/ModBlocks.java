@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface;
 
 import ganymedes01.ganyssurface.blocks.AutoEncaser;
 import ganymedes01.ganyssurface.blocks.BlockDetector;
+import ganymedes01.ganyssurface.blocks.BlockNewDoor;
 import ganymedes01.ganyssurface.blocks.CamelliaCrop;
 import ganymedes01.ganyssurface.blocks.ChestPropellant;
 import ganymedes01.ganyssurface.blocks.ChocolateCakeBlock;
@@ -75,6 +76,11 @@ public class ModBlocks {
 	public static final Block ironTrapdoor = new IronTrapdoor();
 	public static final Block prismarineBlocks = new PrismarineBlocks();
 	public static final Block seaLantern = new SeaLantern();
+	public static final Block doorAcacia = new BlockNewDoor("acacia");
+	public static final Block doorBirch = new BlockNewDoor("birch");
+	public static final Block doorDarkOak = new BlockNewDoor("dark_oak");
+	public static final Block doorJungle = new BlockNewDoor("jungle");
+	public static final Block doorSpruce = new BlockNewDoor("spruce");
 
 	static {
 		for (int i = 0; i < disguisedTrapDoor.length; i++)

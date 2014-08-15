@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
 import ganymedes01.ganyssurface.core.handlers.FuelHandler;
 import ganymedes01.ganyssurface.core.handlers.InterModComms;
 import ganymedes01.ganyssurface.core.proxy.CommonProxy;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.creativetab.CreativeTabSurface;
 import ganymedes01.ganyssurface.integration.ModIntegrator;
 import ganymedes01.ganyssurface.lib.Reference;
@@ -16,6 +17,10 @@ import java.io.File;
 
 import net.minecraft.block.BlockDirt;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -65,6 +70,7 @@ public class GanysSurface {
 	public static boolean enablePrismarineStuff = true;
 	public static boolean enableDispenserShears = true;
 	public static boolean enableBabyZombiesOnChickens = true;
+	public static boolean enableDoors = true;
 	public static int prismarineTempleChance = 1000;
 
 	@EventHandler
@@ -82,6 +88,29 @@ public class GanysSurface {
 		Temple.makeMap();
 
 		BlockDirt.field_150009_a[1] = "coarse";
+
+		if (enableDoors) {
+			Items.wooden_door.setMaxStackSize(64);
+			Items.iron_door.setMaxStackSize(64);
+			Items.wooden_door.setTextureName(Utils.getItemTexture("door_wood"));
+			Items.iron_door.setTextureName(Utils.getItemTexture("door_iron"));
+
+			for (Object recipe : CraftingManager.getInstance().getRecipeList())
+				if (recipe != null) {
+					ItemStack stack = ((IRecipe) recipe).getRecipeOutput();
+					if (stack != null) {
+						if (stack.getItem() == Items.iron_door) {
+							stack.stackSize = 3;
+							return;
+						}
+
+						if (stack.getItem() == Items.wooden_door) {
+							CraftingManager.getInstance().getRecipeList().remove(recipe);
+							return;
+						}
+					}
+				}
+		}
 	}
 
 	@EventHandler
