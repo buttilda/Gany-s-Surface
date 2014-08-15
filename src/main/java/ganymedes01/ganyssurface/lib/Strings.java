@@ -46,6 +46,7 @@ public class Strings {
 	public static final String IRON_TRAPDOOR = "iron_trapdoor";
 	public static final String PRISMARINE_BLOCKS = "prismarineBlocks";
 	public static final String SEA_LANTERN = "sea_lantern";
+	public static final String INVERTED_DAYLIGHT_SENSOR = "daylight_detector_inverted";
 
 	// Item names
 	public static final String ROT_NAME = "rot";

@@ -17,6 +17,7 @@ import ganymedes01.ganyssurface.blocks.EncasingBench;
 import ganymedes01.ganyssurface.blocks.FarmManager;
 import ganymedes01.ganyssurface.blocks.FertilizedSoil;
 import ganymedes01.ganyssurface.blocks.InkHarvester;
+import ganymedes01.ganyssurface.blocks.InvertedDaylightDetector;
 import ganymedes01.ganyssurface.blocks.IronTrapdoor;
 import ganymedes01.ganyssurface.blocks.ItemDisplay;
 import ganymedes01.ganyssurface.blocks.Lantern;
@@ -81,6 +82,7 @@ public class ModBlocks {
 	public static final Block doorDarkOak = new BlockNewDoor("dark_oak");
 	public static final Block doorJungle = new BlockNewDoor("jungle");
 	public static final Block doorSpruce = new BlockNewDoor("spruce");
+	public static final Block invertedDaylightDetector = new InvertedDaylightDetector();
 
 	static {
 		for (int i = 0; i < disguisedTrapDoor.length; i++)

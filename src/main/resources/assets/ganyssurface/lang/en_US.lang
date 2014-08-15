@@ -127,6 +127,8 @@ tile.ganyssurface.prismarineBlocks1.name=Prismarine Bricks
 tile.ganyssurface.prismarineBlocks2.name=Dark Prismarine
 tile.ganyssurface.sea_lantern.name=Sea Lantern
 tile.dirt.coarse.name=Coarse Dirt
+tile.ganyssurface.daylight_detector_inverted.name=Inverted Daylight Sensor
+
 
 tile.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 tile.ganyssurface.colouredRedstoneGREEN.name=Greenstone

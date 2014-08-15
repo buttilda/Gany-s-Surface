@@ -14,7 +14,7 @@ import ganymedes01.ganyssurface.client.gui.inventory.GuiPortableDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
 import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
 import ganymedes01.ganyssurface.core.handlers.EntityEvents;
-import ganymedes01.ganyssurface.core.handlers.HarvestEventHandler;
+import ganymedes01.ganyssurface.core.handlers.MiscEventHandler;
 import ganymedes01.ganyssurface.core.handlers.OpenContainerHandler;
 import ganymedes01.ganyssurface.core.handlers.PoopHandler;
 import ganymedes01.ganyssurface.core.handlers.SnowTickHandler;
@@ -76,7 +76,7 @@ public class CommonProxy implements IGuiHandler {
 			MinecraftForge.EVENT_BUS.register(new EntityEvents());
 		if (GanysSurface.mobsShouldPoop)
 			MinecraftForge.EVENT_BUS.register(new PoopHandler());
-		MinecraftForge.EVENT_BUS.register(new HarvestEventHandler());
+		MinecraftForge.EVENT_BUS.register(new MiscEventHandler());
 	}
 
 	public void registerTileEntities() {
