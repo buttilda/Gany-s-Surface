@@ -49,6 +49,11 @@ item.ganyssurface.prismarineItems0.name=Prismarine Shard
 item.ganyssurface.prismarineItems1.name=Prismarine Crystals
 item.ganyssurface.pineCone.name=Pine Cone
 item.ganyssurface.pineNuts.name=Pine Nuts
+item.ganyssurface.door_acacia.name=Acacia Door
+item.ganyssurface.door_birch.name=Birch Door
+item.ganyssurface.door_dark_oak.name=Dark Oak Door
+item.ganyssurface.door_jungle.name=Jungle Door
+item.ganyssurface.door_spruce.name=Spruce Door
 
 item.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 item.ganyssurface.colouredRedstoneGREEN.name=Greenstone

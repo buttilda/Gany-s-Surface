@@ -98,17 +98,21 @@ public class GanysSurface {
 			for (Object recipe : CraftingManager.getInstance().getRecipeList())
 				if (recipe != null) {
 					ItemStack stack = ((IRecipe) recipe).getRecipeOutput();
-					if (stack != null) {
+					if (stack != null)
 						if (stack.getItem() == Items.iron_door) {
 							stack.stackSize = 3;
-							return;
+							break;
 						}
+				}
 
+			for (Object recipe : CraftingManager.getInstance().getRecipeList())
+				if (recipe != null) {
+					ItemStack stack = ((IRecipe) recipe).getRecipeOutput();
+					if (stack != null)
 						if (stack.getItem() == Items.wooden_door) {
 							CraftingManager.getInstance().getRecipeList().remove(recipe);
-							return;
+							break;
 						}
-					}
 				}
 		}
 	}
