@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.RenderIDs;
 
 import java.util.Random;
 
@@ -36,6 +37,11 @@ public class BlockNewDoor extends BlockDoor {
 	@Override
 	public Item getItemDropped(int meta, Random rand, int fortune) {
 		return (meta & 8) != 0 ? null : getItemDoor();
+	}
+
+	@Override
+	public int getRenderType() {
+		return RenderIDs.DOOR;
 	}
 
 	private Item getItemDoor() {

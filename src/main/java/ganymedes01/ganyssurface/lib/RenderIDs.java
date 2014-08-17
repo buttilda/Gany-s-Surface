@@ -17,4 +17,5 @@ public class RenderIDs {
 	public static final int ITEM_DISPLAY = RenderingRegistry.getNextAvailableRenderId();
 	public static final int DUAL_WORK_TABLE = RenderingRegistry.getNextAvailableRenderId();
 	public static final int PLANTER = RenderingRegistry.getNextAvailableRenderId();
+	public static final int DOOR = RenderingRegistry.getNextAvailableRenderId();
 }
