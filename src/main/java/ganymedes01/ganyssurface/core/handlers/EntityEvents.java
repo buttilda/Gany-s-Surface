@@ -6,8 +6,10 @@ import ganymedes01.ganyssurface.ModItems;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntitySheep;
@@ -59,6 +61,12 @@ public class EntityEvents {
 					addDrop(new ItemStack(ModItems.cookedMutton), event.entityLiving, event.drops);
 				else
 					addDrop(new ItemStack(ModItems.rawMutton), event.entityLiving, event.drops);
+		} else if (event.entityLiving instanceof EntityEnderman) {
+			EntityEnderman enderman = (EntityEnderman) event.entityLiving;
+			Block block = enderman.func_146080_bZ();
+			int meta = enderman.getCarryingData();
+
+			addDrop(new ItemStack(block, 1, meta), event.entityLiving, event.drops);
 		}
 	}
 
