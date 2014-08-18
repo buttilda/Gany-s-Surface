@@ -179,8 +179,6 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ironTrapdoor), "xx", "xx", 'x', "ingotIron"));
 
 		if (GanysSurface.enable18Stones) {
-			GameRegistry.addRecipe(new ItemStack(Blocks.stone_slab, 6), "xxx", 'x', new ItemStack(ModBlocks.newStones, 1, OreDictionary.WILDCARD_VALUE));
-
 			int GRANITE = 1;
 			int POLISHED_GRANITE = 2;
 			int DIORITE = 3;
