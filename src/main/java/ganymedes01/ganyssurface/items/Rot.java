@@ -19,9 +19,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class Rot extends Item {
@@ -44,7 +44,7 @@ public class Rot extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int meta) {
-		return icon[meta];
+		return icon[Math.max(0, Math.min(meta, icon.length - 1))];
 	}
 
 	@Override
