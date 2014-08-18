@@ -2,7 +2,6 @@ package ganymedes01.ganyssurface;
 
 import ganymedes01.ganyssurface.blocks.AutoEncaser;
 import ganymedes01.ganyssurface.blocks.BlockDetector;
-import ganymedes01.ganyssurface.blocks.LeafWall;
 import ganymedes01.ganyssurface.blocks.BlockNewDoor;
 import ganymedes01.ganyssurface.blocks.CamelliaCrop;
 import ganymedes01.ganyssurface.blocks.ChestPropellant;
@@ -22,6 +21,7 @@ import ganymedes01.ganyssurface.blocks.InvertedDaylightDetector;
 import ganymedes01.ganyssurface.blocks.IronTrapdoor;
 import ganymedes01.ganyssurface.blocks.ItemDisplay;
 import ganymedes01.ganyssurface.blocks.Lantern;
+import ganymedes01.ganyssurface.blocks.LeafWall;
 import ganymedes01.ganyssurface.blocks.OrganicMatterCompressor;
 import ganymedes01.ganyssurface.blocks.Planter;
 import ganymedes01.ganyssurface.blocks.PoopBlock;
