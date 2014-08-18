@@ -128,7 +128,10 @@ tile.ganyssurface.prismarineBlocks2.name=Dark Prismarine
 tile.ganyssurface.sea_lantern.name=Sea Lantern
 tile.dirt.coarse.name=Coarse Dirt
 tile.ganyssurface.daylight_detector_inverted.name=Inverted Daylight Sensor
-
+tile.ganyssurface.leafWall0.name=Oak Leaves Wall
+tile.ganyssurface.leafWall1.name=Spruce Leaves Wall
+tile.ganyssurface.leafWall2.name=Birch Leaves Wall
+tile.ganyssurface.leafWall3.name=Jungle Leaves Wall
 
 tile.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 tile.ganyssurface.colouredRedstoneGREEN.name=Greenstone

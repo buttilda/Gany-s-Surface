@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface;
 
 import ganymedes01.ganyssurface.blocks.AutoEncaser;
 import ganymedes01.ganyssurface.blocks.BlockDetector;
+import ganymedes01.ganyssurface.blocks.LeafWall;
 import ganymedes01.ganyssurface.blocks.BlockNewDoor;
 import ganymedes01.ganyssurface.blocks.CamelliaCrop;
 import ganymedes01.ganyssurface.blocks.ChestPropellant;
@@ -83,6 +84,7 @@ public class ModBlocks {
 	public static final Block doorJungle = new BlockNewDoor("jungle");
 	public static final Block doorSpruce = new BlockNewDoor("spruce");
 	public static final Block invertedDaylightDetector = new InvertedDaylightDetector();
+	public static final Block leafWall = new LeafWall();
 
 	static {
 		for (int i = 0; i < disguisedTrapDoor.length; i++)

@@ -14,7 +14,6 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -39,8 +38,8 @@ public class ItemDisplay extends BlockContainer implements ISubBlocksBlock {
 		setHardness(1.0F);
 		setStepSound(soundTypeGlass);
 		setCreativeTab(GanysSurface.surfaceTab);
-		setBlockTextureName(Utils.getBlockTexture(Strings.ITEM_DISPLAY_NAME));
 		setBlockName(Utils.getUnlocalizedName(Strings.ITEM_DISPLAY_NAME));
+		setBlockTextureName(Utils.getBlockTexture(Strings.ITEM_DISPLAY_NAME));
 	}
 
 	@Override
@@ -98,12 +97,6 @@ public class ItemDisplay extends BlockContainer implements ISubBlocksBlock {
 	@Override
 	public int getRenderType() {
 		return RenderIDs.ITEM_DISPLAY;
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg) {
-		blockIcon = reg.registerIcon(Utils.getBlockTexture(Strings.ITEM_DISPLAY_NAME));
 	}
 
 	@Override
