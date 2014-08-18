@@ -63,6 +63,8 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModItems.woodenLeggings));
 			API.hideItem(new ItemStack(ModItems.woodenBoots));
 		}
+		if (!GanysSurface.enableQuiver)
+			API.hideItem(new ItemStack(ModItems.quiver));
 
 		// 1.8 Stuff
 		API.addItemListEntry(new ItemStack(Blocks.dirt, 1, 0));

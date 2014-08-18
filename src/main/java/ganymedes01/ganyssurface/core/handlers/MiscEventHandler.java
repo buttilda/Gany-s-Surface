@@ -2,11 +2,15 @@ package ganymedes01.ganyssurface.core.handlers;
 
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
+import ganymedes01.ganyssurface.items.Quiver;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
@@ -28,9 +32,68 @@ public class MiscEventHandler {
 		if (stack == null)
 			return;
 
-		if (EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, stack) > 0) {
+		boolean flag = false;
+
+		if (EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, stack) > 0)
+			flag = true;
+		else
+			for (int i = 0; i < event.entityPlayer.inventory.getSizeInventory(); i++) {
+				int count = Quiver.getArrowCount(event.entityPlayer.inventory.getStackInSlot(i));
+				flag = count > 0;
+				if (flag)
+					break;
+			}
+
+		if (flag) {
 			event.setCanceled(true);
 			event.entityPlayer.setItemInUse(stack, stack.getItem().getMaxItemUseDuration(stack));
+		}
+	}
+
+	@SubscribeEvent
+	public void arrowLoose(ArrowLooseEvent event) {
+		if (event.entityPlayer.inventory.hasItem(Items.arrow) || EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, event.bow) > 0)
+			return;
+
+		float charge = event.charge / 20.0F;
+		charge = (charge * charge + charge * 2.0F) / 3.0F;
+
+		if (charge < 0.1D)
+			return;
+		if (charge > 1.0F)
+			charge = 1.0F;
+
+		for (int i = 0; i < event.entityPlayer.inventory.getSizeInventory(); i++) {
+			ItemStack quiver = event.entityPlayer.inventory.getStackInSlot(i);
+			int count = Quiver.getArrowCount(quiver);
+			if (count > 0) {
+
+				EntityArrow arrow = new EntityArrow(event.entityPlayer.worldObj, event.entityPlayer, charge * 2.0F);
+
+				if (charge == 1.0F)
+					arrow.setIsCritical(true);
+
+				int power = EnchantmentHelper.getEnchantmentLevel(Enchantment.power.effectId, event.bow);
+				if (power > 0)
+					arrow.setDamage(arrow.getDamage() + power * 0.5D + 0.5D);
+
+				int punch = EnchantmentHelper.getEnchantmentLevel(Enchantment.punch.effectId, event.bow);
+				if (punch > 0)
+					arrow.setKnockbackStrength(punch);
+
+				if (EnchantmentHelper.getEnchantmentLevel(Enchantment.flame.effectId, event.bow) > 0)
+					arrow.setFire(100);
+
+				event.bow.damageItem(1, event.entityPlayer);
+				event.entityPlayer.worldObj.playSoundAtEntity(event.entityPlayer, "random.bow", 1.0F, 1.0F / (event.entityPlayer.worldObj.rand.nextFloat() * 0.4F + 1.2F) + charge * 0.5F);
+
+				Quiver.setArrowCount(quiver, count - 1);
+
+				if (!event.entityPlayer.worldObj.isRemote)
+					event.entityPlayer.worldObj.spawnEntityInWorld(arrow);
+				event.setCanceled(true);
+				return;
+			}
 		}
 	}
 

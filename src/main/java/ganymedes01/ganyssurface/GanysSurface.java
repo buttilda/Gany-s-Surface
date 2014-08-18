@@ -7,6 +7,7 @@ import ganymedes01.ganyssurface.core.proxy.CommonProxy;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.creativetab.CreativeTabSurface;
 import ganymedes01.ganyssurface.integration.ModIntegrator;
+import ganymedes01.ganyssurface.items.Quiver;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.recipes.ModRecipes;
@@ -58,6 +59,7 @@ public class GanysSurface {
 	public static boolean enableWoodenArmour = true;
 	public static boolean enableCamilaSeedsToDropFromGrass = true;
 	public static boolean poopRandomBonemeals = true;
+	public static boolean enableQuiver = true;
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
 	public static int poopingChance = 15000;
@@ -136,6 +138,7 @@ public class GanysSurface {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		ModIntegrator.postInit();
+		Quiver.ARROW_STACK_SIZE = new ItemStack(Items.arrow).getMaxStackSize();
 	}
 
 	@EventHandler

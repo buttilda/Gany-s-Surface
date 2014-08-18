@@ -80,6 +80,7 @@ public class Strings {
 	public static final String PRISMARINE_ITEMS = "prismarineItems";
 	public static final String PINE_CONE_NAME = "pineCone";
 	public static final String PINE_NUTS_NAME = "pineNuts";
+	public static final String QUIVER_NAME = "quiver";
 
 	// Armour names
 	public static final String WOODEN_HELMET_NAME = "woodenHelmet";
