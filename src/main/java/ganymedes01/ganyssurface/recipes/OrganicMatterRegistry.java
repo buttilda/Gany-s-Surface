@@ -67,6 +67,7 @@ public class OrganicMatterRegistry {
 		addItemYield(Items.wheat);
 		addItemYield(Items.dye);
 		addItemYield(Items.reeds);
+		addItemYield(Items.feather);
 		addMatterYield(new ItemStack(Items.dye, 1, 15));
 
 		addItemYield(ModItems.woodenBoots);
