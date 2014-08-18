@@ -108,6 +108,7 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new StorageCaseRecipe());
 		GameRegistry.addRecipe(new ItemStack(ModItems.gearalyser), "xyx", "xzx", "xwx", 'x', Items.iron_ingot, 'y', Items.flint, 'z', Blocks.glass_pane, 'w', Items.redstone);
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.pineNuts), ModItems.pineCone);
+		GameRegistry.addRecipe(new ItemStack(ModItems.quiver), "xyx", "x x", "xxx", 'x', Items.leather, 'y', Items.string);
 
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Items.clay_ball, 8), "xxx", "yzy", "xxx", 'x', Blocks.gravel, 'y', Blocks.dirt, 'z', Items.water_bucket);
