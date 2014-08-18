@@ -2,9 +2,12 @@ package ganymedes01.ganyssurface.core.handlers;
 
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import net.minecraftforge.event.world.BlockEvent;
@@ -18,6 +21,18 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
  */
 
 public class MiscEventHandler {
+
+	@SubscribeEvent
+	public void arrowNock(ArrowNockEvent event) {
+		ItemStack stack = event.result;
+		if (stack == null)
+			return;
+
+		if (EnchantmentHelper.getEnchantmentLevel(Enchantment.infinity.effectId, stack) > 0) {
+			event.setCanceled(true);
+			event.entityPlayer.setItemInUse(stack, stack.getItem().getMaxItemUseDuration(stack));
+		}
+	}
 
 	@SubscribeEvent
 	public void harvestEvent(BlockEvent.HarvestDropsEvent event) {
