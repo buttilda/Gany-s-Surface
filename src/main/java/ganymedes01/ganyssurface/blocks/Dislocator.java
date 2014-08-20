@@ -20,16 +20,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import buildcraft.api.transport.IPipeTile;
-import buildcraft.api.transport.IPipeTile.PipeType;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class Dislocator extends BlockContainer {
@@ -87,24 +85,16 @@ public class Dislocator extends BlockContainer {
 		if (target != null)
 			if (target.getBlockHardness(world, x, y, z) >= 0 && target.getMaterial() != Material.water && target.getMaterial() != Material.lava) {
 				IInventory tile = getInventory(world, xCoord, yCoord, zCoord, dir);
-				IPipeTile pipe = getPipe(world, xCoord, yCoord, zCoord, dir);
+
 				if (tile != null) {
 					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
 						if (!addStacktoInventory(tile, stack))
-							InventoryUtils.dropStack(world, x, y, z, stack);
-				} else if (pipe != null) {
-					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
-						if (!addStackToPipe(pipe, stack, dir))
 							InventoryUtils.dropStack(world, x, y, z, stack);
 				} else
 					target.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
 				world.playAuxSFXAtEntity(null, 2001, x, y, z, Block.getIdFromBlock(target) + (world.getBlockMetadata(x, y, z) << 12));
 				world.setBlockToAir(x, y, z);
 			}
-	}
-
-	protected boolean addStackToPipe(IPipeTile pipe, ItemStack stack, ForgeDirection dir) {
-		return pipe.injectItem(stack, true, dir) == stack.stackSize;
 	}
 
 	protected boolean addStacktoInventory(IInventory iinventory, ItemStack stack) {
@@ -141,12 +131,6 @@ public class Dislocator extends BlockContainer {
 						if (iinventory.getStackInSlot(i).stackSize < iinventory.getStackInSlot(i).getMaxStackSize())
 							slots.add(i);
 		return slots;
-	}
-
-	protected IPipeTile getPipe(World world, int x, int y, int z, ForgeDirection dir) {
-		ForgeDirection direction = dir.getOpposite();
-		IPipeTile pipe = Utils.getTileEntity(world, x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, IPipeTile.class);
-		return pipe != null && pipe.getPipeType() == PipeType.ITEM ? pipe : null;
 	}
 
 	protected IInventory getInventory(World world, int x, int y, int z, ForgeDirection dir) {

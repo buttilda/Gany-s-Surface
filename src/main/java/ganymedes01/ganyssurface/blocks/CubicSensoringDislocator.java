@@ -16,15 +16,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import buildcraft.api.transport.IPipeTile;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class CubicSensoringDislocator extends SensoringDislocator {
@@ -71,24 +70,12 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 			return;
 
 		IInventory inventory = getInventory(world, xCoord, yCoord, zCoord, null);
-		IPipeTile pipe = null;
-		ForgeDirection pipeDir = null;
-		for (int num : Utils.getRandomizedList(0, 6)) {
-			pipeDir = getDirectionFromMetadata(num);
-			pipe = getPipe(world, xCoord, yCoord, zCoord, pipeDir);
-			if (pipe != null)
-				break;
-		}
 
 		if (target != null)
 			if (target.getBlockHardness(world, x, y, z) >= 0 && target.getMaterial() != Material.water && target.getMaterial() != Material.lava) {
 				if (inventory != null) {
 					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
 						if (!addStacktoInventory(inventory, stack))
-							InventoryUtils.dropStack(world, x, y, z, stack);
-				} else if (pipe != null) {
-					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
-						if (!addStackToPipe(pipe, stack, pipeDir))
 							InventoryUtils.dropStack(world, x, y, z, stack);
 				} else
 					target.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);

@@ -4,18 +4,15 @@ import ganymedes01.ganyssurface.blocks.Dislocator;
 import ganymedes01.ganyssurface.blocks.SensoringDislocator;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
-import net.minecraftforge.common.util.ForgeDirection;
-import buildcraft.api.transport.IPipeConnection;
-import buildcraft.api.transport.IPipeTile.PipeType;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
-public class TileEntitySensoringDislocator extends TileEntityBlockDetector implements IPipeConnection {
+public class TileEntitySensoringDislocator extends TileEntityBlockDetector {
 
 	@Override
 	public boolean checkNearbyBlocks() {
@@ -32,14 +29,5 @@ public class TileEntitySensoringDislocator extends TileEntityBlockDetector imple
 	@Override
 	public String getInventoryName() {
 		return Utils.getConainerName(Strings.SENSORING_DISLOCATOR_NAME);
-	}
-
-	@Override
-	public ConnectOverride overridePipeConnection(PipeType type, ForgeDirection side) {
-		if (type == PipeType.ITEM) {
-			ForgeDirection dir = Dislocator.getDirectionFromMetadata(worldObj.getBlockMetadata(xCoord, yCoord, zCoord));
-			return dir.getOpposite() == side ? ConnectOverride.CONNECT : ConnectOverride.DISCONNECT;
-		}
-		return ConnectOverride.DISCONNECT;
 	}
 }

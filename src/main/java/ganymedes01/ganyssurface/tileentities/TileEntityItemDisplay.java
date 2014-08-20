@@ -13,9 +13,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
-import buildcraft.api.transport.IPipeConnection;
-import buildcraft.api.transport.IPipeTile.PipeType;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -27,7 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class TileEntityItemDisplay extends GanysInventory implements IPipeConnection, IPacketHandlingTile {
+public class TileEntityItemDisplay extends GanysInventory implements IPacketHandlingTile {
 
 	@SideOnly(Side.CLIENT)
 	private EntityItem displayItem;
@@ -80,11 +77,6 @@ public class TileEntityItemDisplay extends GanysInventory implements IPipeConnec
 	}
 
 	@Override
-	public ConnectOverride overridePipeConnection(PipeType type, ForgeDirection with) {
-		return ConnectOverride.DISCONNECT;
-	}
-
-	@Override
 	public boolean canUpdate() {
 		return false;
 	}
@@ -102,5 +94,10 @@ public class TileEntityItemDisplay extends GanysInventory implements IPipeConnec
 	@Override
 	public void readPacketData(ByteBuf buffer) {
 		inventory[0] = ByteBufUtils.readItemStack(buffer);
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int slot, ItemStack stack) {
+		return false;
 	}
 }
