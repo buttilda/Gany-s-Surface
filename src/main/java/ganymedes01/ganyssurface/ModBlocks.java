@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.blocks.AutoEncaser;
 import ganymedes01.ganyssurface.blocks.BlockDetector;
 import ganymedes01.ganyssurface.blocks.BlockNewDoor;
 import ganymedes01.ganyssurface.blocks.CamelliaCrop;
+import ganymedes01.ganyssurface.blocks.CharcoalBlock;
 import ganymedes01.ganyssurface.blocks.ChestPropellant;
 import ganymedes01.ganyssurface.blocks.ChocolateCakeBlock;
 import ganymedes01.ganyssurface.blocks.ColouredRedstone;
@@ -85,6 +86,7 @@ public class ModBlocks {
 	public static final Block doorSpruce = new BlockNewDoor("spruce");
 	public static final Block invertedDaylightDetector = new InvertedDaylightDetector();
 	public static final Block leafWall = new LeafWall();
+	public static final Block charcoalBlock = new CharcoalBlock();
 
 	static {
 		for (int i = 0; i < disguisedTrapDoor.length; i++)

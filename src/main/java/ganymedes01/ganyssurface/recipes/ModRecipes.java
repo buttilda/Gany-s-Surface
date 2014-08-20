@@ -55,6 +55,7 @@ public class ModRecipes {
 			OreDictionary.registerOre("shardPrismarine", new ItemStack(ModItems.prismarineItems, 1, 0));
 			OreDictionary.registerOre("crystalPrismarine", new ItemStack(ModItems.prismarineItems, 1, 1));
 		}
+		OreDictionary.registerOre("blockCharcoal", new ItemStack(ModBlocks.charcoalBlock));
 
 		OreDictionary.registerOre("plankAcacia", new ItemStack(Blocks.planks, 1, 4));
 		OreDictionary.registerOre("plankBirch", new ItemStack(Blocks.planks, 1, 2));
@@ -153,6 +154,9 @@ public class ModRecipes {
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.leafWall, 4, 1), "x", "x", 'x', new ItemStack(Blocks.leaves, 1, 1));
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.leafWall, 4, 2), "x", "x", 'x', new ItemStack(Blocks.leaves, 1, 2));
 		GameRegistry.addRecipe(new ItemStack(ModBlocks.leafWall, 4, 3), "x", "x", 'x', new ItemStack(Blocks.leaves, 1, 3));
+
+		GameRegistry.addRecipe(new ItemStack(ModBlocks.charcoalBlock), "xxx", "xxx", "xxx", 'x', new ItemStack(Items.coal, 1, 1));
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.coal, 9, 1), new ItemStack(ModBlocks.charcoalBlock));
 
 		// Vanilla
 		GameRegistry.addRecipe(new ItemStack(Blocks.web), "x x", " y ", "x x", 'y', Items.slime_ball, 'x', Items.string);

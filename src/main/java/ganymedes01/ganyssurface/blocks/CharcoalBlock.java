@@ -1,0 +1,27 @@
+package ganymedes01.ganyssurface.blocks;
+
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.Strings;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+
+/**
+ * Gany's Surface
+ *
+ * @author ganymedes01
+ *
+ */
+
+public class CharcoalBlock extends Block {
+
+	public CharcoalBlock() {
+		super(Material.rock);
+		setHardness(5.0F);
+		setResistance(10.0F);
+		setStepSound(soundTypePiston);
+		setCreativeTab(GanysSurface.surfaceTab);
+		setBlockName(Utils.getUnlocalizedName(Strings.CHARCOAL_BLOCK));
+		setBlockTextureName(Utils.getBlockTexture(Strings.CHARCOAL_BLOCK));
+	}
+}
