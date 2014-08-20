@@ -56,6 +56,7 @@ public class ModRecipes {
 			OreDictionary.registerOre("crystalPrismarine", new ItemStack(ModItems.prismarineItems, 1, 1));
 		}
 		OreDictionary.registerOre("blockCharcoal", new ItemStack(ModBlocks.charcoalBlock));
+		OreDictionary.registerOre("blockSlime", new ItemStack(ModBlocks.slimeBlock));
 
 		OreDictionary.registerOre("plankAcacia", new ItemStack(Blocks.planks, 1, 4));
 		OreDictionary.registerOre("plankBirch", new ItemStack(Blocks.planks, 1, 2));
