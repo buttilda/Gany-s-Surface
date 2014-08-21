@@ -69,8 +69,7 @@ public class ItemDisplay extends BlockContainer implements ISubBlocksBlock {
 				if (player.getCurrentEquippedItem().stackSize <= 0)
 					player.setCurrentItemOrArmor(0, null);
 			} else if (tile.getDisplayItem() != null) {
-				if (!player.inventory.addItemStackToInventory(tile.getDisplayItem().copy()))
-					InventoryUtils.dropStack(world, x, y + 1, z, tile.getDisplayItem().copy());
+				InventoryUtils.addToPlayerInventory(player, tile.getDisplayItem().copy(), x, y, z);
 				tile.addItemToDisplay(null);
 			}
 			return true;

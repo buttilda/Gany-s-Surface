@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.api.IQuiver;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -49,10 +50,7 @@ public class Quiver extends Item implements IQuiver {
 			if (current > 0) {
 				int amount = Math.min(ARROW_STACK_SIZE, current);
 				setArrowCount(stack, current - amount);
-				player.playSound("random.pop", 0.2F, ((world.rand.nextFloat() - world.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
-				ItemStack arrows = new ItemStack(Items.arrow, amount);
-				if (!player.inventory.addItemStackToInventory(arrows))
-					player.dropPlayerItemWithRandomChoice(arrows, false);
+				InventoryUtils.addToPlayerInventory(player, new ItemStack(Items.arrow, amount), player.posX, player.posY, player.posZ);
 			}
 			return stack;
 		}

@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModItems;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,9 +15,9 @@ import net.minecraft.world.World;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class CupOfTea extends Item {
@@ -56,8 +57,7 @@ public class CupOfTea extends Item {
 					if (stack.stackSize <= 0)
 						return new ItemStack(ModItems.emptyMug);
 
-					if (!player.inventory.addItemStackToInventory(new ItemStack(ModItems.emptyMug)))
-						player.dropItem(ModItems.emptyMug, 1);
+					InventoryUtils.addToPlayerInventory(player, new ItemStack(ModItems.emptyMug), player.posX, player.posY, player.posZ);
 				}
 			}
 

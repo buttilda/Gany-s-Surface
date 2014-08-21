@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModItems;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -49,8 +50,7 @@ public class BatNet extends Item {
 				if (((EntityLiving) target).hasCustomNameTag())
 					pocketBat.setStackDisplayName(((EntityBat) target).getCustomNameTag());
 				target.setDead();
-				if (!player.inventory.addItemStackToInventory(pocketBat))
-					target.entityDropItem(pocketBat, 1.0F);
+				InventoryUtils.addToPlayerInventory(player, pocketBat, target.posX, target.posY + 1, target.posZ);
 				item.damageItem(1, player);
 			}
 			return true;
