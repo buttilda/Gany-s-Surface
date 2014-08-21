@@ -14,6 +14,7 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
@@ -65,8 +66,8 @@ public class EntityEvents {
 			EntityEnderman enderman = (EntityEnderman) event.entityLiving;
 			Block block = enderman.func_146080_bZ();
 			int meta = enderman.getCarryingData();
-
-			addDrop(new ItemStack(block, 1, meta), event.entityLiving, event.drops);
+			if (block != null && block != Blocks.air)
+				addDrop(new ItemStack(block, 1, meta), event.entityLiving, event.drops);
 		}
 	}
 
