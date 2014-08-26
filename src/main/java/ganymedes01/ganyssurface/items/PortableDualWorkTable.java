@@ -7,9 +7,7 @@ import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map.Entry;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -44,21 +42,6 @@ public class PortableDualWorkTable extends Item {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
 		list.add(String.format(StatCollector.translateToLocal("portableWorktable"), EnumChatFormatting.YELLOW + Keyboard.getKeyName(KeyBindingHandler.worktable.getKeyCode()) + EnumChatFormatting.GRAY));
-
-		TileEntityDualWorkTable tile = getTile(stack);
-
-		HashMap<String, Integer> items = new HashMap<String, Integer>();
-		for (int i = 0; i < tile.getSizeInventory(); i++) {
-			ItemStack item = tile.getStackInSlot(i);
-			if (tile.getStackInSlot(i) != null)
-				if (items.containsKey(item.getDisplayName()))
-					items.put(item.getDisplayName(), items.get(item.getDisplayName()) + item.stackSize);
-				else
-					items.put(item.getDisplayName(), item.stackSize);
-		}
-
-		for (Entry<String, Integer> entry : items.entrySet())
-			list.add(entry.getValue() + "x " + entry.getKey());
 	}
 
 	public static TileEntityDualWorkTable getTile(ItemStack stack) {

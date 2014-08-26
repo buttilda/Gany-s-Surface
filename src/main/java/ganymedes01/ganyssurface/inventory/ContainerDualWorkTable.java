@@ -7,48 +7,42 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ContainerDualWorkTable extends Container {
 
-	protected IInventory craftResult = new InventoryCraftResult();
-	protected IInventory craftResultRight = new InventoryCraftResult();
-	protected TileEntityDualWorkTable dualWorkTable;
+	protected IInventory result = new InventoryCraftResult();
+	protected IInventory resultRight = new InventoryCraftResult();
+	protected TileEntityDualWorkTable tile;
 
 	public ContainerDualWorkTable(InventoryPlayer inventory, TileEntityDualWorkTable tile) {
 		this(inventory, tile, true);
 	}
 
 	public ContainerDualWorkTable(InventoryPlayer inventory, TileEntityDualWorkTable tile, boolean addPlayerInventory) {
-		dualWorkTable = tile;
-		dualWorkTable.invtCraftMatrix = new InventoryCrafting(this, 3, 3);
-		dualWorkTable.invtCraftMatrixRight = new InventoryCrafting(this, 3, 3);
+		this.tile = tile;
+		tile.craftMatrix.setContainer(this);
+		tile.craftMatrixRight.setContainer(this);
 
-		for (int i = 0; i < dualWorkTable.invtCraftMatrix.getSizeInventory(); i++)
-			dualWorkTable.invtCraftMatrix.setInventorySlotContents(i, dualWorkTable.getStackInSlot(i));
-		for (int i = 0; i < dualWorkTable.invtCraftMatrixRight.getSizeInventory(); i++)
-			dualWorkTable.invtCraftMatrixRight.setInventorySlotContents(i, dualWorkTable.getStackInSlot(i + dualWorkTable.invtCraftMatrix.getSizeInventory()));
-
-		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, dualWorkTable.invtCraftMatrix, craftResult, 0, 75, 35, 0));
-		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, dualWorkTable.invtCraftMatrixRight, craftResultRight, 1, 168, 35, 9));
+		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, tile.craftMatrix, result, 0, 75, 35, 0));
+		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, tile.craftMatrixRight, resultRight, 1, 168, 35, 9));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
-				addSlotToContainer(new Slot(dualWorkTable, j + i * 3, 12 + j * 18, 17 + i * 18));
+				addSlotToContainer(new Slot(tile.craftMatrix, j + i * 3, 12 + j * 18, 17 + i * 18));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
-				addSlotToContainer(new Slot(dualWorkTable, dualWorkTable.invtCraftMatrix.getSizeInventory() + j + i * 3, 105 + j * 18, 17 + i * 18));
+				addSlotToContainer(new Slot(tile.craftMatrixRight, j + i * 3, 105 + j * 18, 17 + i * 18));
 
 		if (addPlayerInventory) {
 			for (int i = 0; i < 3; i++)
@@ -58,16 +52,16 @@ public class ContainerDualWorkTable extends Container {
 				addSlotToContainer(new Slot(inventory, i, 19 + i * 18, 142));
 		}
 
-		onCraftMatrixChanged(dualWorkTable.invtCraftMatrix);
-		onCraftMatrixChanged(dualWorkTable.invtCraftMatrixRight);
+		onCraftMatrixChanged(tile.craftMatrix);
+		onCraftMatrixChanged(tile.craftMatrixRight);
 	}
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		if (inventory == dualWorkTable.invtCraftMatrix)
-			craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(dualWorkTable.invtCraftMatrix, dualWorkTable.getWorldObj()));
-		else if (inventory == dualWorkTable.invtCraftMatrixRight)
-			craftResultRight.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(dualWorkTable.invtCraftMatrixRight, dualWorkTable.getWorldObj()));
+		if (inventory == tile.craftMatrix)
+			result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(tile.craftMatrix, tile.getWorldObj()));
+		else if (inventory == tile.craftMatrixRight)
+			resultRight.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(tile.craftMatrixRight, tile.getWorldObj()));
 	}
 
 	@Override
@@ -108,5 +102,11 @@ public class ContainerDualWorkTable extends Container {
 	@Override
 	public boolean func_94530_a(ItemStack stack, Slot slot) {
 		return !(slot instanceof WorkTableResultSlot);
+	}
+
+	@Override
+	public void onContainerClosed(EntityPlayer player) {
+		tile.craftMatrix.setContainer(null);
+		tile.craftMatrixRight.setContainer(null);
 	}
 }

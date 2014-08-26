@@ -29,7 +29,7 @@ public class ContainerPortableDualWorkTable extends ContainerDualWorkTable {
 			for (int j = 0; j < 9; j++)
 				addSlotToContainer(new Slot(player.inventory, j + i * 9 + 9, 19 + j * 18, 84 + i * 18));
 		for (int i = 0; i < 9; i++)
-			if (player.inventory.currentItem == i)
+			if (slot == i)
 				addSlotToContainer(new PlaceholderSlot(player.inventory, i, 19 + i * 18, 142));
 			else
 				addSlotToContainer(new Slot(player.inventory, i, 19 + i * 18, 142));
@@ -37,10 +37,10 @@ public class ContainerPortableDualWorkTable extends ContainerDualWorkTable {
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		if (inventory == dualWorkTable.invtCraftMatrix)
-			craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(dualWorkTable.invtCraftMatrix, world));
-		else if (inventory == dualWorkTable.invtCraftMatrixRight)
-			craftResultRight.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(dualWorkTable.invtCraftMatrixRight, world));
+		if (inventory == tile.craftMatrix)
+			result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(tile.craftMatrix, world));
+		else if (inventory == tile.craftMatrixRight)
+			resultRight.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(tile.craftMatrixRight, world));
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class ContainerPortableDualWorkTable extends ContainerDualWorkTable {
 		super.onContainerClosed(player);
 		NBTTagCompound data = new NBTTagCompound();
 		data.setTag("Inventory", new NBTTagCompound());
-		dualWorkTable.writeToNBT(data.getCompoundTag("Inventory"));
+		tile.writeToNBT(data.getCompoundTag("Inventory"));
 
 		if (player.getHeldItem() == null || player.getHeldItem().getItem() != ModItems.portalDualWorkTable) {
 			for (int i = 0; i < player.inventory.mainInventory.length; i++)

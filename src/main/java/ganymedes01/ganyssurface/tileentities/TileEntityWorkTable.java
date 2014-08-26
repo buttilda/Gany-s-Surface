@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.tileentities;
 
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -20,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityWorkTable extends GanysInventory implements ISidedInventory {
 
-	public InventoryCrafting invtCraftMatrix;
+	public final WorkTableCrafting craftMatrix = new WorkTableCrafting(this);
 	@SideOnly(Side.CLIENT)
 	private EntityItem entityItem;
 
@@ -55,51 +56,6 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 	}
 
 	@Override
-	public ItemStack decrStackSize(int slot, int size) {
-		if (inventory[slot] != null) {
-			ItemStack itemstack;
-
-			if (inventory[slot].stackSize <= size) {
-				itemstack = inventory[slot];
-				inventory[slot] = null;
-				invtCraftMatrix.setInventorySlotContents(slot, null);
-				return itemstack;
-			} else {
-				itemstack = inventory[slot].splitStack(size);
-
-				if (inventory[slot].stackSize == 0) {
-					inventory[slot] = null;
-					invtCraftMatrix.setInventorySlotContents(slot, null);
-				}
-
-				return itemstack;
-			}
-		} else
-			return null;
-	}
-
-	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
-		if (inventory[slot] != null) {
-			ItemStack itemstack = inventory[slot];
-			inventory[slot] = null;
-			invtCraftMatrix.setInventorySlotContents(slot, null);
-			return itemstack;
-		} else
-			return null;
-	}
-
-	@Override
-	public void setInventorySlotContents(int slot, ItemStack stack) {
-		inventory[slot] = stack;
-		if (invtCraftMatrix != null)
-			invtCraftMatrix.setInventorySlotContents(slot, stack);
-
-		if (stack != null && stack.stackSize > getInventoryStackLimit())
-			stack.stackSize = getInventoryStackLimit();
-	}
-
-	@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
 		return new int[] {};
 	}
@@ -117,5 +73,70 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 	@Override
 	public boolean canUpdate() {
 		return false;
+	}
+
+	public static class WorkTableCrafting extends InventoryCrafting {
+
+		private final TileEntityWorkTable tile;
+		private final int offset;
+		private Container container;
+
+		public WorkTableCrafting(TileEntityWorkTable tile) {
+			this(tile, 0);
+		}
+
+		public WorkTableCrafting(TileEntityWorkTable tile, int offset) {
+			super(null, 0, 0);
+			this.tile = tile;
+			this.offset = offset;
+		}
+
+		public void setContainer(Container container) {
+			this.container = container;
+		}
+
+		private void onCraftingChanged() {
+			if (container != null)
+				container.onCraftMatrixChanged(this);
+		}
+
+		@Override
+		public int getSizeInventory() {
+			return 9;
+		}
+
+		@Override
+		public ItemStack getStackInSlot(int slot) {
+			return tile.getStackInSlot(slot + offset);
+		}
+
+		@Override
+		public ItemStack getStackInRowAndColumn(int row, int column) {
+			if (row >= 0 && row < 3) {
+				int k = row + column * 3;
+				return getStackInSlot(k);
+			} else
+				return null;
+		}
+
+		@Override
+		public ItemStack getStackInSlotOnClosing(int slot) {
+			return tile.getStackInSlotOnClosing(slot + offset);
+		}
+
+		@Override
+		public ItemStack decrStackSize(int slot, int size) {
+			try {
+				return tile.decrStackSize(slot + offset, size);
+			} finally {
+				onCraftingChanged();
+			}
+		}
+
+		@Override
+		public void setInventorySlotContents(int slot, ItemStack stack) {
+			tile.setInventorySlotContents(slot + offset, stack);
+			onCraftingChanged();
+		}
 	}
 }

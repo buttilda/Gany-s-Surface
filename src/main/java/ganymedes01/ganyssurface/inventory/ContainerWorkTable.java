@@ -14,27 +14,25 @@ import net.minecraft.item.crafting.CraftingManager;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ContainerWorkTable extends Container {
 
-	public IInventory craftResult = new InventoryCraftResult();
-	public TileEntityWorkTable workTable;
+	protected IInventory result = new InventoryCraftResult();
+	private final TileEntityWorkTable tile;
 
 	public ContainerWorkTable(InventoryPlayer inventory, TileEntityWorkTable tile) {
-		workTable = tile;
-		workTable.invtCraftMatrix = new InventoryCrafting(this, 3, 3);
-		for (int i = 0; i < workTable.invtCraftMatrix.getSizeInventory(); i++)
-			workTable.invtCraftMatrix.setInventorySlotContents(i, workTable.getStackInSlot(i));
+		this.tile = tile;
+		tile.craftMatrix.setContainer(this);
 
-		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, workTable.invtCraftMatrix, craftResult, 0, 124, 35));
+		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, tile.craftMatrix, result, 0, 124, 35));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
-				addSlotToContainer(new Slot(workTable, j + i * 3, 30 + j * 18, 17 + i * 18));
+				addSlotToContainer(new Slot(tile.craftMatrix, j + i * 3, 30 + j * 18, 17 + i * 18));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++)
@@ -42,12 +40,13 @@ public class ContainerWorkTable extends Container {
 		for (int i = 0; i < 9; i++)
 			addSlotToContainer(new Slot(inventory, i, 8 + i * 18, 142));
 
-		onCraftMatrixChanged(workTable.invtCraftMatrix);
+		onCraftMatrixChanged(tile.craftMatrix);
 	}
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(workTable.invtCraftMatrix, workTable.getWorldObj()));
+		if (inventory instanceof InventoryCrafting)
+			result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe((InventoryCrafting) inventory, tile.getWorldObj()));
 	}
 
 	@Override
@@ -87,6 +86,11 @@ public class ContainerWorkTable extends Container {
 
 	@Override
 	public boolean func_94530_a(ItemStack stack, Slot slot) {
-		return slot.inventory != craftResult;
+		return slot.inventory != result;
+	}
+
+	@Override
+	public void onContainerClosed(EntityPlayer player) {
+		tile.craftMatrix.setContainer(null);
 	}
 }
