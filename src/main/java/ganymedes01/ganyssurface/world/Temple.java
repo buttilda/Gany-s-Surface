@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.world;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
+import ganymedes01.ganyssurface.lib.Reference;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -31,7 +32,7 @@ public class Temple {
 
 	public static void makeMap() {
 		try {
-			InputStream is = GanysSurface.class.getResourceAsStream("/assets/ganyssurface/Temple.txt");
+			InputStream is = GanysSurface.class.getResourceAsStream("/assets/" + Reference.MOD_ID + "/Temple.txt");
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
 			String s;

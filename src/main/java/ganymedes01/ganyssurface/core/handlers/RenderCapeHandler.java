@@ -1,22 +1,23 @@
 package ganymedes01.ganyssurface.core.handlers;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Reference;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
-
-import javax.imageio.ImageIO;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
-import net.minecraft.client.renderer.texture.AbstractTexture;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.renderer.texture.TextureUtil;
-import net.minecraft.client.resources.IResourceManager;
+import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
@@ -41,99 +42,84 @@ public class RenderCapeHandler {
 	private static ResourceLocation JEBJEB_CAPE_DATA = Utils.getResource(Reference.MOD_ID + ":textures/capes/jade.png");
 	private static ResourceLocation KPR_CAPE_DATA = Utils.getResource(Reference.MOD_ID + ":textures/capes/KingPurpleRaptor.png");
 
-	private static BufferedImage CAPE_IMAGE;
-	private static BufferedImage JEBJEB_CAPE_IMAGE;
-	private static BufferedImage KPR_CAPE_IMAGE;
+	public RenderCapeHandler() {
+		try {
+			Scanner scanner = new Scanner(new URL(Reference.USERS_WITH_CAPES_FILE).openStream());
+			while (scanner.hasNext())
+				usersWithCapes.add(scanner.nextLine());
+			scanner.close();
+		} catch (IOException e) {
+		}
 
-	private static boolean started = false;
-	private static boolean finished = false;
-	private static boolean loaded = false;
+		makeImage(CAPE_DATA, "gany");
+		makeImage(JEBJEB_CAPE_DATA, "jade");
+		makeImage(KPR_CAPE_DATA, "KingPurpleRaptor");
+	}
+
+	private void makeImage(ResourceLocation resource, String name) {
+		try {
+			InputStream is = GanysSurface.class.getResourceAsStream("/assets/" + Reference.MOD_ID + "/capes/" + name + ".cape");
+			BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+			String line;
+			List<Color> colours = new ArrayList<Color>();
+			while ((line = br.readLine()) != null)
+				colours.add(decode(line.trim()));
+			br.close();
+
+			BufferedImage image = new BufferedImage(64, 32, BufferedImage.TYPE_INT_ARGB);
+
+			int x = 0;
+			int y = 0;
+			for (Color colour : colours) {
+				image.setRGB(x, y, colour.getRGB());
+				x++;
+				if (x >= image.getWidth()) {
+					x = 0;
+					y++;
+				}
+			}
+
+			Minecraft.getMinecraft().getTextureManager().loadTexture(resource, new DynamicTexture(image));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private Color decode(String nm) throws NumberFormatException {
+		if (nm.startsWith("0x"))
+			nm = nm.substring(2);
+		Long val = Long.parseLong(nm, 16);
+		long l = val.longValue();
+		int r = (int) (l >> 16 & 0xFF);
+		int g = (int) (l >> 8 & 0xFF);
+		int b = (int) (l & 0xFF);
+		int a = (int) (l >> 24 & 0xFF);
+
+		return new Color(r, g, b, a);
+	}
 
 	@SubscribeEvent
 	public void onPreRenderSpecials(RenderPlayerEvent.Specials.Pre event) {
-		if (!started) {
-			downloadCapes();
-			started = true;
-		}
-
-		if (finished && !loaded) {
-			loaded = true;
-			TextureManager manager = Minecraft.getMinecraft().renderEngine;
-			manager.loadTexture(CAPE_DATA, new CapeTexture(CAPE_IMAGE));
-			manager.loadTexture(JEBJEB_CAPE_DATA, new CapeTexture(JEBJEB_CAPE_IMAGE));
-			manager.loadTexture(KPR_CAPE_DATA, new CapeTexture(KPR_CAPE_IMAGE));
-		}
-
-		if (!loaded)
+		if (!(event.entityPlayer instanceof AbstractClientPlayer))
 			return;
+		String name = event.entityPlayer.getCommandSenderName();
+		if (usersWithCapes.contains(name)) {
+			AbstractClientPlayer player = (AbstractClientPlayer) event.entityPlayer;
 
-		if (event.entityPlayer instanceof AbstractClientPlayer)
-			if (usersWithCapes.contains(event.entityPlayer.getCommandSenderName())) {
-				AbstractClientPlayer player = (AbstractClientPlayer) event.entityPlayer;
+			if (event.entityPlayer.getCommandSenderName().equals("Jeb_Jeb"))
+				setCape(player, JEBJEB_CAPE_DATA);
+			else if (event.entityPlayer.getCommandSenderName().equals("KingPurpleRaptor"))
+				setCape(player, KPR_CAPE_DATA);
+			else
+				setCape(player, CAPE_DATA);
 
-				if (event.entityPlayer.getCommandSenderName().equals("Jeb_Jeb"))
-					setCape(player, JEBJEB_CAPE_DATA);
-				else if (event.entityPlayer.getCommandSenderName().equals("KingPurpleRaptor"))
-					setCape(player, KPR_CAPE_DATA);
-				else
-					setCape(player, CAPE_DATA);
-
-				event.renderCape = true;
-			}
+			event.renderCape = true;
+		}
 	}
 
 	private void setCape(AbstractClientPlayer player, ResourceLocation resource) {
 		if (player.getLocationCape() == null || !player.getLocationCape().equals(resource))
 			player.func_152121_a(MinecraftProfileTexture.Type.CAPE, resource);
-	}
-
-	private void downloadCapes() {
-		new Thread(new CapeDownlaoder(), "CapeDownloader").start();
-	}
-
-	private static class CapeDownlaoder implements Runnable {
-
-		@Override
-		public void run() {
-			try {
-				Scanner scanner = new Scanner(new URL(Reference.USERS_WITH_CAPES_FILE).openStream());
-				while (scanner.hasNext())
-					usersWithCapes.add(scanner.nextLine());
-				scanner.close();
-			} catch (IOException e) {
-			}
-
-			finished = false;
-			try {
-				CAPE_IMAGE = ImageIO.read(new URL(Reference.CAPE_IMAGE_FILE));
-			} catch (IOException e) {
-			}
-
-			try {
-				JEBJEB_CAPE_IMAGE = ImageIO.read(new URL(Reference.JEBJEB_CAPE_IMAGE_FILE));
-			} catch (IOException e) {
-			}
-
-			try {
-				KPR_CAPE_IMAGE = ImageIO.read(new URL(Reference.KPR_CAPE_IMAGE_FILE));
-			} catch (IOException e) {
-			}
-			finished = true;
-		}
-	}
-
-	private static class CapeTexture extends AbstractTexture {
-
-		final BufferedImage image;
-
-		CapeTexture(BufferedImage image) {
-			this.image = image;
-		}
-
-		@Override
-		public void loadTexture(IResourceManager p_110551_1_) throws IOException {
-			deleteGlTexture();
-			TextureUtil.uploadTextureImageAllocate(getGlTextureId(), image, false, false);
-		}
 	}
 }
