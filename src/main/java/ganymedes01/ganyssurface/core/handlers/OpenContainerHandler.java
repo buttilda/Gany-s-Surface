@@ -1,7 +1,5 @@
 package ganymedes01.ganyssurface.core.handlers;
 
-import ganymedes01.ganyssurface.GanysSurface;
-
 import java.util.ArrayList;
 
 import net.minecraft.inventory.Container;
@@ -16,9 +14,9 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class OpenContainerHandler {
@@ -35,12 +33,8 @@ public class OpenContainerHandler {
 
 	@SubscribeEvent
 	public void containerEvent(PlayerOpenContainerEvent event) {
-		if (GanysSurface.forceAllContainersOpen)
+		Container openContainer = event.entityPlayer.openContainer;
+		if (containerList.contains(openContainer.getClass()))
 			event.setResult(Result.ALLOW);
-		else {
-			Container openContainer = event.entityPlayer.openContainer;
-			if (containerList.contains(openContainer.getClass()))
-				event.setResult(Result.ALLOW);
-		}
 	}
 }

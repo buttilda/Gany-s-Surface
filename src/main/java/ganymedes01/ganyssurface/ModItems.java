@@ -128,7 +128,7 @@ public class ModItems {
 			throw new RuntimeException(e);
 		}
 
-		if (GanysSurface.enableCamilaSeedsToDropFromGrass)
+		if (GanysSurface.enableTea)
 			MinecraftForge.addGrassSeed(new ItemStack(camelliaSeeds), 5);
 
 		BlockDispenser.dispenseBehaviorRegistry.putObject(pocketCritter, new DispenserBehaviorPocketBat());

@@ -55,9 +55,8 @@ public class GanysSurface {
 	public static boolean mobsShouldPoop = true;
 	public static boolean enableChocolate = true;
 	public static boolean shouldDoVersionCheck = true;
-	public static boolean forceAllContainersOpen = false;
 	public static boolean enableWoodenArmour = true;
-	public static boolean enableCamilaSeedsToDropFromGrass = true;
+	public static boolean enableTea = true;
 	public static boolean poopRandomBonemeals = true;
 	public static boolean enableQuiver = true;
 	public static int maxLevelOMCWorks = 15;
@@ -73,7 +72,7 @@ public class GanysSurface {
 	public static boolean enableDispenserShears = true;
 	public static boolean enableBabyZombiesOnChickens = true;
 	public static boolean enableDoors = true;
-	public static int prismarineTempleChance = 1000;
+	public static int prismarineTempleChance = 800;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

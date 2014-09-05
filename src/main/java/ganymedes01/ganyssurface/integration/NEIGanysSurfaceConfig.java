@@ -65,6 +65,13 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		}
 		if (!GanysSurface.enableQuiver)
 			API.hideItem(new ItemStack(ModItems.quiver));
+		if (!GanysSurface.enableTea) {
+			API.hideItem(new ItemStack(ModItems.teaBag));
+			API.hideItem(new ItemStack(ModItems.teaLeaves));
+			API.hideItem(new ItemStack(ModItems.camelliaSeeds));
+			API.hideItem(new ItemStack(ModItems.emptyMug, 1, OreDictionary.WILDCARD_VALUE));
+			API.hideItem(new ItemStack(ModItems.cupOfTea));
+		}
 
 		// 1.8 Stuff
 		API.addItemListEntry(new ItemStack(Blocks.dirt, 1, 0));

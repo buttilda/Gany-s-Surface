@@ -60,9 +60,8 @@ public class ConfigurationHandler {
 		GanysSurface.mobsShouldPoop = configBoolean("mobsShouldPoop", false, true);
 		GanysSurface.enableChocolate = configBoolean("activateChocolate", true, true);
 		GanysSurface.shouldDoVersionCheck = configBoolean("shouldDoVersionCheck", true, true);
-		GanysSurface.forceAllContainersOpen = configBoolean("forceAllContainersOpen", false, false);
 		GanysSurface.enableWoodenArmour = configBoolean("enableWoodenArmour", true, true);
-		GanysSurface.enableCamilaSeedsToDropFromGrass = configBoolean("enableCamilaSeedsToDropFromGrass", true, true);
+		GanysSurface.enableTea = configBoolean("enableTea", true, true);
 		GanysSurface.poopRandomBonemeals = configBoolean("poopRandomBonemeals", false, true);
 		GanysSurface.enableDynamicSnow = configBoolean("enableDynamicSnow", "Snow layers will get taller when it snows and shorter when it stops snowing", false, true);
 		GanysSurface.noDespawnRadius = configInteger("noDespawnRadius", "If there are any players within this radius of an item thrown on the ground that item will not despawn.\n-Set it to 0 to disable this feature.\n-Set it to LESS THAN 0 and items will never despawn regardless of players being nearby.", false, GanysSurface.noDespawnRadius);

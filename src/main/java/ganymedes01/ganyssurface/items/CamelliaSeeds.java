@@ -9,17 +9,17 @@ import net.minecraft.item.ItemSeeds;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class CamelliaSeeds extends ItemSeeds {
 
 	public CamelliaSeeds() {
 		super(ModBlocks.camelliaCrop, Blocks.farmland);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.CAMELLIA_SEEDS_NAME));
+		setCreativeTab(GanysSurface.enableTea ? GanysSurface.surfaceTab : null);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CAMELLIA_SEEDS_NAME));
 	}
 }

@@ -17,9 +17,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 @SideOnly(Side.CLIENT)
@@ -45,27 +45,22 @@ public class ItemPocketCritterRenderer implements IItemRenderer {
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack stack, Object... data) {
 		switch (type) {
-
-			case ENTITY: {
+			case ENTITY:
 				GL11.glScalef(0.5F, 0.5F, 0.5F);
 				renderCritter(stack, 0.5F, 1.0F, 0.0F, type);
 				break;
-			}
-			case EQUIPPED: {
+			case EQUIPPED:
 				renderCritter(stack, 1.0F, 1.0F, 0.5F, type);
 				break;
-			}
-			case EQUIPPED_FIRST_PERSON: {
+			case EQUIPPED_FIRST_PERSON:
 				GL11.glTranslatef(0.75F, 0.5F, 0.5F);
 				GL11.glRotatef(-90 - 45, 0, 1, 0);
 				renderCritter(stack, 1.0F, 1.0F, 1.0F, type);
 				break;
-			}
-			case INVENTORY: {
+			case INVENTORY:
 				GL11.glScalef(0.75F, 0.75F, 0.75F);
 				renderCritter(stack, 0.0F, 0.075F, 0.0F, type);
 				break;
-			}
 			default:
 				break;
 		}

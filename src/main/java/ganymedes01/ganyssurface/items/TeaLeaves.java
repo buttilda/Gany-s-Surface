@@ -7,16 +7,16 @@ import net.minecraft.item.Item;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class TeaLeaves extends Item {
 
 	public TeaLeaves() {
-		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.TEA_LEAVES_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.TEA_LEAVES_NAME));
+		setCreativeTab(GanysSurface.enableTea ? GanysSurface.surfaceTab : null);
 	}
 }

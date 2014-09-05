@@ -24,9 +24,9 @@ public class CupOfTea extends Item {
 
 	public CupOfTea() {
 		setMaxStackSize(1);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.CUP_OF_TEA_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CUP_OF_TEA_NAME));
+		setCreativeTab(GanysSurface.enableTea ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override
