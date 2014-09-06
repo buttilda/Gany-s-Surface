@@ -72,6 +72,8 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModItems.emptyMug, 1, OreDictionary.WILDCARD_VALUE));
 			API.hideItem(new ItemStack(ModItems.cupOfTea));
 		}
+		if (!GanysSurface.mobsShouldPoop)
+			API.hideItem(new ItemStack(ModItems.poop, 1, OreDictionary.WILDCARD_VALUE));
 
 		// 1.8 Stuff
 		API.addItemListEntry(new ItemStack(Blocks.dirt, 1, 0));

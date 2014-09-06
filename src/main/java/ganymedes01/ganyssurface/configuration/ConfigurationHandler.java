@@ -57,7 +57,7 @@ public class ConfigurationHandler {
 			integration.setShouldIntegrate(configIntegrationBoolean(integration.getModID()));
 
 		// Others
-		GanysSurface.mobsShouldPoop = configBoolean("mobsShouldPoop", false, true);
+		GanysSurface.mobsShouldPoop = configBoolean("mobsShouldPoop", true, true);
 		GanysSurface.enableChocolate = configBoolean("activateChocolate", true, true);
 		GanysSurface.shouldDoVersionCheck = configBoolean("shouldDoVersionCheck", true, true);
 		GanysSurface.enableWoodenArmour = configBoolean("enableWoodenArmour", true, true);
