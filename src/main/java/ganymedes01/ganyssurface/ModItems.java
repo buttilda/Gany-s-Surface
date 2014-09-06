@@ -26,6 +26,7 @@ import ganymedes01.ganyssurface.items.MankyCupOfTea;
 import ganymedes01.ganyssurface.items.MuttonCooked;
 import ganymedes01.ganyssurface.items.MuttonRaw;
 import ganymedes01.ganyssurface.items.ObsidianHead;
+import ganymedes01.ganyssurface.items.Painting;
 import ganymedes01.ganyssurface.items.PineCone;
 import ganymedes01.ganyssurface.items.PineNuts;
 import ganymedes01.ganyssurface.items.PocketCritter;
@@ -97,6 +98,7 @@ public class ModItems {
 	public static final Item doorJungle = new ItemNewDoor("jungle", ModBlocks.doorJungle);
 	public static final Item doorSpruce = new ItemNewDoor("spruce", ModBlocks.doorSpruce);
 	public static final Item quiver = new Quiver();
+	public static final Item painting = new Painting();
 
 	// Armour
 	public static final Item woodenHelmet = new WoodenArmour(0);
