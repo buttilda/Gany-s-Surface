@@ -33,9 +33,8 @@ public class ChocolateCakeBlock extends BlockCake implements ISubBlocksBlock {
 		disableStats();
 		setHardness(0.5F);
 		setStepSound(soundTypeCloth);
-		if (GanysSurface.enableChocolate)
-			setCreativeTab(GanysSurface.surfaceTab);
 		setBlockName(Utils.getUnlocalizedName(Strings.CHOCOLATE_CAKE_NAME));
+		setCreativeTab(GanysSurface.enableChocolate ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

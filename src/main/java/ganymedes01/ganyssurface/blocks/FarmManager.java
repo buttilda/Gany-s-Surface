@@ -19,9 +19,9 @@ public class FarmManager extends BlockContainer {
 	public FarmManager() {
 		super(Material.cloth);
 		setHardness(1.0F);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setBlockName(Utils.getUnlocalizedName(Strings.FARM_MANAGER_NAME));
 		setBlockTextureName(Utils.getBlockTexture(Strings.PLANTER_NAME + "Top"));
+		setCreativeTab(GanysSurface.enablePlanter ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

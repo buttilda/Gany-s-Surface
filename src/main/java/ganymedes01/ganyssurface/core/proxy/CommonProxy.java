@@ -70,13 +70,15 @@ public class CommonProxy implements IGuiHandler {
 
 	public void registerEvents() {
 		FMLCommonHandler.instance().bus().register(ConfigurationHandler.INSTANCE);
-		FMLCommonHandler.instance().bus().register(new SnowTickHandler());
-		MinecraftForge.EVENT_BUS.register(new OpenContainerHandler());
+		if (GanysSurface.enableDynamicSnow)
+			FMLCommonHandler.instance().bus().register(new SnowTickHandler());
 		if (GanysSurface.enableMutton)
 			MinecraftForge.EVENT_BUS.register(new EntityEvents());
-		if (GanysSurface.mobsShouldPoop)
+		if (GanysSurface.enablePoop)
 			MinecraftForge.EVENT_BUS.register(new PoopHandler());
+
 		MinecraftForge.EVENT_BUS.register(new MiscEventHandler());
+		MinecraftForge.EVENT_BUS.register(new OpenContainerHandler());
 	}
 
 	public void registerTileEntities() {

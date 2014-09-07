@@ -16,9 +16,9 @@ import net.minecraft.world.World;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class OrganicMatterCompressor extends BlockContainer {
@@ -27,7 +27,7 @@ public class OrganicMatterCompressor extends BlockContainer {
 		super(Material.rock);
 		setHardness(3.5F);
 		setStepSound(soundTypeStone);
-		setCreativeTab(GanysSurface.surfaceTab);
+		setCreativeTab(GanysSurface.enableOMC ? GanysSurface.surfaceTab : null);
 		setBlockName(Utils.getUnlocalizedName(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
 		setBlockTextureName(Utils.getBlockTexture(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
 	}

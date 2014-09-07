@@ -16,8 +16,8 @@ public class ObsidianHead extends Item {
 
 	public ObsidianHead() {
 		setMaxStackSize(16);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.OBSIDIAN_HEAD_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.OBSIDIAN_HEAD_NAME));
+		setCreativeTab(GanysSurface.enableDislocators ? GanysSurface.surfaceTab : null);
 	}
 }

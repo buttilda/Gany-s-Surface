@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.integration;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModItems;
 
 import java.lang.reflect.Field;
@@ -14,9 +15,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ForestryManager extends Integration {
@@ -29,9 +30,11 @@ public class ForestryManager extends Integration {
 		//		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "forester@" + ModItems.camelliaSeeds.itemID + ";" + ModItems.teaLeaves.itemID + ";");
 		//		FMLInterModComms.sendMessage(getModID(), "add-backpack-items", "hunter@" + ModItems.poop.itemID + ":*;" + ModItems.pocketCritter.itemID + ";");
 
-		ItemStack fert = getItem("fertilizerCompound", 24);
-		if (fert != null)
-			GameRegistry.addRecipe(fert, "xxx", "xyx", "xxx", 'x', new ItemStack(ModItems.rot, 1, 1), 'y', new ItemStack(Items.dye, 1, 4));
+		if (GanysSurface.enablePoop) {
+			ItemStack fert = getItem("fertilizerCompound", 24);
+			if (fert != null)
+				GameRegistry.addRecipe(fert, "xxx", "xyx", "xxx", 'x', new ItemStack(ModItems.rot, 1, 1), 'y', new ItemStack(Items.dye, 1, 4));
+		}
 	}
 
 	@Override

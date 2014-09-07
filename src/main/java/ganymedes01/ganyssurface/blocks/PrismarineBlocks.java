@@ -35,12 +35,9 @@ public class PrismarineBlocks extends Block implements ISubBlocksBlock {
 		super(Material.rock);
 		setHardness(1.5F);
 		setResistance(10.0F);
-		if (GanysSurface.enablePrismarineStuff)
-			setCreativeTab(GanysSurface.surfaceTab);
-		else
-			setCreativeTab(null);
 		setBlockName(Utils.getUnlocalizedName(Strings.PRISMARINE_BLOCKS));
 		setBlockTextureName(Utils.getBlockTexture(Strings.PRISMARINE_BLOCKS));
+		setCreativeTab(GanysSurface.enablePrismarineStuff ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

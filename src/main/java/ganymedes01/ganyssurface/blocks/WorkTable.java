@@ -37,8 +37,8 @@ public class WorkTable extends BlockContainer {
 		super(Material.wood);
 		setHardness(2.5F);
 		setStepSound(soundTypeWood);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setBlockName(Utils.getUnlocalizedName(Strings.WORK_TABLE_NAME));
+		setCreativeTab(GanysSurface.enableWorkTables ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

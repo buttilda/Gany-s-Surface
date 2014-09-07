@@ -13,8 +13,8 @@ public class RoastedSquid extends ItemFood {
 	public RoastedSquid() {
 		super(6, 0.5F, true);
 		setFull3D();
-		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ROASTED_SQUID_NAME));
+		setCreativeTab(GanysSurface.enablePocketCritters ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

@@ -101,24 +101,26 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForgeClient.registerItemRenderer(ModItems.pocketCritter, new ItemPocketCritterRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.roastedSquid, new ItemPocketCritterRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.icyPickaxe, new ItemIcyPickaxeRenderer());
-
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.hopper), new ItemHopperRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.cauldron, new ItemCauldronRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.brewing_stand, new ItemBrewingStandRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.repeater, new ItemRepeaterRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.comparator, new ItemComparatorRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.minecart, new ItemMinecartRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.chest_minecart, new ItemMinecartChestRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.furnace_minecart, new ItemMinecartFurnaceRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.tnt_minecart, new ItemMinecartTNTRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.hopper_minecart, new ItemMinecartHopperRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.command_block_minecart, new ItemMinecartCommandBlockRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.flower_pot, new ItemFlowerPotRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.boat, new ItemBoatRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.bed, new ItemBedRenderer());
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.lever), new ItemLeverRenderer());
-		MinecraftForgeClient.registerItemRenderer(Items.cake, new ItemCakeRenderer());
 		MinecraftForgeClient.registerItemRenderer(ModItems.painting, new ItemPaintingRenderer());
+
+		if (GanysSurface.enable3DRendering) {
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.hopper), new ItemHopperRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.cauldron, new ItemCauldronRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.brewing_stand, new ItemBrewingStandRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.repeater, new ItemRepeaterRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.comparator, new ItemComparatorRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.minecart, new ItemMinecartRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.chest_minecart, new ItemMinecartChestRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.furnace_minecart, new ItemMinecartFurnaceRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.tnt_minecart, new ItemMinecartTNTRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.hopper_minecart, new ItemMinecartHopperRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.command_block_minecart, new ItemMinecartCommandBlockRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.flower_pot, new ItemFlowerPotRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.boat, new ItemBoatRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.bed, new ItemBedRenderer());
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.lever), new ItemLeverRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.cake, new ItemCakeRenderer());
+		}
 
 		RenderingRegistry.registerEntityRenderingHandler(EntityPoop.class, new RenderSnowball(ModItems.poop, 0));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBatPoop.class, new RenderSnowball(ModItems.poop, 1));

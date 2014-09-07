@@ -19,9 +19,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class AutoEncaser extends BlockContainer {
@@ -32,8 +32,8 @@ public class AutoEncaser extends BlockContainer {
 	public AutoEncaser() {
 		super(Material.iron);
 		setHardness(2.0F);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setBlockName(Utils.getUnlocalizedName(Strings.AUTO_ENCASER_NAME));
+		setCreativeTab(GanysSurface.enableEncasers ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

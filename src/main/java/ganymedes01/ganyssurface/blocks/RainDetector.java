@@ -16,9 +16,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class RainDetector extends BlockContainer {
@@ -43,7 +43,7 @@ public class RainDetector extends BlockContainer {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess access, int x, int y, int z, int side) {
+	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side) {
 		return true;
 	}
 
@@ -64,8 +64,8 @@ public class RainDetector extends BlockContainer {
 	}
 
 	@Override
-	public int isProvidingWeakPower(IBlockAccess access, int x, int y, int z, int side) {
-		return access.getBlockMetadata(x, y, z);
+	public int isProvidingWeakPower(IBlockAccess world, int x, int y, int z, int side) {
+		return world.getBlockMetadata(x, y, z);
 	}
 
 	@Override
@@ -81,7 +81,7 @@ public class RainDetector extends BlockContainer {
 		blockTop = reg.registerIcon(Utils.getBlockTexture(Strings.RAIN_DETECTOR_NAME) + "_top");
 	}
 
-	public void updateRainStatus(World world, int x, int y, int z, boolean isRaining) {
+	public static void updateRainStatus(World world, int x, int y, int z, boolean isRaining) {
 		if (isRaining)
 			world.setBlockMetadataWithNotify(x, y, z, 15, 3);
 		else

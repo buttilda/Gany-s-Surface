@@ -38,9 +38,9 @@ public class ColouredRedstoneBlock extends BlockCompressed implements ISubBlocks
 		setHardness(5.0F);
 		setResistance(10.0F);
 		setStepSound(soundTypeMetal);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setBlockName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_BLOCK_NAME));
 		setBlockTextureName(Utils.getBlockTexture(Strings.COLOURED_REDSTONE_BLOCK_NAME));
+		setCreativeTab(GanysSurface.enableColouredRedstone ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

@@ -12,9 +12,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class DisguisedTrapDoor extends BlockTrapDoor {
@@ -27,7 +27,7 @@ public class DisguisedTrapDoor extends BlockTrapDoor {
 		this.type = type;
 		setHardness(3.0F);
 		setStepSound(soundTypeWood);
-		setCreativeTab(GanysSurface.surfaceTab);
+		setCreativeTab(GanysSurface.enableDisguisedTrapdoors ? GanysSurface.surfaceTab : null);
 		setBlockName(Utils.getUnlocalizedName(Strings.DISGUISED_TRAPDOOR_NAME + "_" + BlockWood.field_150096_a[type]));
 	}
 

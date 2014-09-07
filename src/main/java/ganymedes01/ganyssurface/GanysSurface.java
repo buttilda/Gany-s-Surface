@@ -52,13 +52,29 @@ public class GanysSurface {
 	public static CreativeTabs surfaceTab = new CreativeTabSurface();
 
 	public static boolean enableDynamicSnow = true;
-	public static boolean mobsShouldPoop = true;
+	public static boolean enablePoop = true;
 	public static boolean enableChocolate = true;
 	public static boolean shouldDoVersionCheck = true;
 	public static boolean enableWoodenArmour = true;
 	public static boolean enableTea = true;
 	public static boolean poopRandomBonemeals = true;
 	public static boolean enableQuiver = true;
+	public static boolean enablePaintings = true;
+	public static boolean enable3DRendering = true;
+	public static boolean enablePlanter = true;
+	public static boolean enableColouredRedstone = true;
+	public static boolean enableDislocators = true;
+	public static boolean enableItemDisplay = true;
+	public static boolean enablePineCones = true;
+	public static boolean enableCookedEgg = true;
+	public static boolean enablePocketCritters = true;
+	public static boolean enableWorkTables = true;
+	public static boolean enableLeafWalls = true;
+	public static boolean enableDisguisedTrapdoors = true;
+	public static boolean enableEncasers = true;
+	public static boolean enableOMC = true;
+	public static boolean enableSpawnEggs = true;
+
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
 	public static int poopingChance = 15000;
@@ -70,8 +86,9 @@ public class GanysSurface {
 	public static boolean enableSpongeTexture = true;
 	public static boolean enablePrismarineStuff = true;
 	public static boolean enableDispenserShears = true;
-	public static boolean enableBabyZombiesOnChickens = true;
 	public static boolean enableDoors = true;
+	public static boolean enableInvertedDaylightSensor = true;
+
 	public static int prismarineTempleChance = 800;
 
 	@EventHandler

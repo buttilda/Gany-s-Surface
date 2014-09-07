@@ -51,8 +51,9 @@ public class Rot extends Item {
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void getSubItems(Item item, CreativeTabs tabs, List list) {
-		for (int i = 0; i < 2; i++)
-			list.add(new ItemStack(item, 1, i));
+		list.add(new ItemStack(item));
+		if (GanysSurface.enablePoop)
+			list.add(new ItemStack(item, 1, 1));
 	}
 
 	@Override

@@ -54,8 +54,8 @@ public class ModBlocks {
 	public static final Block rainDetector = new RainDetector();
 	public static final Block blockDetector = new BlockDetector();
 	public static final Block dislocator = new Dislocator();
-	public static final Block sensoringDislocator = new SensoringDislocator();
-	public static final Block cubicSensoringDislocator = new CubicSensoringDislocator();
+	public static final Block sensitiveDislocator = new SensoringDislocator();
+	public static final Block cubicSensitiveDislocator = new CubicSensoringDislocator();
 	public static final Block[] disguisedTrapDoor = new Block[BlockWood.field_150096_a.length];
 	public static final Block workTable = new WorkTable();
 	public static final Block organicMatterCompressor = new OrganicMatterCompressor();

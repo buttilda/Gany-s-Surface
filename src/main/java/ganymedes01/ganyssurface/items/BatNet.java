@@ -30,9 +30,9 @@ public class BatNet extends Item {
 		setFull3D();
 		setMaxDamage(32);
 		setMaxStackSize(1);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.BAT_NET_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.BAT_NET_NAME));
+		setCreativeTab(GanysSurface.enablePocketCritters ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

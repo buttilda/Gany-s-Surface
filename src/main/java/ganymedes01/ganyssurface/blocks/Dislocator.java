@@ -38,8 +38,8 @@ public class Dislocator extends BlockContainer {
 	public Dislocator() {
 		super(Material.cloth);
 		setHardness(0.2F);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setBlockName(Utils.getUnlocalizedName(Strings.DISLOCATOR_NAME));
+		setCreativeTab(GanysSurface.enableDislocators ? GanysSurface.surfaceTab : null);
 	}
 
 	public static ForgeDirection getDirectionFromMetadata(int meta) {

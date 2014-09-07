@@ -23,9 +23,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ChargedCreeperSpawner extends ItemSimpleFoiled {
@@ -35,7 +35,7 @@ public class ChargedCreeperSpawner extends ItemSimpleFoiled {
 
 	public ChargedCreeperSpawner() {
 		setTextureName("spawn_egg");
-		setCreativeTab(GanysSurface.surfaceTab);
+		setCreativeTab(GanysSurface.enableSpawnEggs ? GanysSurface.surfaceTab : null);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CHARGED_CREEPER_SPAWNER_NAME));
 	}
 

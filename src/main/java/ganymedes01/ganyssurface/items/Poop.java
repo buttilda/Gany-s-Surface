@@ -34,8 +34,8 @@ public class Poop extends Item {
 	public Poop() {
 		setMaxDamage(0);
 		setHasSubtypes(true);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.POOP_NAME));
+		setCreativeTab(GanysSurface.enablePoop ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

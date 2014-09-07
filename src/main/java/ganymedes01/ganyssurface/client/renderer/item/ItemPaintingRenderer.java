@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
+import ganymedes01.ganyssurface.items.Painting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.entity.item.EntityPainting.EnumArt;
@@ -42,7 +43,7 @@ public class ItemPaintingRenderer implements IItemRenderer {
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glRotated(225, 0, 1, 0);
 
-		EnumArt art = EnumArt.values()[stack.getItemDamage()];
+		EnumArt art = EnumArt.values()[Painting.getMeta(stack)];
 		if (art.sizeX > 26)
 			GL11.glScaled(26.0 / art.sizeX, 26.0 / art.sizeX, 1);
 		else if (art.sizeY > 26)

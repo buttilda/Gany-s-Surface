@@ -31,9 +31,9 @@ public class ColouredRedstoneItem extends Item {
 	public ColouredRedstoneItem() {
 		setMaxDamage(0);
 		setHasSubtypes(true);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.COLOURED_REDSTONE_ITEM_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_ITEM_NAME));
+		setCreativeTab(GanysSurface.enableColouredRedstone ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

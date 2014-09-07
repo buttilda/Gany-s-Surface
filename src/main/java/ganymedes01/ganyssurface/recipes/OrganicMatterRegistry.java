@@ -30,7 +30,7 @@ public class OrganicMatterRegistry {
 	private static HashMap<Integer, Integer> oreYield = new HashMap<Integer, Integer>();
 	private static HashMap<Material, Integer> materialYield = new HashMap<Material, Integer>();
 
-	static {
+	public static void init() {
 		addMatterYield(new ItemStack(Items.coal), -1);
 		addMatterYield(new ItemStack(Items.coal, 1, 1), 16);
 		addItemYield(Items.wooden_sword);

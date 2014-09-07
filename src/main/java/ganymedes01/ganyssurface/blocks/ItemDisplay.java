@@ -37,9 +37,9 @@ public class ItemDisplay extends BlockContainer implements ISubBlocksBlock {
 		super(Material.glass);
 		setHardness(1.0F);
 		setStepSound(soundTypeGlass);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setBlockName(Utils.getUnlocalizedName(Strings.ITEM_DISPLAY_NAME));
 		setBlockTextureName(Utils.getBlockTexture(Strings.ITEM_DISPLAY_NAME));
+		setCreativeTab(GanysSurface.enableItemDisplay ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

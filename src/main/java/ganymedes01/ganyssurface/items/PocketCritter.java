@@ -23,9 +23,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class PocketCritter extends Item {
@@ -34,8 +34,8 @@ public class PocketCritter extends Item {
 		setMaxDamage(0);
 		setMaxStackSize(1);
 		setHasSubtypes(true);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.POCKET_CRITTER_NAME));
+		setCreativeTab(GanysSurface.enablePocketCritters ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

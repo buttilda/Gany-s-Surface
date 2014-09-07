@@ -16,11 +16,8 @@ public class MuttonRaw extends ItemFood {
 
 	public MuttonRaw() {
 		super(2, 0.3F, true);
-		if (GanysSurface.enableMutton)
-			setCreativeTab(GanysSurface.surfaceTab);
-		else
-			setCreativeTab(null);
 		setTextureName(Utils.getItemTexture(Strings.RAW_MUTTON));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.RAW_MUTTON));
+		setCreativeTab(GanysSurface.enableMutton ? GanysSurface.surfaceTab : null);
 	}
 }

@@ -45,13 +45,13 @@ public class HorseSpawner extends Item {
 		setMaxDamage(0);
 		setHasSubtypes(true);
 		setTextureName("spawn_egg");
-		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.HORSE_SPAWNER_NAME));
+		setCreativeTab(GanysSurface.enableSpawnEggs ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack stack) {
+	public boolean hasEffect(ItemStack stack, int pass) {
 		return stack.getItemDamage() == 2;
 	}
 

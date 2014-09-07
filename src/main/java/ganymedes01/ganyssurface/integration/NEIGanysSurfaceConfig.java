@@ -27,16 +27,20 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 
 	@Override
 	public void loadConfig() {
-		API.registerGuiOverlay(GuiWorkTable.class, "crafting");
-		API.registerGuiOverlayHandler(GuiWorkTable.class, new DefaultOverlayHandler(), "crafting");
+		if (GanysSurface.enableWorkTables) {
+			API.registerGuiOverlay(GuiWorkTable.class, "crafting");
+			API.registerGuiOverlayHandler(GuiWorkTable.class, new DefaultOverlayHandler(), "crafting");
 
-		API.registerGuiOverlay(GuiDualWorkTable.class, "crafting", 5 + 75, 11);
-		API.registerGuiOverlayHandler(GuiDualWorkTable.class, new DefaultOverlayHandler(5 + 75, 11), "crafting");
-		API.registerGuiOverlay(GuiPortableDualWorkTable.class, "crafting", 5 + 75, 11);
-		API.registerGuiOverlayHandler(GuiPortableDualWorkTable.class, new DefaultOverlayHandler(5 + 75, 11), "crafting");
+			API.registerGuiOverlay(GuiDualWorkTable.class, "crafting", 5 + 75, 11);
+			API.registerGuiOverlayHandler(GuiDualWorkTable.class, new DefaultOverlayHandler(5 + 75, 11), "crafting");
+			API.registerGuiOverlay(GuiPortableDualWorkTable.class, "crafting", 5 + 75, 11);
+			API.registerGuiOverlayHandler(GuiPortableDualWorkTable.class, new DefaultOverlayHandler(5 + 75, 11), "crafting");
+		}
 
-		API.registerRecipeHandler(new OMCYieldHandler());
-		API.registerUsageHandler(new OMCYieldHandler());
+		if (GanysSurface.enableOMC) {
+			API.registerRecipeHandler(new OMCYieldHandler());
+			API.registerUsageHandler(new OMCYieldHandler());
+		}
 
 		API.hideItem(new ItemStack(ModBlocks.camelliaCrop));
 		API.hideItem(new ItemStack(ModItems.mankyCupOfTea));
@@ -53,6 +57,7 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		API.hideItem(new ItemStack(ModItems.dyedChainLeggings));
 		API.hideItem(new ItemStack(ModItems.dyedChainBoots));
 		API.hideItem(new ItemStack(ModItems.storageCase));
+
 		if (!GanysSurface.enableChocolate) {
 			API.hideItem(new ItemStack(ModBlocks.chocolateCake));
 			API.hideItem(new ItemStack(ModItems.chocolateBar));
@@ -72,8 +77,59 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModItems.emptyMug, 1, OreDictionary.WILDCARD_VALUE));
 			API.hideItem(new ItemStack(ModItems.cupOfTea));
 		}
-		if (!GanysSurface.mobsShouldPoop)
+		if (!GanysSurface.enablePoop) {
 			API.hideItem(new ItemStack(ModItems.poop, 1, OreDictionary.WILDCARD_VALUE));
+			API.hideItem(new ItemStack(ModItems.rot, 1, 1));
+		}
+		if (!GanysSurface.enablePaintings)
+			API.hideItem(new ItemStack(ModItems.painting, 1, OreDictionary.WILDCARD_VALUE));
+		if (!GanysSurface.enablePlanter) {
+			API.hideItem(new ItemStack(ModBlocks.planter));
+			API.hideItem(new ItemStack(ModBlocks.farmManager));
+		}
+		if (!GanysSurface.enableColouredRedstone) {
+			API.hideItem(new ItemStack(ModBlocks.colouredRedstoneBlock, 1, OreDictionary.WILDCARD_VALUE));
+			API.hideItem(new ItemStack(ModItems.colouredRedstone, 1, OreDictionary.WILDCARD_VALUE));
+		}
+		if (!GanysSurface.enableDislocators) {
+			API.hideItem(new ItemStack(ModBlocks.blockDetector));
+			API.hideItem(new ItemStack(ModBlocks.dislocator));
+			API.hideItem(new ItemStack(ModBlocks.sensitiveDislocator));
+			API.hideItem(new ItemStack(ModBlocks.cubicSensitiveDislocator));
+			API.hideItem(new ItemStack(ModItems.obsidianHead));
+		}
+		if (!GanysSurface.enableItemDisplay)
+			API.hideItem(new ItemStack(ModBlocks.itemDisplay, 1, OreDictionary.WILDCARD_VALUE));
+		if (!GanysSurface.enablePineCones) {
+			API.hideItem(new ItemStack(ModItems.pineCone));
+			API.hideItem(new ItemStack(ModItems.pineNuts));
+		}
+		if (!GanysSurface.enablePocketCritters) {
+			API.hideItem(new ItemStack(ModItems.pocketCritter, 1, OreDictionary.WILDCARD_VALUE));
+			API.hideItem(new ItemStack(ModItems.batStew));
+			API.hideItem(new ItemStack(ModItems.batNet));
+			API.hideItem(new ItemStack(ModItems.roastedSquid));
+		}
+		if (!GanysSurface.enableLeafWalls)
+			API.hideItem(new ItemStack(ModBlocks.leafWall, 1, OreDictionary.WILDCARD_VALUE));
+		if (!GanysSurface.enableWorkTables) {
+			API.hideItem(new ItemStack(ModItems.portalDualWorkTable));
+			API.hideItem(new ItemStack(ModBlocks.dualWorkTable));
+			API.hideItem(new ItemStack(ModBlocks.workTable));
+		}
+		if (!GanysSurface.enableDisguisedTrapdoors)
+			for (Block trapdoor : ModBlocks.disguisedTrapDoor)
+				API.hideItem(new ItemStack(trapdoor));
+		if (!GanysSurface.enableEncasers) {
+			API.hideItem(new ItemStack(ModBlocks.autoEncaser));
+			API.hideItem(new ItemStack(ModBlocks.encasingBench));
+		}
+		if (!GanysSurface.enableOMC)
+			API.hideItem(new ItemStack(ModBlocks.organicMatterCompressor));
+		if (!GanysSurface.enableSpawnEggs) {
+			API.hideItem(new ItemStack(ModItems.chargedCreeperSpawner));
+			API.hideItem(new ItemStack(ModItems.horseSpawner, 1, OreDictionary.WILDCARD_VALUE));
+		}
 
 		// 1.8 Stuff
 		API.addItemListEntry(new ItemStack(Blocks.dirt, 1, 0));
@@ -105,6 +161,8 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModItems.doorJungle));
 			API.hideItem(new ItemStack(ModItems.doorSpruce));
 		}
+		if (!GanysSurface.enableInvertedDaylightSensor)
+			API.hideItem(new ItemStack(ModBlocks.invertedDaylightDetector));
 	}
 
 	@Override
