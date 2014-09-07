@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.recipes;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.UnsizedStack;
 
@@ -33,57 +34,67 @@ public class OrganicMatterRegistry {
 	public static void init() {
 		addMatterYield(new ItemStack(Items.coal), -1);
 		addMatterYield(new ItemStack(Items.coal, 1, 1), 16);
-		addItemYield(Items.wooden_sword);
-		addItemYield(Items.wooden_hoe);
-		addItemYield(Items.wooden_axe);
-		addItemYield(Items.wooden_shovel);
-		addItemYield(Items.leather_helmet);
-		addItemYield(Items.leather_chestplate);
-		addItemYield(Items.leather_leggings);
-		addItemYield(Items.leather_boots);
-		addItemYield(Items.sign);
-		addItemYield(Items.saddle);
-		addItemYield(Items.book);
-		addItemYield(Items.fishing_rod);
-		addItemYield(Items.item_frame);
-		addItemYield(Items.boat);
-		addItemYield(Items.bone);
-		addItemYield(Items.bed);
-		addItemYield(Items.filled_map);
-		addItemYield(Items.map);
-		addItemYield(Items.writable_book);
-		addItemYield(Items.written_book);
-		addItemYield(Items.carrot_on_a_stick);
-		addItemYield(Items.enchanted_book);
-		addItemYield(Items.name_tag);
-		addItemYield(Items.sugar);
-		addItemYield(Items.cake);
-		addItemYield(Items.slime_ball);
-		addItemYield(Items.paper);
-		addItemYield(Items.sugar);
-		addItemYield(Items.leather);
-		addItemYield(Items.wooden_door);
-		addItemYield(Items.lead);
-		addItemYield(Items.wheat);
-		addItemYield(Items.dye);
-		addItemYield(Items.reeds);
-		addItemYield(Items.feather);
+		addMatterYield(Items.wooden_sword);
+		addMatterYield(Items.wooden_hoe);
+		addMatterYield(Items.wooden_axe);
+		addMatterYield(Items.wooden_shovel);
+		addMatterYield(Items.leather_helmet);
+		addMatterYield(Items.leather_chestplate);
+		addMatterYield(Items.leather_leggings);
+		addMatterYield(Items.leather_boots);
+		addMatterYield(Items.sign);
+		addMatterYield(Items.saddle);
+		addMatterYield(Items.book);
+		addMatterYield(Items.fishing_rod);
+		addMatterYield(Items.item_frame);
+		addMatterYield(Items.boat);
+		addMatterYield(Items.bone);
+		addMatterYield(Items.bed);
+		addMatterYield(Items.filled_map);
+		addMatterYield(Items.map);
+		addMatterYield(Items.writable_book);
+		addMatterYield(Items.written_book);
+		addMatterYield(Items.carrot_on_a_stick);
+		addMatterYield(Items.enchanted_book);
+		addMatterYield(Items.name_tag);
+		addMatterYield(Items.sugar);
+		addMatterYield(Items.cake);
+		addMatterYield(Items.slime_ball);
+		addMatterYield(Items.paper);
+		addMatterYield(Items.sugar);
+		addMatterYield(Items.leather);
+		addMatterYield(Items.wooden_door);
+		addMatterYield(Items.lead);
+		addMatterYield(Items.wheat);
+		addMatterYield(Items.dye);
+		addMatterYield(Items.reeds);
+		addMatterYield(Items.feather);
+		addMatterYield(Items.egg);
 		addMatterYield(new ItemStack(Items.dye, 1, 15));
 
-		addItemYield(ModItems.woodenBoots);
-		addItemYield(ModItems.woodenLeggings);
-		addItemYield(ModItems.woodenChestplate);
-		addItemYield(ModItems.woodenHelmet);
-		addItemYield(ModItems.woodenWrench);
-		addItemYield(ModItems.rot);
-		addMatterYield(new ItemStack(ModItems.rot, 1, 1));
-		addItemYield(ModItems.teaLeaves);
-		addItemYield(ModItems.teaBag);
-		addItemYield(ModItems.poop);
-		addMatterYield(new ItemStack(ModItems.poop, 1, 1));
-		addItemYield(ModItems.batNet);
-		addItemYield(ModItems.pocketCritter, 3);
-		addItemYield(ModItems.horsalyser);
+		if (GanysSurface.enableWoodenArmour) {
+			addMatterYield(ModItems.woodenBoots);
+			addMatterYield(ModItems.woodenLeggings);
+			addMatterYield(ModItems.woodenChestplate);
+			addMatterYield(ModItems.woodenHelmet);
+		}
+		if (GanysSurface.enablePoop) {
+			addMatterYield(new ItemStack(ModItems.rot, 1, 1));
+			addMatterYield(ModItems.poop);
+			addMatterYield(new ItemStack(ModItems.poop, 1, 1));
+		}
+		if (GanysSurface.enablePocketCritters) {
+			addMatterYield(ModItems.pocketCritter, 3);
+			addMatterYield(ModItems.batNet);
+		}
+		if (GanysSurface.enableTea) {
+			addMatterYield(ModItems.teaLeaves);
+			addMatterYield(ModItems.teaBag);
+		}
+
+		addMatterYield(ModItems.woodenWrench);
+		addMatterYield(ModItems.rot);
+		addMatterYield(ModItems.horsalyser);
 
 		addMatterYield(new ItemStack(Blocks.ladder));
 		addMatterYield(new ItemStack(Blocks.wooden_button));
@@ -97,7 +108,6 @@ public class OrganicMatterRegistry {
 		addOreYield("treeSapling", 2);
 		addOreYield("treeLeaves", 1);
 		addOreYield("stickWood", 1);
-		addOreYield("egg", 1);
 
 		addMaterialYield(Material.cactus, 4);
 		addMaterialYield(Material.leaves, 3);
@@ -112,13 +122,13 @@ public class OrganicMatterRegistry {
 		addMaterialYield(Material.wood, 4);
 	}
 
-	private static void addItemYield(Item matter, int yield) {
+	private static void addMatterYield(Item matter, int yield) {
 		if (matter != null)
 			addMatterYield(new ItemStack(matter), yield);
 	}
 
-	private static void addItemYield(Item matter) {
-		addItemYield(matter, 2);
+	private static void addMatterYield(Item matter) {
+		addMatterYield(matter, 2);
 	}
 
 	public static void addMatterYield(ItemStack matter, int yield) {
