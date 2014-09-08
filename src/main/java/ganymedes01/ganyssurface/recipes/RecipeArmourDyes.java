@@ -1,7 +1,9 @@
 package ganymedes01.ganyssurface.recipes;
 
 import ganymedes01.ganyssurface.ModItems;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.items.ItemDyeableArmour;
+import ganymedes01.ganyssurface.lib.EnumColour;
 
 import java.util.ArrayList;
 
@@ -14,13 +16,12 @@ import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipesArmorDyes;
 import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class RecipeArmourDyes extends RecipesArmorDyes {
@@ -54,12 +55,21 @@ public class RecipeArmourDyes extends RecipesArmorDyes {
 	}
 
 	private boolean isDye(ItemStack stack) {
-		for (int id : OreDictionary.getOreIDs(stack)) {
-			String name = OreDictionary.getOreName(id);
-			if (!"dye".equals(name) && name.startsWith("dye"))
-				return true;
-		}
+		for (String ore : InventoryUtils.getOreNames(stack))
+			for (EnumColour colour : EnumColour.values())
+				if (ore.equals(colour.getOreName()))
+					return true;
+
 		return false;
+	}
+
+	private int getDyeIndex(ItemStack stack) {
+		for (String ore : InventoryUtils.getOreNames(stack))
+			for (EnumColour colour : EnumColour.values())
+				if (ore.equals(colour.getOreName()))
+					return colour.ordinal();
+
+		return -1;
 	}
 
 	// Messy and stolen from vanilla
@@ -136,7 +146,7 @@ public class RecipeArmourDyes extends RecipesArmorDyes {
 					if (!isDye(craftStack))
 						return null;
 
-					float[] afloat = EntitySheep.fleeceColorTable[BlockColored.func_150031_c(craftStack.getItemDamage())];
+					float[] afloat = EntitySheep.fleeceColorTable[BlockColored.func_150031_c(getDyeIndex(craftStack))];
 					int j1 = (int) (afloat[0] * 255.0F);
 					int k1 = (int) (afloat[1] * 255.0F);
 					i1 = (int) (afloat[2] * 255.0F);
