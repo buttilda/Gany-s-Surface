@@ -12,8 +12,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockQuartz;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -21,9 +23,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class WoodenWrench extends Item {
@@ -85,6 +87,11 @@ public class WoodenWrench extends Item {
 				meta = meta + 1;
 			world.notifyBlocksOfNeighborChange(x, y, z, block);
 			world.setBlockMetadataWithNotify(x, y, z, meta, 2);
+			return true;
+		} else if (block == Blocks.standing_sign) {
+			TileEntitySign tile = Utils.getTileEntity(world, x, y, z, TileEntitySign.class);
+			if (tile != null && !world.isRemote)
+				player.func_146100_a(tile);
 			return true;
 		}
 		return false;
