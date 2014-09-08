@@ -233,8 +233,8 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.carpet, 8, i), "xxx", "xyx", "xxx", 'x', Blocks.carpet, 'y', reDyes[i]));
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.carpet, 1, i), new ItemStack(Blocks.carpet, 1, OreDictionary.WILDCARD_VALUE), reDyes[i]));
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.stained_glass, 8, i), "xxx", "xyx", "xxx", 'x', "blockGlass", 'y', reDyes[i]));
-			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.stained_glass, 1, i), "blockGlass", reDyes[i]));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.stained_glass, 8, i), "xxx", "xyx", "xxx", 'x', Blocks.glass, 'y', reDyes[i]));
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.stained_glass, 1, i), Blocks.glass, reDyes[i]));
 		}
 	}
 
