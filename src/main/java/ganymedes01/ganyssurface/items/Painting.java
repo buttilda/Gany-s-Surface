@@ -1,8 +1,6 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.ModItems;
-import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -10,8 +8,6 @@ import java.util.List;
 
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.item.EntityPainting;
 import net.minecraft.entity.item.EntityPainting.EnumArt;
 import net.minecraft.entity.player.EntityPlayer;
@@ -74,7 +70,7 @@ public class Painting extends Item {
 		if (side == 0 || side == 1)
 			return false;
 
-		EntityHanging painting = createPainting(world, x, y, z, Direction.facingToDirection[side], getMeta(stack));
+		EntityPainting painting = createPainting(world, x, y, z, Direction.facingToDirection[side], getMeta(stack));
 		if (painting != null)
 			if (!player.canPlayerEdit(x, y, z, side, stack))
 				return false;
@@ -92,30 +88,12 @@ public class Painting extends Item {
 	}
 
 	private EntityPainting createPainting(World world, int x, int y, int z, int direction, int type) {
-		EntityPainting painting = new EntityFixedPainting(world, x, y, z, direction);
+		EntityPainting painting = new EntityPainting(world, x, y, z, direction);
 		painting.art = EnumArt.values()[type];
 		if (painting.onValidSurface()) {
 			painting.setDirection(direction);
 			return painting;
 		}
 		return null;
-	}
-
-	public class EntityFixedPainting extends EntityPainting {
-
-		public EntityFixedPainting(World world, int x, int y, int z, int direction) {
-			super(world, x, y, z, direction);
-		}
-
-		@Override
-		public void onBroken(Entity attacker) {
-			ItemStack stack = new ItemStack(ModItems.painting, 1, art.ordinal());
-			if (attacker instanceof EntityPlayer) {
-				EntityPlayer player = (EntityPlayer) attacker;
-				if (!player.capabilities.isCreativeMode)
-					InventoryUtils.addToPlayerInventory(player, stack, player.posX, player.posY, player.posZ);
-			} else
-				entityDropItem(stack, 0.0F);
-		}
 	}
 }

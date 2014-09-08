@@ -2,9 +2,9 @@ package ganymedes01.ganyssurface.lib;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ModIDs {

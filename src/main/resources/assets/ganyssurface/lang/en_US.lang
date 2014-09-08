@@ -194,4 +194,5 @@ pleaseletmefree0=Please let me free D=
 pleaseletmefree1=What does the squid say?
 attacktocapture=Left-Click a bat or a squid to capture it
 interacttorotate=Right-Click logs,pillars and etc. to rotate
-portableWorktable=Press %s or right-click to open. 
+portableWorktable=Press %s or right-click to open.
+entity.ItemFrame.name=Item Frame

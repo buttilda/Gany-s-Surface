@@ -99,9 +99,9 @@ public class CommonProxy implements IGuiHandler {
 	}
 
 	public void registerEntities() {
-		EntityRegistry.registerModEntity(EntityPoop.class, Utils.getUnlocalizedName(Strings.ENTITY_POOP_NAME), ModIDs.ENTITY_POOP_ID, GanysSurface.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityBatPoop.class, Utils.getUnlocalizedName(Strings.ENTITY_BAT_POOP_NAME), ModIDs.ENTITY_BAT_POOP_ID, GanysSurface.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityVillageFinder.class, Utils.getUnlocalizedName(Strings.VILLAGE_FINDER), ModIDs.ENTITY_VILLAGE_FINDER_ID, GanysSurface.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityPoop.class, Strings.ENTITY_POOP_NAME, ModIDs.ENTITY_POOP_ID, GanysSurface.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityBatPoop.class, Strings.ENTITY_BAT_POOP_NAME, ModIDs.ENTITY_BAT_POOP_ID, GanysSurface.instance, 64, 1, true);
+		EntityRegistry.registerModEntity(EntityVillageFinder.class, Strings.VILLAGE_FINDER, ModIDs.ENTITY_VILLAGE_FINDER_ID, GanysSurface.instance, 64, 1, true);
 	}
 
 	public void registerRenderers() {

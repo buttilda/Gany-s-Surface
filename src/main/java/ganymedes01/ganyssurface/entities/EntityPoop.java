@@ -8,6 +8,13 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
+/**
+ * Gany's Surface
+ *
+ * @author ganymedes01
+ *
+ */
+
 public class EntityPoop extends EntityThrowable {
 
 	public EntityPoop(World world) {

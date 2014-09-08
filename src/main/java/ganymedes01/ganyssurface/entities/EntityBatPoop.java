@@ -5,6 +5,13 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
+/**
+ * Gany's Surface
+ *
+ * @author ganymedes01
+ *
+ */
+
 public class EntityBatPoop extends EntityPoop {
 
 	public EntityBatPoop(World world) {

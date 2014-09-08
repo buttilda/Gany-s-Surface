@@ -10,6 +10,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**
+ * Gany's Surface
+ *
+ * @author ganymedes01
+ *
+ */
+
 public class EntityVillageFinder extends Entity {
 
 	private double targetX, targetY, targetZ;
