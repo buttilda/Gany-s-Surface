@@ -130,6 +130,38 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModItems.chargedCreeperSpawner));
 			API.hideItem(new ItemStack(ModItems.horseSpawner, 1, OreDictionary.WILDCARD_VALUE));
 		}
+		if (!GanysSurface.enableSlimeBlock)
+			API.hideItem(new ItemStack(ModBlocks.slimeBlock));
+		if (!GanysSurface.enableAnalisers) {
+			API.hideItem(new ItemStack(ModItems.gearalyser));
+			API.hideItem(new ItemStack(ModItems.horsalyser));
+		}
+		if (!GanysSurface.enableIcyPick)
+			API.hideItem(new ItemStack(ModItems.icyPickaxe));
+		if (!GanysSurface.enableFertilisedSoil)
+			API.hideItem(new ItemStack(ModBlocks.fertilizedSoil));
+		if (!GanysSurface.enableChestPropellant)
+			API.hideItem(new ItemStack(ModBlocks.chestPropellant));
+		if (!GanysSurface.enableInkHarvester)
+			API.hideItem(new ItemStack(ModBlocks.inkHarvester));
+		if (!GanysSurface.enableRainDetector)
+			API.hideItem(new ItemStack(ModBlocks.rainDetector));
+		if (!GanysSurface.enableCushion)
+			API.hideItem(new ItemStack(ModBlocks.cushion));
+		if (!GanysSurface.enableLantern)
+			API.hideItem(new ItemStack(ModBlocks.lantern));
+		if (!GanysSurface.enableBlockOfCharcoal)
+			API.hideItem(new ItemStack(ModBlocks.charcoalBlock));
+		if (!GanysSurface.enableRot)
+			API.hideItem(new ItemStack(ModItems.rot));
+		if (!GanysSurface.enableWoodenWrench)
+			API.hideItem(new ItemStack(ModItems.woodenWrench));
+		if (!GanysSurface.enableVillageFinder)
+			API.hideItem(new ItemStack(ModItems.villageFinder));
+		if (!GanysSurface.enableCookedEgg)
+			API.hideItem(new ItemStack(ModItems.cookedEgg));
+		if (!GanysSurface.enableRot && !GanysSurface.enablePoop)
+			API.hideItem(new ItemStack(ModItems.rot, 1, OreDictionary.WILDCARD_VALUE));
 
 		// 1.8 Stuff
 		API.addItemListEntry(new ItemStack(Blocks.dirt, 1, 0));

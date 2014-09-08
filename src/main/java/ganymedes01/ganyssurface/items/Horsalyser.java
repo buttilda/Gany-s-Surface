@@ -30,10 +30,10 @@ public class Horsalyser extends Item {
 	public Horsalyser() {
 		setMaxDamage(64);
 		setMaxStackSize(1);
-		setCreativeTab(GanysSurface.surfaceTab);
 		decForm.setRoundingMode(RoundingMode.DOWN);
 		setTextureName(Utils.getItemTexture(Strings.HORSALYSER_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.HORSALYSER_NAME));
+		setCreativeTab(GanysSurface.enableAnalisers ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

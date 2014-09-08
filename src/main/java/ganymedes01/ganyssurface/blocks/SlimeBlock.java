@@ -42,8 +42,8 @@ public class SlimeBlock extends Block {
 		setTickRandomly(true);
 		setHarvestLevel("shovel", 0);
 		setStepSound(ModSounds.soundSlime);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setBlockName(Utils.getUnlocalizedName(Strings.SLIME_BLOCK_NAME));
+		setCreativeTab(GanysSurface.enableSlimeBlock ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

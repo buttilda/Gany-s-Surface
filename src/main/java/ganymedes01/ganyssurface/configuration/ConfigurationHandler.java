@@ -78,6 +78,23 @@ public class ConfigurationHandler {
 		GanysSurface.enableEncasers = configBoolean("Enable encasers", true, true);
 		GanysSurface.enableOMC = configBoolean("Enable organic matter compressor", true, true);
 		GanysSurface.enableSpawnEggs = configBoolean("Enable spawn eggs", true, true);
+		GanysSurface.enableSlimeBlock = configBoolean("Enable slime block", true, true);
+		GanysSurface.enableAnalisers = configBoolean("Enable analisers", true, true);
+		GanysSurface.enableIcyPick = configBoolean("Enable Icy Pickaxe", true, true);
+		GanysSurface.enableFertilisedSoil = configBoolean("Enable Fertilised Soil", true, true);
+		GanysSurface.enableChestPropellant = configBoolean("Enable Chest Propellant", true, true);
+		GanysSurface.enableInkHarvester = configBoolean("Enable Ink Harvester", true, true);
+		GanysSurface.enableRainDetector = configBoolean("Enable Rain Detector", true, true);
+		GanysSurface.enableCushion = configBoolean("Enable Cushion", true, true);
+		GanysSurface.enableLantern = configBoolean("Enable Lantern", true, true);
+		GanysSurface.enableBlockOfCharcoal = configBoolean("Enable Block of Charcoal", true, true);
+		GanysSurface.enableRot = configBoolean("Enable Rot", true, true);
+		GanysSurface.enableWoodenWrench = configBoolean("Enable Wooden Wrench", true, true);
+		GanysSurface.enableVillageFinder = configBoolean("Enable Village Finder", true, true);
+		GanysSurface.enableDyedArmour = configBoolean("Enable Iron/Chainmail armour dyeing", true, true);
+		GanysSurface.enableRedyeingBlocks = configBoolean("Enable re-dyeing carpets, clay, glass and panes", true, true);
+		GanysSurface.enableExtraVanillaRecipes = configBoolean("Enable extra vanilla recipes (for name tags, cobwebs and etc)", true, true);
+		GanysSurface.enableEndermanDropsBlocks = configBoolean("Enable enderman to drop the blocks they are carrying", true, true);
 
 		// 1.8 Stuff
 		GanysSurface.enable18Stones = configBoolean("Enable 1.8 Stones", true, true);

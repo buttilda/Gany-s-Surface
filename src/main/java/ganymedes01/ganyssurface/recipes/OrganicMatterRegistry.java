@@ -91,10 +91,12 @@ public class OrganicMatterRegistry {
 			addMatterYield(ModItems.teaLeaves);
 			addMatterYield(ModItems.teaBag);
 		}
-
-		addMatterYield(ModItems.woodenWrench);
-		addMatterYield(ModItems.rot);
-		addMatterYield(ModItems.horsalyser);
+		if (GanysSurface.enableWoodenWrench)
+			addMatterYield(ModItems.woodenWrench);
+		if (GanysSurface.enableRot)
+			addMatterYield(ModItems.rot);
+		if (GanysSurface.enableAnalisers)
+			addMatterYield(ModItems.horsalyser);
 
 		addMatterYield(new ItemStack(Blocks.ladder));
 		addMatterYield(new ItemStack(Blocks.wooden_button));

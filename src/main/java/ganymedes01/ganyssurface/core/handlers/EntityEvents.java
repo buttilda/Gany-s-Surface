@@ -36,19 +36,22 @@ public class EntityEvents {
 			return;
 		Random rand = event.entityLiving.worldObj.rand;
 		if (event.entityLiving instanceof EntitySheep) {
-			int amount = rand.nextInt(3) + 1 + rand.nextInt(1 + event.lootingLevel);
-			for (int i = 0; i < amount; i++)
-				if (event.entityLiving.isBurning())
-					addDrop(new ItemStack(ModItems.cookedMutton), event.entityLiving, event.drops);
-				else
-					addDrop(new ItemStack(ModItems.rawMutton), event.entityLiving, event.drops);
-		} else if (event.entityLiving instanceof EntityEnderman) {
-			EntityEnderman enderman = (EntityEnderman) event.entityLiving;
-			Block block = enderman.func_146080_bZ();
-			int meta = enderman.getCarryingData();
-			if (block != null && block != Blocks.air)
-				addDrop(new ItemStack(block, 1, meta), event.entityLiving, event.drops);
-		}
+			if (GanysSurface.enableMutton) {
+				int amount = rand.nextInt(3) + 1 + rand.nextInt(1 + event.lootingLevel);
+				for (int i = 0; i < amount; i++)
+					if (event.entityLiving.isBurning())
+						addDrop(new ItemStack(ModItems.cookedMutton), event.entityLiving, event.drops);
+					else
+						addDrop(new ItemStack(ModItems.rawMutton), event.entityLiving, event.drops);
+			}
+		} else if (event.entityLiving instanceof EntityEnderman)
+			if (GanysSurface.enableEndermanDropsBlocks) {
+				EntityEnderman enderman = (EntityEnderman) event.entityLiving;
+				Block block = enderman.func_146080_bZ();
+				int meta = enderman.getCarryingData();
+				if (block != null && block != Blocks.air)
+					addDrop(new ItemStack(block, 1, meta), event.entityLiving, event.drops);
+			}
 	}
 
 	@SuppressWarnings("unchecked")

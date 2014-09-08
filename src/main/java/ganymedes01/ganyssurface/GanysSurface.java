@@ -74,6 +74,23 @@ public class GanysSurface {
 	public static boolean enableEncasers = true;
 	public static boolean enableOMC = true;
 	public static boolean enableSpawnEggs = true;
+	public static boolean enableSlimeBlock = true;
+	public static boolean enableAnalisers = true;
+	public static boolean enableIcyPick = true;
+	public static boolean enableFertilisedSoil = true;
+	public static boolean enableChestPropellant = true;
+	public static boolean enableInkHarvester = true;
+	public static boolean enableRainDetector = true;
+	public static boolean enableCushion = true;
+	public static boolean enableLantern = true;
+	public static boolean enableBlockOfCharcoal = true;
+	public static boolean enableRot = true;
+	public static boolean enableWoodenWrench = true;
+	public static boolean enableVillageFinder = true;
+	public static boolean enableDyedArmour = true;
+	public static boolean enableRedyeingBlocks = true;
+	public static boolean enableExtraVanillaRecipes = true;
+	public static boolean enableEndermanDropsBlocks = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;

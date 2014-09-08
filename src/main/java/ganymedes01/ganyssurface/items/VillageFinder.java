@@ -13,9 +13,9 @@ import net.minecraft.world.World;
 public class VillageFinder extends Item {
 
 	public VillageFinder() {
-		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.VILLAGE_FINDER));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.VILLAGE_FINDER));
+		setCreativeTab(GanysSurface.enableVillageFinder ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

@@ -11,18 +11,18 @@ import net.minecraft.world.World;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class Gearalyser extends Item {
 
 	public Gearalyser() {
 		setMaxStackSize(1);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.GEARALYSER_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.GEARALYSER_NAME));
+		setCreativeTab(GanysSurface.enableAnalisers ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

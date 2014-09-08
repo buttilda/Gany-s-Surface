@@ -1,5 +1,7 @@
 package ganymedes01.ganyssurface.core.handlers;
 
+import ganymedes01.ganyssurface.GanysSurface;
+
 import java.util.ArrayList;
 
 import net.minecraft.inventory.Container;
@@ -33,8 +35,10 @@ public class OpenContainerHandler {
 
 	@SubscribeEvent
 	public void containerEvent(PlayerOpenContainerEvent event) {
-		Container openContainer = event.entityPlayer.openContainer;
-		if (containerList.contains(openContainer.getClass()))
-			event.setResult(Result.ALLOW);
+		if (GanysSurface.enableChestPropellant) {
+			Container openContainer = event.entityPlayer.openContainer;
+			if (containerList.contains(openContainer.getClass()))
+				event.setResult(Result.ALLOW);
+		}
 	}
 }

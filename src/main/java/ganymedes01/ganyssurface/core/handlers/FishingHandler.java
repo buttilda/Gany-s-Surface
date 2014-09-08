@@ -14,9 +14,14 @@ public class FishingHandler {
 			addTreasure(new ItemStack(ModItems.prismarineItems, 1, 1), 1);
 		}
 
-		addJunk(new ItemStack(ModItems.poop), 8);
-		addFish(new ItemStack(ModItems.pocketCritter, 1, 1), 30);
-		addTreasure(new ItemStack(ModItems.icyPickaxe, 1, 1), 1);
+		if (GanysSurface.enablePoop)
+			addJunk(new ItemStack(ModItems.poop), 8);
+
+		if (GanysSurface.enablePocketCritters)
+			addFish(new ItemStack(ModItems.pocketCritter, 1, 1), 30);
+
+		if (GanysSurface.enableIcyPick)
+			addTreasure(new ItemStack(ModItems.icyPickaxe, 1, 1), 1);
 	}
 
 	public static void addFish(ItemStack stack, int weight) {

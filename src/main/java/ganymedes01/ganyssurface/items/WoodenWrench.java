@@ -33,9 +33,9 @@ public class WoodenWrench extends Item {
 	public WoodenWrench() {
 		setFull3D();
 		setMaxStackSize(1);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.WOODEN_WRENCH_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.WOODEN_WRENCH_NAME));
+		setCreativeTab(GanysSurface.enableWoodenWrench ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

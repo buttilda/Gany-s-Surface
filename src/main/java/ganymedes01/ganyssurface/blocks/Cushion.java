@@ -11,9 +11,9 @@ import net.minecraft.world.World;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class Cushion extends BlockFalling {
@@ -22,9 +22,9 @@ public class Cushion extends BlockFalling {
 		super(Material.cloth);
 		setHardness(0.2F);
 		setStepSound(soundTypeCloth);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setBlockName(Utils.getUnlocalizedName(Strings.CUSHION_NAME));
 		setBlockTextureName(Utils.getBlockTexture(Strings.CUSHION_NAME));
+		setCreativeTab(GanysSurface.enableCushion ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

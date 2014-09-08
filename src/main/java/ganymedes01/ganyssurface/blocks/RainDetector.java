@@ -31,9 +31,9 @@ public class RainDetector extends BlockContainer {
 		setHardness(0.2F);
 		setLightOpacity(0);
 		setStepSound(soundTypeWood);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
 		setBlockName(Utils.getUnlocalizedName(Strings.RAIN_DETECTOR_NAME));
+		setCreativeTab(GanysSurface.enableRainDetector ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

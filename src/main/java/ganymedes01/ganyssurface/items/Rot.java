@@ -32,8 +32,8 @@ public class Rot extends Item {
 	public Rot() {
 		setMaxDamage(0);
 		setHasSubtypes(true);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ROT_NAME));
+		setCreativeTab(!GanysSurface.enablePoop && !GanysSurface.enableRot ? null : GanysSurface.surfaceTab);
 	}
 
 	@Override
@@ -51,7 +51,8 @@ public class Rot extends Item {
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void getSubItems(Item item, CreativeTabs tabs, List list) {
-		list.add(new ItemStack(item));
+		if (GanysSurface.enableBlockOfCharcoal)
+			list.add(new ItemStack(item));
 		if (GanysSurface.enablePoop)
 			list.add(new ItemStack(item, 1, 1));
 	}

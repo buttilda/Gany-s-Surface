@@ -26,6 +26,8 @@ public class PoopHandler {
 	public void onLivingUpdate(LivingUpdateEvent event) {
 		if (event.entityLiving.worldObj.isRemote)
 			return;
+		if (!GanysSurface.enablePoop)
+			return;
 
 		if (event.entityLiving instanceof EntityAnimal || event.entityLiving instanceof EntityTameable || event.entityLiving instanceof EntityBat)
 			if (event.entityLiving.worldObj.rand.nextInt(GanysSurface.poopingChance) == 0)

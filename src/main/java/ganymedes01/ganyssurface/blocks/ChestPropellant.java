@@ -37,10 +37,10 @@ public class ChestPropellant extends BlockContainer {
 		super(Material.rock);
 		setHardness(1.0F);
 		setLightOpacity(0);
-		setCreativeTab(GanysSurface.surfaceTab);
 		setBlockBounds(0.07F, 0.0F, 0.07F, 0.93F, 1.0F, 0.93F);
 		setBlockName(Utils.getUnlocalizedName(Strings.CHEST_PROPELLANT_NAME));
 		setBlockTextureName(Utils.getBlockTexture(Strings.CHEST_PROPELLANT_NAME));
+		setCreativeTab(GanysSurface.enableChestPropellant ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

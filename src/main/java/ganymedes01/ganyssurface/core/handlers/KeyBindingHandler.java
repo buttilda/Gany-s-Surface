@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.core.handlers;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.network.PacketHandler;
@@ -34,7 +35,7 @@ public class KeyBindingHandler {
 
 	@SubscribeEvent
 	public void onKey(KeyInputEvent event) {
-		if (worktable.isPressed()) {
+		if (GanysSurface.enableWorkTables && worktable.isPressed()) {
 			EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
 			if (player == null)
 				return;
