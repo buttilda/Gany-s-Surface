@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Items;
@@ -31,7 +32,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class PoopBlock extends Block {
+public class PoopBlock extends Block implements IGrowable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
@@ -147,5 +148,19 @@ public class PoopBlock extends Block {
 		if (meta > icons.length)
 			meta = 0;
 		return icons[meta];
+	}
+
+	@Override
+	public boolean func_149851_a(World world, int x, int y, int z, boolean bool) {
+		return false;
+	}
+
+	@Override
+	public boolean func_149852_a(World world, Random rand, int x, int y, int z) {
+		return false;
+	}
+
+	@Override
+	public void func_149853_b(World world, Random rand, int x, int y, int z) {
 	}
 }
