@@ -105,7 +105,6 @@ public class GanysSurface {
 	public static boolean enableDispenserShears = true;
 	public static boolean enableDoors = true;
 	public static boolean enableInvertedDaylightSensor = true;
-
 	public static int prismarineTempleChance = 800;
 
 	@EventHandler
