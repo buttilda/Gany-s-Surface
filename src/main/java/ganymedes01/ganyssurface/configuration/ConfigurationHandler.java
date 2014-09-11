@@ -104,6 +104,7 @@ public class ConfigurationHandler {
 		GanysSurface.enablePrismarineStuff = configBoolean("Enable Prismarine stuff", true, true);
 		GanysSurface.enableDoors = configBoolean("Enable 1.8 style doors", true, true);
 		GanysSurface.enableInvertedDaylightSensor = configBoolean("Enable inverted daylight sensor", true, true);
+		GanysSurface.enableCoarseDirt = configBoolean("Enable coarse dirt", true, true);
 
 		// Others
 		GanysSurface.shouldDoVersionCheck = configBoolean("shouldDoVersionCheck", true, true);

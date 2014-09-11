@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.items.Quiver;
+import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -15,7 +16,9 @@ import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
+import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.event.world.BlockEvent;
+import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**
@@ -120,5 +123,17 @@ public class MiscEventHandler {
 						event.entityPlayer.swingItem();
 					}
 			}
+	}
+
+	@SubscribeEvent
+	public void onHoeUseEvent(UseHoeEvent event) {
+		if (GanysSurface.enableCoarseDirt) {
+			World world = event.world;
+			if (world.getBlock(event.x, event.y, event.z) == Blocks.dirt && world.getBlockMetadata(event.x, event.y, event.z) == 1) {
+				world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 3);
+				world.playSoundEffect(event.x + 0.5F, event.y + 0.5F, event.z + 0.5F, Block.soundTypeGravel.getStepResourcePath(), 1.0F, 0.8F);
+				event.setResult(Result.ALLOW);
+			}
+		}
 	}
 }
