@@ -117,6 +117,8 @@ tile.ganyssurface.poopBlock.name=Poop
 tile.ganyssurface.farmManager.name=Farm Manager
 tile.ganyssurface.encasingBench.name=Encasing Bench
 tile.ganyssurface.autoEncaser.name=Auto Encaser
+tile.ganyssurface.charcoalBlock.name=Block of Charcoal
+
 tile.ganyssurface.18Stones1.name=Granite
 tile.ganyssurface.18Stones2.name=Polished Granite
 tile.ganyssurface.18Stones3.name=Diorite
@@ -134,7 +136,11 @@ tile.ganyssurface.leafWall0.name=Oak Leaves Wall
 tile.ganyssurface.leafWall1.name=Spruce Leaves Wall
 tile.ganyssurface.leafWall2.name=Birch Leaves Wall
 tile.ganyssurface.leafWall3.name=Jungle Leaves Wall
-tile.ganyssurface.charcoalBlock.name=Block of Charcoal
+tile.ganyssurface.red_sandstone0.name=Red Sandstone
+tile.ganyssurface.red_sandstone1.name=Chiseled Red Sandstone
+tile.ganyssurface.red_sandstone2.name=Smooth Red Sandstone
+tile.ganyssurface.red_sandstone_slab.name=Red Sandstone Slab
+tile.ganyssurface.red_sandstone_stairs.name=Red Sandstone Stairs
 
 tile.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 tile.ganyssurface.colouredRedstoneGREEN.name=Greenstone

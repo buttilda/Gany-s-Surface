@@ -106,6 +106,7 @@ public class GanysSurface {
 	public static boolean enableDoors = true;
 	public static boolean enableInvertedDaylightSensor = true;
 	public static boolean enableCoarseDirt = true;
+	public static boolean enableRedSandstone = true;
 	public static int prismarineTempleChance = 800;
 
 	@EventHandler

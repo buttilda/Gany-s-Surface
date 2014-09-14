@@ -28,6 +28,9 @@ import ganymedes01.ganyssurface.blocks.Planter;
 import ganymedes01.ganyssurface.blocks.PoopBlock;
 import ganymedes01.ganyssurface.blocks.PrismarineBlocks;
 import ganymedes01.ganyssurface.blocks.RainDetector;
+import ganymedes01.ganyssurface.blocks.RedSandstone;
+import ganymedes01.ganyssurface.blocks.RedSandstoneSlab;
+import ganymedes01.ganyssurface.blocks.RedSandstoneStairs;
 import ganymedes01.ganyssurface.blocks.SeaLantern;
 import ganymedes01.ganyssurface.blocks.SensoringDislocator;
 import ganymedes01.ganyssurface.blocks.SlimeBlock;
@@ -75,6 +78,10 @@ public class ModBlocks {
 	public static final Block farmManager = new FarmManager();
 	public static final Block encasingBench = new EncasingBench();
 	public static final Block autoEncaser = new AutoEncaser();
+	public static final Block leafWall = new LeafWall();
+	public static final Block charcoalBlock = new CharcoalBlock();
+
+	// 1.8 stuff
 	public static final Block newStones = new Stones18();
 	public static final Block ironTrapdoor = new IronTrapdoor();
 	public static final Block prismarineBlocks = new PrismarineBlocks();
@@ -85,8 +92,9 @@ public class ModBlocks {
 	public static final Block doorJungle = new BlockNewDoor("jungle");
 	public static final Block doorSpruce = new BlockNewDoor("spruce");
 	public static final Block invertedDaylightDetector = new InvertedDaylightDetector();
-	public static final Block leafWall = new LeafWall();
-	public static final Block charcoalBlock = new CharcoalBlock();
+	public static final Block redSandstone = new RedSandstone();
+	public static final Block redSandstoneSlab = new RedSandstoneSlab();
+	public static final Block redSandstoneStairs = new RedSandstoneStairs();
 
 	static {
 		for (int i = 0; i < disguisedTrapDoor.length; i++)
