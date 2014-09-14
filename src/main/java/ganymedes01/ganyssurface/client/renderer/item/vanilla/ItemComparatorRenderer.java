@@ -31,9 +31,9 @@ public class ItemComparatorRenderer extends ItemRepeaterRenderer {
 		Tessellator tessellator = Tessellator.instance;
 
 		GL11.glDisable(GL11.GL_LIGHTING);
-		renderTorch(Blocks.unpowered_comparator, 0.1875, -0.1875, 0.25, renderer, 0.2);
-		renderTorch(Blocks.unpowered_comparator, -0.1875, -0.1875, 0.25, renderer, 0.2);
-		renderTorch(Blocks.unpowered_comparator, 0, -0.375, -0.3125, renderer, 0.4);
+		ItemTorchRenderer.renderTorch(Blocks.unpowered_comparator, 0.1875, -0.1875, 0.25, renderer, 0.2);
+		ItemTorchRenderer.renderTorch(Blocks.unpowered_comparator, -0.1875, -0.1875, 0.25, renderer, 0.2);
+		ItemTorchRenderer.renderTorch(Blocks.unpowered_comparator, 0, -0.375, -0.3125, renderer, 0.4);
 		GL11.glEnable(GL11.GL_LIGHTING);
 
 		tessellator.startDrawingQuads();

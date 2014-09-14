@@ -22,6 +22,13 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**
+ * Gany's Surface
+ *
+ * @author ganymedes01
+ *
+ */
+
 public class RedSandstoneSlab extends Block implements ISubBlocksBlock {
 
 	public RedSandstoneSlab() {

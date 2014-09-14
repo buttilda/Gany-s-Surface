@@ -7,6 +7,13 @@ import ganymedes01.ganyssurface.items.block.ItemRedSandstoneBlocks;
 import net.minecraft.block.BlockSandStone;
 import net.minecraft.item.ItemBlock;
 
+/**
+ * Gany's Surface
+ *
+ * @author ganymedes01
+ *
+ */
+
 public class RedSandstone extends BlockSandStone implements ISubBlocksBlock {
 
 	public RedSandstone() {

@@ -1,14 +1,12 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockRedstoneRepeater;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
 
 import org.lwjgl.opengl.GL11;
@@ -72,8 +70,8 @@ public class ItemRepeaterRenderer implements IItemRenderer {
 		double torch2Offset = -0.3125;
 
 		GL11.glDisable(GL11.GL_LIGHTING);
-		renderTorch(Blocks.unpowered_repeater, 0, torchHeight, torchOffset, renderer, 0.2);
-		renderTorch(Blocks.unpowered_repeater, 0, torchHeight, torch2Offset, renderer, 0.2);
+		ItemTorchRenderer.renderTorch(Blocks.unpowered_repeater, 0, torchHeight, torchOffset, renderer, 0.2);
+		ItemTorchRenderer.renderTorch(Blocks.unpowered_repeater, 0, torchHeight, torch2Offset, renderer, 0.2);
 		GL11.glEnable(GL11.GL_LIGHTING);
 
 		tessellator.startDrawingQuads();
@@ -87,29 +85,5 @@ public class ItemRepeaterRenderer implements IItemRenderer {
 		BlockRendererHelper.renderSimpleBlock(Blocks.unpowered_repeater, 0, renderer);
 
 		GL11.glPopMatrix();
-	}
-
-	protected void renderTorch(Block block, double x, double y, double z, RenderBlocks renderer, double size) {
-		Tessellator tessellator = Tessellator.instance;
-		IIcon icon = renderer.getBlockIconFromSideAndMetadata(block, 0, 0);
-
-		if (renderer.hasOverrideBlockTexture())
-			icon = renderer.overrideBlockTexture;
-
-		float f = 0.05F;
-		tessellator.startDrawingQuads();
-		renderer.setRenderBounds(0.5F - f, 0.0F, 0.4F - 0.04 * 2, 0.5F + f, 0.6F, 0.4F + 0.04 * 2);
-		tessellator.setNormal(0.0F, 1.0F, 0.0F);
-		renderer.renderFaceYPos(block, x, y, z + f + f / 2, icon);
-		renderer.setRenderBounds(0.5F - f, size, 0.5F - f, 0.5F + f, 0.6F, 0.5F + f);
-		tessellator.setNormal(0.0F, 0.0F, -1.0F);
-		renderer.renderFaceZNeg(block, x, y, z, icon);
-		tessellator.setNormal(0.0F, 0.0F, 1.0F);
-		renderer.renderFaceZPos(block, x, y, z, icon);
-		tessellator.setNormal(-1.0F, 0.0F, 0.0F);
-		renderer.renderFaceXNeg(block, x, y, z, icon);
-		tessellator.setNormal(1.0F, 0.0F, 0.0F);
-		renderer.renderFaceXPos(block, x, y, z, icon);
-		tessellator.draw();
 	}
 }

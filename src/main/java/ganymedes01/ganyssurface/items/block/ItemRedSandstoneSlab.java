@@ -7,6 +7,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
+/**
+ * Gany's Surface
+ *
+ * @author ganymedes01
+ *
+ */
+
 public class ItemRedSandstoneSlab extends ItemBlock {
 
 	public ItemRedSandstoneSlab(Block block) {
