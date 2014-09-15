@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface;
 import ganymedes01.ganyssurface.blocks.AutoEncaser;
 import ganymedes01.ganyssurface.blocks.BlockDetector;
 import ganymedes01.ganyssurface.blocks.BlockNewDoor;
+import ganymedes01.ganyssurface.blocks.BlockWoodChest;
 import ganymedes01.ganyssurface.blocks.CamelliaCrop;
 import ganymedes01.ganyssurface.blocks.CharcoalBlock;
 import ganymedes01.ganyssurface.blocks.ChestPropellant;
@@ -41,6 +42,7 @@ import java.lang.reflect.Field;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockWood;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -80,6 +82,13 @@ public class ModBlocks {
 	public static final Block autoEncaser = new AutoEncaser();
 	public static final Block leafWall = new LeafWall();
 	public static final Block charcoalBlock = new CharcoalBlock();
+
+	public static final Block chestOak = new BlockWoodChest(Blocks.planks, 0);
+	public static final Block chestSpruce = new BlockWoodChest(Blocks.planks, 1);
+	public static final Block chestBirch = new BlockWoodChest(Blocks.planks, 2);
+	public static final Block chestJungle = new BlockWoodChest(Blocks.planks, 3);
+	public static final Block chestAcacia = new BlockWoodChest(Blocks.planks, 4);
+	public static final Block chestDarkOak = new BlockWoodChest(Blocks.planks, 5);
 
 	// 1.8 stuff
 	public static final Block newStones = new Stones18();

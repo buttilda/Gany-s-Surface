@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.core.proxy;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.client.renderer.block.BlockChestRenderer;
 import ganymedes01.ganyssurface.client.renderer.block.BlockColouredRedstoneRender;
@@ -14,6 +15,7 @@ import ganymedes01.ganyssurface.client.renderer.item.ItemIcyPickaxeRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemPaintingRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemPocketCritterRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemStorageCaseRenderer;
+import ganymedes01.ganyssurface.client.renderer.item.ItemWoodChestRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.vanilla.ItemBedRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.vanilla.ItemBoatRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.vanilla.ItemBrewingStandRenderer;
@@ -34,6 +36,7 @@ import ganymedes01.ganyssurface.client.renderer.item.vanilla.ItemTorchRenderer;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityChestPropellantRender;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityItemDisplayRender;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityPlanterRender;
+import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWoodChestRenderer;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWorkTableRender;
 import ganymedes01.ganyssurface.core.handlers.ClientEventHandler;
 import ganymedes01.ganyssurface.core.handlers.KeyBindingHandler;
@@ -47,6 +50,7 @@ import ganymedes01.ganyssurface.entities.EntityVillageFinder;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
+import ganymedes01.ganyssurface.tileentities.TileEntityWoodChest;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.init.Blocks;
@@ -94,15 +98,39 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWorkTable.class, new TileEntityWorkTableRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChestPropellant.class, new TileEntityChestPropellantRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlanter.class, new TileEntityPlanterRender());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodChest.class, new TileEntityWoodChestRenderer());
 	}
 
 	@Override
 	public void registerRenderers() {
-		MinecraftForgeClient.registerItemRenderer(ModItems.storageCase, new ItemStorageCaseRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModItems.pocketCritter, new ItemPocketCritterRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModItems.roastedSquid, new ItemPocketCritterRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModItems.icyPickaxe, new ItemIcyPickaxeRenderer());
-		MinecraftForgeClient.registerItemRenderer(ModItems.painting, new ItemPaintingRenderer());
+		registerItemRenderers();
+		registerEntityRenderers();
+		registerBlockRenderers();
+	}
+
+	private void registerItemRenderers() {
+		if (GanysSurface.enableEncasers)
+			MinecraftForgeClient.registerItemRenderer(ModItems.storageCase, new ItemStorageCaseRenderer());
+
+		if (GanysSurface.enablePocketCritters) {
+			MinecraftForgeClient.registerItemRenderer(ModItems.pocketCritter, new ItemPocketCritterRenderer());
+			MinecraftForgeClient.registerItemRenderer(ModItems.roastedSquid, new ItemPocketCritterRenderer());
+		}
+
+		if (GanysSurface.enableIcyPick)
+			MinecraftForgeClient.registerItemRenderer(ModItems.icyPickaxe, new ItemIcyPickaxeRenderer());
+
+		if (GanysSurface.enablePaintings)
+			MinecraftForgeClient.registerItemRenderer(ModItems.painting, new ItemPaintingRenderer());
+
+		if (GanysSurface.enableChests) {
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.chestOak), ItemWoodChestRenderer.INSTANCE);
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.chestSpruce), ItemWoodChestRenderer.INSTANCE);
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.chestBirch), ItemWoodChestRenderer.INSTANCE);
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.chestJungle), ItemWoodChestRenderer.INSTANCE);
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.chestAcacia), ItemWoodChestRenderer.INSTANCE);
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.chestDarkOak), ItemWoodChestRenderer.INSTANCE);
+		}
 
 		if (GanysSurface.enable3DRendering) {
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.hopper), new ItemHopperRenderer());
@@ -124,18 +152,40 @@ public class ClientProxy extends CommonProxy {
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.torch), new ItemTorchRenderer());
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.redstone_torch), new ItemTorchRenderer());
 		}
+	}
 
-		RenderingRegistry.registerEntityRenderingHandler(EntityPoop.class, new RenderSnowball(ModItems.poop, 0));
-		RenderingRegistry.registerEntityRenderingHandler(EntityBatPoop.class, new RenderSnowball(ModItems.poop, 1));
-		RenderingRegistry.registerEntityRenderingHandler(EntityVillageFinder.class, new RenderSnowball(ModItems.villageFinder));
+	private void registerEntityRenderers() {
+		if (GanysSurface.enablePoop) {
+			RenderingRegistry.registerEntityRenderingHandler(EntityPoop.class, new RenderSnowball(ModItems.poop, 0));
+			RenderingRegistry.registerEntityRenderingHandler(EntityBatPoop.class, new RenderSnowball(ModItems.poop, 1));
+		}
 
-		RenderingRegistry.registerBlockHandler(new BlockLanternRender());
-		RenderingRegistry.registerBlockHandler(new BlockSlimeBlockRender());
-		RenderingRegistry.registerBlockHandler(new BlockColouredRedstoneRender());
-		RenderingRegistry.registerBlockHandler(new BlockItemDisplayRender());
+		if (GanysSurface.enableVillageFinder)
+			RenderingRegistry.registerEntityRenderingHandler(EntityVillageFinder.class, new RenderSnowball(ModItems.villageFinder));
+	}
+
+	private void registerBlockRenderers() {
+		if (GanysSurface.enableLantern)
+			RenderingRegistry.registerBlockHandler(new BlockLanternRender());
+
+		if (GanysSurface.enableSlimeBlock)
+			RenderingRegistry.registerBlockHandler(new BlockSlimeBlockRender());
+
+		if (GanysSurface.enableColouredRedstone)
+			RenderingRegistry.registerBlockHandler(new BlockColouredRedstoneRender());
+
+		if (GanysSurface.enableItemDisplay)
+			RenderingRegistry.registerBlockHandler(new BlockItemDisplayRender());
+
+		if (GanysSurface.enableWorkTables)
+			RenderingRegistry.registerBlockHandler(new BlockDualWorkTableRender());
+
+		if (GanysSurface.enablePlanter)
+			RenderingRegistry.registerBlockHandler(new BlockPlanterRender());
+
+		if (GanysSurface.enableDoors)
+			RenderingRegistry.registerBlockHandler(new BlockDoorRenderer());
+
 		RenderingRegistry.registerBlockHandler(new BlockChestRenderer());
-		RenderingRegistry.registerBlockHandler(new BlockDualWorkTableRender());
-		RenderingRegistry.registerBlockHandler(new BlockPlanterRender());
-		RenderingRegistry.registerBlockHandler(new BlockDoorRenderer());
 	}
 }

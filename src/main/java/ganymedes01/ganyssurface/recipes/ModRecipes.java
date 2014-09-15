@@ -52,7 +52,7 @@ public class ModRecipes {
 			OreDictionary.registerOre("shardPrismarine", new ItemStack(ModItems.prismarineItems, 1, 0));
 			OreDictionary.registerOre("crystalPrismarine", new ItemStack(ModItems.prismarineItems, 1, 1));
 		}
-		if (GanysSurface.enableDoors) {
+		if (GanysSurface.enableDoors || GanysSurface.enableChests) {
 			OreDictionary.registerOre("plankAcacia", new ItemStack(Blocks.planks, 1, 4));
 			OreDictionary.registerOre("plankBirch", new ItemStack(Blocks.planks, 1, 2));
 			OreDictionary.registerOre("plankDarkOak", new ItemStack(Blocks.planks, 1, 5));
@@ -241,6 +241,16 @@ public class ModRecipes {
 		if (GanysSurface.enableBlockOfCharcoal) {
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.charcoalBlock), "xxx", "xxx", "xxx", 'x', new ItemStack(Items.coal, 1, 1));
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.coal, 9, 1), new ItemStack(ModBlocks.charcoalBlock));
+		}
+
+		if (GanysSurface.enableChests) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestOak), "xxx", "x x", "xxx", 'x', "plankOak"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestSpruce), "xxx", "x x", "xxx", 'x', "plankSpruce"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestBirch), "xxx", "x x", "xxx", 'x', "plankBirch"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestJungle), "xxx", "x x", "xxx", 'x', "plankJungle"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestAcacia), "xxx", "x x", "xxx", 'x', "plankAcacia"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestDarkOak), "xxx", "x x", "xxx", 'x', "plankDarkOak"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.chest), "xxx", "x x", "xxx", 'x', "plankWood"));
 		}
 
 		// Vanilla

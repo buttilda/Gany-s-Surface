@@ -18,7 +18,9 @@ import java.io.File;
 
 import net.minecraft.block.BlockDirt;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
@@ -91,6 +93,7 @@ public class GanysSurface {
 	public static boolean enableRedyeingBlocks = true;
 	public static boolean enableExtraVanillaRecipes = true;
 	public static boolean enableEndermanDropsBlocks = true;
+	public static boolean enableChests = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
@@ -151,6 +154,17 @@ public class GanysSurface {
 						}
 				}
 		}
+
+		if (enableChests)
+			for (Object recipe : CraftingManager.getInstance().getRecipeList())
+				if (recipe != null) {
+					ItemStack stack = ((IRecipe) recipe).getRecipeOutput();
+					if (stack != null)
+						if (stack.getItem() == Item.getItemFromBlock(Blocks.chest)) {
+							CraftingManager.getInstance().getRecipeList().remove(recipe);
+							break;
+						}
+				}
 	}
 
 	@EventHandler
