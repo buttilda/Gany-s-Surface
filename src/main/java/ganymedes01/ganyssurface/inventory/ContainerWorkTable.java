@@ -1,6 +1,5 @@
 package ganymedes01.ganyssurface.inventory;
 
-import ganymedes01.ganyssurface.inventory.slots.WorkTableResultSlot;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -8,6 +7,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 
@@ -26,9 +26,8 @@ public class ContainerWorkTable extends Container {
 	public ContainerWorkTable(InventoryPlayer inventory, TileEntityWorkTable tile) {
 		this.tile = tile;
 		tile.craftMatrix.setContainer(this);
-		tile.craftMatrix.lock();
 
-		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, tile.craftMatrix, result, 0, 124, 35));
+		addSlotToContainer(new SlotCrafting(inventory.player, tile.craftMatrix, result, 0, 124, 35));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
@@ -43,8 +42,7 @@ public class ContainerWorkTable extends Container {
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		if (inventory == tile.craftMatrix)
-			result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(tile.craftMatrix, tile.getWorldObj()));
+		result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(tile.craftMatrix, tile.getWorldObj()));
 	}
 
 	@Override
@@ -61,12 +59,9 @@ public class ContainerWorkTable extends Container {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
 
-			if (slotIndex <= 10) {
+			if (slotIndex <= 10)
 				if (!mergeItemStack(itemstack1, 10, inventorySlots.size(), true))
 					return null;
-
-				slot.onSlotChange(itemstack1, itemstack);
-			}
 
 			if (itemstack1.stackSize == 0)
 				slot.putStack((ItemStack) null);

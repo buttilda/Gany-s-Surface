@@ -14,14 +14,4 @@ public class TileEntityDualWorkTable extends TileEntityWorkTable {
 	public TileEntityDualWorkTable() {
 		super(18);
 	}
-
-	@Override
-	public void updateEntity() {
-		super.updateEntity();
-		if (craftMatrixRight.container != null && craftMatrixRight.notifyChange && craftMatrixRight.locked) {
-			craftMatrixRight.container.onCraftMatrixChanged(craftMatrixRight);
-			craftMatrixRight.notifyChange = false;
-			craftMatrixRight.unlock();
-		}
-	}
 }

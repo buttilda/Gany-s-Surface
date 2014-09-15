@@ -71,16 +71,10 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 	}
 
 	@Override
-	public boolean canUpdate() {
-		return true;
-	}
-
-	@Override
-	public void updateEntity() {
-		if (craftMatrix.container != null && craftMatrix.notifyChange && craftMatrix.locked) {
-			craftMatrix.container.onCraftMatrixChanged(craftMatrix);
-			craftMatrix.notifyChange = false;
-			craftMatrix.unlock();
+	public void markDirty() {
+		if (worldObj != null) {
+			blockMetadata = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
+			worldObj.markTileEntityChunkModified(xCoord, yCoord, zCoord, this);
 		}
 	}
 
@@ -88,7 +82,6 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 
 		protected final TileEntityWorkTable tile;
 		protected final int offset;
-		protected boolean notifyChange, locked = true;
 		protected Container container;
 
 		public WorkTableCrafting(TileEntityWorkTable tile) {
@@ -106,17 +99,7 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 		}
 
 		private void onCraftingChanged() {
-			notifyChange = true;
-			if (!locked)
-				container.onCraftMatrixChanged(this);
-		}
-
-		public void unlock() {
-			locked = false;
-		}
-
-		public void lock() {
-			locked = true;
+			container.onCraftMatrixChanged(this);
 		}
 
 		@Override
@@ -145,11 +128,9 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 
 		@Override
 		public ItemStack decrStackSize(int slot, int size) {
-			try {
-				return tile.decrStackSize(slot + offset, size);
-			} finally {
-				onCraftingChanged();
-			}
+			ItemStack stack = tile.decrStackSize(slot + offset, size);
+			onCraftingChanged();
+			return stack;
 		}
 
 		@Override

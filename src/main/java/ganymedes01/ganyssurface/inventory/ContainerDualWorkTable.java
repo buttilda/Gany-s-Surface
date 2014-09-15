@@ -1,6 +1,5 @@
 package ganymedes01.ganyssurface.inventory;
 
-import ganymedes01.ganyssurface.inventory.slots.WorkTableResultSlot;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -8,6 +7,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 
@@ -32,11 +32,9 @@ public class ContainerDualWorkTable extends Container {
 		this.tile = tile;
 		tile.craftMatrix.setContainer(this);
 		tile.craftMatrixRight.setContainer(this);
-		tile.craftMatrix.lock();
-		tile.craftMatrixRight.lock();
 
-		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, tile.craftMatrix, result, 0, 75, 35, 0));
-		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, tile.craftMatrixRight, resultRight, 1, 168, 35, 9));
+		addSlotToContainer(new SlotCrafting(inventory.player, tile.craftMatrix, result, 0, 75, 35));
+		addSlotToContainer(new SlotCrafting(inventory.player, tile.craftMatrixRight, resultRight, 1, 168, 35));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
@@ -59,7 +57,8 @@ public class ContainerDualWorkTable extends Container {
 	public void onCraftMatrixChanged(IInventory inventory) {
 		if (inventory == tile.craftMatrix)
 			result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(tile.craftMatrix, tile.getWorldObj()));
-		else if (inventory == tile.craftMatrixRight)
+
+		if (inventory == tile.craftMatrixRight)
 			resultRight.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(tile.craftMatrixRight, tile.getWorldObj()));
 	}
 
@@ -77,12 +76,9 @@ public class ContainerDualWorkTable extends Container {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
 
-			if (slotIndex <= 20) {
+			if (slotIndex <= 20)
 				if (!mergeItemStack(itemstack1, 20, inventorySlots.size(), true))
 					return null;
-
-				slot.onSlotChange(itemstack1, itemstack);
-			}
 
 			if (itemstack1.stackSize == 0)
 				slot.putStack((ItemStack) null);
@@ -100,7 +96,7 @@ public class ContainerDualWorkTable extends Container {
 
 	@Override
 	public boolean func_94530_a(ItemStack stack, Slot slot) {
-		return !(slot instanceof WorkTableResultSlot);
+		return !(slot instanceof SlotCrafting);
 	}
 
 	@Override
