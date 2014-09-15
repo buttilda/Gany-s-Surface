@@ -118,6 +118,12 @@ tile.ganyssurface.farmManager.name=Farm Manager
 tile.ganyssurface.encasingBench.name=Encasing Bench
 tile.ganyssurface.autoEncaser.name=Auto Encaser
 tile.ganyssurface.charcoalBlock.name=Block of Charcoal
+tile.ganyssurface.chest0.name=Oak Chest
+tile.ganyssurface.chest1.name=Spruce Chest
+tile.ganyssurface.chest2.name=Birch Chest
+tile.ganyssurface.chest3.name=Jungle Chest
+tile.ganyssurface.chest4.name=Acacia Chest
+tile.ganyssurface.chest5.name=Dark Oak Chest
 
 tile.ganyssurface.18Stones1.name=Granite
 tile.ganyssurface.18Stones2.name=Polished Granite
