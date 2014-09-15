@@ -32,6 +32,8 @@ public class ContainerDualWorkTable extends Container {
 		this.tile = tile;
 		tile.craftMatrix.setContainer(this);
 		tile.craftMatrixRight.setContainer(this);
+		tile.craftMatrix.lock();
+		tile.craftMatrixRight.lock();
 
 		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, tile.craftMatrix, result, 0, 75, 35, 0));
 		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, tile.craftMatrixRight, resultRight, 1, 168, 35, 9));
@@ -51,9 +53,6 @@ public class ContainerDualWorkTable extends Container {
 			for (int i = 0; i < 9; i++)
 				addSlotToContainer(new Slot(inventory, i, 19 + i * 18, 142));
 		}
-
-		onCraftMatrixChanged(tile.craftMatrix);
-		onCraftMatrixChanged(tile.craftMatrixRight);
 	}
 
 	@Override

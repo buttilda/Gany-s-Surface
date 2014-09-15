@@ -7,7 +7,6 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
@@ -27,6 +26,7 @@ public class ContainerWorkTable extends Container {
 	public ContainerWorkTable(InventoryPlayer inventory, TileEntityWorkTable tile) {
 		this.tile = tile;
 		tile.craftMatrix.setContainer(this);
+		tile.craftMatrix.lock();
 
 		addSlotToContainer(new WorkTableResultSlot(tile, inventory.player, tile.craftMatrix, result, 0, 124, 35));
 
@@ -39,14 +39,12 @@ public class ContainerWorkTable extends Container {
 				addSlotToContainer(new Slot(inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 		for (int i = 0; i < 9; i++)
 			addSlotToContainer(new Slot(inventory, i, 8 + i * 18, 142));
-
-		onCraftMatrixChanged(tile.craftMatrix);
 	}
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		if (inventory instanceof InventoryCrafting)
-			result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe((InventoryCrafting) inventory, tile.getWorldObj()));
+		if (inventory == tile.craftMatrix)
+			result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(tile.craftMatrix, tile.getWorldObj()));
 	}
 
 	@Override

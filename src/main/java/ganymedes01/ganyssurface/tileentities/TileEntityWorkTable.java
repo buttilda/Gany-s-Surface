@@ -72,14 +72,24 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 
 	@Override
 	public boolean canUpdate() {
-		return false;
+		return true;
+	}
+
+	@Override
+	public void updateEntity() {
+		if (craftMatrix.container != null && craftMatrix.notifyChange && craftMatrix.locked) {
+			craftMatrix.container.onCraftMatrixChanged(craftMatrix);
+			craftMatrix.notifyChange = false;
+			craftMatrix.unlock();
+		}
 	}
 
 	public static class WorkTableCrafting extends InventoryCrafting {
 
-		private final TileEntityWorkTable tile;
-		private final int offset;
-		private Container container;
+		protected final TileEntityWorkTable tile;
+		protected final int offset;
+		protected boolean notifyChange, locked = true;
+		protected Container container;
 
 		public WorkTableCrafting(TileEntityWorkTable tile) {
 			this(tile, 0);
@@ -96,8 +106,17 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 		}
 
 		private void onCraftingChanged() {
-			if (container != null)
+			notifyChange = true;
+			if (!locked)
 				container.onCraftMatrixChanged(this);
+		}
+
+		public void unlock() {
+			locked = false;
+		}
+
+		public void lock() {
+			locked = true;
 		}
 
 		@Override
