@@ -251,6 +251,13 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestAcacia), "xxx", "x x", "xxx", 'x', "plankAcacia"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestDarkOak), "xxx", "x x", "xxx", 'x', "plankDarkOak"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.chest), "xxx", "x x", "xxx", 'x', "plankWood"));
+
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chestOak);
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chestSpruce);
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chestBirch);
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chestJungle);
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chestAcacia);
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chestDarkOak);
 		}
 
 		// Vanilla
