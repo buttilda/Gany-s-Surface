@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.core.handlers;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
+import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWoodChestRenderer;
 import ganymedes01.ganyssurface.items.Quiver;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -12,6 +13,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -20,6 +22,8 @@ import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
@@ -135,5 +139,15 @@ public class MiscEventHandler {
 				event.setResult(Result.ALLOW);
 			}
 		}
+	}
+
+	@SubscribeEvent
+	@SideOnly(Side.CLIENT)
+	public void stitchEventPost(TextureStitchEvent.Post event) {
+		if (!GanysSurface.enableDynamicTextureChests)
+			if (event.map.getTextureType() == 1) {
+				TileEntityWoodChestRenderer.large_textures.clear();
+				TileEntityWoodChestRenderer.normal_textures.clear();
+			}
 	}
 }

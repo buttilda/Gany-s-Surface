@@ -335,7 +335,7 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.redSandstone, 1, 1), "x", "x", 'x', new ItemStack(ModBlocks.redSandstoneSlab));
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.redSandstone, 1, 2), "xx", "xx", 'x', new ItemStack(ModBlocks.redSandstone));
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.redSandstoneSlab, 6), "xxx", 'x', ModBlocks.redSandstone);
-			GameRegistry.addRecipe(new ItemStack(ModBlocks.redSandstoneStairs, 4), "  x", " xx", "xxx", 'x', ModBlocks.redSandstone);
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.redSandstoneStairs, 4), "x  ", "xx ", "xxx", 'x', ModBlocks.redSandstone);
 		}
 	}
 }

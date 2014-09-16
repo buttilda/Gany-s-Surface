@@ -94,6 +94,7 @@ public class GanysSurface {
 	public static boolean enableExtraVanillaRecipes = true;
 	public static boolean enableEndermanDropsBlocks = true;
 	public static boolean enableChests = true;
+	public static boolean enableDynamicTextureChests = false;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;

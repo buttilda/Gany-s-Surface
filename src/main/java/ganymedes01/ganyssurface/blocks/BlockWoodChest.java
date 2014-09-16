@@ -62,6 +62,6 @@ public class BlockWoodChest extends BlockChest {
 		BIRCH,
 		JUNGLE,
 		ACACIA,
-		DARK_OAK
+		BIG_OAK
 	}
 }

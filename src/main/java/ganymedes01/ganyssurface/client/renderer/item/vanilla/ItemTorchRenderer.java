@@ -71,6 +71,7 @@ public class ItemTorchRenderer implements IItemRenderer {
 	}
 
 	public static void renderTorch(Block block, double x, double y, double z, RenderBlocks renderer, double size) {
+		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		Tessellator tessellator = Tessellator.instance;
 		IIcon icon = renderer.getBlockIconFromSideAndMetadata(block, 0, 0);
 

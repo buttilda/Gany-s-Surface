@@ -88,7 +88,7 @@ public class WoodenWrench extends Item {
 			world.notifyBlocksOfNeighborChange(x, y, z, block);
 			world.setBlockMetadataWithNotify(x, y, z, meta, 2);
 			return true;
-		} else if (block == Blocks.standing_sign) {
+		} else if (block == Blocks.standing_sign || block == Blocks.wall_sign) {
 			TileEntitySign tile = Utils.getTileEntity(world, x, y, z, TileEntitySign.class);
 			if (tile != null && !world.isRemote)
 				player.func_146100_a(tile);
