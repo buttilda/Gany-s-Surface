@@ -44,14 +44,19 @@ public class ModRecipes {
 	}
 
 	private static void registerOreDictionary() {
+		OreDictionary.registerOre("chestWood", new ItemStack(Blocks.chest));
+
 		if (GanysSurface.enableColouredRedstone)
 			OreDictionary.registerOre("dustRedstone", new ItemStack(ModItems.colouredRedstone, 1, OreDictionary.WILDCARD_VALUE));
+
 		if (GanysSurface.enableChocolate)
 			OreDictionary.registerOre("beansCocoa", new ItemStack(Items.dye, 1, 3));
+
 		if (GanysSurface.enablePrismarineStuff) {
 			OreDictionary.registerOre("shardPrismarine", new ItemStack(ModItems.prismarineItems, 1, 0));
 			OreDictionary.registerOre("crystalPrismarine", new ItemStack(ModItems.prismarineItems, 1, 1));
 		}
+
 		if (GanysSurface.enableDoors || GanysSurface.enableChests) {
 			OreDictionary.registerOre("plankAcacia", new ItemStack(Blocks.planks, 1, 4));
 			OreDictionary.registerOre("plankBirch", new ItemStack(Blocks.planks, 1, 2));
@@ -60,6 +65,16 @@ public class ModRecipes {
 			OreDictionary.registerOre("plankSpruce", new ItemStack(Blocks.planks, 1, 1));
 			OreDictionary.registerOre("plankOak", new ItemStack(Blocks.planks, 1, 0));
 		}
+
+		if (GanysSurface.enableChests) {
+			OreDictionary.registerOre("chestWood", new ItemStack(ModBlocks.chestOak));
+			OreDictionary.registerOre("chestWood", new ItemStack(ModBlocks.chestSpruce));
+			OreDictionary.registerOre("chestWood", new ItemStack(ModBlocks.chestBirch));
+			OreDictionary.registerOre("chestWood", new ItemStack(ModBlocks.chestJungle));
+			OreDictionary.registerOre("chestWood", new ItemStack(ModBlocks.chestAcacia));
+			OreDictionary.registerOre("chestWood", new ItemStack(ModBlocks.chestDarkOak));
+		}
+
 		if (GanysSurface.enableSpawnEggs) {
 			OreDictionary.registerOre("mobEgg", ModItems.chargedCreeperSpawner);
 			OreDictionary.registerOre("mobEgg", new ItemStack(ModItems.horseSpawner, 1, OreDictionary.WILDCARD_VALUE));
@@ -167,7 +182,7 @@ public class ModRecipes {
 
 	private static void registerBlockRecipes() {
 		if (GanysSurface.enablePlanter) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.farmManager), "xyx", "xzx", "xyx", 'x', ModBlocks.planter, 'y', Blocks.chest, 'z', "ingotGold"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.farmManager), "xyx", "xzx", "xyx", 'x', ModBlocks.planter, 'y', "chestWood", 'z', "ingotGold"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.planter), "aza", "ywy", " x ", 'x', Blocks.hopper, 'y', new ItemStack(Blocks.wool, 1, 13), 'z', Blocks.dispenser, 'w', ModBlocks.blockDetector, 'a', "stone"));
 		}
 
@@ -192,7 +207,7 @@ public class ModRecipes {
 
 		if (GanysSurface.enableWorkTables) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.dualWorkTable), "yyy", "x x", "yyy", 'x', ModBlocks.workTable, 'y', "plankWood"));
-			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.workTable), Blocks.crafting_table, Blocks.chest);
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ModBlocks.workTable), Blocks.crafting_table, "chestWood"));
 		}
 
 		if (GanysSurface.enableLeafWalls) {
@@ -207,7 +222,7 @@ public class ModRecipes {
 				GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.disguisedTrapDoor[i]), new ItemStack(Blocks.planks, 1, i), Blocks.trapdoor);
 
 		if (GanysSurface.enableEncasers) {
-			GameRegistry.addRecipe(new ItemStack(ModBlocks.encasingBench), "xyx", "yzy", "xyx", 'x', Items.gold_ingot, 'y', Blocks.piston, 'z', Blocks.chest);
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.encasingBench), "xyx", "yzy", "xyx", 'x', Items.gold_ingot, 'y', Blocks.piston, 'z', "chestWood"));
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.autoEncaser), "xyx", "yzy", "xyx", 'x', Items.diamond, 'y', Blocks.piston, 'z', ModBlocks.encasingBench);
 		}
 		if (GanysSurface.enableOMC)
