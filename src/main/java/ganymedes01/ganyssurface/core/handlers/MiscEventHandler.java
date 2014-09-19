@@ -144,7 +144,7 @@ public class MiscEventHandler {
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public void stitchEventPost(TextureStitchEvent.Post event) {
-		if (!GanysSurface.enableDynamicTextureChests)
+		if (GanysSurface.enableDynamicTextureChests)
 			if (event.map.getTextureType() == 1) {
 				TileEntityWoodChestRenderer.large_textures.clear();
 				TileEntityWoodChestRenderer.normal_textures.clear();
