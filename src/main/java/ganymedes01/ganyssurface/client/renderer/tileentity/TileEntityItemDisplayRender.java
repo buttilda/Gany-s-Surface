@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
+import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -40,7 +41,7 @@ public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 
 		if (itemDisplay.getDisplayItem() != null) {
 			float scaleFactor, translate;
-			if (itemDisplay.getDisplayItem().getItem() instanceof ItemBlock) {
+			if (itemDisplay.getDisplayItem().getItem() instanceof ItemBlock || itemDisplay.getDisplayItem().getItem() == ModItems.storageCase) {
 				scaleFactor = 2.5F;
 				translate = 0.4F;
 			} else {
