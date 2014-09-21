@@ -99,7 +99,8 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 		}
 
 		private void onCraftingChanged() {
-			container.onCraftMatrixChanged(this);
+			if (container != null)
+				container.onCraftMatrixChanged(this);
 		}
 
 		@Override
