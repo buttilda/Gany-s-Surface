@@ -147,6 +147,11 @@ tile.ganyssurface.red_sandstone1.name=Chiseled Red Sandstone
 tile.ganyssurface.red_sandstone2.name=Smooth Red Sandstone
 tile.ganyssurface.red_sandstone_slab.name=Red Sandstone Slab
 tile.ganyssurface.red_sandstone_stairs.name=Red Sandstone Stairs
+tile.ganyssurface.doorAcacia.name=Acacia Door
+tile.ganyssurface.doorBirch.name=Birch Door
+tile.ganyssurface.doorDark_oak.name=Dark Oak Door
+tile.ganyssurface.doorJungle.name=Jungle Door
+tile.ganyssurface.doorSpruce.name=Spruce Door
 
 tile.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 tile.ganyssurface.colouredRedstoneGREEN.name=Greenstone
