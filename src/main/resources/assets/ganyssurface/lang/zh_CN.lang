@@ -78,8 +78,8 @@ tile.ganyssurface.camelliaCrop.name=山茶花
 tile.ganyssurface.rainDetector.name=降雨传感器
 tile.ganyssurface.blockDetector.name=方块检测器
 tile.ganyssurface.dislocator.name=方块采掘机
-tile.ganyssurface.sensoringDislocator.name=识别方块采掘机
-tile.ganyssurface.cubicSensoringDislocator.name=环绕式识别方块采掘机
+tile.ganyssurface.sensoringDislocator.name=智能方块采掘机
+tile.ganyssurface.cubicSensoringDislocator.name=环绕式智能方块采掘机
 tile.ganyssurface.disguisedTrapDoor_oak.name=伪装橡木活板门
 tile.ganyssurface.disguisedTrapDoor_spruce.name=伪装云杉木活板门
 tile.ganyssurface.disguisedTrapDoor_birch.name=伪装白桦木活板门
@@ -118,6 +118,12 @@ tile.ganyssurface.farmManager.name=作物管理机
 tile.ganyssurface.encasingBench.name=装箱工作台
 tile.ganyssurface.autoEncaser.name=自动装箱工作台
 tile.ganyssurface.charcoalBlock.name=木炭块
+tile.ganyssurface.chest0.name=橡木箱子
+tile.ganyssurface.chest1.name=云杉木箱子
+tile.ganyssurface.chest2.name=白桦木箱子
+tile.ganyssurface.chest3.name=丛林木箱子
+tile.ganyssurface.chest4.name=金合欢木箱子
+tile.ganyssurface.chest5.name=深色橡木箱子
 
 tile.ganyssurface.18Stones1.name=花岗岩
 tile.ganyssurface.18Stones2.name=抛光花岗岩
@@ -141,6 +147,11 @@ tile.ganyssurface.red_sandstone1.name=錾制红沙石
 tile.ganyssurface.red_sandstone2.name=平滑红沙石
 tile.ganyssurface.red_sandstone_slab.name=红沙石台阶
 tile.ganyssurface.red_sandstone_stairs.name=红沙石楼梯
+tile.ganyssurface.doorAcacia.name=金合欢木门
+tile.ganyssurface.doorBirch.name=白桦木门
+tile.ganyssurface.doorDark_oak.name=深色橡木门
+tile.ganyssurface.doorJungle.name=丛林木门
+tile.ganyssurface.doorSpruce.name=云杉木门
 
 tile.ganyssurface.colouredRedstoneBLACK.name=黑石
 tile.ganyssurface.colouredRedstoneGREEN.name=绿石
@@ -176,8 +187,8 @@ tile.ganyssurface.colouredRedstoneBlockWHITE.name=白石块
 
 # GUI localizations
 container.ganyssurface.blockDetector=方块检测器
-container.ganyssurface.sensoringDislocator=识别方块采掘机
-container.ganyssurface.cubicSensoringDislocator=环绕式识别方块采掘机
+container.ganyssurface.sensoringDislocator=智能方块采掘机
+container.ganyssurface.cubicSensoringDislocator=环绕式智能方块采掘机
 container.ganyssurface.workTable=工作台
 container.ganyssurface.organicMatterCompressor=有机物压缩机
 container.ganyssurface.itemDisplay=物品展示柜
@@ -189,7 +200,7 @@ container.ganyssurface.encasingBench=装箱工作台
 container.ganyssurface.autoEncaser=自动装箱工作台
 container.ganyssurface.gearalyser=装备分析仪
 
-matter=有机物:
+matter=有机物质:
 squidFood=鱼食:
 
 # Creative Tab localizations
@@ -199,6 +210,6 @@ itemGroup.ganyssurface=Gany's Surface
 pleaseletmefree0=求求你放了我吧 TAT
 pleaseletmefree1=鱿鱼是怎么叫的?
 attacktocapture=左键一只蝙蝠或鱿鱼来捕捉它
-interacttorotate=右键原木, 告示牌等方块来旋转它们
+interacttorotate=右键原木,告示牌或竖纹方块来旋转它们
 portableWorktable=按 %s 或右键来打开
 entity.ItemFrame.name=物品展示框
