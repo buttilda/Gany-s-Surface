@@ -84,6 +84,7 @@ public class ContainerWorkTable extends Container {
 
 	@Override
 	public void onContainerClosed(EntityPlayer player) {
+		super.onContainerClosed(player);
 		tile.craftMatrix.setContainer(null);
 	}
 }

@@ -34,11 +34,17 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 	}
 
 	@SideOnly(Side.CLIENT)
-	public EntityItem getEntityItem() {
+	public EntityItem getEntityItem(int index) {
+		ItemStack stack = inventory[index];
+		if (stack == null)
+			return null;
+
 		if (entityItem == null) {
 			entityItem = new EntityItem(worldObj);
 			entityItem.hoverStart = 0;
 		}
+
+		entityItem.setEntityItemStack(stack);
 		return entityItem;
 	}
 

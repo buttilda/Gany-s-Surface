@@ -101,6 +101,7 @@ public class ContainerDualWorkTable extends Container {
 
 	@Override
 	public void onContainerClosed(EntityPlayer player) {
+		super.onContainerClosed(player);
 		tile.craftMatrix.setContainer(null);
 		tile.craftMatrixRight.setContainer(null);
 	}
