@@ -60,11 +60,11 @@ public class TileEntityWorkTableRender extends TileEntitySpecialRenderer {
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++) {
 				GL11.glPushMatrix();
-				ItemStack stack = workTable.getStackInSlot(start + j + i * 3);
-				if (stack != null) {
+				EntityItem entityItem = workTable.getEntityItem(start + j + i * 3);
+				if (entityItem != null) {
 					float scaleFactor;
 					float rotateAngle;
-					if (stack.getItem() instanceof ItemBlock) {
+					if (entityItem.getEntityItem().getItem() instanceof ItemBlock) {
 						scaleFactor = 0.5F;
 						rotateAngle = 0.0F;
 					} else {
@@ -72,8 +72,6 @@ public class TileEntityWorkTableRender extends TileEntitySpecialRenderer {
 						rotateAngle = -90.0F;
 					}
 
-					EntityItem entityItem = workTable.getEntityItem();
-					entityItem.setEntityItemStack(stack);
 					switch (workTable.getBlockMetadata()) {
 						case 2:
 							GL11.glTranslatef(x - j * 0.19F + 0.69F, y + 1.05F, z + 0.69F - i * 0.19F);
