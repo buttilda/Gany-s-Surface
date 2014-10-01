@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
@@ -7,9 +8,6 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -43,14 +41,14 @@ public class ItemTorchRenderer implements IItemRenderer {
 					render(stack, -0.5F, -0.25F, -0.5F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED:
-					GL11.glRotated(45, -1, 0, 1);
+					GlStateManager.rotate(45, -1, 0, 1);
 					render(stack, 0.25F, -0.5F, 0.25F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED_FIRST_PERSON:
 					render(stack, 0.0F, 0.5F, 0.15F, (RenderBlocks) renderer);
 					break;
 				case INVENTORY:
-					GL11.glScaled(2, 2, 2);
+					GlStateManager.scale(2, 2, 2);
 					render(stack, -0.5F, -0.3F, -0.5F, (RenderBlocks) renderer);
 					break;
 				default:
@@ -59,19 +57,19 @@ public class ItemTorchRenderer implements IItemRenderer {
 	}
 
 	public static void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GL11.glPushMatrix();
-		GL11.glTranslatef(x, y, z);
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(x, y, z);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
-		GL11.glDisable(GL11.GL_LIGHTING);
+		GlStateManager.disableLighting();
 		renderTorch(Block.getBlockFromItem(stack.getItem()), 0, 0, 0, renderer, 0);
-		GL11.glEnable(GL11.GL_LIGHTING);
+		GlStateManager.enableLighting();
 
-		GL11.glPopMatrix();
+		GlStateManager.popMatrix();
 	}
 
 	public static void renderTorch(Block block, double x, double y, double z, RenderBlocks renderer, double size) {
-		GL11.glEnable(GL11.GL_ALPHA_TEST);
+		GlStateManager.enableAlpha();
 		Tessellator tessellator = Tessellator.instance;
 		IIcon icon = renderer.getBlockIconFromSideAndMetadata(block, 0, 0);
 

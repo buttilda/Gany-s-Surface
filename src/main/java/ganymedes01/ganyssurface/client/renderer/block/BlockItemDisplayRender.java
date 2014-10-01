@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.block;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.EntityRenderer;
@@ -8,9 +9,6 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -28,7 +26,7 @@ public class BlockItemDisplayRender implements ISimpleBlockRenderingHandler {
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
 		Tessellator tessellator = Tessellator.instance;
-		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+		GlStateManager.translate(-0.5F, -0.5F, -0.5F);
 		float x = 0.0F;
 		float y = 0.0F;
 		float z = 0.0F;

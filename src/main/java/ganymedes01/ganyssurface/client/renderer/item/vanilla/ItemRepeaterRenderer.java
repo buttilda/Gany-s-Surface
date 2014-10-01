@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
 import net.minecraft.block.BlockRedstoneRepeater;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -8,9 +9,6 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -41,7 +39,7 @@ public class ItemRepeaterRenderer implements IItemRenderer {
 		if (renderer instanceof RenderBlocks)
 			switch (type) {
 				case ENTITY:
-					GL11.glScaled(0.5, 0.5, 0.5);
+					GlStateManager.scale(0.5, 0.5, 0.5);
 					render(stack, -0.5F, -0.5F, -0.5F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED:
@@ -51,7 +49,7 @@ public class ItemRepeaterRenderer implements IItemRenderer {
 					render(stack, 0.0F, 0.5F, 0.0F, (RenderBlocks) renderer);
 					break;
 				case INVENTORY:
-					GL11.glScaled(1.1, 1.1, 1.1);
+					GlStateManager.scale(1.1, 1.1, 1.1);
 					render(stack, -0.5F, -0.25F, -0.5F, (RenderBlocks) renderer);
 					break;
 				default:
@@ -60,8 +58,8 @@ public class ItemRepeaterRenderer implements IItemRenderer {
 	}
 
 	protected void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GL11.glPushMatrix();
-		GL11.glTranslatef(x, y, z);
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(x, y, z);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		Tessellator tessellator = Tessellator.instance;
 
@@ -69,10 +67,10 @@ public class ItemRepeaterRenderer implements IItemRenderer {
 		double torchOffset = BlockRedstoneRepeater.repeaterTorchOffset[0];
 		double torch2Offset = -0.3125;
 
-		GL11.glDisable(GL11.GL_LIGHTING);
+		GlStateManager.disableLighting();
 		ItemTorchRenderer.renderTorch(Blocks.unpowered_repeater, 0, torchHeight, torchOffset, renderer, 0.2);
 		ItemTorchRenderer.renderTorch(Blocks.unpowered_repeater, 0, torchHeight, torch2Offset, renderer, 0.2);
-		GL11.glEnable(GL11.GL_LIGHTING);
+		GlStateManager.enableLighting();
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0, -1, 0);
@@ -80,10 +78,10 @@ public class ItemRepeaterRenderer implements IItemRenderer {
 		renderer.renderFaceYNeg(Blocks.unpowered_repeater, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(Blocks.stone_slab, 0, 0));
 		tessellator.draw();
 
-		GL11.glTranslated(0.5, 0.5, 0.5);
+		GlStateManager.translate(0.5, 0.5, 0.5);
 		renderer.setRenderBounds(0, 0.001, 0, 1, 0.125, 1);
 		BlockRendererHelper.renderSimpleBlock(Blocks.unpowered_repeater, 0, renderer);
 
-		GL11.glPopMatrix();
+		GlStateManager.popMatrix();
 	}
 }

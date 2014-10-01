@@ -1,13 +1,11 @@
 package ganymedes01.ganyssurface.client.renderer.block;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -81,7 +79,7 @@ public class BlockDualWorkTableRender implements ISimpleBlockRenderingHandler {
 
 	private void renderSimpleBlock(Block block, int metadata, RenderBlocks renderer) {
 		Tessellator tessellator = Tessellator.instance;
-		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+		GlStateManager.translate(-0.5F, -0.5F, -0.5F);
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, -1.0F, 0.0F);
@@ -98,6 +96,6 @@ public class BlockDualWorkTableRender implements ISimpleBlockRenderingHandler {
 		renderer.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 5, metadata));
 		tessellator.draw();
 
-		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
+		GlStateManager.translate(0.5F, 0.5F, 0.5F);
 	}
 }

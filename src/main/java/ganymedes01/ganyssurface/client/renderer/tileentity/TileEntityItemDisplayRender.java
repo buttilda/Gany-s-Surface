@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import net.minecraft.client.renderer.entity.RenderItem;
@@ -7,9 +8,6 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -50,12 +48,12 @@ public class TileEntityItemDisplayRender extends TileEntitySpecialRenderer {
 			}
 			float rotationAngle = (float) (720.0 * (System.currentTimeMillis() & 0x3FFFL) / 0x3FFFL);
 
-			GL11.glPushMatrix();
-			GL11.glTranslatef((float) x + 0.5F, (float) (y + translate), (float) z + 0.5F);
-			GL11.glScalef(scaleFactor, scaleFactor, scaleFactor);
-			GL11.glRotatef(rotationAngle, 0.0F, 1.0F, 0.0F);
+			GlStateManager.pushMatrix();
+			GlStateManager.translate((float) x + 0.5F, (float) (y + translate), (float) z + 0.5F);
+			GlStateManager.scale(scaleFactor, scaleFactor, scaleFactor);
+			GlStateManager.rotate(rotationAngle, 0.0F, 1.0F, 0.0F);
 			customRenderItem.doRender(itemDisplay.getItemForRendering(), 0, 0, 0, 0, 0);
-			GL11.glPopMatrix();
+			GlStateManager.popMatrix();
 		}
 	}
 }

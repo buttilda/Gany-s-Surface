@@ -7,7 +7,6 @@ import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityBat;
-import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -29,7 +28,7 @@ public class PoopHandler {
 		if (!GanysSurface.enablePoop)
 			return;
 
-		if (event.entityLiving instanceof EntityAnimal || event.entityLiving instanceof EntityTameable || event.entityLiving instanceof EntityBat)
+		if (event.entityLiving instanceof EntityAnimal || event.entityLiving instanceof EntityBat)
 			if (event.entityLiving.worldObj.rand.nextInt(GanysSurface.poopingChance) == 0)
 				if (!event.entityLiving.isChild()) {
 					if (hasPoopNearby(event.entityLiving.worldObj, (int) event.entityLiving.posX, (int) event.entityLiving.posY, (int) event.entityLiving.posZ))

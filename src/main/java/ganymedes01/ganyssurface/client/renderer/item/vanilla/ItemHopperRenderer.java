@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
 import net.minecraft.block.BlockHopper;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -8,9 +9,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -58,13 +56,13 @@ public class ItemHopperRenderer implements IItemRenderer {
 	}
 
 	private void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GL11.glPushMatrix();
-		GL11.glTranslatef(x, y, z);
-		GL11.glEnable(GL11.GL_ALPHA_TEST);
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(x, y, z);
+		GlStateManager.enableAlpha();
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		renderer.renderBlockHopperMetadata(Blocks.hopper, 0, 0, 0, 0, true);
 
-		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
+		GlStateManager.translate(0.5F, 0.5F, 0.5F);
 		double width = 0.375D;
 		IIcon icon = BlockHopper.getHopperIcon("hopper_outside");
 		renderer.setOverrideBlockTexture(icon);
@@ -72,6 +70,6 @@ public class ItemHopperRenderer implements IItemRenderer {
 		BlockRendererHelper.renderSimpleBlock(Blocks.hopper, 1, renderer);
 		renderer.clearOverrideBlockTexture();
 
-		GL11.glPopMatrix();
+		GlStateManager.popMatrix();
 	}
 }

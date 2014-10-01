@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.block;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.client.model.ModelPlanter;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.RenderIDs;
@@ -9,9 +10,6 @@ import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.relauncher.Side;
@@ -32,19 +30,19 @@ public class BlockPlanterRender implements ISimpleBlockRenderingHandler {
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
-		GL11.glPushMatrix();
+		GlStateManager.pushMatrix();
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(texture);
-		GL11.glTranslatef(-0.5F, 1.0F, 0.5F);
-		GL11.glRotatef(180, 1, 0, 0);
+		GlStateManager.translate(-0.5F, 1.0F, 0.5F);
+		GlStateManager.rotate(180, 1, 0, 0);
 		model.moveArm(0.3F);
 		model.renderAll();
-		GL11.glPopMatrix();
+		GlStateManager.popMatrix();
 
-		GL11.glPushMatrix();
+		GlStateManager.pushMatrix();
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-		GL11.glTranslatef(0, 0.5F, 0);
+		GlStateManager.translate(0, 0.5F, 0);
 		BlockRendererHelper.renderSimpleBlock(block, metadata, renderer);
-		GL11.glPopMatrix();
+		GlStateManager.popMatrix();
 	}
 
 	@Override

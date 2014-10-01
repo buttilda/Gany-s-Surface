@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.block;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import net.minecraft.block.Block;
@@ -16,9 +17,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 @SideOnly(Side.CLIENT)
@@ -27,9 +28,9 @@ public class BlockSlimeBlockRender implements ISimpleBlockRenderingHandler {
 	@Override
 	public void renderInventoryBlock(Block block, int meta, int modelID, RenderBlocks renderer) {
 		Tessellator tessellator = Tessellator.instance;
-		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GL11.glEnable(GL11.GL_BLEND);
-		GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		GlStateManager.enableBlend();
+		GlStateManager.translate(-0.5F, -0.5F, -0.5F);
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, -1.0F, 0.0F);
@@ -61,8 +62,8 @@ public class BlockSlimeBlockRender implements ISimpleBlockRenderingHandler {
 		renderer.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 5, meta));
 		tessellator.draw();
 
-		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
-		GL11.glDisable(GL11.GL_BLEND);
+		GlStateManager.translate(0.5F, 0.5F, 0.5F);
+		GlStateManager.disableBlend();
 	}
 
 	@Override

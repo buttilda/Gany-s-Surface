@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import net.minecraft.block.Block;
@@ -10,9 +11,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -76,11 +74,11 @@ public class TileEntityChestPropellantRender extends TileEntitySpecialRenderer {
 	}
 
 	private void renderEntityItem(EntityItem entityItem, float x, float y, float z, float scale, float rotation) {
-		GL11.glPushMatrix();
-		GL11.glTranslatef(x, y, z);
-		GL11.glScalef(scale, scale, scale);
-		GL11.glRotatef(rotation, 0.0F, 1.0F, 0.0F);
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(x, y, z);
+		GlStateManager.scale(scale, scale, scale);
+		GlStateManager.rotate(rotation, 0.0F, 1.0F, 0.0F);
 		customRenderItem.doRender(entityItem, 0, 0, 0, 0, 0);
-		GL11.glPopMatrix();
+		GlStateManager.popMatrix();
 	}
 }

@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
@@ -8,9 +9,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -41,19 +39,19 @@ public class ItemLeverRenderer implements IItemRenderer {
 		if (renderer instanceof RenderBlocks)
 			switch (type) {
 				case ENTITY:
-					GL11.glScaled(0.5, 0.5, 0.5);
+					GlStateManager.scale(0.5, 0.5, 0.5);
 					render(stack, 0, 0, 0, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED:
 					render(stack, 0.5F, 1.0F, 0.5F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED_FIRST_PERSON:
-					GL11.glRotated(180, 0, 1, 0);
+					GlStateManager.rotate(180, 0, 1, 0);
 					render(stack, -0.5F, 1.0F, -0.5F, (RenderBlocks) renderer);
 					break;
 				case INVENTORY:
-					GL11.glRotated(90, 0, 1, 0);
-					GL11.glScaled(1.4, 1.4, 1.4);
+					GlStateManager.rotate(90, 0, 1, 0);
+					GlStateManager.scale(1.4, 1.4, 1.4);
 					render(stack, 0, 0.25F, 0, (RenderBlocks) renderer);
 					break;
 				default:
@@ -62,9 +60,9 @@ public class ItemLeverRenderer implements IItemRenderer {
 	}
 
 	private void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GL11.glPushMatrix();
-		GL11.glTranslatef(x, y, z);
-		GL11.glEnable(GL11.GL_ALPHA_TEST);
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(x, y, z);
+		GlStateManager.enableAlpha();
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
 		Tessellator tessellator = Tessellator.instance;
@@ -76,15 +74,15 @@ public class ItemLeverRenderer implements IItemRenderer {
 
 		renderer.setRenderBounds(0.5F - f1, 0.0D, 0.5F - f, 0.5F + f1, f2, 0.5F + f);
 		BlockRendererHelper.renderSimpleBlock(Blocks.lever, 0, renderer);
-		GL11.glTranslated(-0.5, -0.5, -0.5);
+		GlStateManager.translate(-0.5, -0.5, -0.5);
 
 		renderer.clearOverrideBlockTexture();
 
 		IIcon icon = renderer.getBlockIconFromSide(Blocks.lever, 0);
 
-		GL11.glTranslated(-0.1, 0.5, 0.1);
-		GL11.glScaled(1.2, 1.2, 1.2);
-		GL11.glRotatef(45, 1, 0, 0);
+		GlStateManager.translate(-0.1, 0.5, 0.1);
+		GlStateManager.scale(1.2, 1.2, 1.2);
+		GlStateManager.rotate(45, 1, 0, 0);
 
 		f = 0.05F;
 		tessellator.startDrawingQuads();
@@ -102,6 +100,6 @@ public class ItemLeverRenderer implements IItemRenderer {
 		renderer.renderFaceXPos(Blocks.lever, 0, 0, 0, icon);
 		tessellator.draw();
 
-		GL11.glPopMatrix();
+		GlStateManager.popMatrix();
 	}
 }

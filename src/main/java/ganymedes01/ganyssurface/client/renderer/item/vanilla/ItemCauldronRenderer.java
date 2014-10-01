@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -9,9 +10,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -42,7 +40,7 @@ public class ItemCauldronRenderer implements IItemRenderer {
 		if (renderer instanceof RenderBlocks)
 			switch (type) {
 				case ENTITY:
-					GL11.glScaled(0.5, 0.5, 0.5);
+					GlStateManager.scale(0.5, 0.5, 0.5);
 					render(stack, -0.5F, -0.5F, -0.5F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED:
@@ -60,9 +58,9 @@ public class ItemCauldronRenderer implements IItemRenderer {
 	}
 
 	private void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GL11.glPushMatrix();
-		GL11.glTranslatef(x, y, z);
-		GL11.glEnable(GL11.GL_ALPHA_TEST);
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(x, y, z);
+		GlStateManager.enableAlpha();
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
 		IIcon walls = Blocks.cauldron.getBlockTextureFromSide(2);
@@ -78,9 +76,9 @@ public class ItemCauldronRenderer implements IItemRenderer {
 		renderer.renderFaceYNeg(Blocks.cauldron, 0, 0 + 1.0F - 0.75F, 0, inner);
 		Tessellator.instance.draw();
 
-		GL11.glTranslatef(0.5F, 0.5F, 0.5F);
+		GlStateManager.translate(0.5F, 0.5F, 0.5F);
 		BlockRendererHelper.renderSimpleBlock(Blocks.cauldron, 0, renderer);
 
-		GL11.glPopMatrix();
+		GlStateManager.popMatrix();
 	}
 }

@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.integration.nei;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
 import ganymedes01.ganyssurface.core.utils.UnsizedStack;
 import ganymedes01.ganyssurface.core.utils.Utils;
@@ -19,9 +20,6 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
-
-import org.lwjgl.opengl.GL11;
-
 import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.ItemList;
 import codechicken.nei.PositionedStack;
@@ -29,9 +27,9 @@ import codechicken.nei.recipe.TemplateRecipeHandler;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class OMCYieldHandler extends TemplateRecipeHandler {
@@ -67,7 +65,7 @@ public class OMCYieldHandler extends TemplateRecipeHandler {
 
 	@Override
 	public void drawBackground(int index) {
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 
 		GuiDraw.changeTexture(getGuiTexture());
 		GuiDraw.drawTexturedModalRect(-2, -5, 5, 11, 120, 65);

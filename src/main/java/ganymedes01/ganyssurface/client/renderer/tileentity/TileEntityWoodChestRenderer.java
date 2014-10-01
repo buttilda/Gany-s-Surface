@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest.ChestType;
 import ganymedes01.ganyssurface.core.utils.Utils;
@@ -27,10 +28,6 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ResourceLocation;
-
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -89,12 +86,12 @@ public class TileEntityWoodChestRenderer extends TileEntitySpecialRenderer {
 			model = isNormal ? model_normal : model_large;
 			bindTexture(makeChestTexture(type, isNormal));
 
-			GL11.glPushMatrix();
-			GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			GL11.glTranslatef((float) x, (float) y + 1.0F, (float) z + 1.0F);
-			GL11.glScalef(1.0F, -1.0F, -1.0F);
-			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
+			GlStateManager.pushMatrix();
+			GlStateManager.enableRescaleNormal();
+			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+			GlStateManager.translate((float) x, (float) y + 1.0F, (float) z + 1.0F);
+			GlStateManager.scale(1.0F, -1.0F, -1.0F);
+			GlStateManager.translate(0.5F, 0.5F, 0.5F);
 
 			short rotation = 0;
 			if (meta == 2)
@@ -106,12 +103,12 @@ public class TileEntityWoodChestRenderer extends TileEntitySpecialRenderer {
 			if (meta == 5)
 				rotation = -90;
 			if (meta == 2 && chest.adjacentChestXPos != null)
-				GL11.glTranslatef(1.0F, 0.0F, 0.0F);
+				GlStateManager.translate(1.0F, 0.0F, 0.0F);
 			if (meta == 5 && chest.adjacentChestZPos != null)
-				GL11.glTranslatef(0.0F, 0.0F, -1.0F);
+				GlStateManager.translate(0.0F, 0.0F, -1.0F);
 
-			GL11.glRotatef(rotation, 0.0F, 1.0F, 0.0F);
-			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
+			GlStateManager.rotate(rotation, 0.0F, 1.0F, 0.0F);
+			GlStateManager.translate(-0.5F, -0.5F, -0.5F);
 
 			float angle = chest.prevLidAngle + (chest.lidAngle - chest.prevLidAngle) * partialTicks;
 			float angle2;
@@ -130,9 +127,9 @@ public class TileEntityWoodChestRenderer extends TileEntitySpecialRenderer {
 			angle = 1.0F - angle * angle * angle;
 			model.chestLid.rotateAngleX = -(angle * (float) Math.PI / 2.0F);
 			model.renderAll();
-			GL11.glDisable(GL12.GL_RESCALE_NORMAL);
-			GL11.glPopMatrix();
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+			GlStateManager.disableRescaleNormal();
+			GlStateManager.popMatrix();
+			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		}
 	}
 

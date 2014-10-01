@@ -1,23 +1,20 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.inventory.Container;
 import net.minecraftforge.fluids.Fluid;
-
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 @SideOnly(Side.CLIENT)
@@ -33,10 +30,10 @@ public abstract class GuiGanysSurface extends GuiContainer {
 	protected abstract void drawGuiContainerBackgroundLayer(float f, int mouseX, int mouseY);
 
 	protected void drawToolTip(int mouseX, int mouseY, String text) {
-		GL11.glDisable(GL12.GL_RESCALE_NORMAL);
+		GlStateManager.disableRescaleNormal();
 		RenderHelper.disableStandardItemLighting();
-		GL11.glDisable(GL11.GL_LIGHTING);
-		GL11.glDisable(GL11.GL_DEPTH_TEST);
+		GlStateManager.disableLighting();
+		GlStateManager.disableDepth();
 		int k = 0;
 		int l = fontRendererObj.getStringWidth(text);
 
@@ -72,10 +69,10 @@ public abstract class GuiGanysSurface extends GuiContainer {
 
 		zLevel = 0.0F;
 		itemRender.zLevel = 0.0F;
-		GL11.glEnable(GL11.GL_LIGHTING);
-		GL11.glEnable(GL11.GL_DEPTH_TEST);
+		GlStateManager.enableLighting();
+		GlStateManager.enableDepth();
 		RenderHelper.enableStandardItemLighting();
-		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+		GlStateManager.enableRescaleNormal();
 	}
 
 	protected void displayGauge(Fluid fluid, int j, int k, int u, int v, int scaled) {

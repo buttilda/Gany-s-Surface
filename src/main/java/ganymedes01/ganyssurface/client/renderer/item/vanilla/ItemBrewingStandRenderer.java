@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
 import net.minecraft.block.BlockBrewingStand;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -9,9 +10,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -42,7 +40,7 @@ public class ItemBrewingStandRenderer implements IItemRenderer {
 		if (renderer instanceof RenderBlocks)
 			switch (type) {
 				case ENTITY:
-					GL11.glScaled(0.5, 0.5, 0.5);
+					GlStateManager.scale(0.5, 0.5, 0.5);
 					render(stack, -0.5F, -0.5F, -0.5F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED:
@@ -52,7 +50,7 @@ public class ItemBrewingStandRenderer implements IItemRenderer {
 					render(stack, 0.0F, 0.0F, 0.0F, (RenderBlocks) renderer);
 					break;
 				case INVENTORY:
-					GL11.glScaled(1.2, 1.2, 1.2);
+					GlStateManager.scale(1.2, 1.2, 1.2);
 					render(stack, -0.5F, -0.5F, -0.5F, (RenderBlocks) renderer);
 					break;
 				default:
@@ -61,10 +59,10 @@ public class ItemBrewingStandRenderer implements IItemRenderer {
 	}
 
 	private void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GL11.glPushMatrix();
-		GL11.glTranslatef(x, y, z);
-		GL11.glTranslated(0.5, 0.5, 0.5);
-		GL11.glEnable(GL11.GL_ALPHA_TEST);
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(x, y, z);
+		GlStateManager.translate(0.5, 0.5, 0.5);
+		GlStateManager.enableAlpha();
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
 		// CENTRAL POLE
@@ -84,8 +82,8 @@ public class ItemBrewingStandRenderer implements IItemRenderer {
 		renderer.clearOverrideBlockTexture();
 
 		// POTIONS
-		GL11.glTranslated(-0.5, -0.5, -0.5);
-		GL11.glDisable(GL11.GL_LIGHTING);
+		GlStateManager.translate(-0.5, -0.5, -0.5);
+		GlStateManager.disableLighting();
 		IIcon iicon = renderer.getBlockIconFromSideAndMetadata(Blocks.brewing_stand, 0, 0);
 
 		if (renderer.hasOverrideBlockTexture())
@@ -120,7 +118,7 @@ public class ItemBrewingStandRenderer implements IItemRenderer {
 			tessellator.draw();
 		}
 
-		GL11.glEnable(GL11.GL_LIGHTING);
-		GL11.glPopMatrix();
+		GlStateManager.enableLighting();
+		GlStateManager.popMatrix();
 	}
 }

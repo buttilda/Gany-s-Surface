@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.items.Painting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
@@ -7,9 +8,6 @@ import net.minecraft.entity.item.EntityPainting.EnumArt;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -37,21 +35,21 @@ public class ItemPaintingRenderer implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack stack, Object... data) {
-		GL11.glPushMatrix();
+		GlStateManager.pushMatrix();
 		Minecraft.getMinecraft().getTextureManager().bindTexture(TEXTURE);
-		GL11.glScalef(0.0625F, 0.0625F, 0.0625F);
-		GL11.glDisable(GL11.GL_LIGHTING);
-		GL11.glRotated(225, 0, 1, 0);
+		GlStateManager.scale(0.0625F, 0.0625F, 0.0625F);
+		GlStateManager.disableLighting();
+		GlStateManager.rotate(225, 0, 1, 0);
 
 		EnumArt art = EnumArt.values()[Painting.getMeta(stack)];
 		if (art.sizeX > 26)
-			GL11.glScaled(26.0 / art.sizeX, 26.0 / art.sizeX, 1);
+			GlStateManager.scale(26.0 / art.sizeX, 26.0 / art.sizeX, 1);
 		else if (art.sizeY > 26)
-			GL11.glScaled(26.0 / art.sizeY, 26.0 / art.sizeY, 1);
+			GlStateManager.scale(26.0 / art.sizeY, 26.0 / art.sizeY, 1);
 		renderPainting(art.sizeX, art.sizeY, art.offsetX, art.offsetY);
 
-		GL11.glEnable(GL11.GL_LIGHTING);
-		GL11.glPopMatrix();
+		GlStateManager.enableLighting();
+		GlStateManager.popMatrix();
 	}
 
 	private void renderPainting(int width, int height, int offsetX, int offsetY) {

@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.client.model.ModelPocketBat;
 import ganymedes01.ganyssurface.client.model.ModelPocketSquid;
@@ -8,9 +9,6 @@ import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -46,19 +44,19 @@ public class ItemPocketCritterRenderer implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack stack, Object... data) {
 		switch (type) {
 			case ENTITY:
-				GL11.glScalef(0.5F, 0.5F, 0.5F);
+				GlStateManager.scale(0.5F, 0.5F, 0.5F);
 				renderCritter(stack, 0.5F, 1.0F, 0.0F, type);
 				break;
 			case EQUIPPED:
 				renderCritter(stack, 1.0F, 1.0F, 0.5F, type);
 				break;
 			case EQUIPPED_FIRST_PERSON:
-				GL11.glTranslatef(0.75F, 0.5F, 0.5F);
-				GL11.glRotatef(-90 - 45, 0, 1, 0);
+				GlStateManager.translate(0.75F, 0.5F, 0.5F);
+				GlStateManager.rotate(-90 - 45, 0, 1, 0);
 				renderCritter(stack, 1.0F, 1.0F, 1.0F, type);
 				break;
 			case INVENTORY:
-				GL11.glScalef(0.75F, 0.75F, 0.75F);
+				GlStateManager.scale(0.75F, 0.75F, 0.75F);
 				renderCritter(stack, 0.0F, 0.075F, 0.0F, type);
 				break;
 			default:
@@ -67,23 +65,23 @@ public class ItemPocketCritterRenderer implements IItemRenderer {
 	}
 
 	private void renderCritter(ItemStack stack, float x, float y, float z, ItemRenderType type) {
-		GL11.glPushMatrix();
-		GL11.glTranslatef(x, y, z);
-		GL11.glRotatef(180, 1, 0, 0);
-		GL11.glRotatef(-90, 0, 1, 0);
-		GL11.glDisable(GL11.GL_CULL_FACE);
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(x, y, z);
+		GlStateManager.rotate(180, 1, 0, 0);
+		GlStateManager.rotate(-90, 0, 1, 0);
+		GlStateManager.disableCull();
 
 		if (type == ItemRenderType.ENTITY)
-			GL11.glTranslatef(0.0F, 0.5F, 0.5F);
+			GlStateManager.translate(0.0F, 0.5F, 0.5F);
 		else if (type == ItemRenderType.INVENTORY)
-			GL11.glTranslatef(0.0F, -0.5F, 0.0F);
+			GlStateManager.translate(0.0F, -0.5F, 0.0F);
 
 		if (isBat(stack)) {
 			FMLClientHandler.instance().getClient().renderEngine.bindTexture(batTex);
 			bat.renderAll();
 		} else if (isSquid(stack)) {
-			GL11.glScalef(0.75F, 0.75F, 0.75F);
-			GL11.glTranslatef(0.0F, -0.25F, 0.0F);
+			GlStateManager.scale(0.75F, 0.75F, 0.75F);
+			GlStateManager.translate(0.0F, -0.25F, 0.0F);
 			if (stack.getItemDamage() == 0)
 				FMLClientHandler.instance().getClient().renderEngine.bindTexture(squidCookedTex);
 			else
@@ -91,8 +89,8 @@ public class ItemPocketCritterRenderer implements IItemRenderer {
 			squid.renderAll();
 		}
 
-		GL11.glEnable(GL11.GL_CULL_FACE);
-		GL11.glPopMatrix();
+		GlStateManager.enableCull();
+		GlStateManager.popMatrix();
 	}
 
 	private boolean isSquid(ItemStack stack) {
