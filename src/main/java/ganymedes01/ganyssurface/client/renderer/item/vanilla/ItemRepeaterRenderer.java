@@ -9,6 +9,9 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
+
+import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -67,7 +70,8 @@ public class ItemRepeaterRenderer implements IItemRenderer {
 		double torchOffset = BlockRedstoneRepeater.repeaterTorchOffset[0];
 		double torch2Offset = -0.3125;
 
-		GlStateManager.disableLighting();
+		GlStateManager.enableCull();
+		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		ItemTorchRenderer.renderTorch(Blocks.unpowered_repeater, 0, torchHeight, torchOffset, renderer, 0.2);
 		ItemTorchRenderer.renderTorch(Blocks.unpowered_repeater, 0, torchHeight, torch2Offset, renderer, 0.2);
 		GlStateManager.enableLighting();

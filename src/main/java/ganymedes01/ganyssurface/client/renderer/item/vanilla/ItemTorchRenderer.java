@@ -8,6 +8,9 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
+
+import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -69,7 +72,7 @@ public class ItemTorchRenderer implements IItemRenderer {
 	}
 
 	public static void renderTorch(Block block, double x, double y, double z, RenderBlocks renderer, double size) {
-		GlStateManager.enableAlpha();
+		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		Tessellator tessellator = Tessellator.instance;
 		IIcon icon = renderer.getBlockIconFromSideAndMetadata(block, 0, 0);
 

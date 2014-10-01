@@ -4,6 +4,9 @@ import ganymedes01.ganyssurface.GlStateManager;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.init.Blocks;
+
+import org.lwjgl.opengl.GL11;
+
 import cpw.mods.fml.client.FMLClientHandler;
 
 /**
@@ -20,7 +23,7 @@ public class ItemMinecartHopperRenderer extends ItemMinecartRenderer {
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
 		GlStateManager.pushMatrix();
-		GlStateManager.enableAlpha();
+		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		GlStateManager.scale(0.75 * 0.75, 0.75 * 0.75, 0.75 * 0.75);
 		GlStateManager.rotate(270, 0, 1, 0);
 		GlStateManager.translate(0.0F, 1 / 16.0F, 0.0F);

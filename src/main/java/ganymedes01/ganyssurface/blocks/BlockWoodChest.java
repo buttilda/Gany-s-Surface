@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.blocks;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.tileentities.TileEntityWoodChest;
 import net.minecraft.block.Block;
@@ -30,6 +31,7 @@ public class BlockWoodChest extends BlockChest {
 		setHardness(2.5F);
 		setStepSound(soundTypeWood);
 		setBlockName(Utils.getUnlocalizedName("chest" + meta));
+		setCreativeTab(GanysSurface.enableChests ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override
