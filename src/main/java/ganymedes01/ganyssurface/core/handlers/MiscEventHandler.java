@@ -1,21 +1,36 @@
 package ganymedes01.ganyssurface.core.handlers;
 
+import ganymedes01.ganyssurface.ContainerEnchantment;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWoodChestRenderer;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.Quiver;
+import ganymedes01.ganyssurface.lib.GUIsID;
+import ganymedes01.ganyssurface.lib.Reference;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityEnchantmentTable;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
@@ -33,6 +48,74 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 
 public class MiscEventHandler {
+
+	@SubscribeEvent
+	public void interactEvent(PlayerInteractEvent event) {
+		if (!GanysSurface.enable18Enchants)
+			return;
+		if (event.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) {
+			World world = event.world;
+			EntityPlayer player = event.entityPlayer;
+			int x = event.x;
+			int y = event.y;
+			int z = event.z;
+
+			if (world.isRemote)
+				return;
+			if (player.isSneaking())
+				return;
+			else {
+				TileEntityEnchantmentTable tile = Utils.getTileEntity(world, x, y, z, TileEntityEnchantmentTable.class);
+				if (tile != null) {
+					player.openGui(GanysSurface.instance, GUIsID.ENCHANTING_TABLE, world, x, y, z);
+					event.setCanceled(true);
+				}
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerLoadFromFileEvent(PlayerEvent.LoadFromFile event) {
+		if (!GanysSurface.enable18Enchants)
+			return;
+		try {
+			File file = event.getPlayerFile(Reference.MOD_ID);
+			if (!file.exists()) {
+				file.createNewFile();
+				return;
+			}
+
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			String line = br.readLine();
+			if (line != null) {
+				int seed = Integer.parseInt(line);
+				ContainerEnchantment.seeds.put(event.playerUUID, seed);
+				br.close();
+			}
+		} catch (Exception e) {
+		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerSaveFromFileEvent(PlayerEvent.SaveToFile event) {
+		if (!GanysSurface.enable18Enchants)
+			return;
+		try {
+			File file = event.getPlayerFile(Reference.MOD_ID);
+			if (!file.exists()) {
+				file.createNewFile();
+				return;
+			}
+
+			Integer seed = ContainerEnchantment.seeds.get(event.playerUUID);
+			if (seed != null) {
+				BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+				bw.write(seed.toString());
+				bw.close();
+			}
+		} catch (IOException e) {
+		}
+	}
 
 	@SubscribeEvent
 	public void arrowNock(ArrowNockEvent event) {

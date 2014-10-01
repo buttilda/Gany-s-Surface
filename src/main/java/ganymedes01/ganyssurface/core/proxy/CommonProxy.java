@@ -1,6 +1,8 @@
 package ganymedes01.ganyssurface.core.proxy;
 
+import ganymedes01.ganyssurface.ContainerEnchantment;
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.GuiEnchantment;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiAutoEncaser;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
@@ -135,8 +137,11 @@ public class CommonProxy implements IGuiHandler {
 				return new ContainerAutoEncaser(player.inventory, (TileEntityAutoEncaser) tile);
 			case GUIsID.GEARALYSER:
 				return new ContainerGearalyser(player.inventory);
+			case GUIsID.ENCHANTING_TABLE:
+				return new ContainerEnchantment(player.inventory, world, x, y, z);
+			default:
+				return null;
 		}
-		return null;
 	}
 
 	@Override
@@ -165,7 +170,10 @@ public class CommonProxy implements IGuiHandler {
 				return new GuiAutoEncaser(player.inventory, (TileEntityAutoEncaser) tile);
 			case GUIsID.GEARALYSER:
 				return new GuiGearalyser(player.inventory);
+			case GUIsID.ENCHANTING_TABLE:
+				return new GuiEnchantment(player.inventory, world, null);
+			default:
+				return null;
 		}
-		return null;
 	}
 }

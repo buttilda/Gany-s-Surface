@@ -2,9 +2,9 @@ package ganymedes01.ganyssurface.lib;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class GUIsID {
@@ -22,4 +22,5 @@ public class GUIsID {
 	public static final int ENCASING_BENCH = 10;
 	public static final int AUTO_ENCASER = 11;
 	public static final int GEARALYSER = 12;
+	public static final int ENCHANTING_TABLE = 13;
 }

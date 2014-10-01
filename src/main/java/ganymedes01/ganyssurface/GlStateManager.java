@@ -345,8 +345,8 @@ public class GlStateManager {
 	}
 
 	public static void clearColor(float p_179082_0_, float p_179082_1_, float p_179082_2_, float p_179082_3_) {
-		if (p_179082_0_ != clearState.field_179203_b.field_179195_a || p_179082_1_ != clearState.field_179203_b.green || p_179082_2_ != clearState.field_179203_b.blue || p_179082_3_ != clearState.field_179203_b.alpha) {
-			clearState.field_179203_b.field_179195_a = p_179082_0_;
+		if (p_179082_0_ != clearState.field_179203_b.red || p_179082_1_ != clearState.field_179203_b.green || p_179082_2_ != clearState.field_179203_b.blue || p_179082_3_ != clearState.field_179203_b.alpha) {
+			clearState.field_179203_b.red = p_179082_0_;
 			clearState.field_179203_b.green = p_179082_1_;
 			clearState.field_179203_b.blue = p_179082_2_;
 			clearState.field_179203_b.alpha = p_179082_3_;
@@ -407,13 +407,11 @@ public class GlStateManager {
 	}
 
 	public static void color(float p_179131_0_, float p_179131_1_, float p_179131_2_, float p_179131_3_) {
-		if (p_179131_0_ != colorState.field_179195_a || p_179131_1_ != colorState.green || p_179131_2_ != colorState.blue || p_179131_3_ != colorState.alpha) {
-			colorState.field_179195_a = p_179131_0_;
-			colorState.green = p_179131_1_;
-			colorState.blue = p_179131_2_;
-			colorState.alpha = p_179131_3_;
-			GL11.glColor4f(p_179131_0_, p_179131_1_, p_179131_2_, p_179131_3_);
-		}
+		colorState.red = p_179131_0_;
+		colorState.green = p_179131_1_;
+		colorState.blue = p_179131_2_;
+		colorState.alpha = p_179131_3_;
+		GL11.glColor4f(p_179131_0_, p_179131_1_, p_179131_2_, p_179131_3_);
 	}
 
 	public static void color(float p_179124_0_, float p_179124_1_, float p_179124_2_) {
@@ -421,7 +419,7 @@ public class GlStateManager {
 	}
 
 	public static void func_179117_G() {
-		colorState.field_179195_a = colorState.green = colorState.blue = colorState.alpha = -1.0F;
+		colorState.red = colorState.green = colorState.blue = colorState.alpha = -1.0F;
 	}
 
 	public static void callList(int p_179148_0_) {
@@ -519,7 +517,7 @@ public class GlStateManager {
 	}
 
 	static class Color {
-		public float field_179195_a = 1.0F;
+		public float red = 1.0F;
 		public float green = 1.0F;
 		public float blue = 1.0F;
 		public float alpha = 1.0F;
@@ -528,7 +526,7 @@ public class GlStateManager {
 		}
 
 		public Color(float p_i46265_1_, float p_i46265_2_, float p_i46265_3_, float p_i46265_4_) {
-			field_179195_a = p_i46265_1_;
+			red = p_i46265_1_;
 			green = p_i46265_2_;
 			blue = p_i46265_3_;
 			alpha = p_i46265_4_;
