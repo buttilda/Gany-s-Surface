@@ -1,3 +1,9 @@
+container.enchant.lapis.one=1块青金石
+container.enchant.lapis.many=%d块青金石
+container.enchant.level.one=1级附魔
+container.enchant.level.many=%d级附魔
+container.enchant.clue=%s . . . ?
+
 # Item localizations
 item.ganyssurface.woodenHelmet.name=木头盔
 item.ganyssurface.woodenChestplate.name=木胸甲
