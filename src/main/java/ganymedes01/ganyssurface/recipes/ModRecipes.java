@@ -351,7 +351,6 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doorDarkOak, 3), "xx", "xx", "xx", 'x', "plankDarkOak"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doorJungle, 3), "xx", "xx", "xx", 'x', "plankJungle"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doorSpruce, 3), "xx", "xx", "xx", 'x', "plankSpruce"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Items.wooden_door, 3), "xx", "xx", "xx", 'x', "plankWood"));
 		}
 
 		if (GanysSurface.enableRedSandstone) {

@@ -15,6 +15,8 @@ import ganymedes01.ganyssurface.world.SurfaceWorldGen;
 import ganymedes01.ganyssurface.world.Temple;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import net.minecraft.block.BlockDirt;
 import net.minecraft.creativetab.CreativeTabs;
@@ -115,6 +117,7 @@ public class GanysSurface {
 	public static int prismarineTempleChance = 800;
 
 	@EventHandler
+	@SuppressWarnings("unchecked")
 	public void preInit(FMLPreInitializationEvent event) {
 		ModIntegrator.preInit();
 
@@ -124,38 +127,34 @@ public class GanysSurface {
 
 		ModBlocks.init();
 		ModItems.init();
-		ModRecipes.init();
 
-		Temple.makeMap();
-
-		BlockDirt.field_150009_a[1] = "coarse";
-
+		List<IRecipe> doorRecipes = new ArrayList<IRecipe>();
 		if (enableDoors) {
 			Items.wooden_door.setMaxStackSize(64);
 			Items.iron_door.setMaxStackSize(64);
 			Items.wooden_door.setTextureName(Utils.getItemTexture("door_wood"));
 			Items.iron_door.setTextureName(Utils.getItemTexture("door_iron"));
 
-			for (Object recipe : CraftingManager.getInstance().getRecipeList())
+			for (IRecipe recipe : (List<IRecipe>) CraftingManager.getInstance().getRecipeList())
 				if (recipe != null) {
-					ItemStack stack = ((IRecipe) recipe).getRecipeOutput();
+					ItemStack stack = recipe.getRecipeOutput();
 					if (stack != null)
-						if (stack.getItem() == Items.iron_door) {
+						if (stack.getItem() == Items.iron_door || stack.getItem() == Items.wooden_door) {
 							stack.stackSize = 3;
-							break;
+							doorRecipes.add(recipe);
 						}
 				}
 
-			for (Object recipe : CraftingManager.getInstance().getRecipeList())
-				if (recipe != null) {
-					ItemStack stack = ((IRecipe) recipe).getRecipeOutput();
-					if (stack != null)
-						if (stack.getItem() == Items.wooden_door) {
-							CraftingManager.getInstance().getRecipeList().remove(recipe);
-							break;
-						}
-				}
+			for (IRecipe recipe : doorRecipes)
+				CraftingManager.getInstance().getRecipeList().remove(recipe);
 		}
+
+		ModRecipes.init();
+		Temple.makeMap();
+		BlockDirt.field_150009_a[1] = "coarse";
+
+		if (enableDoors)
+			CraftingManager.getInstance().getRecipeList().addAll(doorRecipes);
 
 		if (enableChests)
 			for (Object recipe : CraftingManager.getInstance().getRecipeList())
