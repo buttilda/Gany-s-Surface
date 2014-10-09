@@ -177,7 +177,6 @@ public class ModRecipes {
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.clay_ball, 4), Blocks.clay);
 			GameRegistry.addRecipe(new ItemStack(Items.name_tag), " y ", "x  ", 'x', Items.paper, 'y', Items.string);
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.fermented_spider_eye), Items.spider_eye, Items.sugar, Blocks.red_mushroom);
-			GameRegistry.addShapelessRecipe(new ItemStack(Items.wheat_seeds), Items.wheat);
 		}
 	}
 
