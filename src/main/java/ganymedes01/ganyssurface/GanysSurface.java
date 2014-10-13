@@ -18,6 +18,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -158,15 +159,23 @@ public class GanysSurface {
 			CraftingManager.getInstance().getRecipeList().addAll(doorRecipes);
 
 		if (enableChests)
-			for (Object recipe : CraftingManager.getInstance().getRecipeList())
-				if (recipe != null) {
-					ItemStack stack = ((IRecipe) recipe).getRecipeOutput();
-					if (stack != null)
-						if (stack.getItem() == Item.getItemFromBlock(Blocks.chest)) {
-							CraftingManager.getInstance().getRecipeList().remove(recipe);
-							break;
-						}
+			removeFirstRecipeFor(Blocks.chest);
+
+		if (enableFences) {
+			removeFirstRecipeFor(Blocks.fence_gate);
+			removeFirstRecipeFor(Blocks.fence);
+		}
+	}
+
+	private void removeFirstRecipeFor(Block block) {
+		for (Object recipe : CraftingManager.getInstance().getRecipeList())
+			if (recipe != null) {
+				ItemStack stack = ((IRecipe) recipe).getRecipeOutput();
+				if (stack != null && stack.getItem() == Item.getItemFromBlock(block)) {
+					CraftingManager.getInstance().getRecipeList().remove(recipe);
+					return;
 				}
+			}
 	}
 
 	@EventHandler

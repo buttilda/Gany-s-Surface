@@ -366,6 +366,14 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceDarkOak, 3), "xyx", "xyx", 'x', "plankDarkOak", 'y', "stickWood"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceJungle, 3), "xyx", "xyx", 'x', "plankJungle", 'y', "stickWood"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceSpruce, 3), "xyx", "xyx", 'x', "plankSpruce", 'y', "stickWood"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.fence, 3), "xyx", "xyx", 'x', "plankWood", 'y', "stickWood"));
+
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.gateAcacia), "yxy", "yxy", 'x', "plankAcacia", 'y', "stickWood"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.gateBirch), "yxy", "yxy", 'x', "plankBirch", 'y', "stickWood"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.gateDarkOak), "yxy", "yxy", 'x', "plankDarkOak", 'y', "stickWood"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.gateJungle), "yxy", "yxy", 'x', "plankJungle", 'y', "stickWood"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.gateSpruce), "yxy", "yxy", 'x', "plankSpruce", 'y', "stickWood"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.fence_gate), "yxy", "yxy", 'x', "plankWood", 'y', "stickWood"));
 		}
 	}
 }
