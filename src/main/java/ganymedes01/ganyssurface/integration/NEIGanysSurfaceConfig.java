@@ -202,14 +202,15 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModBlocks.fenceDarkOak));
 			API.hideItem(new ItemStack(ModBlocks.fenceJungle));
 			API.hideItem(new ItemStack(ModBlocks.fenceSpruce));
-			API.hideItem(new ItemStack(ModBlocks.fenceSpruce));
+			API.hideItem(new ItemStack(ModBlocks.fenceOak));
+
 			API.hideItem(new ItemStack(ModBlocks.gateAcacia));
 			API.hideItem(new ItemStack(ModBlocks.gateBirch));
 			API.hideItem(new ItemStack(ModBlocks.gateDarkOak));
 			API.hideItem(new ItemStack(ModBlocks.gateJungle));
 			API.hideItem(new ItemStack(ModBlocks.gateSpruce));
-			API.hideItem(new ItemStack(ModBlocks.gateSpruce));
-		}
+		} else
+			API.hideItem(new ItemStack(Blocks.fence));
 	}
 
 	@Override

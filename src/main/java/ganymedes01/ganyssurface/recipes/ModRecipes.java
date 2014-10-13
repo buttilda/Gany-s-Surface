@@ -366,7 +366,7 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceDarkOak, 3), "xyx", "xyx", 'x', "plankDarkOak", 'y', "stickWood"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceJungle, 3), "xyx", "xyx", 'x', "plankJungle", 'y', "stickWood"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceSpruce, 3), "xyx", "xyx", 'x', "plankSpruce", 'y', "stickWood"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceOak, 3), "xyx", "xyx", 'x', "plankOak", 'y', "stickWood"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceOak, 3), "xyx", "xyx", 'x', "plankWood", 'y', "stickWood"));
 			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.fence), ModBlocks.fenceOak);
 			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.fenceOak), Blocks.fence);
 

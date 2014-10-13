@@ -161,8 +161,10 @@ public class GanysSurface {
 		if (enableChests)
 			removeFirstRecipeFor(Blocks.chest);
 
-		if (enableFences)
+		if (enableFences) {
 			removeFirstRecipeFor(Blocks.fence);
+			Blocks.fence.setCreativeTab(null);
+		}
 	}
 
 	private void removeFirstRecipeFor(Block block) {
