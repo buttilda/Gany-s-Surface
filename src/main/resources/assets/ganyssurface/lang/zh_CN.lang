@@ -158,6 +158,16 @@ tile.ganyssurface.doorBirch.name=白桦木门
 tile.ganyssurface.doorDark_oak.name=深色橡木门
 tile.ganyssurface.doorJungle.name=丛林木门
 tile.ganyssurface.doorSpruce.name=云杉木门
+tile.ganyssurface.fence_1.name=云杉木栅栏
+tile.ganyssurface.fence_2.name=白桦木栅栏
+tile.ganyssurface.fence_3.name=丛林木栅栏
+tile.ganyssurface.fence_4.name=金合欢木栅栏
+tile.ganyssurface.fence_5.name=深色橡木栅栏
+tile.ganyssurface.fence_gate_1.name=云杉木栅栏门
+tile.ganyssurface.fence_gate_2.name=白桦木栅栏门
+tile.ganyssurface.fence_gate_3.name=丛林木栅栏门
+tile.ganyssurface.fence_gate_4.name=金合欢木栅栏门
+tile.ganyssurface.fence_gate_5.name=深色橡木栅栏门
 
 tile.ganyssurface.colouredRedstoneBLACK.name=黑石
 tile.ganyssurface.colouredRedstoneGREEN.name=绿石
