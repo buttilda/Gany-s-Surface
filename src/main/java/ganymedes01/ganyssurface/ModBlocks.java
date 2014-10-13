@@ -4,6 +4,8 @@ import ganymedes01.ganyssurface.blocks.AutoEncaser;
 import ganymedes01.ganyssurface.blocks.BlockDetector;
 import ganymedes01.ganyssurface.blocks.BlockNewDoor;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest;
+import ganymedes01.ganyssurface.blocks.BlockWoodFence;
+import ganymedes01.ganyssurface.blocks.BlockWoodFenceGate;
 import ganymedes01.ganyssurface.blocks.CamelliaCrop;
 import ganymedes01.ganyssurface.blocks.CharcoalBlock;
 import ganymedes01.ganyssurface.blocks.ChestPropellant;
@@ -104,6 +106,16 @@ public class ModBlocks {
 	public static final Block redSandstone = new RedSandstone();
 	public static final Block redSandstoneSlab = new RedSandstoneSlab();
 	public static final Block redSandstoneStairs = new RedSandstoneStairs();
+	public static final Block fenceAcacia = new BlockWoodFence(4);
+	public static final Block fenceBirch = new BlockWoodFence(2);
+	public static final Block fenceDarkOak = new BlockWoodFence(5);
+	public static final Block fenceJungle = new BlockWoodFence(3);
+	public static final Block fenceSpruce = new BlockWoodFence(1);
+	public static final Block gateAcacia = new BlockWoodFenceGate(4);
+	public static final Block gateBirch = new BlockWoodFenceGate(2);
+	public static final Block gateDarkOak = new BlockWoodFenceGate(5);
+	public static final Block gateJungle = new BlockWoodFenceGate(3);
+	public static final Block gateSpruce = new BlockWoodFenceGate(1);
 
 	static {
 		for (int i = 0; i < disguisedTrapDoor.length; i++)

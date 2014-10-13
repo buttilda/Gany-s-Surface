@@ -57,7 +57,7 @@ public class ModRecipes {
 			OreDictionary.registerOre("crystalPrismarine", new ItemStack(ModItems.prismarineItems, 1, 1));
 		}
 
-		if (GanysSurface.enableDoors || GanysSurface.enableChests) {
+		if (GanysSurface.enableDoors || GanysSurface.enableChests || GanysSurface.enableFences) {
 			OreDictionary.registerOre("plankAcacia", new ItemStack(Blocks.planks, 1, 4));
 			OreDictionary.registerOre("plankBirch", new ItemStack(Blocks.planks, 1, 2));
 			OreDictionary.registerOre("plankDarkOak", new ItemStack(Blocks.planks, 1, 5));
@@ -358,6 +358,14 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.redSandstone, 1, 2), "xx", "xx", 'x', new ItemStack(ModBlocks.redSandstone));
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.redSandstoneSlab, 6), "xxx", 'x', ModBlocks.redSandstone);
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.redSandstoneStairs, 4), "x  ", "xx ", "xxx", 'x', ModBlocks.redSandstone);
+		}
+
+		if (GanysSurface.enableFences) {
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceAcacia, 3), "xyx", "xyx", 'x', "plankAcacia", 'y', "stickWood"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceBirch, 3), "xyx", "xyx", 'x', "plankBirch", 'y', "stickWood"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceDarkOak, 3), "xyx", "xyx", 'x', "plankDarkOak", 'y', "stickWood"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceJungle, 3), "xyx", "xyx", 'x', "plankJungle", 'y', "stickWood"));
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceSpruce, 3), "xyx", "xyx", 'x', "plankSpruce", 'y', "stickWood"));
 		}
 	}
 }

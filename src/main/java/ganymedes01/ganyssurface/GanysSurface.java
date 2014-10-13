@@ -114,6 +114,7 @@ public class GanysSurface {
 	public static boolean enableCoarseDirt = true;
 	public static boolean enableRedSandstone = true;
 	public static boolean enable18Enchants = true;
+	public static boolean enableFences = true;
 	public static int prismarineTempleChance = 800;
 
 	@EventHandler
