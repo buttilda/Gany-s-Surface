@@ -158,6 +158,7 @@ tile.ganyssurface.doorBirch.name=Birch Door
 tile.ganyssurface.doorDark_oak.name=Dark Oak Door
 tile.ganyssurface.doorJungle.name=Jungle Door
 tile.ganyssurface.doorSpruce.name=Spruce Door
+tile.ganyssurface.fence_0.name=Oak Fence
 tile.ganyssurface.fence_1.name=Spruce Fence
 tile.ganyssurface.fence_2.name=Birch Fence
 tile.ganyssurface.fence_3.name=Jungle Fence

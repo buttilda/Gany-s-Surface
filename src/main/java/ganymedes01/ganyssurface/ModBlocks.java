@@ -111,6 +111,7 @@ public class ModBlocks {
 	public static final Block fenceDarkOak = new BlockWoodFence(5);
 	public static final Block fenceJungle = new BlockWoodFence(3);
 	public static final Block fenceSpruce = new BlockWoodFence(1);
+	public static final Block fenceOak = new BlockWoodFence(0);
 	public static final Block gateAcacia = new BlockWoodFenceGate(4);
 	public static final Block gateBirch = new BlockWoodFenceGate(2);
 	public static final Block gateDarkOak = new BlockWoodFenceGate(5);
