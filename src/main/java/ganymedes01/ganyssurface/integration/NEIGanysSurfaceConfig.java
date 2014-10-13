@@ -195,6 +195,21 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		}
 		if (!GanysSurface.enableInvertedDaylightSensor)
 			API.hideItem(new ItemStack(ModBlocks.invertedDaylightDetector));
+
+		if (!GanysSurface.enableFences) {
+			API.hideItem(new ItemStack(ModBlocks.fenceAcacia));
+			API.hideItem(new ItemStack(ModBlocks.fenceBirch));
+			API.hideItem(new ItemStack(ModBlocks.fenceDarkOak));
+			API.hideItem(new ItemStack(ModBlocks.fenceJungle));
+			API.hideItem(new ItemStack(ModBlocks.fenceSpruce));
+			API.hideItem(new ItemStack(ModBlocks.fenceSpruce));
+			API.hideItem(new ItemStack(ModBlocks.gateAcacia));
+			API.hideItem(new ItemStack(ModBlocks.gateBirch));
+			API.hideItem(new ItemStack(ModBlocks.gateDarkOak));
+			API.hideItem(new ItemStack(ModBlocks.gateJungle));
+			API.hideItem(new ItemStack(ModBlocks.gateSpruce));
+			API.hideItem(new ItemStack(ModBlocks.gateSpruce));
+		}
 	}
 
 	@Override
