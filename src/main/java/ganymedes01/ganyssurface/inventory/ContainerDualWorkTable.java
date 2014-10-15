@@ -98,11 +98,4 @@ public class ContainerDualWorkTable extends Container {
 	public boolean func_94530_a(ItemStack stack, Slot slot) {
 		return !(slot instanceof SlotCrafting);
 	}
-
-	@Override
-	public void onContainerClosed(EntityPlayer player) {
-		super.onContainerClosed(player);
-		tile.craftMatrix.setContainer(null);
-		tile.craftMatrixRight.setContainer(null);
-	}
 }

@@ -46,7 +46,7 @@ public class ContainerWorkTable extends Container {
 	}
 
 	@Override
-	public boolean canInteractWith(EntityPlayer entityplayer) {
+	public boolean canInteractWith(EntityPlayer player) {
 		return true;
 	}
 
@@ -80,11 +80,5 @@ public class ContainerWorkTable extends Container {
 	@Override
 	public boolean func_94530_a(ItemStack stack, Slot slot) {
 		return slot.inventory != result;
-	}
-
-	@Override
-	public void onContainerClosed(EntityPlayer player) {
-		super.onContainerClosed(player);
-		tile.craftMatrix.setContainer(null);
 	}
 }

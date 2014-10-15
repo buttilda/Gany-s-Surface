@@ -84,6 +84,11 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 		}
 	}
 
+	@Override
+	public boolean canUpdate() {
+		return false;
+	}
+
 	public static class WorkTableCrafting extends InventoryCrafting {
 
 		protected final TileEntityWorkTable tile;
