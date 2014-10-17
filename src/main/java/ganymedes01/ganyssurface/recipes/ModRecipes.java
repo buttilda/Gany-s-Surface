@@ -321,6 +321,8 @@ public class ModRecipes {
 			int POLISHED_DIORITE = 4;
 			int ANDESITE = 5;
 			int POLISHED_ANDESITE = 6;
+			int BASALT = 7;
+			int POLISHED_BASALT = 8;
 
 			// Diorite
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 2, DIORITE), "xy", "yx", 'x', new ItemStack(Blocks.cobblestone), 'y', Items.quartz);
@@ -331,6 +333,9 @@ public class ModRecipes {
 			// Granite
 			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, GRANITE), Items.quartz, new ItemStack(ModBlocks.newStones, 1, DIORITE));
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_GRANITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, GRANITE));
+			// Basalt
+			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, BASALT), new ItemStack(ModBlocks.newStones, 1, DIORITE), new ItemStack(ModBlocks.newStones, 1, ANDESITE));
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_BASALT), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, BASALT));
 		}
 
 		if (GanysSurface.enablePrismarineStuff) {

@@ -32,6 +32,7 @@ public class SurfaceWorldGen implements IWorldGenerator {
 		generators.add(new WorldGenMinable(ModBlocks.newStones, 1, 33, Blocks.stone));
 		generators.add(new WorldGenMinable(ModBlocks.newStones, 3, 33, Blocks.stone));
 		generators.add(new WorldGenMinable(ModBlocks.newStones, 5, 33, Blocks.stone));
+		generators.add(new WorldGenMinable(ModBlocks.newStones, 7, 33, Blocks.stone));
 	}
 
 	@Override
