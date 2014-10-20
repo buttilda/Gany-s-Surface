@@ -60,7 +60,7 @@ public class MiscEventHandler {
 			int y = event.y;
 			int z = event.z;
 
-			if (world.isRemote)
+			if (world == null || world.isRemote)
 				return;
 			if (player.isSneaking())
 				return;
