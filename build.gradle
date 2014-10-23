@@ -26,10 +26,6 @@ minecraft {
     assetDir = "eclipse/assets"
 }
 
-dependencies {
-	compile files("libs/")
-}
-
 processResources {
      from(sourceSets.main.resources.srcDirs) {
           include 'mcmod.info'
