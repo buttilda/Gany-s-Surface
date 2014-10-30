@@ -87,9 +87,6 @@ public class ModItems {
 	public static final Item roastedSquid = new RoastedSquid();
 	public static final Item storageCase = new StorageCase();
 	public static final Item gearalyser = new Gearalyser();
-	public static final Item rawMutton = new MuttonRaw();
-	public static final Item cookedMutton = new MuttonCooked();
-	public static final Item prismarineItems = new PrismarineItems();
 	public static final Item pineCone = new PineCone();
 	public static final Item pineNuts = new PineNuts();
 	public static final Item doorAcacia = new ItemNewDoor("acacia", ModBlocks.doorAcacia);
@@ -99,6 +96,11 @@ public class ModItems {
 	public static final Item doorSpruce = new ItemNewDoor("spruce", ModBlocks.doorSpruce);
 	public static final Item quiver = new Quiver();
 	public static final Item painting = new Painting();
+
+	// 1.8 Stuff
+	public static final Item rawMutton = new MuttonRaw();
+	public static final Item cookedMutton = new MuttonCooked();
+	public static final Item prismarineItems = new PrismarineItems();
 
 	// Armour
 	public static final Item woodenHelmet = new WoodenArmour(0);
