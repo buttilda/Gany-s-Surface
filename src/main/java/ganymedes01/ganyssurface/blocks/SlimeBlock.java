@@ -11,15 +11,12 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.client.ForgeHooksClient;
 import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,9 +30,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class SlimeBlock extends Block {
 
-	@SideOnly(Side.CLIENT)
-	private IIcon[] blockIcons, insideIcons;
-
 	public SlimeBlock() {
 		super(Material.cloth);
 		setHardness(2.0F);
@@ -43,6 +37,7 @@ public class SlimeBlock extends Block {
 		setHarvestLevel("shovel", 0);
 		setStepSound(ModSounds.soundSlime);
 		setBlockName(Utils.getUnlocalizedName(Strings.SLIME_BLOCK_NAME));
+		setBlockTextureName(Utils.getBlockTexture(Strings.SLIME_BLOCK_NAME));
 		setCreativeTab(GanysSurface.enableSlimeBlock ? GanysSurface.surfaceTab : null);
 	}
 
@@ -50,7 +45,7 @@ public class SlimeBlock extends Block {
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 		if (!entity.isSneaking()) {
 			entity.fallDistance = 0.0F;
-			entity.motionY = 1.0F;
+			entity.motionY = 0.7F;
 		}
 	}
 
@@ -107,13 +102,6 @@ public class SlimeBlock extends Block {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean canRenderInPass(int pass) {
-		ForgeHooksClient.setRenderPass(pass);
-		return true;
-	}
-
-	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
 		int meta = world.getBlockMetadata(x, y, z);
 
@@ -122,24 +110,5 @@ public class SlimeBlock extends Block {
 			setBlockBounds(0F, 0F, 0F, 1.0F, 1.0F, 1.0F);
 		else
 			setBlockBounds(f * 2, f * 2, f * 2, f * 14, f * 14, f * 14);
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta) {
-		return meta == 0 ? blockIcons[side] : insideIcons[side];
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg) {
-		blockIcons = new IIcon[6];
-		insideIcons = new IIcon[6];
-		String[] dirs = new String[] { "top", "bottom", "front", "back", "left", "right" };
-
-		for (int i = 0; i < 6; i++) {
-			blockIcons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.SLIME_BLOCK_NAME) + "_" + dirs[i]);
-			insideIcons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.SLIME_BLOCK_NAME) + "_inside_" + dirs[i]);
-		}
 	}
 }

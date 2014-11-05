@@ -7,7 +7,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.client.MinecraftForgeClient;
 
 import org.lwjgl.opengl.GL11;
 
@@ -32,32 +31,35 @@ public class BlockSlimeBlockRender implements ISimpleBlockRenderingHandler {
 		GlStateManager.enableBlend();
 		GlStateManager.translate(-0.5F, -0.5F, -0.5F);
 
+		float f = 0.0625F;
+		renderer.setRenderBounds(f * 3, f * 3, f * 3, f * 13, f * 13, f * 13);
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, -1.0F, 0.0F);
 		renderer.renderFaceYNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 0, meta));
-		tessellator.draw();
-
-		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, 1.0F, 0.0F);
 		renderer.renderFaceYPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 1, meta));
-		tessellator.draw();
-
-		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, 0.0F, -1.0F);
 		renderer.renderFaceZNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 2, meta));
-		tessellator.draw();
-
-		tessellator.startDrawingQuads();
 		tessellator.setNormal(0.0F, 0.0F, 1.0F);
 		renderer.renderFaceZPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 3, meta));
-		tessellator.draw();
-
-		tessellator.startDrawingQuads();
 		tessellator.setNormal(-1.0F, 0.0F, 0.0F);
 		renderer.renderFaceXNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 4, meta));
+		tessellator.setNormal(1.0F, 0.0F, 0.0F);
+		renderer.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 5, meta));
 		tessellator.draw();
 
+		renderer.setRenderBounds(0, 0, 0, 1, 1, 1);
 		tessellator.startDrawingQuads();
+		tessellator.setNormal(0.0F, -1.0F, 0.0F);
+		renderer.renderFaceYNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 0, meta));
+		tessellator.setNormal(0.0F, 1.0F, 0.0F);
+		renderer.renderFaceYPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 1, meta));
+		tessellator.setNormal(0.0F, 0.0F, -1.0F);
+		renderer.renderFaceZNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 2, meta));
+		tessellator.setNormal(0.0F, 0.0F, 1.0F);
+		renderer.renderFaceZPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 3, meta));
+		tessellator.setNormal(-1.0F, 0.0F, 0.0F);
+		renderer.renderFaceXNeg(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 4, meta));
 		tessellator.setNormal(1.0F, 0.0F, 0.0F);
 		renderer.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, renderer.getBlockIconFromSideAndMetadata(block, 5, meta));
 		tessellator.draw();
@@ -68,21 +70,11 @@ public class BlockSlimeBlockRender implements ISimpleBlockRenderingHandler {
 
 	@Override
 	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
-		if (MinecraftForgeClient.getRenderPass() == 0) {
-			float f = 0.0625F;
-
-			renderer.setRenderBounds(f * 2, f * 2, f * 2, f * 14, f * 14, f * 14);
-
-			renderer.renderFaceXPos(block, x, y, z, ModBlocks.slimeBlock.getIcon(5, 1));
-			renderer.renderFaceYPos(block, x, y, z, ModBlocks.slimeBlock.getIcon(1, 1));
-			renderer.renderFaceZPos(block, x, y, z, ModBlocks.slimeBlock.getIcon(3, 1));
-
-			renderer.renderFaceXNeg(block, x, y, z, ModBlocks.slimeBlock.getIcon(4, 1));
-			renderer.renderFaceYNeg(block, x, y, z, ModBlocks.slimeBlock.getIcon(0, 1));
-			renderer.renderFaceZNeg(block, x, y, z, ModBlocks.slimeBlock.getIcon(2, 1));
-			return true;
-		} else
-			return renderer.renderStandardBlock(ModBlocks.slimeBlock, x, y, z);
+		renderer.renderStandardBlock(ModBlocks.slimeBlock, x, y, z);
+		float f = 0.0625F;
+		renderer.setRenderBounds(f * 3, f * 3, f * 3, f * 13, f * 13, f * 13);
+		renderer.renderAllFaces = true;
+		return renderer.renderStandardBlock(ModBlocks.slimeBlock, x, y, z);
 	}
 
 	@Override
