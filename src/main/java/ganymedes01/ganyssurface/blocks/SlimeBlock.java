@@ -15,7 +15,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
@@ -99,16 +98,5 @@ public class SlimeBlock extends Block {
 	@Override
 	public int getRenderType() {
 		return RenderIDs.SLIME_BLOCK;
-	}
-
-	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
-		int meta = world.getBlockMetadata(x, y, z);
-
-		float f = 0.0625F;
-		if (meta == 0)
-			setBlockBounds(0F, 0F, 0F, 1.0F, 1.0F, 1.0F);
-		else
-			setBlockBounds(f * 2, f * 2, f * 2, f * 14, f * 14, f * 14);
 	}
 }
