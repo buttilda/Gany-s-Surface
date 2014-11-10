@@ -8,12 +8,13 @@ import java.net.URL;
 import java.util.Properties;
 
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.IChatComponent;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class VersionHelper implements Runnable {
@@ -42,11 +43,11 @@ public class VersionHelper implements Runnable {
 			String remoteVersionProperty = remoteVersionProperties.getProperty(Reference.CHANNEL);
 
 			if (remoteVersionProperty != null) {
-				String[] remoteVersionTokens = remoteVersionProperty.split("\\|");
-				if (remoteVersionTokens.length >= 3) {
-					remoteVersion = remoteVersionTokens[0];
-					Reference.LATEST_VERSION = remoteVersionTokens[1];
-					updateURL = remoteVersionTokens[2];
+				String[] tokens = remoteVersionProperty.split("\\|");
+				if (tokens.length >= 3) {
+					remoteVersion = tokens[0];
+					Reference.LATEST_VERSION = tokens[1];
+					updateURL = tokens[2];
 				} else
 					result = ERROR;
 
@@ -91,8 +92,15 @@ public class VersionHelper implements Runnable {
 		}
 	}
 
-	public static String getResultMessageForClient() {
-		return EnumChatFormatting.GOLD + Reference.MOD_NAME + EnumChatFormatting.WHITE + " is " + EnumChatFormatting.RED + "outdated" + EnumChatFormatting.WHITE + ". Get " + EnumChatFormatting.GOLD + Reference.LATEST_VERSION + EnumChatFormatting.WHITE + " at: " + EnumChatFormatting.GREEN + updateURL;
+	public static IChatComponent getResultMessageForClient() {
+		EnumChatFormatting white = EnumChatFormatting.WHITE;
+		EnumChatFormatting green = EnumChatFormatting.GREEN;
+		EnumChatFormatting red = EnumChatFormatting.RED;
+		EnumChatFormatting gold = EnumChatFormatting.GOLD;
+
+		String text = gold + Reference.MOD_NAME + white + " is " + red + "outdated" + white + ".";
+		String download = "Download " + Reference.LATEST_VERSION;
+		return IChatComponent.Serializer.func_150699_a("[{\"text\":\"" + text + "\"}," + "{\"text\":\" " + white + "[" + green + download + white + "]\"," + "\"color\":\"green\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":" + "{\"text\":\"Click to download the latest version\",\"color\":\"yellow\"}}," + "\"clickEvent\":{\"action\":\"open_url\",\"value\":\"" + updateURL + "\"}}]");
 	}
 
 	public static byte getResult() {
