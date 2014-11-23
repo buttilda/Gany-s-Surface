@@ -1,6 +1,5 @@
 package ganymedes01.ganyssurface.items.block;
 
-import ganymedes01.ganyssurface.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
@@ -18,13 +17,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemRedSandstoneSlab extends ItemBlock {
 
-	private final Block half_block;
-	private final Block full_block;
-
 	public ItemRedSandstoneSlab(Block block) {
 		super(block);
-		half_block = ModBlocks.redSandstoneSlab;
-		full_block = ModBlocks.redSandstoneSlab;
 	}
 
 	@Override
@@ -38,9 +32,9 @@ public class ItemRedSandstoneSlab extends ItemBlock {
 			int meta = world.getBlockMetadata(x, y, z);
 			boolean flag = meta == 1;
 
-			if ((side == 1 && !flag || side == 0 && flag) && block != half_block ^ meta != 2) {
-				if (world.checkNoEntityCollision(full_block.getCollisionBoundingBoxFromPool(world, x, y, z)) && world.setBlock(x, y, z, full_block, 2, 3)) {
-					world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, full_block.stepSound.func_150496_b(), (full_block.stepSound.getVolume() + 1.0F) / 2.0F, full_block.stepSound.getPitch() * 0.8F);
+			if ((side == 1 && !flag || side == 0 && flag) && block != field_150939_a ^ meta != 2) {
+				if (world.checkNoEntityCollision(field_150939_a.getCollisionBoundingBoxFromPool(world, x, y, z)) && world.setBlock(x, y, z, field_150939_a, 2, 3)) {
+					world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, field_150939_a.stepSound.func_150496_b(), (field_150939_a.stepSound.getVolume() + 1.0F) / 2.0F, field_150939_a.stepSound.getPitch() * 0.8F);
 					stack.stackSize--;
 				}
 
@@ -59,7 +53,7 @@ public class ItemRedSandstoneSlab extends ItemBlock {
 		Block block = world.getBlock(x, y, z);
 		int meta = world.getBlockMetadata(x, y, z);
 
-		if (block == half_block && meta == 2)
+		if (block == field_150939_a && meta == 2)
 			return true;
 		else {
 			if (side == 0)
@@ -76,7 +70,7 @@ public class ItemRedSandstoneSlab extends ItemBlock {
 				x++;
 
 			Block block1 = world.getBlock(x, y, z);
-			return block1 == half_block ? true : super.func_150936_a(world, i1, j1, k1, side, player, stack);
+			return block1 == field_150939_a ? true : super.func_150936_a(world, i1, j1, k1, side, player, stack);
 		}
 	}
 
@@ -97,9 +91,9 @@ public class ItemRedSandstoneSlab extends ItemBlock {
 		Block block = world.getBlock(x, y, z);
 		int meta = world.getBlockMetadata(x, y, z);
 
-		if (block == half_block && meta != 2) {
-			if (world.checkNoEntityCollision(full_block.getCollisionBoundingBoxFromPool(world, x, y, z)) && world.setBlockMetadataWithNotify(x, y, z, 2, 3)) {
-				world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, full_block.stepSound.func_150496_b(), (full_block.stepSound.getVolume() + 1.0F) / 2.0F, full_block.stepSound.getPitch() * 0.8F);
+		if (block == field_150939_a && meta != 2) {
+			if (world.checkNoEntityCollision(field_150939_a.getCollisionBoundingBoxFromPool(world, x, y, z)) && world.setBlockMetadataWithNotify(x, y, z, 2, 3)) {
+				world.playSoundEffect(x + 0.5F, y + 0.5F, z + 0.5F, field_150939_a.stepSound.func_150496_b(), (field_150939_a.stepSound.getVolume() + 1.0F) / 2.0F, field_150939_a.stepSound.getPitch() * 0.8F);
 				stack.stackSize--;
 			}
 
