@@ -56,7 +56,7 @@ public class Stones18 extends Block implements ISubBlocksBlock {
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-		for (int i = 1; i <= 8; i++)
+		for (int i = 1; i < 9; i++)
 			list.add(new ItemStack(item, 1, i));
 	}
 
@@ -70,8 +70,15 @@ public class Stones18 extends Block implements ISubBlocksBlock {
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister reg) {
 		icons = new IIcon[9];
-		for (int i = 1; i <= 8; i++)
-			icons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.NEW_STONES_NAME + i));
+		icons[1] = reg.registerIcon("stone_granite");
+		icons[2] = reg.registerIcon("stone_granite_smooth");
+		icons[3] = reg.registerIcon("stone_diorite");
+		icons[4] = reg.registerIcon("stone_diorite_smooth");
+		icons[5] = reg.registerIcon("stone_andesite");
+		icons[6] = reg.registerIcon("stone_andesite_smooth");
+
+		icons[7] = reg.registerIcon(Utils.getBlockTexture("stone_basalt"));
+		icons[8] = reg.registerIcon(Utils.getBlockTexture("stone_basalt_smooth"));
 	}
 
 	@Override

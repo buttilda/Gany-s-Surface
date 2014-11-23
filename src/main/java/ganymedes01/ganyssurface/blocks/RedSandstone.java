@@ -18,8 +18,8 @@ public class RedSandstone extends BlockSandStone implements ISubBlocksBlock {
 
 	public RedSandstone() {
 		setHardness(0.8F);
+		setBlockTextureName("red_sandstone");
 		setBlockName(Utils.getUnlocalizedName("red_sandstone"));
-		setBlockTextureName(Utils.getBlockTexture("red_sandstone"));
 		setCreativeTab(GanysSurface.enableRedSandstone ? GanysSurface.surfaceTab : null);
 	}
 

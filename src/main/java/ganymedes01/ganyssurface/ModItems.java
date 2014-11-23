@@ -89,11 +89,6 @@ public class ModItems {
 	public static final Item gearalyser = new Gearalyser();
 	public static final Item pineCone = new PineCone();
 	public static final Item pineNuts = new PineNuts();
-	public static final Item doorAcacia = new ItemNewDoor("acacia", ModBlocks.doorAcacia);
-	public static final Item doorBirch = new ItemNewDoor("birch", ModBlocks.doorBirch);
-	public static final Item doorDarkOak = new ItemNewDoor("dark_oak", ModBlocks.doorDarkOak);
-	public static final Item doorJungle = new ItemNewDoor("jungle", ModBlocks.doorJungle);
-	public static final Item doorSpruce = new ItemNewDoor("spruce", ModBlocks.doorSpruce);
 	public static final Item quiver = new Quiver();
 	public static final Item painting = new Painting();
 
@@ -101,6 +96,11 @@ public class ModItems {
 	public static final Item rawMutton = new MuttonRaw();
 	public static final Item cookedMutton = new MuttonCooked();
 	public static final Item prismarineItems = new PrismarineItems();
+	public static final Item doorAcacia = new ItemNewDoor("acacia", ModBlocks.doorAcacia);
+	public static final Item doorBirch = new ItemNewDoor("birch", ModBlocks.doorBirch);
+	public static final Item doorDarkOak = new ItemNewDoor("dark_oak", ModBlocks.doorDarkOak);
+	public static final Item doorJungle = new ItemNewDoor("jungle", ModBlocks.doorJungle);
+	public static final Item doorSpruce = new ItemNewDoor("spruce", ModBlocks.doorSpruce);
 
 	// Armour
 	public static final Item woodenHelmet = new WoodenArmour(0);

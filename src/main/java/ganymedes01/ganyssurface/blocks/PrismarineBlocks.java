@@ -36,7 +36,6 @@ public class PrismarineBlocks extends Block implements ISubBlocksBlock {
 		setHardness(1.5F);
 		setResistance(10.0F);
 		setBlockName(Utils.getUnlocalizedName(Strings.PRISMARINE_BLOCKS));
-		setBlockTextureName(Utils.getBlockTexture(Strings.PRISMARINE_BLOCKS));
 		setCreativeTab(GanysSurface.enablePrismarineStuff ? GanysSurface.surfaceTab : null);
 	}
 
@@ -63,8 +62,9 @@ public class PrismarineBlocks extends Block implements ISubBlocksBlock {
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister reg) {
 		icons = new IIcon[3];
-		for (int i = 0; i < 3; i++)
-			icons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.PRISMARINE_BLOCKS + i));
+		icons[0] = reg.registerIcon("prismarine_rough");
+		icons[1] = reg.registerIcon("prismarine_bricks");
+		icons[2] = reg.registerIcon("prismarine_dark");
 	}
 
 	@Override

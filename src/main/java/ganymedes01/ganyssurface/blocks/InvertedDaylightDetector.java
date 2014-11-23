@@ -31,8 +31,8 @@ public class InvertedDaylightDetector extends BlockDaylightDetector {
 	public InvertedDaylightDetector() {
 		setHardness(0.2F);
 		setStepSound(soundTypeWood);
+		setBlockTextureName("daylight_detector_inverted_top");
 		setBlockName(Utils.getUnlocalizedName(Strings.INVERTED_DAYLIGHT_SENSOR));
-		setBlockTextureName(Utils.getBlockTexture(Strings.INVERTED_DAYLIGHT_SENSOR + "_top"));
 		setCreativeTab(GanysSurface.enableInvertedDaylightSensor ? GanysSurface.surfaceTab : null);
 	}
 

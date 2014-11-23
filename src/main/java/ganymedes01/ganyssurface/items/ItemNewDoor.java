@@ -17,7 +17,7 @@ public class ItemNewDoor extends Item {
 	public ItemNewDoor(String name, Block door) {
 		this.door = door;
 		setMaxStackSize(64);
-		setTextureName(Utils.getItemTexture("door_" + name));
+		setTextureName("door_" + name);
 		setUnlocalizedName(Utils.getUnlocalizedName("door_" + name));
 		setCreativeTab(GanysSurface.enableDoors ? GanysSurface.surfaceTab : null);
 	}

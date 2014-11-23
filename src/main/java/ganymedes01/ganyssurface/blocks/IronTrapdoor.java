@@ -21,8 +21,8 @@ public class IronTrapdoor extends BlockTrapDoor {
 		super(Material.iron);
 		setHardness(5.0F);
 		setStepSound(soundTypeMetal);
+		setBlockTextureName(Strings.IRON_TRAPDOOR);
 		setBlockName(Utils.getUnlocalizedName(Strings.IRON_TRAPDOOR));
-		setBlockTextureName(Utils.getBlockTexture(Strings.IRON_TRAPDOOR));
 		setCreativeTab(GanysSurface.enableIronTrapdoor ? GanysSurface.surfaceTab : null);
 	}
 

@@ -29,11 +29,8 @@ public class PrismarineItems extends Item {
 	public PrismarineItems() {
 		setMaxDamage(0);
 		setHasSubtypes(true);
-		if (GanysSurface.enablePrismarineStuff)
-			setCreativeTab(GanysSurface.surfaceTab);
-		else
-			setCreativeTab(null);
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.PRISMARINE_ITEMS));
+		setCreativeTab(GanysSurface.enablePrismarineStuff ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override
@@ -59,7 +56,7 @@ public class PrismarineItems extends Item {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister reg) {
 		icons = new IIcon[2];
-		icons[0] = reg.registerIcon(Utils.getItemTexture("prismarine_shard"));
-		icons[1] = reg.registerIcon(Utils.getItemTexture("prismarine_crystals"));
+		icons[0] = reg.registerIcon("prismarine_shard");
+		icons[1] = reg.registerIcon("prismarine_crystals");
 	}
 }
