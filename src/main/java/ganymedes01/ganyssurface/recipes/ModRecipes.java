@@ -55,6 +55,7 @@ public class ModRecipes {
 		if (GanysSurface.enablePrismarineStuff) {
 			OreDictionary.registerOre("shardPrismarine", new ItemStack(ModItems.prismarineItems, 1, 0));
 			OreDictionary.registerOre("crystalPrismarine", new ItemStack(ModItems.prismarineItems, 1, 1));
+			OreDictionary.registerOre("blockPrismarine", new ItemStack(ModBlocks.prismarineBlocks, 1, OreDictionary.WILDCARD_VALUE));
 		}
 
 		if (GanysSurface.enableDoors || GanysSurface.enableChests || GanysSurface.enableFences) {
