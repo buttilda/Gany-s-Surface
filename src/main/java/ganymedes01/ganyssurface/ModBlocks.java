@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface;
 import ganymedes01.ganyssurface.blocks.AutoEncaser;
 import ganymedes01.ganyssurface.blocks.BlockDetector;
 import ganymedes01.ganyssurface.blocks.BlockNewDoor;
+import ganymedes01.ganyssurface.blocks.BlockSilkedMushroom;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest;
 import ganymedes01.ganyssurface.blocks.BlockWoodFence;
 import ganymedes01.ganyssurface.blocks.BlockWoodFenceGate;
@@ -117,6 +118,8 @@ public class ModBlocks {
 	public static final Block gateDarkOak = new BlockWoodFenceGate(5);
 	public static final Block gateJungle = new BlockWoodFenceGate(3);
 	public static final Block gateSpruce = new BlockWoodFenceGate(1);
+	public static final Block brown_mushroom_block = new BlockSilkedMushroom(Blocks.brown_mushroom_block, "brown");
+	public static final Block red_mushroom_block = new BlockSilkedMushroom(Blocks.red_mushroom_block, "red");
 
 	static {
 		for (int i = 0; i < disguisedTrapDoor.length; i++)

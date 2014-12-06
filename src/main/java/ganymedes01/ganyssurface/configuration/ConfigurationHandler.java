@@ -109,6 +109,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableCoarseDirt = configBoolean("Enable coarse dirt", true, true);
 		GanysSurface.enable18Enchants = configBoolean("Enable 1.8 Enchanting Table", true, true);
 		GanysSurface.enableFences = configBoolean("Enable 1.8 wood fences", true, true);
+		GanysSurface.enableSilkTouchingMushrooms = configBoolean("Enable Silk Touching of mushroom blocks", true, true);
 
 		// Others
 		GanysSurface.shouldDoVersionCheck = configBoolean("shouldDoVersionCheck", true, true);

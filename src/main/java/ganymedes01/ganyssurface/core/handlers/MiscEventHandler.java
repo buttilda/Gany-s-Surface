@@ -194,6 +194,15 @@ public class MiscEventHandler {
 			if (event.block == Blocks.leaves && (event.blockMetadata & 3) == 1)
 				if (event.world.rand.nextInt(20) == 0)
 					event.drops.add(new ItemStack(ModItems.pineCone));
+
+		if (GanysSurface.enableSilkTouchingMushrooms && event.isSilkTouching)
+			if (event.block == Blocks.brown_mushroom_block) {
+				event.drops.clear();
+				event.drops.add(new ItemStack(ModBlocks.brown_mushroom_block));
+			} else if (event.block == Blocks.red_mushroom_block) {
+				event.drops.clear();
+				event.drops.add(new ItemStack(ModBlocks.red_mushroom_block));
+			}
 	}
 
 	@SubscribeEvent
