@@ -1,6 +1,5 @@
 package ganymedes01.ganyssurface.tileentities;
 
-import net.minecraft.block.BlockChest;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.AxisAlignedBB;
 import cpw.mods.fml.relauncher.Side;
@@ -23,6 +22,6 @@ public class TileEntityWoodChest extends TileEntityChest {
 
 	@Override
 	public int func_145980_j() {
-		return ((BlockChest) getBlockType()).field_149956_a;
+		return Math.max(200, super.func_145980_j());
 	}
 }

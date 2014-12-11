@@ -474,7 +474,6 @@ public class GlStateManager {
 
 	static class BooleanState {
 		private final int capability;
-		private boolean currentState = false;
 
 		public BooleanState(int p_i46267_1_) {
 			capability = p_i46267_1_;
@@ -489,14 +488,10 @@ public class GlStateManager {
 		}
 
 		public void setState(boolean p_179199_1_) {
-			if (p_179199_1_ != currentState) {
-				currentState = p_179199_1_;
-
-				if (p_179199_1_)
-					GL11.glEnable(capability);
-				else
-					GL11.glDisable(capability);
-			}
+			if (p_179199_1_)
+				GL11.glEnable(capability);
+			else
+				GL11.glDisable(capability);
 		}
 	}
 
