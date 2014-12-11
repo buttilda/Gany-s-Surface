@@ -33,7 +33,6 @@ public class SnowTickHandler {
 			int chunkX = chunkcoordintpair.chunkXPos * 16;
 			int chunkZ = chunkcoordintpair.chunkZPos * 16;
 			Chunk chunk = world.getChunkFromChunkCoords(chunkcoordintpair.chunkXPos, chunkcoordintpair.chunkZPos);
-			world.theProfiler.endStartSection("iceandsnow");
 
 			if (world.provider.canDoRainSnowIce(chunk) && world.rand.nextInt(24) == 0) {
 				int rand = world.rand.nextInt() - world.rand.nextInt();
@@ -50,8 +49,6 @@ public class SnowTickHandler {
 							world.setBlockMetadataWithNotify(x + chunkX, y, z + chunkZ, meta - 1, 3);
 				}
 			}
-
-			world.theProfiler.endSection();
 		}
 	}
 
