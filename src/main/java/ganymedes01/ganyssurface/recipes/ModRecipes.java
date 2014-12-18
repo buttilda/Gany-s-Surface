@@ -47,7 +47,12 @@ public class ModRecipes {
 		OreDictionary.registerOre("chestWood", new ItemStack(Blocks.chest));
 
 		if (GanysSurface.enableColouredRedstone)
-			OreDictionary.registerOre("dustRedstone", new ItemStack(ModItems.colouredRedstone, 1, OreDictionary.WILDCARD_VALUE));
+			for (int i = 0; i < 16; i++) {
+				if (i == 1)
+					continue;
+				OreDictionary.registerOre("dustRedstone", new ItemStack(ModItems.colouredRedstone, 1, i));
+				OreDictionary.registerOre("blockRedstone", new ItemStack(ModBlocks.colouredRedstoneBlock, 1, i));
+			}
 
 		if (GanysSurface.enableChocolate)
 			OreDictionary.registerOre("beansCocoa", new ItemStack(Items.dye, 1, 3));
