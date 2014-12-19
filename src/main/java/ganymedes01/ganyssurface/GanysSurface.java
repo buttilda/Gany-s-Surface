@@ -164,7 +164,9 @@ public class GanysSurface {
 
 		if (enableFences) {
 			removeFirstRecipeFor(Blocks.fence);
+			removeFirstRecipeFor(Blocks.fence_gate);
 			Blocks.fence.setCreativeTab(null);
+			Blocks.fence_gate.setCreativeTab(null);
 		}
 	}
 
