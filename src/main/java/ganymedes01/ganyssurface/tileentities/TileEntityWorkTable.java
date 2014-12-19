@@ -21,7 +21,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class TileEntityWorkTable extends GanysInventory implements ISidedInventory {
 
-	public final WorkTableCrafting craftMatrix = new WorkTableCrafting(this);
 	@SideOnly(Side.CLIENT)
 	private EntityItem entityItem;
 
@@ -93,25 +92,21 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 
 		protected final TileEntityWorkTable tile;
 		protected final int offset;
-		protected Container container;
+		protected final Container container;
 
-		public WorkTableCrafting(TileEntityWorkTable tile) {
-			this(tile, 0);
+		public WorkTableCrafting(TileEntityWorkTable tile, Container container) {
+			this(tile, container, 0);
 		}
 
-		public WorkTableCrafting(TileEntityWorkTable tile, int offset) {
+		public WorkTableCrafting(TileEntityWorkTable tile, Container container, int offset) {
 			super(null, 0, 0);
 			this.tile = tile;
 			this.offset = offset;
-		}
-
-		public void setContainer(Container container) {
 			this.container = container;
 		}
 
 		private void onCraftingChanged() {
-			if (container != null)
-				container.onCraftMatrixChanged(this);
+			container.onCraftMatrixChanged(this);
 		}
 
 		@Override

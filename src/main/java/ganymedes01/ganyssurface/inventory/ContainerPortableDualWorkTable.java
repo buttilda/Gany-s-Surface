@@ -4,11 +4,8 @@ import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.inventory.slots.PlaceholderSlot;
 import ganymedes01.ganyssurface.items.PortableDualWorkTable;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
 
 /**
  * Gany's Surface
@@ -18,8 +15,6 @@ import net.minecraft.world.World;
  */
 
 public class ContainerPortableDualWorkTable extends ContainerDualWorkTable {
-
-	private final World world;
 
 	public ContainerPortableDualWorkTable(EntityPlayer player, int slot) {
 		super(player.inventory, PortableDualWorkTable.getTile(player.inventory.getStackInSlot(slot)), false);
@@ -33,14 +28,6 @@ public class ContainerPortableDualWorkTable extends ContainerDualWorkTable {
 				addSlotToContainer(new PlaceholderSlot(player.inventory, i, 19 + i * 18, 142));
 			else
 				addSlotToContainer(new Slot(player.inventory, i, 19 + i * 18, 142));
-	}
-
-	@Override
-	public void onCraftMatrixChanged(IInventory inventory) {
-		if (inventory == tile.craftMatrix)
-			result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(tile.craftMatrix, world));
-		else if (inventory == tile.craftMatrixRight)
-			resultRight.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(tile.craftMatrixRight, world));
 	}
 
 	@Override

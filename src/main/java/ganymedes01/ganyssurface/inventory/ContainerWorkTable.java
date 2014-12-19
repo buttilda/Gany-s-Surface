@@ -1,15 +1,18 @@
 package ganymedes01.ganyssurface.inventory;
 
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
+import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable.WorkTableCrafting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.world.World;
 
 /**
  * Gany's Surface
@@ -20,29 +23,32 @@ import net.minecraft.item.crafting.CraftingManager;
 
 public class ContainerWorkTable extends Container {
 
+	protected World world;
+	protected InventoryCrafting matrix;
 	protected IInventory result = new InventoryCraftResult();
-	private final TileEntityWorkTable tile;
 
 	public ContainerWorkTable(InventoryPlayer inventory, TileEntityWorkTable tile) {
-		this.tile = tile;
-		tile.craftMatrix.setContainer(this);
+		world = tile.getWorldObj();
+		matrix = new WorkTableCrafting(tile, this);
 
-		addSlotToContainer(new SlotCrafting(inventory.player, tile.craftMatrix, result, 0, 124, 35));
+		addSlotToContainer(new SlotCrafting(inventory.player, matrix, result, 0, 124, 35));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
-				addSlotToContainer(new Slot(tile.craftMatrix, j + i * 3, 30 + j * 18, 17 + i * 18));
+				addSlotToContainer(new Slot(matrix, j + i * 3, 30 + j * 18, 17 + i * 18));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++)
 				addSlotToContainer(new Slot(inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 		for (int i = 0; i < 9; i++)
 			addSlotToContainer(new Slot(inventory, i, 8 + i * 18, 142));
+
+		onCraftMatrixChanged(matrix);
 	}
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(tile.craftMatrix, tile.getWorldObj()));
+		result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(matrix, world));
 	}
 
 	@Override

@@ -9,8 +9,6 @@ package ganymedes01.ganyssurface.tileentities;
 
 public class TileEntityDualWorkTable extends TileEntityWorkTable {
 
-	public final WorkTableCrafting craftMatrixRight = new WorkTableCrafting(this, 9);
-
 	public TileEntityDualWorkTable() {
 		super(18);
 	}
