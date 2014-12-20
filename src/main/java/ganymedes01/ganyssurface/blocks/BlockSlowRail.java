@@ -35,6 +35,7 @@ public class BlockSlowRail extends BlockRailPowered {
 		if ((meta & 7) == meta)
 			return;
 
+		meta &= 7;
 		if (cart.shouldDoRailFunctions()) {
 			double d15 = Math.sqrt(cart.motionX * cart.motionX + cart.motionZ * cart.motionZ);
 
