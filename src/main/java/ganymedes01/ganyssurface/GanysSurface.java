@@ -98,11 +98,12 @@ public class GanysSurface {
 	public static boolean enableEndermanDropsBlocks = true;
 	public static boolean enableChests = true;
 	public static boolean enableDynamicTextureChests = false;
+	public static boolean enableSlowRail = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
 	public static int poopingChance = 15000;
-	public static int noDespawnRadius = 32;
+	public static int noDespawnRadius = 0;
 
 	public static boolean enable18Stones = true;
 	public static boolean enableIronTrapdoor = true;

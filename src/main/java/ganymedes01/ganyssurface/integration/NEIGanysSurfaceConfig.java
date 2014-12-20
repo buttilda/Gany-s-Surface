@@ -211,6 +211,9 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModBlocks.gateSpruce));
 		} else
 			API.hideItem(new ItemStack(Blocks.fence));
+
+		if (!GanysSurface.enableSlowRail)
+			API.hideItem(new ItemStack(ModBlocks.slowRail));
 	}
 
 	@Override

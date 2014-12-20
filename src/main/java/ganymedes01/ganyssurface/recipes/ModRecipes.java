@@ -282,6 +282,9 @@ public class ModRecipes {
 			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chestDarkOak);
 		}
 
+		if (GanysSurface.enableSlowRail)
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.slowRail, 6), "w w", "xyx", "wzw", 'x', "slimeball", 'y', "stickWood", 'z', "dustRedstone", 'w', "ingotIron"));
+
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)
 			GameRegistry.addRecipe(new ItemStack(Blocks.web), "x x", " y ", "x x", 'y', Items.slime_ball, 'x', Items.string);

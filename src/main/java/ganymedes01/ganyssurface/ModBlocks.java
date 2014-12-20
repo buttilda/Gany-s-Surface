@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.blocks.AutoEncaser;
 import ganymedes01.ganyssurface.blocks.BlockDetector;
 import ganymedes01.ganyssurface.blocks.BlockNewDoor;
 import ganymedes01.ganyssurface.blocks.BlockSilkedMushroom;
+import ganymedes01.ganyssurface.blocks.BlockSlowRail;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest;
 import ganymedes01.ganyssurface.blocks.BlockWoodFence;
 import ganymedes01.ganyssurface.blocks.BlockWoodFenceGate;
@@ -85,6 +86,7 @@ public class ModBlocks {
 	public static final Block autoEncaser = new AutoEncaser();
 	public static final Block leafWall = new LeafWall();
 	public static final Block charcoalBlock = new CharcoalBlock();
+	public static final Block slowRail = new BlockSlowRail();
 
 	public static final Block chestOak = new BlockWoodChest(Blocks.planks, 0);
 	public static final Block chestSpruce = new BlockWoodChest(Blocks.planks, 1);

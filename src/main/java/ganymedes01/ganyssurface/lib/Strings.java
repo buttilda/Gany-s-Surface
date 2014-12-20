@@ -49,6 +49,7 @@ public class Strings {
 	public static final String INVERTED_DAYLIGHT_SENSOR = "daylight_detector_inverted";
 	public static final String CHARCOAL_BLOCK = "charcoalBlock";
 	public static final String LEAF_WALL = "leafWall";
+	public static final String SLOW_RAIL = "slowRail";
 
 	// Item names
 	public static final String ROT_NAME = "rot";
