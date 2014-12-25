@@ -116,7 +116,7 @@ public class TileEntityWorkTable extends GanysInventory implements ISidedInvento
 
 		@Override
 		public ItemStack getStackInSlot(int slot) {
-			return tile.getStackInSlot(slot + offset);
+			return slot >= getSizeInventory() ? null : tile.getStackInSlot(slot + offset);
 		}
 
 		@Override
