@@ -130,6 +130,7 @@ tile.ganyssurface.chest2.name=Сундук из берёзы
 tile.ganyssurface.chest3.name=Сундук из тропического дерева
 tile.ganyssurface.chest4.name=Сундук из акации
 tile.ganyssurface.chest5.name=Сундук из тёмного дуба
+tile.ganyssurface.slowRail.name=Медленный рельс
 
 tile.ganyssurface.18Stones1.name=Гранит
 tile.ganyssurface.18Stones2.name=Гладкий гранит
@@ -171,6 +172,8 @@ tile.ganyssurface.fence_gate_2.name=Калитка из берёзы
 tile.ganyssurface.fence_gate_3.name=Калитка из тропического дерева
 tile.ganyssurface.fence_gate_4.name=Калитка из акации
 tile.ganyssurface.fence_gate_5.name=Калитка из тёмного дуба
+tile.ganyssurface.red_mushroom.name=Гриб
+tile.ganyssurface.brown_mushroom.name=Гриб
 
 tile.ganyssurface.colouredRedstoneBLACK.name=Чёрный камень
 tile.ganyssurface.colouredRedstoneGREEN.name=Зелёный камень
