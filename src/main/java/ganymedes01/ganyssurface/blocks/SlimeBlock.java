@@ -44,7 +44,7 @@ public class SlimeBlock extends Block {
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
 		if (!entity.isSneaking()) {
 			entity.fallDistance = 0.0F;
-			entity.motionY = 0.7F;
+			entity.motionY = 1.0F;
 		}
 	}
 
