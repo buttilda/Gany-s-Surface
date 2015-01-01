@@ -1,3 +1,9 @@
+container.enchant.lapis.one=1 Lapis Lazuli
+container.enchant.lapis.many=%d Lapis Lazuli
+container.enchant.level.one=1 Niveau Requis
+container.enchant.level.many=%d Niveaux Requis
+container.enchant.clue=%s . . . ?
+
 # Item localizations
 item.ganyssurface.woodenHelmet.name=Casque en Bois
 item.ganyssurface.woodenChestplate.name=Plastron en Bois
@@ -124,6 +130,7 @@ tile.ganyssurface.chest2.name=Coffre en Bouleau
 tile.ganyssurface.chest3.name=Coffre en Bois de la Jungle
 tile.ganyssurface.chest4.name=Coffre en Acacia
 tile.ganyssurface.chest5.name=Coffre en Chêne Sombre
+tile.ganyssurface.slowRail.name=Rail Lent
 
 tile.ganyssurface.18Stones1.name=Granite
 tile.ganyssurface.18Stones2.name=Granite Poli
@@ -131,6 +138,8 @@ tile.ganyssurface.18Stones3.name=Diorite
 tile.ganyssurface.18Stones4.name=Diorite Polie
 tile.ganyssurface.18Stones5.name=Andesite
 tile.ganyssurface.18Stones6.name=Andesite Polie
+tile.ganyssurface.18Stones7.name=Basalte
+tile.ganyssurface.18Stones8.name=Basalte Poli
 tile.ganyssurface.iron_trapdoor.name=Trappe en Fer
 tile.ganyssurface.prismarineBlocks0.name=Prismarin
 tile.ganyssurface.prismarineBlocks1.name=Brique de Prismarin
@@ -141,7 +150,7 @@ tile.ganyssurface.daylight_detector_inverted.name=Capteur de Lumière du Jour In
 tile.ganyssurface.leafWall0.name=Muret en feuilles de Chêne
 tile.ganyssurface.leafWall1.name=Muret en feuilles de Pin
 tile.ganyssurface.leafWall2.name=Muret en feuilles de Bouleau
-tile.ganyssurface.leafWall3.name=Muret en feuilles de Jungle
+tile.ganyssurface.leafWall3.name=Muret en feuilles de la Jungle
 tile.ganyssurface.red_sandstone0.name=Grès Rouge
 tile.ganyssurface.red_sandstone1.name=Grès Taillé Rouge
 tile.ganyssurface.red_sandstone2.name=Grès Lisse Rouge
@@ -152,6 +161,19 @@ tile.ganyssurface.doorBirch.name=Porte en Bouleau
 tile.ganyssurface.doorDark_oak.name=Porte en Chêne Sombre
 tile.ganyssurface.doorJungle.name=Porte en Bois de la Jungle
 tile.ganyssurface.doorSpruce.name=Porte en Pin
+tile.ganyssurface.fence_0.name=Barrière en Chêne
+tile.ganyssurface.fence_1.name=Barrière en Pin
+tile.ganyssurface.fence_2.name=Barrière en Bouleau
+tile.ganyssurface.fence_3.name=Barrière en Bois de la Jungle
+tile.ganyssurface.fence_4.name=Barrière en Acacia
+tile.ganyssurface.fence_5.name=Barrière en Chêne Sombre
+tile.ganyssurface.fence_gate_1.name=Portillon en Pin
+tile.ganyssurface.fence_gate_2.name=Portillon en Bouleau
+tile.ganyssurface.fence_gate_3.name=Portillon en Bois de la Jungle
+tile.ganyssurface.fence_gate_4.name=Portillon en Acacia
+tile.ganyssurface.fence_gate_5.name=Portillon en Chêne Sombre
+tile.ganyssurface.red_mushroom.name=Champignon
+tile.ganyssurface.brown_mushroom.name=Champignon
 
 tile.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 tile.ganyssurface.colouredRedstoneGREEN.name=Greenstone
