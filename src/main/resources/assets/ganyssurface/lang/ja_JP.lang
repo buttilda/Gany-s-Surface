@@ -82,9 +82,9 @@ item.ganyssurface.colouredRedstoneWHITE.name=ホワイトストーン
 # Blockのローカライズ
 tile.ganyssurface.camelliaCrop.name=チャノキ
 tile.ganyssurface.rainDetector.name=降雨センサー
-tile.ganyssurface.blockDetector.name=BUDブロック
+tile.ganyssurface.blockDetector.name=ブロック探知機
 tile.ganyssurface.dislocator.name=ブロック粉砕器
-tile.ganyssurface.sensoringDislocator.name=BUD付きブロック粉砕器
+tile.ganyssurface.sensoringDislocator.name=探知式ブロック粉砕器
 tile.ganyssurface.cubicSensoringDislocator.name=六面ブロック粉砕器
 tile.ganyssurface.disguisedTrapDoor_oak.name=オークの偽装トラップドア
 tile.ganyssurface.disguisedTrapDoor_spruce.name=松の偽装トラップドア
