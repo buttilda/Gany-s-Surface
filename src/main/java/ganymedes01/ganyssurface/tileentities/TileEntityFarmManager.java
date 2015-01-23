@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.core.utils.Spiral;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.awt.Point;
+import java.util.LinkedList;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -13,9 +14,9 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class TileEntityFarmManager extends GanysInventory {
@@ -43,19 +44,21 @@ public class TileEntityFarmManager extends GanysInventory {
 				continue;
 
 			if (worldObj.isAirBlock(xCoord + p.x, yCoord - i + 1, zCoord + p.y)) {
-				for (int j = 0; j < inventory.length; j++) {
-					if (inventory[j] == null)
-						continue;
-					if (inventory[j].getItem() instanceof IPlantable) {
-						IPlantable seed = (IPlantable) inventory[j].getItem();
+				List<Integer> slots = new LinkedList<Integer>();
+				for (int j = 0; j < inventory.length; j++)
+					if (inventory[j] != null)
+						slots.add(j);
+				if (!slots.isEmpty()) {
+					int slot = slots.get(worldObj.rand.nextInt(slots.size()));
+					if (inventory[slot].getItem() instanceof IPlantable) {
+						IPlantable seed = (IPlantable) inventory[slot].getItem();
 						Block soil = worldObj.getBlock(xCoord + p.x, yCoord - i, zCoord + p.y);
 						if (soil.canSustainPlant(worldObj, xCoord + p.x, yCoord - i, zCoord + p.y, ForgeDirection.UP, seed)) {
 							Block crop = seed.getPlant(worldObj, xCoord, yCoord, zCoord);
 							worldObj.setBlock(xCoord + p.x, yCoord - i + 1, zCoord + p.y, crop);
-							worldObj.playSoundEffect(xCoord + p.x + 0.5F, yCoord - i + 1, zCoord + p.y + 0.5F, crop.stepSound.soundName, (crop.stepSound.getVolume() + 1.0F) / 2.0F, crop.stepSound.getPitch() * 0.8F);
-							inventory[j].stackSize--;
-							if (inventory[j].stackSize <= 0)
-								inventory[j] = null;
+							worldObj.playSoundEffect(xCoord + p.x + 0.5F, yCoord - i + 1, zCoord + p.y + 0.5F, crop.stepSound.getBreakSound(), (crop.stepSound.getVolume() + 1.0F) / 2.0F, crop.stepSound.getPitch() * 0.8F);
+							if (--inventory[slot].stackSize <= 0)
+								inventory[slot] = null;
 							break;
 						}
 					}
