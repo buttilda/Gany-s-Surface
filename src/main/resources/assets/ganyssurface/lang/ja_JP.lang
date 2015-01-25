@@ -119,7 +119,7 @@ tile.ganyssurface.lantern.name=ランタン
 tile.ganyssurface.inkHarvester.name=インクハーべスター
 tile.ganyssurface.slimeBlock.name=スライムブロック
 tile.ganyssurface.dualWorkTable.name=二重作業台
-tile.ganyssurface.poopBlock.name=フンブロック
+tile.ganyssurface.poopBlock.name=フン
 tile.ganyssurface.farmManager.name=ファームマネージャー
 tile.ganyssurface.encasingBench.name=梱包作業台
 tile.ganyssurface.autoEncaser.name=自動梱包装置
@@ -130,6 +130,7 @@ tile.ganyssurface.chest2.name=白樺のチェスト
 tile.ganyssurface.chest3.name=ジャングルの木のチェスト
 tile.ganyssurface.chest4.name=アカシアのチェスト
 tile.ganyssurface.chest5.name=ダークオークのチェスト
+tile.ganyssurface.slowRail.name=スローレール
 
 tile.ganyssurface.18Stones1.name=花崗岩
 tile.ganyssurface.18Stones2.name=磨かれた花崗岩
@@ -207,8 +208,8 @@ tile.ganyssurface.colouredRedstoneBlockORANGE.name=オレンジストーンブ�
 tile.ganyssurface.colouredRedstoneBlockWHITE.name=ホワイトストーンブロック
 
 # GUIのローカライズ
-container.ganyssurface.blockDetector=BUDブロック
-container.ganyssurface.sensoringDislocator= BUD付きブロック粉砕器
+container.ganyssurface.blockDetector=ブロック探知機
+container.ganyssurface.sensoringDislocator=探知式ブロック粉砕器
 container.ganyssurface.cubicSensoringDislocator=六面ブロック粉砕器
 container.ganyssurface.workTable=改良型作業台
 container.ganyssurface.organicMatterCompressor=有機物コンプレッサー
