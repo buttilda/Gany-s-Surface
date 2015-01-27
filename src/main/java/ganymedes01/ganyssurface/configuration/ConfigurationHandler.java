@@ -3,10 +3,14 @@ package ganymedes01.ganyssurface.configuration;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.integration.Integration;
 import ganymedes01.ganyssurface.integration.ModIntegrator;
+import ganymedes01.ganyssurface.lib.EnumColour;
 import ganymedes01.ganyssurface.lib.Reference;
 
+import java.awt.Color;
 import java.io.File;
 
+import net.minecraft.block.BlockColored;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -22,7 +26,7 @@ public class ConfigurationHandler {
 
 	public static ConfigurationHandler INSTANCE = new ConfigurationHandler();
 	public Configuration configFile;
-	public String[] usedCategories = { Configuration.CATEGORY_GENERAL, "mod integration" };
+	public String[] usedCategories = { Configuration.CATEGORY_GENERAL, "mod integration", "wool colours" };
 
 	private int configInteger(String name, boolean requireRestart, int def) {
 		return configInteger(name, null, requireRestart, def);
@@ -121,6 +125,19 @@ public class ConfigurationHandler {
 		GanysSurface.inkHarvesterMaxStrike = configInteger("inkHarvesterMaxStrike", false, 5);
 		GanysSurface.poopingChance = configInteger("poopingChance", "Larger number means poop is LESS likely to happen", false, 15000);
 		GanysSurface.prismarineTempleChance = configInteger("prismarineTempleChance", "Larger number means temples are LESS likely to happen", false, GanysSurface.prismarineTempleChance);
+
+		// Sheep wool colours
+		for (int i = 0; i < 16; i++) {
+			String def = "";
+			for (int j = 0; j < 3; j++)
+				def += Integer.toHexString((int) (EntitySheep.fleeceColorTable[i][j] * 255));
+			def = "0x" + def.toUpperCase();
+			String colour = configFile.get("wool colours", EnumColour.values()[BlockColored.func_150031_c(i)].toString(), def, "Default: " + def).getString();
+			float red = Color.decode(colour).getRed() / 255F;
+			float green = Color.decode(colour).getGreen() / 255F;
+			float blue = Color.decode(colour).getBlue() / 255F;
+			EntitySheep.fleeceColorTable[i] = new float[] { red, green, blue };
+		}
 
 		if (configFile.hasChanged())
 			configFile.save();
