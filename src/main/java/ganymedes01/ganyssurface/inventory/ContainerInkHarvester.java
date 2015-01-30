@@ -1,7 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
-import ganymedes01.ganyssurface.inventory.slots.FoodSlot;
-import ganymedes01.ganyssurface.inventory.slots.InvalidSlot;
+import ganymedes01.ganyssurface.inventory.slots.BetterSlot;
 import ganymedes01.ganyssurface.tileentities.TileEntityInkHarvester;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -12,9 +11,9 @@ import net.minecraft.item.ItemStack;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ContainerInkHarvester extends Container {
@@ -22,11 +21,11 @@ public class ContainerInkHarvester extends Container {
 	public ContainerInkHarvester(InventoryPlayer inventory, TileEntityInkHarvester tile) {
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
-				addSlotToContainer(new InvalidSlot(tile, j + i * 3, 45 + j * 18, 17 + i * 18));
+				addSlotToContainer(new BetterSlot(tile, j + i * 3, 45 + j * 18, 17 + i * 18));
 
 		for (int i = 0; i < 2; i++)
 			for (int j = 0; j < 2; j++)
-				addSlotToContainer(new FoodSlot(tile, 9 + j + i * 2, 116 + j * 18, 35 + i * 18));
+				addSlotToContainer(new BetterSlot(tile, 9 + j + i * 2, 116 + j * 18, 35 + i * 18));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++)

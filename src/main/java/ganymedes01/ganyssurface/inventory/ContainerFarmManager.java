@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
-import ganymedes01.ganyssurface.inventory.slots.SeedSlot;
+import ganymedes01.ganyssurface.inventory.slots.BetterSlot;
 import ganymedes01.ganyssurface.tileentities.TileEntityFarmManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -10,9 +10,9 @@ import net.minecraft.item.ItemStack;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ContainerFarmManager extends Container {
@@ -22,7 +22,7 @@ public class ContainerFarmManager extends Container {
 		int index = 0;
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 6; j++) {
-				addSlotToContainer(new SeedSlot(tile, index, 35 + j * 18, 17 + i * 18));
+				addSlotToContainer(new BetterSlot(tile, index, 35 + j * 18, 17 + i * 18));
 				index++;
 			}
 

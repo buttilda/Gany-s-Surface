@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -74,6 +75,11 @@ public class TileEntityFarmManager extends GanysInventory {
 			index = 0;
 
 		return spiral.get(index);
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int slot, ItemStack stack) {
+		return stack != null ? stack.getItem() instanceof IPlantable : false;
 	}
 
 	@Override

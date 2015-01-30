@@ -1,8 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
-import ganymedes01.ganyssurface.inventory.slots.CoalBlockSlot;
-import ganymedes01.ganyssurface.inventory.slots.CoalSlot;
-import ganymedes01.ganyssurface.inventory.slots.OrganicMatterSlot;
+import ganymedes01.ganyssurface.inventory.slots.BetterSlot;
 import ganymedes01.ganyssurface.recipes.OrganicMatterRegistry;
 import ganymedes01.ganyssurface.tileentities.TileEntityOrganicMatterCompressor;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,9 +13,9 @@ import net.minecraft.item.ItemStack;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ContainerOrganicMatterCompressor extends Container {
@@ -29,9 +27,9 @@ public class ContainerOrganicMatterCompressor extends Container {
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
-				addSlotToContainer(new OrganicMatterSlot(tile, j + i * 3, j * 18 + 34, i * 18 + 18));
-		addSlotToContainer(new CoalSlot(tile, 9, 126, 17));
-		addSlotToContainer(new CoalBlockSlot(tile, 10, 126, 53));
+				addSlotToContainer(new BetterSlot(tile, j + i * 3, j * 18 + 34, i * 18 + 18));
+		addSlotToContainer(new BetterSlot(tile, 9, 126, 17));
+		addSlotToContainer(new BetterSlot(tile, 10, 126, 53));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++)

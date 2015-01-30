@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
-import ganymedes01.ganyssurface.inventory.slots.BlockDetectorSlot;
+import ganymedes01.ganyssurface.inventory.slots.BetterSlot;
 import ganymedes01.ganyssurface.tileentities.TileEntityBlockDetector;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -10,15 +10,15 @@ import net.minecraft.item.ItemStack;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ContainerBlockDetector extends Container {
 
 	public ContainerBlockDetector(InventoryPlayer inventory, TileEntityBlockDetector tile) {
-		addSlotToContainer(new BlockDetectorSlot(tile, 0, 80, 42));
+		addSlotToContainer(new BetterSlot(tile, 0, 80, 42));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++)

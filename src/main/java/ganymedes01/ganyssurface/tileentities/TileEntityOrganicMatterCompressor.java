@@ -15,19 +15,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class TileEntityOrganicMatterCompressor extends GanysInventory implements ISidedInventory {
 
-	private final int BLOCK_OF_COAL = 10;
-	private final int COAL = 9;
-	private final int[] SLOTS = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-	private final int WORK_TIME = 900;
+	private static final int BLOCK_OF_COAL = 10, COAL = 9, WORK_TIME = 900, NEEDED_MATTER = 144;
+	private static final int[] SLOTS = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
 	private int currentTime, organicMatter;
-	private final int NEEDED_MATTER = 144;
 
 	public TileEntityOrganicMatterCompressor() {
 		super(11, Strings.ORGANIC_MATTER_COMPRESSOR_NAME);
