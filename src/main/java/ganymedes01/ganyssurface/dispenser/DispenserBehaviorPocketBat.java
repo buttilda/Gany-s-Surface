@@ -5,17 +5,15 @@ import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class DispenserBehaviorPocketBat extends BehaviorDefaultDispenseItem {
@@ -37,10 +35,11 @@ public class DispenserBehaviorPocketBat extends BehaviorDefaultDispenseItem {
 
 		if (entityID > 0) {
 			Entity entity = ItemMonsterPlacer.spawnCreature(block.getWorld(), entityID, x, y, z);
-			((EntityBat) entity).func_110163_bv();
-
-			if (entity instanceof EntityLivingBase && stack.hasDisplayName())
-				((EntityLiving) entity).setCustomNameTag(stack.getDisplayName());
+			if (entity instanceof EntityLiving) {
+				((EntityLiving) entity).func_110163_bv();
+				if (stack.hasDisplayName())
+					((EntityLiving) entity).setCustomNameTag(stack.getDisplayName());
+			}
 
 			stack.splitStack(1);
 		}
