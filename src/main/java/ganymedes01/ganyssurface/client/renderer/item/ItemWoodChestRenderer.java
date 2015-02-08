@@ -63,7 +63,7 @@ public class ItemWoodChestRenderer implements IItemRenderer {
 		GlStateManager.rotate(180, 1, 0, 0);
 		GlStateManager.rotate(-90, 0, 1, 0);
 
-		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TileEntityWoodChestRenderer.normal_textures.get(block.getType()));
+		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TileEntityWoodChestRenderer.makeChestTexture(block.getType(), true));
 
 		model.renderAll();
 
