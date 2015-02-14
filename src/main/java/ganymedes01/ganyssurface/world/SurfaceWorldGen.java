@@ -56,30 +56,38 @@ public class SurfaceWorldGen implements IWorldGenerator {
 			if (rand.nextInt(GanysSurface.prismarineTempleChance) == 0) {
 				int x = chunkX * 16 + rand.nextInt(16);
 				int z = chunkZ * 16 + rand.nextInt(16);
-				int height = world.getHeightValue(x, z);
-				int y = height;
+				if (biomeIsOcean(BiomeDictionary.getTypesForBiome(world.getBiomeGenForCoords(x, z)))) {
+					int height = world.getHeightValue(x, z);
+					int y = height;
 
-				for (; y > 0; y--) {
-					Block block = world.getBlock(x, y, z);
-					if (block.getMaterial() != Material.water && !block.isAir(world, x, y, z))
-						break;
+					for (; y > 0; y--) {
+						Block block = world.getBlock(x, y, z);
+						if (block.getMaterial() != Material.water && !block.isAir(world, x, y, z))
+							break;
+					}
+
+					int pillarHeight = height - y - 22; // 22 is the height of the temple without the pillars
+					pillarHeight -= 2 + rand.nextInt(2); // So that the temple is X blocks under water
+					if (pillarHeight >= 0) {
+
+						// Check if temple fits
+						for (int i = 0; i < 58; i++)
+							for (int j = 0; j < 22; j++)
+								for (int k = 0; k < 58; k++)
+									if (!world.getBlock(x + i, y + j + pillarHeight, z + k).isReplaceable(world, x + i, y + j + pillarHeight, z + k))
+										return;
+						Temple.buildTemple(world, x, y, z, pillarHeight);
+						return;
+					}
+					return;
 				}
-
-				int pillarHeight = height - y - 22; // 22 is the height of the temple without the pillars
-				pillarHeight -= 2 + rand.nextInt(2); //So that the temple is X blocks under water
-				if (pillarHeight >= 0)
-					for (BiomeDictionary.Type type : BiomeDictionary.getTypesForBiome(world.getBiomeGenForCoords(x, z)))
-						if (type == BiomeDictionary.Type.OCEAN) {
-
-							// Check if temple fits
-							for (int i = 0; i < 58; i++)
-								for (int j = 0; j < 22; j++)
-									for (int k = 0; k < 58; k++)
-										if (!world.getBlock(x + i, y + j + pillarHeight, z + k).isReplaceable(world, x + i, y + j + pillarHeight, z + k))
-											return;
-							Temple.buildTemple(world, x, y, z, pillarHeight);
-							return;
-						}
 			}
+	}
+
+	private boolean biomeIsOcean(BiomeDictionary.Type[] types) {
+		for (int i = 0; i < types.length; i++)
+			if (types[i] == BiomeDictionary.Type.OCEAN)
+				return true;
+		return false;
 	}
 }
