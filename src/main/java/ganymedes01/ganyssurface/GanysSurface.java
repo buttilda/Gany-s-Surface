@@ -119,6 +119,7 @@ public class GanysSurface {
 	public static boolean enableFences = true;
 	public static boolean enableSilkTouchingMushrooms = true;
 	public static int prismarineTempleChance = 800;
+	public static int max18StonesPerCluster = 33;
 
 	@EventHandler
 	@SuppressWarnings("unchecked")

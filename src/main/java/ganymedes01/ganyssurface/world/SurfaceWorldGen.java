@@ -29,10 +29,10 @@ public class SurfaceWorldGen implements IWorldGenerator {
 	private final List<WorldGenMinable> generators = new LinkedList<WorldGenMinable>();
 
 	public SurfaceWorldGen() {
-		generators.add(new WorldGenMinable(ModBlocks.newStones, 1, 33, Blocks.stone));
-		generators.add(new WorldGenMinable(ModBlocks.newStones, 3, 33, Blocks.stone));
-		generators.add(new WorldGenMinable(ModBlocks.newStones, 5, 33, Blocks.stone));
-		generators.add(new WorldGenMinable(ModBlocks.newStones, 7, 33, Blocks.stone));
+		generators.add(new WorldGenMinable(ModBlocks.newStones, 1, GanysSurface.max18StonesPerCluster, Blocks.stone));
+		generators.add(new WorldGenMinable(ModBlocks.newStones, 3, GanysSurface.max18StonesPerCluster, Blocks.stone));
+		generators.add(new WorldGenMinable(ModBlocks.newStones, 5, GanysSurface.max18StonesPerCluster, Blocks.stone));
+		generators.add(new WorldGenMinable(ModBlocks.newStones, 7, GanysSurface.max18StonesPerCluster, Blocks.stone));
 	}
 
 	@Override
