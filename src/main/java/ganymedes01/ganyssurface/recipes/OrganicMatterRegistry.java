@@ -97,6 +97,8 @@ public class OrganicMatterRegistry {
 			addMatterYield(ModItems.rot);
 		if (GanysSurface.enableAnalisers)
 			addMatterYield(ModItems.horsalyser);
+		if (GanysSurface.enablePineCones)
+			addMatterYield(ModItems.pineCone);
 
 		addMatterYield(new ItemStack(Blocks.ladder));
 		addMatterYield(new ItemStack(Blocks.wooden_button));
