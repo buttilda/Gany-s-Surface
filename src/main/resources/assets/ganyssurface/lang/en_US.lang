@@ -235,3 +235,7 @@ attacktocapture=Left-Click a bat or a squid to capture it
 interacttorotate=Right-Click logs,pillars,signs and etc. to rotate
 portableWorktable=Press %s or right-click to open.
 entity.ItemFrame.name=Item Frame
+
+# Version Check
+versioncheck.ganyssurface.message=§6Gany's Surface §fis §coutdated§f.
+versioncheck.ganyssurface.download=Download %s
