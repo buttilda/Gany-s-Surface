@@ -27,12 +27,14 @@ import cpw.mods.fml.common.IWorldGenerator;
 public class SurfaceWorldGen implements IWorldGenerator {
 
 	private final List<WorldGenMinable> generators = new LinkedList<WorldGenMinable>();
+	private final WorldGenMinable generatorBasalt;
 
 	public SurfaceWorldGen() {
 		generators.add(new WorldGenMinable(ModBlocks.newStones, 1, GanysSurface.max18StonesPerCluster, Blocks.stone));
 		generators.add(new WorldGenMinable(ModBlocks.newStones, 3, GanysSurface.max18StonesPerCluster, Blocks.stone));
 		generators.add(new WorldGenMinable(ModBlocks.newStones, 5, GanysSurface.max18StonesPerCluster, Blocks.stone));
-		generators.add(new WorldGenMinable(ModBlocks.newStones, 7, GanysSurface.max18StonesPerCluster, Blocks.stone));
+
+		generatorBasalt = new WorldGenMinable(ModBlocks.basalt, 0, GanysSurface.max18StonesPerCluster, Blocks.stone);
 	}
 
 	@Override
@@ -50,6 +52,15 @@ public class SurfaceWorldGen implements IWorldGenerator {
 
 					generator.generate(world, rand, x, y, z);
 				}
+			}
+
+		if (GanysSurface.enableBasalt)
+			for (int i = 0; i < 10; i++) {
+				int x = chunkX * 16 + rand.nextInt(16);
+				int y = rand.nextInt(80);
+				int z = chunkZ * 16 + rand.nextInt(16);
+
+				generatorBasalt.generate(world, rand, x, y, z);
 			}
 
 		if (GanysSurface.enablePrismarineStuff)

@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.recipes;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
+import ganymedes01.ganyssurface.blocks.Stones18;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -285,6 +286,15 @@ public class ModRecipes {
 		if (GanysSurface.enableSlowRail)
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.slowRail, 6), "w w", "xyx", "wzw", 'x', "slimeball", 'y', "stickWood", 'z', "dustRedstone", 'w', "ingotIron"));
 
+		if (GanysSurface.enableBasalt) {
+			if (GanysSurface.enable18Stones)
+				GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.basalt, 2, 0), new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE), new ItemStack(ModBlocks.newStones, 1, Stones18.ANDESITE));
+			else
+				GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.basalt, 2, 0), new ItemStack(Blocks.stone), new ItemStack(Items.coal, 1, OreDictionary.WILDCARD_VALUE));
+
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.basalt, 4, 1), "xx", "xx", 'x', new ItemStack(ModBlocks.basalt, 1, 0));
+		}
+
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)
 			GameRegistry.addRecipe(new ItemStack(Blocks.web), "x x", " y ", "x x", 'y', Items.slime_ball, 'x', Items.string);
@@ -324,27 +334,15 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.ironTrapdoor), "xx", "xx", 'x', "ingotIron"));
 
 		if (GanysSurface.enable18Stones) {
-			int GRANITE = 1;
-			int POLISHED_GRANITE = 2;
-			int DIORITE = 3;
-			int POLISHED_DIORITE = 4;
-			int ANDESITE = 5;
-			int POLISHED_ANDESITE = 6;
-			int BASALT = 7;
-			int POLISHED_BASALT = 8;
-
 			// Diorite
-			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 2, DIORITE), "xy", "yx", 'x', new ItemStack(Blocks.cobblestone), 'y', Items.quartz);
-			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_DIORITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, DIORITE));
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.DIORITE), "xy", "yx", 'x', new ItemStack(Blocks.cobblestone), 'y', Items.quartz);
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_DIORITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE));
 			// Andesite
-			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, ANDESITE), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.newStones, 1, DIORITE));
-			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_ANDESITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, ANDESITE));
+			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.ANDESITE), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE));
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_ANDESITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, Stones18.ANDESITE));
 			// Granite
-			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, GRANITE), Items.quartz, new ItemStack(ModBlocks.newStones, 1, DIORITE));
-			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_GRANITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, GRANITE));
-			// Basalt
-			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, BASALT), new ItemStack(ModBlocks.newStones, 1, DIORITE), new ItemStack(ModBlocks.newStones, 1, ANDESITE));
-			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, POLISHED_BASALT), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, BASALT));
+			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.GRANITE), Items.quartz, new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE));
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_GRANITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, Stones18.GRANITE));
 		}
 
 		if (GanysSurface.enablePrismarineStuff) {

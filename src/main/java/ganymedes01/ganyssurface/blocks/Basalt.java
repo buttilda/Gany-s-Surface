@@ -1,14 +1,12 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.items.block.Item18Stones;
+import ganymedes01.ganyssurface.items.block.ItemBasalt;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -30,25 +28,18 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class Stones18 extends Block implements ISubBlocksBlock {
+public class Basalt extends Block implements ISubBlocksBlock {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
 
-	public static final int GRANITE = 1;
-	public static final int POLISHED_GRANITE = 2;
-	public static final int DIORITE = 3;
-	public static final int POLISHED_DIORITE = 4;
-	public static final int ANDESITE = 5;
-	public static final int POLISHED_ANDESITE = 6;
-
-	public Stones18() {
+	public Basalt() {
 		super(Material.rock);
 		setHardness(1.5F);
 		setResistance(10.0F);
 		setStepSound(soundTypePiston);
-		setBlockName(Utils.getUnlocalizedName(Strings.NEW_STONES_NAME));
-		setCreativeTab(GanysSurface.enable18Stones ? GanysSurface.surfaceTab : null);
+		setBlockName(Utils.getUnlocalizedName(Strings.BASALT));
+		setCreativeTab(GanysSurface.enableBasalt ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override
@@ -58,49 +49,34 @@ public class Stones18 extends Block implements ISubBlocksBlock {
 
 	@Override
 	public int damageDropped(int meta) {
-		return isBasalt(meta) ? meta - 7 : meta;
-	}
-
-	@Override
-	public Item getItemDropped(int meta, Random rand, int fortune) {
-		return isBasalt(meta) ? ModBlocks.basalt.getItemDropped(meta - 7, rand, fortune) : super.getItemDropped(meta, rand, fortune);
+		return meta;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-		for (int i = 1; i < 7; i++)
-			list.add(new ItemStack(item, 1, i));
+		list.add(new ItemStack(item, 1, 0));
+		list.add(new ItemStack(item, 1, 1));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
-		if (isBasalt(meta))
-			return ModBlocks.basalt.getIcon(side, meta - 7);
-
-		return icons[Math.max(Math.min(meta, icons.length - 1), 1)];
+		return icons[Math.max(Math.min(meta, icons.length - 1), 0)];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister reg) {
-		icons = new IIcon[7];
-		icons[1] = reg.registerIcon("stone_granite");
-		icons[2] = reg.registerIcon("stone_granite_smooth");
-		icons[3] = reg.registerIcon("stone_diorite");
-		icons[4] = reg.registerIcon("stone_diorite_smooth");
-		icons[5] = reg.registerIcon("stone_andesite");
-		icons[6] = reg.registerIcon("stone_andesite_smooth");
+		icons = new IIcon[2];
+
+		icons[0] = reg.registerIcon(Utils.getBlockTexture("stone_basalt"));
+		icons[1] = reg.registerIcon(Utils.getBlockTexture("stone_basalt_smooth"));
 	}
 
 	@Override
 	public Class<? extends ItemBlock> getItemBlockClass() {
-		return Item18Stones.class;
-	}
-
-	private boolean isBasalt(int meta) {
-		return meta == 7 || meta == 8;
+		return ItemBasalt.class;
 	}
 }

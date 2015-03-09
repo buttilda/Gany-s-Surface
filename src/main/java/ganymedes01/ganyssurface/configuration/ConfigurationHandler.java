@@ -101,6 +101,8 @@ public class ConfigurationHandler {
 		GanysSurface.enableEndermanDropsBlocks = configBoolean("Enable enderman to drop the blocks they are carrying", true, true);
 		GanysSurface.enableChests = configBoolean("Enable wood specific chests", true, true);
 		GanysSurface.enableDynamicTextureChests = configBoolean("Enable dynamic texture for wood chests", false, false);
+		GanysSurface.enableSlowRail = configBoolean("Enable Slow Rail", false, true);
+		GanysSurface.enableBasalt = configBoolean("Enable Basalt", false, true);
 
 		// 1.8 Stuff
 		GanysSurface.enable18Stones = configBoolean("Enable 1.8 Stones", true, true);
