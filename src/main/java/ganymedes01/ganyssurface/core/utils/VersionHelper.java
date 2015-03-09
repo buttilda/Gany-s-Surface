@@ -9,6 +9,7 @@ import java.util.Properties;
 
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.StatCollector;
 
 /**
  * Gany's Surface
@@ -95,11 +96,9 @@ public class VersionHelper implements Runnable {
 	public static IChatComponent getResultMessageForClient() {
 		EnumChatFormatting white = EnumChatFormatting.WHITE;
 		EnumChatFormatting green = EnumChatFormatting.GREEN;
-		EnumChatFormatting red = EnumChatFormatting.RED;
-		EnumChatFormatting gold = EnumChatFormatting.GOLD;
 
-		String text = gold + Reference.MOD_NAME + white + " is " + red + "outdated" + white + ".";
-		String download = "Download " + Reference.LATEST_VERSION;
+		String text = StatCollector.translateToLocal("versioncheck." + Reference.MOD_ID + ".message");
+		String download = String.format(StatCollector.translateToLocal("versioncheck." + Reference.MOD_ID + ".download"), Reference.LATEST_VERSION);
 		return IChatComponent.Serializer.func_150699_a("[{\"text\":\"" + text + "\"}," + "{\"text\":\" " + white + "[" + green + download + white + "]\"," + "\"color\":\"green\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":" + "{\"text\":\"Click to download the latest version\",\"color\":\"yellow\"}}," + "\"clickEvent\":{\"action\":\"open_url\",\"value\":\"" + updateURL + "\"}}]");
 	}
 
