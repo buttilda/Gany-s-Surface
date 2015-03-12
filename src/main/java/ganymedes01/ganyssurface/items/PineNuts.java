@@ -15,7 +15,7 @@ import net.minecraft.item.ItemFood;
 public class PineNuts extends ItemFood {
 
 	public PineNuts() {
-		super(4, 0.32F, false);
+		super(4, 0.3F, false);
 		setTextureName(Utils.getItemTexture(Strings.PINE_NUTS_NAME));
 		setUnlocalizedName(Utils.getUnlocalizedName(Strings.PINE_NUTS_NAME));
 		setCreativeTab(GanysSurface.enablePineCones ? GanysSurface.surfaceTab : null);

@@ -192,7 +192,7 @@ public class MiscEventHandler {
 	public void harvestEvent(BlockEvent.HarvestDropsEvent event) {
 		if (GanysSurface.enablePineCones)
 			if (event.block == Blocks.leaves && (event.blockMetadata & 3) == 1)
-				if (event.world.rand.nextInt(20) == 0)
+				if (event.world.rand.nextInt(200) == 0)
 					event.drops.add(new ItemStack(ModItems.pineCone));
 
 		if (GanysSurface.enableSilkTouchingMushrooms && event.isSilkTouching)
