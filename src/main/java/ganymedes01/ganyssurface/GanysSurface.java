@@ -100,6 +100,7 @@ public class GanysSurface {
 	public static boolean enableDynamicTextureChests = false;
 	public static boolean enableSlowRail = true;
 	public static boolean enableBasalt = true;
+	public static boolean enableFlingablePoop = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;

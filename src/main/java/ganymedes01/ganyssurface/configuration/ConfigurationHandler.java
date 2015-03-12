@@ -103,6 +103,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableDynamicTextureChests = configBoolean("Enable dynamic texture for wood chests", false, false);
 		GanysSurface.enableSlowRail = configBoolean("Enable Slow Rail", false, true);
 		GanysSurface.enableBasalt = configBoolean("Enable Basalt", false, true);
+		GanysSurface.enableFlingablePoop = configBoolean("Enable Poop Throwing", false, true);
 
 		// 1.8 Stuff
 		GanysSurface.enable18Stones = configBoolean("Enable 1.8 Stones", true, true);

@@ -48,6 +48,9 @@ public class Poop extends Item {
 
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
+		if (!GanysSurface.enableFlingablePoop)
+			return super.onItemRightClick(stack, world, player);
+
 		if (!player.capabilities.isCreativeMode)
 			stack.stackSize--;
 
