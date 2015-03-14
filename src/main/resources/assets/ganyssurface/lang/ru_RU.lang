@@ -235,3 +235,7 @@ attacktocapture=ЛКМ по летучей мыши или спруту, что�
 interacttorotate=ПКМ по древесине, колоннам, табличкам и т.д., чтобы поворачивать
 portableWorktable=Нажмите %s или ПКМ, чтобы открыть.
 entity.ItemFrame.name=Предметная рамка
+
+# Version Check
+versioncheck.ganyssurface.message=§6Модификация §fGany's Surface §cустарела§f.
+versioncheck.ganyssurface.download=Загрузить версию %s
