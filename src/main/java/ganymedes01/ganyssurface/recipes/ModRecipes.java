@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.blocks.Stones18;
+import net.minecraft.entity.item.EntityPainting.EnumArt;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -177,6 +178,16 @@ public class ModRecipes {
 
 		if (GanysSurface.enableIcyPick)
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.icyPickaxe), "xxx", " y ", " y ", 'x', Blocks.ice, 'y', "stickWood"));
+
+		if (GanysSurface.enablePaintings)
+			for (int i = 0; i < EnumArt.values().length; i++) {
+				ItemStack middle;
+				if (i <= 15)
+					middle = new ItemStack(Blocks.carpet, 1, i);
+				else
+					middle = new ItemStack(Blocks.wool, 1, i - 16);
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.painting, 1, i), "xxx", "xyx", "xxx", 'x', "stickWood", 'y', middle));
+			}
 
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes) {
