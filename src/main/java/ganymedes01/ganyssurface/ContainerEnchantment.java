@@ -206,8 +206,7 @@ public class ContainerEnchantment extends Container {
 	}
 
 	/**
-	 * enchants the item on the table using the specified slot; also deducts XP
-	 * from player
+	 * enchants the item on the table using the specified slot; also deducts XP from player
 	 */
 	@Override
 	public boolean enchantItem(EntityPlayer player, int id) {

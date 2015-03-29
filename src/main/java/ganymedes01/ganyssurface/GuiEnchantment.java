@@ -55,8 +55,7 @@ public class GuiEnchantment extends GuiContainer {
 	}
 
 	/**
-	 * Draw the foreground layer for the GuiContainer (everything in front of
-	 * the items). Args : mouseX, mouseY
+	 * Draw the foreground layer for the GuiContainer (everything in front of the items). Args : mouseX, mouseY
 	 */
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
@@ -200,8 +199,7 @@ public class GuiEnchantment extends GuiContainer {
 	}
 
 	/**
-	 * Draws the screen and all the components in it. Args : mouseX, mouseY,
-	 * renderPartialTicks
+	 * Draws the screen and all the components in it. Args : mouseX, mouseY, renderPartialTicks
 	 */
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks) {

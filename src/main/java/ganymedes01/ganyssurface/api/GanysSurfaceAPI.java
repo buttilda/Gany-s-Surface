@@ -19,19 +19,16 @@ import cpw.mods.fml.common.event.FMLInterModComms;
 public class GanysSurfaceAPI {
 
 	/**
-	 * Sets a custom yield on the Organic Matter Fabricator (OMF) for a
-	 * determined item/block.
+	 * Sets a custom yield on the Organic Matter Fabricator (OMF) for a determined item/block.
 	 * 
 	 * Pass a yield of -1 to make the item not acceptable on the OMF.
 	 * 
-	 * Most items have a yield of 2. The amount needed for the machine to start
-	 * to work is 144.
+	 * Most items have a yield of 2. The amount needed for the machine to start to work is 144.
 	 * 
 	 * This is metadata sensitive.
 	 * 
 	 * @param matter
-	 *            : ItemStack of item/block to which the yield will be
-	 *            registered
+	 *            : ItemStack of item/block to which the yield will be registered
 	 * @param burnTime
 	 *            : Yield for specified matter
 	 */
@@ -51,29 +48,7 @@ public class GanysSurfaceAPI {
 
 	// BLOCKS
 	/*
-	 * Here's a list of the blocks that can/should be retrieved by this method
-	 * 
-	 * camelliaCrop
-	 * rainDetector
-	 * blockDetector
-	 * dislocator
-	 * sensoringDislocator
-	 * cubicSensoringDislocator
-	 * disguisedTrapDoorOak
-	 * disguisedTrapDoorSpruce
-	 * disguisedTrapDoorBirch
-	 * disguisedTrapDoorJungle
-	 * workTable
-	 * organicMatterCompressor
-	 * cushion
-	 * chocolateCake
-	 * itemDisplay
-	 * chestPropellant
-	 * fertilizedSoil
-	 * planter
-	 * lantern
-	 * inkHarvester;
-	 * 
+	 * Here's a list of the blocks that can/should be retrieved by this method camelliaCrop rainDetector blockDetector dislocator sensoringDislocator cubicSensoringDislocator disguisedTrapDoorOak disguisedTrapDoorSpruce disguisedTrapDoorBirch disguisedTrapDoorJungle workTable organicMatterCompressor cushion chocolateCake itemDisplay chestPropellant fertilizedSoil planter lantern inkHarvester;
 	 */
 	public static Block getBlock(String blockName) {
 		try {
@@ -88,32 +63,7 @@ public class GanysSurfaceAPI {
 
 	// ITEMS
 	/*
-	 * Here's a list of the items that can/should be retrieved by this method
-	 * 
-	 * rot
-	 * camelliaSeeds
-	 * teaLeaves
-	 * teaBag
-	 * emptyMug
-	 * cupOfTea
-	 * mankyCupOfTea
-	 * poop
-	 * cookedEgg
-	 * obsidianHead
-	 * woodenWrench
-	 * batNet
-	 * pocketBat
-	 * batStew
-	 * chocolateBar
-	 * horsalyser
-	 * horseSpawner
-	 * chargedCreeperSpawner
-	 * 
-	 * woodenHelmet
-	 * woodenChestplate
-	 * woodenLeggings
-	 * woodenBoots
-	 * 
+	 * Here's a list of the items that can/should be retrieved by this method rot camelliaSeeds teaLeaves teaBag emptyMug cupOfTea mankyCupOfTea poop cookedEgg obsidianHead woodenWrench batNet pocketBat batStew chocolateBar horsalyser horseSpawner chargedCreeperSpawner woodenHelmet woodenChestplate woodenLeggings woodenBoots
 	 */
 	public static Item getItem(String itemName) {
 		try {

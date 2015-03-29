@@ -135,12 +135,12 @@ public class ThaumcraftManager extends Integration {
 		addAspectsToItem(new ItemStack(block, 1, meta), aspects, amounts);
 	}
 
-	private void addAspectsToItem(Item id, Aspect[] aspects, int[] amounts) {
-		addAspectsToItem(new ItemStack(id), aspects, amounts);
+	private void addAspectsToItem(Item item, Aspect[] aspects, int[] amounts) {
+		addAspectsToItem(new ItemStack(item), aspects, amounts);
 	}
 
-	private void addAspectsToItem(Item id, int meta, Aspect[] aspects, int[] amounts) {
-		addAspectsToItem(new ItemStack(id, 1, meta), aspects, amounts);
+	private void addAspectsToItem(Item items, int meta, Aspect[] aspects, int[] amounts) {
+		addAspectsToItem(new ItemStack(items, 1, meta), aspects, amounts);
 	}
 
 	private void addAspectsToItem(ItemStack stack, Aspect[] aspects, int[] amounts) {

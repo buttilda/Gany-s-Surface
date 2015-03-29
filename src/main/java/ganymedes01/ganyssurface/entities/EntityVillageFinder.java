@@ -93,7 +93,8 @@ public class EntityVillageFinder extends Entity {
 		float f = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
 		rotationYaw = (float) (Math.atan2(motionX, motionZ) * 180.0D / Math.PI);
 
-		for (rotationPitch = (float) (Math.atan2(motionY, f) * 180.0D / Math.PI); rotationPitch - prevRotationPitch < -180.0F; prevRotationPitch -= 360.0F);
+		for (rotationPitch = (float) (Math.atan2(motionY, f) * 180.0D / Math.PI); rotationPitch - prevRotationPitch < -180.0F; prevRotationPitch -= 360.0F)
+			;
 
 		while (rotationPitch - prevRotationPitch >= 180.0F)
 			prevRotationPitch += 360.0F;
