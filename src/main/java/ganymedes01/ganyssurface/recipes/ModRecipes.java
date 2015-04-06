@@ -101,6 +101,9 @@ public class ModRecipes {
 
 		if (GanysSurface.enableOMC)
 			OreDictionary.registerOre("itemSkull", new ItemStack(Items.skull, 1, OreDictionary.WILDCARD_VALUE));
+
+		if (GanysSurface.enableBlockOfFlint)
+			OreDictionary.registerOre("blockFlint", new ItemStack(ModBlocks.flint));
 	}
 
 	private static void registerItemRecipes() {
