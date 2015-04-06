@@ -23,6 +23,7 @@ import ganymedes01.ganyssurface.blocks.DualWorkTable;
 import ganymedes01.ganyssurface.blocks.EncasingBench;
 import ganymedes01.ganyssurface.blocks.FarmManager;
 import ganymedes01.ganyssurface.blocks.FertilizedSoil;
+import ganymedes01.ganyssurface.blocks.FlintBlock;
 import ganymedes01.ganyssurface.blocks.InkHarvester;
 import ganymedes01.ganyssurface.blocks.InvertedDaylightDetector;
 import ganymedes01.ganyssurface.blocks.IronTrapdoor;
@@ -89,6 +90,7 @@ public class ModBlocks {
 	public static final Block charcoalBlock = new CharcoalBlock();
 	public static final Block slowRail = new BlockSlowRail();
 	public static final Block basalt = new Basalt();
+	public static final Block flint = new FlintBlock();
 
 	public static final Block chestOak = new BlockWoodChest(Blocks.planks, 0);
 	public static final Block chestSpruce = new BlockWoodChest(Blocks.planks, 1);
@@ -157,10 +159,16 @@ public class ModBlocks {
 			GameRegistry.registerBlock(block, ((ISubBlocksBlock) block).getItemBlockClass(), strings[strings.length - 1]);
 		else
 			GameRegistry.registerBlock(block, strings[strings.length - 1]);
+
+		if (block instanceof IBurnableBlock)
+			Blocks.fire.setFireInfo(block, 5, 20);
 	}
 
 	public static interface ISubBlocksBlock {
 
 		Class<? extends ItemBlock> getItemBlockClass();
+	}
+
+	public static interface IBurnableBlock {
 	}
 }

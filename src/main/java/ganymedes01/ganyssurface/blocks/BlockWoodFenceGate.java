@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.ModBlocks.IBurnableBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.block.BlockFenceGate;
 import net.minecraft.init.Blocks;
@@ -15,7 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class BlockWoodFenceGate extends BlockFenceGate {
+public class BlockWoodFenceGate extends BlockFenceGate implements IBurnableBlock {
 
 	private final int meta;
 
@@ -24,7 +25,6 @@ public class BlockWoodFenceGate extends BlockFenceGate {
 		setHardness(2.0F);
 		setResistance(5.0F);
 		setStepSound(soundTypeWood);
-		Blocks.fire.setFireInfo(this, 5, 20);
 		setBlockName(Utils.getUnlocalizedName("fence_gate_" + meta));
 		setCreativeTab(GanysSurface.enableFences ? GanysSurface.surfaceTab : null);
 	}

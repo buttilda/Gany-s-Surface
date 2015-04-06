@@ -306,6 +306,11 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.basalt, 4, 1), "xx", "xx", 'x', new ItemStack(ModBlocks.basalt, 1, 0));
 		}
 
+		if (GanysSurface.enableBlockOfFlint) {
+			GameRegistry.addRecipe(new ItemStack(ModBlocks.flint), "xxx", "xxx", "xxx", 'x', new ItemStack(Items.flint));
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.flint, 9), new ItemStack(ModBlocks.flint));
+		}
+
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)
 			GameRegistry.addRecipe(new ItemStack(Blocks.web), "x x", " y ", "x x", 'y', Items.slime_ball, 'x', Items.string);

@@ -104,6 +104,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableSlowRail = configBoolean("Enable Slow Rail", false, true);
 		GanysSurface.enableBasalt = configBoolean("Enable Basalt", false, true);
 		GanysSurface.enableFlingablePoop = configBoolean("Enable Poop Throwing", false, true);
+		GanysSurface.enableBlockOfFlint = configBoolean("Enable Block of Flint", false, true);
 
 		// 1.8 Stuff
 		GanysSurface.enable18Stones = configBoolean("Enable 1.8 Stones", true, true);
