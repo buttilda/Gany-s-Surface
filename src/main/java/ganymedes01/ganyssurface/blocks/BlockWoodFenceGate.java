@@ -24,6 +24,7 @@ public class BlockWoodFenceGate extends BlockFenceGate {
 		setHardness(2.0F);
 		setResistance(5.0F);
 		setStepSound(soundTypeWood);
+		Blocks.fire.setFireInfo(this, 5, 20);
 		setBlockName(Utils.getUnlocalizedName("fence_gate_" + meta));
 		setCreativeTab(GanysSurface.enableFences ? GanysSurface.surfaceTab : null);
 	}

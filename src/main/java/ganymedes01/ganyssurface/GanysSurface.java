@@ -101,6 +101,7 @@ public class GanysSurface {
 	public static boolean enableSlowRail = true;
 	public static boolean enableBasalt = true;
 	public static boolean enableFlingablePoop = true;
+	public static boolean enableBlockOfFlint = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
@@ -172,6 +173,10 @@ public class GanysSurface {
 			Blocks.fence.setCreativeTab(null);
 			Blocks.fence_gate.setCreativeTab(null);
 		}
+
+		Blocks.fire.setFireInfo(Blocks.fence_gate, 5, 20);
+		Blocks.fire.setFireInfo(Blocks.fence, 5, 20);
+		Blocks.fire.setFireInfo(Blocks.deadbush, 60, 100);
 	}
 
 	private void removeFirstRecipeFor(Block block) {
