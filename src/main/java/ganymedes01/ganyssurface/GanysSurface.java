@@ -104,6 +104,7 @@ public class GanysSurface {
 	public static boolean enableBlockOfFlint = true;
 	public static boolean enableBurnableBlocks = true;
 	public static boolean enableWoodenButtons = true;
+	public static boolean enableWoodenPressurePlates = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
@@ -184,6 +185,9 @@ public class GanysSurface {
 
 		if (enableWoodenButtons)
 			removeFirstRecipeFor(Blocks.wooden_button);
+
+		if (enableWoodenPressurePlates)
+			removeFirstRecipeFor(Blocks.wooden_pressure_plate);
 	}
 
 	private void removeFirstRecipeFor(Block block) {

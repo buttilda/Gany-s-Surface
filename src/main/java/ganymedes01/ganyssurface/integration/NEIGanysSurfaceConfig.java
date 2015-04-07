@@ -212,6 +212,10 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		if (!GanysSurface.enableWoodenButtons)
 			for (Block button : ModBlocks.buttons)
 				API.hideItem(new ItemStack(button));
+
+		if (!GanysSurface.enableWoodenPressurePlates)
+			for (Block pressurePlate : ModBlocks.pressurePlates)
+				API.hideItem(new ItemStack(pressurePlate));
 	}
 
 	@Override

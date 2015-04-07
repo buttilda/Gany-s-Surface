@@ -301,6 +301,15 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.wooden_button), "plankWood"));
 		}
 
+		if (GanysSurface.enableWoodenPressurePlates) {
+			for (int i = 0; i < ModBlocks.pressurePlates.length; i++) {
+				Block pressurePlate = ModBlocks.pressurePlates[i];
+				GameRegistry.addRecipe(new ItemStack(pressurePlate), "xx", 'x', new ItemStack(Blocks.planks, 1, i + 1));
+				GameRegistry.addShapelessRecipe(new ItemStack(Blocks.wooden_pressure_plate), new ItemStack(pressurePlate));
+			}
+			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.wooden_pressure_plate), "xx", 'x', "plankWood"));
+		}
+
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)
 			GameRegistry.addRecipe(new ItemStack(Blocks.web), "x x", " y ", "x x", 'y', Items.slime_ball, 'x', Items.string);

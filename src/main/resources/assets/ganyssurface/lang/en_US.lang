@@ -139,6 +139,11 @@ tile.ganyssurface.button2.name=Birch Button
 tile.ganyssurface.button3.name=Jungle Button
 tile.ganyssurface.button4.name=Acacia Button
 tile.ganyssurface.button5.name=Dark Oak Button
+tile.ganyssurface.pressurePlate1.name=Spruce Pressure Plate
+tile.ganyssurface.pressurePlate2.name=Birch Pressure Plate
+tile.ganyssurface.pressurePlate3.name=Jungle Pressure Plate
+tile.ganyssurface.pressurePlate4.name=Acacia Pressure Plate
+tile.ganyssurface.pressurePlate5.name=Dark Oak Pressure Plate
 
 tile.ganyssurface.18Stones1.name=Granite
 tile.ganyssurface.18Stones2.name=Polished Granite

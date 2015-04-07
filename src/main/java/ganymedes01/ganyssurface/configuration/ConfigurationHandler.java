@@ -107,6 +107,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableBlockOfFlint = configBoolean("Enable Block of Flint", false, true);
 		GanysSurface.enableBurnableBlocks = configBoolean("Make fences, gates and deadbushes burnable", "They aren't burnable in 1.7.10 but are in 1.8, set this to true to mimic the 1.8 behaviour", false, true);
 		GanysSurface.enableWoodenButtons = configBoolean("Enable wooden buttons", false, true);
+		GanysSurface.enableWoodenPressurePlates = configBoolean("Enable wooden pressure plates", false, true);
 
 		// 1.8 Stuff
 		GanysSurface.enable18Stones = configBoolean("Enable 1.8 Stones", true, true);
