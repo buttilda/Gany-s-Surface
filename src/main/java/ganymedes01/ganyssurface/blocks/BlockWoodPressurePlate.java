@@ -19,7 +19,7 @@ public class BlockWoodPressurePlate extends BlockPressurePlate {
 		super("planks_" + BlockWood.field_150096_a[meta], Material.wood, BlockPressurePlate.Sensitivity.everything);
 		setHardness(0.5F);
 		setStepSound(soundTypeWood);
-		setBlockName(Utils.getUnlocalizedName("pressure_plate_" + meta));
+		setBlockName(Utils.getUnlocalizedName("pressurePlate" + meta));
 		setCreativeTab(GanysSurface.enableWoodenPressurePlates ? GanysSurface.surfaceTab : null);
 	}
 
