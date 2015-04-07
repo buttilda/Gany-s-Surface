@@ -10,6 +10,7 @@ import ganymedes01.ganyssurface.integration.nei.OMCYieldHandler;
 import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import codechicken.nei.api.API;
@@ -181,39 +182,36 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModBlocks.seaLantern));
 		}
 
-		API.hideItem(new ItemStack(ModBlocks.doorAcacia));
-		API.hideItem(new ItemStack(ModBlocks.doorBirch));
-		API.hideItem(new ItemStack(ModBlocks.doorDarkOak));
-		API.hideItem(new ItemStack(ModBlocks.doorJungle));
-		API.hideItem(new ItemStack(ModBlocks.doorSpruce));
-		if (!GanysSurface.enableDoors) {
-			API.hideItem(new ItemStack(ModItems.doorAcacia));
-			API.hideItem(new ItemStack(ModItems.doorBirch));
-			API.hideItem(new ItemStack(ModItems.doorDarkOak));
-			API.hideItem(new ItemStack(ModItems.doorJungle));
-			API.hideItem(new ItemStack(ModItems.doorSpruce));
-		}
+		for (Block door : ModBlocks.doors)
+			API.hideItem(new ItemStack(door));
+		if (!GanysSurface.enableDoors)
+			for (Item door : ModItems.doors)
+				API.hideItem(new ItemStack(door));
+
 		if (!GanysSurface.enableInvertedDaylightSensor)
 			API.hideItem(new ItemStack(ModBlocks.invertedDaylightDetector));
 
 		if (!GanysSurface.enableFences) {
-			API.hideItem(new ItemStack(ModBlocks.fenceAcacia));
-			API.hideItem(new ItemStack(ModBlocks.fenceBirch));
-			API.hideItem(new ItemStack(ModBlocks.fenceDarkOak));
-			API.hideItem(new ItemStack(ModBlocks.fenceJungle));
-			API.hideItem(new ItemStack(ModBlocks.fenceSpruce));
-			API.hideItem(new ItemStack(ModBlocks.fenceOak));
-
-			API.hideItem(new ItemStack(ModBlocks.gateAcacia));
-			API.hideItem(new ItemStack(ModBlocks.gateBirch));
-			API.hideItem(new ItemStack(ModBlocks.gateDarkOak));
-			API.hideItem(new ItemStack(ModBlocks.gateJungle));
-			API.hideItem(new ItemStack(ModBlocks.gateSpruce));
+			for (Block fence : ModBlocks.fences)
+				API.hideItem(new ItemStack(fence));
+			for (Block gate : ModBlocks.gates)
+				API.hideItem(new ItemStack(gate));
 		} else
 			API.hideItem(new ItemStack(Blocks.fence));
 
+		if (!GanysSurface.enableChests)
+			for (Block chest : ModBlocks.chests)
+				API.hideItem(new ItemStack(chest));
+
 		if (!GanysSurface.enableSlowRail)
 			API.hideItem(new ItemStack(ModBlocks.slowRail));
+
+		if (!GanysSurface.enableBlockOfFlint)
+			API.hideItem(new ItemStack(ModBlocks.flint));
+
+		if (!GanysSurface.enableWoodenButtons)
+			for (Block button : ModBlocks.buttons)
+				API.hideItem(new ItemStack(button));
 	}
 
 	@Override

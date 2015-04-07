@@ -134,6 +134,11 @@ tile.ganyssurface.slowRail.name=Slow Rail
 tile.ganyssurface.basalt0.name=Basalt
 tile.ganyssurface.basalt1.name=Polished Basalt
 tile.ganyssurface.flintBlock.name=Block of Flint
+tile.ganyssurface.button1.name=Spruce Button
+tile.ganyssurface.button2.name=Birch Button
+tile.ganyssurface.button3.name=Jungle Button
+tile.ganyssurface.button4.name=Acacia Button
+tile.ganyssurface.button5.name=Dark Oak Button
 
 tile.ganyssurface.18Stones1.name=Granite
 tile.ganyssurface.18Stones2.name=Polished Granite

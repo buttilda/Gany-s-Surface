@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.blocks.Stones18;
+import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityPainting.EnumArt;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -65,23 +66,9 @@ public class ModRecipes {
 			OreDictionary.registerOre("blockPrismarine", new ItemStack(ModBlocks.prismarineBlocks, 1, OreDictionary.WILDCARD_VALUE));
 		}
 
-		if (GanysSurface.enableDoors || GanysSurface.enableChests || GanysSurface.enableFences) {
-			OreDictionary.registerOre("plankAcacia", new ItemStack(Blocks.planks, 1, 4));
-			OreDictionary.registerOre("plankBirch", new ItemStack(Blocks.planks, 1, 2));
-			OreDictionary.registerOre("plankDarkOak", new ItemStack(Blocks.planks, 1, 5));
-			OreDictionary.registerOre("plankJungle", new ItemStack(Blocks.planks, 1, 3));
-			OreDictionary.registerOre("plankSpruce", new ItemStack(Blocks.planks, 1, 1));
-			OreDictionary.registerOre("plankOak", new ItemStack(Blocks.planks, 1, 0));
-		}
-
-		if (GanysSurface.enableChests) {
-			OreDictionary.registerOre("chestWood", new ItemStack(ModBlocks.chestOak));
-			OreDictionary.registerOre("chestWood", new ItemStack(ModBlocks.chestSpruce));
-			OreDictionary.registerOre("chestWood", new ItemStack(ModBlocks.chestBirch));
-			OreDictionary.registerOre("chestWood", new ItemStack(ModBlocks.chestJungle));
-			OreDictionary.registerOre("chestWood", new ItemStack(ModBlocks.chestAcacia));
-			OreDictionary.registerOre("chestWood", new ItemStack(ModBlocks.chestDarkOak));
-		}
+		if (GanysSurface.enableChests)
+			for (Block chest : ModBlocks.chests)
+				OreDictionary.registerOre("chestWood", new ItemStack(chest));
 
 		if (GanysSurface.enableSpawnEggs) {
 			OreDictionary.registerOre("mobEgg", ModItems.chargedCreeperSpawner);
@@ -281,20 +268,11 @@ public class ModRecipes {
 		}
 
 		if (GanysSurface.enableChests) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestOak), "xxx", "x x", "xxx", 'x', "plankOak"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestSpruce), "xxx", "x x", "xxx", 'x', "plankSpruce"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestBirch), "xxx", "x x", "xxx", 'x', "plankBirch"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestJungle), "xxx", "x x", "xxx", 'x', "plankJungle"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestAcacia), "xxx", "x x", "xxx", 'x', "plankAcacia"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chestDarkOak), "xxx", "x x", "xxx", 'x', "plankDarkOak"));
+			for (int i = 0; i < ModBlocks.chests.length; i++) {
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.chests[i]), "xxx", "x x", "xxx", 'x', new ItemStack(Blocks.planks, 1, i)));
+				GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chests[i]);
+			}
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.chest), "xxx", "x x", "xxx", 'x', "plankWood"));
-
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chestOak);
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chestSpruce);
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chestBirch);
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chestJungle);
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chestAcacia);
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chestDarkOak);
 		}
 
 		if (GanysSurface.enableSlowRail)
@@ -312,6 +290,15 @@ public class ModRecipes {
 		if (GanysSurface.enableBlockOfFlint) {
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.flint), "xxx", "xxx", "xxx", 'x', new ItemStack(Items.flint));
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.flint, 9), new ItemStack(ModBlocks.flint));
+		}
+
+		if (GanysSurface.enableWoodenButtons) {
+			for (int i = 0; i < ModBlocks.buttons.length; i++) {
+				Block button = ModBlocks.buttons[i];
+				GameRegistry.addShapelessRecipe(new ItemStack(button), new ItemStack(Blocks.planks, 1, i + 1));
+				GameRegistry.addShapelessRecipe(new ItemStack(Blocks.wooden_button), new ItemStack(button));
+			}
+			GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(Blocks.wooden_button), "plankWood"));
 		}
 
 		// Vanilla
@@ -375,13 +362,9 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.seaLantern), "xyx", "yyy", "xyx", 'x', "shardPrismarine", 'y', "crystalPrismarine"));
 		}
 
-		if (GanysSurface.enableDoors) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doorAcacia, 3), "xx", "xx", "xx", 'x', "plankAcacia"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doorBirch, 3), "xx", "xx", "xx", 'x', "plankBirch"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doorDarkOak, 3), "xx", "xx", "xx", 'x', "plankDarkOak"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doorJungle, 3), "xx", "xx", "xx", 'x', "plankJungle"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doorSpruce, 3), "xx", "xx", "xx", 'x', "plankSpruce"));
-		}
+		if (GanysSurface.enableDoors)
+			for (int i = 0; i < ModItems.doors.length; i++)
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.doors[i], 3), "xx", "xx", "xx", 'x', new ItemStack(Blocks.planks, 1, i + 1)));
 
 		if (GanysSurface.enableRedSandstone) {
 			GameRegistry.addRecipe(new ItemStack(ModBlocks.redSandstone), "xx", "xx", 'x', new ItemStack(Blocks.sand, 1, 1));
@@ -392,20 +375,15 @@ public class ModRecipes {
 		}
 
 		if (GanysSurface.enableFences) {
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceAcacia, 3), "xyx", "xyx", 'x', "plankAcacia", 'y', "stickWood"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceBirch, 3), "xyx", "xyx", 'x', "plankBirch", 'y', "stickWood"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceDarkOak, 3), "xyx", "xyx", 'x', "plankDarkOak", 'y', "stickWood"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceJungle, 3), "xyx", "xyx", 'x', "plankJungle", 'y', "stickWood"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceSpruce, 3), "xyx", "xyx", 'x', "plankSpruce", 'y', "stickWood"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fenceOak, 3), "xyx", "xyx", 'x', "plankWood", 'y', "stickWood"));
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.fence), ModBlocks.fenceOak);
-			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.fenceOak), Blocks.fence);
+			for (int i = 0; i < ModBlocks.fences.length; i++) {
+				Object wood = i == 0 ? "plankWood" : new ItemStack(Blocks.planks, 1, i);
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.fences[i], 3), "xyx", "xyx", 'x', wood, 'y', "stickWood"));
+			}
+			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.fence), ModBlocks.fences[0]);
+			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.fences[0]), Blocks.fence);
 
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.gateAcacia), "yxy", "yxy", 'x', "plankAcacia", 'y', "stickWood"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.gateBirch), "yxy", "yxy", 'x', "plankBirch", 'y', "stickWood"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.gateDarkOak), "yxy", "yxy", 'x', "plankDarkOak", 'y', "stickWood"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.gateJungle), "yxy", "yxy", 'x', "plankJungle", 'y', "stickWood"));
-			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.gateSpruce), "yxy", "yxy", 'x', "plankSpruce", 'y', "stickWood"));
+			for (int i = 0; i < ModBlocks.gates.length; i++)
+				GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.gates[i]), "yxy", "yxy", 'x', new ItemStack(Blocks.planks, 1, i + 1), 'y', "stickWood"));
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(Blocks.fence_gate), "yxy", "yxy", 'x', "plankWood", 'y', "stickWood"));
 		}
 	}

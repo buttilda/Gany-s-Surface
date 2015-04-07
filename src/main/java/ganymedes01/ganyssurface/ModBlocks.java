@@ -9,6 +9,7 @@ import ganymedes01.ganyssurface.blocks.BlockSlowRail;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest;
 import ganymedes01.ganyssurface.blocks.BlockWoodFence;
 import ganymedes01.ganyssurface.blocks.BlockWoodFenceGate;
+import ganymedes01.ganyssurface.blocks.ButtonWood;
 import ganymedes01.ganyssurface.blocks.CamelliaCrop;
 import ganymedes01.ganyssurface.blocks.CharcoalBlock;
 import ganymedes01.ganyssurface.blocks.ChestPropellant;
@@ -92,47 +93,46 @@ public class ModBlocks {
 	public static final Block basalt = new Basalt();
 	public static final Block flint = new FlintBlock();
 
-	public static final Block chestOak = new BlockWoodChest(Blocks.planks, 0);
-	public static final Block chestSpruce = new BlockWoodChest(Blocks.planks, 1);
-	public static final Block chestBirch = new BlockWoodChest(Blocks.planks, 2);
-	public static final Block chestJungle = new BlockWoodChest(Blocks.planks, 3);
-	public static final Block chestAcacia = new BlockWoodChest(Blocks.planks, 4);
-	public static final Block chestDarkOak = new BlockWoodChest(Blocks.planks, 5);
+	public static final Block[] chests = new Block[BlockWood.field_150096_a.length];
+	public static final Block[] buttons = new Block[BlockWood.field_150096_a.length - 1];
 
 	// 1.8 stuff
 	public static final Block newStones = new Stones18();
 	public static final Block ironTrapdoor = new IronTrapdoor();
 	public static final Block prismarineBlocks = new PrismarineBlocks();
 	public static final Block seaLantern = new SeaLantern();
-	public static final Block doorAcacia = new BlockNewDoor("acacia");
-	public static final Block doorBirch = new BlockNewDoor("birch");
-	public static final Block doorDarkOak = new BlockNewDoor("dark_oak");
-	public static final Block doorJungle = new BlockNewDoor("jungle");
-	public static final Block doorSpruce = new BlockNewDoor("spruce");
+	public static final Block[] doors = new Block[BlockWood.field_150096_a.length - 1];
 	public static final Block invertedDaylightDetector = new InvertedDaylightDetector();
 	public static final Block redSandstone = new RedSandstone();
 	public static final Block redSandstoneSlab = new RedSandstoneSlab();
 	public static final Block redSandstoneStairs = new RedSandstoneStairs();
-	public static final Block fenceAcacia = new BlockWoodFence(4);
-	public static final Block fenceBirch = new BlockWoodFence(2);
-	public static final Block fenceDarkOak = new BlockWoodFence(5);
-	public static final Block fenceJungle = new BlockWoodFence(3);
-	public static final Block fenceSpruce = new BlockWoodFence(1);
-	public static final Block fenceOak = new BlockWoodFence(0);
-	public static final Block gateAcacia = new BlockWoodFenceGate(4);
-	public static final Block gateBirch = new BlockWoodFenceGate(2);
-	public static final Block gateDarkOak = new BlockWoodFenceGate(5);
-	public static final Block gateJungle = new BlockWoodFenceGate(3);
-	public static final Block gateSpruce = new BlockWoodFenceGate(1);
+	public static final Block[] fences = new Block[BlockWood.field_150096_a.length];
+	public static final Block[] gates = new Block[BlockWood.field_150096_a.length - 1];
 	public static final Block brown_mushroom_block = new BlockSilkedMushroom(Blocks.brown_mushroom_block, "brown");
 	public static final Block red_mushroom_block = new BlockSilkedMushroom(Blocks.red_mushroom_block, "red");
 
 	static {
 		for (int i = 0; i < disguisedTrapDoor.length; i++)
 			disguisedTrapDoor[i] = new DisguisedTrapDoor(i);
+
 		for (int i = 0; i < 16; i++)
 			if (i != 1) // Skip Red
 				colouredRedstone[i] = new ColouredRedstone(i);
+
+		for (int i = 0; i < doors.length; i++)
+			doors[i] = new BlockNewDoor(i + 1);
+
+		for (int i = 0; i < fences.length; i++)
+			fences[i] = new BlockWoodFence(i);
+
+		for (int i = 0; i < gates.length; i++)
+			gates[i] = new BlockWoodFenceGate(i + 1);
+
+		for (int i = 0; i < chests.length; i++)
+			chests[i] = new BlockWoodChest(Blocks.planks, i);
+
+		for (int i = 0; i < buttons.length; i++)
+			buttons[i] = new ButtonWood(i + 1);
 	}
 
 	public static void init() {

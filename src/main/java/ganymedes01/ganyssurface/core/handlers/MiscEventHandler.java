@@ -1,11 +1,11 @@
 package ganymedes01.ganyssurface.core.handlers;
 
-import ganymedes01.ganyssurface.ContainerEnchantment;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWoodChestRenderer;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.inventory.ContainerEnchantment;
 import ganymedes01.ganyssurface.items.Quiver;
 import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.Reference;

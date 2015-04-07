@@ -46,6 +46,7 @@ import ganymedes01.ganyssurface.items.WoodenWrench;
 import java.lang.reflect.Field;
 
 import net.minecraft.block.BlockDispenser;
+import net.minecraft.block.BlockWood;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -96,11 +97,7 @@ public class ModItems {
 	public static final Item rawMutton = new MuttonRaw();
 	public static final Item cookedMutton = new MuttonCooked();
 	public static final Item prismarineItems = new PrismarineItems();
-	public static final Item doorAcacia = new ItemNewDoor("acacia", ModBlocks.doorAcacia);
-	public static final Item doorBirch = new ItemNewDoor("birch", ModBlocks.doorBirch);
-	public static final Item doorDarkOak = new ItemNewDoor("dark_oak", ModBlocks.doorDarkOak);
-	public static final Item doorJungle = new ItemNewDoor("jungle", ModBlocks.doorJungle);
-	public static final Item doorSpruce = new ItemNewDoor("spruce", ModBlocks.doorSpruce);
+	public static final Item[] doors = new Item[BlockWood.field_150096_a.length - 1];
 
 	// Armour
 	public static final Item woodenHelmet = new WoodenArmour(0);
@@ -117,6 +114,11 @@ public class ModItems {
 	public static final Item dyedChainChestplate = new DyedChainArmour(1);
 	public static final Item dyedChainLeggings = new DyedChainArmour(2);
 	public static final Item dyedChainBoots = new DyedChainArmour(3);
+
+	static {
+		for (int i = 0; i < doors.length; i++)
+			doors[i] = new ItemNewDoor(i + 1);
+	}
 
 	public static void init() {
 		try {

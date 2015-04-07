@@ -1,6 +1,8 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.ModBlocks;
+import ganymedes01.ganyssurface.blocks.BlockNewDoor;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,8 +16,10 @@ public class ItemNewDoor extends Item {
 
 	private final Block door;
 
-	public ItemNewDoor(String name, Block door) {
-		this.door = door;
+	public ItemNewDoor(int meta) {
+		door = ModBlocks.doors[meta - 1];
+		String name = BlockNewDoor.names[meta];
+
 		setMaxStackSize(64);
 		setTextureName("door_" + name);
 		setUnlocalizedName(Utils.getUnlocalizedName("door_" + name));

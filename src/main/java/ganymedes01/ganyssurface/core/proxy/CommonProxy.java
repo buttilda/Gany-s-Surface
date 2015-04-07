@@ -1,12 +1,11 @@
 package ganymedes01.ganyssurface.core.proxy;
 
-import ganymedes01.ganyssurface.ContainerEnchantment;
 import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.GuiEnchantment;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiAutoEncaser;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiEncasingBench;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiEnchantment;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiFarmManager;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiGearalyser;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiInkHarvester;
@@ -28,6 +27,7 @@ import ganymedes01.ganyssurface.inventory.ContainerAutoEncaser;
 import ganymedes01.ganyssurface.inventory.ContainerBlockDetector;
 import ganymedes01.ganyssurface.inventory.ContainerDualWorkTable;
 import ganymedes01.ganyssurface.inventory.ContainerEncasingBench;
+import ganymedes01.ganyssurface.inventory.ContainerEnchantment;
 import ganymedes01.ganyssurface.inventory.ContainerFarmManager;
 import ganymedes01.ganyssurface.inventory.ContainerGearalyser;
 import ganymedes01.ganyssurface.inventory.ContainerInkHarvester;

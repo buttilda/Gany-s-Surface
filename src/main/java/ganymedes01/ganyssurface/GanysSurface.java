@@ -103,6 +103,7 @@ public class GanysSurface {
 	public static boolean enableFlingablePoop = true;
 	public static boolean enableBlockOfFlint = true;
 	public static boolean enableBurnableBlocks = true;
+	public static boolean enableWoodenButtons = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
@@ -180,6 +181,9 @@ public class GanysSurface {
 			Blocks.fire.setFireInfo(Blocks.fence, 5, 20);
 			Blocks.fire.setFireInfo(Blocks.deadbush, 60, 100);
 		}
+
+		if (enableWoodenButtons)
+			removeFirstRecipeFor(Blocks.wooden_button);
 	}
 
 	private void removeFirstRecipeFor(Block block) {

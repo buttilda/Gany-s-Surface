@@ -52,6 +52,7 @@ import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityWoodChest;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -123,14 +124,9 @@ public class ClientProxy extends CommonProxy {
 		if (GanysSurface.enablePaintings)
 			MinecraftForgeClient.registerItemRenderer(ModItems.painting, new ItemPaintingRenderer());
 
-		if (GanysSurface.enableChests) {
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.chestOak), ItemWoodChestRenderer.INSTANCE);
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.chestSpruce), ItemWoodChestRenderer.INSTANCE);
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.chestBirch), ItemWoodChestRenderer.INSTANCE);
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.chestJungle), ItemWoodChestRenderer.INSTANCE);
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.chestAcacia), ItemWoodChestRenderer.INSTANCE);
-			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.chestDarkOak), ItemWoodChestRenderer.INSTANCE);
-		}
+		if (GanysSurface.enableChests)
+			for (Block chest : ModBlocks.chests)
+				MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(chest), ItemWoodChestRenderer.INSTANCE);
 
 		if (GanysSurface.enable3DRendering) {
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.hopper), new ItemHopperRenderer());

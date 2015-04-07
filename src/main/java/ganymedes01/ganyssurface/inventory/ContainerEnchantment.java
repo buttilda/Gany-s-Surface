@@ -1,4 +1,4 @@
-package ganymedes01.ganyssurface;
+package ganymedes01.ganyssurface.inventory;
 
 import java.util.HashMap;
 import java.util.List;

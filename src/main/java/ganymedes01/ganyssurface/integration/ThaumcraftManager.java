@@ -56,33 +56,23 @@ public class ThaumcraftManager extends Integration {
 			addAspectsToItem(ModItems.horseSpawner, new Aspect[] { Aspect.SOUL, Aspect.TRAP }, new int[] { 1, 1 });
 			addAspectsToItem(ModItems.chargedCreeperSpawner, new Aspect[] { Aspect.SOUL, Aspect.TRAP }, new int[] { 1, 1 });
 		}
-		if (GanysSurface.enableChests) {
-			addAspectsToItem(ModBlocks.chestAcacia, new Aspect[] { Aspect.TREE, Aspect.VOID }, new int[] { 6, 4 });
-			addAspectsToItem(ModBlocks.chestBirch, new Aspect[] { Aspect.TREE, Aspect.VOID }, new int[] { 6, 4 });
-			addAspectsToItem(ModBlocks.chestDarkOak, new Aspect[] { Aspect.TREE, Aspect.VOID }, new int[] { 6, 4 });
-			addAspectsToItem(ModBlocks.chestJungle, new Aspect[] { Aspect.TREE, Aspect.VOID }, new int[] { 6, 4 });
-			addAspectsToItem(ModBlocks.chestOak, new Aspect[] { Aspect.TREE, Aspect.VOID }, new int[] { 6, 4 });
-			addAspectsToItem(ModBlocks.chestSpruce, new Aspect[] { Aspect.TREE, Aspect.VOID }, new int[] { 6, 4 });
-		}
+		if (GanysSurface.enableChests)
+			for (Block chest : ModBlocks.chests)
+				addAspectsToItem(chest, new Aspect[] { Aspect.TREE, Aspect.VOID }, new int[] { 6, 4 });
 		if (GanysSurface.enableDoors) {
-			addAspectsToItem(ModItems.doorAcacia, new Aspect[] { Aspect.TREE, Aspect.MOTION, Aspect.MECHANISM }, new int[] { 1, 1, 1 });
-			addAspectsToItem(ModItems.doorBirch, new Aspect[] { Aspect.TREE, Aspect.MOTION, Aspect.MECHANISM }, new int[] { 1, 1, 1 });
-			addAspectsToItem(ModItems.doorDarkOak, new Aspect[] { Aspect.TREE, Aspect.MOTION, Aspect.MECHANISM }, new int[] { 1, 1, 1 });
-			addAspectsToItem(ModItems.doorJungle, new Aspect[] { Aspect.TREE, Aspect.MOTION, Aspect.MECHANISM }, new int[] { 1, 1, 1 });
-			addAspectsToItem(ModItems.doorSpruce, new Aspect[] { Aspect.TREE, Aspect.MOTION, Aspect.MECHANISM }, new int[] { 1, 1, 1 });
+			for (Item door : ModItems.doors)
+				addAspectsToItem(door, new Aspect[] { Aspect.TREE, Aspect.MOTION, Aspect.MECHANISM }, new int[] { 1, 1, 1 });
+			for (Block door : ModBlocks.doors)
+				addAspectsToItem(door, new Aspect[] { Aspect.TREE, Aspect.MOTION, Aspect.MECHANISM }, new int[] { 1, 1, 1 });
 		}
 		if (GanysSurface.enableDisguisedTrapdoors)
 			for (int i = 0; i < ModBlocks.disguisedTrapDoor.length; i++)
 				addAspectsToItem(ModBlocks.disguisedTrapDoor[i], new Aspect[] { Aspect.TREE, Aspect.MOTION }, new int[] { 2, 1 });
 		if (GanysSurface.enableIronTrapdoor)
 			addAspectsToItem(ModBlocks.ironTrapdoor, new Aspect[] { Aspect.METAL, Aspect.MOTION }, new int[] { 4, 1 });
-		if (GanysSurface.enableFences) {
-			addAspectsToItem(ModBlocks.gateAcacia, new Aspect[] { Aspect.TREE, Aspect.TRAVEL, Aspect.MECHANISM }, new int[] { 4, 1, 1 });
-			addAspectsToItem(ModBlocks.gateBirch, new Aspect[] { Aspect.TREE, Aspect.TRAVEL, Aspect.MECHANISM }, new int[] { 4, 1, 1 });
-			addAspectsToItem(ModBlocks.gateDarkOak, new Aspect[] { Aspect.TREE, Aspect.TRAVEL, Aspect.MECHANISM }, new int[] { 4, 1, 1 });
-			addAspectsToItem(ModBlocks.gateJungle, new Aspect[] { Aspect.TREE, Aspect.TRAVEL, Aspect.MECHANISM }, new int[] { 4, 1, 1 });
-			addAspectsToItem(ModBlocks.gateSpruce, new Aspect[] { Aspect.TREE, Aspect.TRAVEL, Aspect.MECHANISM }, new int[] { 4, 1, 1 });
-		}
+		if (GanysSurface.enableFences)
+			for (Block gate : ModBlocks.gates)
+				addAspectsToItem(gate, new Aspect[] { Aspect.TREE, Aspect.TRAVEL, Aspect.MECHANISM }, new int[] { 4, 1, 1 });
 		if (GanysSurface.enable18Stones)
 			for (int i = 1; i <= 6; i++)
 				addAspectsToItem(ModBlocks.newStones, i, new Aspect[] { Aspect.EARTH }, new int[] { 2 });
