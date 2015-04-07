@@ -13,13 +13,20 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockNewDoor extends BlockDoor {
+/**
+ * Gany's Surface
+ *
+ * @author ganymedes01
+ *
+ */
+
+public class BlockWoodDoor extends BlockDoor {
 
 	public static final String[] names = new String[] { "oak", "spruce", "birch", "jungle", "acacia", "dark_oak" };
 
 	private final int meta;
 
-	public BlockNewDoor(int meta) {
+	public BlockWoodDoor(int meta) {
 		super(Material.wood);
 		String name = names[meta];
 		this.meta = meta;

@@ -66,8 +66,8 @@ public class ThaumcraftManager extends Integration {
 				addAspectsToItem(door, new Aspect[] { Aspect.TREE, Aspect.MOTION, Aspect.MECHANISM }, new int[] { 1, 1, 1 });
 		}
 		if (GanysSurface.enableDisguisedTrapdoors)
-			for (int i = 0; i < ModBlocks.disguisedTrapDoor.length; i++)
-				addAspectsToItem(ModBlocks.disguisedTrapDoor[i], new Aspect[] { Aspect.TREE, Aspect.MOTION }, new int[] { 2, 1 });
+			for (Block trapdoor : ModBlocks.disguisedTrapdoors)
+				addAspectsToItem(trapdoor, new Aspect[] { Aspect.TREE, Aspect.MOTION }, new int[] { 2, 1 });
 		if (GanysSurface.enableIronTrapdoor)
 			addAspectsToItem(ModBlocks.ironTrapdoor, new Aspect[] { Aspect.METAL, Aspect.MOTION }, new int[] { 4, 1 });
 		if (GanysSurface.enableFences)
@@ -106,6 +106,8 @@ public class ThaumcraftManager extends Integration {
 		if (GanysSurface.enableItemDisplay)
 			for (int i = 0; i < 16; i++)
 				addAspectsToItem(ModBlocks.itemDisplay, i, new Aspect[] { Aspect.CRYSTAL, Aspect.CLOTH }, new int[] { 4, 1 });
+		for (Block trapdoor : ModBlocks.trapdoors)
+			addAspectsToItem(trapdoor, new Aspect[] { Aspect.TREE, Aspect.MOTION }, new int[] { 2, 1 });
 	}
 
 	@Override

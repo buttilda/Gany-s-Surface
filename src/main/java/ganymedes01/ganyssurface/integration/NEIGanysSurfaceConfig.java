@@ -119,7 +119,7 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModBlocks.workTable));
 		}
 		if (!GanysSurface.enableDisguisedTrapdoors)
-			for (Block trapdoor : ModBlocks.disguisedTrapDoor)
+			for (Block trapdoor : ModBlocks.disguisedTrapdoors)
 				API.hideItem(new ItemStack(trapdoor));
 		if (!GanysSurface.enableEncasers) {
 			API.hideItem(new ItemStack(ModBlocks.autoEncaser));
@@ -216,6 +216,10 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		if (!GanysSurface.enableWoodenPressurePlates)
 			for (Block pressurePlate : ModBlocks.pressurePlates)
 				API.hideItem(new ItemStack(pressurePlate));
+
+		if (!GanysSurface.enableWoodenTrapdoors)
+			for (Block trapdoor : ModBlocks.trapdoors)
+				API.hideItem(new ItemStack(trapdoor));
 	}
 
 	@Override

@@ -3,13 +3,14 @@ package ganymedes01.ganyssurface;
 import ganymedes01.ganyssurface.blocks.AutoEncaser;
 import ganymedes01.ganyssurface.blocks.Basalt;
 import ganymedes01.ganyssurface.blocks.BlockDetector;
-import ganymedes01.ganyssurface.blocks.BlockNewDoor;
 import ganymedes01.ganyssurface.blocks.BlockSilkedMushroom;
 import ganymedes01.ganyssurface.blocks.BlockSlowRail;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest;
+import ganymedes01.ganyssurface.blocks.BlockWoodDoor;
 import ganymedes01.ganyssurface.blocks.BlockWoodFence;
 import ganymedes01.ganyssurface.blocks.BlockWoodFenceGate;
 import ganymedes01.ganyssurface.blocks.BlockWoodPressurePlate;
+import ganymedes01.ganyssurface.blocks.BlockWoodTrapdoor;
 import ganymedes01.ganyssurface.blocks.ButtonWood;
 import ganymedes01.ganyssurface.blocks.CamelliaCrop;
 import ganymedes01.ganyssurface.blocks.CharcoalBlock;
@@ -19,7 +20,7 @@ import ganymedes01.ganyssurface.blocks.ColouredRedstone;
 import ganymedes01.ganyssurface.blocks.ColouredRedstoneBlock;
 import ganymedes01.ganyssurface.blocks.CubicSensoringDislocator;
 import ganymedes01.ganyssurface.blocks.Cushion;
-import ganymedes01.ganyssurface.blocks.DisguisedTrapDoor;
+import ganymedes01.ganyssurface.blocks.DisguisedTrapdoor;
 import ganymedes01.ganyssurface.blocks.Dislocator;
 import ganymedes01.ganyssurface.blocks.DualWorkTable;
 import ganymedes01.ganyssurface.blocks.EncasingBench;
@@ -69,7 +70,7 @@ public class ModBlocks {
 	public static final Block dislocator = new Dislocator();
 	public static final Block sensitiveDislocator = new SensoringDislocator();
 	public static final Block cubicSensitiveDislocator = new CubicSensoringDislocator();
-	public static final Block[] disguisedTrapDoor = new Block[BlockWood.field_150096_a.length];
+	public static final Block[] disguisedTrapdoors = new Block[BlockWood.field_150096_a.length];
 	public static final Block workTable = new WorkTable();
 	public static final Block organicMatterCompressor = new OrganicMatterCompressor();
 	public static final Block cushion = new Cushion();
@@ -97,6 +98,7 @@ public class ModBlocks {
 	public static final Block[] chests = new Block[BlockWood.field_150096_a.length];
 	public static final Block[] buttons = new Block[BlockWood.field_150096_a.length - 1];
 	public static final Block[] pressurePlates = new Block[BlockWood.field_150096_a.length - 1];
+	public static final Block[] trapdoors = new Block[BlockWood.field_150096_a.length - 1];
 
 	// 1.8 stuff
 	public static final Block newStones = new Stones18();
@@ -114,15 +116,15 @@ public class ModBlocks {
 	public static final Block red_mushroom_block = new BlockSilkedMushroom(Blocks.red_mushroom_block, "red");
 
 	static {
-		for (int i = 0; i < disguisedTrapDoor.length; i++)
-			disguisedTrapDoor[i] = new DisguisedTrapDoor(i);
+		for (int i = 0; i < disguisedTrapdoors.length; i++)
+			disguisedTrapdoors[i] = new DisguisedTrapdoor(i);
 
 		for (int i = 0; i < 16; i++)
 			if (i != 1) // Skip Red
 				colouredRedstone[i] = new ColouredRedstone(i);
 
 		for (int i = 0; i < doors.length; i++)
-			doors[i] = new BlockNewDoor(i + 1);
+			doors[i] = new BlockWoodDoor(i + 1);
 
 		for (int i = 0; i < fences.length; i++)
 			fences[i] = new BlockWoodFence(i);
@@ -138,6 +140,9 @@ public class ModBlocks {
 
 		for (int i = 0; i < pressurePlates.length; i++)
 			pressurePlates[i] = new BlockWoodPressurePlate(i + 1);
+
+		for (int i = 0; i < trapdoors.length; i++)
+			trapdoors[i] = new BlockWoodTrapdoor(i + 1);
 	}
 
 	public static void init() {

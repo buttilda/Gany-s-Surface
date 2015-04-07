@@ -17,11 +17,11 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class DisguisedTrapDoor extends BlockTrapDoor {
+public class DisguisedTrapdoor extends BlockTrapDoor {
 
 	private final int type;
 
-	public DisguisedTrapDoor(int type) {
+	public DisguisedTrapdoor(int type) {
 		super(Material.wood);
 		disableStats();
 		this.type = type;

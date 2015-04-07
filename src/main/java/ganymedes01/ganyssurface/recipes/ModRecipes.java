@@ -226,8 +226,8 @@ public class ModRecipes {
 		}
 
 		if (GanysSurface.enableDisguisedTrapdoors)
-			for (int i = 0; i < ModBlocks.disguisedTrapDoor.length; i++)
-				GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.disguisedTrapDoor[i]), new ItemStack(Blocks.planks, 1, i), Blocks.trapdoor);
+			for (int i = 0; i < ModBlocks.disguisedTrapdoors.length; i++)
+				GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.disguisedTrapdoors[i]), new ItemStack(Blocks.planks, 1, i), Blocks.trapdoor);
 
 		if (GanysSurface.enableEncasers) {
 			GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.encasingBench), "xyx", "yzy", "xyx", 'x', Items.gold_ingot, 'y', Blocks.piston, 'z', "chestWood"));
