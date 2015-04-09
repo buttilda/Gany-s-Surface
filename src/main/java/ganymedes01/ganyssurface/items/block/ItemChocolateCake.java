@@ -17,6 +17,6 @@ public class ItemChocolateCake extends ItemBlock {
 	public ItemChocolateCake(Block block) {
 		super(block);
 		setMaxStackSize(1);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CHOCOLATE_CAKE_NAME + "_item"));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.CHOCOLATE_CAKE_NAME + "_item"));
 	}
 }

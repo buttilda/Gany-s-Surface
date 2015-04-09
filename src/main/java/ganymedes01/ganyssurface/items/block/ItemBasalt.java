@@ -18,7 +18,7 @@ public class ItemBasalt extends ItemBlock {
 	public ItemBasalt(Block block) {
 		super(block);
 		setHasSubtypes(true);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.BASALT + "_item_"));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.BASALT + "_item_"));
 	}
 
 	@Override

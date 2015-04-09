@@ -35,7 +35,7 @@ public class Planter extends BlockContainer {
 		super(Material.cloth);
 		setHardness(1.0F);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-		setBlockName(Utils.getUnlocalizedName(Strings.PLANTER_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.PLANTER_NAME));
 		setCreativeTab(GanysSurface.enablePlanter ? GanysSurface.surfaceTab : null);
 	}
 

@@ -33,7 +33,7 @@ public class Painting extends Item {
 	public Painting() {
 		setMaxDamage(0);
 		setHasSubtypes(true);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.PAINTING_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.PAINTING_NAME));
 		setCreativeTab(GanysSurface.enablePaintings ? GanysSurface.surfaceTab : null);
 	}
 

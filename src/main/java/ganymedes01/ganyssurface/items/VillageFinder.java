@@ -14,7 +14,7 @@ public class VillageFinder extends Item {
 
 	public VillageFinder() {
 		setTextureName(Utils.getItemTexture(Strings.VILLAGE_FINDER));
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.VILLAGE_FINDER));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.VILLAGE_FINDER));
 		setCreativeTab(GanysSurface.enableVillageFinder ? GanysSurface.surfaceTab : null);
 	}
 

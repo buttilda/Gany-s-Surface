@@ -27,7 +27,7 @@ public class PortableDualWorkTable extends Item {
 		setMaxStackSize(1);
 		setTextureName(Utils.getItemTexture(Strings.PORTABLE_DUAL_WORK_TABLE_NAME));
 		setCreativeTab(GanysSurface.enableWorkTables ? GanysSurface.surfaceTab : null);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.PORTABLE_DUAL_WORK_TABLE_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.PORTABLE_DUAL_WORK_TABLE_NAME));
 	}
 
 	@Override

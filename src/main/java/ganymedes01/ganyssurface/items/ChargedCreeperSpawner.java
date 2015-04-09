@@ -36,7 +36,7 @@ public class ChargedCreeperSpawner extends ItemSimpleFoiled {
 	public ChargedCreeperSpawner() {
 		setTextureName("spawn_egg");
 		setCreativeTab(GanysSurface.enableSpawnEggs ? GanysSurface.surfaceTab : null);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CHARGED_CREEPER_SPAWNER_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.CHARGED_CREEPER_SPAWNER_NAME));
 	}
 
 	public static Entity spawnCreeper(World world, double x, double y, double z) {

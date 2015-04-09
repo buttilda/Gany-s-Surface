@@ -18,7 +18,7 @@ public class ItemItemDisplay extends ItemBlock {
 	public ItemItemDisplay(Block block) {
 		super(block);
 		setHasSubtypes(true);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ITEM_DISPLAY_NAME + "_item_"));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.ITEM_DISPLAY_NAME + "_item_"));
 	}
 
 	@Override

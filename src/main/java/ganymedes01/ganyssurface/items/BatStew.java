@@ -17,7 +17,7 @@ public class BatStew extends ItemSoup {
 	public BatStew() {
 		super(8);
 		setTextureName(Utils.getItemTexture(Strings.BAT_STEW_NAME));
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.BAT_STEW_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.BAT_STEW_NAME));
 		setCreativeTab(GanysSurface.enablePocketCritters ? GanysSurface.surfaceTab : null);
 	}
 }

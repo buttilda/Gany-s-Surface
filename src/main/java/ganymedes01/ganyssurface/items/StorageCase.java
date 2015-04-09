@@ -23,7 +23,7 @@ public class StorageCase extends Item {
 
 	public StorageCase() {
 		setTextureName(Utils.getItemTexture(Strings.STORAGE_CASE_NAME));
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.STORAGE_CASE_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.STORAGE_CASE_NAME));
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public class SeaLantern extends Block {
 		setLightLevel(1.0F);
 		setStepSound(soundTypeGlass);
 		setBlockTextureName("sea_lantern");
-		setBlockName(Utils.getUnlocalizedName(Strings.SEA_LANTERN));
+		setBlockName(Utils.getUnlocalisedName(Strings.SEA_LANTERN));
 		setCreativeTab(GanysSurface.enablePrismarineStuff ? GanysSurface.surfaceTab : null);
 	}
 }

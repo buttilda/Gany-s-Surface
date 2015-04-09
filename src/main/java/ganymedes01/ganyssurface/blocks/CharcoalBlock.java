@@ -20,7 +20,7 @@ public class CharcoalBlock extends Block {
 		setHardness(5.0F);
 		setResistance(10.0F);
 		setStepSound(soundTypePiston);
-		setBlockName(Utils.getUnlocalizedName(Strings.CHARCOAL_BLOCK));
+		setBlockName(Utils.getUnlocalisedName(Strings.CHARCOAL_BLOCK));
 		setBlockTextureName(Utils.getBlockTexture(Strings.CHARCOAL_BLOCK));
 		setCreativeTab(GanysSurface.enableBlockOfCharcoal ? GanysSurface.surfaceTab : null);
 	}

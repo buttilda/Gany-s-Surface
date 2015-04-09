@@ -21,7 +21,7 @@ public class Gearalyser extends Item {
 	public Gearalyser() {
 		setMaxStackSize(1);
 		setTextureName(Utils.getItemTexture(Strings.GEARALYSER_NAME));
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.GEARALYSER_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.GEARALYSER_NAME));
 		setCreativeTab(GanysSurface.enableAnalisers ? GanysSurface.surfaceTab : null);
 	}
 

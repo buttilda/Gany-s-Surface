@@ -37,7 +37,7 @@ public class Quiver extends Item implements IQuiver {
 		setFull3D();
 		setMaxStackSize(1);
 		setTextureName("quiver");
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.QUIVER_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.QUIVER_NAME));
 		setCreativeTab(GanysSurface.enableQuiver ? GanysSurface.surfaceTab : null);
 	}
 

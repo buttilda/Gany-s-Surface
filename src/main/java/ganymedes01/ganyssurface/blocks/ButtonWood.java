@@ -23,7 +23,7 @@ public class ButtonWood extends BlockButtonWood {
 		plankMeta = meta;
 		setHardness(0.5F);
 		setStepSound(soundTypeWood);
-		setBlockName(Utils.getUnlocalizedName("button" + meta));
+		setBlockName(Utils.getUnlocalisedName("button" + meta));
 		setCreativeTab(GanysSurface.enableWoodenButtons ? GanysSurface.surfaceTab : null);
 	}
 

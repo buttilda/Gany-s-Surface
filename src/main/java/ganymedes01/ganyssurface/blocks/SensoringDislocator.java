@@ -25,7 +25,7 @@ public class SensoringDislocator extends Dislocator {
 
 	public SensoringDislocator() {
 		super();
-		setBlockName(Utils.getUnlocalizedName(Strings.SENSORING_DISLOCATOR_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.SENSORING_DISLOCATOR_NAME));
 	}
 
 	@Override

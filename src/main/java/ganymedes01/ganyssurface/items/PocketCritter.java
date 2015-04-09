@@ -34,7 +34,7 @@ public class PocketCritter extends Item {
 		setMaxDamage(0);
 		setMaxStackSize(1);
 		setHasSubtypes(true);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.POCKET_CRITTER_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.POCKET_CRITTER_NAME));
 		setCreativeTab(GanysSurface.enablePocketCritters ? GanysSurface.surfaceTab : null);
 	}
 

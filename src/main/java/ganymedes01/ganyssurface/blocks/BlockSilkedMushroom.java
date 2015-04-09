@@ -29,7 +29,7 @@ public class BlockSilkedMushroom extends Block {
 		this.block = block;
 		setHardness(0.2F);
 		setStepSound(soundTypeWood);
-		setBlockName(Utils.getUnlocalizedName(str + "_mushroom"));
+		setBlockName(Utils.getUnlocalisedName(str + "_mushroom"));
 		setCreativeTab(GanysSurface.enableSilkTouchingMushrooms ? GanysSurface.surfaceTab : null);
 	}
 

@@ -43,7 +43,7 @@ public class PoopBlock extends Block implements IGrowable {
 		disableStats();
 		setTickRandomly(true);
 		setStepSound(ModSounds.soundSlime);
-		setBlockName(Utils.getUnlocalizedName(Strings.POOP_BLOCK_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.POOP_BLOCK_NAME));
 		setBlockBounds(5 * pixel, 0.0F, 5 * pixel, 1.0F - 5 * pixel, 6 * pixel, 1.0F - 5 * pixel);
 	}
 

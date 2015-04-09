@@ -34,7 +34,7 @@ public class BlockDetector extends BlockContainer {
 		super(Material.cloth);
 		setHardness(0.2F);
 		setStepSound(soundTypeWood);
-		setBlockName(Utils.getUnlocalizedName(Strings.BLOCK_DETECTOR_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.BLOCK_DETECTOR_NAME));
 		setCreativeTab(GanysSurface.enableDislocators ? GanysSurface.surfaceTab : null);
 	}
 

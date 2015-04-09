@@ -20,19 +20,19 @@ public class DyedChainArmour extends ItemDyeableArmour {
 
 		switch (type) {
 			case 0:
-				setUnlocalizedName(Utils.getUnlocalizedName(Strings.DYED_CHAIN_HELMET_NAME));
+				setUnlocalizedName(Utils.getUnlocalisedName(Strings.DYED_CHAIN_HELMET_NAME));
 				setTextureName("chainmail_helmet");
 				break;
 			case 1:
-				setUnlocalizedName(Utils.getUnlocalizedName(Strings.DYED_CHAIN_CHESTPLATE_NAME));
+				setUnlocalizedName(Utils.getUnlocalisedName(Strings.DYED_CHAIN_CHESTPLATE_NAME));
 				setTextureName("chainmail_chestplate");
 				break;
 			case 2:
-				setUnlocalizedName(Utils.getUnlocalizedName(Strings.DYED_CHAIN_LEGGINGS_NAME));
+				setUnlocalizedName(Utils.getUnlocalisedName(Strings.DYED_CHAIN_LEGGINGS_NAME));
 				setTextureName("chainmail_leggings");
 				break;
 			case 3:
-				setUnlocalizedName(Utils.getUnlocalizedName(Strings.DYED_CHAIN_BOOTS_NAME));
+				setUnlocalizedName(Utils.getUnlocalisedName(Strings.DYED_CHAIN_BOOTS_NAME));
 				setTextureName("chainmail_boots");
 				break;
 		}

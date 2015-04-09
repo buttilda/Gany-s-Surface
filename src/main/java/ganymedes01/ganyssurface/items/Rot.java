@@ -32,13 +32,13 @@ public class Rot extends Item {
 	public Rot() {
 		setMaxDamage(0);
 		setHasSubtypes(true);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ROT_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.ROT_NAME));
 		setCreativeTab(!GanysSurface.enablePoop && !GanysSurface.enableRot ? null : GanysSurface.surfaceTab);
 	}
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return "item." + (stack.getItemDamage() == 0 ? Utils.getUnlocalizedName(Strings.ROT_NAME) : Utils.getUnlocalizedName(Strings.FERTILIZER_NAME));
+		return "item." + (stack.getItemDamage() == 0 ? Utils.getUnlocalisedName(Strings.ROT_NAME) : Utils.getUnlocalisedName(Strings.FERTILIZER_NAME));
 	}
 
 	@Override

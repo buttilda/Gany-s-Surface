@@ -16,7 +16,7 @@ public class TeaLeaves extends Item {
 
 	public TeaLeaves() {
 		setTextureName(Utils.getItemTexture(Strings.TEA_LEAVES_NAME));
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.TEA_LEAVES_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.TEA_LEAVES_NAME));
 		setCreativeTab(GanysSurface.enableTea ? GanysSurface.surfaceTab : null);
 	}
 }

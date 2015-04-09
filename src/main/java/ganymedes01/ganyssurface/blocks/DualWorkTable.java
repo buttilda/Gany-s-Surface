@@ -21,7 +21,7 @@ public class DualWorkTable extends WorkTable {
 
 	public DualWorkTable() {
 		super();
-		setBlockName(Utils.getUnlocalizedName(Strings.DUAL_WORK_TABLE_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.DUAL_WORK_TABLE_NAME));
 	}
 
 	@Override

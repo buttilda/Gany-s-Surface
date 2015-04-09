@@ -20,7 +20,7 @@ public class MankyCupOfTea extends CupOfTea {
 
 	public MankyCupOfTea() {
 		setCreativeTab(null);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.MANKY_CUP_OF_TEA_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.MANKY_CUP_OF_TEA_NAME));
 	}
 
 	@Override

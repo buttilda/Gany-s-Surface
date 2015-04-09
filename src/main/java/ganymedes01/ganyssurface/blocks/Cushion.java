@@ -22,7 +22,7 @@ public class Cushion extends BlockFalling {
 		super(Material.cloth);
 		setHardness(0.2F);
 		setStepSound(soundTypeCloth);
-		setBlockName(Utils.getUnlocalizedName(Strings.CUSHION_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.CUSHION_NAME));
 		setBlockTextureName(Utils.getBlockTexture(Strings.CUSHION_NAME));
 		setCreativeTab(GanysSurface.enableCushion ? GanysSurface.surfaceTab : null);
 	}

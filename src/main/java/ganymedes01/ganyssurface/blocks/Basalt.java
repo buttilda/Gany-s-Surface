@@ -38,7 +38,7 @@ public class Basalt extends Block implements ISubBlocksBlock {
 		setHardness(1.5F);
 		setResistance(10.0F);
 		setStepSound(soundTypePiston);
-		setBlockName(Utils.getUnlocalizedName(Strings.BASALT));
+		setBlockName(Utils.getUnlocalisedName(Strings.BASALT));
 		setCreativeTab(GanysSurface.enableBasalt ? GanysSurface.surfaceTab : null);
 	}
 

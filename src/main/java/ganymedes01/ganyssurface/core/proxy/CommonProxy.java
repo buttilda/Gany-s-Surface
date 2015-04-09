@@ -85,21 +85,21 @@ public class CommonProxy implements IGuiHandler {
 	}
 
 	public void registerTileEntities() {
-		GameRegistry.registerTileEntity(TileEntityRainDetector.class, Utils.getUnlocalizedName(Strings.RAIN_DETECTOR_NAME));
-		GameRegistry.registerTileEntity(TileEntityBlockDetector.class, Utils.getUnlocalizedName(Strings.BLOCK_DETECTOR_NAME));
-		GameRegistry.registerTileEntity(TileEntityDislocator.class, Utils.getUnlocalizedName(Strings.DISLOCATOR_NAME));
-		GameRegistry.registerTileEntity(TileEntitySensoringDislocator.class, Utils.getUnlocalizedName(Strings.SENSORING_DISLOCATOR_NAME));
-		GameRegistry.registerTileEntity(TileEntityCubicSensoringDislocator.class, Utils.getUnlocalizedName(Strings.CUBIC_SENSORING_DISLOCATOR_NAME));
-		GameRegistry.registerTileEntity(TileEntityWorkTable.class, Utils.getUnlocalizedName(Strings.WORK_TABLE_NAME));
-		GameRegistry.registerTileEntity(TileEntityOrganicMatterCompressor.class, Utils.getUnlocalizedName(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
-		GameRegistry.registerTileEntity(TileEntityItemDisplay.class, Utils.getUnlocalizedName(Strings.ITEM_DISPLAY_NAME));
-		GameRegistry.registerTileEntity(TileEntityChestPropellant.class, Utils.getUnlocalizedName(Strings.CHEST_PROPELLANT_NAME));
-		GameRegistry.registerTileEntity(TileEntityPlanter.class, Utils.getUnlocalizedName(Strings.PLANTER_NAME));
-		GameRegistry.registerTileEntity(TileEntityInkHarvester.class, Utils.getUnlocalizedName(Strings.INK_HARVESTER_NAME));
-		GameRegistry.registerTileEntity(TileEntityDualWorkTable.class, Utils.getUnlocalizedName(Strings.DUAL_WORK_TABLE_NAME));
-		GameRegistry.registerTileEntity(TileEntityFarmManager.class, Utils.getUnlocalizedName(Strings.FARM_MANAGER_NAME));
-		GameRegistry.registerTileEntity(TileEntityAutoEncaser.class, Utils.getUnlocalizedName(Strings.AUTO_ENCASER_NAME));
-		GameRegistry.registerTileEntity(TileEntityWoodChest.class, Utils.getUnlocalizedName("wood_chest"));
+		GameRegistry.registerTileEntity(TileEntityRainDetector.class, Utils.getUnlocalisedName(Strings.RAIN_DETECTOR_NAME));
+		GameRegistry.registerTileEntity(TileEntityBlockDetector.class, Utils.getUnlocalisedName(Strings.BLOCK_DETECTOR_NAME));
+		GameRegistry.registerTileEntity(TileEntityDislocator.class, Utils.getUnlocalisedName(Strings.DISLOCATOR_NAME));
+		GameRegistry.registerTileEntity(TileEntitySensoringDislocator.class, Utils.getUnlocalisedName(Strings.SENSORING_DISLOCATOR_NAME));
+		GameRegistry.registerTileEntity(TileEntityCubicSensoringDislocator.class, Utils.getUnlocalisedName(Strings.CUBIC_SENSORING_DISLOCATOR_NAME));
+		GameRegistry.registerTileEntity(TileEntityWorkTable.class, Utils.getUnlocalisedName(Strings.WORK_TABLE_NAME));
+		GameRegistry.registerTileEntity(TileEntityOrganicMatterCompressor.class, Utils.getUnlocalisedName(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
+		GameRegistry.registerTileEntity(TileEntityItemDisplay.class, Utils.getUnlocalisedName(Strings.ITEM_DISPLAY_NAME));
+		GameRegistry.registerTileEntity(TileEntityChestPropellant.class, Utils.getUnlocalisedName(Strings.CHEST_PROPELLANT_NAME));
+		GameRegistry.registerTileEntity(TileEntityPlanter.class, Utils.getUnlocalisedName(Strings.PLANTER_NAME));
+		GameRegistry.registerTileEntity(TileEntityInkHarvester.class, Utils.getUnlocalisedName(Strings.INK_HARVESTER_NAME));
+		GameRegistry.registerTileEntity(TileEntityDualWorkTable.class, Utils.getUnlocalisedName(Strings.DUAL_WORK_TABLE_NAME));
+		GameRegistry.registerTileEntity(TileEntityFarmManager.class, Utils.getUnlocalisedName(Strings.FARM_MANAGER_NAME));
+		GameRegistry.registerTileEntity(TileEntityAutoEncaser.class, Utils.getUnlocalisedName(Strings.AUTO_ENCASER_NAME));
+		GameRegistry.registerTileEntity(TileEntityWoodChest.class, Utils.getUnlocalisedName("wood_chest"));
 	}
 
 	public void registerEntities() {

@@ -19,7 +19,7 @@ public class BlockSlowRail extends BlockRailPowered {
 	public BlockSlowRail() {
 		setHardness(0.7F);
 		setStepSound(soundTypeMetal);
-		setBlockName(Utils.getUnlocalizedName(Strings.SLOW_RAIL));
+		setBlockName(Utils.getUnlocalisedName(Strings.SLOW_RAIL));
 		setBlockTextureName(Utils.getBlockTexture(Strings.SLOW_RAIL));
 		setCreativeTab(GanysSurface.enableSlowRail ? GanysSurface.surfaceTab : null);
 	}

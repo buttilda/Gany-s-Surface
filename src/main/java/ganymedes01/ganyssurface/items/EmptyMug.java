@@ -29,7 +29,7 @@ public class EmptyMug extends Item {
 	public EmptyMug() {
 		setMaxDamage(0);
 		setHasSubtypes(true);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.EMPTY_MUG_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.EMPTY_MUG_NAME));
 		setCreativeTab(GanysSurface.enableTea ? GanysSurface.surfaceTab : null);
 	}
 

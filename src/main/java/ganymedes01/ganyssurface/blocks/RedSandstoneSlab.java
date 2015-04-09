@@ -37,7 +37,7 @@ public class RedSandstoneSlab extends Block implements ISubBlocksBlock {
 		setHardness(2.0F);
 		setLightOpacity(0);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-		setBlockName(Utils.getUnlocalizedName("red_sandstone_slab"));
+		setBlockName(Utils.getUnlocalisedName("red_sandstone_slab"));
 		setCreativeTab(GanysSurface.enableRedSandstone ? GanysSurface.surfaceTab : null);
 	}
 

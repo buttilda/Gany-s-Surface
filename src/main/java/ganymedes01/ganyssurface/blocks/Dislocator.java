@@ -38,7 +38,7 @@ public class Dislocator extends BlockContainer {
 	public Dislocator() {
 		super(Material.cloth);
 		setHardness(0.2F);
-		setBlockName(Utils.getUnlocalizedName(Strings.DISLOCATOR_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.DISLOCATOR_NAME));
 		setCreativeTab(GanysSurface.enableDislocators ? GanysSurface.surfaceTab : null);
 	}
 

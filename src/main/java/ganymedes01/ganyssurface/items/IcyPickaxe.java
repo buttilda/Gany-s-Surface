@@ -22,7 +22,7 @@ public class IcyPickaxe extends ItemPickaxe {
 		super(ModMaterials.ICE);
 		setHarvestLevel("pickaxe", 2);
 		setTextureName(Utils.getItemTexture(Strings.ICY_PICKAXE_NAME));
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.ICY_PICKAXE_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.ICY_PICKAXE_NAME));
 		setCreativeTab(GanysSurface.enableIcyPick ? GanysSurface.surfaceTab : null);
 	}
 

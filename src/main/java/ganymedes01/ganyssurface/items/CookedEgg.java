@@ -18,7 +18,7 @@ public class CookedEgg extends ItemFood {
 		super(5, false);
 		setMaxStackSize(16);
 		setTextureName(Utils.getItemTexture(Strings.COOKED_EGG_NAME));
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.COOKED_EGG_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.COOKED_EGG_NAME));
 		setCreativeTab(GanysSurface.enableCookedEgg ? GanysSurface.surfaceTab : null);
 	}
 }

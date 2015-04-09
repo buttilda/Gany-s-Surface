@@ -18,7 +18,7 @@ public class ItemPrismarineBlocks extends ItemBlock {
 	public ItemPrismarineBlocks(Block block) {
 		super(block);
 		setHasSubtypes(true);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.PRISMARINE_BLOCKS + "_item_"));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.PRISMARINE_BLOCKS + "_item_"));
 	}
 
 	@Override

@@ -35,7 +35,7 @@ public class PrismarineBlocks extends Block implements ISubBlocksBlock {
 		super(Material.rock);
 		setHardness(1.5F);
 		setResistance(10.0F);
-		setBlockName(Utils.getUnlocalizedName(Strings.PRISMARINE_BLOCKS));
+		setBlockName(Utils.getUnlocalisedName(Strings.PRISMARINE_BLOCKS));
 		setCreativeTab(GanysSurface.enablePrismarineStuff ? GanysSurface.surfaceTab : null);
 	}
 

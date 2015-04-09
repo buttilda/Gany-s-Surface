@@ -8,6 +8,9 @@ import ganymedes01.ganyssurface.dispenser.DispenserBehaviorPoop;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorRot;
 import ganymedes01.ganyssurface.items.BatNet;
 import ganymedes01.ganyssurface.items.BatStew;
+import ganymedes01.ganyssurface.items.Beetroot;
+import ganymedes01.ganyssurface.items.BeetrootSeeds;
+import ganymedes01.ganyssurface.items.BeetrootSoup;
 import ganymedes01.ganyssurface.items.CamelliaSeeds;
 import ganymedes01.ganyssurface.items.ChargedCreeperSpawner;
 import ganymedes01.ganyssurface.items.ChocolateBar;
@@ -98,6 +101,11 @@ public class ModItems {
 	public static final Item cookedMutton = new MuttonCooked();
 	public static final Item prismarineItems = new PrismarineItems();
 	public static final Item[] doors = new Item[BlockWood.field_150096_a.length - 1];
+
+	// MC:PE
+	public static final Item beetroot = new Beetroot();
+	public static final Item beetrootSoup = new BeetrootSoup();
+	public static final Item beetrootSeeds = new BeetrootSeeds();
 
 	// Armour
 	public static final Item woodenHelmet = new WoodenArmour(0);

@@ -52,6 +52,7 @@ public class Strings {
 	public static final String SLOW_RAIL = "slowRail";
 	public static final String BASALT = "basalt";
 	public static final String FLINT_BLOCK = "flintBlock";
+	public static final String BLOCK_BEETROOT_NAME = "beetrootBlock";
 
 	// Item names
 	public static final String ROT_NAME = "rot";
@@ -87,6 +88,9 @@ public class Strings {
 	public static final String PINE_NUTS_NAME = "pineNuts";
 	public static final String QUIVER_NAME = "quiver";
 	public static final String PAINTING_NAME = "painting";
+	public static final String BEETROOT_NAME = "beetroot";
+	public static final String BEETROOT_SOUP_NAME = "beetrootSoup";
+	public static final String BEETROOT_SEEDS_NAME = "beetrootSeeds";
 
 	// Armour names
 	public static final String WOODEN_HELMET_NAME = "woodenHelmet";

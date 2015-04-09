@@ -30,7 +30,7 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 
 	public CubicSensoringDislocator() {
 		super();
-		setBlockName(Utils.getUnlocalizedName(Strings.CUBIC_SENSORING_DISLOCATOR_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.CUBIC_SENSORING_DISLOCATOR_NAME));
 	}
 
 	@Override

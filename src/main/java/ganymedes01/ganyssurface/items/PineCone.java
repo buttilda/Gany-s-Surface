@@ -16,7 +16,7 @@ public class PineCone extends Item {
 
 	public PineCone() {
 		setTextureName(Utils.getItemTexture(Strings.PINE_CONE_NAME));
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.PINE_CONE_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.PINE_CONE_NAME));
 		setCreativeTab(GanysSurface.enablePineCones ? GanysSurface.surfaceTab : null);
 	}
 }

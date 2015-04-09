@@ -18,7 +18,7 @@ public class RedSandstoneStairs extends BlockStairs {
 		super(ModBlocks.redSandstone, 0);
 		setHardness(0.8F);
 		setLightOpacity(0);
-		setBlockName(Utils.getUnlocalizedName("red_sandstone_stairs"));
+		setBlockName(Utils.getUnlocalisedName("red_sandstone_stairs"));
 		setCreativeTab(GanysSurface.enableRedSandstone ? GanysSurface.surfaceTab : null);
 	}
 }

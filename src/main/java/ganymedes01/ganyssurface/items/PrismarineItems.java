@@ -29,7 +29,7 @@ public class PrismarineItems extends Item {
 	public PrismarineItems() {
 		setMaxDamage(0);
 		setHasSubtypes(true);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.PRISMARINE_ITEMS));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.PRISMARINE_ITEMS));
 		setCreativeTab(GanysSurface.enablePrismarineStuff ? GanysSurface.surfaceTab : null);
 	}
 

@@ -35,7 +35,7 @@ public class BlockWoodDoor extends BlockDoor {
 		setHardness(3.0F);
 		setStepSound(soundTypeWood);
 		setBlockTextureName("door_" + name);
-		setBlockName(Utils.getUnlocalizedName("door" + name.substring(0, 1).toUpperCase() + name.substring(1)));
+		setBlockName(Utils.getUnlocalisedName("door" + name.substring(0, 1).toUpperCase() + name.substring(1)));
 	}
 
 	@Override

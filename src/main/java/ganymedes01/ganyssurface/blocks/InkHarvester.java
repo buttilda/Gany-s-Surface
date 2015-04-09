@@ -33,7 +33,7 @@ public class InkHarvester extends BlockContainer {
 		super(Material.ground);
 		setHardness(0.2F);
 		setStepSound(soundTypeStone);
-		setBlockName(Utils.getUnlocalizedName(Strings.INK_HARVESTER_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.INK_HARVESTER_NAME));
 		setCreativeTab(GanysSurface.enableInkHarvester ? GanysSurface.surfaceTab : null);
 	}
 

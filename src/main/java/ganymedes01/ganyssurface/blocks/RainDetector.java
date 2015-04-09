@@ -32,7 +32,7 @@ public class RainDetector extends BlockContainer {
 		setLightOpacity(0);
 		setStepSound(soundTypeWood);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-		setBlockName(Utils.getUnlocalizedName(Strings.RAIN_DETECTOR_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.RAIN_DETECTOR_NAME));
 		setCreativeTab(GanysSurface.enableRainDetector ? GanysSurface.surfaceTab : null);
 	}
 

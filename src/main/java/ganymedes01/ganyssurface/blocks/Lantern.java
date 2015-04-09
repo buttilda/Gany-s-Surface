@@ -30,7 +30,7 @@ public class Lantern extends Block {
 		setLightLevel(0.9375F);
 		setBlockTextureName("torch_on");
 		setStepSound(soundTypeGlass);
-		setBlockName(Utils.getUnlocalizedName(Strings.LANTERN_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.LANTERN_NAME));
 		setCreativeTab(GanysSurface.enableLantern ? GanysSurface.surfaceTab : null);
 	}
 

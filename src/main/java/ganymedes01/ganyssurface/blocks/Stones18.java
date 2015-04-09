@@ -47,7 +47,7 @@ public class Stones18 extends Block implements ISubBlocksBlock {
 		setHardness(1.5F);
 		setResistance(10.0F);
 		setStepSound(soundTypePiston);
-		setBlockName(Utils.getUnlocalizedName(Strings.NEW_STONES_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.NEW_STONES_NAME));
 		setCreativeTab(GanysSurface.enable18Stones ? GanysSurface.surfaceTab : null);
 	}
 

@@ -30,7 +30,7 @@ public class BlockWoodChest extends BlockChest {
 		this.meta = meta;
 		setHardness(2.5F);
 		setStepSound(soundTypeWood);
-		setBlockName(Utils.getUnlocalizedName("chest" + meta));
+		setBlockName(Utils.getUnlocalisedName("chest" + meta));
 		setCreativeTab(GanysSurface.enableChests ? GanysSurface.surfaceTab : null);
 	}
 

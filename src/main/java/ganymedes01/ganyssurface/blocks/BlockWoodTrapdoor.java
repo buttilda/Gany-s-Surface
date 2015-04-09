@@ -19,7 +19,7 @@ public class BlockWoodTrapdoor extends BlockTrapDoor {
 		disableStats();
 		setHardness(3.0F);
 		setStepSound(soundTypeWood);
-		setBlockName(Utils.getUnlocalizedName("trapdoor_" + BlockWoodDoor.names[meta]));
+		setBlockName(Utils.getUnlocalisedName("trapdoor_" + BlockWoodDoor.names[meta]));
 		setBlockTextureName(Utils.getBlockTexture("trapdoor_" + BlockWoodDoor.names[meta]));
 		setCreativeTab(GanysSurface.enableWoodenTrapdoors ? GanysSurface.surfaceTab : null);
 	}

@@ -45,7 +45,7 @@ public class HorseSpawner extends Item {
 		setMaxDamage(0);
 		setHasSubtypes(true);
 		setTextureName("spawn_egg");
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.HORSE_SPAWNER_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.HORSE_SPAWNER_NAME));
 		setCreativeTab(GanysSurface.enableSpawnEggs ? GanysSurface.surfaceTab : null);
 	}
 
@@ -57,7 +57,7 @@ public class HorseSpawner extends Item {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return "item." + Utils.getUnlocalizedName(Strings.HORSE_SPAWNER_NAME) + stack.getItemDamage();
+		return "item." + Utils.getUnlocalisedName(Strings.HORSE_SPAWNER_NAME) + stack.getItemDamage();
 	}
 
 	public static Entity spawnHorse(World world, double x, double y, double z, int type, String username) {

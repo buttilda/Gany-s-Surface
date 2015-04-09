@@ -17,7 +17,7 @@ public class MuttonCooked extends ItemFood {
 	public MuttonCooked() {
 		super(6, 0.8F, true);
 		setTextureName(Strings.COOKED_MUTTON);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.COOKED_MUTTON));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.COOKED_MUTTON));
 		setCreativeTab(GanysSurface.enableMutton ? GanysSurface.surfaceTab : null);
 	}
 }

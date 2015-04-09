@@ -20,6 +20,6 @@ public class CamelliaSeeds extends ItemSeeds {
 		super(ModBlocks.camelliaCrop, Blocks.farmland);
 		setTextureName(Utils.getItemTexture(Strings.CAMELLIA_SEEDS_NAME));
 		setCreativeTab(GanysSurface.enableTea ? GanysSurface.surfaceTab : null);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CAMELLIA_SEEDS_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.CAMELLIA_SEEDS_NAME));
 	}
 }

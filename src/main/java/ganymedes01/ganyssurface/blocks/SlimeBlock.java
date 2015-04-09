@@ -36,7 +36,7 @@ public class SlimeBlock extends Block {
 		setHarvestLevel("shovel", 0);
 		setBlockTextureName("slime");
 		setStepSound(ModSounds.soundSlime);
-		setBlockName(Utils.getUnlocalizedName(Strings.SLIME_BLOCK_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.SLIME_BLOCK_NAME));
 		setCreativeTab(GanysSurface.enableSlimeBlock ? GanysSurface.surfaceTab : null);
 	}
 

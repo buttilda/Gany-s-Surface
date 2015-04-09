@@ -32,7 +32,7 @@ public class AutoEncaser extends BlockContainer {
 	public AutoEncaser() {
 		super(Material.iron);
 		setHardness(2.0F);
-		setBlockName(Utils.getUnlocalizedName(Strings.AUTO_ENCASER_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.AUTO_ENCASER_NAME));
 		setCreativeTab(GanysSurface.enableEncasers ? GanysSurface.surfaceTab : null);
 	}
 

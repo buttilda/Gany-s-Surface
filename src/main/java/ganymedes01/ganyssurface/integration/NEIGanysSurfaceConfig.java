@@ -220,6 +220,13 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		if (!GanysSurface.enableWoodenTrapdoors)
 			for (Block trapdoor : ModBlocks.trapdoors)
 				API.hideItem(new ItemStack(trapdoor));
+
+		API.hideItem(new ItemStack(ModBlocks.beetroot));
+		if (!GanysSurface.enableBeetroots) {
+			API.hideItem(new ItemStack(ModItems.beetroot));
+			API.hideItem(new ItemStack(ModItems.beetrootSoup));
+			API.hideItem(new ItemStack(ModItems.beetrootSeeds));
+		}
 	}
 
 	@Override

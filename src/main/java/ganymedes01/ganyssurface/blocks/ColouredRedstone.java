@@ -54,7 +54,7 @@ public class ColouredRedstone extends Block {
 		disableStats();
 		setBlockTextureName("redstone_dust");
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.0625F, 1.0F);
-		setBlockName(Utils.getUnlocalizedName(Strings.COLOURED_REDSTONE_NAME[index]));
+		setBlockName(Utils.getUnlocalisedName(Strings.COLOURED_REDSTONE_NAME[index]));
 	}
 
 	private void notifyWireNeighborsOfNeighborChange(World world, int x, int y, int z) {

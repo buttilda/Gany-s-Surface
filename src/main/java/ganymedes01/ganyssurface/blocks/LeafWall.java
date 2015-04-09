@@ -37,7 +37,7 @@ public class LeafWall extends Block implements ISubBlocksBlock {
 		setHardness(2.0F);
 		setHarvestLevel("axe", 0);
 		setStepSound(soundTypeGrass);
-		setBlockName(Utils.getUnlocalizedName(Strings.LEAF_WALL));
+		setBlockName(Utils.getUnlocalisedName(Strings.LEAF_WALL));
 		setCreativeTab(GanysSurface.enableLeafWalls ? GanysSurface.surfaceTab : null);
 	}
 

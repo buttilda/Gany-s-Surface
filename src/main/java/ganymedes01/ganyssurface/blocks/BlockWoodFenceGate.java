@@ -25,7 +25,7 @@ public class BlockWoodFenceGate extends BlockFenceGate implements IBurnableBlock
 		setHardness(2.0F);
 		setResistance(5.0F);
 		setStepSound(soundTypeWood);
-		setBlockName(Utils.getUnlocalizedName("fence_gate_" + meta));
+		setBlockName(Utils.getUnlocalisedName("fence_gate_" + meta));
 		setCreativeTab(GanysSurface.enableFences ? GanysSurface.surfaceTab : null);
 	}
 

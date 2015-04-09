@@ -28,7 +28,7 @@ public class EncasingBench extends Block {
 	public EncasingBench() {
 		super(Material.wood);
 		setHardness(1.0F);
-		setBlockName(Utils.getUnlocalizedName(Strings.ENCASING_BENCH_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.ENCASING_BENCH_NAME));
 		setCreativeTab(GanysSurface.enableEncasers ? GanysSurface.surfaceTab : null);
 	}
 

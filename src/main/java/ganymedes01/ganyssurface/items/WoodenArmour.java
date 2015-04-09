@@ -74,22 +74,22 @@ public class WoodenArmour extends ItemArmor {
 	private void setArmourType(int piece) {
 		switch (piece) {
 			case 0:
-				setUnlocalizedName(Utils.getUnlocalizedName(Strings.WOODEN_HELMET_NAME));
+				setUnlocalizedName(Utils.getUnlocalisedName(Strings.WOODEN_HELMET_NAME));
 				texturePath = Utils.getArmourTexture(ModMaterials.WOOD.name(), 1);
 				iconPath = Utils.getItemTexture(Strings.WOODEN_HELMET_NAME);
 				break;
 			case 1:
-				setUnlocalizedName(Utils.getUnlocalizedName(Strings.WOODEN_CHESTPLATE_NAME));
+				setUnlocalizedName(Utils.getUnlocalisedName(Strings.WOODEN_CHESTPLATE_NAME));
 				texturePath = Utils.getArmourTexture(ModMaterials.WOOD.name(), 1);
 				iconPath = Utils.getItemTexture(Strings.WOODEN_CHESTPLATE_NAME);
 				break;
 			case 2:
-				setUnlocalizedName(Utils.getUnlocalizedName(Strings.WOODEN_LEGGINGS_NAME));
+				setUnlocalizedName(Utils.getUnlocalisedName(Strings.WOODEN_LEGGINGS_NAME));
 				texturePath = Utils.getArmourTexture(ModMaterials.WOOD.name(), 2);
 				iconPath = Utils.getItemTexture(Strings.WOODEN_LEGGINGS_NAME);
 				break;
 			case 3:
-				setUnlocalizedName(Utils.getUnlocalizedName(Strings.WOODEN_BOOTS_NAME));
+				setUnlocalizedName(Utils.getUnlocalisedName(Strings.WOODEN_BOOTS_NAME));
 				texturePath = Utils.getArmourTexture(ModMaterials.WOOD.name(), 1);
 				iconPath = Utils.getItemTexture(Strings.WOODEN_BOOTS_NAME);
 				break;

@@ -18,7 +18,7 @@ public class Item18Stones extends ItemBlock {
 	public Item18Stones(Block block) {
 		super(block);
 		setHasSubtypes(true);
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.NEW_STONES_NAME + "_item_"));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.NEW_STONES_NAME + "_item_"));
 	}
 
 	@Override

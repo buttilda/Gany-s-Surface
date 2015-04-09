@@ -28,7 +28,7 @@ public class DisguisedTrapdoor extends BlockTrapDoor {
 		setHardness(3.0F);
 		setStepSound(soundTypeWood);
 		setCreativeTab(GanysSurface.enableDisguisedTrapdoors ? GanysSurface.surfaceTab : null);
-		setBlockName(Utils.getUnlocalizedName(Strings.DISGUISED_TRAPDOOR_NAME + "_" + BlockWood.field_150096_a[type]));
+		setBlockName(Utils.getUnlocalisedName(Strings.DISGUISED_TRAPDOOR_NAME + "_" + BlockWood.field_150096_a[type]));
 	}
 
 	@Override

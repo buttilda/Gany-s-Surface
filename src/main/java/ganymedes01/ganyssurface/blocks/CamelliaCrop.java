@@ -24,7 +24,7 @@ public class CamelliaCrop extends BlockCrops {
 
 	public CamelliaCrop() {
 		super();
-		setBlockName(Utils.getUnlocalizedName(Strings.CAMELLIA_CROP_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.CAMELLIA_CROP_NAME));
 	}
 
 	@Override

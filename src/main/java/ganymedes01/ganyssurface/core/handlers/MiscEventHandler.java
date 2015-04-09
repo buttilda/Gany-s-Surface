@@ -20,6 +20,8 @@ import java.io.IOException;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.ai.EntityAITempt;
+import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Blocks;
@@ -28,14 +30,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityEnchantmentTable;
 import net.minecraft.world.World;
 import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.ArrowNockEvent;
+import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
+import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -229,6 +234,30 @@ public class MiscEventHandler {
 				world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 3);
 				world.playSoundEffect(event.x + 0.5F, event.y + 0.5F, event.z + 0.5F, Block.soundTypeGravel.getStepResourcePath(), 1.0F, 0.8F);
 				event.setResult(Result.ALLOW);
+			}
+		}
+	}
+
+	@SubscribeEvent
+	public void spawnEvent(EntityJoinWorldEvent event) {
+		if (event.entity instanceof EntityPig) {
+			EntityPig pig = (EntityPig) event.entity;
+			pig.tasks.addTask(4, new EntityAITempt(pig, 1.2, ModItems.beetroot, false));
+		}
+	}
+
+	@SubscribeEvent(priority = EventPriority.HIGHEST)
+	public void interactEntityEvent(EntityInteractEvent event) {
+		ItemStack stack = event.entityPlayer.getCurrentEquippedItem();
+		if (stack != null && stack.getItem() == ModItems.beetroot && event.target instanceof EntityPig) {
+			EntityPig pig = (EntityPig) event.target;
+			if (!pig.isChild() && !pig.isInLove()) {
+				pig.func_146082_f(event.entityPlayer);
+				if (!event.entityPlayer.capabilities.isCreativeMode) {
+					stack.stackSize--;
+					if (stack.stackSize <= 0)
+						event.entityPlayer.inventory.setInventorySlotContents(event.entityPlayer.inventory.currentItem, null);
+				}
 			}
 		}
 	}

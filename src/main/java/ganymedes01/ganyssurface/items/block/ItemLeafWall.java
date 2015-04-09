@@ -17,7 +17,7 @@ public class ItemLeafWall extends ItemBlock {
 	public ItemLeafWall(Block block) {
 		super(block);
 		setHasSubtypes(true);
-		setUnlocalizedName(Utils.getUnlocalizedName("leafWall" + "_item_"));
+		setUnlocalizedName(Utils.getUnlocalisedName("leafWall" + "_item_"));
 	}
 
 	@Override

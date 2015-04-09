@@ -27,7 +27,7 @@ public class FertilizedSoil extends Block {
 		setHarvestLevel("shovel", 0);
 		setStepSound(soundTypeGravel);
 		setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.9375F, 1.0F);
-		setBlockName(Utils.getUnlocalizedName(Strings.FERTILIZED_SOIL_NAME));
+		setBlockName(Utils.getUnlocalisedName(Strings.FERTILIZED_SOIL_NAME));
 		setBlockTextureName(Utils.getBlockTexture(Strings.FERTILIZED_SOIL_NAME));
 		setCreativeTab(GanysSurface.enableFertilisedSoil ? GanysSurface.surfaceTab : null);
 	}

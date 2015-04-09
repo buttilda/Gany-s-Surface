@@ -19,6 +19,6 @@ public class ChocolateBar extends ItemFood {
 		if (GanysSurface.enableChocolate)
 			setCreativeTab(GanysSurface.surfaceTab);
 		setTextureName(Utils.getItemTexture(Strings.CHOCOLATE_BAR_NAME));
-		setUnlocalizedName(Utils.getUnlocalizedName(Strings.CHOCOLATE_BAR_NAME));
+		setUnlocalizedName(Utils.getUnlocalisedName(Strings.CHOCOLATE_BAR_NAME));
 	}
 }

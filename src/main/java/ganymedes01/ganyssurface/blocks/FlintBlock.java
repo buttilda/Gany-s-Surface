@@ -20,7 +20,7 @@ public class FlintBlock extends Block {
 		setHardness(5.0F);
 		setResistance(10.0F);
 		setStepSound(soundTypeStone);
-		setBlockName(Utils.getUnlocalizedName(Strings.FLINT_BLOCK));
+		setBlockName(Utils.getUnlocalisedName(Strings.FLINT_BLOCK));
 		setBlockTextureName(Utils.getBlockTexture(Strings.FLINT_BLOCK));
 		setCreativeTab(GanysSurface.enableBlockOfFlint ? GanysSurface.surfaceTab : null);
 	}
