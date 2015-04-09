@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.api.ISlimeBlockSpreable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModSounds;
 import ganymedes01.ganyssurface.lib.RenderIDs;
@@ -55,16 +56,25 @@ public class SlimeBlock extends Block {
 
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random rand) {
-		if (rand.nextInt(40) == 20)
-			for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
-				Block block = world.getBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
-				int meta = world.getBlockMetadata(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ);
+		for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS) {
+			int xx = x + dir.offsetX;
+			int yy = y + dir.offsetY;
+			int zz = z + dir.offsetZ;
 
-				if (block.getMaterial() == Material.water && meta == 0) {
-					world.setBlock(x + dir.offsetX, y + dir.offsetY, z + dir.offsetZ, this);
-					return;
-				}
+			Block block = world.getBlock(xx, yy, zz);
+			int meta = world.getBlockMetadata(xx, yy, zz);
+			boolean spread = false;
+
+			if (block.getMaterial() == Material.water && meta == 0 && rand.nextFloat() <= 0.025F)
+				spread = true;
+			else if (block instanceof ISlimeBlockSpreable && rand.nextFloat() <= ((ISlimeBlockSpreable) block).getSpreadChance(world, xx, yy, zz))
+				spread = true;
+
+			if (spread) {
+				world.setBlock(xx, yy, zz, this);
+				return;
 			}
+		}
 	}
 
 	@Override

@@ -147,6 +147,8 @@ tile.ganyssurface.pressurePlate2.name=Birch Pressure Plate
 tile.ganyssurface.pressurePlate3.name=Jungle Pressure Plate
 tile.ganyssurface.pressurePlate4.name=Acacia Pressure Plate
 tile.ganyssurface.pressurePlate5.name=Dark Oak Pressure Plate
+tile.ganyssurface.blockOfPoop0.name=Block of Poop
+tile.ganyssurface.blockOfPoop1.name=Block of Bat Poop
 
 tile.ganyssurface.18Stones1.name=Granite
 tile.ganyssurface.18Stones2.name=Polished Granite

@@ -318,6 +318,12 @@ public class ModRecipes {
 			addShapedRecipe(new ItemStack(Blocks.wooden_pressure_plate), "xx", 'x', "plankWood");
 		}
 
+		if (GanysSurface.enablePoop)
+			for (int i = 0; i < 2; i++) {
+				addShapedRecipe(new ItemStack(ModBlocks.blockOfPoop, 1, i), "xxx", "xxx", "xxx", 'x', new ItemStack(ModItems.poop, 1, i));
+				addShapelessRecipe(new ItemStack(ModItems.poop, 9, i), new ItemStack(ModBlocks.blockOfPoop, 1, i));
+			}
+
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)
 			addShapedRecipe(new ItemStack(Blocks.web), "x x", " y ", "x x", 'y', Items.slime_ball, 'x', Items.string);

@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.blocks.AutoEncaser;
 import ganymedes01.ganyssurface.blocks.Basalt;
 import ganymedes01.ganyssurface.blocks.BlockBeetroot;
 import ganymedes01.ganyssurface.blocks.BlockDetector;
+import ganymedes01.ganyssurface.blocks.BlockOfPoop;
 import ganymedes01.ganyssurface.blocks.BlockSilkedMushroom;
 import ganymedes01.ganyssurface.blocks.BlockSlowRail;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest;
@@ -96,6 +97,7 @@ public class ModBlocks {
 	public static final Block basalt = new Basalt();
 	public static final Block flint = new FlintBlock();
 	public static final Block beetroot = new BlockBeetroot();
+	public static final Block blockOfPoop = new BlockOfPoop();
 
 	public static final Block[] chests = new Block[BlockWood.field_150096_a.length];
 	public static final Block[] buttons = new Block[BlockWood.field_150096_a.length - 1];

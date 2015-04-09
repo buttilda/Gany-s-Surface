@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.recipes;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.UnsizedStack;
 
@@ -82,6 +83,8 @@ public class OrganicMatterRegistry {
 			addMatterYield(new ItemStack(ModItems.rot, 1, 1));
 			addMatterYield(ModItems.poop);
 			addMatterYield(new ItemStack(ModItems.poop, 1, 1));
+			addMatterYield(new ItemStack(ModBlocks.blockOfPoop, 1, 0), 18);
+			addMatterYield(new ItemStack(ModBlocks.blockOfPoop, 1, 1), 18);
 		}
 		if (GanysSurface.enablePocketCritters) {
 			addMatterYield(ModItems.pocketCritter, 3);

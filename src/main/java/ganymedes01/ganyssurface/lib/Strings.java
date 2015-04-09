@@ -53,6 +53,7 @@ public class Strings {
 	public static final String BASALT = "basalt";
 	public static final String FLINT_BLOCK = "flintBlock";
 	public static final String BLOCK_BEETROOT_NAME = "beetrootBlock";
+	public static final String BLOCK_OF_POOP_NAME = "blockOfPoop";
 
 	// Item names
 	public static final String ROT_NAME = "rot";
