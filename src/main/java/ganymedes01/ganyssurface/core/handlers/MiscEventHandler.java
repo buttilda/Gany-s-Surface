@@ -243,23 +243,25 @@ public class MiscEventHandler {
 		if (event.entity instanceof EntityPig) {
 			EntityPig pig = (EntityPig) event.entity;
 			pig.tasks.addTask(4, new EntityAITempt(pig, 1.2, ModItems.beetroot, false));
+			pig.tasks.addTask(4, new EntityAITempt(pig, 1.2, ModItems.pineCone, false));
 		}
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void interactEntityEvent(EntityInteractEvent event) {
 		ItemStack stack = event.entityPlayer.getCurrentEquippedItem();
-		if (stack != null && stack.getItem() == ModItems.beetroot && event.target instanceof EntityPig) {
-			EntityPig pig = (EntityPig) event.target;
-			if (!pig.isChild() && !pig.isInLove()) {
-				pig.func_146082_f(event.entityPlayer);
-				if (!event.entityPlayer.capabilities.isCreativeMode) {
-					stack.stackSize--;
-					if (stack.stackSize <= 0)
-						event.entityPlayer.inventory.setInventorySlotContents(event.entityPlayer.inventory.currentItem, null);
+		if (stack != null && event.target instanceof EntityPig)
+			if (stack.getItem() == ModItems.beetroot || stack.getItem() == ModItems.pineCone) {
+				EntityPig pig = (EntityPig) event.target;
+				if (!pig.isChild() && !pig.isInLove()) {
+					pig.func_146082_f(event.entityPlayer);
+					if (!event.entityPlayer.capabilities.isCreativeMode) {
+						stack.stackSize--;
+						if (stack.stackSize <= 0)
+							event.entityPlayer.inventory.setInventorySlotContents(event.entityPlayer.inventory.currentItem, null);
+					}
 				}
 			}
-		}
 	}
 
 	@SubscribeEvent
