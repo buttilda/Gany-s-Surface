@@ -22,7 +22,7 @@ group = "ganymedes01.ganyssurface"
 archivesBaseName = "Ganys Surface"
 
 minecraft {
-    version = "1.7.10-10.13.2.1291"
+    version = "1.7.10-10.13.3.1360"
     runDir = "eclipse/assets"
 }
 
