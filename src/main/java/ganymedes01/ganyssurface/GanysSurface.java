@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockDirt;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -164,7 +163,6 @@ public class GanysSurface {
 
 		ModRecipes.init();
 		Temple.makeMap();
-		BlockDirt.field_150009_a[1] = "coarse";
 
 		if (enableDoors)
 			CraftingManager.getInstance().getRecipeList().addAll(doorRecipes);

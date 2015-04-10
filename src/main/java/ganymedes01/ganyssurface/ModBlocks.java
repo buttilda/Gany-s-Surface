@@ -18,6 +18,7 @@ import ganymedes01.ganyssurface.blocks.CamelliaCrop;
 import ganymedes01.ganyssurface.blocks.CharcoalBlock;
 import ganymedes01.ganyssurface.blocks.ChestPropellant;
 import ganymedes01.ganyssurface.blocks.ChocolateCakeBlock;
+import ganymedes01.ganyssurface.blocks.CoarseDirt;
 import ganymedes01.ganyssurface.blocks.ColouredRedstone;
 import ganymedes01.ganyssurface.blocks.ColouredRedstoneBlock;
 import ganymedes01.ganyssurface.blocks.CubicSensoringDislocator;
@@ -118,6 +119,7 @@ public class ModBlocks {
 	public static final Block[] gates = new Block[BlockWood.field_150096_a.length - 1];
 	public static final Block brown_mushroom_block = new BlockSilkedMushroom(Blocks.brown_mushroom_block, "brown");
 	public static final Block red_mushroom_block = new BlockSilkedMushroom(Blocks.red_mushroom_block, "red");
+	public static final Block coarseDirt = new CoarseDirt();
 
 	static {
 		for (int i = 0; i < disguisedTrapdoors.length; i++)

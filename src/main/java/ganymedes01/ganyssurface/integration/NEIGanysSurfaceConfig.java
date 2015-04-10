@@ -165,9 +165,6 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModItems.rot, 1, OreDictionary.WILDCARD_VALUE));
 
 		// 1.8 Stuff
-		API.addItemListEntry(new ItemStack(Blocks.dirt, 1, 0));
-		API.addItemListEntry(new ItemStack(Blocks.dirt, 1, 1));
-		API.addItemListEntry(new ItemStack(Blocks.dirt, 1, 2));
 		if (!GanysSurface.enableMutton) {
 			API.hideItem(new ItemStack(ModItems.rawMutton));
 			API.hideItem(new ItemStack(ModItems.cookedMutton));

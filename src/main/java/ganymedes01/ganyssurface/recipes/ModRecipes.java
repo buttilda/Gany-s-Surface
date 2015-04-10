@@ -354,7 +354,7 @@ public class ModRecipes {
 		GameRegistry.addSmelting(new ItemStack(Blocks.stonebrick), new ItemStack(Blocks.stonebrick, 1, 2), 0.0F);
 
 		if (GanysSurface.enableCoarseDirt)
-			addShapedRecipe(new ItemStack(Blocks.dirt, 4, 1), "xy", "yx", 'x', new ItemStack(Blocks.dirt), 'y', new ItemStack(Blocks.gravel));
+			addShapedRecipe(new ItemStack(ModBlocks.coarseDirt, 4), "xy", "yx", 'x', new ItemStack(Blocks.dirt), 'y', new ItemStack(Blocks.gravel));
 
 		if (GanysSurface.enableMutton)
 			GameRegistry.addSmelting(ModItems.rawMutton, new ItemStack(ModItems.cookedMutton), 1.0F);
