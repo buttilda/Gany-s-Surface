@@ -11,6 +11,7 @@ import ganymedes01.ganyssurface.client.renderer.block.BlockItemDisplayRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockLanternRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockPlanterRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockSlimeBlockRender;
+import ganymedes01.ganyssurface.client.renderer.block.BlockTrapdoorRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemIcyPickaxeRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemPaintingRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemPocketCritterRenderer;
@@ -183,6 +184,9 @@ public class ClientProxy extends CommonProxy {
 
 		if (GanysSurface.enableDoors)
 			RenderingRegistry.registerBlockHandler(new BlockDoorRenderer());
+
+		if (GanysSurface.enableWoodenTrapdoors)
+			RenderingRegistry.registerBlockHandler(new BlockTrapdoorRenderer());
 
 		RenderingRegistry.registerBlockHandler(new BlockChestRenderer());
 	}

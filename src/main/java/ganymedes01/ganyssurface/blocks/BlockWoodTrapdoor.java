@@ -2,8 +2,13 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.RenderIDs;
 import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.IIcon;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
@@ -14,8 +19,11 @@ import net.minecraft.block.material.Material;
 
 public class BlockWoodTrapdoor extends BlockTrapDoor {
 
+	public final int woodMeta;
+
 	public BlockWoodTrapdoor(int meta) {
 		super(Material.wood);
+		this.woodMeta = meta;
 		disableStats();
 		setHardness(3.0F);
 		setStepSound(soundTypeWood);
@@ -24,4 +32,37 @@ public class BlockWoodTrapdoor extends BlockTrapDoor {
 		setCreativeTab(GanysSurface.enableWoodenTrapdoors ? GanysSurface.surfaceTab : null);
 	}
 
+	@Override
+	public int getRenderType() {
+		return RenderIDs.TRAPDOOR;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int meta) {
+		boolean isOpen = func_150118_d(meta);
+		if (isOpen) {
+			switch (meta & 3) {
+				case 0:
+					if (side == 2)
+						return super.getIcon(side, meta);
+					break;
+				case 1:
+					if (side == 3)
+						return super.getIcon(side, meta);
+					break;
+				case 2:
+					if (side == 4)
+						return super.getIcon(side, meta);
+					break;
+				case 3:
+					if (side == 5)
+						return super.getIcon(side, meta);
+					break;
+			}
+			return Blocks.planks.getIcon(side, this.woodMeta);
+		}
+
+		return side == 0 || side == 1 ? super.getIcon(side, meta) : Blocks.planks.getIcon(side, this.woodMeta);
+	}
 }
