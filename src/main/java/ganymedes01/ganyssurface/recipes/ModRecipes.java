@@ -48,6 +48,7 @@ public class ModRecipes {
 
 	private static void registerOreDictionary() {
 		OreDictionary.registerOre("chestWood", new ItemStack(Blocks.chest));
+		OreDictionary.registerOre("trapdoorWood", Blocks.trapdoor);
 
 		if (GanysSurface.enableColouredRedstone)
 			for (int i = 0; i < 16; i++) {
@@ -94,6 +95,13 @@ public class ModRecipes {
 
 		if (GanysSurface.enableBeetroots)
 			OreDictionary.registerOre("cropBeetroot", ModItems.beetroot);
+
+		if (GanysSurface.enableWoodenTrapdoors)
+			for (Block trapdoor : ModBlocks.trapdoors)
+				OreDictionary.registerOre("trapdoorWood", trapdoor);
+
+		if (GanysSurface.enableIronTrapdoor)
+			OreDictionary.registerOre("trapdoorIron", ModBlocks.ironTrapdoor);
 	}
 
 	private static void registerItemRecipes() {
@@ -235,7 +243,7 @@ public class ModRecipes {
 
 		if (GanysSurface.enableDisguisedTrapdoors)
 			for (int i = 0; i < ModBlocks.disguisedTrapdoors.length; i++)
-				addShapelessRecipe(new ItemStack(ModBlocks.disguisedTrapdoors[i]), new ItemStack(Blocks.planks, 1, i), Blocks.trapdoor);
+				addShapelessRecipe(new ItemStack(ModBlocks.disguisedTrapdoors[i]), new ItemStack(Blocks.planks, 1, i), "trapdoorWood");
 
 		if (GanysSurface.enableEncasers) {
 			addShapedRecipe(new ItemStack(ModBlocks.encasingBench), "xyx", "yzy", "xyx", 'x', Items.gold_ingot, 'y', Blocks.piston, 'z', "chestWood");
@@ -323,6 +331,12 @@ public class ModRecipes {
 				addShapedRecipe(new ItemStack(ModBlocks.blockOfPoop, 1, i), "xxx", "xxx", "xxx", 'x', new ItemStack(ModItems.poop, 1, i));
 				addShapelessRecipe(new ItemStack(ModItems.poop, 9, i), new ItemStack(ModBlocks.blockOfPoop, 1, i));
 			}
+
+		if (GanysSurface.enableWoodenTrapdoors) {
+			for (int i = 0; i < ModBlocks.trapdoors.length; i++)
+				addShapedRecipe(new ItemStack(ModBlocks.trapdoors[i], 2), "xxx", "xxx", 'x', new ItemStack(Blocks.planks, 1, i + 1));
+			addShapedRecipe(new ItemStack(Blocks.trapdoor, 2), "xxx", "xxx", 'x', "plankWood");
+		}
 
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)

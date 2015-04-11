@@ -23,11 +23,11 @@ public class BlockWoodTrapdoor extends BlockTrapDoor {
 
 	public BlockWoodTrapdoor(int meta) {
 		super(Material.wood);
-		this.woodMeta = meta;
+		woodMeta = meta;
 		disableStats();
 		setHardness(3.0F);
 		setStepSound(soundTypeWood);
-		setBlockName(Utils.getUnlocalisedName("trapdoor_" + BlockWoodDoor.names[meta]));
+		setBlockName(Utils.getUnlocalisedName("trapdoor" + meta));
 		setBlockTextureName(Utils.getBlockTexture("trapdoor_" + BlockWoodDoor.names[meta]));
 		setCreativeTab(GanysSurface.enableWoodenTrapdoors ? GanysSurface.surfaceTab : null);
 	}
@@ -60,9 +60,9 @@ public class BlockWoodTrapdoor extends BlockTrapDoor {
 						return super.getIcon(side, meta);
 					break;
 			}
-			return Blocks.planks.getIcon(side, this.woodMeta);
+			return Blocks.planks.getIcon(side, woodMeta);
 		}
 
-		return side == 0 || side == 1 ? super.getIcon(side, meta) : Blocks.planks.getIcon(side, this.woodMeta);
+		return side == 0 || side == 1 ? super.getIcon(side, meta) : Blocks.planks.getIcon(side, woodMeta);
 	}
 }

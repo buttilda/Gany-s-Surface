@@ -188,6 +188,9 @@ public class GanysSurface {
 
 		if (enableWoodenPressurePlates)
 			removeFirstRecipeFor(Blocks.wooden_pressure_plate);
+
+		if (enableWoodenTrapdoors)
+			removeFirstRecipeFor(Blocks.trapdoor);
 	}
 
 	private void removeFirstRecipeFor(Block block) {

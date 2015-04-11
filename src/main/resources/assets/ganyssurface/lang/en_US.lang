@@ -149,6 +149,11 @@ tile.ganyssurface.pressurePlate4.name=Acacia Pressure Plate
 tile.ganyssurface.pressurePlate5.name=Dark Oak Pressure Plate
 tile.ganyssurface.blockOfPoop0.name=Block of Poop
 tile.ganyssurface.blockOfPoop1.name=Block of Bat Poop
+tile.ganyssurface.trapdoor1.name=Spruce Trapdoor
+tile.ganyssurface.trapdoor2.name=Birch Trapdoor
+tile.ganyssurface.trapdoor3.name=Jungle Trapdoor
+tile.ganyssurface.trapdoor4.name=Acacia Trapdoor
+tile.ganyssurface.trapdoor5.name=Dark Oak Trapdoor
 
 tile.ganyssurface.18Stones1.name=Granite
 tile.ganyssurface.18Stones2.name=Polished Granite
