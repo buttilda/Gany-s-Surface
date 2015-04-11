@@ -11,6 +11,7 @@ import ganymedes01.ganyssurface.blocks.BlockWoodChest;
 import ganymedes01.ganyssurface.blocks.BlockWoodDoor;
 import ganymedes01.ganyssurface.blocks.BlockWoodFence;
 import ganymedes01.ganyssurface.blocks.BlockWoodFenceGate;
+import ganymedes01.ganyssurface.blocks.BlockWoodLadder;
 import ganymedes01.ganyssurface.blocks.BlockWoodPressurePlate;
 import ganymedes01.ganyssurface.blocks.BlockWoodTrapdoor;
 import ganymedes01.ganyssurface.blocks.ButtonWood;
@@ -104,6 +105,7 @@ public class ModBlocks {
 	public static final Block[] buttons = new Block[BlockWood.field_150096_a.length - 1];
 	public static final Block[] pressurePlates = new Block[BlockWood.field_150096_a.length - 1];
 	public static final Block[] trapdoors = new Block[BlockWood.field_150096_a.length - 1];
+	public static final Block[] ladders = new Block[BlockWood.field_150096_a.length - 1];
 
 	// 1.8 stuff
 	public static final Block newStones = new Stones18();
@@ -149,6 +151,9 @@ public class ModBlocks {
 
 		for (int i = 0; i < trapdoors.length; i++)
 			trapdoors[i] = new BlockWoodTrapdoor(i + 1);
+
+		for (int i = 0; i < ladders.length; i++)
+			ladders[i] = new BlockWoodLadder(i + 1);
 	}
 
 	public static void init() {

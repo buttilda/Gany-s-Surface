@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.core.handlers;
 
 import ganymedes01.ganyssurface.ModBlocks;
+import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.items.WoodenArmour;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -23,6 +24,8 @@ public class FuelHandler implements IFuelHandler {
 			return 300;
 		else if (fuel.getItem() == Item.getItemFromBlock(ModBlocks.charcoalBlock))
 			return TileEntityFurnace.getItemBurnTime(new ItemStack(Blocks.coal_block));
+		else if (fuel.getItem() == ModItems.stick)
+			return 100;
 
 		return 0;
 	}

@@ -39,6 +39,7 @@ import ganymedes01.ganyssurface.items.PrismarineItems;
 import ganymedes01.ganyssurface.items.Quiver;
 import ganymedes01.ganyssurface.items.RoastedSquid;
 import ganymedes01.ganyssurface.items.Rot;
+import ganymedes01.ganyssurface.items.Stick;
 import ganymedes01.ganyssurface.items.StorageCase;
 import ganymedes01.ganyssurface.items.TeaBag;
 import ganymedes01.ganyssurface.items.TeaLeaves;
@@ -95,6 +96,7 @@ public class ModItems {
 	public static final Item pineNuts = new PineNuts();
 	public static final Item quiver = new Quiver();
 	public static final Item painting = new Painting();
+	public static final Item stick = new Stick();
 
 	// 1.8 Stuff
 	public static final Item rawMutton = new MuttonRaw();

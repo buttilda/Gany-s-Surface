@@ -5,6 +5,7 @@ import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.blocks.Stones18;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockWood;
 import net.minecraft.entity.item.EntityPainting.EnumArt;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -102,6 +103,8 @@ public class ModRecipes {
 
 		if (GanysSurface.enableIronTrapdoor)
 			OreDictionary.registerOre("trapdoorIron", ModBlocks.ironTrapdoor);
+
+		OreDictionary.registerOre("stickWood", new ItemStack(ModItems.stick, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
 	private static void registerItemRecipes() {
@@ -194,6 +197,10 @@ public class ModRecipes {
 			addShapelessRecipe(new ItemStack(ModItems.beetrootSoup), "cropBeetroot", "cropBeetroot", "cropBeetroot", "cropBeetroot", Items.bowl);
 			addShapelessRecipe(new ItemStack(Items.dye, 1, 1), "cropBeetroot");
 		}
+
+		for (int i = 0; i < BlockWood.field_150096_a.length - 1; i++)
+			addShapedRecipe(new ItemStack(ModItems.stick, 4, i), "x", "x", 'x', new ItemStack(Blocks.planks, 1, i + 1));
+		addShapedRecipe(new ItemStack(Items.stick, 4), "x", "x", 'x', "plankWood");
 
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes) {
@@ -336,6 +343,12 @@ public class ModRecipes {
 			for (int i = 0; i < ModBlocks.trapdoors.length; i++)
 				addShapedRecipe(new ItemStack(ModBlocks.trapdoors[i], 2), "xxx", "xxx", 'x', new ItemStack(Blocks.planks, 1, i + 1));
 			addShapedRecipe(new ItemStack(Blocks.trapdoor, 2), "xxx", "xxx", 'x', "plankWood");
+		}
+
+		if (GanysSurface.enableWoodenLadders) {
+			for (int i = 0; i < ModBlocks.ladders.length; i++)
+				addShapedRecipe(new ItemStack(ModBlocks.ladders[i], 3), "x x", "xxx", "x x", 'x', new ItemStack(ModItems.stick, 1, i));
+			addShapedRecipe(new ItemStack(Blocks.ladder, 3), "x x", "xxx", "x x", 'x', "stickWood");
 		}
 
 		// Vanilla

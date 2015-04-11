@@ -93,6 +93,7 @@ public class Strings {
 	public static final String BEETROOT_NAME = "beetroot";
 	public static final String BEETROOT_SOUP_NAME = "beetrootSoup";
 	public static final String BEETROOT_SEEDS_NAME = "beetrootSeeds";
+	public static final String STICK_NAME = "stick";
 
 	// Armour names
 	public static final String WOODEN_HELMET_NAME = "woodenHelmet";

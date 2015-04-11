@@ -65,6 +65,11 @@ item.ganyssurface.quiver.name=Quiver
 item.ganyssurface.beetroot.name=Beetroot
 item.ganyssurface.beetrootSoup.name=Beetroot Soup
 item.ganyssurface.beetrootSeeds.name=Beetroot Seeds
+item.ganyssurface.stick_acacia.name=Acacia Stick
+item.ganyssurface.stick_birch.name=Birch Stick
+item.ganyssurface.stick_dark_oak.name=Dark Oak Stick
+item.ganyssurface.stick_jungle.name=Jungle Stick
+item.ganyssurface.stick_spruce.name=Spruce Stick
 
 item.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 item.ganyssurface.colouredRedstoneGREEN.name=Greenstone
@@ -154,6 +159,11 @@ tile.ganyssurface.trapdoor2.name=Birch Trapdoor
 tile.ganyssurface.trapdoor3.name=Jungle Trapdoor
 tile.ganyssurface.trapdoor4.name=Acacia Trapdoor
 tile.ganyssurface.trapdoor5.name=Dark Oak Trapdoor
+tile.ganyssurface.ladder1.name=Spruce Ladder
+tile.ganyssurface.ladder2.name=Birch Ladder
+tile.ganyssurface.ladder3.name=Jungle Ladder
+tile.ganyssurface.ladder4.name=Acacia Ladder
+tile.ganyssurface.ladder5.name=Dark Oak Ladder
 
 tile.ganyssurface.18Stones1.name=Granite
 tile.ganyssurface.18Stones2.name=Polished Granite

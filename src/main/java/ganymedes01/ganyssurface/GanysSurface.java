@@ -106,6 +106,7 @@ public class GanysSurface {
 	public static boolean enableWoodenPressurePlates = true;
 	public static boolean enableWoodenTrapdoors = true;
 	public static boolean enableBeetroots = true;
+	public static boolean enableWoodenLadders = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
@@ -191,13 +192,22 @@ public class GanysSurface {
 
 		if (enableWoodenTrapdoors)
 			removeFirstRecipeFor(Blocks.trapdoor);
+
+		removeFirstRecipeFor(Items.stick);
+
+		if (enableWoodenLadders)
+			removeFirstRecipeFor(Blocks.ladder);
 	}
 
 	private void removeFirstRecipeFor(Block block) {
+		removeFirstRecipeFor(Item.getItemFromBlock(block));
+	}
+
+	private void removeFirstRecipeFor(Item item) {
 		for (Object recipe : CraftingManager.getInstance().getRecipeList())
 			if (recipe != null) {
 				ItemStack stack = ((IRecipe) recipe).getRecipeOutput();
-				if (stack != null && stack.getItem() == Item.getItemFromBlock(block)) {
+				if (stack != null && stack.getItem() == item) {
 					CraftingManager.getInstance().getRecipeList().remove(recipe);
 					return;
 				}
