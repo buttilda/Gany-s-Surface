@@ -69,7 +69,6 @@ public class SurfaceWorldGen implements IWorldGenerator {
 
 		if (GanysSurface.enablePrismarineStuff)
 			if (OceanMonument.canSpawnAt(world, chunkX, chunkZ)) {
-				System.out.println("can spawn at: " + chunkX + ", " + chunkZ);
 				int x = chunkX * 16 + rand.nextInt(16);
 				int y = 256;
 				int z = chunkZ * 16 + rand.nextInt(16);
