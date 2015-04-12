@@ -8,13 +8,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraftforge.common.BiomeDictionary;
 import cpw.mods.fml.common.IWorldGenerator;
 
 /**
@@ -71,41 +68,17 @@ public class SurfaceWorldGen implements IWorldGenerator {
 			}
 
 		if (GanysSurface.enablePrismarineStuff)
-			if (rand.nextInt(GanysSurface.prismarineTempleChance) == 0) {
+			if (OceanMonument.canSpawnAt(world, chunkX, chunkZ)) {
+				System.out.println("can spawn at: " + chunkX + ", " + chunkZ);
 				int x = chunkX * 16 + rand.nextInt(16);
+				int y = 256;
 				int z = chunkZ * 16 + rand.nextInt(16);
-				if (biomeIsOcean(BiomeDictionary.getTypesForBiome(world.getBiomeGenForCoords(x, z)))) {
-					int height = world.getHeightValue(x, z);
-					int y = height;
-
-					for (; y > 0; y--) {
-						Block block = world.getBlock(x, y, z);
-						if (block.getMaterial() != Material.water && !block.isAir(world, x, y, z))
-							break;
-					}
-
-					int pillarHeight = height - y - 22; // 22 is the height of the temple without the pillars
-					pillarHeight -= 2 + rand.nextInt(2); // So that the temple is X blocks under water
-					if (pillarHeight >= 0) {
-
-						// Check if temple fits
-						for (int i = 0; i < 58; i++)
-							for (int j = 0; j < 22; j++)
-								for (int k = 0; k < 58; k++)
-									if (!world.getBlock(x + i, y + j + pillarHeight, z + k).isReplaceable(world, x + i, y + j + pillarHeight, z + k))
-										return;
-						Temple.buildTemple(world, x, y, z, pillarHeight);
-						return;
-					}
-					return;
-				}
+				for (; y > 0; y--)
+					if (!world.getBlock(x, y, z).isAir(world, x, y, z))
+						break;
+				int monumentCeiling = y - (1 + rand.nextInt(3));
+				OceanMonument.buildTemple(world, x, monumentCeiling - 22, z);
+				return;
 			}
-	}
-
-	private boolean biomeIsOcean(BiomeDictionary.Type[] types) {
-		for (int i = 0; i < types.length; i++)
-			if (types[i] == BiomeDictionary.Type.OCEAN)
-				return true;
-		return false;
 	}
 }

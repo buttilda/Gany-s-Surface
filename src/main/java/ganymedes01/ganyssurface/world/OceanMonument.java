@@ -11,13 +11,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 
 /**
  * Gany's Surface
@@ -26,7 +31,7 @@ import net.minecraft.world.World;
  *
  */
 
-public class Temple {
+public class OceanMonument {
 
 	private static final Map<WorldCoord, Integer> map = new HashMap<WorldCoord, Integer>();
 
@@ -61,14 +66,11 @@ public class Temple {
 		return map;
 	}
 
-	public static void buildTemple(World world, int x, int y, int z, int height) {
+	public static void buildTemple(World world, int x, int y, int z) {
 		if (world.isRemote)
 			return;
 
-		height = Math.max(Math.min(height, 9), 0);
-		y += height;
-
-		for (Entry<WorldCoord, Integer> entry : Temple.getMap().entrySet()) {
+		for (Entry<WorldCoord, Integer> entry : OceanMonument.getMap().entrySet()) {
 			WorldCoord pos = entry.getKey();
 			int value = entry.getValue();
 
@@ -109,11 +111,27 @@ public class Temple {
 	}
 
 	private static void generatePillar(World world, int x, int y, int z, Block block, int meta) {
-		for (int i = 0; i < 4; i++)
-			for (int j = y; j >= 0; j--)
+		for (int i = 1; i <= 5; i++)
+			generatePillarSection(world, x, y - i, z, block, meta);
+		y -= 5;
+
+		for (; y >= 0; y--) {
+			generatePillarSection(world, x, y, z, block, meta);
+			for (int i = 0; i < 4; i++)
 				for (int k = 0; k < 4; k++)
-					if (world.getBlock(x + i, j, z + k).isReplaceable(world, x + i, j, z + k))
-						world.setBlock(x + i, j, z + k, block, meta, 2);
+					if (world.getBlock(x + i, y, z).getMaterial() != Material.water && y > 3) {
+						generatePillarSection(world, x, y - 1, z, block, meta);
+						generatePillarSection(world, x, y - 2, z, block, meta);
+						return;
+					}
+		}
+	}
+
+	private static void generatePillarSection(World world, int x, int y, int z, Block block, int meta) {
+		for (int i = 0; i < 4; i++)
+			for (int k = 0; k < 4; k++)
+				if (world.getBlock(x + i, y, z).getBlockHardness(world, x + i, y, z + k) > 0)
+					world.setBlock(x + i, y, z + k, block, meta, 2);
 	}
 
 	public static void generateFile(World world, int x, int y, int z, String path) {
@@ -150,5 +168,36 @@ public class Temple {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static boolean canSpawnAt(World worldObj, int chunkX, int chunkZ) {
+		List<BiomeGenBase> validBiomes = Arrays.asList(BiomeGenBase.ocean, BiomeGenBase.deepOcean, BiomeGenBase.river, BiomeGenBase.frozenOcean, BiomeGenBase.frozenRiver);
+		int spacing = 32;
+		int separation = 5;
+		int xx = chunkX;
+		int zz = chunkZ;
+
+		if (chunkX < 0)
+			chunkX -= spacing - 1;
+
+		if (chunkZ < 0)
+			chunkZ -= spacing - 1;
+
+		int i1 = chunkX / spacing;
+		int j1 = chunkZ / spacing;
+		Random random = worldObj.setRandomSeed(i1, j1, 10387313);
+		i1 *= spacing;
+		j1 *= spacing;
+		i1 += (random.nextInt(spacing - separation) + random.nextInt(spacing - separation)) / 2;
+		j1 += (random.nextInt(spacing - separation) + random.nextInt(spacing - separation)) / 2;
+
+		if (xx == i1 && zz == j1) {
+			if (worldObj.getWorldChunkManager().getBiomeGenAt(xx * 16 + 8, zz * 16 + 8) != BiomeGenBase.deepOcean)
+				return false;
+			if (worldObj.getWorldChunkManager().areBiomesViable(xx * 16 + 8, zz * 16 + 8, 29, validBiomes))
+				return true;
+		}
+
+		return false;
 	}
 }

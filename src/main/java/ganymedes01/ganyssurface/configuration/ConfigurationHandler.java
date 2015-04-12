@@ -138,7 +138,6 @@ public class ConfigurationHandler {
 		GanysSurface.maxLevelOMCWorks = configInteger("maxLevelOMCWorks", false, 15);
 		GanysSurface.inkHarvesterMaxStrike = configInteger("inkHarvesterMaxStrike", false, 5);
 		GanysSurface.poopingChance = configInteger("poopingChance", "Larger number means poop is LESS likely to happen", false, 15000);
-		GanysSurface.prismarineTempleChance = configInteger("prismarineTempleChance", "Larger number means temples are LESS likely to happen", false, GanysSurface.prismarineTempleChance);
 
 		// Sheep wool colours
 		for (int i = 0; i < 16; i++) {

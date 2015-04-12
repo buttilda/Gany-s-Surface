@@ -11,8 +11,8 @@ import ganymedes01.ganyssurface.items.Quiver;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.recipes.ModRecipes;
+import ganymedes01.ganyssurface.world.OceanMonument;
 import ganymedes01.ganyssurface.world.SurfaceWorldGen;
-import ganymedes01.ganyssurface.world.Temple;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -128,7 +128,7 @@ public class GanysSurface {
 	public static boolean enableFences = true;
 	public static boolean enableSilkTouchingMushrooms = true;
 	public static boolean enableBanners = true;
-	public static int prismarineTempleChance = 800;
+
 	public static int max18StonesPerCluster = 33;
 
 	@EventHandler
@@ -165,7 +165,7 @@ public class GanysSurface {
 		}
 
 		ModRecipes.init();
-		Temple.makeMap();
+		OceanMonument.makeMap();
 
 		if (enableDoors)
 			CraftingManager.getInstance().getRecipeList().addAll(doorRecipes);
