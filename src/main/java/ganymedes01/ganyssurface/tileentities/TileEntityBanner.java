@@ -157,15 +157,15 @@ public class TileEntityBanner extends TileEntity {
 				field_175121_j = "b" + baseColor;
 
 				if (patterns != null)
-					for (int i = 0; i < patterns.tagCount(); ++i) {
+					for (int i = 0; i < patterns.tagCount(); i++) {
 						NBTTagCompound nbttagcompound = patterns.getCompoundTagAt(i);
-						TileEntityBanner.EnumBannerPattern enumbannerpattern = TileEntityBanner.EnumBannerPattern.getPatternByID(nbttagcompound.getString("Pattern"));
+						EnumBannerPattern pattern = EnumBannerPattern.getPatternByID(nbttagcompound.getString("Pattern"));
 
-						if (enumbannerpattern != null) {
-							patternList.add(enumbannerpattern);
+						if (pattern != null) {
+							patternList.add(pattern);
 							int j = nbttagcompound.getInteger("Color");
 							colorList.add(EnumColour.fromDamage(j));
-							field_175121_j = field_175121_j + enumbannerpattern.getPatternID() + j;
+							field_175121_j = field_175121_j + pattern.getPatternID() + j;
 						}
 					}
 			}

@@ -6,6 +6,7 @@ import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPortableDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
+import ganymedes01.ganyssurface.integration.nei.BannerPatternHandler;
 import ganymedes01.ganyssurface.integration.nei.OMCYieldHandler;
 import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.block.Block;
@@ -41,6 +42,11 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		if (GanysSurface.enableOMC) {
 			API.registerRecipeHandler(new OMCYieldHandler());
 			API.registerUsageHandler(new OMCYieldHandler());
+		}
+
+		if (GanysSurface.enableBanners) {
+			API.registerRecipeHandler(new BannerPatternHandler());
+			API.registerUsageHandler(new BannerPatternHandler());
 		}
 
 		API.hideItem(new ItemStack(ModBlocks.camelliaCrop));

@@ -257,6 +257,7 @@ container.ganyssurface.farmManager=Farm Manager
 container.ganyssurface.encasingBench=Encasing Bench
 container.ganyssurface.autoEncaser=Auto Encaser
 container.ganyssurface.gearalyser=Gearalyser
+container.ganyssurface.banner=Banner Pattern
 
 matter=Matter:
 squidFood=Food:
