@@ -76,16 +76,16 @@ public class TileEntityWoodSignRenderer extends TileEntitySpecialRenderer {
 		GL11.glScalef(f3, -f3, f3);
 		GL11.glNormal3f(0.0F, 0.0F, -1.0F * f3);
 		GL11.glDepthMask(false);
-		byte b0 = 0;
 
+		int textColour = sign.getTextColour();
 		for (int i = 0; i < sign.signText.length; ++i) {
 			String s = sign.signText[i];
 
 			if (i == sign.lineBeingEdited) {
 				s = "> " + s + " <";
-				fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, i * 10 - sign.signText.length * 5, b0);
+				fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, i * 10 - sign.signText.length * 5, textColour);
 			} else
-				fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, i * 10 - sign.signText.length * 5, b0);
+				fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, i * 10 - sign.signText.length * 5, textColour);
 		}
 
 		GL11.glDepthMask(true);

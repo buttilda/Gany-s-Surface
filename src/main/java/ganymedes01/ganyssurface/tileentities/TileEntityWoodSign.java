@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.tileentities;
 
+import ganymedes01.ganyssurface.blocks.BlockWoodSign;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -40,5 +41,17 @@ public class TileEntityWoodSign extends TileEntitySign {
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
 		if (pkt.func_148853_f() == 0)
 			readFromNBT(pkt.func_148857_g());
+	}
+
+	public int getTextColour() {
+		BlockWoodSign sign = (BlockWoodSign) getBlockType();
+		if (sign != null)
+			if (sign.woodMeta == 5)
+				return 0xFFE500;
+			else if (sign.woodMeta == 3)
+				return 0xFFFFFF;
+			else if (sign.woodMeta == 1)
+				return 0xD2D2D2;
+		return 0x000000;
 	}
 }
