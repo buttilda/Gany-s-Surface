@@ -39,6 +39,7 @@ import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityChestPropel
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityItemDisplayRender;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityPlanterRender;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWoodChestRenderer;
+import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWoodSignRenderer;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWorkTableRender;
 import ganymedes01.ganyssurface.core.handlers.ClientEventHandler;
 import ganymedes01.ganyssurface.core.handlers.KeyBindingHandler;
@@ -53,6 +54,7 @@ import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityWoodChest;
+import ganymedes01.ganyssurface.tileentities.TileEntityWoodSign;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.entity.RenderSnowball;
@@ -102,6 +104,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChestPropellant.class, new TileEntityChestPropellantRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlanter.class, new TileEntityPlanterRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodChest.class, new TileEntityWoodChestRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodSign.class, new TileEntityWoodSignRenderer());
 	}
 
 	@Override
@@ -149,7 +152,9 @@ public class ClientProxy extends CommonProxy {
 			MinecraftForgeClient.registerItemRenderer(Items.cake, new ItemCakeRenderer());
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.torch), new ItemTorchRenderer());
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.redstone_torch), new ItemTorchRenderer());
-			MinecraftForgeClient.registerItemRenderer(Items.sign, new ItemSignRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.sign, ItemSignRenderer.INSTANCE);
+			for (Block sign : ModBlocks.signs)
+				MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(sign), ItemSignRenderer.INSTANCE);
 		}
 	}
 

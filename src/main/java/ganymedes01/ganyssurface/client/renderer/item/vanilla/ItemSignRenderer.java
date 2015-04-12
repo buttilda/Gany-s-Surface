@@ -1,6 +1,10 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
 import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.blocks.BlockWoodSign;
+import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWoodSignRenderer;
+import ganymedes01.ganyssurface.items.block.ItemWoodSign;
+import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelSign;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.item.ItemStack;
@@ -19,6 +23,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ItemSignRenderer implements IItemRenderer {
+
+	public static final ItemSignRenderer INSTANCE = new ItemSignRenderer();
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation("textures/entity/sign.png");
 	private final ModelSign model = new ModelSign();
@@ -63,7 +69,11 @@ public class ItemSignRenderer implements IItemRenderer {
 		GlStateManager.rotate(90, 0, 1, 0);
 		GlStateManager.scale(0.75, 0.75, 0.75);
 		GlStateManager.scale(-1, -1, 1);
-		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TEXTURE);
+		if (stack.getItem() instanceof ItemWoodSign) {
+			int meta = ((BlockWoodSign) Block.getBlockFromItem(stack.getItem())).woodMeta - 1;
+			FMLClientHandler.instance().getClient().renderEngine.bindTexture(TileEntityWoodSignRenderer.textures[meta]);
+		} else
+			FMLClientHandler.instance().getClient().renderEngine.bindTexture(TEXTURE);
 
 		model.renderSign();
 

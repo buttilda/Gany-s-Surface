@@ -12,6 +12,7 @@ import ganymedes01.ganyssurface.client.gui.inventory.GuiInkHarvester;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPlanter;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPortableDualWorkTable;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiWoodSign;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
 import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
 import ganymedes01.ganyssurface.core.handlers.EntityEvents;
@@ -34,6 +35,7 @@ import ganymedes01.ganyssurface.inventory.ContainerInkHarvester;
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
 import ganymedes01.ganyssurface.inventory.ContainerPlanter;
 import ganymedes01.ganyssurface.inventory.ContainerPortableDualWorkTable;
+import ganymedes01.ganyssurface.inventory.ContainerWoodSign;
 import ganymedes01.ganyssurface.inventory.ContainerWorkTable;
 import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.ModIDs;
@@ -52,6 +54,7 @@ import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityRainDetector;
 import ganymedes01.ganyssurface.tileentities.TileEntitySensoringDislocator;
 import ganymedes01.ganyssurface.tileentities.TileEntityWoodChest;
+import ganymedes01.ganyssurface.tileentities.TileEntityWoodSign;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -100,6 +103,7 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityFarmManager.class, Utils.getUnlocalisedName(Strings.FARM_MANAGER_NAME));
 		GameRegistry.registerTileEntity(TileEntityAutoEncaser.class, Utils.getUnlocalisedName(Strings.AUTO_ENCASER_NAME));
 		GameRegistry.registerTileEntity(TileEntityWoodChest.class, Utils.getUnlocalisedName("wood_chest"));
+		GameRegistry.registerTileEntity(TileEntityWoodSign.class, Utils.getUnlocalisedName("wood_sign"));
 	}
 
 	public void registerEntities() {
@@ -139,6 +143,8 @@ public class CommonProxy implements IGuiHandler {
 				return new ContainerGearalyser(player.inventory);
 			case GUIsID.ENCHANTING_TABLE:
 				return new ContainerEnchantment(player.inventory, world, x, y, z);
+			case GUIsID.WOOD_SIGN:
+				return new ContainerWoodSign();
 			default:
 				return null;
 		}
@@ -172,6 +178,8 @@ public class CommonProxy implements IGuiHandler {
 				return new GuiGearalyser(player.inventory);
 			case GUIsID.ENCHANTING_TABLE:
 				return new GuiEnchantment(player.inventory, world, null);
+			case GUIsID.WOOD_SIGN:
+				return new GuiWoodSign((TileEntityWoodSign) tile);
 			default:
 				return null;
 		}

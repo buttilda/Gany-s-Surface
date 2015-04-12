@@ -164,6 +164,11 @@ tile.ganyssurface.ladder2.name=Birch Ladder
 tile.ganyssurface.ladder3.name=Jungle Ladder
 tile.ganyssurface.ladder4.name=Acacia Ladder
 tile.ganyssurface.ladder5.name=Dark Oak Ladder
+tile.ganyssurface.sign1.name=Spruce sign
+tile.ganyssurface.sign2.name=Birch Sign
+tile.ganyssurface.sign3.name=Jungle Sign
+tile.ganyssurface.sign4.name=Acacia Sign
+tile.ganyssurface.sign5.name=Dark Oak Sign
 
 tile.ganyssurface.18Stones1.name=Granite
 tile.ganyssurface.18Stones2.name=Polished Granite
