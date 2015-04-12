@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.tileentities.TileEntityBanner;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
@@ -54,13 +54,13 @@ public class ItemBannerRenderer implements IItemRenderer {
 	}
 
 	private void renderBanner(float x, float y, float z, float angle, float scale) {
-		GlStateManager.pushMatrix();
-		GlStateManager.rotate(angle, 0, 1, 0);
-		GlStateManager.scale(scale, scale, scale);
-		GlStateManager.translate(x, y, z);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.rotate(angle, 0, 1, 0);
+		OpenGLHelper.scale(scale, scale, scale);
+		OpenGLHelper.translate(x, y, z);
 
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(banner, 0, 0, 0, 0);
 
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 }

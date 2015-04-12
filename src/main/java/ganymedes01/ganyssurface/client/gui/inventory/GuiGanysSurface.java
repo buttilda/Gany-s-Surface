@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.RenderHelper;
@@ -30,10 +30,10 @@ public abstract class GuiGanysSurface extends GuiContainer {
 	protected abstract void drawGuiContainerBackgroundLayer(float f, int mouseX, int mouseY);
 
 	protected void drawToolTip(int mouseX, int mouseY, String text) {
-		GlStateManager.disableRescaleNormal();
+		OpenGLHelper.disableRescaleNormal();
 		RenderHelper.disableStandardItemLighting();
-		GlStateManager.disableLighting();
-		GlStateManager.disableDepth();
+		OpenGLHelper.disableLighting();
+		OpenGLHelper.disableDepth();
 		int k = 0;
 		int l = fontRendererObj.getStringWidth(text);
 
@@ -69,10 +69,10 @@ public abstract class GuiGanysSurface extends GuiContainer {
 
 		zLevel = 0.0F;
 		itemRender.zLevel = 0.0F;
-		GlStateManager.enableLighting();
-		GlStateManager.enableDepth();
+		OpenGLHelper.enableLighting();
+		OpenGLHelper.enableDepth();
 		RenderHelper.enableStandardItemLighting();
-		GlStateManager.enableRescaleNormal();
+		OpenGLHelper.enableRescaleNormal();
 	}
 
 	protected void displayGauge(Fluid fluid, int j, int k, int u, int v, int scaled) {

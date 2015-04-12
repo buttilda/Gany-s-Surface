@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.texture.TextureMap;
@@ -37,7 +37,7 @@ public class ItemCakeRenderer implements IItemRenderer {
 		if (renderer instanceof RenderBlocks)
 			switch (type) {
 				case ENTITY:
-					GlStateManager.scale(0.5, 0.5, 0.5);
+					OpenGLHelper.scale(0.5, 0.5, 0.5);
 					render(stack, 0, 0, 0, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED:
@@ -47,7 +47,7 @@ public class ItemCakeRenderer implements IItemRenderer {
 					render(stack, 0.5F, 0.75F, 0.5F, (RenderBlocks) renderer);
 					break;
 				case INVENTORY:
-					GlStateManager.scale(1.1, 1.1, 1.1);
+					OpenGLHelper.scale(1.1, 1.1, 1.1);
 					render(stack, -0.5F, -0.3F, -0.5F, (RenderBlocks) renderer);
 					break;
 				default:
@@ -56,8 +56,8 @@ public class ItemCakeRenderer implements IItemRenderer {
 	}
 
 	private void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y, z);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(x, y, z);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
 		float f = 0.0625F;
@@ -65,6 +65,6 @@ public class ItemCakeRenderer implements IItemRenderer {
 		renderer.setRenderBounds(f, 0.0F, f, 1.0F - f, f1, 1.0F - f);
 		BlockRendererHelper.renderSimpleBlock(Blocks.cake, 0, renderer);
 
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 }

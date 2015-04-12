@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWoodChestRenderer;
 import net.minecraft.block.Block;
@@ -58,15 +58,15 @@ public class ItemWoodChestRenderer implements IItemRenderer {
 	}
 
 	private void renderChest(BlockWoodChest block, float x, float y, float z) {
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y, z);
-		GlStateManager.rotate(180, 1, 0, 0);
-		GlStateManager.rotate(-90, 0, 1, 0);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(x, y, z);
+		OpenGLHelper.rotate(180, 1, 0, 0);
+		OpenGLHelper.rotate(-90, 0, 1, 0);
 
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TileEntityWoodChestRenderer.makeChestTexture(block.getType(), true));
 
 		model.renderAll();
 
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 }

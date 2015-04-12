@@ -61,19 +61,21 @@ public class TileEntityBanner extends TileEntity {
 	}
 
 	@Override
-	public void writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
-		compound.setInteger("Base", baseColor);
+	public void writeToNBT(NBTTagCompound nbt) {
+		super.writeToNBT(nbt);
+		nbt.setInteger("Base", baseColor);
+		nbt.setBoolean("IsStanding", isStanding);
 
 		if (patterns != null)
-			compound.setTag("Patterns", patterns);
+			nbt.setTag("Patterns", patterns);
 	}
 
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
-		baseColor = compound.getInteger("Base");
-		patterns = compound.getTagList("Patterns", 10);
+	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+		baseColor = nbt.getInteger("Base");
+		isStanding = nbt.getBoolean("IsStanding");
+		patterns = nbt.getTagList("Patterns", 10);
 		patternList = null;
 		colorList = null;
 		field_175121_j = null;

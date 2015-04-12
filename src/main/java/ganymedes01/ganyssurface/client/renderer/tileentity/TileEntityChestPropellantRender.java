@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import net.minecraft.block.Block;
@@ -74,11 +74,11 @@ public class TileEntityChestPropellantRender extends TileEntitySpecialRenderer {
 	}
 
 	private void renderEntityItem(EntityItem entityItem, float x, float y, float z, float scale, float rotation) {
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y, z);
-		GlStateManager.scale(scale, scale, scale);
-		GlStateManager.rotate(rotation, 0.0F, 1.0F, 0.0F);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(x, y, z);
+		OpenGLHelper.scale(scale, scale, scale);
+		OpenGLHelper.rotate(rotation, 0.0F, 1.0F, 0.0F);
 		customRenderItem.doRender(entityItem, 0, 0, 0, 0, 0);
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 }

@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.blocks;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.block.ItemBanner;
@@ -40,6 +41,7 @@ public class BlockBanner extends BlockContainer implements ISubBlocksBlock {
 		setHardness(1.0F);
 		setStepSound(soundTypeWood);
 		setBlockName(Utils.getUnlocalisedName("banner"));
+		setCreativeTab(GanysSurface.enableBanners ? GanysSurface.surfaceTab : null);
 
 		float f = 0.25F;
 		float f1 = 1.0F;

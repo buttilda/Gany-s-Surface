@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.items.StorageCase;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -39,27 +39,27 @@ public class ItemStorageCaseRenderer implements IItemRenderer {
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack stack, Object... data) {
 		// Render crate
-		GlStateManager.pushMatrix();
+		OpenGLHelper.pushMatrix();
 		double offset = -0.5;
 		if (type == ItemRenderType.EQUIPPED || type == ItemRenderType.EQUIPPED_FIRST_PERSON)
 			offset = 0;
 		else if (type == ItemRenderType.ENTITY)
-			GlStateManager.scale(0.5F, 0.5F, 0.5F);
+			OpenGLHelper.scale(0.5F, 0.5F, 0.5F);
 
 		renderItemAsBlock((RenderBlocks) data[0], stack, offset, offset, offset);
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 
 		if (!stack.hasTagCompound())
 			return;
 
 		// Render stored item on the crate's faces
 		offset = 0;
-		GlStateManager.pushMatrix();
+		OpenGLHelper.pushMatrix();
 		if (type == ItemRenderType.EQUIPPED || type == ItemRenderType.EQUIPPED_FIRST_PERSON) {
-			GlStateManager.translate(0.5, 0.5, 0.5);
+			OpenGLHelper.translate(0.5, 0.5, 0.5);
 			offset = 0.001;
 		} else if (type == ItemRenderType.ENTITY) {
-			GlStateManager.scale(0.5F, 0.5F, 0.5F);
+			OpenGLHelper.scale(0.5F, 0.5F, 0.5F);
 			offset = 0.001;
 		} else if (type == ItemRenderType.INVENTORY) {
 
@@ -79,71 +79,71 @@ public class ItemStorageCaseRenderer implements IItemRenderer {
 
 		renderStacksOnBlock(type, s, offset);
 
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 
 	private void renderStacksOnBlock(ItemRenderType type, ItemStack stack, double offset) {
 		if (type != ItemRenderType.INVENTORY) {
-			GlStateManager.pushMatrix();
-			GlStateManager.translate(-offset, -offset, -offset);
-			GlStateManager.translate(0.25, 0.25, -0.5);
+			OpenGLHelper.pushMatrix();
+			OpenGLHelper.translate(-offset, -offset, -offset);
+			OpenGLHelper.translate(0.25, 0.25, -0.5);
 			renderItemStack(stack);
-			GlStateManager.popMatrix();
+			OpenGLHelper.popMatrix();
 		}
 
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(offset, offset, offset);
-		GlStateManager.rotate(180, 0, 1, 0);
-		GlStateManager.translate(0.25, 0.25, -0.5);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(offset, offset, offset);
+		OpenGLHelper.rotate(180, 0, 1, 0);
+		OpenGLHelper.translate(0.25, 0.25, -0.5);
 		renderItemStack(stack);
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 
 		if (type != ItemRenderType.INVENTORY) {
-			GlStateManager.pushMatrix();
-			GlStateManager.translate(-offset, -offset, -offset);
-			GlStateManager.rotate(90, 0, 1, 0);
-			GlStateManager.translate(0.25, 0.25, -0.5);
+			OpenGLHelper.pushMatrix();
+			OpenGLHelper.translate(-offset, -offset, -offset);
+			OpenGLHelper.rotate(90, 0, 1, 0);
+			OpenGLHelper.translate(0.25, 0.25, -0.5);
 			renderItemStack(stack);
-			GlStateManager.popMatrix();
+			OpenGLHelper.popMatrix();
 		}
 
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(offset, offset, offset);
-		GlStateManager.rotate(270, 0, 1, 0);
-		GlStateManager.translate(0.25, 0.25, -0.5);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(offset, offset, offset);
+		OpenGLHelper.rotate(270, 0, 1, 0);
+		OpenGLHelper.translate(0.25, 0.25, -0.5);
 		renderItemStack(stack);
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 
 		if (type != ItemRenderType.INVENTORY) {
-			GlStateManager.pushMatrix();
-			GlStateManager.translate(-offset, -offset, -offset);
-			GlStateManager.rotate(270, 1, 0, 0);
-			GlStateManager.translate(0.25, 0.25, -0.5);
+			OpenGLHelper.pushMatrix();
+			OpenGLHelper.translate(-offset, -offset, -offset);
+			OpenGLHelper.rotate(270, 1, 0, 0);
+			OpenGLHelper.translate(0.25, 0.25, -0.5);
 			renderItemStack(stack);
-			GlStateManager.popMatrix();
+			OpenGLHelper.popMatrix();
 		}
 
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(offset, offset, offset);
-		GlStateManager.rotate(90, 1, 0, 0);
-		GlStateManager.translate(0.25, 0.25, -0.5);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(offset, offset, offset);
+		OpenGLHelper.rotate(90, 1, 0, 0);
+		OpenGLHelper.translate(0.25, 0.25, -0.5);
 		renderItemStack(stack);
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 
 	private void renderItemStack(ItemStack stack) {
 		if (stack != null) {
 			FontRenderer font = stack.getItem().getFontRenderer(stack);
-			GlStateManager.rotate(180, 0, 0, 1);
-			GlStateManager.scale(1F / 16, 1F / 16, 1F / 16);
+			OpenGLHelper.rotate(180, 0, 0, 1);
+			OpenGLHelper.scale(1F / 16, 1F / 16, 1F / 16);
 
-			GlStateManager.pushMatrix();
-			GlStateManager.scale(1, 1, -0.02F);
-			GlStateManager.scale(0.5, 0.5, 0.5);
+			OpenGLHelper.pushMatrix();
+			OpenGLHelper.scale(1, 1, -0.02F);
+			OpenGLHelper.scale(0.5, 0.5, 0.5);
 			if (!ForgeHooksClient.renderInventoryItem(new RenderBlocks(), Minecraft.getMinecraft().getTextureManager(), stack, true, 0.0f, 0.0f, 0.0f))
 				itemRender.renderItemIntoGUI(font, Minecraft.getMinecraft().getTextureManager(), stack, 0, 0);
 
-			GlStateManager.popMatrix();
+			OpenGLHelper.popMatrix();
 		}
 	}
 
@@ -154,12 +154,12 @@ public class ItemStorageCaseRenderer implements IItemRenderer {
 		IIcon icon = stack.getIconIndex();
 
 		renderer.setRenderBounds(0, 0, 0, 1, 1, 1);
-		GlStateManager.translate(x, y, z);
+		OpenGLHelper.translate(x, y, z);
 
 		float R = (colour >> 16 & 255) / 255.0F;
 		float G = (colour >> 8 & 255) / 255.0F;
 		float B = (colour & 255) / 255.0F;
-		GlStateManager.color(R, G, B);
+		OpenGLHelper.colour(R, G, B);
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0, -1, 0);

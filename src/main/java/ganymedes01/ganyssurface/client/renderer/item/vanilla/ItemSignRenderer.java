@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.blocks.BlockWoodSign;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWoodSignRenderer;
 import ganymedes01.ganyssurface.items.block.ItemWoodSign;
@@ -45,7 +45,7 @@ public class ItemSignRenderer implements IItemRenderer {
 		if (renderer instanceof RenderBlocks)
 			switch (type) {
 				case ENTITY:
-					GlStateManager.scale(0.5, 0.5, 0.5);
+					OpenGLHelper.scale(0.5, 0.5, 0.5);
 					render(stack, 0.0F, 0.0F, 0.0F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED:
@@ -63,12 +63,12 @@ public class ItemSignRenderer implements IItemRenderer {
 	}
 
 	private void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y, z);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(x, y, z);
 
-		GlStateManager.rotate(90, 0, 1, 0);
-		GlStateManager.scale(0.75, 0.75, 0.75);
-		GlStateManager.scale(-1, -1, 1);
+		OpenGLHelper.rotate(90, 0, 1, 0);
+		OpenGLHelper.scale(0.75, 0.75, 0.75);
+		OpenGLHelper.scale(-1, -1, 1);
 		if (stack.getItem() instanceof ItemWoodSign) {
 			int meta = ((BlockWoodSign) Block.getBlockFromItem(stack.getItem())).woodMeta - 1;
 			FMLClientHandler.instance().getClient().renderEngine.bindTexture(TileEntityWoodSignRenderer.textures[meta]);
@@ -77,6 +77,6 @@ public class ItemSignRenderer implements IItemRenderer {
 
 		model.renderSign();
 
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 }

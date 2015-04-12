@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.block;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.blocks.BlockWoodTrapdoor;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import net.minecraft.block.Block;
@@ -28,7 +28,7 @@ public class BlockTrapdoorRenderer implements ISimpleBlockRenderingHandler {
 		BlockWoodTrapdoor trapdoor = (BlockWoodTrapdoor) block;
 
 		Tessellator tessellator = Tessellator.instance;
-		GlStateManager.translate(-0.5F, -0.5F, -0.5F);
+		OpenGLHelper.translate(-0.5F, -0.5F, -0.5F);
 
 		float f = 0.1875F;
 		renderer.setRenderBounds(0.0F, 0.5F - f / 2.0F, 0.0F, 1.0F, 0.5F + f / 2.0F, 1.0F);
@@ -47,7 +47,7 @@ public class BlockTrapdoorRenderer implements ISimpleBlockRenderingHandler {
 		renderer.renderFaceXPos(block, 0.0D, 0.0D, 0.0D, Blocks.planks.getIcon(5, trapdoor.woodMeta));
 		tessellator.draw();
 
-		GlStateManager.disableBlend();
+		OpenGLHelper.disableBlend();
 	}
 
 	@Override

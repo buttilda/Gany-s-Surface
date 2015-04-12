@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.inventory.ContainerPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -34,7 +34,7 @@ public class GuiPlanter extends GuiGanysSurface {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int x, int y) {
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		OpenGLHelper.colour(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.renderEngine.bindTexture(new ResourceLocation("textures/gui/container/dispenser.png"));
 		int xStart = (width - xSize) / 2;
 		int yStart = (height - ySize) / 2;

@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.client.renderer.entity.RenderItem;
@@ -57,7 +57,7 @@ public class TileEntityWorkTableRender extends TileEntitySpecialRenderer {
 	private void renderCraftingGrid(TileEntityWorkTable workTable, float x, float y, float z, int start) {
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++) {
-				GlStateManager.pushMatrix();
+				OpenGLHelper.pushMatrix();
 				EntityItem entityItem = workTable.getEntityItem(start + j + i * 3);
 				if (entityItem != null) {
 					float scaleFactor;
@@ -72,31 +72,31 @@ public class TileEntityWorkTableRender extends TileEntitySpecialRenderer {
 
 					switch (workTable.getBlockMetadata()) {
 						case 2:
-							GlStateManager.translate(x - j * 0.19F + 0.69F, y + 1.05F, z + 0.69F - i * 0.19F);
-							GlStateManager.rotate(rotateAngle + 90.0F, 0.0F, 1.0F, 0.0F);
+							OpenGLHelper.translate(x - j * 0.19F + 0.69F, y + 1.05F, z + 0.69F - i * 0.19F);
+							OpenGLHelper.rotate(rotateAngle + 90.0F, 0.0F, 1.0F, 0.0F);
 							break;
 						case 3:
-							GlStateManager.translate(x + 0.313F + j * 0.19F, y + 1.05F, z + 0.313F + i * 0.19F);
-							GlStateManager.rotate(rotateAngle + 270.0F, 0.0F, 1.0F, 0.0F);
+							OpenGLHelper.translate(x + 0.313F + j * 0.19F, y + 1.05F, z + 0.313F + i * 0.19F);
+							OpenGLHelper.rotate(rotateAngle + 270.0F, 0.0F, 1.0F, 0.0F);
 							break;
 						case 4:
-							GlStateManager.translate(x + 0.69F - i * 0.19F, y + 1.05F, z + 0.313F + j * 0.19F);
-							GlStateManager.rotate(rotateAngle + 180.0F, 0.0F, 1.0F, 0.0F);
+							OpenGLHelper.translate(x + 0.69F - i * 0.19F, y + 1.05F, z + 0.313F + j * 0.19F);
+							OpenGLHelper.rotate(rotateAngle + 180.0F, 0.0F, 1.0F, 0.0F);
 							break;
 						case 5:
-							GlStateManager.translate(x + 0.313F + i * 0.19F, y + 1.05F, z + 0.69F - j * 0.19F);
-							GlStateManager.rotate(rotateAngle + 0.0F, 0.0F, 1.0F, 0.0F);
+							OpenGLHelper.translate(x + 0.313F + i * 0.19F, y + 1.05F, z + 0.69F - j * 0.19F);
+							OpenGLHelper.rotate(rotateAngle + 0.0F, 0.0F, 1.0F, 0.0F);
 							break;
 						default:
-							GlStateManager.translate(x - j * 0.19F + 0.69F, y + 1.05F, z + 0.69F - i * 0.19F);
-							GlStateManager.rotate(rotateAngle + 90.0F, 0.0F, 1.0F, 0.0F);
+							OpenGLHelper.translate(x - j * 0.19F + 0.69F, y + 1.05F, z + 0.69F - i * 0.19F);
+							OpenGLHelper.rotate(rotateAngle + 90.0F, 0.0F, 1.0F, 0.0F);
 							break;
 					}
-					GlStateManager.scale(scaleFactor, scaleFactor, scaleFactor);
+					OpenGLHelper.scale(scaleFactor, scaleFactor, scaleFactor);
 
 					itemRenderer.doRender(entityItem, 0, 0, 0, 0, 0);
 				}
-				GlStateManager.popMatrix();
+				OpenGLHelper.popMatrix();
 			}
 	}
 }

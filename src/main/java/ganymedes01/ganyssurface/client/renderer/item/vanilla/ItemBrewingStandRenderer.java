@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
 import net.minecraft.block.BlockBrewingStand;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -43,7 +43,7 @@ public class ItemBrewingStandRenderer implements IItemRenderer {
 		if (renderer instanceof RenderBlocks)
 			switch (type) {
 				case ENTITY:
-					GlStateManager.scale(0.5, 0.5, 0.5);
+					OpenGLHelper.scale(0.5, 0.5, 0.5);
 					render(stack, -0.5F, -0.5F, -0.5F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED:
@@ -53,7 +53,7 @@ public class ItemBrewingStandRenderer implements IItemRenderer {
 					render(stack, 0.0F, 0.0F, 0.0F, (RenderBlocks) renderer);
 					break;
 				case INVENTORY:
-					GlStateManager.scale(1.2, 1.2, 1.2);
+					OpenGLHelper.scale(1.2, 1.2, 1.2);
 					render(stack, -0.5F, -0.5F, -0.5F, (RenderBlocks) renderer);
 					break;
 				default:
@@ -62,9 +62,9 @@ public class ItemBrewingStandRenderer implements IItemRenderer {
 	}
 
 	private void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y, z);
-		GlStateManager.translate(0.5, 0.5, 0.5);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(x, y, z);
+		OpenGLHelper.translate(0.5, 0.5, 0.5);
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
@@ -85,8 +85,8 @@ public class ItemBrewingStandRenderer implements IItemRenderer {
 		renderer.clearOverrideBlockTexture();
 
 		// POTIONS
-		GlStateManager.translate(-0.5, -0.5, -0.5);
-		GlStateManager.disableLighting();
+		OpenGLHelper.translate(-0.5, -0.5, -0.5);
+		OpenGLHelper.disableLighting();
 		IIcon iicon = renderer.getBlockIconFromSideAndMetadata(Blocks.brewing_stand, 0, 0);
 
 		if (renderer.hasOverrideBlockTexture())
@@ -121,7 +121,7 @@ public class ItemBrewingStandRenderer implements IItemRenderer {
 			tessellator.draw();
 		}
 
-		GlStateManager.enableLighting();
-		GlStateManager.popMatrix();
+		OpenGLHelper.enableLighting();
+		OpenGLHelper.popMatrix();
 	}
 }

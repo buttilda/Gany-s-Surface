@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
@@ -23,16 +23,16 @@ public class ItemComparatorRenderer extends ItemRepeaterRenderer {
 
 	@Override
 	protected void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y, z);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(x, y, z);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		Tessellator tessellator = Tessellator.instance;
 
-		GlStateManager.disableLighting();
+		OpenGLHelper.disableLighting();
 		ItemTorchRenderer.renderTorch(Blocks.unpowered_comparator, 0.1875, -0.1875, 0.25, renderer, 0.2);
 		ItemTorchRenderer.renderTorch(Blocks.unpowered_comparator, -0.1875, -0.1875, 0.25, renderer, 0.2);
 		ItemTorchRenderer.renderTorch(Blocks.unpowered_comparator, 0, -0.375, -0.3125, renderer, 0.4);
-		GlStateManager.enableLighting();
+		OpenGLHelper.enableLighting();
 
 		tessellator.startDrawingQuads();
 		tessellator.setNormal(0, -1, 0);
@@ -40,10 +40,10 @@ public class ItemComparatorRenderer extends ItemRepeaterRenderer {
 		renderer.renderFaceYNeg(Blocks.unpowered_comparator, 0, 0, 0, renderer.getBlockIconFromSideAndMetadata(Blocks.stone_slab, 0, 0));
 		tessellator.draw();
 
-		GlStateManager.translate(0.5, 0.5, 0.5);
+		OpenGLHelper.translate(0.5, 0.5, 0.5);
 		renderer.setRenderBounds(0, 0.001, 0, 1, 0.125D, 1);
 		BlockRendererHelper.renderSimpleBlock(Blocks.unpowered_comparator, 0, renderer);
 
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 }

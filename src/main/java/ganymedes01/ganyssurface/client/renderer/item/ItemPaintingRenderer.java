@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.items.Painting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
@@ -35,21 +35,21 @@ public class ItemPaintingRenderer implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack stack, Object... data) {
-		GlStateManager.pushMatrix();
+		OpenGLHelper.pushMatrix();
 		Minecraft.getMinecraft().getTextureManager().bindTexture(TEXTURE);
-		GlStateManager.scale(0.0625F, 0.0625F, 0.0625F);
-		GlStateManager.disableLighting();
-		GlStateManager.rotate(225, 0, 1, 0);
+		OpenGLHelper.scale(0.0625F, 0.0625F, 0.0625F);
+		OpenGLHelper.disableLighting();
+		OpenGLHelper.rotate(225, 0, 1, 0);
 
 		EnumArt art = EnumArt.values()[Painting.getMeta(stack)];
 		if (art.sizeX > 26)
-			GlStateManager.scale(26.0 / art.sizeX, 26.0 / art.sizeX, 1);
+			OpenGLHelper.scale(26.0 / art.sizeX, 26.0 / art.sizeX, 1);
 		else if (art.sizeY > 26)
-			GlStateManager.scale(26.0 / art.sizeY, 26.0 / art.sizeY, 1);
+			OpenGLHelper.scale(26.0 / art.sizeY, 26.0 / art.sizeY, 1);
 		renderPainting(art.sizeX, art.sizeY, art.offsetX, art.offsetY);
 
-		GlStateManager.enableLighting();
-		GlStateManager.popMatrix();
+		OpenGLHelper.enableLighting();
+		OpenGLHelper.popMatrix();
 	}
 
 	private void renderPainting(int width, int height, int offsetX, int offsetY) {

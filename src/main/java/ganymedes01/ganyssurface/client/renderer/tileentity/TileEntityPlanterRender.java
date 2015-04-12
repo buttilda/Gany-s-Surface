@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.client.model.ModelPlanter;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -29,11 +29,11 @@ public class TileEntityPlanterRender extends TileEntitySpecialRenderer {
 		TileEntityPlanter planter = (TileEntityPlanter) tile;
 		bindTexture(texture);
 
-		GlStateManager.pushMatrix();
-		GlStateManager.translate((float) x + 1.0F, (float) y + 1.0F, (float) z + 0.0F);
-		GlStateManager.scale(-1.0F, -1.0F, 1.0F);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate((float) x + 1.0F, (float) y + 1.0F, (float) z + 0.0F);
+		OpenGLHelper.scale(-1.0F, -1.0F, 1.0F);
 		model.moveArm(planter.getArmExtension());
 		model.renderAll();
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 }

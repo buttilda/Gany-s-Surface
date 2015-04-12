@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
@@ -41,19 +41,19 @@ public class ItemBedRenderer implements IItemRenderer {
 		if (renderer instanceof RenderBlocks)
 			switch (type) {
 				case ENTITY:
-					GlStateManager.scale(0.5, 0.5, 0.5);
+					OpenGLHelper.scale(0.5, 0.5, 0.5);
 					render(stack, -0.5F, -0.25F, -1.0F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED:
-					GlStateManager.rotate(180, 0, 1, 0);
+					OpenGLHelper.rotate(180, 0, 1, 0);
 					render(stack, -1.4F, 0F, -1.5F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED_FIRST_PERSON:
-					GlStateManager.rotate(180, 0, 1, 0);
+					OpenGLHelper.rotate(180, 0, 1, 0);
 					render(stack, -0.75F, 0.5F, -2F, (RenderBlocks) renderer);
 					break;
 				case INVENTORY:
-					GlStateManager.scale(0.75, 0.75, 0.75);
+					OpenGLHelper.scale(0.75, 0.75, 0.75);
 					render(stack, -0.5F, -0.45F, -1.0F, (RenderBlocks) renderer);
 					break;
 				default:
@@ -62,16 +62,16 @@ public class ItemBedRenderer implements IItemRenderer {
 	}
 
 	private void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y, z);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(x, y, z);
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
 		renderBed(renderer, 0, false);
-		GlStateManager.translate(0, 0, 1);
+		OpenGLHelper.translate(0, 0, 1);
 		renderBed(renderer, 8, true);
 
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 
 	private void renderBed(RenderBlocks renderer, int metadata, boolean flag) {

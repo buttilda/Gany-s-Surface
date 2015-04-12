@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerInkHarvester;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -37,7 +37,7 @@ public class GuiInkHarvester extends GuiGanysSurface {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int x, int y) {
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		OpenGLHelper.colour(1.0F, 1.0F, 1.0F, 1.0F);
 		mc.renderEngine.bindTexture(new ResourceLocation(Utils.getGUITexture(Strings.INK_HARVESTER_NAME)));
 		int xStart = (width - xSize) / 2;
 		int yStart = (height - ySize) / 2;

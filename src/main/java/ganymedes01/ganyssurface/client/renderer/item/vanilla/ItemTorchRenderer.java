@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
@@ -44,14 +44,14 @@ public class ItemTorchRenderer implements IItemRenderer {
 					render(stack, -0.5F, -0.25F, -0.5F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED:
-					GlStateManager.rotate(45, -1, 0, 1);
+					OpenGLHelper.rotate(45, -1, 0, 1);
 					render(stack, 0.25F, -0.5F, 0.25F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED_FIRST_PERSON:
 					render(stack, 0.0F, 0.5F, 0.15F, (RenderBlocks) renderer);
 					break;
 				case INVENTORY:
-					GlStateManager.scale(2, 2, 2);
+					OpenGLHelper.scale(2, 2, 2);
 					render(stack, -0.5F, -0.3F, -0.5F, (RenderBlocks) renderer);
 					break;
 				default:
@@ -60,15 +60,15 @@ public class ItemTorchRenderer implements IItemRenderer {
 	}
 
 	public static void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y, z);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(x, y, z);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
-		GlStateManager.disableLighting();
+		OpenGLHelper.disableLighting();
 		renderTorch(Block.getBlockFromItem(stack.getItem()), 0, 0, 0, renderer, 0);
-		GlStateManager.enableLighting();
+		OpenGLHelper.enableLighting();
 
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 
 	public static void renderTorch(Block block, double x, double y, double z, RenderBlocks renderer, double size) {

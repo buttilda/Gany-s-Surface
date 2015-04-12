@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -41,12 +41,12 @@ public class ItemIcyPickaxeRenderer implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack stack, Object... data) {
 		switch (type) {
 			case ENTITY:
-				GlStateManager.pushMatrix();
-				GlStateManager.translate(-0.5F, 0F, 0F);
+				OpenGLHelper.pushMatrix();
+				OpenGLHelper.translate(-0.5F, 0F, 0F);
 				if (stack.isOnItemFrame())
-					GlStateManager.translate(0F, -0.3F, 0.01F);
+					OpenGLHelper.translate(0F, -0.3F, 0.01F);
 				renderPickaxe(stack);
-				GlStateManager.popMatrix();
+				OpenGLHelper.popMatrix();
 				break;
 			case EQUIPPED:
 			case EQUIPPED_FIRST_PERSON:
@@ -60,45 +60,45 @@ public class ItemIcyPickaxeRenderer implements IItemRenderer {
 	private void renderPickaxe(ItemStack stack) {
 		IIcon icon = stack.getItem().getIcon(stack, 0);
 
-		GlStateManager.pushMatrix();
-		GlStateManager.enableBlend();
-		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-		GlStateManager.color(1F, 1F, 1F, 1F);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.enableBlend();
+		OpenGLHelper.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		OpenGLHelper.colour(1F, 1F, 1F, 1F);
 		ItemRenderer.renderItemIn2D(Tessellator.instance, icon.getMaxU(), icon.getMinV(), icon.getMinU(), icon.getMaxV(), icon.getIconWidth(), icon.getIconHeight(), 1F / 16F);
-		GlStateManager.disableBlend();
-		GlStateManager.popMatrix();
+		OpenGLHelper.disableBlend();
+		OpenGLHelper.popMatrix();
 
 		if (stack.hasEffect(0)) {
-			GlStateManager.pushMatrix();
+			OpenGLHelper.pushMatrix();
 			GL11.glDepthFunc(GL11.GL_EQUAL);
-			GlStateManager.disableLighting();
+			OpenGLHelper.disableLighting();
 			Minecraft.getMinecraft().getTextureManager().bindTexture(GLINT);
 			GL11.glEnable(GL11.GL_BLEND);
 			OpenGlHelper.glBlendFunc(GL11.GL_SRC_COLOR, GL11.GL_ONE, GL11.GL_ONE, GL11.GL_ZERO);
-			GlStateManager.color(0.5F * 0.76F, 0.25F * 0.76F, 0.8F * 0.76F, 1.0F);
+			OpenGLHelper.colour(0.5F * 0.76F, 0.25F * 0.76F, 0.8F * 0.76F, 1.0F);
 			GL11.glMatrixMode(GL11.GL_TEXTURE);
 
-			GlStateManager.pushMatrix();
-			GlStateManager.scale(0.125F, 0.125F, 0.125F);
-			GlStateManager.translate(Minecraft.getSystemTime() % 3000L / 3000.0F * 8.0F, 0.0F, 0.0F);
-			GlStateManager.rotate(-50.0F, 0.0F, 0.0F, 1.0F);
+			OpenGLHelper.pushMatrix();
+			OpenGLHelper.scale(0.125F, 0.125F, 0.125F);
+			OpenGLHelper.translate(Minecraft.getSystemTime() % 3000L / 3000.0F * 8.0F, 0.0F, 0.0F);
+			OpenGLHelper.rotate(-50.0F, 0.0F, 0.0F, 1.0F);
 			ItemRenderer.renderItemIn2D(Tessellator.instance, 0.0F, 0.0F, 1.0F, 1.0F, 256, 256, 0.0625F);
-			GlStateManager.popMatrix();
+			OpenGLHelper.popMatrix();
 
-			GlStateManager.pushMatrix();
-			GlStateManager.scale(0.125F, 0.125F, 0.125F);
-			GlStateManager.translate(-(Minecraft.getSystemTime() % 4873L / 4873.0F * 8.0F), 0.0F, 0.0F);
-			GlStateManager.rotate(10.0F, 0.0F, 0.0F, 1.0F);
+			OpenGLHelper.pushMatrix();
+			OpenGLHelper.scale(0.125F, 0.125F, 0.125F);
+			OpenGLHelper.translate(-(Minecraft.getSystemTime() % 4873L / 4873.0F * 8.0F), 0.0F, 0.0F);
+			OpenGLHelper.rotate(10.0F, 0.0F, 0.0F, 1.0F);
 			ItemRenderer.renderItemIn2D(Tessellator.instance, 0.0F, 0.0F, 1.0F, 1.0F, 256, 256, 0.0625F);
-			GlStateManager.popMatrix();
+			OpenGLHelper.popMatrix();
 
 			GL11.glMatrixMode(GL11.GL_MODELVIEW);
 			GL11.glDisable(GL11.GL_BLEND);
-			GlStateManager.enableLighting();
+			OpenGLHelper.enableLighting();
 			GL11.glDepthFunc(GL11.GL_LEQUAL);
-			GlStateManager.popMatrix();
+			OpenGLHelper.popMatrix();
 		}
 
-		GlStateManager.color(1F, 1F, 1F, 1F);
+		OpenGLHelper.colour(1F, 1F, 1F, 1F);
 	}
 }

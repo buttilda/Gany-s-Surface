@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
 import net.minecraft.block.BlockCauldron;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -43,7 +43,7 @@ public class ItemCauldronRenderer implements IItemRenderer {
 		if (renderer instanceof RenderBlocks)
 			switch (type) {
 				case ENTITY:
-					GlStateManager.scale(0.5, 0.5, 0.5);
+					OpenGLHelper.scale(0.5, 0.5, 0.5);
 					render(stack, -0.5F, -0.5F, -0.5F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED:
@@ -61,8 +61,8 @@ public class ItemCauldronRenderer implements IItemRenderer {
 	}
 
 	private void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y, z);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(x, y, z);
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
@@ -79,9 +79,9 @@ public class ItemCauldronRenderer implements IItemRenderer {
 		renderer.renderFaceYNeg(Blocks.cauldron, 0, 0 + 1.0F - 0.75F, 0, inner);
 		Tessellator.instance.draw();
 
-		GlStateManager.translate(0.5F, 0.5F, 0.5F);
+		OpenGLHelper.translate(0.5F, 0.5F, 0.5F);
 		BlockRendererHelper.renderSimpleBlock(Blocks.cauldron, 0, renderer);
 
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 }

@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerEnchantment;
 
@@ -97,34 +97,34 @@ public class GuiEnchantment extends GuiContainer {
 	 */
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-		GlStateManager.color(1, 1, 1, 1);
+		OpenGLHelper.colour(1, 1, 1, 1);
 		mc.getTextureManager().bindTexture(field_147078_C);
 		int k = (width - xSize) / 2;
 		int l = (height - ySize) / 2;
 		drawTexturedModalRect(k, l, 0, 0, xSize, ySize);
-		GlStateManager.pushMatrix();
-		GlStateManager.matrixMode(5889);
-		GlStateManager.pushMatrix();
-		GlStateManager.loadIdentity();
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.matrixMode(5889);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.loadIdentity();
 		ScaledResolution var6 = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
-		GlStateManager.viewport((var6.getScaledWidth() - 320) / 2 * var6.getScaleFactor(), (var6.getScaledHeight() - 240) / 2 * var6.getScaleFactor(), 320 * var6.getScaleFactor(), 240 * var6.getScaleFactor());
-		GlStateManager.translate(-0.34F, 0.23F, 0.0F);
+		OpenGLHelper.viewport((var6.getScaledWidth() - 320) / 2 * var6.getScaleFactor(), (var6.getScaledHeight() - 240) / 2 * var6.getScaleFactor(), 320 * var6.getScaleFactor(), 240 * var6.getScaleFactor());
+		OpenGLHelper.translate(-0.34F, 0.23F, 0.0F);
 		Project.gluPerspective(90.0F, 1.3333334F, 9.0F, 80.0F);
 		float var7 = 1.0F;
-		GlStateManager.matrixMode(5888);
-		GlStateManager.loadIdentity();
+		OpenGLHelper.matrixMode(5888);
+		OpenGLHelper.loadIdentity();
 		RenderHelper.enableStandardItemLighting();
-		GlStateManager.translate(0.0F, 3.3F, -16.0F);
-		GlStateManager.scale(var7, var7, var7);
+		OpenGLHelper.translate(0.0F, 3.3F, -16.0F);
+		OpenGLHelper.scale(var7, var7, var7);
 		float var8 = 5.0F;
-		GlStateManager.scale(var8, var8, var8);
-		GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
+		OpenGLHelper.scale(var8, var8, var8);
+		OpenGLHelper.rotate(180.0F, 0.0F, 0.0F, 1.0F);
 		mc.getTextureManager().bindTexture(field_147070_D);
-		GlStateManager.rotate(20.0F, 1.0F, 0.0F, 0.0F);
+		OpenGLHelper.rotate(20.0F, 1.0F, 0.0F, 0.0F);
 		float var9 = field_147076_A + (field_147080_z - field_147076_A) * partialTicks;
-		GlStateManager.translate((1.0F - var9) * 0.2F, (1.0F - var9) * 0.1F, (1.0F - var9) * 0.25F);
-		GlStateManager.rotate(-(1.0F - var9) * 90.0F - 90.0F, 0.0F, 1.0F, 0.0F);
-		GlStateManager.rotate(180.0F, 1.0F, 0.0F, 0.0F);
+		OpenGLHelper.translate((1.0F - var9) * 0.2F, (1.0F - var9) * 0.1F, (1.0F - var9) * 0.25F);
+		OpenGLHelper.rotate(-(1.0F - var9) * 90.0F - 90.0F, 0.0F, 1.0F, 0.0F);
+		OpenGLHelper.rotate(180.0F, 1.0F, 0.0F, 0.0F);
 		float var10 = field_147069_w + (field_147071_v - field_147069_w) * partialTicks + 0.25F;
 		float var11 = field_147069_w + (field_147071_v - field_147069_w) * partialTicks + 0.75F;
 		var10 = (var10 - MathHelper.truncateDoubleToInt(var10)) * 1.6F - 0.3F;
@@ -142,17 +142,17 @@ public class GuiEnchantment extends GuiContainer {
 		if (var11 > 1.0F)
 			var11 = 1.0F;
 
-		GlStateManager.enableRescaleNormal();
+		OpenGLHelper.enableRescaleNormal();
 		field_147072_E.render((Entity) null, 0.0F, var10, var11, var9, 0.0F, 0.0625F);
-		GlStateManager.disableRescaleNormal();
+		OpenGLHelper.disableRescaleNormal();
 		RenderHelper.disableStandardItemLighting();
-		GlStateManager.matrixMode(5889);
-		GlStateManager.viewport(0, 0, mc.displayWidth, mc.displayHeight);
-		GlStateManager.popMatrix();
-		GlStateManager.matrixMode(5888);
-		GlStateManager.popMatrix();
+		OpenGLHelper.matrixMode(5889);
+		OpenGLHelper.viewport(0, 0, mc.displayWidth, mc.displayHeight);
+		OpenGLHelper.popMatrix();
+		OpenGLHelper.matrixMode(5888);
+		OpenGLHelper.popMatrix();
 		RenderHelper.disableStandardItemLighting();
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		OpenGLHelper.colour(1.0F, 1.0F, 1.0F, 1.0F);
 		EnchantmentNameParts.instance.reseedRandomGenerator(field_147075_G.enchantmentSeed);
 		int var12 = field_147075_G.func_178147_e();
 
@@ -164,7 +164,7 @@ public class GuiEnchantment extends GuiContainer {
 			zLevel = 0.0F;
 			mc.getTextureManager().bindTexture(field_147078_C);
 			int j1 = field_147075_G.enchantLevels[i1];
-			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+			OpenGLHelper.colour(1.0F, 1.0F, 1.0F, 1.0F);
 
 			if (j1 == 0)
 				drawTexturedModalRect(var14, l + 14 + 19 * i1, 0, 185, 108, 19);
@@ -195,7 +195,7 @@ public class GuiEnchantment extends GuiContainer {
 
 				fontrenderer = mc.fontRenderer;
 				fontrenderer.drawStringWithShadow(s1, var15 + 86 - fontrenderer.getStringWidth(s1), l + 16 + 19 * i1 + 7, k1);
-				GlStateManager.color(1, 1, 1, 1);
+				OpenGLHelper.colour(1, 1, 1, 1);
 			}
 		}
 	}

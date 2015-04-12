@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.blocks.BlockWoodDoor;
 import ganymedes01.ganyssurface.blocks.BlockWoodSign;
@@ -40,14 +40,14 @@ public class TileEntityWoodSignRenderer extends TileEntitySpecialRenderer {
 		TileEntityWoodSign sign = (TileEntityWoodSign) tile;
 		BlockWoodSign block = (BlockWoodSign) sign.getBlockType();
 
-		GlStateManager.pushMatrix();
+		OpenGLHelper.pushMatrix();
 		float f1 = 0.6666667F;
 		float f3;
 
 		if (sign.isStanding) {
-			GlStateManager.translate((float) x + 0.5F, (float) y + 0.75F * f1, (float) z + 0.5F);
+			OpenGLHelper.translate((float) x + 0.5F, (float) y + 0.75F * f1, (float) z + 0.5F);
 			float f2 = sign.getBlockMetadata() * 360 / 16.0F;
-			GlStateManager.rotate(-f2, 0.0F, 1.0F, 0.0F);
+			OpenGLHelper.rotate(-f2, 0.0F, 1.0F, 0.0F);
 			model.signStick.showModel = true;
 		} else {
 			int j = sign.getBlockMetadata();
@@ -60,37 +60,37 @@ public class TileEntityWoodSignRenderer extends TileEntitySpecialRenderer {
 			if (j == 5)
 				f3 = -90.0F;
 
-			GlStateManager.translate((float) x + 0.5F, (float) y + 0.75F * f1, (float) z + 0.5F);
-			GlStateManager.rotate(-f3, 0.0F, 1.0F, 0.0F);
-			GlStateManager.translate(0.0F, -0.3125F, -0.4375F);
+			OpenGLHelper.translate((float) x + 0.5F, (float) y + 0.75F * f1, (float) z + 0.5F);
+			OpenGLHelper.rotate(-f3, 0.0F, 1.0F, 0.0F);
+			OpenGLHelper.translate(0.0F, -0.3125F, -0.4375F);
 			model.signStick.showModel = false;
 		}
 
 		bindTexture(textures[block.woodMeta - 1]);
-		GlStateManager.pushMatrix();
-		GlStateManager.scale(f1, -f1, -f1);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.scale(f1, -f1, -f1);
 		model.renderSign();
 		GL11.glPopMatrix();
 		FontRenderer fontrenderer = func_147498_b();
 		f3 = 0.016666668F * f1;
-		GlStateManager.translate(0.0F, 0.5F * f1, 0.07F * f1);
-		GlStateManager.scale(f3, -f3, f3);
+		OpenGLHelper.translate(0.0F, 0.5F * f1, 0.07F * f1);
+		OpenGLHelper.scale(f3, -f3, f3);
 		GL11.glNormal3f(0.0F, 0.0F, -1.0F * f3);
-		GL11.glDepthMask(false);
+		OpenGLHelper.depthMask(false);
 
 		int textColour = sign.getTextColour();
-		for (int i = 0; i < sign.signText.length; ++i) {
+		for (int i = 0; i < sign.signText.length; i++) {
 			String s = sign.signText[i];
 
 			if (i == sign.lineBeingEdited) {
 				s = "> " + s + " <";
-				fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, i * 10 - sign.signText.length * 5, textColour);
+				fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, i * 10 - sign.signText.length * 5, textColour, sign.textHasShadow());
 			} else
-				fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, i * 10 - sign.signText.length * 5, textColour);
+				fontrenderer.drawString(s, -fontrenderer.getStringWidth(s) / 2, i * 10 - sign.signText.length * 5, textColour, sign.textHasShadow());
 		}
 
-		GL11.glDepthMask(true);
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		GL11.glPopMatrix();
+		OpenGLHelper.depthMask(true);
+		OpenGLHelper.colour(1.0F, 1.0F, 1.0F, 1.0F);
+		OpenGLHelper.popMatrix();
 	}
 }

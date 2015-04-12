@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
@@ -45,11 +45,11 @@ public class ItemFlowerPotRenderer implements IItemRenderer {
 					render(stack, 0.0F, 0.25F, 0.0F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED_FIRST_PERSON:
-					GlStateManager.scale(2, 2, 2);
+					OpenGLHelper.scale(2, 2, 2);
 					render(stack, 0.0F, 0.0F, -0.25F, (RenderBlocks) renderer);
 					break;
 				case INVENTORY:
-					GlStateManager.scale(1.5, 1.5, 1.5);
+					OpenGLHelper.scale(1.5, 1.5, 1.5);
 					render(stack, -0.5F, -0.25F, -0.5F, (RenderBlocks) renderer);
 					break;
 				default:
@@ -58,18 +58,18 @@ public class ItemFlowerPotRenderer implements IItemRenderer {
 	}
 
 	private void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y, z);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(x, y, z);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
-		GlStateManager.translate(0.5F, 0.5F, 0.5F);
+		OpenGLHelper.translate(0.5F, 0.5F, 0.5F);
 		float f = 0.375F;
 		float f1 = f / 2.0F;
 		renderer.setRenderBounds(0.5F - f1, 0.0F, 0.5F - f1, 0.5F + f1, f, 0.5F + f1);
 		BlockRendererHelper.renderSimpleBlock(Blocks.flower_pot, 0, renderer);
 
-		GlStateManager.translate(-0.5F, -0.5F, -0.5F);
-		GlStateManager.disableLighting();
+		OpenGLHelper.translate(-0.5F, -0.5F, -0.5F);
+		OpenGLHelper.disableLighting();
 		float f3 = 0.1865F;
 		IIcon iicon = renderer.getBlockIconFromSide(Blocks.flower_pot, 0);
 		Tessellator.instance.startDrawingQuads();
@@ -79,8 +79,8 @@ public class ItemFlowerPotRenderer implements IItemRenderer {
 		renderer.renderFaceZNeg(Blocks.flower_pot, 0, 0, 0 + 0.5F - f3, iicon);
 		renderer.renderFaceYPos(Blocks.flower_pot, 0, 0 - 0.5F + f3 + 0.1875F, 0, renderer.getBlockIcon(Blocks.dirt));
 		Tessellator.instance.draw();
-		GlStateManager.enableLighting();
+		OpenGLHelper.enableLighting();
 
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 }

@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.integration.nei;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
 import ganymedes01.ganyssurface.core.utils.UnsizedStack;
 import ganymedes01.ganyssurface.core.utils.Utils;
@@ -65,7 +65,7 @@ public class OMCYieldHandler extends TemplateRecipeHandler {
 
 	@Override
 	public void drawBackground(int index) {
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		OpenGLHelper.colour(1.0F, 1.0F, 1.0F, 1.0F);
 
 		GuiDraw.changeTexture(getGuiTexture());
 		GuiDraw.drawTexturedModalRect(-2, -5, 5, 11, 120, 65);

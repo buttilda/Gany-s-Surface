@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.client.model.ModelPocketBat;
 import ganymedes01.ganyssurface.client.model.ModelPocketSquid;
@@ -44,19 +44,19 @@ public class ItemPocketCritterRenderer implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack stack, Object... data) {
 		switch (type) {
 			case ENTITY:
-				GlStateManager.scale(0.5F, 0.5F, 0.5F);
+				OpenGLHelper.scale(0.5F, 0.5F, 0.5F);
 				renderCritter(stack, 0.5F, 1.0F, 0.0F, type);
 				break;
 			case EQUIPPED:
 				renderCritter(stack, 1.0F, 1.0F, 0.5F, type);
 				break;
 			case EQUIPPED_FIRST_PERSON:
-				GlStateManager.translate(0.75F, 0.5F, 0.5F);
-				GlStateManager.rotate(-90 - 45, 0, 1, 0);
+				OpenGLHelper.translate(0.75F, 0.5F, 0.5F);
+				OpenGLHelper.rotate(-90 - 45, 0, 1, 0);
 				renderCritter(stack, 1.0F, 1.0F, 1.0F, type);
 				break;
 			case INVENTORY:
-				GlStateManager.scale(0.75F, 0.75F, 0.75F);
+				OpenGLHelper.scale(0.75F, 0.75F, 0.75F);
 				renderCritter(stack, 0.0F, 0.075F, 0.0F, type);
 				break;
 			default:
@@ -65,24 +65,24 @@ public class ItemPocketCritterRenderer implements IItemRenderer {
 	}
 
 	private void renderCritter(ItemStack stack, float x, float y, float z, ItemRenderType type) {
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y, z);
-		GlStateManager.rotate(180, 1, 0, 0);
-		GlStateManager.rotate(-90, 0, 1, 0);
-		GlStateManager.disableCull();
-		GlStateManager.enableAlpha();
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(x, y, z);
+		OpenGLHelper.rotate(180, 1, 0, 0);
+		OpenGLHelper.rotate(-90, 0, 1, 0);
+		OpenGLHelper.disableCull();
+		OpenGLHelper.enableAlpha();
 
 		if (type == ItemRenderType.ENTITY)
-			GlStateManager.translate(0.0F, 0.5F, 0.5F);
+			OpenGLHelper.translate(0.0F, 0.5F, 0.5F);
 		else if (type == ItemRenderType.INVENTORY)
-			GlStateManager.translate(0.0F, -0.5F, 0.0F);
+			OpenGLHelper.translate(0.0F, -0.5F, 0.0F);
 
 		if (isBat(stack)) {
 			FMLClientHandler.instance().getClient().renderEngine.bindTexture(batTex);
 			bat.renderAll();
 		} else if (isSquid(stack)) {
-			GlStateManager.scale(0.75F, 0.75F, 0.75F);
-			GlStateManager.translate(0.0F, -0.25F, 0.0F);
+			OpenGLHelper.scale(0.75F, 0.75F, 0.75F);
+			OpenGLHelper.translate(0.0F, -0.25F, 0.0F);
 			if (stack.getItemDamage() == 0)
 				FMLClientHandler.instance().getClient().renderEngine.bindTexture(squidCookedTex);
 			else
@@ -90,8 +90,8 @@ public class ItemPocketCritterRenderer implements IItemRenderer {
 			squid.renderAll();
 		}
 
-		GlStateManager.enableCull();
-		GlStateManager.popMatrix();
+		OpenGLHelper.enableCull();
+		OpenGLHelper.popMatrix();
 	}
 
 	private boolean isSquid(ItemStack stack) {

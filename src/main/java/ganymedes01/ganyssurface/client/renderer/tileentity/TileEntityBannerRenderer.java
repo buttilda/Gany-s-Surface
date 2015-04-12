@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.client.LayeredColorMaskTexture;
 import ganymedes01.ganyssurface.client.model.ModelBanner;
 import ganymedes01.ganyssurface.lib.EnumColour;
@@ -99,12 +99,12 @@ public class TileEntityBannerRenderer extends TileEntitySpecialRenderer {
 
 		int meta = tile.getWorldObj() != null ? banner.getBlockMetadata() : 0;
 
-		GlStateManager.pushMatrix();
+		OpenGLHelper.pushMatrix();
 		float f1 = 0.6666667F;
 
 		if (banner.isStanding) {
-			GlStateManager.translate((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
-			GlStateManager.rotate(-(meta * 360 / 16.0F), 0.0F, 1.0F, 0.0F);
+			OpenGLHelper.translate((float) x + 0.5F, (float) y + 0.5F, (float) z + 0.5F);
+			OpenGLHelper.rotate(-(meta * 360 / 16.0F), 0.0F, 1.0F, 0.0F);
 			bannerModel.bannerStand.showModel = true;
 		} else {
 			float f3 = 0.0F;
@@ -115,27 +115,27 @@ public class TileEntityBannerRenderer extends TileEntitySpecialRenderer {
 			if (meta == 5)
 				f3 = -90.0F;
 
-			GlStateManager.translate((float) x + 0.5F, (float) y - 0.25F * f1, (float) z + 0.5F);
-			GlStateManager.rotate(-f3, 0.0F, 1.0F, 0.0F);
-			GlStateManager.translate(0.0F, -0.3125F, -0.4375F);
+			OpenGLHelper.translate((float) x + 0.5F, (float) y - 0.25F * f1, (float) z + 0.5F);
+			OpenGLHelper.rotate(-f3, 0.0F, 1.0F, 0.0F);
+			OpenGLHelper.translate(0.0F, -0.3125F, -0.4375F);
 			bannerModel.bannerStand.showModel = false;
 		}
 
 		long worldTime = banner.getWorldObj() != null ? banner.getWorldObj().getTotalWorldTime() : 0;
 		float f3 = (float) (banner.xCoord * 7 + banner.yCoord * 9 + banner.zCoord * 13) + worldTime + partialTicks;
 		bannerModel.bannerSlate.rotateAngleX = (-0.0125F + 0.01F * MathHelper.cos(f3 * (float) Math.PI * 0.02F)) * (float) Math.PI;
-		GlStateManager.enableRescaleNormal();
+		OpenGLHelper.enableRescaleNormal();
 		ResourceLocation resourcelocation = getTexture(banner);
 
 		if (resourcelocation != null) {
 			bindTexture(resourcelocation);
-			GlStateManager.pushMatrix();
-			GlStateManager.scale(f1, -f1, -f1);
+			OpenGLHelper.pushMatrix();
+			OpenGLHelper.scale(f1, -f1, -f1);
 			bannerModel.renderAll();
-			GlStateManager.popMatrix();
+			OpenGLHelper.popMatrix();
 		}
 
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		GlStateManager.popMatrix();
+		OpenGLHelper.colour(1.0F, 1.0F, 1.0F, 1.0F);
+		OpenGLHelper.popMatrix();
 	}
 }

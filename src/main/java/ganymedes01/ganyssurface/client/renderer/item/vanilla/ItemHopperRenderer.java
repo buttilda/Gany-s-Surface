@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
 import net.minecraft.block.BlockHopper;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -59,13 +59,13 @@ public class ItemHopperRenderer implements IItemRenderer {
 	}
 
 	private void render(ItemStack stack, float x, float y, float z, RenderBlocks renderer) {
-		GlStateManager.pushMatrix();
-		GlStateManager.translate(x, y, z);
+		OpenGLHelper.pushMatrix();
+		OpenGLHelper.translate(x, y, z);
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 		renderer.renderBlockHopperMetadata(Blocks.hopper, 0, 0, 0, 0, true);
 
-		GlStateManager.translate(0.5F, 0.5F, 0.5F);
+		OpenGLHelper.translate(0.5F, 0.5F, 0.5F);
 		double width = 0.375D;
 		IIcon icon = BlockHopper.getHopperIcon("hopper_outside");
 		renderer.setOverrideBlockTexture(icon);
@@ -73,6 +73,6 @@ public class ItemHopperRenderer implements IItemRenderer {
 		BlockRendererHelper.renderSimpleBlock(Blocks.hopper, 1, renderer);
 		renderer.clearOverrideBlockTexture();
 
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 }

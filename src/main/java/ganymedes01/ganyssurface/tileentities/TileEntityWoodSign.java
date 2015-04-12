@@ -48,10 +48,13 @@ public class TileEntityWoodSign extends TileEntitySign {
 		if (sign != null)
 			if (sign.woodMeta == 5)
 				return 0xFFE500;
-			else if (sign.woodMeta == 3)
+			else if (sign.woodMeta == 3 || sign.woodMeta == 1)
 				return 0xFFFFFF;
-			else if (sign.woodMeta == 1)
-				return 0xD2D2D2;
 		return 0x000000;
+	}
+
+	public boolean textHasShadow() {
+		BlockWoodSign sign = (BlockWoodSign) getBlockType();
+		return sign != null && (sign.woodMeta == 3 || sign.woodMeta == 1);
 	}
 }

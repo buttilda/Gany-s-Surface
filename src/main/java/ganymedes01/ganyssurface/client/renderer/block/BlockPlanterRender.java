@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.block;
 
-import ganymedes01.ganyssurface.GlStateManager;
+import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.client.model.ModelPlanter;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.RenderIDs;
@@ -30,19 +30,19 @@ public class BlockPlanterRender implements ISimpleBlockRenderingHandler {
 
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelID, RenderBlocks renderer) {
-		GlStateManager.pushMatrix();
+		OpenGLHelper.pushMatrix();
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(texture);
-		GlStateManager.translate(-0.5F, 1.0F, 0.5F);
-		GlStateManager.rotate(180, 1, 0, 0);
+		OpenGLHelper.translate(-0.5F, 1.0F, 0.5F);
+		OpenGLHelper.rotate(180, 1, 0, 0);
 		model.moveArm(0.3F);
 		model.renderAll();
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 
-		GlStateManager.pushMatrix();
+		OpenGLHelper.pushMatrix();
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
-		GlStateManager.translate(0, 0.5F, 0);
+		OpenGLHelper.translate(0, 0.5F, 0);
 		BlockRendererHelper.renderSimpleBlock(block, metadata, renderer);
-		GlStateManager.popMatrix();
+		OpenGLHelper.popMatrix();
 	}
 
 	@Override
