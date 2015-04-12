@@ -15,7 +15,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
@@ -112,17 +111,8 @@ public class BlockBanner extends BlockContainer implements ISubBlocksBlock {
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z, EntityPlayer player) {
 		TileEntityBanner banner = Utils.getTileEntity(world, x, y, z, TileEntityBanner.class);
-		if (banner != null) {
-			ItemStack stack = new ItemStack(this, 1, banner.getBaseColor());
-			NBTTagCompound nbt = new NBTTagCompound();
-			banner.writeToNBT(nbt);
-			nbt.removeTag("x");
-			nbt.removeTag("y");
-			nbt.removeTag("z");
-			nbt.removeTag("id");
-			stack.setTagInfo("BlockEntityTag", nbt);
-			return stack;
-		}
+		if (banner != null)
+			return banner.createStack();
 
 		return super.getPickBlock(target, world, x, y, z, player);
 	}
@@ -141,17 +131,8 @@ public class BlockBanner extends BlockContainer implements ISubBlocksBlock {
 	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
 		TileEntityBanner banner = Utils.getTileEntity(world, x, y, z, TileEntityBanner.class);
-		if (banner != null) {
-			ItemStack stack = new ItemStack(this, 1, banner.getBaseColor());
-			NBTTagCompound nbt = new NBTTagCompound();
-			banner.writeToNBT(nbt);
-			nbt.removeTag("x");
-			nbt.removeTag("y");
-			nbt.removeTag("z");
-			nbt.removeTag("id");
-			stack.setTagInfo("BlockEntityTag", nbt);
-			ret.add(stack);
-		}
+		if (banner != null)
+			ret.add(banner.createStack());
 		return ret;
 	}
 

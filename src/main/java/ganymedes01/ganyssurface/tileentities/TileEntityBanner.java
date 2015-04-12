@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.tileentities;
 
+import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.items.block.ItemBanner;
 import ganymedes01.ganyssurface.lib.EnumColour;
 
@@ -168,6 +169,18 @@ public class TileEntityBanner extends TileEntity {
 						}
 					}
 			}
+	}
+
+	public ItemStack createStack() {
+		ItemStack stack = new ItemStack(ModBlocks.banner, 1, getBaseColor());
+		NBTTagCompound nbt = new NBTTagCompound();
+		writeToNBT(nbt);
+		nbt.removeTag("x");
+		nbt.removeTag("y");
+		nbt.removeTag("z");
+		nbt.removeTag("id");
+		stack.setTagInfo("BlockEntityTag", nbt);
+		return stack;
 	}
 
 	public static enum EnumBannerPattern {
