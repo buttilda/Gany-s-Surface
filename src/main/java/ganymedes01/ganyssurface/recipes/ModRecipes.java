@@ -351,6 +351,12 @@ public class ModRecipes {
 			addShapedRecipe(new ItemStack(Blocks.ladder, 3), "x x", "xxx", "x x", 'x', "stickWood");
 		}
 
+		if (GanysSurface.enableWoodenSigns) {
+			for (int i = 0; i < ModBlocks.signs.length; i++)
+				addShapedRecipe(new ItemStack(ModBlocks.signs[i], 3), "xxx", "xxx", " y ", 'x', new ItemStack(Blocks.planks, 1, i + 1), 'y', "stickWood");
+			addShapedRecipe(new ItemStack(Items.sign, 3), "xxx", "xxx", " y ", 'x', "plankWood", 'y', "stickWood");
+		}
+
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)
 			addShapedRecipe(new ItemStack(Blocks.web), "x x", " y ", "x x", 'y', Items.slime_ball, 'x', Items.string);

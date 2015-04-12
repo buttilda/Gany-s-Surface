@@ -37,7 +37,7 @@ public class BlockWoodSign extends BlockSign implements ISubBlocksBlock {
 		setHardness(1.0F);
 		setStepSound(soundTypeWood);
 		setBlockName(Utils.getUnlocalisedName("sign" + meta));
-		setCreativeTab(GanysSurface.enableWoodenSings ? GanysSurface.surfaceTab : null);
+		setCreativeTab(GanysSurface.enableWoodenSigns ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

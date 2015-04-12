@@ -153,7 +153,7 @@ public class ClientProxy extends CommonProxy {
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.torch), new ItemTorchRenderer());
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.redstone_torch), new ItemTorchRenderer());
 			MinecraftForgeClient.registerItemRenderer(Items.sign, ItemSignRenderer.INSTANCE);
-			if (GanysSurface.enableWoodenSings)
+			if (GanysSurface.enableWoodenSigns)
 				for (Block sign : ModBlocks.signs)
 					MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(sign), ItemSignRenderer.INSTANCE);
 		}

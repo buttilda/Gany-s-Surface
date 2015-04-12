@@ -107,7 +107,7 @@ public class GanysSurface {
 	public static boolean enableWoodenTrapdoors = true;
 	public static boolean enableBeetroots = true;
 	public static boolean enableWoodenLadders = true;
-	public static boolean enableWoodenSings = true;
+	public static boolean enableWoodenSigns = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
@@ -198,6 +198,9 @@ public class GanysSurface {
 
 		if (enableWoodenLadders)
 			removeFirstRecipeFor(Blocks.ladder);
+
+		if (enableWoodenSigns)
+			removeFirstRecipeFor(Items.sign);
 	}
 
 	private void removeFirstRecipeFor(Block block) {
