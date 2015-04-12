@@ -4,11 +4,17 @@ import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.block.ItemBanner;
 import ganymedes01.ganyssurface.tileentities.TileEntityBanner;
+
+import java.util.ArrayList;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
@@ -36,6 +42,87 @@ public class BlockBanner extends BlockContainer implements ISubBlocksBlock {
 		float f = 0.25F;
 		float f1 = 1.0F;
 		setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f1, 0.5F + f);
+	}
+
+	@Override
+	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) {
+		TileEntityBanner tile = Utils.getTileEntity(world, x, y, z, TileEntityBanner.class);
+		if (tile == null)
+			return;
+
+		if (!tile.isStanding) {
+			int meta = world.getBlockMetadata(x, y, z);
+			float f = 0.0F;
+			float f1 = 0.78125F;
+			float f2 = 0.0F;
+			float f3 = 1.0F;
+			float f4 = 0.125F;
+
+			setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+
+			if (meta == 2)
+				setBlockBounds(f2, f, 1.0F - f4, f3, f1, 1.0F);
+			if (meta == 3)
+				setBlockBounds(f2, f, 0.0F, f3, f1, f4);
+			if (meta == 4)
+				setBlockBounds(1.0F - f4, f, f2, 1.0F, f1, f3);
+			if (meta == 5)
+				setBlockBounds(0.0F, f, f2, f4, f1, f3);
+		} else {
+			float f = 0.25F;
+			float f1 = 1.0F;
+			setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f1, 0.5F + f);
+		}
+	}
+
+	@Override
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbour) {
+		TileEntityBanner tile = Utils.getTileEntity(world, x, y, z, TileEntityBanner.class);
+		if (tile == null)
+			return;
+
+		boolean flag = false;
+		if (tile.isStanding) {
+			if (!world.getBlock(x, y - 1, z).getMaterial().isSolid())
+				flag = true;
+		} else {
+			int meta = world.getBlockMetadata(x, y, z);
+			flag = true;
+			if (meta == 2 && world.getBlock(x, y, z + 1).getMaterial().isSolid())
+				flag = false;
+			if (meta == 3 && world.getBlock(x, y, z - 1).getMaterial().isSolid())
+				flag = false;
+			if (meta == 4 && world.getBlock(x + 1, y, z).getMaterial().isSolid())
+				flag = false;
+			if (meta == 5 && world.getBlock(x - 1, y, z).getMaterial().isSolid())
+				flag = false;
+		}
+
+		if (flag) {
+			dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+			world.setBlockToAir(x, y, z);
+		}
+
+		super.onNeighborBlockChange(world, x, y, z, neighbour);
+	}
+
+	@Override
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
+		TileEntityBanner banner = Utils.getTileEntity(world, x, y, z, TileEntityBanner.class);
+		if (banner != null) {
+			ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+			ItemStack stack = new ItemStack(this, 1, banner.getBaseColor());
+			NBTTagCompound nbt = new NBTTagCompound();
+			banner.writeToNBT(nbt);
+			nbt.removeTag("x");
+			nbt.removeTag("y");
+			nbt.removeTag("z");
+			nbt.removeTag("id");
+			stack.setTagInfo("BlockEntityTag", nbt);
+			ret.add(stack);
+			return ret;
+		} else
+			return super.getDrops(world, x, y, z, metadata, fortune);
 	}
 
 	@Override
