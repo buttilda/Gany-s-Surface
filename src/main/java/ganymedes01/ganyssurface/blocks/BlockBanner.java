@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -18,8 +19,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.event.ForgeEventFactory;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -107,10 +110,38 @@ public class BlockBanner extends BlockContainer implements ISubBlocksBlock {
 	}
 
 	@Override
-	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z, EntityPlayer player) {
 		TileEntityBanner banner = Utils.getTileEntity(world, x, y, z, TileEntityBanner.class);
 		if (banner != null) {
-			ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+			ItemStack stack = new ItemStack(this, 1, banner.getBaseColor());
+			NBTTagCompound nbt = new NBTTagCompound();
+			banner.writeToNBT(nbt);
+			nbt.removeTag("x");
+			nbt.removeTag("y");
+			nbt.removeTag("z");
+			nbt.removeTag("id");
+			stack.setTagInfo("BlockEntityTag", nbt);
+			return stack;
+		}
+
+		return super.getPickBlock(target, world, x, y, z, player);
+	}
+
+	@Override
+	public void onBlockHarvested(World world, int x, int y, int z, int meta, EntityPlayer player) {
+		if (!player.capabilities.isCreativeMode) {
+			ArrayList<ItemStack> drops = getDrops(world, x, y, z, meta, 0);
+			if (ForgeEventFactory.fireBlockHarvesting(drops, world, this, x, y, z, meta, 0, 1.0F, false, player) > 0.0F)
+				for (ItemStack stack : drops)
+					dropBlockAsItem(world, x, y, z, stack);
+		}
+	}
+
+	@Override
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
+		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+		TileEntityBanner banner = Utils.getTileEntity(world, x, y, z, TileEntityBanner.class);
+		if (banner != null) {
 			ItemStack stack = new ItemStack(this, 1, banner.getBaseColor());
 			NBTTagCompound nbt = new NBTTagCompound();
 			banner.writeToNBT(nbt);
@@ -120,9 +151,8 @@ public class BlockBanner extends BlockContainer implements ISubBlocksBlock {
 			nbt.removeTag("id");
 			stack.setTagInfo("BlockEntityTag", nbt);
 			ret.add(stack);
-			return ret;
-		} else
-			return super.getDrops(world, x, y, z, metadata, fortune);
+		}
+		return ret;
 	}
 
 	@Override
