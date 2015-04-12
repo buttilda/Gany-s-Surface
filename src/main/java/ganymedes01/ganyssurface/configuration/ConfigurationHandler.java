@@ -127,6 +127,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableSilkTouchingMushrooms = configBoolean("Enable Silk Touching of mushroom blocks", true, true);
 		GanysSurface.max18StonesPerCluster = configInteger("Max number of 1.8 stones in a cluster", true, GanysSurface.max18StonesPerCluster);
 		GanysSurface.enableBanners = configBoolean("Enable 1.8 banners", true, true);
+		GanysSurface.enableRedSandstone = configBoolean("Enable 1.8 red sandstone", true, true);
 
 		// Others
 		GanysSurface.shouldDoVersionCheck = configBoolean("shouldDoVersionCheck", true, true);

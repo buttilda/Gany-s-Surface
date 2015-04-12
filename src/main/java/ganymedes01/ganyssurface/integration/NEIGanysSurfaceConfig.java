@@ -87,6 +87,7 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		if (!GanysSurface.enablePoop) {
 			API.hideItem(new ItemStack(ModItems.poop, 1, OreDictionary.WILDCARD_VALUE));
 			API.hideItem(new ItemStack(ModItems.rot, 1, 1));
+			API.hideItem(new ItemStack(ModBlocks.blockOfPoop, 1, OreDictionary.WILDCARD_VALUE));
 		}
 		if (!GanysSurface.enablePaintings)
 			API.hideItem(new ItemStack(ModItems.painting, 1, OreDictionary.WILDCARD_VALUE));
@@ -170,6 +171,46 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		if (!GanysSurface.enableRot && !GanysSurface.enablePoop)
 			API.hideItem(new ItemStack(ModItems.rot, 1, OreDictionary.WILDCARD_VALUE));
 
+		if (!GanysSurface.enableChests)
+			for (Block chest : ModBlocks.chests)
+				API.hideItem(new ItemStack(chest));
+
+		if (!GanysSurface.enableSlowRail)
+			API.hideItem(new ItemStack(ModBlocks.slowRail));
+
+		if (!GanysSurface.enableBlockOfFlint)
+			API.hideItem(new ItemStack(ModBlocks.flint));
+
+		if (!GanysSurface.enableWoodenButtons)
+			for (Block button : ModBlocks.buttons)
+				API.hideItem(new ItemStack(button));
+
+		if (!GanysSurface.enableWoodenPressurePlates)
+			for (Block pressurePlate : ModBlocks.pressurePlates)
+				API.hideItem(new ItemStack(pressurePlate));
+
+		if (!GanysSurface.enableWoodenTrapdoors)
+			for (Block trapdoor : ModBlocks.trapdoors)
+				API.hideItem(new ItemStack(trapdoor));
+
+		API.hideItem(new ItemStack(ModBlocks.beetroot));
+		if (!GanysSurface.enableBeetroots) {
+			API.hideItem(new ItemStack(ModItems.beetroot));
+			API.hideItem(new ItemStack(ModItems.beetrootSoup));
+			API.hideItem(new ItemStack(ModItems.beetrootSeeds));
+		}
+
+		if (!GanysSurface.enableWoodenLadders)
+			for (Block ladder : ModBlocks.ladders)
+				API.hideItem(new ItemStack(ladder));
+
+		if (!GanysSurface.enableWoodenSigns)
+			for (Block sign : ModBlocks.signs)
+				API.hideItem(new ItemStack(sign));
+
+		if (!GanysSurface.enableBasalt)
+			API.hideItem(new ItemStack(ModBlocks.basalt, 1, OreDictionary.WILDCARD_VALUE));
+
 		// 1.8 Stuff
 		if (!GanysSurface.enableMutton) {
 			API.hideItem(new ItemStack(ModItems.rawMutton));
@@ -202,34 +243,22 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		} else
 			API.hideItem(new ItemStack(Blocks.fence));
 
-		if (!GanysSurface.enableChests)
-			for (Block chest : ModBlocks.chests)
-				API.hideItem(new ItemStack(chest));
-
-		if (!GanysSurface.enableSlowRail)
-			API.hideItem(new ItemStack(ModBlocks.slowRail));
-
-		if (!GanysSurface.enableBlockOfFlint)
-			API.hideItem(new ItemStack(ModBlocks.flint));
-
-		if (!GanysSurface.enableWoodenButtons)
-			for (Block button : ModBlocks.buttons)
-				API.hideItem(new ItemStack(button));
-
-		if (!GanysSurface.enableWoodenPressurePlates)
-			for (Block pressurePlate : ModBlocks.pressurePlates)
-				API.hideItem(new ItemStack(pressurePlate));
-
-		if (!GanysSurface.enableWoodenTrapdoors)
-			for (Block trapdoor : ModBlocks.trapdoors)
-				API.hideItem(new ItemStack(trapdoor));
-
-		API.hideItem(new ItemStack(ModBlocks.beetroot));
-		if (!GanysSurface.enableBeetroots) {
-			API.hideItem(new ItemStack(ModItems.beetroot));
-			API.hideItem(new ItemStack(ModItems.beetrootSoup));
-			API.hideItem(new ItemStack(ModItems.beetrootSeeds));
+		if (!GanysSurface.enableRedSandstone) {
+			API.hideItem(new ItemStack(ModBlocks.redSandstone, 1, OreDictionary.WILDCARD_VALUE));
+			API.hideItem(new ItemStack(ModBlocks.redSandstoneSlab));
+			API.hideItem(new ItemStack(ModBlocks.redSandstoneStairs));
 		}
+
+		if (!GanysSurface.enableSilkTouchingMushrooms) {
+			API.hideItem(new ItemStack(ModBlocks.red_mushroom_block));
+			API.hideItem(new ItemStack(ModBlocks.brown_mushroom_block));
+		}
+
+		if (!GanysSurface.enableCoarseDirt)
+			API.hideItem(new ItemStack(ModBlocks.coarseDirt));
+
+		if (!GanysSurface.enableBanners)
+			API.hideItem(new ItemStack(ModBlocks.banner, 1, OreDictionary.WILDCARD_VALUE));
 	}
 
 	@Override
