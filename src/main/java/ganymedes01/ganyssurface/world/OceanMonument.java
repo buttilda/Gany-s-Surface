@@ -33,6 +33,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class OceanMonument {
 
+	private static final List<BiomeGenBase> validBiomes = Arrays.asList(BiomeGenBase.ocean, BiomeGenBase.deepOcean, BiomeGenBase.river, BiomeGenBase.frozenOcean, BiomeGenBase.frozenRiver);
 	private static final Map<WorldCoord, Integer> map = new HashMap<WorldCoord, Integer>();
 
 	public static void makeMap() {
@@ -171,7 +172,6 @@ public class OceanMonument {
 	}
 
 	public static boolean canSpawnAt(World worldObj, int chunkX, int chunkZ) {
-		List<BiomeGenBase> validBiomes = Arrays.asList(BiomeGenBase.ocean, BiomeGenBase.deepOcean, BiomeGenBase.river, BiomeGenBase.frozenOcean, BiomeGenBase.frozenRiver);
 		int spacing = 32;
 		int separation = 5;
 		int xx = chunkX;
