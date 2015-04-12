@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.blocks.Stones18;
+import ganymedes01.ganyssurface.lib.EnumColour;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockWood;
 import net.minecraft.entity.item.EntityPainting.EnumArt;
@@ -34,7 +35,12 @@ public class ModRecipes {
 	public static void init() {
 		if (GanysSurface.enableEncasers)
 			RecipeSorter.register("StorageCaseRecipe", StorageCaseRecipe.class, Category.SHAPELESS, "after:minecraft:shapeless");
-		RecipeSorter.register("RecipeArmourDyes", RecipeArmourDyes.class, Category.SHAPELESS, "after:minecraft:shapeless");
+		if (GanysSurface.enableDyedArmour)
+			RecipeSorter.register("RecipeArmourDyes", RecipeArmourDyes.class, Category.SHAPELESS, "after:minecraft:shapeless");
+		if (GanysSurface.enableBanners) {
+			RecipeSorter.register("RecipeDuplicatePattern", RecipeDuplicatePattern.class, Category.SHAPELESS, "after:minecraft:shapeless");
+			RecipeSorter.register("RecipeAddPattern", RecipeAddPattern.class, Category.SHAPED, "after:minecraft:shaped");
+		}
 
 		registerOreDictionary();
 
@@ -441,6 +447,13 @@ public class ModRecipes {
 			for (int i = 0; i < ModBlocks.gates.length; i++)
 				addShapedRecipe(new ItemStack(ModBlocks.gates[i]), "yxy", "yxy", 'x', new ItemStack(Blocks.planks, 1, i + 1), 'y', "stickWood");
 			addShapedRecipe(new ItemStack(Blocks.fence_gate), "yxy", "yxy", 'x', "plankWood", 'y', "stickWood");
+		}
+
+		if (GanysSurface.enableBanners) {
+			for (EnumColour colour : EnumColour.values())
+				addShapedRecipe(new ItemStack(ModBlocks.banner, 1, colour.getDamage()), new Object[] { "xxx", "xxx", " y ", 'x', new ItemStack(Blocks.wool, 1, colour.getDamage()), 'y', "stickWood" });
+			GameRegistry.addRecipe(new RecipeDuplicatePattern());
+			GameRegistry.addRecipe(new RecipeAddPattern());
 		}
 	}
 

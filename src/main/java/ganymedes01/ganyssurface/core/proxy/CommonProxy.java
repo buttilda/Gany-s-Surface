@@ -41,6 +41,7 @@ import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityAutoEncaser;
+import ganymedes01.ganyssurface.tileentities.TileEntityBanner;
 import ganymedes01.ganyssurface.tileentities.TileEntityBlockDetector;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityCubicSensoringDislocator;
@@ -104,6 +105,7 @@ public class CommonProxy implements IGuiHandler {
 		GameRegistry.registerTileEntity(TileEntityAutoEncaser.class, Utils.getUnlocalisedName(Strings.AUTO_ENCASER_NAME));
 		GameRegistry.registerTileEntity(TileEntityWoodChest.class, Utils.getUnlocalisedName("wood_chest"));
 		GameRegistry.registerTileEntity(TileEntityWoodSign.class, Utils.getUnlocalisedName("wood_sign"));
+		GameRegistry.registerTileEntity(TileEntityBanner.class, Utils.getUnlocalisedName("banner"));
 	}
 
 	public void registerEntities() {

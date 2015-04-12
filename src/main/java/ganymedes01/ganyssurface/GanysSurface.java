@@ -127,6 +127,7 @@ public class GanysSurface {
 	public static boolean enable18Enchants = true;
 	public static boolean enableFences = true;
 	public static boolean enableSilkTouchingMushrooms = true;
+	public static boolean enableBanners = true;
 	public static int prismarineTempleChance = 800;
 	public static int max18StonesPerCluster = 33;
 

@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
+import ganymedes01.ganyssurface.GlStateManager;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.blocks.BlockWoodDoor;
 import ganymedes01.ganyssurface.blocks.BlockWoodSign;
@@ -39,14 +40,14 @@ public class TileEntityWoodSignRenderer extends TileEntitySpecialRenderer {
 		TileEntityWoodSign sign = (TileEntityWoodSign) tile;
 		BlockWoodSign block = (BlockWoodSign) sign.getBlockType();
 
-		GL11.glPushMatrix();
+		GlStateManager.pushMatrix();
 		float f1 = 0.6666667F;
 		float f3;
 
 		if (sign.isStanding) {
-			GL11.glTranslatef((float) x + 0.5F, (float) y + 0.75F * f1, (float) z + 0.5F);
+			GlStateManager.translate((float) x + 0.5F, (float) y + 0.75F * f1, (float) z + 0.5F);
 			float f2 = sign.getBlockMetadata() * 360 / 16.0F;
-			GL11.glRotatef(-f2, 0.0F, 1.0F, 0.0F);
+			GlStateManager.rotate(-f2, 0.0F, 1.0F, 0.0F);
 			model.signStick.showModel = true;
 		} else {
 			int j = sign.getBlockMetadata();
@@ -59,21 +60,21 @@ public class TileEntityWoodSignRenderer extends TileEntitySpecialRenderer {
 			if (j == 5)
 				f3 = -90.0F;
 
-			GL11.glTranslatef((float) x + 0.5F, (float) y + 0.75F * f1, (float) z + 0.5F);
-			GL11.glRotatef(-f3, 0.0F, 1.0F, 0.0F);
-			GL11.glTranslatef(0.0F, -0.3125F, -0.4375F);
+			GlStateManager.translate((float) x + 0.5F, (float) y + 0.75F * f1, (float) z + 0.5F);
+			GlStateManager.rotate(-f3, 0.0F, 1.0F, 0.0F);
+			GlStateManager.translate(0.0F, -0.3125F, -0.4375F);
 			model.signStick.showModel = false;
 		}
 
 		bindTexture(textures[block.woodMeta - 1]);
-		GL11.glPushMatrix();
-		GL11.glScalef(f1, -f1, -f1);
+		GlStateManager.pushMatrix();
+		GlStateManager.scale(f1, -f1, -f1);
 		model.renderSign();
 		GL11.glPopMatrix();
 		FontRenderer fontrenderer = func_147498_b();
 		f3 = 0.016666668F * f1;
-		GL11.glTranslatef(0.0F, 0.5F * f1, 0.07F * f1);
-		GL11.glScalef(f3, -f3, f3);
+		GlStateManager.translate(0.0F, 0.5F * f1, 0.07F * f1);
+		GlStateManager.scale(f3, -f3, f3);
 		GL11.glNormal3f(0.0F, 0.0F, -1.0F * f3);
 		GL11.glDepthMask(false);
 

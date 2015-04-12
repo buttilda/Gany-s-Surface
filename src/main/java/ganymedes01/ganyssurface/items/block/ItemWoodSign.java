@@ -55,8 +55,8 @@ public class ItemWoodSign extends ItemBlock {
 
 				stack.stackSize--;
 				TileEntityWoodSign sign = (TileEntityWoodSign) world.getTileEntity(x, y, z);
-				sign.isStanding = side == 1;
 				if (sign != null) {
+					sign.isStanding = side == 1;
 					if (!world.isRemote)
 						player.openGui(GanysSurface.instance, GUIsID.WOOD_SIGN, world, x, y, z);
 					sign.func_145912_a(player);

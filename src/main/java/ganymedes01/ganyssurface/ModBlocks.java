@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface;
 
 import ganymedes01.ganyssurface.blocks.AutoEncaser;
 import ganymedes01.ganyssurface.blocks.Basalt;
+import ganymedes01.ganyssurface.blocks.BlockBanner;
 import ganymedes01.ganyssurface.blocks.BlockBeetroot;
 import ganymedes01.ganyssurface.blocks.BlockDetector;
 import ganymedes01.ganyssurface.blocks.BlockOfPoop;
@@ -124,6 +125,7 @@ public class ModBlocks {
 	public static final Block brown_mushroom_block = new BlockSilkedMushroom(Blocks.brown_mushroom_block, "brown");
 	public static final Block red_mushroom_block = new BlockSilkedMushroom(Blocks.red_mushroom_block, "red");
 	public static final Block coarseDirt = new CoarseDirt();
+	public static final Block banner = new BlockBanner();
 
 	static {
 		for (int i = 0; i < disguisedTrapdoors.length; i++)

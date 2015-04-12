@@ -12,6 +12,7 @@ import ganymedes01.ganyssurface.client.renderer.block.BlockLanternRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockPlanterRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockSlimeBlockRender;
 import ganymedes01.ganyssurface.client.renderer.block.BlockTrapdoorRenderer;
+import ganymedes01.ganyssurface.client.renderer.item.ItemBannerRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemIcyPickaxeRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemPaintingRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.ItemPocketCritterRenderer;
@@ -35,6 +36,7 @@ import ganymedes01.ganyssurface.client.renderer.item.vanilla.ItemMinecartTNTRend
 import ganymedes01.ganyssurface.client.renderer.item.vanilla.ItemRepeaterRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.vanilla.ItemSignRenderer;
 import ganymedes01.ganyssurface.client.renderer.item.vanilla.ItemTorchRenderer;
+import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityBannerRenderer;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityChestPropellantRender;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityItemDisplayRender;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityPlanterRender;
@@ -50,6 +52,7 @@ import ganymedes01.ganyssurface.core.utils.VersionHelper;
 import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.entities.EntityVillageFinder;
+import ganymedes01.ganyssurface.tileentities.TileEntityBanner;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
@@ -105,6 +108,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPlanter.class, new TileEntityPlanterRender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodChest.class, new TileEntityWoodChestRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityWoodSign.class, new TileEntityWoodSignRenderer());
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBanner.class, new TileEntityBannerRenderer());
 	}
 
 	@Override
@@ -157,6 +161,8 @@ public class ClientProxy extends CommonProxy {
 				for (Block sign : ModBlocks.signs)
 					MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(sign), ItemSignRenderer.INSTANCE);
 		}
+
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.banner), new ItemBannerRenderer());
 	}
 
 	private void registerEntityRenderers() {
