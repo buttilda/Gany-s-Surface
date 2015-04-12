@@ -1,9 +1,9 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
 import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest.ChestType;
+import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.core.utils.Utils;
 
 import java.awt.Graphics;

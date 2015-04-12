@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.integration.nei;
 
-import ganymedes01.ganyssurface.OpenGLHelper;
+import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
 import ganymedes01.ganyssurface.core.utils.UnsizedStack;
 import ganymedes01.ganyssurface.core.utils.Utils;

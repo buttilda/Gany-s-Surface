@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
-import ganymedes01.ganyssurface.OpenGLHelper;
+import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.tileentities.TileEntityBanner;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;

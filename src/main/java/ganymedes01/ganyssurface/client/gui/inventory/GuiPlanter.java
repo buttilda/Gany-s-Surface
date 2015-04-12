@@ -1,6 +1,6 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
-import ganymedes01.ganyssurface.OpenGLHelper;
+import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.inventory.ContainerPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import net.minecraft.entity.player.InventoryPlayer;

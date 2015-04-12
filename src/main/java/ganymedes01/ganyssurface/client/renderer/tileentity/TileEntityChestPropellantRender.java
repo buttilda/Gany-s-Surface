@@ -1,7 +1,7 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
-import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.ModBlocks;
+import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.entity.RenderItem;

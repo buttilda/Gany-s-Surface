@@ -1,7 +1,14 @@
-package ganymedes01.ganyssurface;
+package ganymedes01.ganyssurface.client;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
+/**
+ * Gany's Surface
+ *
+ * @author ganymedes01
+ *
+ */
 
 public class OpenGLHelper {
 
@@ -164,4 +171,7 @@ public class OpenGLHelper {
 		GL11.glViewport(x, y, width, height);
 	}
 
+	public static void normal(float x, float y, float z) {
+		GL11.glNormal3f(x, y, z);
+	}
 }

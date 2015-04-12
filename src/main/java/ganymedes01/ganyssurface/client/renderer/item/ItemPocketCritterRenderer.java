@@ -1,7 +1,7 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
-import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.ModItems;
+import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.client.model.ModelPocketBat;
 import ganymedes01.ganyssurface.client.model.ModelPocketSquid;
 import ganymedes01.ganyssurface.core.utils.Utils;

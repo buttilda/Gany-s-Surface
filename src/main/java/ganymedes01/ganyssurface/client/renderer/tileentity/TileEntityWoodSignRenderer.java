@@ -1,9 +1,9 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
-import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.blocks.BlockWoodDoor;
 import ganymedes01.ganyssurface.blocks.BlockWoodSign;
+import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.tileentities.TileEntityWoodSign;
 import net.minecraft.client.gui.FontRenderer;
@@ -11,9 +11,6 @@ import net.minecraft.client.model.ModelSign;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-
-import org.lwjgl.opengl.GL11;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -67,15 +64,17 @@ public class TileEntityWoodSignRenderer extends TileEntitySpecialRenderer {
 		}
 
 		bindTexture(textures[block.woodMeta - 1]);
+
 		OpenGLHelper.pushMatrix();
 		OpenGLHelper.scale(f1, -f1, -f1);
 		model.renderSign();
-		GL11.glPopMatrix();
+		OpenGLHelper.popMatrix();
+
 		FontRenderer fontrenderer = func_147498_b();
 		f3 = 0.016666668F * f1;
 		OpenGLHelper.translate(0.0F, 0.5F * f1, 0.07F * f1);
 		OpenGLHelper.scale(f3, -f3, f3);
-		GL11.glNormal3f(0.0F, 0.0F, -1.0F * f3);
+		OpenGLHelper.normal(0.0F, 0.0F, -1.0F * f3);
 		OpenGLHelper.depthMask(false);
 
 		int textColour = sign.getTextColour();

@@ -1,7 +1,7 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
-import ganymedes01.ganyssurface.OpenGLHelper;
 import ganymedes01.ganyssurface.blocks.BlockWoodSign;
+import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWoodSignRenderer;
 import ganymedes01.ganyssurface.items.block.ItemWoodSign;
 import net.minecraft.block.Block;
