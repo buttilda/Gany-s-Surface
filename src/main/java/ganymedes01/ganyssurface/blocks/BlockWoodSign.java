@@ -37,8 +37,7 @@ public class BlockWoodSign extends BlockSign implements ISubBlocksBlock {
 		setHardness(1.0F);
 		setStepSound(soundTypeWood);
 		setBlockName(Utils.getUnlocalisedName("sign" + meta));
-		setBlockTextureName(Utils.getBlockTexture("sign_" + BlockWoodDoor.names[meta]));
-		setCreativeTab(GanysSurface.surfaceTab);
+		setCreativeTab(GanysSurface.enableWoodenSings ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override
@@ -127,6 +126,6 @@ public class BlockWoodSign extends BlockSign implements ISubBlocksBlock {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getItemIconName() {
-		return GanysSurface.enable3DRendering ? getTextureName() : null;
+		return !GanysSurface.enable3DRendering ? Utils.getBlockTexture("sign_" + BlockWoodDoor.names[woodMeta]) : null;
 	}
 }

@@ -107,6 +107,7 @@ public class GanysSurface {
 	public static boolean enableWoodenTrapdoors = true;
 	public static boolean enableBeetroots = true;
 	public static boolean enableWoodenLadders = true;
+	public static boolean enableWoodenSings = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;

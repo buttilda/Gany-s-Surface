@@ -111,6 +111,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableWoodenTrapdoors = configBoolean("Enable wooden trapdoors", true, true);
 		GanysSurface.enableWoodenLadders = configBoolean("Enable wooden ladders", true, true);
 		GanysSurface.enableBeetroots = configBoolean("Enable MC:PE beetroots", true, true);
+		GanysSurface.enableWoodenSings = configBoolean("Enable wooden signs", true, true);
 
 		// 1.8 Stuff
 		GanysSurface.enable18Stones = configBoolean("Enable 1.8 Stones", true, true);
