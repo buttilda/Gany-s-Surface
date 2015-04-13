@@ -33,7 +33,7 @@ public class Stick extends Item {
 		setHasSubtypes(true);
 		setTextureName(Utils.getItemTexture(Strings.STICK_NAME));
 		setUnlocalizedName(Utils.getUnlocalisedName(Strings.STICK_NAME));
-		setCreativeTab(GanysSurface.surfaceTab);
+		setCreativeTab(GanysSurface.enableWoodenLadders ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override

@@ -200,9 +200,11 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.hideItem(new ItemStack(ModItems.beetrootSeeds));
 		}
 
-		if (!GanysSurface.enableWoodenLadders)
+		if (!GanysSurface.enableWoodenLadders) {
 			for (Block ladder : ModBlocks.ladders)
 				API.hideItem(new ItemStack(ladder));
+			API.hideItem(new ItemStack(ModItems.stick, 1, OreDictionary.WILDCARD_VALUE));
+		}
 
 		if (!GanysSurface.enableWoodenSigns)
 			for (Block sign : ModBlocks.signs)
