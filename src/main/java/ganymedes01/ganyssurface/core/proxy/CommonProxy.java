@@ -35,7 +35,6 @@ import ganymedes01.ganyssurface.inventory.ContainerInkHarvester;
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
 import ganymedes01.ganyssurface.inventory.ContainerPlanter;
 import ganymedes01.ganyssurface.inventory.ContainerPortableDualWorkTable;
-import ganymedes01.ganyssurface.inventory.ContainerWoodSign;
 import ganymedes01.ganyssurface.inventory.ContainerWorkTable;
 import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.ModIDs;
@@ -146,7 +145,7 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.ENCHANTING_TABLE:
 				return new ContainerEnchantment(player.inventory, world, x, y, z);
 			case GUIsID.WOOD_SIGN:
-				return new ContainerWoodSign(player.inventory);
+				return null;
 			default:
 				return null;
 		}
