@@ -1,9 +1,11 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.blocks.BlockWoodSign;
 import ganymedes01.ganyssurface.blocks.CubicSensoringDislocator;
 import ganymedes01.ganyssurface.blocks.Dislocator;
 import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
@@ -93,7 +95,9 @@ public class WoodenWrench extends Item {
 			if (tile != null && !world.isRemote)
 				player.func_146100_a(tile);
 			return true;
-		}
+		} else if (block instanceof BlockWoodSign)
+			if (!world.isRemote)
+				player.openGui(GanysSurface.instance, GUIsID.WOOD_SIGN, world, x, y, z);
 		return false;
 	}
 }

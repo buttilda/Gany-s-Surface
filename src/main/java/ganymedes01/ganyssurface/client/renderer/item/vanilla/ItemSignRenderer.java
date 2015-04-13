@@ -45,7 +45,8 @@ public class ItemSignRenderer implements IItemRenderer {
 		if (renderer instanceof RenderBlocks)
 			switch (type) {
 				case ENTITY:
-					OpenGLHelper.scale(0.5, 0.5, 0.5);
+					if (!(stack.getItem() instanceof ItemWoodSign))
+						OpenGLHelper.scale(0.5, 0.5, 0.5);
 					render(stack, 0.0F, 0.0F, 0.0F, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED:

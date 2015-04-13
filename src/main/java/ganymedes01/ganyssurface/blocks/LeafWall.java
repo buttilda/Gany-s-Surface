@@ -34,7 +34,7 @@ public class LeafWall extends Block implements ISubBlocksBlock {
 
 	public LeafWall() {
 		super(Material.leaves);
-		setHardness(2.0F);
+		setHardness(1.0F);
 		setHarvestLevel("axe", 0);
 		setStepSound(soundTypeGrass);
 		setBlockName(Utils.getUnlocalisedName(Strings.LEAF_WALL));

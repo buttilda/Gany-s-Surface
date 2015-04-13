@@ -171,11 +171,11 @@ tile.ganyssurface.sign2.name=Birch Sign
 tile.ganyssurface.sign3.name=Jungle Sign
 tile.ganyssurface.sign4.name=Acacia Sign
 tile.ganyssurface.sign5.name=Dark Oak Sign
-tile.ganyssurface.bookshelf1.name=Spruce Bookshelf
-tile.ganyssurface.bookshelf2.name=Birch Bookshelf
-tile.ganyssurface.bookshelf3.name=Jungle Bookshelf
-tile.ganyssurface.bookshelf4.name=Acacia Bookshelf
-tile.ganyssurface.bookshelf5.name=Dark Oak Bookshelf
+tile.ganyssurface.bookshelf0.name=Spruce Bookshelf
+tile.ganyssurface.bookshelf1.name=Birch Bookshelf
+tile.ganyssurface.bookshelf2.name=Jungle Bookshelf
+tile.ganyssurface.bookshelf3.name=Acacia Bookshelf
+tile.ganyssurface.bookshelf4.name=Dark Oak Bookshelf
 
 tile.ganyssurface.18Stones1.name=Granite
 tile.ganyssurface.18Stones2.name=Polished Granite

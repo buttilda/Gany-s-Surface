@@ -146,7 +146,7 @@ public class CommonProxy implements IGuiHandler {
 			case GUIsID.ENCHANTING_TABLE:
 				return new ContainerEnchantment(player.inventory, world, x, y, z);
 			case GUIsID.WOOD_SIGN:
-				return new ContainerWoodSign();
+				return new ContainerWoodSign(player.inventory);
 			default:
 				return null;
 		}
