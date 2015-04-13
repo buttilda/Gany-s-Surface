@@ -4,7 +4,7 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.items.block.Item18Stones;
+import ganymedes01.ganyssurface.items.block.ItemBlockGeneric;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
@@ -97,7 +97,7 @@ public class Stones18 extends Block implements ISubBlocksBlock {
 
 	@Override
 	public Class<? extends ItemBlock> getItemBlockClass() {
-		return Item18Stones.class;
+		return ItemBlockGeneric.class;
 	}
 
 	private boolean isBasalt(int meta) {

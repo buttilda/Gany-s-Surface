@@ -4,7 +4,7 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.items.block.ItemItemDisplay;
+import ganymedes01.ganyssurface.items.block.ItemBlockGeneric;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
@@ -105,6 +105,6 @@ public class ItemDisplay extends BlockContainer implements ISubBlocksBlock {
 
 	@Override
 	public Class<? extends ItemBlock> getItemBlockClass() {
-		return ItemItemDisplay.class;
+		return ItemBlockGeneric.class;
 	}
 }

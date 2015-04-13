@@ -363,6 +363,12 @@ public class ModRecipes {
 			addShapedRecipe(new ItemStack(Items.sign, 3), "xxx", "xxx", " y ", 'x', "plankWood", 'y', "stickWood");
 		}
 
+		if (GanysSurface.enableWoodenBookshelves) {
+			for (int i = 0; i < BlockWood.field_150096_a.length - 1; i++)
+				addShapedRecipe(new ItemStack(ModBlocks.bookshelf, 1, i), "xxx", "yyy", "xxx", 'x', new ItemStack(Blocks.planks, 1, i + 1), 'y', new ItemStack(Items.book));
+			addShapedRecipe(new ItemStack(Blocks.bookshelf), "xxx", "yyy", "xxx", 'x', "plankWood", 'y', new ItemStack(Items.book));
+		}
+
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)
 			addShapedRecipe(new ItemStack(Blocks.web), "x x", " y ", "x x", 'y', Items.slime_ball, 'x', Items.string);

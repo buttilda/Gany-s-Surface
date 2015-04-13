@@ -4,7 +4,7 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.items.block.ItemColouredRedstoneBlock;
+import ganymedes01.ganyssurface.items.block.ItemBlockGeneric;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
@@ -98,6 +98,6 @@ public class ColouredRedstoneBlock extends BlockCompressed implements ISubBlocks
 
 	@Override
 	public Class<? extends ItemBlock> getItemBlockClass() {
-		return ItemColouredRedstoneBlock.class;
+		return ItemBlockGeneric.class;
 	}
 }

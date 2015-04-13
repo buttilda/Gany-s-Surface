@@ -4,7 +4,7 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.api.ISlimeBlockSpreable;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.items.block.ItemBlockOfPoopBlocks;
+import ganymedes01.ganyssurface.items.block.ItemBlockGeneric;
 import ganymedes01.ganyssurface.lib.ModSounds;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -82,6 +82,6 @@ public class BlockOfPoop extends Block implements ISlimeBlockSpreable, ISubBlock
 
 	@Override
 	public Class<? extends ItemBlock> getItemBlockClass() {
-		return ItemBlockOfPoopBlocks.class;
+		return ItemBlockGeneric.class;
 	}
 }

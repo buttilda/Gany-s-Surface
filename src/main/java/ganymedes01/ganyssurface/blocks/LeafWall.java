@@ -3,7 +3,7 @@ package ganymedes01.ganyssurface.blocks;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.items.block.ItemLeafWall;
+import ganymedes01.ganyssurface.items.block.ItemBlockGeneric;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
@@ -155,6 +155,6 @@ public class LeafWall extends Block implements ISubBlocksBlock {
 
 	@Override
 	public Class<? extends ItemBlock> getItemBlockClass() {
-		return ItemLeafWall.class;
+		return ItemBlockGeneric.class;
 	}
 }

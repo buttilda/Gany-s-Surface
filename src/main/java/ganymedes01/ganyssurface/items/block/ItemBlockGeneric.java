@@ -1,7 +1,5 @@
 package ganymedes01.ganyssurface.items.block;
 
-import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -13,12 +11,11 @@ import net.minecraft.item.ItemStack;
  *
  */
 
-public class ItemPrismarineBlocks extends ItemBlock {
+public class ItemBlockGeneric extends ItemBlock {
 
-	public ItemPrismarineBlocks(Block block) {
+	public ItemBlockGeneric(Block block) {
 		super(block);
 		setHasSubtypes(true);
-		setUnlocalizedName(Utils.getUnlocalisedName(Strings.PRISMARINE_BLOCKS + "_item_"));
 	}
 
 	@Override
