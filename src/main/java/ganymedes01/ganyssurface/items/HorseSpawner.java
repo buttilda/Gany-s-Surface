@@ -60,7 +60,7 @@ public class HorseSpawner extends Item {
 		return "item." + Utils.getUnlocalisedName(Strings.HORSE_SPAWNER_NAME) + stack.getItemDamage();
 	}
 
-	public static Entity spawnHorse(World world, double x, double y, double z, int type, String username) {
+	public static Entity spawnHorse(World world, double x, double y, double z, int meta, String username) {
 		if (!EntityList.entityEggs.containsKey(Integer.valueOf(100)))
 			return null;
 		else {
@@ -73,7 +73,7 @@ public class HorseSpawner extends Item {
 					horse.rotationYawHead = horse.rotationYaw;
 					horse.renderYawOffset = horse.rotationYaw;
 					horse.onSpawnWithEgg((IEntityLivingData) null);
-					setHorseType(horse, type);
+					setHorseType(horse, meta);
 					if (username != null) {
 						horse.func_152120_b(username);
 						horse.setHorseTamed(true);
@@ -86,10 +86,10 @@ public class HorseSpawner extends Item {
 		}
 	}
 
-	private static void setHorseType(EntityHorse horse, int type) {
-		int newType = type;
-		if (type > 4) {
-			newType = new Random().nextInt(3);
+	private static void setHorseType(EntityHorse horse, int meta) {
+		int type = meta == 0 || meta == 1 ? meta + 3 : meta - 2;
+		if (meta == 2) {
+			type = new Random().nextInt(3);
 
 			try {
 				IAttribute horseJumpStrength = null;
@@ -108,7 +108,7 @@ public class HorseSpawner extends Item {
 			} catch (Exception e) {
 			}
 		}
-		horse.setHorseType(newType);
+		horse.setHorseType(type);
 	}
 
 	@Override
@@ -125,7 +125,7 @@ public class HorseSpawner extends Item {
 			if (side == 1 && block != null && block.getRenderType() == 11)
 				yOffSet = 0.5D;
 
-			Entity entity = spawnHorse(world, x + 0.5D, y + yOffSet, z + 0.5D, stack.getItemDamage() + 3, player.getCommandSenderName());
+			Entity entity = spawnHorse(world, x + 0.5D, y + yOffSet, z + 0.5D, stack.getItemDamage(), player.getCommandSenderName());
 
 			if (entity != null) {
 				if (entity instanceof EntityLivingBase && stack.hasDisplayName())
@@ -162,7 +162,7 @@ public class HorseSpawner extends Item {
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void getSubItems(Item item, CreativeTabs tab, List list) {
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 5; i++)
 			list.add(new ItemStack(item, 1, i));
 	}
 
@@ -174,8 +174,12 @@ public class HorseSpawner extends Item {
 				return pass == 0 ? Utils.getColour(43, 66, 43) : Utils.getColour(33, 51, 39);
 			case 1:
 				return pass == 0 ? Utils.getColour(228, 222, 218) : Utils.getColour(186, 181, 162);
+			case 3:
+				return pass == 0 ? 0xC09E7D : Utils.getColour(107, 92, 77);
+			case 4:
+				return pass == 0 ? 0xC09E7D : Utils.getColour(25, 15, 9);
 			default:
-				return pass == 0 ? 12623485 : 15656192;
+				return pass == 0 ? 0xC09E7D : 0xEEE500;
 		}
 	}
 }

@@ -12,9 +12,9 @@ import net.minecraft.util.EnumFacing;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class DispenserBehaviorHorseSpawner extends BehaviorDefaultDispenseItem {
@@ -25,7 +25,7 @@ public class DispenserBehaviorHorseSpawner extends BehaviorDefaultDispenseItem {
 		double x = block.getX() + enumfacing.getFrontOffsetX();
 		double y = block.getYInt() + 0.2F;
 		double z = block.getZ() + enumfacing.getFrontOffsetZ();
-		Entity entity = HorseSpawner.spawnHorse(block.getWorld(), x, y, z, stack.getItemDamage() + 3, null);
+		Entity entity = HorseSpawner.spawnHorse(block.getWorld(), x, y, z, stack.getItemDamage(), null);
 
 		if (entity instanceof EntityLivingBase && stack.hasDisplayName())
 			((EntityLiving) entity).setCustomNameTag(stack.getDisplayName());
