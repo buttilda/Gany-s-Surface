@@ -15,6 +15,7 @@ import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipesArmorDyes;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 /**
@@ -94,7 +95,6 @@ public class RecipeArmourDyes extends RecipesArmorDyes {
 					armour = (ItemDyeableArmour) craftStack.getItem();
 
 					result = craftStack.copy();
-					result.stackSize = 1;
 
 					if (armour.hasColor(craftStack)) {
 						colour = armour.getColor(result);
@@ -130,6 +130,8 @@ public class RecipeArmourDyes extends RecipesArmorDyes {
 						armour = (ItemDyeableArmour) ModItems.dyedChainBoots;
 
 					result = new ItemStack(armour, 1, result.getItemDamage());
+					if (craftStack.hasTagCompound())
+						result.setTagCompound((NBTTagCompound) craftStack.getTagCompound().copy());
 
 					if (armour.hasColor(craftStack)) {
 						colour = armour.getColor(result);
