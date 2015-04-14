@@ -123,6 +123,7 @@ public class PoopBlock extends Block implements IGrowable {
 	}
 
 	@Override
+	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random rand) {
 		world.spawnParticle("mobSpell", x + 0.5D, y + 0.3D, z + 0.5D, 45.0D / 255.0D, 104.0D / 255.0D, 20.0D / 255.0D);
 	}

@@ -9,6 +9,7 @@ import ganymedes01.ganyssurface.lib.ModSounds;
 import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -69,6 +70,12 @@ public class BlockOfPoop extends Block implements ISlimeBlockSpreable, ISubBlock
 		icons = new IIcon[2];
 		icons[0] = reg.registerIcon(getTextureName() + 0);
 		icons[1] = reg.registerIcon(getTextureName() + 1);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(World world, int x, int y, int z, Random rand) {
+		world.spawnParticle("mobSpell", x + 0.5D, y + 1.0D, z + 0.5D, 45.0D / 255.0D, 104.0D / 255.0D, 20.0D / 255.0D);
 	}
 
 	@Override
