@@ -43,7 +43,6 @@ import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityPlanterRend
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWoodChestRenderer;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWoodSignRenderer;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWorkTableRender;
-import ganymedes01.ganyssurface.core.handlers.ClientEventHandler;
 import ganymedes01.ganyssurface.core.handlers.KeyBindingHandler;
 import ganymedes01.ganyssurface.core.handlers.RenderCapeHandler;
 import ganymedes01.ganyssurface.core.handlers.VersionCheckTickHandler;
@@ -90,7 +89,6 @@ public class ClientProxy extends CommonProxy {
 		}
 
 		FMLCommonHandler.instance().bus().register(new KeyBindingHandler());
-		MinecraftForge.EVENT_BUS.register(new ClientEventHandler());
 
 		if (!Loader.isModLoaded("ganysend") && !Loader.isModLoaded("ganysnether"))
 			MinecraftForge.EVENT_BUS.register(new RenderCapeHandler());
