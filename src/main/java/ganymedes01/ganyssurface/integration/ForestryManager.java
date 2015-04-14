@@ -39,7 +39,10 @@ public class ForestryManager extends Integration {
 
 	@Override
 	public void postInit() {
-		addSqueezerRecipe(new ItemStack(ModItems.camelliaSeeds), 20);
+		if (GanysSurface.enableTea)
+			addSqueezerRecipe(new ItemStack(ModItems.camelliaSeeds), 20);
+		if (GanysSurface.enableBeetroots)
+			addSqueezerRecipe(new ItemStack(ModItems.beetrootSeeds), 20);
 	}
 
 	@Override

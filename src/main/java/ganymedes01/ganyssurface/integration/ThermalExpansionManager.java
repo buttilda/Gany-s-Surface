@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.integration;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -23,8 +24,10 @@ public class ThermalExpansionManager extends Integration {
 		ItemStack fertilizerRich = material.copy();
 		fertilizerRich.setItemDamage(517);
 
-		addInsolatorRecipe(7200, new ItemStack(ModItems.camelliaSeeds), fertilizer, new ItemStack(ModItems.teaLeaves), new ItemStack(ModItems.camelliaSeeds), 150);
-		addInsolatorRecipe(9600, new ItemStack(ModItems.camelliaSeeds), fertilizerRich, new ItemStack(ModItems.teaLeaves, 3), new ItemStack(ModItems.camelliaSeeds), 150);
+		if (GanysSurface.enableTea) {
+			addInsolatorRecipe(7200, new ItemStack(ModItems.camelliaSeeds), fertilizer, new ItemStack(ModItems.teaLeaves), new ItemStack(ModItems.camelliaSeeds), 150);
+			addInsolatorRecipe(9600, new ItemStack(ModItems.camelliaSeeds), fertilizerRich, new ItemStack(ModItems.teaLeaves, 3), new ItemStack(ModItems.camelliaSeeds), 150);
+		}
 	}
 
 	@Override
