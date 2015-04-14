@@ -106,8 +106,10 @@ public class ThaumcraftManager extends Integration {
 		if (GanysSurface.enableItemDisplay)
 			for (int i = 0; i < 16; i++)
 				addAspectsToItem(ModBlocks.itemDisplay, i, new Aspect[] { Aspect.CRYSTAL, Aspect.CLOTH }, new int[] { 4, 1 });
-		for (Block trapdoor : ModBlocks.trapdoors)
-			addAspectsToItem(trapdoor, new Aspect[] { Aspect.TREE, Aspect.MOTION }, new int[] { 2, 1 });
+
+		if (GanysSurface.enableWoodenTrapdoors)
+			for (Block trapdoor : ModBlocks.trapdoors)
+				addAspectsToItem(trapdoor, new Aspect[] { Aspect.TREE, Aspect.MOTION }, new int[] { 2, 1 });
 	}
 
 	@Override
