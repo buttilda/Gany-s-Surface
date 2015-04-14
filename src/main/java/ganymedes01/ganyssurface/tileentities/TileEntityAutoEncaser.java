@@ -12,9 +12,9 @@ import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class TileEntityAutoEncaser extends GanysInventory implements ISidedInventory {
@@ -28,6 +28,15 @@ public class TileEntityAutoEncaser extends GanysInventory implements ISidedInven
 	@Override
 	public int getInventoryStackLimit() {
 		return 1;
+	}
+
+	@Override
+	public void setInventorySlotContents(int slot, ItemStack stack) {
+		if (slot == 9) {
+			inventory[slot] = stack;
+			markDirty();
+		} else
+			super.setInventorySlotContents(slot, stack);
 	}
 
 	@Override
@@ -50,27 +59,25 @@ public class TileEntityAutoEncaser extends GanysInventory implements ISidedInven
 		if (inventory[9] == null) {
 			inventory[9] = encased;
 			added = true;
-		} else if (InventoryUtils.areStacksTheSame(encased, inventory[9], false) && inventory[9].stackSize < 64) {
+		} else if (InventoryUtils.areStacksTheSame(encased, inventory[9], false) && inventory[9].stackSize < inventory[9].getMaxStackSize()) {
 			inventory[9].stackSize++;
 			added = true;
 		}
 		if (added)
-			for (int i = 0; i < 9; i++) {
-				inventory[i].stackSize--;
-				if (inventory[i].stackSize <= 0)
+			for (int i = 0; i < 9; i++)
+				if (--inventory[i].stackSize <= 0)
 					inventory[i] = null;
-			}
 	}
 
 	private ItemStack getEncasedItem() {
 		ItemStack storageCase = new ItemStack(ModItems.storageCase);
 		storageCase.setTagCompound(new NBTTagCompound());
 
-		NBTTagCompound stackData = new NBTTagCompound();
-		ItemStack sCopy = inventory[0];
+		NBTTagCompound nbt = new NBTTagCompound();
+		ItemStack sCopy = inventory[0].copy();
 		sCopy.stackSize = 1;
-		sCopy.writeToNBT(stackData);
-		storageCase.getTagCompound().setTag("stack", stackData);
+		sCopy.writeToNBT(nbt);
+		storageCase.getTagCompound().setTag("stack", nbt);
 		return storageCase;
 	}
 

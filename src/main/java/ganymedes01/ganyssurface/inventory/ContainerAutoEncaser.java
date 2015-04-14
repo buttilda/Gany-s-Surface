@@ -18,10 +18,10 @@ import net.minecraft.item.ItemStack;
 public class ContainerAutoEncaser extends Container {
 
 	public ContainerAutoEncaser(InventoryPlayer player, TileEntityAutoEncaser tile) {
-		addSlotToContainer(new EncaserSlot(tile, 9, 124, 35));
+		addSlotToContainer(new AutoEncaserSlot(tile, 9, 124, 35));
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
-				addSlotToContainer(new EncaserSlot(tile, j + i * 3, 30 + j * 18, 17 + i * 18));
+				addSlotToContainer(new AutoEncaserSlot(tile, j + i * 3, 30 + j * 18, 17 + i * 18));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++)
@@ -40,9 +40,9 @@ public class ContainerAutoEncaser extends Container {
 		return null;
 	}
 
-	private static class EncaserSlot extends Slot {
+	private static class AutoEncaserSlot extends Slot {
 
-		public EncaserSlot(IInventory inventory, int index, int x, int y) {
+		public AutoEncaserSlot(IInventory inventory, int index, int x, int y) {
 			super(inventory, index, x, y);
 		}
 
