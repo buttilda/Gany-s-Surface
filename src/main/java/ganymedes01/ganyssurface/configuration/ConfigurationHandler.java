@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.configuration;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.blocks.BlockStorage;
 import ganymedes01.ganyssurface.integration.Integration;
 import ganymedes01.ganyssurface.integration.ModIntegrator;
 import ganymedes01.ganyssurface.lib.EnumColour;
@@ -113,6 +114,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableBeetroots = configBoolean("Enable MC:PE beetroots", true, true);
 		GanysSurface.enableWoodenSigns = configBoolean("Enable wooden signs", true, true);
 		GanysSurface.enableWoodenBookshelves = configBoolean("Enable wooden bookshelves", true, true);
+		GanysSurface.enableStorageBlocks = configBoolean("Enable storage blocks", "More specifically: " + BlockStorage.getTypesString(), true, true);
 
 		// 1.8 Stuff
 		GanysSurface.enable18Stones = configBoolean("Enable 1.8 Stones", true, true);

@@ -8,6 +8,7 @@ import ganymedes01.ganyssurface.blocks.BlockDetector;
 import ganymedes01.ganyssurface.blocks.BlockOfPoop;
 import ganymedes01.ganyssurface.blocks.BlockSilkedMushroom;
 import ganymedes01.ganyssurface.blocks.BlockSlowRail;
+import ganymedes01.ganyssurface.blocks.BlockStorage;
 import ganymedes01.ganyssurface.blocks.BlockWoodBookshelf;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest;
 import ganymedes01.ganyssurface.blocks.BlockWoodDoor;
@@ -104,6 +105,7 @@ public class ModBlocks {
 	public static final Block beetroot = new BlockBeetroot();
 	public static final Block blockOfPoop = new BlockOfPoop();
 	public static final Block bookshelf = new BlockWoodBookshelf();
+	public static final Block storage = new BlockStorage();
 
 	public static final Block[] chests = new Block[BlockWood.field_150096_a.length];
 	public static final Block[] buttons = new Block[BlockWood.field_150096_a.length - 1];

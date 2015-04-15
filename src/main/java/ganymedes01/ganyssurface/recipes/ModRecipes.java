@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.recipes;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
+import ganymedes01.ganyssurface.blocks.BlockStorage;
 import ganymedes01.ganyssurface.blocks.Stones18;
 import ganymedes01.ganyssurface.lib.EnumColour;
 import net.minecraft.block.Block;
@@ -110,7 +111,12 @@ public class ModRecipes {
 		if (GanysSurface.enableIronTrapdoor)
 			OreDictionary.registerOre("trapdoorIron", ModBlocks.ironTrapdoor);
 
-		OreDictionary.registerOre("stickWood", new ItemStack(ModItems.stick, 1, OreDictionary.WILDCARD_VALUE));
+		if (GanysSurface.enableWoodenLadders)
+			OreDictionary.registerOre("stickWood", new ItemStack(ModItems.stick, 1, OreDictionary.WILDCARD_VALUE));
+
+		if (GanysSurface.enableStorageBlocks)
+			for (int i = 0; i < BlockStorage.getBlockNumber(); i++)
+				OreDictionary.registerOre(BlockStorage.getOreName(i), new ItemStack(ModBlocks.storage, 1, i));
 	}
 
 	private static void registerItemRecipes() {
@@ -370,6 +376,12 @@ public class ModRecipes {
 				addShapedRecipe(new ItemStack(ModBlocks.bookshelf, 1, i), "xxx", "yyy", "xxx", 'x', new ItemStack(Blocks.planks, 1, i + 1), 'y', new ItemStack(Items.book));
 			addShapedRecipe(new ItemStack(Blocks.bookshelf), "xxx", "yyy", "xxx", 'x', "plankWood", 'y', new ItemStack(Items.book));
 		}
+
+		if (GanysSurface.enableStorageBlocks)
+			for (int i = 0; i < BlockStorage.getBlockNumber(); i++) {
+				addShapedRecipe(new ItemStack(ModBlocks.storage, 1, i), "xxx", "xxx", "xxx", 'x', BlockStorage.getStoredObjectIngredient(i));
+				addShapelessRecipe(BlockStorage.getStoredObjectResult(i), new ItemStack(ModBlocks.storage, 1, i));
+			}
 
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)
