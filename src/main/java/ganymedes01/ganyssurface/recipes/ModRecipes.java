@@ -158,7 +158,7 @@ public class ModRecipes {
 			addShapelessRecipe(new ItemStack(ModItems.pineNuts), ModItems.pineCone);
 
 		if (GanysSurface.enablePocketCritters) {
-			addShapedRecipe(new ItemStack(ModItems.batNet), "xyx", " x ", " x ", 'x', Items.stick, 'y', Items.string);
+			addShapedRecipe(new ItemStack(ModItems.batNet), "xyx", " x ", " x ", 'x', "stickWood", 'y', Items.string);
 			addShapedRecipe(new ItemStack(ModItems.batStew), "xyz", " w ", 'x', Blocks.brown_mushroom, 'z', Blocks.red_mushroom, 'y', ModItems.pocketCritter, 'w', Items.bowl);
 			GameRegistry.addSmelting(new ItemStack(ModItems.pocketCritter, 1, 1), new ItemStack(ModItems.roastedSquid), 0.1F);
 		}
@@ -173,8 +173,8 @@ public class ModRecipes {
 			GameRegistry.addRecipe(new RecipeArmourDyes());
 
 		if (GanysSurface.enableAnalisers) {
-			addShapedRecipe(new ItemStack(ModItems.horsalyser), "xyx", "xzx", "xwx", 'x', Items.leather, 'y', Items.flint, 'z', Blocks.glass_pane, 'w', Items.redstone);
-			addShapedRecipe(new ItemStack(ModItems.gearalyser), "xyx", "xzx", "xwx", 'x', "ingotIron", 'y', Items.flint, 'z', Blocks.glass_pane, 'w', Items.redstone);
+			addShapedRecipe(new ItemStack(ModItems.horsalyser), "xyx", "xzx", "xwx", 'x', Items.leather, 'y', Items.flint, 'z', Blocks.glass_pane, 'w', "dustRedstone");
+			addShapedRecipe(new ItemStack(ModItems.gearalyser), "xyx", "xzx", "xwx", 'x', "ingotIron", 'y', Items.flint, 'z', Blocks.glass_pane, 'w', "dustRedstone");
 		}
 
 		if (GanysSurface.enableRot)
@@ -261,20 +261,20 @@ public class ModRecipes {
 				addShapelessRecipe(new ItemStack(ModBlocks.disguisedTrapdoors[i]), new ItemStack(Blocks.planks, 1, i), "trapdoorWood");
 
 		if (GanysSurface.enableEncasers) {
-			addShapedRecipe(new ItemStack(ModBlocks.encasingBench), "xyx", "yzy", "xyx", 'x', Items.gold_ingot, 'y', Blocks.piston, 'z', "chestWood");
-			addShapedRecipe(new ItemStack(ModBlocks.autoEncaser), "xyx", "yzy", "xyx", 'x', Items.diamond, 'y', Blocks.piston, 'z', ModBlocks.encasingBench);
+			addShapedRecipe(new ItemStack(ModBlocks.encasingBench), "xyx", "yzy", "xyx", 'x', "ingotGold", 'y', Blocks.piston, 'z', "chestWood");
+			addShapedRecipe(new ItemStack(ModBlocks.autoEncaser), "xyx", "yzy", "xyx", 'x', "gemDiamond", 'y', Blocks.piston, 'z', ModBlocks.encasingBench);
 		}
 		if (GanysSurface.enableOMC)
-			addShapedRecipe(new ItemStack(ModBlocks.organicMatterCompressor), "zzz", "zxz", "zyz", 'x', Items.cauldron, 'y', Items.emerald, 'z', Blocks.obsidian);
+			addShapedRecipe(new ItemStack(ModBlocks.organicMatterCompressor), "zzz", "zxz", "zyz", 'x', Items.cauldron, 'y', "gemEmerald", 'z', Blocks.obsidian);
 
 		if (GanysSurface.enableRainDetector)
-			addShapedRecipe(new ItemStack(ModBlocks.rainDetector), "xyx", "yyy", "xyx", 'x', Items.emerald, 'y', "slabWood");
+			addShapedRecipe(new ItemStack(ModBlocks.rainDetector), "xyx", "yyy", "xyx", 'x', "gemEmerald", 'y', "slabWood");
 
 		if (GanysSurface.enableCushion)
 			addShapedRecipe(new ItemStack(ModBlocks.cushion), "zxz", "xyx", "zxz", 'x', Blocks.wool, 'y', dyes[5], 'z', "nuggetGold");
 
 		if (GanysSurface.enableChestPropellant)
-			addShapedRecipe(new ItemStack(ModBlocks.chestPropellant), "ywy", "xzx", "xyx", 'x', "ingotIron", 'y', "nuggetGold", 'z', new ItemStack(Blocks.sandstone, 1, 2), 'w', Items.redstone);
+			addShapedRecipe(new ItemStack(ModBlocks.chestPropellant), "ywy", "xzx", "xyx", 'x', "ingotIron", 'y', "nuggetGold", 'z', new ItemStack(Blocks.sandstone, 1, 2), 'w', "dustRedstone");
 
 		if (GanysSurface.enableFertilisedSoil)
 			if (GanysSurface.enablePoop)
@@ -286,7 +286,7 @@ public class ModRecipes {
 			addShapelessRecipe(new ItemStack(ModBlocks.lantern), Blocks.glass, Blocks.torch);
 
 		if (GanysSurface.enableInkHarvester)
-			addShapedRecipe(new ItemStack(ModBlocks.inkHarvester), "xyx", "xzx", "xwx", 'x', new ItemStack(ModItems.pocketCritter, 1, 1), 'y', Items.redstone, 'z', Blocks.iron_block, 'w', Items.golden_sword);
+			addShapedRecipe(new ItemStack(ModBlocks.inkHarvester), "xyx", "xzx", "xwx", 'x', new ItemStack(ModItems.pocketCritter, 1, 1), 'y', "dustRedstone", 'z', "blockIron", 'w', Items.golden_sword);
 
 		if (GanysSurface.enableSlimeBlock) {
 			addShapedRecipe(new ItemStack(ModBlocks.slimeBlock), "xxx", "xyx", "xxx", 'x', "slimeball", 'y', Items.water_bucket);
@@ -373,7 +373,7 @@ public class ModRecipes {
 
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)
-			addShapedRecipe(new ItemStack(Blocks.web), "x x", " y ", "x x", 'y', Items.slime_ball, 'x', Items.string);
+			addShapedRecipe(new ItemStack(Blocks.web), "x x", " y ", "x x", 'y', "slimeball", 'x', Items.string);
 
 		if (GanysSurface.enableRedyeingBlocks) {
 			String[] reDyes = dyes.clone();
@@ -411,13 +411,13 @@ public class ModRecipes {
 
 		if (GanysSurface.enable18Stones) {
 			// Diorite
-			addShapedRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.DIORITE), "xy", "yx", 'x', new ItemStack(Blocks.cobblestone), 'y', Items.quartz);
+			addShapedRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.DIORITE), "xy", "yx", 'x', new ItemStack(Blocks.cobblestone), 'y', "gemQuartz");
 			addShapedRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_DIORITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE));
 			// Andesite
 			addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.ANDESITE), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE));
 			addShapedRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_ANDESITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, Stones18.ANDESITE));
 			// Granite
-			addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.GRANITE), Items.quartz, new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE));
+			addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.GRANITE), "gemQuartz", new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE));
 			addShapedRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_GRANITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, Stones18.GRANITE));
 		}
 
