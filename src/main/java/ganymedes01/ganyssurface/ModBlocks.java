@@ -34,7 +34,6 @@ import ganymedes01.ganyssurface.blocks.DualWorkTable;
 import ganymedes01.ganyssurface.blocks.EncasingBench;
 import ganymedes01.ganyssurface.blocks.FarmManager;
 import ganymedes01.ganyssurface.blocks.FertilizedSoil;
-import ganymedes01.ganyssurface.blocks.FlintBlock;
 import ganymedes01.ganyssurface.blocks.InkHarvester;
 import ganymedes01.ganyssurface.blocks.InvertedDaylightDetector;
 import ganymedes01.ganyssurface.blocks.IronTrapdoor;
@@ -101,7 +100,6 @@ public class ModBlocks {
 	public static final Block charcoalBlock = new CharcoalBlock();
 	public static final Block slowRail = new BlockSlowRail();
 	public static final Block basalt = new Basalt();
-	public static final Block flint = new FlintBlock();
 	public static final Block beetroot = new BlockBeetroot();
 	public static final Block blockOfPoop = new BlockOfPoop();
 	public static final Block bookshelf = new BlockWoodBookshelf();

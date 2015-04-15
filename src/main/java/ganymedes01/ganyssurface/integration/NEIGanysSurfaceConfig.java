@@ -178,9 +178,6 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		if (!GanysSurface.enableSlowRail)
 			API.hideItem(new ItemStack(ModBlocks.slowRail));
 
-		if (!GanysSurface.enableBlockOfFlint)
-			API.hideItem(new ItemStack(ModBlocks.flint));
-
 		if (!GanysSurface.enableWoodenButtons)
 			for (Block button : ModBlocks.buttons)
 				API.hideItem(new ItemStack(button));
@@ -212,6 +209,9 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 
 		if (!GanysSurface.enableBasalt)
 			API.hideItem(new ItemStack(ModBlocks.basalt, 1, OreDictionary.WILDCARD_VALUE));
+
+		if (!GanysSurface.enableStorageBlocks)
+			API.hideItem(new ItemStack(ModBlocks.storage, 1, OreDictionary.WILDCARD_VALUE));
 
 		// 1.8 Stuff
 		if (!GanysSurface.enableMutton) {

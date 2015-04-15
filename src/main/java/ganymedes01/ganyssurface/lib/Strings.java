@@ -51,7 +51,6 @@ public class Strings {
 	public static final String LEAF_WALL = "leafWall";
 	public static final String SLOW_RAIL = "slowRail";
 	public static final String BASALT = "basalt";
-	public static final String FLINT_BLOCK = "flintBlock";
 	public static final String BLOCK_BEETROOT_NAME = "beetrootBlock";
 	public static final String BLOCK_OF_POOP_NAME = "blockOfPoop";
 	public static final String COARSE_DIRT = "coarse_dirt";

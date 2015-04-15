@@ -105,7 +105,6 @@ public class ConfigurationHandler {
 		GanysSurface.enableSlowRail = configBoolean("Enable Slow Rail", true, true);
 		GanysSurface.enableBasalt = configBoolean("Enable Basalt", true, true);
 		GanysSurface.enableFlingablePoop = configBoolean("Enable Poop Throwing", false, true);
-		GanysSurface.enableBlockOfFlint = configBoolean("Enable Block of Flint", true, true);
 		GanysSurface.enableBurnableBlocks = configBoolean("Make fences, gates and deadbushes burnable", "They aren't burnable in 1.7.10 but are in 1.8, set this to true to mimic the 1.8 behaviour", false, true);
 		GanysSurface.enableWoodenButtons = configBoolean("Enable wooden buttons", true, true);
 		GanysSurface.enableWoodenPressurePlates = configBoolean("Enable wooden pressure plates", true, true);

@@ -176,7 +176,8 @@ tile.ganyssurface.bookshelf1.name=Birch Bookshelf
 tile.ganyssurface.bookshelf2.name=Jungle Bookshelf
 tile.ganyssurface.bookshelf3.name=Acacia Bookshelf
 tile.ganyssurface.bookshelf4.name=Dark Oak Bookshelf
-tile.ganyssurface.storage0.name=Block of Carrots
+tile.ganyssurface.storage0.name=Block of Flint
+tile.ganyssurface.storage1.name=Block of Carrots
 
 tile.ganyssurface.18Stones1.name=Granite
 tile.ganyssurface.18Stones2.name=Polished Granite

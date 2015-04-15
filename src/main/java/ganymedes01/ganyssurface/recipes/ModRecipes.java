@@ -112,9 +112,6 @@ public class ModRecipes {
 		if (GanysSurface.enableOMC)
 			OreDictionary.registerOre("itemSkull", new ItemStack(Items.skull, 1, OreDictionary.WILDCARD_VALUE));
 
-		if (GanysSurface.enableBlockOfFlint)
-			OreDictionary.registerOre("blockFlint", new ItemStack(ModBlocks.flint));
-
 		if (GanysSurface.enableBeetroots)
 			OreDictionary.registerOre("cropBeetroot", ModItems.beetroot);
 
@@ -336,11 +333,6 @@ public class ModRecipes {
 				addShapelessRecipe(new ItemStack(ModBlocks.basalt, 2, 0), new ItemStack(Blocks.stone), new ItemStack(Items.coal, 1, OreDictionary.WILDCARD_VALUE));
 
 			addShapedRecipe(new ItemStack(ModBlocks.basalt, 4, 1), "xx", "xx", 'x', new ItemStack(ModBlocks.basalt, 1, 0));
-		}
-
-		if (GanysSurface.enableBlockOfFlint) {
-			addShapedRecipe(new ItemStack(ModBlocks.flint), "xxx", "xxx", "xxx", 'x', new ItemStack(Items.flint));
-			addShapelessRecipe(new ItemStack(Items.flint, 9), new ItemStack(ModBlocks.flint));
 		}
 
 		if (GanysSurface.enableWoodenButtons) {

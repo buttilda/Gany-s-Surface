@@ -30,6 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class BlockStorage extends Block implements ISubBlocksBlock {
 
 	private static enum TYPES {
+		flint(new ItemStack(Items.flint), new ItemStack(Items.flint, 9), "blockFlint"),
 		carrot(new ItemStack(Items.carrot), new ItemStack(Items.carrot, 9), "blockCarrot");
 		/*gunpowder(new ItemStack(Items.gunpowder), new ItemStack(Items.gunpowder, 9), "blockGunpowder"),
 		potato(new ItemStack(Items.potato), new ItemStack(Items.potato, 9), "blockPotato"),

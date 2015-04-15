@@ -100,7 +100,6 @@ public class GanysSurface {
 	public static boolean enableSlowRail = true;
 	public static boolean enableBasalt = true;
 	public static boolean enableFlingablePoop = true;
-	public static boolean enableBlockOfFlint = true;
 	public static boolean enableBurnableBlocks = true;
 	public static boolean enableWoodenButtons = true;
 	public static boolean enableWoodenPressurePlates = true;
