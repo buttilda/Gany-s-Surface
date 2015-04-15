@@ -75,6 +75,20 @@ public class ModRecipes {
 			OreDictionary.registerOre("blockPrismarine", new ItemStack(ModBlocks.prismarineBlocks, 1, OreDictionary.WILDCARD_VALUE));
 		}
 
+		if (GanysSurface.enable18Stones) {
+			OreDictionary.registerOre("stoneGranite", new ItemStack(ModBlocks.newStones, 1, Stones18.GRANITE));
+			OreDictionary.registerOre("stoneDiorite", new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE));
+			OreDictionary.registerOre("stoneAndesite", new ItemStack(ModBlocks.newStones, 1, Stones18.ANDESITE));
+			OreDictionary.registerOre("stoneGranitePolished", new ItemStack(ModBlocks.newStones, 1, Stones18.POLISHED_GRANITE));
+			OreDictionary.registerOre("stoneDioritePolished", new ItemStack(ModBlocks.newStones, 1, Stones18.POLISHED_DIORITE));
+			OreDictionary.registerOre("stoneAndesitePolished", new ItemStack(ModBlocks.newStones, 1, Stones18.POLISHED_ANDESITE));
+		}
+
+		if (GanysSurface.enableBasalt) {
+			OreDictionary.registerOre("stoneBasalt", new ItemStack(ModBlocks.basalt, 1, 0));
+			OreDictionary.registerOre("stoneBasaltPolished", new ItemStack(ModBlocks.basalt, 1, 1));
+		}
+
 		if (GanysSurface.enableChests)
 			for (Block chest : ModBlocks.chests)
 				OreDictionary.registerOre("chestWood", new ItemStack(chest));
@@ -317,7 +331,7 @@ public class ModRecipes {
 
 		if (GanysSurface.enableBasalt) {
 			if (GanysSurface.enable18Stones)
-				addShapelessRecipe(new ItemStack(ModBlocks.basalt, 2, 0), new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE), new ItemStack(ModBlocks.newStones, 1, Stones18.ANDESITE));
+				addShapelessRecipe(new ItemStack(ModBlocks.basalt, 2, 0), "stoneDiorite", "stoneAndesite");
 			else
 				addShapelessRecipe(new ItemStack(ModBlocks.basalt, 2, 0), new ItemStack(Blocks.stone), new ItemStack(Items.coal, 1, OreDictionary.WILDCARD_VALUE));
 
@@ -424,13 +438,13 @@ public class ModRecipes {
 		if (GanysSurface.enable18Stones) {
 			// Diorite
 			addShapedRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.DIORITE), "xy", "yx", 'x', new ItemStack(Blocks.cobblestone), 'y', "gemQuartz");
-			addShapedRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_DIORITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE));
+			addShapedRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_DIORITE), "xx", "xx", 'x', "stoneDiorite");
 			// Andesite
-			addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.ANDESITE), new ItemStack(Blocks.cobblestone), new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE));
-			addShapedRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_ANDESITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, Stones18.ANDESITE));
+			addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.ANDESITE), new ItemStack(Blocks.cobblestone), "stoneDiorite");
+			addShapedRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_ANDESITE), "xx", "xx", 'x', "stoneAndesite");
 			// Granite
-			addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.GRANITE), "gemQuartz", new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE));
-			addShapedRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_GRANITE), "xx", "xx", 'x', new ItemStack(ModBlocks.newStones, 1, Stones18.GRANITE));
+			addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.GRANITE), "gemQuartz", "stoneDiorite");
+			addShapedRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_GRANITE), "xx", "xx", 'x', "stoneGranite");
 		}
 
 		if (GanysSurface.enablePrismarineStuff) {
