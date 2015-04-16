@@ -5,13 +5,17 @@ import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.blocks.BlockStorage;
 import ganymedes01.ganyssurface.blocks.Stones18;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.EnumColour;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockWood;
 import net.minecraft.entity.item.EntityPainting.EnumArt;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
@@ -20,6 +24,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 import org.apache.commons.lang3.ArrayUtils;
 
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -50,8 +55,58 @@ public class ModRecipes {
 
 		add18Recipes();
 
+		tweakRecipes();
+
 		if (GanysSurface.enableOMC)
 			OrganicMatterRegistry.init();
+	}
+
+	private static void tweakRecipes() {
+		if (GanysSurface.enableDoors) {
+			Items.wooden_door.setMaxStackSize(64);
+			Items.iron_door.setMaxStackSize(64);
+			Items.wooden_door.setTextureName(Utils.getItemTexture("door_wood"));
+			Items.iron_door.setTextureName(Utils.getItemTexture("door_iron"));
+			removeFirstRecipeFor(Items.wooden_door);
+			removeFirstRecipeFor(Items.iron_door);
+		}
+
+		if (GanysSurface.enableChests)
+			removeFirstRecipeFor(Blocks.chest);
+
+		if (GanysSurface.enableFences) {
+			removeFirstRecipeFor(Blocks.fence);
+			removeFirstRecipeFor(Blocks.fence_gate);
+			Blocks.fence.setCreativeTab(null);
+			Blocks.fence_gate.setCreativeTab(null);
+		}
+
+		if (GanysSurface.enableBurnableBlocks) {
+			Blocks.fire.setFireInfo(Blocks.fence_gate, 5, 20);
+			Blocks.fire.setFireInfo(Blocks.fence, 5, 20);
+			Blocks.fire.setFireInfo(Blocks.deadbush, 60, 100);
+		}
+
+		if (GanysSurface.enableWoodenButtons)
+			removeFirstRecipeFor(Blocks.wooden_button);
+
+		if (GanysSurface.enableWoodenPressurePlates)
+			removeFirstRecipeFor(Blocks.wooden_pressure_plate);
+
+		if (GanysSurface.enableWoodenTrapdoors)
+			removeFirstRecipeFor(Blocks.trapdoor);
+
+		if (GanysSurface.enableWoodenLadders)
+			removeFirstRecipeFor(Items.stick);
+
+		if (GanysSurface.enableWoodenLadders)
+			removeFirstRecipeFor(Blocks.ladder);
+
+		if (GanysSurface.enableWoodenSigns)
+			removeFirstRecipeFor(Items.sign);
+
+		if (GanysSurface.enableWoodenBookshelves)
+			removeFirstRecipeFor(Blocks.bookshelf);
 	}
 
 	private static void registerOreDictionary() {
@@ -324,7 +379,12 @@ public class ModRecipes {
 		}
 
 		if (GanysSurface.enableSlowRail)
-			addShapedRecipe(new ItemStack(ModBlocks.slowRail, 6), "w w", "xyx", "wzw", 'x', "slimeball", 'y', "stickWood", 'z', "dustRedstone", 'w', "ingotIron");
+			if (Loader.isModLoaded("Railcraft")) {
+				ItemStack advancedRail = new ItemStack(GameRegistry.findItem("Railcraft", "part.rail"), 1, 1);
+				ItemStack railBed = new ItemStack(GameRegistry.findItem("Railcraft", "part.railbed"));
+				addShapedRecipe(new ItemStack(ModBlocks.slowRail, 16), "xyx", "xzx", "xyx", 'x', advancedRail, 'y', "slimeball", 'z', railBed);
+			} else
+				addShapedRecipe(new ItemStack(ModBlocks.slowRail, 6), "w w", "xyx", "wzw", 'x', "slimeball", 'y', "stickWood", 'z', "dustRedstone", 'w', "ingotIron");
 
 		if (GanysSurface.enableBasalt) {
 			if (GanysSurface.enable18Stones)
@@ -450,9 +510,12 @@ public class ModRecipes {
 			addShapedRecipe(new ItemStack(ModBlocks.seaLantern), "xyx", "yyy", "xyx", 'x', "shardPrismarine", 'y', "crystalPrismarine");
 		}
 
-		if (GanysSurface.enableDoors)
+		if (GanysSurface.enableDoors) {
 			for (int i = 0; i < ModItems.doors.length; i++)
 				addShapedRecipe(new ItemStack(ModItems.doors[i], 3), "xx", "xx", "xx", 'x', new ItemStack(Blocks.planks, 1, i + 1));
+			addShapedRecipe(new ItemStack(Items.wooden_door, 3), "xx", "xx", "xx", 'x', "plankWood");
+			addShapedRecipe(new ItemStack(Items.iron_door, 3), "xx", "xx", "xx", 'x', "ingotIron");
+		}
 
 		if (GanysSurface.enableRedSandstone) {
 			addShapedRecipe(new ItemStack(ModBlocks.redSandstone), "xx", "xx", 'x', new ItemStack(Blocks.sand, 1, 1));
@@ -489,5 +552,20 @@ public class ModRecipes {
 
 	private static void addShapelessRecipe(ItemStack output, Object... objects) {
 		GameRegistry.addRecipe(new ShapelessOreRecipe(output, objects));
+	}
+
+	private static void removeFirstRecipeFor(Block block) {
+		removeFirstRecipeFor(Item.getItemFromBlock(block));
+	}
+
+	private static void removeFirstRecipeFor(Item item) {
+		for (Object recipe : CraftingManager.getInstance().getRecipeList())
+			if (recipe != null) {
+				ItemStack stack = ((IRecipe) recipe).getRecipeOutput();
+				if (stack != null && stack.getItem() == item) {
+					CraftingManager.getInstance().getRecipeList().remove(recipe);
+					return;
+				}
+			}
 	}
 }
