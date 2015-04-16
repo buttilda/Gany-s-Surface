@@ -11,12 +11,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.world.World;
-import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -52,31 +48,6 @@ public class EntityEvents {
 				if (block != null && block != Blocks.air)
 					addDrop(new ItemStack(block, 1, meta), event.entityLiving, event.drops);
 			}
-	}
-
-	@SuppressWarnings("unchecked")
-	@SubscribeEvent(priority = EventPriority.HIGHEST)
-	public void itemExpire(ItemExpireEvent event) {
-		int radius = GanysSurface.noDespawnRadius;
-		if (radius == 0 || event.isCanceled())
-			return;
-
-		if (radius < 0) {
-			event.extraLife = event.entityItem.lifespan;
-			event.setCanceled(true);
-			return;
-		}
-
-		World world = event.entityItem.worldObj;
-		double posX = event.entityItem.posX;
-		double posY = event.entityItem.posY;
-		double posZ = event.entityItem.posZ;
-		List<EntityPlayerMP> playersNearby = world.getEntitiesWithinAABB(EntityPlayerMP.class, AxisAlignedBB.getBoundingBox(posX - radius, posY - radius, posZ - radius, posX + radius, posY + radius, posZ + radius));
-
-		if (!playersNearby.isEmpty()) {
-			event.extraLife = event.entityItem.lifespan;
-			event.setCanceled(true);
-		}
 	}
 
 	private void addDrop(ItemStack stack, EntityLivingBase entity, List<EntityItem> list) {
