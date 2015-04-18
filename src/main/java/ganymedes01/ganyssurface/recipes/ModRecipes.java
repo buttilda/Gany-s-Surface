@@ -446,7 +446,7 @@ public class ModRecipes {
 		if (GanysSurface.enableStorageBlocks)
 			for (int i = 0; i < BlockStorage.getBlockNumber(); i++) {
 				addShapedRecipe(new ItemStack(ModBlocks.storage, 1, i), "xxx", "xxx", "xxx", 'x', BlockStorage.getStoredObjectIngredient(i));
-				addShapelessRecipe(BlockStorage.getStoredObjectResult(i), new ItemStack(ModBlocks.storage, 1, i));
+				addShapelessRecipe(BlockStorage.getStoredObjectResult(i), BlockStorage.getOreName(i));
 			}
 
 		// Vanilla
