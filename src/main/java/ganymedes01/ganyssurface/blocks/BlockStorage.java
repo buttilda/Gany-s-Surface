@@ -31,11 +31,11 @@ public class BlockStorage extends Block implements ISubBlocksBlock {
 
 	private static enum TYPES {
 		flint(new ItemStack(Items.flint), new ItemStack(Items.flint, 9), "blockFlint"),
-		carrot(new ItemStack(Items.carrot), new ItemStack(Items.carrot, 9), "blockCarrot");
-		/*gunpowder(new ItemStack(Items.gunpowder), new ItemStack(Items.gunpowder, 9), "blockGunpowder"),
-		potato(new ItemStack(Items.potato), new ItemStack(Items.potato, 9), "blockPotato"),
+		carrot(new ItemStack(Items.carrot), new ItemStack(Items.carrot, 9), "blockCarrot"),
+		gunpowder(new ItemStack(Items.gunpowder), new ItemStack(Items.gunpowder, 9), "blockGunpowder"),
+		sugar(new ItemStack(Items.sugar), new ItemStack(Items.sugar, 9), "blockSugar");
+		/*potato(new ItemStack(Items.potato), new ItemStack(Items.potato, 9), "blockPotato"),
 		bone(new ItemStack(Items.bone), new ItemStack(Items.bone, 9), "blockBone"),
-		sugar(new ItemStack(Items.sugar), new ItemStack(Items.sugar, 9), "blockSugar"),
 		apple(new ItemStack(Items.apple), new ItemStack(Items.apple, 9), "blockApple"),
 		leather(new ItemStack(Items.leather), new ItemStack(Items.leather, 9), "blockLeather");*/
 
