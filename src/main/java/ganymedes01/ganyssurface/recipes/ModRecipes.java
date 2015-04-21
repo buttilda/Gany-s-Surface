@@ -3,7 +3,6 @@ package ganymedes01.ganyssurface.recipes;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
-import ganymedes01.ganyssurface.blocks.BlockStorage;
 import ganymedes01.ganyssurface.blocks.Stones18;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.EnumColour;
@@ -180,9 +179,12 @@ public class ModRecipes {
 		if (GanysSurface.enableWoodenLadders)
 			OreDictionary.registerOre("stickWood", new ItemStack(ModItems.stick, 1, OreDictionary.WILDCARD_VALUE));
 
-		if (GanysSurface.enableStorageBlocks)
-			for (int i = 0; i < BlockStorage.getBlockNumber(); i++)
-				OreDictionary.registerOre(BlockStorage.getOreName(i), new ItemStack(ModBlocks.storage, 1, i));
+		if (GanysSurface.enableStorageBlocks) {
+			for (int i = 0; i < ModBlocks.storage.getBlockNumber(); i++)
+				OreDictionary.registerOre(ModBlocks.storage.getOreName(i), new ItemStack(ModBlocks.storage, 1, i));
+			for (int i = 0; i < ModBlocks.dye.getBlockNumber(); i++)
+				OreDictionary.registerOre(ModBlocks.dye.getOreName(i), new ItemStack(ModBlocks.dye, 1, i));
+		}
 	}
 
 	private static void registerItemRecipes() {
@@ -443,11 +445,16 @@ public class ModRecipes {
 			addShapedRecipe(new ItemStack(Blocks.bookshelf), "xxx", "yyy", "xxx", 'x', "plankWood", 'y', new ItemStack(Items.book));
 		}
 
-		if (GanysSurface.enableStorageBlocks)
-			for (int i = 0; i < BlockStorage.getBlockNumber(); i++) {
-				addShapedRecipe(new ItemStack(ModBlocks.storage, 1, i), "xxx", "xxx", "xxx", 'x', BlockStorage.getStoredObjectIngredient(i));
-				addShapelessRecipe(BlockStorage.getStoredObjectResult(i), BlockStorage.getOreName(i));
+		if (GanysSurface.enableStorageBlocks) {
+			for (int i = 0; i < ModBlocks.storage.getBlockNumber(); i++) {
+				addShapedRecipe(new ItemStack(ModBlocks.storage, 1, i), "xxx", "xxx", "xxx", 'x', ModBlocks.storage.getStoredObjectIngredient(i));
+				addShapelessRecipe(ModBlocks.storage.getStoredObjectResult(i), ModBlocks.storage.getOreName(i));
 			}
+			for (int i = 0; i < ModBlocks.dye.getBlockNumber(); i++) {
+				addShapedRecipe(new ItemStack(ModBlocks.dye, 1, i), "xxx", "xxx", "xxx", 'x', ModBlocks.dye.getStoredObjectIngredient(i));
+				addShapelessRecipe(ModBlocks.dye.getStoredObjectResult(i), ModBlocks.dye.getOreName(i));
+			}
+		}
 
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)

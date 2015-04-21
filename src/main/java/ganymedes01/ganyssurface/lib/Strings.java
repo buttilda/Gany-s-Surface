@@ -55,6 +55,7 @@ public class Strings {
 	public static final String BLOCK_OF_POOP_NAME = "blockOfPoop";
 	public static final String COARSE_DIRT = "coarse_dirt";
 	public static final String STORAGE = "storage";
+	public static final String DYE = "dye";
 
 	// Item names
 	public static final String ROT_NAME = "rot";

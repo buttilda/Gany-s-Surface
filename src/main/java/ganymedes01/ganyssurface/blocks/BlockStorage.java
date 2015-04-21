@@ -34,10 +34,9 @@ public class BlockStorage extends Block implements ISubBlocksBlock {
 		carrot(new ItemStack(Items.carrot), new ItemStack(Items.carrot, 9), "blockCarrot"),
 		gunpowder(new ItemStack(Items.gunpowder), new ItemStack(Items.gunpowder, 9), "blockGunpowder"),
 		sugar(new ItemStack(Items.sugar), new ItemStack(Items.sugar, 9), "blockSugar");
-		/*potato(new ItemStack(Items.potato), new ItemStack(Items.potato, 9), "blockPotato"),
-		bone(new ItemStack(Items.bone), new ItemStack(Items.bone, 9), "blockBone"),
-		apple(new ItemStack(Items.apple), new ItemStack(Items.apple, 9), "blockApple"),
-		leather(new ItemStack(Items.leather), new ItemStack(Items.leather, 9), "blockLeather");*/
+		/*
+		 * potato(new ItemStack(Items.potato), new ItemStack(Items.potato, 9), "blockPotato"), bone(new ItemStack(Items.bone), new ItemStack(Items.bone, 9), "blockBone"), apple(new ItemStack(Items.apple), new ItemStack(Items.apple, 9), "blockApple"), leather(new ItemStack(Items.leather), new ItemStack(Items.leather, 9), "blockLeather");
+		 */
 
 		private final Object ingredient;
 		private final ItemStack output;
@@ -60,26 +59,25 @@ public class BlockStorage extends Block implements ISubBlocksBlock {
 
 	public static String getTypesString() {
 		String result = "";
-		for (int i = 0; i < TYPES.length() - 1; i++)
+		for (int i = 0; i < TYPES.length(); i++)
 			result += TYPES.get(i) + ", ";
-		result += TYPES.get(TYPES.length() - 1);
 
-		return result;
+		return result + " and dyes.";
 	}
 
-	public static int getBlockNumber() {
+	public int getBlockNumber() {
 		return TYPES.length();
 	}
 
-	public static Object getStoredObjectIngredient(int meta) {
+	public Object getStoredObjectIngredient(int meta) {
 		return TYPES.get(meta).ingredient;
 	}
 
-	public static ItemStack getStoredObjectResult(int meta) {
+	public ItemStack getStoredObjectResult(int meta) {
 		return TYPES.get(meta).output.copy();
 	}
 
-	public static String getOreName(int meta) {
+	public String getOreName(int meta) {
 		return TYPES.get(meta).orename;
 	}
 
@@ -95,6 +93,14 @@ public class BlockStorage extends Block implements ISubBlocksBlock {
 		setCreativeTab(GanysSurface.enableStorageBlocks ? GanysSurface.surfaceTab : null);
 	}
 
+	protected int length() {
+		return TYPES.length();
+	}
+
+	protected Object get(int ordinal) {
+		return TYPES.get(ordinal);
+	}
+
 	@Override
 	public int damageDropped(int meta) {
 		return meta;
@@ -104,23 +110,23 @@ public class BlockStorage extends Block implements ISubBlocksBlock {
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) {
-		for (int i = 0; i < TYPES.length(); i++)
+		for (int i = 0; i < length(); i++)
 			list.add(new ItemStack(item, 1, i));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
-		return icons[Math.max(Math.min(meta, TYPES.length() - 1), 0)];
+		return icons[Math.max(Math.min(meta, length() - 1), 0)];
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister reg) {
-		icons = new IIcon[TYPES.length()];
+		icons = new IIcon[length()];
 
-		for (int i = 0; i < TYPES.length(); i++)
-			icons[i] = reg.registerIcon(getTextureName() + "_" + TYPES.get(i));
+		for (int i = 0; i < icons.length; i++)
+			icons[i] = reg.registerIcon(getTextureName() + "_" + get(i));
 	}
 
 	@Override
