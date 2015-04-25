@@ -29,8 +29,8 @@ public class BlockDye extends BlockStorage {
 		yellow("dyeYellow", new ItemStack(Items.dye, 9, 11), "blockDyeYellow"),
 		light_blue("dyeLightBlue", new ItemStack(Items.dye, 9, 12), "blockDyeLightBlue"),
 		magenta("dyeMagenta", new ItemStack(Items.dye, 9, 13), "blockDyeMagenta"),
-		orange("dyeOrange", new ItemStack(Items.dye, 9, 14), "blockDyeOrange");
-		// white("dyeWhite", new ItemStack(Items.dye, 9, 15), "blockDyeWhite");
+		orange("dyeOrange", new ItemStack(Items.dye, 9, 14), "blockDyeOrange"),
+		white("dyeWhite", new ItemStack(Items.dye, 9, 15), "blockDyeWhite");
 
 		private final Object ingredient;
 		private final ItemStack output;
