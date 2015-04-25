@@ -59,10 +59,11 @@ public class BlockStorage extends Block implements ISubBlocksBlock {
 
 	public static String getTypesString() {
 		String result = "";
-		for (int i = 0; i < TYPES.length(); i++)
+		for (int i = 0; i < TYPES.length() - 1; i++)
 			result += TYPES.get(i) + ", ";
+		result += TYPES.get(TYPES.length() - 1);
 
-		return result + " and dyes.";
+		return result;
 	}
 
 	public int getBlockNumber() {

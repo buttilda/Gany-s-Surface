@@ -213,6 +213,9 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		if (!GanysSurface.enableStorageBlocks)
 			API.hideItem(new ItemStack(ModBlocks.storage, 1, OreDictionary.WILDCARD_VALUE));
 
+		if (!GanysSurface.enableDyeBlocks)
+			API.hideItem(new ItemStack(ModBlocks.dye, 1, OreDictionary.WILDCARD_VALUE));
+
 		// 1.8 Stuff
 		if (!GanysSurface.enableMutton) {
 			API.hideItem(new ItemStack(ModItems.rawMutton));

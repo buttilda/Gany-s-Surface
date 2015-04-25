@@ -114,6 +114,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableWoodenSigns = configBoolean("Enable wooden signs", true, true);
 		GanysSurface.enableWoodenBookshelves = configBoolean("Enable wooden bookshelves", true, true);
 		GanysSurface.enableStorageBlocks = configBoolean("Enable storage blocks", "More specifically: " + BlockStorage.getTypesString(), true, true);
+		GanysSurface.enableDyeBlocks = configBoolean("Enable dye blocks", true, true);
 
 		// 1.8 Stuff
 		GanysSurface.enable18Stones = configBoolean("Enable 1.8 Stones", true, true);

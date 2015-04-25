@@ -101,6 +101,7 @@ public class GanysSurface {
 	public static boolean enableWoodenSigns = true;
 	public static boolean enableWoodenBookshelves = true;
 	public static boolean enableStorageBlocks = true;
+	public static boolean enableDyeBlocks = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;

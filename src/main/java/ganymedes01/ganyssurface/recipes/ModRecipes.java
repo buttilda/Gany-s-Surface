@@ -179,12 +179,13 @@ public class ModRecipes {
 		if (GanysSurface.enableWoodenLadders)
 			OreDictionary.registerOre("stickWood", new ItemStack(ModItems.stick, 1, OreDictionary.WILDCARD_VALUE));
 
-		if (GanysSurface.enableStorageBlocks) {
+		if (GanysSurface.enableStorageBlocks)
 			for (int i = 0; i < ModBlocks.storage.getBlockNumber(); i++)
 				OreDictionary.registerOre(ModBlocks.storage.getOreName(i), new ItemStack(ModBlocks.storage, 1, i));
+
+		if (GanysSurface.enableDyeBlocks)
 			for (int i = 0; i < ModBlocks.dye.getBlockNumber(); i++)
 				OreDictionary.registerOre(ModBlocks.dye.getOreName(i), new ItemStack(ModBlocks.dye, 1, i));
-		}
 	}
 
 	private static void registerItemRecipes() {
@@ -445,16 +446,17 @@ public class ModRecipes {
 			addShapedRecipe(new ItemStack(Blocks.bookshelf), "xxx", "yyy", "xxx", 'x', "plankWood", 'y', new ItemStack(Items.book));
 		}
 
-		if (GanysSurface.enableStorageBlocks) {
+		if (GanysSurface.enableStorageBlocks)
 			for (int i = 0; i < ModBlocks.storage.getBlockNumber(); i++) {
 				addShapedRecipe(new ItemStack(ModBlocks.storage, 1, i), "xxx", "xxx", "xxx", 'x', ModBlocks.storage.getStoredObjectIngredient(i));
 				addShapelessRecipe(ModBlocks.storage.getStoredObjectResult(i), ModBlocks.storage.getOreName(i));
 			}
+
+		if (GanysSurface.enableDyeBlocks)
 			for (int i = 0; i < ModBlocks.dye.getBlockNumber(); i++) {
 				addShapedRecipe(new ItemStack(ModBlocks.dye, 1, i), "xxx", "xxx", "xxx", 'x', ModBlocks.dye.getStoredObjectIngredient(i));
 				addShapelessRecipe(ModBlocks.dye.getStoredObjectResult(i), ModBlocks.dye.getOreName(i));
 			}
-		}
 
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)
