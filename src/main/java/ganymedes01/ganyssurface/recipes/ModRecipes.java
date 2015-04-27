@@ -6,6 +6,7 @@ import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.blocks.Stones18;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.EnumColour;
+import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockWood;
 import net.minecraft.entity.item.EntityPainting.EnumArt;
@@ -39,12 +40,12 @@ public class ModRecipes {
 
 	public static void init() {
 		if (GanysSurface.enableEncasers)
-			RecipeSorter.register("StorageCaseRecipe", StorageCaseRecipe.class, Category.SHAPELESS, "after:minecraft:shapeless");
+			RecipeSorter.register(Reference.MOD_ID + ".StorageCaseRecipe", StorageCaseRecipe.class, Category.SHAPELESS, "after:minecraft:shapeless");
 		if (GanysSurface.enableDyedArmour)
-			RecipeSorter.register("RecipeArmourDyes", RecipeArmourDyes.class, Category.SHAPELESS, "after:minecraft:shapeless");
+			RecipeSorter.register(Reference.MOD_ID + ".RecipeArmourDyes", RecipeArmourDyes.class, Category.SHAPELESS, "after:minecraft:shapeless");
 		if (GanysSurface.enableBanners) {
-			RecipeSorter.register("RecipeDuplicatePattern", RecipeDuplicatePattern.class, Category.SHAPELESS, "after:minecraft:shapeless");
-			RecipeSorter.register("RecipeAddPattern", RecipeAddPattern.class, Category.SHAPED, "after:minecraft:shaped");
+			RecipeSorter.register(Reference.MOD_ID + ".RecipeDuplicatePattern", RecipeDuplicatePattern.class, Category.SHAPELESS, "after:minecraft:shapeless");
+			RecipeSorter.register(Reference.MOD_ID + ".RecipeAddPattern", RecipeAddPattern.class, Category.SHAPED, "after:minecraft:shaped");
 		}
 
 		registerOreDictionary();
