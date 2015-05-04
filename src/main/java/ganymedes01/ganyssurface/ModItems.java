@@ -147,11 +147,16 @@ public class ModItems {
 		if (GanysSurface.enableTea)
 			MinecraftForge.addGrassSeed(new ItemStack(camelliaSeeds), 5);
 
-		BlockDispenser.dispenseBehaviorRegistry.putObject(pocketCritter, new DispenserBehaviorPocketBat());
-		BlockDispenser.dispenseBehaviorRegistry.putObject(poop, new DispenserBehaviorPoop());
-		BlockDispenser.dispenseBehaviorRegistry.putObject(rot, new DispenserBehaviorRot());
-		BlockDispenser.dispenseBehaviorRegistry.putObject(horseSpawner, new DispenserBehaviorHorseSpawner());
-		BlockDispenser.dispenseBehaviorRegistry.putObject(chargedCreeperSpawner, new DispenserBehaviorChargedCreeperSpawner());
+		if (GanysSurface.enablePocketCritters)
+			BlockDispenser.dispenseBehaviorRegistry.putObject(pocketCritter, new DispenserBehaviorPocketBat());
+		if (GanysSurface.enablePoop)
+			BlockDispenser.dispenseBehaviorRegistry.putObject(poop, new DispenserBehaviorPoop());
+		if (GanysSurface.enablePoop || GanysSurface.enableRot)
+			BlockDispenser.dispenseBehaviorRegistry.putObject(rot, new DispenserBehaviorRot());
+		if (GanysSurface.enableSpawnEggs) {
+			BlockDispenser.dispenseBehaviorRegistry.putObject(horseSpawner, new DispenserBehaviorHorseSpawner());
+			BlockDispenser.dispenseBehaviorRegistry.putObject(chargedCreeperSpawner, new DispenserBehaviorChargedCreeperSpawner());
+		}
 		if (GanysSurface.enableDispenserShears)
 			BlockDispenser.dispenseBehaviorRegistry.putObject(Items.shears, new DispenserBahaviourShears());
 	}
