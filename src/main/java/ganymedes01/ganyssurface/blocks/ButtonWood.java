@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.block.BlockButtonWood;
 import net.minecraft.init.Blocks;
@@ -15,7 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class ButtonWood extends BlockButtonWood {
+public class ButtonWood extends BlockButtonWood implements IConfigurable {
 
 	private final int plankMeta;
 
@@ -31,5 +32,10 @@ public class ButtonWood extends BlockButtonWood {
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
 		return Blocks.planks.getIcon(side, plankMeta);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableWoodenButtons;
 	}
 }

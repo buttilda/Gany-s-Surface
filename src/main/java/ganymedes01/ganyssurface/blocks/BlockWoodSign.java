@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.block.ItemWoodSign;
@@ -26,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class BlockWoodSign extends BlockSign implements ISubBlocksBlock {
+public class BlockWoodSign extends BlockSign implements ISubBlocksBlock, IConfigurable {
 
 	public final int woodMeta;
 
@@ -127,5 +128,10 @@ public class BlockWoodSign extends BlockSign implements ISubBlocksBlock {
 	@SideOnly(Side.CLIENT)
 	public String getItemIconName() {
 		return !GanysSurface.enable3DRendering ? Utils.getBlockTexture("sign_" + BlockWoodDoor.names[woodMeta]) : null;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableWoodenSigns;
 	}
 }

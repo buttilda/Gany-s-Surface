@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.tileentities.TileEntityWoodChest;
 import net.minecraft.block.Block;
@@ -19,7 +20,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class BlockWoodChest extends BlockChest {
+public class BlockWoodChest extends BlockChest implements IConfigurable {
 
 	private final Block plank;
 	private final int meta;
@@ -48,6 +49,11 @@ public class BlockWoodChest extends BlockChest {
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityWoodChest();
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableChests;
 	}
 
 	public ChestType getType() {

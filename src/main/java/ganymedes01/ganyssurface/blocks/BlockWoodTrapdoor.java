@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import net.minecraft.block.BlockTrapDoor;
@@ -17,7 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class BlockWoodTrapdoor extends BlockTrapDoor {
+public class BlockWoodTrapdoor extends BlockTrapDoor implements IConfigurable {
 
 	public final int woodMeta;
 
@@ -64,5 +65,10 @@ public class BlockWoodTrapdoor extends BlockTrapDoor {
 		}
 
 		return side == 0 || side == 1 ? super.getIcon(side, meta) : Blocks.planks.getIcon(side, woodMeta);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableWoodenTrapdoors;
 	}
 }

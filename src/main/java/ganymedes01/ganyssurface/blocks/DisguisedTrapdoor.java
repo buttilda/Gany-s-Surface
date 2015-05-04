@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.BlockTrapDoor;
@@ -17,7 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class DisguisedTrapdoor extends BlockTrapDoor {
+public class DisguisedTrapdoor extends BlockTrapDoor implements IConfigurable {
 
 	private final int type;
 
@@ -35,5 +36,10 @@ public class DisguisedTrapdoor extends BlockTrapDoor {
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister reg) {
 		blockIcon = reg.registerIcon("planks_" + BlockWood.field_150096_a[type]);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableDisguisedTrapdoors;
 	}
 }
