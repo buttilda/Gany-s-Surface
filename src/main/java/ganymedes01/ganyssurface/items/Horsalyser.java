@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -23,7 +24,7 @@ import net.minecraft.world.World;
  *
  */
 
-public class Horsalyser extends Item {
+public class Horsalyser extends Item implements IConfigurable {
 
 	private final DecimalFormat decForm = new DecimalFormat("##.##");
 
@@ -102,5 +103,10 @@ public class Horsalyser extends Item {
 
 	private String isTamed(boolean isTamed, String owner) {
 		return isTamed ? owner : "No.";
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableAnalisers;
 	}
 }

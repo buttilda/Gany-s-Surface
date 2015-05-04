@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -30,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class Dislocator extends BlockContainer {
+public class Dislocator extends BlockContainer implements IConfigurable {
 
 	@SideOnly(Side.CLIENT)
 	protected IIcon blockSide, blockFront, blockBack;
@@ -179,5 +180,10 @@ public class Dislocator extends BlockContainer {
 	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
 		InventoryUtils.dropInventoryContents(world.getTileEntity(x, y, z));
 		super.breakBlock(world, x, y, z, block, meta);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableDislocators;
 	}
 }

@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.item.ItemFood;
@@ -12,7 +13,7 @@ import net.minecraft.item.ItemFood;
  *
  */
 
-public class CookedEgg extends ItemFood {
+public class CookedEgg extends ItemFood implements IConfigurable {
 
 	public CookedEgg() {
 		super(5, false);
@@ -20,5 +21,10 @@ public class CookedEgg extends ItemFood {
 		setTextureName(Utils.getItemTexture(Strings.COOKED_EGG_NAME));
 		setUnlocalizedName(Utils.getUnlocalisedName(Strings.COOKED_EGG_NAME));
 		setCreativeTab(GanysSurface.enableCookedEgg ? GanysSurface.surfaceTab : null);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableCookedEgg;
 	}
 }

@@ -1,5 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.RenderIDs;
@@ -38,7 +40,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class ColouredRedstone extends Block {
+public class ColouredRedstone extends Block implements IConfigurable {
 
 	public static final String[] COLOURS = new String[] { "black", "red", "green", "brown", "blue", "purple", "cyan", "lightGrey", "grey", "pink", "lime", "yellow", "lightBlue", "magenta", "orange", "white" };
 
@@ -409,5 +411,10 @@ public class ColouredRedstone extends Block {
 			float[] colour = EntitySheep.fleeceColorTable[BlockColored.func_150031_c(colourIndex)];
 			world.spawnParticle("reddust", d0, d1, d2, colour[0], colour[1], colour[2]);
 		}
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableColouredRedstone;
 	}
 }

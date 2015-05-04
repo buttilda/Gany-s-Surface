@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
@@ -17,7 +18,7 @@ import net.minecraftforge.common.util.ForgeDirection;
  *
  */
 
-public class CoarseDirt extends Block {
+public class CoarseDirt extends Block implements IConfigurable {
 
 	public CoarseDirt() {
 		super(Material.ground);
@@ -31,5 +32,10 @@ public class CoarseDirt extends Block {
 	@Override
 	public boolean canSustainPlant(IBlockAccess world, int x, int y, int z, ForgeDirection direction, IPlantable plant) {
 		return Blocks.dirt.canSustainPlant(world, x, y, z, direction, plant);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableCoarseDirt;
 	}
 }

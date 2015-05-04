@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 
 import java.util.Random;
@@ -20,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class BlockSilkedMushroom extends Block {
+public class BlockSilkedMushroom extends Block implements IConfigurable {
 
 	private final Block block;
 
@@ -57,5 +58,10 @@ public class BlockSilkedMushroom extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister reg) {
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableSilkTouchingMushrooms;
 	}
 }

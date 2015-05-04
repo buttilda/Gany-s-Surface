@@ -78,7 +78,6 @@ public class ModBlocks {
 	public static final Block dislocator = new Dislocator();
 	public static final Block sensitiveDislocator = new SensoringDislocator();
 	public static final Block cubicSensitiveDislocator = new CubicSensoringDislocator();
-	public static final Block[] disguisedTrapdoors = new Block[BlockWood.field_150096_a.length];
 	public static final Block workTable = new WorkTable();
 	public static final Block organicMatterCompressor = new OrganicMatterCompressor();
 	public static final Block cushion = new Cushion();
@@ -107,6 +106,7 @@ public class ModBlocks {
 	public static final BlockStorage storage = new BlockStorage();
 	public static final BlockStorage dye = new BlockDye();
 
+	public static final Block[] disguisedTrapdoors = new Block[BlockWood.field_150096_a.length];
 	public static final Block[] chests = new Block[BlockWood.field_150096_a.length];
 	public static final Block[] buttons = new Block[BlockWood.field_150096_a.length - 1];
 	public static final Block[] pressurePlates = new Block[BlockWood.field_150096_a.length - 1];
@@ -184,16 +184,18 @@ public class ModBlocks {
 	}
 
 	private static void registerBlock(Block block) {
-		String name = block.getUnlocalizedName();
-		String[] strings = name.split("\\.");
+		if (!(block instanceof IConfigurable) || ((IConfigurable) block).isEnabled()) {
+			String name = block.getUnlocalizedName();
+			String[] strings = name.split("\\.");
 
-		if (block instanceof ISubBlocksBlock)
-			GameRegistry.registerBlock(block, ((ISubBlocksBlock) block).getItemBlockClass(), strings[strings.length - 1]);
-		else
-			GameRegistry.registerBlock(block, strings[strings.length - 1]);
+			if (block instanceof ISubBlocksBlock)
+				GameRegistry.registerBlock(block, ((ISubBlocksBlock) block).getItemBlockClass(), strings[strings.length - 1]);
+			else
+				GameRegistry.registerBlock(block, strings[strings.length - 1]);
 
-		if (block instanceof IBurnableBlock)
-			Blocks.fire.setFireInfo(block, 5, 20);
+			if (block instanceof IBurnableBlock)
+				Blocks.fire.setFireInfo(block, 5, 20);
+		}
 	}
 
 	public static interface ISubBlocksBlock {

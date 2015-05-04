@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.block.ItemBanner;
@@ -33,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class BlockBanner extends BlockContainer implements ISubBlocksBlock {
+public class BlockBanner extends BlockContainer implements ISubBlocksBlock, IConfigurable {
 
 	public BlockBanner() {
 		super(Material.wood);
@@ -189,5 +190,10 @@ public class BlockBanner extends BlockContainer implements ISubBlocksBlock {
 	@Override
 	public Class<? extends ItemBlock> getItemBlockClass() {
 		return ItemBanner.class;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableBanners;
 	}
 }

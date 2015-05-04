@@ -1,5 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.RenderIDs;
@@ -20,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class BlockWoodDoor extends BlockDoor {
+public class BlockWoodDoor extends BlockDoor implements IConfigurable {
 
 	public static final String[] names = new String[] { "oak", "spruce", "birch", "jungle", "acacia", "dark_oak" };
 
@@ -56,5 +58,10 @@ public class BlockWoodDoor extends BlockDoor {
 
 	private Item getItemDoor() {
 		return ModItems.doors[meta - 1];
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableDoors;
 	}
 }

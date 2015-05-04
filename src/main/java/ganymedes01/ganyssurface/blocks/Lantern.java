@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -22,7 +23,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class Lantern extends Block {
+public class Lantern extends Block implements IConfigurable {
 
 	public Lantern() {
 		super(Material.glass);
@@ -61,5 +62,10 @@ public class Lantern extends Block {
 	public boolean shouldSideBeRendered(IBlockAccess access, int x, int y, int z, int side) {
 		Block block = access.getBlock(x, y, z);
 		return block == this || block == Blocks.glass ? false : super.shouldSideBeRendered(access, x, y, z, side);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableLantern;
 	}
 }

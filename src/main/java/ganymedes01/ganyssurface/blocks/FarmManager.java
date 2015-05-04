@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
@@ -14,7 +15,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class FarmManager extends BlockContainer {
+public class FarmManager extends BlockContainer implements IConfigurable {
 
 	public FarmManager() {
 		super(Material.cloth);
@@ -65,5 +66,10 @@ public class FarmManager extends BlockContainer {
 			return;
 		TileEntityFarmManager tile = Utils.getTileEntity(world, x, y, z, TileEntityFarmManager.class);
 		tile.redstoneActive = world.isBlockIndirectlyGettingPowered(x, y, z);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enablePlanter;
 	}
 }

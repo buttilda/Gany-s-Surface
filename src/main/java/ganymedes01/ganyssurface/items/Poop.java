@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
@@ -26,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class Poop extends Item {
+public class Poop extends Item implements IConfigurable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icon;
@@ -84,5 +85,10 @@ public class Poop extends Item {
 		icon = new IIcon[2];
 		for (int i = 0; i < icon.length; i++)
 			icon[i] = reg.registerIcon(Utils.getItemTexture(Strings.POOP_NAME) + "_" + i);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enablePoop;
 	}
 }

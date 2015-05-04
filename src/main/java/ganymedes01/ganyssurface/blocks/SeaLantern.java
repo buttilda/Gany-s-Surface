@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
@@ -13,7 +14,7 @@ import net.minecraft.block.material.Material;
  *
  */
 
-public class SeaLantern extends Block {
+public class SeaLantern extends Block implements IConfigurable {
 
 	public SeaLantern() {
 		super(Material.glass);
@@ -23,5 +24,10 @@ public class SeaLantern extends Block {
 		setBlockTextureName("sea_lantern");
 		setBlockName(Utils.getUnlocalisedName(Strings.SEA_LANTERN));
 		setCreativeTab(GanysSurface.enablePrismarineStuff ? GanysSurface.surfaceTab : null);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enablePrismarineStuff;
 	}
 }

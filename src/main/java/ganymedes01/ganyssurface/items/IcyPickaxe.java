@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModMaterials;
@@ -16,7 +17,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
 
-public class IcyPickaxe extends ItemPickaxe {
+public class IcyPickaxe extends ItemPickaxe implements IConfigurable {
 
 	public IcyPickaxe() {
 		super(ModMaterials.ICE);
@@ -111,5 +112,10 @@ public class IcyPickaxe extends ItemPickaxe {
 	@Override
 	public float func_150893_a(ItemStack stack, Block block) {
 		return func_150897_b(block) ? efficiencyOnProperMaterial : 0.0F;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableIcyPick;
 	}
 }

@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
@@ -29,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class RedSandstoneSlab extends Block implements ISubBlocksBlock {
+public class RedSandstoneSlab extends Block implements ISubBlocksBlock, IConfigurable {
 
 	public RedSandstoneSlab() {
 		super(Material.rock);
@@ -116,5 +117,10 @@ public class RedSandstoneSlab extends Block implements ISubBlocksBlock {
 	@Override
 	public Class<? extends ItemBlock> getItemBlockClass() {
 		return ItemRedSandstoneSlab.class;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableRedSandstone;
 	}
 }

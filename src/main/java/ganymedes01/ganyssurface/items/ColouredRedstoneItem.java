@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.blocks.ColouredRedstone;
 import ganymedes01.ganyssurface.core.utils.Utils;
@@ -26,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class ColouredRedstoneItem extends Item {
+public class ColouredRedstoneItem extends Item implements IConfigurable {
 
 	public ColouredRedstoneItem() {
 		setMaxDamage(0);
@@ -92,5 +93,10 @@ public class ColouredRedstoneItem extends Item {
 		for (int i = 0; i < ColouredRedstone.COLOURS.length; i++)
 			if (i != 1) // Skip Red
 				list.add(new ItemStack(item, 1, i));
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableColouredRedstone;
 	}
 }

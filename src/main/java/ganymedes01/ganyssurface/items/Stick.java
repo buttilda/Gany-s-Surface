@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.blocks.BlockWoodDoor;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -23,7 +24,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class Stick extends Item {
+public class Stick extends Item implements IConfigurable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icon;
@@ -61,5 +62,10 @@ public class Stick extends Item {
 		icon = new IIcon[BlockWood.field_150096_a.length - 1];
 		for (int i = 0; i < icon.length; i++)
 			icon[i] = reg.registerIcon(getIconString() + "_" + BlockWoodDoor.names[i + 1]);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableWoodenLadders;
 	}
 }

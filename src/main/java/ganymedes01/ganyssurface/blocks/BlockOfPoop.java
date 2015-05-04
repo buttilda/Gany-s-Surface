@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.api.ISlimeBlockSpreable;
 import ganymedes01.ganyssurface.core.utils.Utils;
@@ -30,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class BlockOfPoop extends Block implements ISlimeBlockSpreable, ISubBlocksBlock {
+public class BlockOfPoop extends Block implements ISlimeBlockSpreable, ISubBlocksBlock, IConfigurable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
@@ -90,5 +91,10 @@ public class BlockOfPoop extends Block implements ISlimeBlockSpreable, ISubBlock
 	@Override
 	public Class<? extends ItemBlock> getItemBlockClass() {
 		return ItemBlockGeneric.class;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enablePoop;
 	}
 }

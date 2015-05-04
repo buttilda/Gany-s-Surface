@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -24,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class Rot extends Item {
+public class Rot extends Item implements IConfigurable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icon;
@@ -73,5 +74,10 @@ public class Rot extends Item {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enablePoop || GanysSurface.enableRot;
 	}
 }

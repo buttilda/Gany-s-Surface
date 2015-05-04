@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.entities.EntityVillageFinder;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -10,7 +11,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 
-public class VillageFinder extends Item {
+/**
+ * Gany's Surface
+ *
+ * @author ganymedes01
+ *
+ */
+
+public class VillageFinder extends Item implements IConfigurable {
 
 	public VillageFinder() {
 		setTextureName(Utils.getItemTexture(Strings.VILLAGE_FINDER));
@@ -36,5 +44,10 @@ public class VillageFinder extends Item {
 		}
 
 		return stack;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableVillageFinder;
 	}
 }

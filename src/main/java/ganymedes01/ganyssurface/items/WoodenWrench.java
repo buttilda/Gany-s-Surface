@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.blocks.BlockWoodSign;
 import ganymedes01.ganyssurface.blocks.CubicSensoringDislocator;
 import ganymedes01.ganyssurface.blocks.Dislocator;
@@ -30,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class WoodenWrench extends Item {
+public class WoodenWrench extends Item implements IConfigurable {
 
 	public WoodenWrench() {
 		setFull3D();
@@ -99,5 +100,10 @@ public class WoodenWrench extends Item {
 			if (!world.isRemote)
 				player.openGui(GanysSurface.instance, GUIsID.WOOD_SIGN, world, x, y, z);
 		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableWoodenWrench;
 	}
 }

@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -20,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class EncasingBench extends Block {
+public class EncasingBench extends Block implements IConfigurable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
@@ -56,5 +57,10 @@ public class EncasingBench extends Block {
 		icons = new IIcon[2];
 		for (int i = 0; i < icons.length; i++)
 			icons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.ENCASING_BENCH_NAME) + i);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableEncasers;
 	}
 }

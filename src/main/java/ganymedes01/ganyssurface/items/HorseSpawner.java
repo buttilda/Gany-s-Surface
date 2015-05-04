@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -36,7 +37,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class HorseSpawner extends Item {
+public class HorseSpawner extends Item implements IConfigurable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon overlay;
@@ -181,5 +182,10 @@ public class HorseSpawner extends Item {
 			default:
 				return pass == 0 ? 0xC09E7D : 0xEEE500;
 		}
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableSpawnEggs;
 	}
 }

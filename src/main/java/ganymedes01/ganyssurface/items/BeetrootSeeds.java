@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -16,7 +17,7 @@ import net.minecraftforge.common.MinecraftForge;
  *
  */
 
-public class BeetrootSeeds extends ItemSeeds {
+public class BeetrootSeeds extends ItemSeeds implements IConfigurable {
 
 	public BeetrootSeeds() {
 		super(ModBlocks.beetroot, Blocks.farmland);
@@ -26,5 +27,10 @@ public class BeetrootSeeds extends ItemSeeds {
 
 		if (GanysSurface.enableBeetroots)
 			MinecraftForge.addGrassSeed(new ItemStack(this), 7);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableBeetroots;
 	}
 }

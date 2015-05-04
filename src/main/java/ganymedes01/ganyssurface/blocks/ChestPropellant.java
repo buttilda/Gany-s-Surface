@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
@@ -26,7 +27,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class ChestPropellant extends BlockContainer {
+public class ChestPropellant extends BlockContainer implements IConfigurable {
 
 	public static final int MAX_PILE_SIZE = 17;
 
@@ -91,5 +92,10 @@ public class ChestPropellant extends BlockContainer {
 	public void registerBlockIcons(IIconRegister reg) {
 		blockSide = reg.registerIcon(Utils.getBlockTexture(Strings.CHEST_PROPELLANT_NAME) + "_side");
 		blockTop = reg.registerIcon(Utils.getBlockTexture(Strings.CHEST_PROPELLANT_NAME) + "_top");
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableChestPropellant;
 	}
 }

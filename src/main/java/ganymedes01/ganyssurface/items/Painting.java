@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -28,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class Painting extends Item {
+public class Painting extends Item implements IConfigurable {
 
 	public Painting() {
 		setMaxDamage(0);
@@ -95,5 +96,10 @@ public class Painting extends Item {
 			return painting;
 		}
 		return null;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enablePaintings;
 	}
 }

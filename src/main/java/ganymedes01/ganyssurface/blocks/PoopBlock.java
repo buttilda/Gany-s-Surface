@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModSounds;
@@ -32,7 +33,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class PoopBlock extends Block implements IGrowable {
+public class PoopBlock extends Block implements IGrowable, IConfigurable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
@@ -163,5 +164,10 @@ public class PoopBlock extends Block implements IGrowable {
 
 	@Override
 	public void func_149853_b(World world, Random rand, int x, int y, int z) {
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enablePoop;
 	}
 }

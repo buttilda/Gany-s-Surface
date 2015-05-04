@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.block.ItemBlockGeneric;
@@ -27,7 +28,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class BlockStorage extends Block implements ISubBlocksBlock {
+public class BlockStorage extends Block implements ISubBlocksBlock, IConfigurable {
 
 	private static enum TYPES {
 		flint(new ItemStack(Items.flint), new ItemStack(Items.flint, 9), "blockFlint"),
@@ -133,5 +134,10 @@ public class BlockStorage extends Block implements ISubBlocksBlock {
 	@Override
 	public Class<? extends ItemBlock> getItemBlockClass() {
 		return ItemBlockGeneric.class;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableStorageBlocks;
 	}
 }

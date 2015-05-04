@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityRainDetector;
@@ -21,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class RainDetector extends BlockContainer {
+public class RainDetector extends BlockContainer implements IConfigurable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon blockSide, blockTop;
@@ -86,5 +87,10 @@ public class RainDetector extends BlockContainer {
 			world.setBlockMetadataWithNotify(x, y, z, 15, 3);
 		else
 			world.setBlockMetadataWithNotify(x, y, z, 0, 3);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableRainDetector;
 	}
 }

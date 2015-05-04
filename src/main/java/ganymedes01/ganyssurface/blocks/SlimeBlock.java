@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.api.ISlimeBlockSpreable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModSounds;
@@ -28,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class SlimeBlock extends Block {
+public class SlimeBlock extends Block implements IConfigurable {
 
 	public SlimeBlock() {
 		super(Material.cloth);
@@ -108,5 +109,10 @@ public class SlimeBlock extends Block {
 	@Override
 	public int getRenderType() {
 		return RenderIDs.SLIME_BLOCK;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableSlimeBlock;
 	}
 }

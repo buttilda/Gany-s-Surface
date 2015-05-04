@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -28,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class PocketCritter extends Item {
+public class PocketCritter extends Item implements IConfigurable {
 
 	public PocketCritter() {
 		setMaxDamage(0);
@@ -105,5 +106,10 @@ public class PocketCritter extends Item {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister reg) {
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enablePocketCritters;
 	}
 }

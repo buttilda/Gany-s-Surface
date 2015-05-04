@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.blocks.BlockWoodDoor;
 import ganymedes01.ganyssurface.core.utils.Utils;
@@ -12,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class ItemNewDoor extends Item {
+public class ItemNewDoor extends Item implements IConfigurable {
 
 	private final Block door;
 
@@ -43,5 +44,10 @@ public class ItemNewDoor extends Item {
 			} else
 				return false;
 		}
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableDoors;
 	}
 }

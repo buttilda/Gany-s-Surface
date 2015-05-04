@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModMaterials;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -24,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class WoodenArmour extends ItemArmor {
+public class WoodenArmour extends ItemArmor implements IConfigurable {
 
 	private String texturePath, iconPath;
 
@@ -32,8 +33,7 @@ public class WoodenArmour extends ItemArmor {
 		super(ModMaterials.WOOD, 0, type);
 		setMaxStackSize(1);
 		setArmourType(type);
-		if (GanysSurface.enableWoodenArmour)
-			setCreativeTab(GanysSurface.surfaceTab);
+		setCreativeTab(GanysSurface.enableWoodenArmour ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override
@@ -94,5 +94,10 @@ public class WoodenArmour extends ItemArmor {
 				iconPath = Utils.getItemTexture(Strings.WOODEN_BOOTS_NAME);
 				break;
 		}
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableWoodenArmour;
 	}
 }

@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.handlers.KeyBindingHandler;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
@@ -21,7 +22,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class PortableDualWorkTable extends Item {
+public class PortableDualWorkTable extends Item implements IConfigurable {
 
 	public PortableDualWorkTable() {
 		setMaxStackSize(1);
@@ -51,5 +52,10 @@ public class PortableDualWorkTable extends Item {
 
 		tile.readFromNBT(stack.getTagCompound().getCompoundTag("Inventory"));
 		return tile;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableWorkTables;
 	}
 }

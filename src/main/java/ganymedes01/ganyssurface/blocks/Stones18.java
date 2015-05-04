@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
@@ -30,7 +31,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class Stones18 extends Block implements ISubBlocksBlock {
+public class Stones18 extends Block implements ISubBlocksBlock, IConfigurable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
@@ -102,5 +103,10 @@ public class Stones18 extends Block implements ISubBlocksBlock {
 
 	private boolean isBasalt(int meta) {
 		return meta == 7 || meta == 8;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enable18Stones;
 	}
 }

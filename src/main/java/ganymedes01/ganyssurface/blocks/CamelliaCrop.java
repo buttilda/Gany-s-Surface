@@ -1,5 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -17,7 +19,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class CamelliaCrop extends BlockCrops {
+public class CamelliaCrop extends BlockCrops implements IConfigurable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] iconArray;
@@ -54,5 +56,10 @@ public class CamelliaCrop extends BlockCrops {
 		iconArray = new IIcon[4];
 		for (int i = 0; i < iconArray.length; ++i)
 			iconArray[i] = reg.registerIcon(Utils.getBlockTexture(Strings.CAMELLIA_CROP_NAME + "_stage_") + i);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableTea;
 	}
 }

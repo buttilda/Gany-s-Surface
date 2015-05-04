@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -24,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class InvertedDaylightDetector extends BlockDaylightDetector {
+public class InvertedDaylightDetector extends BlockDaylightDetector implements IConfigurable {
 
 	private static final int[] invertedValues = { 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0 };
 
@@ -82,5 +83,10 @@ public class InvertedDaylightDetector extends BlockDaylightDetector {
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister reg) {
 		blockIcon = reg.registerIcon(getTextureName());
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableInvertedDaylightSensor;
 	}
 }

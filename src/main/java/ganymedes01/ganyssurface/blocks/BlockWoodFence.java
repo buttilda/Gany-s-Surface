@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks.IBurnableBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.block.Block;
@@ -21,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class BlockWoodFence extends BlockFence implements IBurnableBlock {
+public class BlockWoodFence extends BlockFence implements IBurnableBlock, IConfigurable {
 
 	private final int meta;
 
@@ -55,5 +56,10 @@ public class BlockWoodFence extends BlockFence implements IBurnableBlock {
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
 		return Blocks.planks.getIcon(side, this.meta);
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableFences;
 	}
 }

@@ -86,4 +86,9 @@ public class BlockDye extends BlockStorage {
 		setBlockTextureName(Utils.getBlockTexture("storage_dye"));
 		setCreativeTab(GanysSurface.enableDyeBlocks ? GanysSurface.surfaceTab : null);
 	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableDyeBlocks;
+	}
 }

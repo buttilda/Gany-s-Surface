@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
@@ -31,7 +32,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class ItemDisplay extends BlockContainer implements ISubBlocksBlock {
+public class ItemDisplay extends BlockContainer implements ISubBlocksBlock, IConfigurable {
 
 	public ItemDisplay() {
 		super(Material.glass);
@@ -106,5 +107,10 @@ public class ItemDisplay extends BlockContainer implements ISubBlocksBlock {
 	@Override
 	public Class<? extends ItemBlock> getItemBlockClass() {
 		return ItemBlockGeneric.class;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableItemDisplay;
 	}
 }

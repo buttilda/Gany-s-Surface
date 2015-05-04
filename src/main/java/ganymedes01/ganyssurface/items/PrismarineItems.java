@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -21,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class PrismarineItems extends Item {
+public class PrismarineItems extends Item implements IConfigurable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
@@ -58,5 +59,10 @@ public class PrismarineItems extends Item {
 		icons = new IIcon[2];
 		icons[0] = reg.registerIcon("prismarine_shard");
 		icons[1] = reg.registerIcon("prismarine_crystals");
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enablePrismarineStuff;
 	}
 }

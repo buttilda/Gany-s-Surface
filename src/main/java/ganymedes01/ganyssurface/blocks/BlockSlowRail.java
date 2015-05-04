@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.BlockRailPowered;
@@ -14,7 +15,7 @@ import net.minecraft.world.World;
  *
  */
 
-public class BlockSlowRail extends BlockRailPowered {
+public class BlockSlowRail extends BlockRailPowered implements IConfigurable {
 
 	public BlockSlowRail() {
 		setHardness(0.7F);
@@ -54,5 +55,10 @@ public class BlockSlowRail extends BlockRailPowered {
 				else if (world.getBlock(y, x, z + 1).isNormalCube())
 					cart.motionZ = -0.02D;
 		}
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableSlowRail;
 	}
 }

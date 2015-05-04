@@ -1,5 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemArmor;
@@ -9,12 +11,12 @@ import net.minecraft.world.World;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
-public class ItemDyeableArmour extends ItemArmor {
+public class ItemDyeableArmour extends ItemArmor implements IConfigurable {
 
 	public ItemDyeableArmour(ArmorMaterial material, int armourType) {
 		super(material, 2, armourType);
@@ -98,5 +100,10 @@ public class ItemDyeableArmour extends ItemArmor {
 
 	private boolean isValidMaterial() {
 		return getArmorMaterial() == ArmorMaterial.IRON || getArmorMaterial() == ArmorMaterial.CHAIN;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableDyedArmour;
 	}
 }

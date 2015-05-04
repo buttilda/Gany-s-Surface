@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.block.ItemBlockGeneric;
@@ -14,7 +15,7 @@ import net.minecraft.item.ItemBlock;
  *
  */
 
-public class RedSandstone extends BlockSandStone implements ISubBlocksBlock {
+public class RedSandstone extends BlockSandStone implements ISubBlocksBlock, IConfigurable {
 
 	public RedSandstone() {
 		setHardness(0.8F);
@@ -26,5 +27,10 @@ public class RedSandstone extends BlockSandStone implements ISubBlocksBlock {
 	@Override
 	public Class<? extends ItemBlock> getItemBlockClass() {
 		return ItemBlockGeneric.class;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableRedSandstone;
 	}
 }

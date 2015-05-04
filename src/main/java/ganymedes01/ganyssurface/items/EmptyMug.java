@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -21,7 +22,7 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class EmptyMug extends Item {
+public class EmptyMug extends Item implements IConfigurable {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icon;
@@ -60,5 +61,10 @@ public class EmptyMug extends Item {
 		icon = new IIcon[2];
 		icon[0] = reg.registerIcon(Utils.getItemTexture(Strings.EMPTY_MUG_NAME));
 		icon[1] = reg.registerIcon(Utils.getItemTexture(Strings.EMPTY_MUG_NAME + "_raw"));
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return GanysSurface.enableTea;
 	}
 }
