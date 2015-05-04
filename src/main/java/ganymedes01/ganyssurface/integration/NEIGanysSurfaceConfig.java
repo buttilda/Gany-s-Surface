@@ -47,24 +47,39 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.registerUsageHandler(new BannerPatternHandler());
 		}
 
-		API.hideItem(new ItemStack(ModBlocks.camelliaCrop));
-		API.hideItem(new ItemStack(ModItems.mankyCupOfTea));
-		for (Block wire : ModBlocks.colouredRedstone)
-			if (wire != null)
-				API.hideItem(new ItemStack(wire));
-		API.hideItem(new ItemStack(ModItems.dyedIronHelmet));
-		API.hideItem(new ItemStack(ModItems.dyedIronChestplate));
-		API.hideItem(new ItemStack(ModItems.dyedIronLeggings));
-		API.hideItem(new ItemStack(ModItems.dyedIronBoots));
-		API.hideItem(new ItemStack(ModBlocks.poop));
-		API.hideItem(new ItemStack(ModItems.dyedChainHelmet));
-		API.hideItem(new ItemStack(ModItems.dyedChainChestplate));
-		API.hideItem(new ItemStack(ModItems.dyedChainLeggings));
-		API.hideItem(new ItemStack(ModItems.dyedChainBoots));
-		API.hideItem(new ItemStack(ModItems.storageCase));
-		API.hideItem(new ItemStack(ModBlocks.beetroot));
-		for (Block door : ModBlocks.doors)
-			API.hideItem(new ItemStack(door));
+		if (GanysSurface.enableTea) {
+			API.hideItem(new ItemStack(ModBlocks.camelliaCrop));
+			API.hideItem(new ItemStack(ModItems.mankyCupOfTea));
+		}
+
+		if (GanysSurface.enableColouredRedstone)
+			for (Block wire : ModBlocks.colouredRedstone)
+				if (wire != null)
+					API.hideItem(new ItemStack(wire));
+
+		if (GanysSurface.enableDyedArmour) {
+			API.hideItem(new ItemStack(ModItems.dyedIronHelmet));
+			API.hideItem(new ItemStack(ModItems.dyedIronChestplate));
+			API.hideItem(new ItemStack(ModItems.dyedIronLeggings));
+			API.hideItem(new ItemStack(ModItems.dyedIronBoots));
+			API.hideItem(new ItemStack(ModItems.dyedChainHelmet));
+			API.hideItem(new ItemStack(ModItems.dyedChainChestplate));
+			API.hideItem(new ItemStack(ModItems.dyedChainLeggings));
+			API.hideItem(new ItemStack(ModItems.dyedChainBoots));
+		}
+
+		if (GanysSurface.enablePoop)
+			API.hideItem(new ItemStack(ModBlocks.poop));
+
+		if (GanysSurface.enableEncasers)
+			API.hideItem(new ItemStack(ModItems.storageCase));
+
+		if (GanysSurface.enableBeetroots)
+			API.hideItem(new ItemStack(ModBlocks.beetroot));
+
+		if (GanysSurface.enableDoors)
+			for (Block door : ModBlocks.doors)
+				API.hideItem(new ItemStack(door));
 
 		if (GanysSurface.enableFences)
 			API.hideItem(new ItemStack(Blocks.fence));
