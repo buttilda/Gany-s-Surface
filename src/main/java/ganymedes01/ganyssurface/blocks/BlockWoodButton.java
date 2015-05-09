@@ -16,11 +16,11 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class ButtonWood extends BlockButtonWood implements IConfigurable {
+public class BlockWoodButton extends BlockButtonWood implements IConfigurable {
 
 	private final int plankMeta;
 
-	public ButtonWood(int meta) {
+	public BlockWoodButton(int meta) {
 		plankMeta = meta;
 		setHardness(0.5F);
 		setStepSound(soundTypeWood);

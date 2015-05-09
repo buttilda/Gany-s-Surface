@@ -11,6 +11,7 @@ import ganymedes01.ganyssurface.blocks.BlockSilkedMushroom;
 import ganymedes01.ganyssurface.blocks.BlockSlowRail;
 import ganymedes01.ganyssurface.blocks.BlockStorage;
 import ganymedes01.ganyssurface.blocks.BlockWoodBookshelf;
+import ganymedes01.ganyssurface.blocks.BlockWoodButton;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest;
 import ganymedes01.ganyssurface.blocks.BlockWoodDoor;
 import ganymedes01.ganyssurface.blocks.BlockWoodFence;
@@ -19,7 +20,6 @@ import ganymedes01.ganyssurface.blocks.BlockWoodLadder;
 import ganymedes01.ganyssurface.blocks.BlockWoodPressurePlate;
 import ganymedes01.ganyssurface.blocks.BlockWoodSign;
 import ganymedes01.ganyssurface.blocks.BlockWoodTrapdoor;
-import ganymedes01.ganyssurface.blocks.ButtonWood;
 import ganymedes01.ganyssurface.blocks.CamelliaCrop;
 import ganymedes01.ganyssurface.blocks.CharcoalBlock;
 import ganymedes01.ganyssurface.blocks.ChestPropellant;
@@ -152,7 +152,7 @@ public class ModBlocks {
 			chests[i] = new BlockWoodChest(Blocks.planks, i);
 
 		for (int i = 0; i < buttons.length; i++)
-			buttons[i] = new ButtonWood(i + 1);
+			buttons[i] = new BlockWoodButton(i + 1);
 
 		for (int i = 0; i < pressurePlates.length; i++)
 			pressurePlates[i] = new BlockWoodPressurePlate(i + 1);
