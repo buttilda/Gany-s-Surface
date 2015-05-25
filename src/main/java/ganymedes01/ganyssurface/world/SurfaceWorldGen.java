@@ -36,15 +36,15 @@ public class SurfaceWorldGen implements IWorldGenerator {
 
 	@Override
 	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
+		if (world.provider.dimensionId != 0)
+			return;
+
 		if (GanysSurface.enableCoarseDirt)
 			for (int x = chunkX * 16; x < chunkX * 16 + 16; x++)
 				for (int z = chunkZ * 16; z < chunkZ * 16 + 16; z++)
 					for (int y = 0; y < world.getActualHeight(); y++)
 						if (world.getBlock(x, y, z) == Blocks.dirt && world.getBlockMetadata(x, y, z) == 1)
 							world.setBlock(x, y, z, ModBlocks.coarseDirt, 0, 2);
-
-		if (world.provider.dimensionId != 0)
-			return;
 
 		if (GanysSurface.enable18Stones)
 			for (Iterator<WorldGenMinable> iterator = generators.iterator(); iterator.hasNext();) {
