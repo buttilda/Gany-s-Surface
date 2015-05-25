@@ -91,7 +91,7 @@ public class OceanMonument {
 					block = Blocks.gold_block;
 					break;
 				case 5:
-					block = Blocks.sponge;
+					block = GanysSurface.enableSponge ? ModBlocks.sponge : Blocks.sponge;
 					break;
 				case 6:
 					block = Blocks.water;

@@ -2,12 +2,10 @@ package ganymedes01.ganyssurface;
 
 import ganymedes01.ganyssurface.blocks.AutoEncaser;
 import ganymedes01.ganyssurface.blocks.Basalt;
-import ganymedes01.ganyssurface.blocks.BlockBanner;
 import ganymedes01.ganyssurface.blocks.BlockBeetroot;
 import ganymedes01.ganyssurface.blocks.BlockDetector;
 import ganymedes01.ganyssurface.blocks.BlockDye;
 import ganymedes01.ganyssurface.blocks.BlockOfPoop;
-import ganymedes01.ganyssurface.blocks.BlockSilkedMushroom;
 import ganymedes01.ganyssurface.blocks.BlockSlowRail;
 import ganymedes01.ganyssurface.blocks.BlockStorage;
 import ganymedes01.ganyssurface.blocks.BlockWoodBookshelf;
@@ -24,7 +22,6 @@ import ganymedes01.ganyssurface.blocks.CamelliaCrop;
 import ganymedes01.ganyssurface.blocks.CharcoalBlock;
 import ganymedes01.ganyssurface.blocks.ChestPropellant;
 import ganymedes01.ganyssurface.blocks.ChocolateCakeBlock;
-import ganymedes01.ganyssurface.blocks.CoarseDirt;
 import ganymedes01.ganyssurface.blocks.ColouredRedstone;
 import ganymedes01.ganyssurface.blocks.ColouredRedstoneBlock;
 import ganymedes01.ganyssurface.blocks.CubicSensoringDislocator;
@@ -37,23 +34,27 @@ import ganymedes01.ganyssurface.blocks.FarmManager;
 import ganymedes01.ganyssurface.blocks.FertilizedSoil;
 import ganymedes01.ganyssurface.blocks.InkHarvester;
 import ganymedes01.ganyssurface.blocks.InvertedDaylightDetector;
-import ganymedes01.ganyssurface.blocks.IronTrapdoor;
 import ganymedes01.ganyssurface.blocks.ItemDisplay;
 import ganymedes01.ganyssurface.blocks.Lantern;
 import ganymedes01.ganyssurface.blocks.LeafWall;
 import ganymedes01.ganyssurface.blocks.OrganicMatterCompressor;
 import ganymedes01.ganyssurface.blocks.Planter;
 import ganymedes01.ganyssurface.blocks.PoopBlock;
-import ganymedes01.ganyssurface.blocks.PrismarineBlocks;
 import ganymedes01.ganyssurface.blocks.RainDetector;
-import ganymedes01.ganyssurface.blocks.RedSandstone;
-import ganymedes01.ganyssurface.blocks.RedSandstoneSlab;
-import ganymedes01.ganyssurface.blocks.RedSandstoneStairs;
-import ganymedes01.ganyssurface.blocks.SeaLantern;
 import ganymedes01.ganyssurface.blocks.SensoringDislocator;
 import ganymedes01.ganyssurface.blocks.SlimeBlock;
-import ganymedes01.ganyssurface.blocks.Stones18;
 import ganymedes01.ganyssurface.blocks.WorkTable;
+import ganymedes01.ganyssurface.blocks.OnePointEight.BlockBanner;
+import ganymedes01.ganyssurface.blocks.OnePointEight.BlockSilkedMushroom;
+import ganymedes01.ganyssurface.blocks.OnePointEight.CoarseDirt;
+import ganymedes01.ganyssurface.blocks.OnePointEight.IronTrapdoor;
+import ganymedes01.ganyssurface.blocks.OnePointEight.PrismarineBlocks;
+import ganymedes01.ganyssurface.blocks.OnePointEight.RedSandstone;
+import ganymedes01.ganyssurface.blocks.OnePointEight.RedSandstoneSlab;
+import ganymedes01.ganyssurface.blocks.OnePointEight.RedSandstoneStairs;
+import ganymedes01.ganyssurface.blocks.OnePointEight.SeaLantern;
+import ganymedes01.ganyssurface.blocks.OnePointEight.Sponge;
+import ganymedes01.ganyssurface.blocks.OnePointEight.Stones18;
 
 import java.lang.reflect.Field;
 
@@ -130,6 +131,7 @@ public class ModBlocks {
 	public static final Block red_mushroom_block = new BlockSilkedMushroom(Blocks.red_mushroom_block, "red");
 	public static final Block coarseDirt = new CoarseDirt();
 	public static final Block banner = new BlockBanner();
+	public static final Block sponge = new Sponge();
 
 	static {
 		for (int i = 0; i < disguisedTrapdoors.length; i++)

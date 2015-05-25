@@ -120,7 +120,6 @@ public class ConfigurationHandler {
 		GanysSurface.enable18Stones = configBoolean("Enable 1.8 Stones", true, true);
 		GanysSurface.enableIronTrapdoor = configBoolean("Enable Iron Trapdoor", true, true);
 		GanysSurface.enableMutton = configBoolean("Enable Mutton", true, true);
-		GanysSurface.enableSpongeTexture = configBoolean("Enable new sponge texture", true, true);
 		GanysSurface.enablePrismarineStuff = configBoolean("Enable Prismarine stuff", true, true);
 		GanysSurface.enableDoors = configBoolean("Enable 1.8 style doors", true, true);
 		GanysSurface.enableInvertedDaylightSensor = configBoolean("Enable inverted daylight sensor", true, true);

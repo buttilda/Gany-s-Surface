@@ -1,4 +1,4 @@
-package ganymedes01.ganyssurface.blocks;
+package ganymedes01.ganyssurface.blocks.OnePointEight;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;

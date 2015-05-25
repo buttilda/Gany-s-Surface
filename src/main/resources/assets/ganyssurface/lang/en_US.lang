@@ -236,6 +236,8 @@ tile.ganyssurface.fence_gate_4.name=Acacia Fence Gate
 tile.ganyssurface.fence_gate_5.name=Dark Oak Fence Gate
 tile.ganyssurface.red_mushroom.name=Mushroom
 tile.ganyssurface.brown_mushroom.name=Mushroom
+tile.ganyssurface.sponge.name=Sponge
+tile.ganyssurface.sponge_wet.name=Wet Sponge
 
 tile.ganyssurface.colouredRedstoneBLACK.name=Blackstone
 tile.ganyssurface.colouredRedstoneGREEN.name=Greenstone

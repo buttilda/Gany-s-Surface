@@ -3,7 +3,7 @@ package ganymedes01.ganyssurface.recipes;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
-import ganymedes01.ganyssurface.blocks.Stones18;
+import ganymedes01.ganyssurface.blocks.OnePointEight.Stones18;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.EnumColour;
 import ganymedes01.ganyssurface.lib.Reference;
@@ -552,6 +552,11 @@ public class ModRecipes {
 				addShapedRecipe(new ItemStack(ModBlocks.banner, 1, colour.getDamage()), new Object[] { "xxx", "xxx", " y ", 'x', new ItemStack(Blocks.wool, 1, colour.getDamage()), 'y', "stickWood" });
 			GameRegistry.addRecipe(new RecipeDuplicatePattern());
 			GameRegistry.addRecipe(new RecipeAddPattern());
+		}
+
+		if (GanysSurface.enableSponge) {
+			addShapelessRecipe(new ItemStack(ModBlocks.sponge), Blocks.sponge);
+			addShapelessRecipe(new ItemStack(Blocks.sponge), ModBlocks.sponge);
 		}
 	}
 

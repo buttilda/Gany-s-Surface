@@ -46,7 +46,6 @@ import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWorkTableRe
 import ganymedes01.ganyssurface.core.handlers.KeyBindingHandler;
 import ganymedes01.ganyssurface.core.handlers.RenderCapeHandler;
 import ganymedes01.ganyssurface.core.handlers.VersionCheckTickHandler;
-import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.core.utils.VersionHelper;
 import ganymedes01.ganyssurface.entities.EntityBatPoop;
 import ganymedes01.ganyssurface.entities.EntityPoop;
@@ -92,9 +91,6 @@ public class ClientProxy extends CommonProxy {
 
 		if (!Loader.isModLoaded("ganysend") && !Loader.isModLoaded("ganysnether"))
 			MinecraftForge.EVENT_BUS.register(new RenderCapeHandler());
-
-		if (GanysSurface.enableSpongeTexture)
-			Blocks.sponge.setBlockTextureName(Utils.getBlockTexture("sponge"));
 	}
 
 	@Override
