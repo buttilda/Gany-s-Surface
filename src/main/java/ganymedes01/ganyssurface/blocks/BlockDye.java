@@ -52,16 +52,6 @@ public class BlockDye extends BlockStorage {
 	}
 
 	@Override
-	protected int length() {
-		return TYPES.length();
-	}
-
-	@Override
-	protected Object get(int ordinal) {
-		return TYPES.get(ordinal);
-	}
-
-	@Override
 	public int getBlockNumber() {
 		return TYPES.length();
 	}
@@ -81,7 +71,15 @@ public class BlockDye extends BlockStorage {
 		return TYPES.get(meta).orename;
 	}
 
+	private static String[] getNames() {
+		String[] names = new String[TYPES.length()];
+		for (int i = 0; i < names.length; i++)
+			names[i] = TYPES.values()[i].name();
+		return names;
+	}
+
 	public BlockDye() {
+		super(getNames());
 		setBlockName(Utils.getUnlocalisedName(Strings.DYE));
 		setBlockTextureName(Utils.getBlockTexture("storage_dye"));
 		setCreativeTab(GanysSurface.enableDyeBlocks ? GanysSurface.surfaceTab : null);
