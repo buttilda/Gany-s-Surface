@@ -4,7 +4,6 @@ import ganymedes01.ganyssurface.inventory.slots.BetterSlot;
 import ganymedes01.ganyssurface.tileentities.TileEntityFarmManager;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
@@ -15,10 +14,10 @@ import net.minecraft.item.ItemStack;
  *
  */
 
-public class ContainerFarmManager extends Container {
+public class ContainerFarmManager extends GanysContainer {
 
 	public ContainerFarmManager(InventoryPlayer inventory, TileEntityFarmManager tile) {
-
+		super(tile);
 		int index = 0;
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 6; j++) {
@@ -61,10 +60,5 @@ public class ContainerFarmManager extends Container {
 		}
 
 		return itemstack;
-	}
-
-	@Override
-	public boolean canInteractWith(EntityPlayer player) {
-		return true;
 	}
 }

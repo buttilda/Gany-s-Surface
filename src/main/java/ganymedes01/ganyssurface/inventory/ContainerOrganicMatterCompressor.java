@@ -6,7 +6,6 @@ import ganymedes01.ganyssurface.tileentities.TileEntityOrganicMatterCompressor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -18,11 +17,12 @@ import net.minecraft.item.ItemStack;
  *
  */
 
-public class ContainerOrganicMatterCompressor extends Container {
+public class ContainerOrganicMatterCompressor extends GanysContainer {
 
-	TileEntityOrganicMatterCompressor compressor;
+	private final TileEntityOrganicMatterCompressor compressor;
 
 	public ContainerOrganicMatterCompressor(InventoryPlayer inventory, TileEntityOrganicMatterCompressor tile) {
+		super(tile);
 		compressor = tile;
 
 		for (int i = 0; i < 3; i++)
@@ -49,11 +49,6 @@ public class ContainerOrganicMatterCompressor extends Container {
 	@Override
 	public void updateProgressBar(int i, int j) {
 		compressor.getGUIData(i, j);
-	}
-
-	@Override
-	public boolean canInteractWith(EntityPlayer player) {
-		return true;
 	}
 
 	@Override

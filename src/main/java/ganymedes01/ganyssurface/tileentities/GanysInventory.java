@@ -10,9 +10,9 @@ import net.minecraft.tileentity.TileEntity;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class GanysInventory extends TileEntity implements IInventory {
@@ -102,7 +102,7 @@ public class GanysInventory extends TileEntity implements IInventory {
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return true;
+		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this;
 	}
 
 	@Override

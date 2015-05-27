@@ -4,7 +4,6 @@ import ganymedes01.ganyssurface.inventory.slots.BetterSlot;
 import ganymedes01.ganyssurface.tileentities.TileEntityInkHarvester;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -16,9 +15,11 @@ import net.minecraft.item.ItemStack;
  *
  */
 
-public class ContainerInkHarvester extends Container {
+public class ContainerInkHarvester extends GanysContainer {
 
 	public ContainerInkHarvester(InventoryPlayer inventory, TileEntityInkHarvester tile) {
+		super(tile);
+
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
 				addSlotToContainer(new BetterSlot(tile, j + i * 3, 45 + j * 18, 17 + i * 18));
@@ -63,10 +64,5 @@ public class ContainerInkHarvester extends Container {
 		}
 
 		return itemstack;
-	}
-
-	@Override
-	public boolean canInteractWith(EntityPlayer player) {
-		return true;
 	}
 }

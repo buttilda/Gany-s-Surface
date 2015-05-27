@@ -4,7 +4,6 @@ import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable.WorkTableCrafting;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
@@ -21,13 +20,14 @@ import net.minecraft.world.World;
  *
  */
 
-public class ContainerWorkTable extends Container {
+public class ContainerWorkTable extends GanysContainer {
 
 	protected World world;
 	protected InventoryCrafting matrix;
 	protected IInventory result = new InventoryCraftResult();
 
 	public ContainerWorkTable(InventoryPlayer inventory, TileEntityWorkTable tile) {
+		super(tile);
 		world = tile.getWorldObj();
 		matrix = new WorkTableCrafting(tile, this);
 
@@ -49,11 +49,6 @@ public class ContainerWorkTable extends Container {
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
 		result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(matrix, world));
-	}
-
-	@Override
-	public boolean canInteractWith(EntityPlayer player) {
-		return true;
 	}
 
 	@Override
