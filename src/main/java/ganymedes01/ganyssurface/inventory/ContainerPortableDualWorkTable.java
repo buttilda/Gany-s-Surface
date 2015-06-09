@@ -16,9 +16,12 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class ContainerPortableDualWorkTable extends ContainerDualWorkTable {
 
+	private final int slot;
+
 	public ContainerPortableDualWorkTable(EntityPlayer player, int slot) {
 		super(player.inventory, PortableDualWorkTable.getTile(player.inventory.getStackInSlot(slot)), false);
 		world = player.worldObj;
+		this.slot = slot;
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++)
@@ -37,12 +40,8 @@ public class ContainerPortableDualWorkTable extends ContainerDualWorkTable {
 		data.setTag("Inventory", new NBTTagCompound());
 		tile.writeToNBT(data.getCompoundTag("Inventory"));
 
-		if (player.getHeldItem() == null || player.getHeldItem().getItem() != ModItems.portalDualWorkTable) {
-			for (int i = 0; i < player.inventory.mainInventory.length; i++)
-				if (player.inventory.mainInventory[i] != null)
-					if (player.inventory.mainInventory[i].getItem() == ModItems.portalDualWorkTable)
-						player.inventory.mainInventory[i].setTagCompound(data);
-		} else
-			player.getHeldItem().setTagCompound(data);
+		if (player.inventory.mainInventory[slot] != null)
+			if (player.inventory.mainInventory[slot].getItem() == ModItems.portalDualWorkTable)
+				player.inventory.mainInventory[slot].setTagCompound(data);
 	}
 }
