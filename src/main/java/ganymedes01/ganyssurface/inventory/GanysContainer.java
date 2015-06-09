@@ -20,7 +20,7 @@ public class GanysContainer extends Container {
 	}
 
 	@Override
-	public final boolean canInteractWith(EntityPlayer player) {
+	public boolean canInteractWith(EntityPlayer player) {
 		return inventory == null || inventory.isUseableByPlayer(player);
 	}
 }

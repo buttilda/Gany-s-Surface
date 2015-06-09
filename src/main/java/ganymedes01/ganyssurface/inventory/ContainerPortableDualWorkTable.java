@@ -44,4 +44,9 @@ public class ContainerPortableDualWorkTable extends ContainerDualWorkTable {
 			if (player.inventory.mainInventory[slot].getItem() == ModItems.portalDualWorkTable)
 				player.inventory.mainInventory[slot].setTagCompound(data);
 	}
+
+	@Override
+	public boolean canInteractWith(EntityPlayer player) {
+		return true;
+	}
 }
