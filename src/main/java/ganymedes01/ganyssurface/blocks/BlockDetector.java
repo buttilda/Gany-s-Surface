@@ -42,10 +42,7 @@ public class BlockDetector extends BlockContainer implements IConfigurable {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
-		if (meta == 0)
-			return blockOff;
-		else
-			return blockOn;
+		return meta == 0 ? blockOff : blockOn;
 	}
 
 	@Override
@@ -58,13 +55,6 @@ public class BlockDetector extends BlockContainer implements IConfigurable {
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
 		return new TileEntityBlockDetector();
-	}
-
-	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbour) {
-		TileEntityBlockDetector tile = Utils.getTileEntity(world, x, y, z, TileEntityBlockDetector.class);
-		if (tile != null)
-			tile.updateRedstoneSignalStatus(tile.checkNearbyBlocks());
 	}
 
 	@Override
@@ -95,16 +85,6 @@ public class BlockDetector extends BlockContainer implements IConfigurable {
 	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
 		InventoryUtils.dropInventoryContents(world.getTileEntity(x, y, z));
 		super.breakBlock(world, x, y, z, block, meta);
-	}
-
-	public void updateBlockStatus(World world, int x, int y, int z, boolean flag) {
-		int metadata = world.getBlockMetadata(x, y, z);
-
-		if (flag) {
-			if (metadata != 15)
-				world.setBlockMetadataWithNotify(x, y, z, 15, 3);
-		} else if (metadata != 0)
-			world.setBlockMetadataWithNotify(x, y, z, 0, 3);
 	}
 
 	@Override

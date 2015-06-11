@@ -1,9 +1,10 @@
 package ganymedes01.ganyssurface.tileentities;
 
+import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.blocks.Dislocator;
 import ganymedes01.ganyssurface.blocks.SensoringDislocator;
-import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
+import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * Gany's Surface
@@ -14,20 +15,36 @@ import ganymedes01.ganyssurface.lib.Strings;
 
 public class TileEntitySensoringDislocator extends TileEntityBlockDetector {
 
+	public int redstoneStrength = 0;
+
+	public TileEntitySensoringDislocator() {
+		this(Strings.SENSORING_DISLOCATOR_NAME);
+	}
+
+	protected TileEntitySensoringDislocator(String name) {
+		super(name);
+	}
+
 	@Override
 	public boolean checkNearbyBlocks() {
-		return checkBlock(Dislocator.getDirectionFromMetadata(worldObj.getBlockMetadata(xCoord, yCoord, zCoord))) && !worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord);
+		return checkBlock(Dislocator.getDirectionFromMetadata(worldObj.getBlockMetadata(xCoord, yCoord, zCoord))) && redstoneStrength <= 0;
 	}
 
 	@Override
-	public void updateRedstoneSignalStatus(boolean flag) {
-		blockType = getBlockType();
-		if (blockType != null && blockType instanceof SensoringDislocator)
-			((SensoringDislocator) blockType).doBreak(worldObj, xCoord, yCoord, zCoord);
+	protected void updateStatus() {
+		if (checkNearbyBlocks())
+			((SensoringDislocator) ModBlocks.sensitiveDislocator).breakSurroundingBlock(worldObj, xCoord, yCoord, zCoord, Dislocator.getDirectionFromMetadata(worldObj.getBlockMetadata(xCoord, yCoord, zCoord)));
 	}
 
 	@Override
-	public String getInventoryName() {
-		return Utils.getConainerName(Strings.SENSORING_DISLOCATOR_NAME);
+	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+		redstoneStrength = nbt.getInteger("RedstoneStrength");
+	}
+
+	@Override
+	public void writeToNBT(NBTTagCompound nbt) {
+		super.writeToNBT(nbt);
+		nbt.setInteger("RedstoneStrength", redstoneStrength);
 	}
 }

@@ -21,6 +21,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.event.ForgeEventFactory;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -78,7 +79,7 @@ public class Dislocator extends BlockContainer implements IConfigurable {
 			}
 	}
 
-	protected void breakSurroundingBlock(World world, int xCoord, int yCoord, int zCoord, ForgeDirection dir) {
+	public void breakSurroundingBlock(World world, int xCoord, int yCoord, int zCoord, ForgeDirection dir) {
 		int x = xCoord + dir.offsetX;
 		int y = yCoord + dir.offsetY;
 		int z = zCoord + dir.offsetZ;
@@ -88,7 +89,10 @@ public class Dislocator extends BlockContainer implements IConfigurable {
 				IInventory tile = getInventory(world, xCoord, yCoord, zCoord, dir);
 
 				if (tile != null) {
-					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
+					int meta = world.getBlockMetadata(x, y, z);
+					ArrayList<ItemStack> drops = target.getDrops(world, x, y, z, meta, 0);
+					ForgeEventFactory.fireBlockHarvesting(drops, world, target, x, y, z, meta, 0, 0, false, Utils.getPlayer(world));
+					for (ItemStack stack : drops)
 						if (!addStacktoInventory(tile, stack))
 							InventoryUtils.dropStack(world, x, y, z, stack);
 				} else

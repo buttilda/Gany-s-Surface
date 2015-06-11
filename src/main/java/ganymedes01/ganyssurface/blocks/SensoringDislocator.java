@@ -29,6 +29,15 @@ public class SensoringDislocator extends Dislocator {
 	}
 
 	@Override
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbour) {
+		if (world.isRemote)
+			return;
+		TileEntitySensoringDislocator tile = Utils.getTileEntity(world, x, y, z, TileEntitySensoringDislocator.class);
+		if (tile != null)
+			tile.redstoneStrength = world.getStrongestIndirectPower(x, y, z);
+	}
+
+	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
 		if (world.isRemote)
 			return true;
@@ -44,21 +53,6 @@ public class SensoringDislocator extends Dislocator {
 				player.openGui(GanysSurface.instance, GUIsID.BLOCK_DETECTOR, world, x, y, z);
 			return true;
 		}
-	}
-
-	@Override
-	public void onNeighborBlockChange(World world, int x, int y, int z, Block neighbour) {
-		if (world.isRemote)
-			return;
-		doBreak(world, x, y, z);
-	}
-
-	public void doBreak(World world, int x, int y, int z) {
-		TileEntitySensoringDislocator tile = Utils.getTileEntity(world, x, y, z, TileEntitySensoringDislocator.class);
-		if (tile == null)
-			return;
-		if (tile.checkNearbyBlocks())
-			breakSurroundingBlock(world, x, y, z, getDirectionFromMetadata(world.getBlockMetadata(x, y, z)));
 	}
 
 	@Override

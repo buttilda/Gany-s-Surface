@@ -6,6 +6,9 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityCubicSensoringDislocator;
+
+import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,6 +19,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.event.ForgeEventFactory;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -48,20 +52,7 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 	}
 
 	@Override
-	public void doBreak(World world, int x, int y, int z) {
-		if (!world.isBlockIndirectlyGettingPowered(x, y, z)) {
-			TileEntityCubicSensoringDislocator tile = Utils.getTileEntity(world, x, y, z, TileEntityCubicSensoringDislocator.class);
-			if (tile == null)
-				return;
-
-			for (ForgeDirection dir : ForgeDirection.VALID_DIRECTIONS)
-				if (tile.checkBlock(dir))
-					breakSurroundingBlock(world, x, y, z, dir);
-		}
-	}
-
-	@Override
-	protected void breakSurroundingBlock(World world, int xCoord, int yCoord, int zCoord, ForgeDirection dir) {
+	public void breakSurroundingBlock(World world, int xCoord, int yCoord, int zCoord, ForgeDirection dir) {
 		int x = xCoord + dir.offsetX;
 		int y = yCoord + dir.offsetY;
 		int z = zCoord + dir.offsetZ;
@@ -74,7 +65,10 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 		if (target != null)
 			if (target.getBlockHardness(world, x, y, z) >= 0 && target.getMaterial() != Material.water && target.getMaterial() != Material.lava) {
 				if (inventory != null) {
-					for (ItemStack stack : target.getDrops(world, x, y, z, world.getBlockMetadata(x, y, z), 0))
+					int meta = world.getBlockMetadata(x, y, z);
+					ArrayList<ItemStack> drops = target.getDrops(world, x, y, z, meta, 0);
+					ForgeEventFactory.fireBlockHarvesting(drops, world, target, x, y, z, meta, 0, 0, false, Utils.getPlayer(world));
+					for (ItemStack stack : drops)
 						if (!addStacktoInventory(inventory, stack))
 							InventoryUtils.dropStack(world, x, y, z, stack);
 				} else
