@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.core.proxy;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiAutoEncaser;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiCraftingTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiEncasingBench;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiEnchantment;
@@ -26,6 +27,7 @@ import ganymedes01.ganyssurface.entities.EntityPoop;
 import ganymedes01.ganyssurface.entities.EntityVillageFinder;
 import ganymedes01.ganyssurface.inventory.ContainerAutoEncaser;
 import ganymedes01.ganyssurface.inventory.ContainerBlockDetector;
+import ganymedes01.ganyssurface.inventory.ContainerCraftingTable;
 import ganymedes01.ganyssurface.inventory.ContainerDualWorkTable;
 import ganymedes01.ganyssurface.inventory.ContainerEncasingBench;
 import ganymedes01.ganyssurface.inventory.ContainerEnchantment;
@@ -146,6 +148,8 @@ public class CommonProxy implements IGuiHandler {
 				return new ContainerEnchantment(player.inventory, world, x, y, z);
 			case GUIsID.WOOD_SIGN:
 				return null;
+			case GUIsID.CRAFTING_TABLE_NO_CONFLICT:
+				return new ContainerCraftingTable(player.inventory, world, x, y, z);
 			default:
 				return null;
 		}
@@ -181,6 +185,8 @@ public class CommonProxy implements IGuiHandler {
 				return new GuiEnchantment(player.inventory, world, null);
 			case GUIsID.WOOD_SIGN:
 				return new GuiWoodSign((TileEntityWoodSign) tile);
+			case GUIsID.CRAFTING_TABLE_NO_CONFLICT:
+				return new GuiCraftingTable(player.inventory, world, x, y, z);
 			default:
 				return null;
 		}

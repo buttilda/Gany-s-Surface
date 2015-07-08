@@ -24,4 +24,5 @@ public class GUIsID {
 	public static final int GEARALYSER = 12;
 	public static final int ENCHANTING_TABLE = 13;
 	public static final int WOOD_SIGN = 14;
+	public static final int CRAFTING_TABLE_NO_CONFLICT = 15;
 }

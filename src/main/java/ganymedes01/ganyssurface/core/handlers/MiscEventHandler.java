@@ -55,31 +55,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class MiscEventHandler {
 
 	@SubscribeEvent
-	public void interactEvent(PlayerInteractEvent event) {
-		if (!GanysSurface.enable18Enchants)
-			return;
-		if (event.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) {
-			World world = event.world;
-			EntityPlayer player = event.entityPlayer;
-			int x = event.x;
-			int y = event.y;
-			int z = event.z;
-
-			if (world == null || world.isRemote)
-				return;
-			if (player.isSneaking())
-				return;
-			else {
-				TileEntityEnchantmentTable tile = Utils.getTileEntity(world, x, y, z, TileEntityEnchantmentTable.class);
-				if (tile != null && world.getBlock(x, y, z) == Blocks.enchanting_table) {
-					player.openGui(GanysSurface.instance, GUIsID.ENCHANTING_TABLE, world, x, y, z);
-					event.setCanceled(true);
-				}
-			}
-		}
-	}
-
-	@SubscribeEvent
 	public void onPlayerLoadFromFileEvent(PlayerEvent.LoadFromFile event) {
 		if (!GanysSurface.enable18Enchants)
 			return;
@@ -223,6 +198,45 @@ public class MiscEventHandler {
 						world.setBlock(event.x, event.y, event.z, Blocks.daylight_detector);
 						event.entityPlayer.swingItem();
 					}
+			}
+
+		if (GanysSurface.enable18Enchants)
+			if (event.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) {
+				World world = event.world;
+				EntityPlayer player = event.entityPlayer;
+				int x = event.x;
+				int y = event.y;
+				int z = event.z;
+
+				if (world == null || world.isRemote)
+					return;
+				if (player.isSneaking())
+					return;
+				else {
+					TileEntityEnchantmentTable tile = Utils.getTileEntity(world, x, y, z, TileEntityEnchantmentTable.class);
+					if (tile != null && world.getBlock(x, y, z) == Blocks.enchanting_table) {
+						player.openGui(GanysSurface.instance, GUIsID.ENCHANTING_TABLE, world, x, y, z);
+						event.setCanceled(true);
+					}
+				}
+			}
+
+		if (GanysSurface.enableNoRecipeConflict)
+			if (event.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) {
+				World world = event.world;
+				EntityPlayer player = event.entityPlayer;
+				int x = event.x;
+				int y = event.y;
+				int z = event.z;
+
+				if (world == null || world.isRemote)
+					return;
+				if (player.isSneaking())
+					return;
+				else if (world.getBlock(x, y, z) == Blocks.crafting_table) {
+					player.openGui(GanysSurface.instance, GUIsID.CRAFTING_TABLE_NO_CONFLICT, world, x, y, z);
+					event.setCanceled(true);
+				}
 			}
 	}
 

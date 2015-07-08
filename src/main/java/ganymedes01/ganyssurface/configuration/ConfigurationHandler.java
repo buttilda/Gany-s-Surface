@@ -115,7 +115,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableWoodenBookshelves = configBoolean("Enable wooden bookshelves", true, true);
 		GanysSurface.enableStorageBlocks = configBoolean("Enable storage blocks", "More specifically: " + BlockStorage.getTypesString(), true, true);
 		GanysSurface.enableDyeBlocks = configBoolean("Enable dye blocks", true, true);
-		GanysSurface.enableNoRecipeConflict = configBoolean("Enable No Recipe Conflict for the Work Tables", true, true);
+		GanysSurface.enableNoRecipeConflict = configBoolean("Enable No Recipe Conflict for Crafting Tables", true, true);
 
 		// 1.8 Stuff
 		GanysSurface.enable18Stones = configBoolean("Enable 1.8 Stones", true, true);
