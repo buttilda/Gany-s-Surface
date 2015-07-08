@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketGUIWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
@@ -57,13 +58,16 @@ public class ContainerWorkTable extends GanysContainer {
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		List<ItemStack> results = getPossibleResults(matrix, world);
-		if (results.isEmpty())
-			result.setInventorySlotContents(0, null);
-		else if (results.size() == 1)
-			result.setInventorySlotContents(0, results.get(0));
-		else
-			setCurrentResultIndex(Math.min(currentResultIndex, results.size() - 1));
+		if (GanysSurface.enableNoRecipeConflict) {
+			List<ItemStack> results = getPossibleResults(matrix, world);
+			if (results.isEmpty())
+				result.setInventorySlotContents(0, null);
+			else if (results.size() == 1)
+				result.setInventorySlotContents(0, results.get(0));
+			else
+				setCurrentResultIndex(Math.min(currentResultIndex, results.size() - 1));
+		} else
+			result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(matrix, world));
 	}
 
 	@Override

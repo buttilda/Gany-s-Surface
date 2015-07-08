@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.inventory;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketGUIDualWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
@@ -15,6 +16,7 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 
 /**
@@ -73,24 +75,31 @@ public class ContainerDualWorkTable extends GanysContainer {
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		if (inventory == matrixLeft) {
-			List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrixLeft, world);
-			if (results.isEmpty())
-				result.setInventorySlotContents(0, null);
-			else if (results.size() == 1)
-				result.setInventorySlotContents(0, results.get(0));
-			else
-				setCurrentResultIndex(true, Math.min(currentResultIndex1, results.size() - 1));
-		}
+		if (GanysSurface.enableNoRecipeConflict) {
+			if (inventory == matrixLeft) {
+				List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrixLeft, world);
+				if (results.isEmpty())
+					result.setInventorySlotContents(0, null);
+				else if (results.size() == 1)
+					result.setInventorySlotContents(0, results.get(0));
+				else
+					setCurrentResultIndex(true, Math.min(currentResultIndex1, results.size() - 1));
+			}
 
-		if (inventory == matrixRight) {
-			List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrixRight, world);
-			if (results.isEmpty())
-				result.setInventorySlotContents(0, null);
-			else if (results.size() == 1)
-				result.setInventorySlotContents(0, results.get(0));
-			else
-				setCurrentResultIndex(false, Math.min(currentResultIndex2, results.size() - 1));
+			if (inventory == matrixRight) {
+				List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrixRight, world);
+				if (results.isEmpty())
+					result.setInventorySlotContents(0, null);
+				else if (results.size() == 1)
+					result.setInventorySlotContents(0, results.get(0));
+				else
+					setCurrentResultIndex(false, Math.min(currentResultIndex2, results.size() - 1));
+			}
+		} else {
+			if (inventory == matrixLeft)
+				result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(matrixLeft, world));
+			if (inventory == matrixRight)
+				resultRight.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(matrixRight, world));
 		}
 	}
 

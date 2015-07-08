@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerWorkTable;
@@ -32,12 +33,16 @@ public class GuiWorkTable extends GuiGanysSurface {
 	@SuppressWarnings("unchecked")
 	public void initGui() {
 		super.initGui();
-		buttonList.add(new GuiButton(0, 260, 95, 15, 20, ">"));
-		buttonList.add(new GuiButton(1, 240, 95, 15, 20, "<"));
+		if (GanysSurface.enableNoRecipeConflict) {
+			buttonList.add(new GuiButton(0, 260, 95, 15, 20, ">"));
+			buttonList.add(new GuiButton(1, 240, 95, 15, 20, "<"));
+		}
 	}
 
 	@Override
 	protected void actionPerformed(GuiButton button) {
+		if (!GanysSurface.enableNoRecipeConflict)
+			return;
 		switch (button.id) {
 			case 0:
 				PacketHandler.sendToServer(new PacketGUIWorkTable(1));
