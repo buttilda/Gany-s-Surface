@@ -4,7 +4,10 @@ import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerDualWorkTable;
 import ganymedes01.ganyssurface.lib.Strings;
+import ganymedes01.ganyssurface.network.PacketHandler;
+import ganymedes01.ganyssurface.network.packet.PacketGUIDualWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
+import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
@@ -28,6 +31,34 @@ public class GuiDualWorkTable extends GuiGanysSurface {
 	public GuiDualWorkTable(ContainerDualWorkTable container) {
 		super(container);
 		xSize = 200;
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public void initGui() {
+		super.initGui();
+		buttonList.add(new GuiButton(0, 200, 95, 15, 20, ">"));
+		buttonList.add(new GuiButton(1, 180, 95, 15, 20, "<"));
+		buttonList.add(new GuiButton(2, 292, 95, 15, 20, ">"));
+		buttonList.add(new GuiButton(3, 272, 95, 15, 20, "<"));
+	}
+
+	@Override
+	protected void actionPerformed(GuiButton button) {
+		switch (button.id) {
+			case 0:
+				PacketHandler.sendToServer(new PacketGUIDualWorkTable(true, 1));
+				break;
+			case 1:
+				PacketHandler.sendToServer(new PacketGUIDualWorkTable(true, -1));
+				break;
+			case 2:
+				PacketHandler.sendToServer(new PacketGUIDualWorkTable(false, 1));
+				break;
+			case 3:
+				PacketHandler.sendToServer(new PacketGUIDualWorkTable(false, -1));
+				break;
+		}
 	}
 
 	@Override

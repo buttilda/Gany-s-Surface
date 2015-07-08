@@ -1,7 +1,12 @@
 package ganymedes01.ganyssurface.inventory;
 
+import ganymedes01.ganyssurface.network.PacketHandler;
+import ganymedes01.ganyssurface.network.packet.PacketGUIDualWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable.WorkTableCrafting;
+
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
@@ -10,7 +15,6 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 
 /**
@@ -25,6 +29,8 @@ public class ContainerDualWorkTable extends GanysContainer {
 	protected World world;
 	protected InventoryCrafting matrixLeft;
 	protected InventoryCrafting matrixRight;
+
+	protected int currentResultIndex1 = 0, currentResultIndex2 = 0;
 
 	protected IInventory result = new InventoryCraftResult();
 	protected IInventory resultRight = new InventoryCraftResult();
@@ -67,11 +73,25 @@ public class ContainerDualWorkTable extends GanysContainer {
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		if (inventory == matrixLeft)
-			result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(matrixLeft, world));
+		if (inventory == matrixLeft) {
+			List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrixLeft, world);
+			if (results.isEmpty())
+				result.setInventorySlotContents(0, null);
+			else if (results.size() == 1)
+				result.setInventorySlotContents(0, results.get(0));
+			else
+				setCurrentResultIndex(true, Math.min(currentResultIndex1, results.size() - 1));
+		}
 
-		if (inventory == matrixRight)
-			resultRight.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(matrixRight, world));
+		if (inventory == matrixRight) {
+			List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrixRight, world);
+			if (results.isEmpty())
+				result.setInventorySlotContents(0, null);
+			else if (results.size() == 1)
+				result.setInventorySlotContents(0, results.get(0));
+			else
+				setCurrentResultIndex(false, Math.min(currentResultIndex2, results.size() - 1));
+		}
 	}
 
 	@Override
@@ -104,5 +124,36 @@ public class ContainerDualWorkTable extends GanysContainer {
 	@Override
 	public boolean func_94530_a(ItemStack stack, Slot slot) {
 		return !(slot instanceof SlotCrafting);
+	}
+
+	public void handleButtonClick(boolean isFirstMatrix, int bump) {
+		InventoryCrafting matrix = isFirstMatrix ? matrixLeft : matrixRight;
+		List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrix, world);
+		if (results.size() <= 1)
+			return;
+
+		int index = (isFirstMatrix ? currentResultIndex1 : currentResultIndex2) + bump;
+		if (index >= results.size())
+			index = 0;
+		else if (index < 0)
+			index = results.size() - 1;
+
+		setCurrentResultIndex(isFirstMatrix, index);
+		for (Object crafter : crafters)
+			if (crafter instanceof EntityPlayer)
+				PacketHandler.sendToPlayer(new PacketGUIDualWorkTable(isFirstMatrix, index), (EntityPlayer) crafter);
+	}
+
+	public void setCurrentResultIndex(boolean isFirstMatrix, int index) {
+		InventoryCrafting matrix = isFirstMatrix ? matrixLeft : matrixRight;
+		List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrix, world);
+		if (results.size() <= 1)
+			return;
+
+		if (isFirstMatrix)
+			currentResultIndex1 = index;
+		else
+			currentResultIndex2 = index;
+		(isFirstMatrix ? result : resultRight).setInventorySlotContents(0, results.get(isFirstMatrix ? currentResultIndex1 : currentResultIndex2));
 	}
 }

@@ -1,7 +1,13 @@
 package ganymedes01.ganyssurface.inventory;
 
+import ganymedes01.ganyssurface.network.PacketHandler;
+import ganymedes01.ganyssurface.network.packet.PacketGUIWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable.WorkTableCrafting;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
@@ -9,8 +15,10 @@ import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
 /**
@@ -25,6 +33,7 @@ public class ContainerWorkTable extends GanysContainer {
 	protected World world;
 	protected InventoryCrafting matrix;
 	protected IInventory result = new InventoryCraftResult();
+	protected int currentResultIndex = 0;
 
 	public ContainerWorkTable(InventoryPlayer inventory, TileEntityWorkTable tile) {
 		super(tile);
@@ -48,7 +57,13 @@ public class ContainerWorkTable extends GanysContainer {
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
-		result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(matrix, world));
+		List<ItemStack> results = getPossibleResults(matrix, world);
+		if (results.isEmpty())
+			result.setInventorySlotContents(0, null);
+		else if (results.size() == 1)
+			result.setInventorySlotContents(0, results.get(0));
+		else
+			setCurrentResultIndex(Math.min(currentResultIndex, results.size() - 1));
 	}
 
 	@Override
@@ -81,5 +96,65 @@ public class ContainerWorkTable extends GanysContainer {
 	@Override
 	public boolean func_94530_a(ItemStack stack, Slot slot) {
 		return slot.inventory != result;
+	}
+
+	public void handleButtonClick(int bump) {
+		List<ItemStack> results = getPossibleResults(matrix, world);
+		if (results.size() <= 1)
+			return;
+
+		int index = currentResultIndex + bump;
+		if (index >= results.size())
+			index = 0;
+		else if (index < 0)
+			index = results.size() - 1;
+
+		setCurrentResultIndex(index);
+		for (Object crafter : crafters)
+			if (crafter instanceof EntityPlayer)
+				PacketHandler.sendToPlayer(new PacketGUIWorkTable(index), (EntityPlayer) crafter);
+	}
+
+	public void setCurrentResultIndex(int index) {
+		List<ItemStack> results = getPossibleResults(matrix, world);
+		if (results.size() <= 1)
+			return;
+
+		currentResultIndex = index;
+		result.setInventorySlotContents(0, results.get(currentResultIndex));
+	}
+
+	@SuppressWarnings("unchecked")
+	public static List<ItemStack> getPossibleResults(InventoryCrafting matrix, World world) {
+		List<ItemStack> results = new ArrayList<ItemStack>();
+		List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
+
+		int toolCount = 0;
+		ItemStack tool1 = null;
+		ItemStack tool2 = null;
+		for (int i = 0; i < matrix.getSizeInventory(); i++) {
+			ItemStack stack = matrix.getStackInSlot(i);
+			if (stack != null) {
+				if (toolCount == 0)
+					tool1 = stack;
+				if (toolCount == 1)
+					tool2 = stack;
+				toolCount++;
+			}
+		}
+		if (toolCount == 2 && tool1.getItem() == tool2.getItem() && tool1.stackSize == 1 && tool2.stackSize == 1 && tool1.getItem().isRepairable()) {
+			Item item = tool1.getItem();
+			int damage1 = item.getMaxDamage() - tool1.getItemDamageForDisplay();
+			int damage2 = item.getMaxDamage() - tool2.getItemDamageForDisplay();
+			int newDamage = item.getMaxDamage() - (damage1 + damage2 + item.getMaxDamage() * 5 / 100);
+			if (newDamage < 0)
+				newDamage = 0;
+			results.add(new ItemStack(tool1.getItem(), 1, newDamage));
+		} else
+			for (IRecipe recipe : recipes)
+				if (recipe.matches(matrix, world))
+					results.add(recipe.getCraftingResult(matrix));
+
+		return results;
 	}
 }
