@@ -89,9 +89,9 @@ public class ContainerDualWorkTable extends GanysContainer {
 			if (inventory == matrixRight) {
 				List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrixRight, world);
 				if (results.isEmpty())
-					result.setInventorySlotContents(0, null);
+					resultRight.setInventorySlotContents(0, null);
 				else if (results.size() == 1)
-					result.setInventorySlotContents(0, results.get(0));
+					resultRight.setInventorySlotContents(0, results.get(0));
 				else
 					setCurrentResultIndex(false, Math.min(currentResultIndex2, results.size() - 1));
 			}
