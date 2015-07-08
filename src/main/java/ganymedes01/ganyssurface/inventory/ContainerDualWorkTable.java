@@ -2,7 +2,7 @@ package ganymedes01.ganyssurface.inventory;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.network.PacketHandler;
-import ganymedes01.ganyssurface.network.packet.PacketGUIDualWorkTable;
+import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable.WorkTableCrafting;
 
@@ -26,7 +26,7 @@ import net.minecraft.world.World;
  *
  */
 
-public class ContainerDualWorkTable extends GanysContainer {
+public class ContainerDualWorkTable extends GanysContainer implements INoConflictRecipeContainer {
 
 	protected World world;
 	protected InventoryCrafting matrixLeft;
@@ -135,6 +135,7 @@ public class ContainerDualWorkTable extends GanysContainer {
 		return !(slot instanceof SlotCrafting);
 	}
 
+	@Override
 	public void handleButtonClick(boolean isFirstMatrix, int bump) {
 		InventoryCrafting matrix = isFirstMatrix ? matrixLeft : matrixRight;
 		List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrix, world);
@@ -150,9 +151,10 @@ public class ContainerDualWorkTable extends GanysContainer {
 		setCurrentResultIndex(isFirstMatrix, index);
 		for (Object crafter : crafters)
 			if (crafter instanceof EntityPlayer)
-				PacketHandler.sendToPlayer(new PacketGUIDualWorkTable(isFirstMatrix, index), (EntityPlayer) crafter);
+				PacketHandler.sendToPlayer(new PacketGUINoRecipeConflict(isFirstMatrix, index), (EntityPlayer) crafter);
 	}
 
+	@Override
 	public void setCurrentResultIndex(boolean isFirstMatrix, int index) {
 		InventoryCrafting matrix = isFirstMatrix ? matrixLeft : matrixRight;
 		List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrix, world);

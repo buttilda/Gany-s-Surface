@@ -6,7 +6,7 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerDualWorkTable;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.PacketHandler;
-import ganymedes01.ganyssurface.network.packet.PacketGUIDualWorkTable;
+import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -52,16 +52,16 @@ public class GuiDualWorkTable extends GuiGanysSurface {
 			return;
 		switch (button.id) {
 			case 0:
-				PacketHandler.sendToServer(new PacketGUIDualWorkTable(true, 1));
+				PacketHandler.sendToServer(new PacketGUINoRecipeConflict(true, 1));
 				break;
 			case 1:
-				PacketHandler.sendToServer(new PacketGUIDualWorkTable(true, -1));
+				PacketHandler.sendToServer(new PacketGUINoRecipeConflict(true, -1));
 				break;
 			case 2:
-				PacketHandler.sendToServer(new PacketGUIDualWorkTable(false, 1));
+				PacketHandler.sendToServer(new PacketGUINoRecipeConflict(false, 1));
 				break;
 			case 3:
-				PacketHandler.sendToServer(new PacketGUIDualWorkTable(false, -1));
+				PacketHandler.sendToServer(new PacketGUINoRecipeConflict(false, -1));
 				break;
 		}
 	}

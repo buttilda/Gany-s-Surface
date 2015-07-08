@@ -6,7 +6,7 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerWorkTable;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.PacketHandler;
-import ganymedes01.ganyssurface.network.packet.PacketGUIWorkTable;
+import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -45,10 +45,10 @@ public class GuiWorkTable extends GuiGanysSurface {
 			return;
 		switch (button.id) {
 			case 0:
-				PacketHandler.sendToServer(new PacketGUIWorkTable(1));
+				PacketHandler.sendToServer(new PacketGUINoRecipeConflict(true, (byte) 1));
 				break;
 			case 1:
-				PacketHandler.sendToServer(new PacketGUIWorkTable(-1));
+				PacketHandler.sendToServer(new PacketGUINoRecipeConflict(true, (byte) -1));
 				break;
 		}
 	}

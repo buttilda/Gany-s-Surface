@@ -2,7 +2,7 @@ package ganymedes01.ganyssurface.inventory;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.network.PacketHandler;
-import ganymedes01.ganyssurface.network.packet.PacketGUIWorkTable;
+import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable.WorkTableCrafting;
 
@@ -29,12 +29,12 @@ import net.minecraft.world.World;
  *
  */
 
-public class ContainerWorkTable extends GanysContainer {
+public class ContainerWorkTable extends GanysContainer implements INoConflictRecipeContainer {
 
-	protected World world;
-	protected InventoryCrafting matrix;
-	protected IInventory result = new InventoryCraftResult();
-	protected int currentResultIndex = 0;
+	private final World world;
+	private final InventoryCrafting matrix;
+	private final IInventory result = new InventoryCraftResult();
+	private int currentResultIndex = 0;
 
 	public ContainerWorkTable(InventoryPlayer inventory, TileEntityWorkTable tile) {
 		super(tile);
@@ -65,7 +65,7 @@ public class ContainerWorkTable extends GanysContainer {
 			else if (results.size() == 1)
 				result.setInventorySlotContents(0, results.get(0));
 			else
-				setCurrentResultIndex(Math.min(currentResultIndex, results.size() - 1));
+				setCurrentResultIndex(true, Math.min(currentResultIndex, results.size() - 1));
 		} else
 			result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(matrix, world));
 	}
@@ -102,7 +102,8 @@ public class ContainerWorkTable extends GanysContainer {
 		return slot.inventory != result;
 	}
 
-	public void handleButtonClick(int bump) {
+	@Override
+	public void handleButtonClick(boolean isFirstMatrix, int bump) {
 		List<ItemStack> results = getPossibleResults(matrix, world);
 		if (results.size() <= 1)
 			return;
@@ -113,13 +114,14 @@ public class ContainerWorkTable extends GanysContainer {
 		else if (index < 0)
 			index = results.size() - 1;
 
-		setCurrentResultIndex(index);
+		setCurrentResultIndex(true, index);
 		for (Object crafter : crafters)
 			if (crafter instanceof EntityPlayer)
-				PacketHandler.sendToPlayer(new PacketGUIWorkTable(index), (EntityPlayer) crafter);
+				PacketHandler.sendToPlayer(new PacketGUINoRecipeConflict(true, index), (EntityPlayer) crafter);
 	}
 
-	public void setCurrentResultIndex(int index) {
+	@Override
+	public void setCurrentResultIndex(boolean isFirstMatrix, int index) {
 		List<ItemStack> results = getPossibleResults(matrix, world);
 		if (results.size() <= 1)
 			return;
