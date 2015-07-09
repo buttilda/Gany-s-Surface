@@ -66,7 +66,7 @@ public class BlockDetector extends BlockContainer implements IConfigurable {
 		else {
 			TileEntityBlockDetector tile = Utils.getTileEntity(world, x, y, z, TileEntityBlockDetector.class);
 			if (tile != null)
-				player.openGui(GanysSurface.instance, GUIsID.BLOCK_DETECTOR, world, x, y, z);
+				player.openGui(GanysSurface.instance, GUIsID.BLOCK_DETECTOR.ordinal(), world, x, y, z);
 			return true;
 		}
 	}

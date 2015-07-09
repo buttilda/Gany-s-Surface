@@ -10,6 +10,7 @@ import ganymedes01.ganyssurface.client.gui.inventory.GuiEnchantment;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiFarmManager;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiGearalyser;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiInkHarvester;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiMarket;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPlanter;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPortableDualWorkTable;
@@ -34,6 +35,7 @@ import ganymedes01.ganyssurface.inventory.ContainerEnchantment;
 import ganymedes01.ganyssurface.inventory.ContainerFarmManager;
 import ganymedes01.ganyssurface.inventory.ContainerGearalyser;
 import ganymedes01.ganyssurface.inventory.ContainerInkHarvester;
+import ganymedes01.ganyssurface.inventory.ContainerMarket;
 import ganymedes01.ganyssurface.inventory.ContainerOrganicMatterCompressor;
 import ganymedes01.ganyssurface.inventory.ContainerPlanter;
 import ganymedes01.ganyssurface.inventory.ContainerPortableDualWorkTable;
@@ -51,6 +53,7 @@ import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityFarmManager;
 import ganymedes01.ganyssurface.tileentities.TileEntityInkHarvester;
 import ganymedes01.ganyssurface.tileentities.TileEntityItemDisplay;
+import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
 import ganymedes01.ganyssurface.tileentities.TileEntityOrganicMatterCompressor;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityRainDetector;
@@ -90,29 +93,49 @@ public class CommonProxy implements IGuiHandler {
 	}
 
 	public void registerTileEntities() {
-		GameRegistry.registerTileEntity(TileEntityRainDetector.class, Utils.getUnlocalisedName(Strings.RAIN_DETECTOR_NAME));
-		GameRegistry.registerTileEntity(TileEntityBlockDetector.class, Utils.getUnlocalisedName(Strings.BLOCK_DETECTOR_NAME));
-		GameRegistry.registerTileEntity(TileEntityDislocator.class, Utils.getUnlocalisedName(Strings.DISLOCATOR_NAME));
-		GameRegistry.registerTileEntity(TileEntitySensoringDislocator.class, Utils.getUnlocalisedName(Strings.SENSORING_DISLOCATOR_NAME));
-		GameRegistry.registerTileEntity(TileEntityCubicSensoringDislocator.class, Utils.getUnlocalisedName(Strings.CUBIC_SENSORING_DISLOCATOR_NAME));
-		GameRegistry.registerTileEntity(TileEntityWorkTable.class, Utils.getUnlocalisedName(Strings.WORK_TABLE_NAME));
-		GameRegistry.registerTileEntity(TileEntityOrganicMatterCompressor.class, Utils.getUnlocalisedName(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
-		GameRegistry.registerTileEntity(TileEntityItemDisplay.class, Utils.getUnlocalisedName(Strings.ITEM_DISPLAY_NAME));
-		GameRegistry.registerTileEntity(TileEntityChestPropellant.class, Utils.getUnlocalisedName(Strings.CHEST_PROPELLANT_NAME));
-		GameRegistry.registerTileEntity(TileEntityPlanter.class, Utils.getUnlocalisedName(Strings.PLANTER_NAME));
-		GameRegistry.registerTileEntity(TileEntityInkHarvester.class, Utils.getUnlocalisedName(Strings.INK_HARVESTER_NAME));
-		GameRegistry.registerTileEntity(TileEntityDualWorkTable.class, Utils.getUnlocalisedName(Strings.DUAL_WORK_TABLE_NAME));
-		GameRegistry.registerTileEntity(TileEntityFarmManager.class, Utils.getUnlocalisedName(Strings.FARM_MANAGER_NAME));
-		GameRegistry.registerTileEntity(TileEntityAutoEncaser.class, Utils.getUnlocalisedName(Strings.AUTO_ENCASER_NAME));
-		GameRegistry.registerTileEntity(TileEntityWoodChest.class, Utils.getUnlocalisedName("wood_chest"));
-		GameRegistry.registerTileEntity(TileEntityWoodSign.class, Utils.getUnlocalisedName("wood_sign"));
-		GameRegistry.registerTileEntity(TileEntityBanner.class, Utils.getUnlocalisedName("banner"));
+		if (GanysSurface.enableRainDetector)
+			GameRegistry.registerTileEntity(TileEntityRainDetector.class, Utils.getUnlocalisedName(Strings.RAIN_DETECTOR_NAME));
+		if (GanysSurface.enableDislocators) {
+			GameRegistry.registerTileEntity(TileEntityBlockDetector.class, Utils.getUnlocalisedName(Strings.BLOCK_DETECTOR_NAME));
+			GameRegistry.registerTileEntity(TileEntityDislocator.class, Utils.getUnlocalisedName(Strings.DISLOCATOR_NAME));
+			GameRegistry.registerTileEntity(TileEntitySensoringDislocator.class, Utils.getUnlocalisedName(Strings.SENSORING_DISLOCATOR_NAME));
+			GameRegistry.registerTileEntity(TileEntityCubicSensoringDislocator.class, Utils.getUnlocalisedName(Strings.CUBIC_SENSORING_DISLOCATOR_NAME));
+		}
+		if (GanysSurface.enableWorkTables) {
+			GameRegistry.registerTileEntity(TileEntityWorkTable.class, Utils.getUnlocalisedName(Strings.WORK_TABLE_NAME));
+			GameRegistry.registerTileEntity(TileEntityDualWorkTable.class, Utils.getUnlocalisedName(Strings.DUAL_WORK_TABLE_NAME));
+		}
+		if (GanysSurface.enableOMC)
+			GameRegistry.registerTileEntity(TileEntityOrganicMatterCompressor.class, Utils.getUnlocalisedName(Strings.ORGANIC_MATTER_COMPRESSOR_NAME));
+		if (GanysSurface.enableItemDisplay)
+			GameRegistry.registerTileEntity(TileEntityItemDisplay.class, Utils.getUnlocalisedName(Strings.ITEM_DISPLAY_NAME));
+		if (GanysSurface.enableChestPropellant)
+			GameRegistry.registerTileEntity(TileEntityChestPropellant.class, Utils.getUnlocalisedName(Strings.CHEST_PROPELLANT_NAME));
+		if (GanysSurface.enablePlanter) {
+			GameRegistry.registerTileEntity(TileEntityPlanter.class, Utils.getUnlocalisedName(Strings.PLANTER_NAME));
+			GameRegistry.registerTileEntity(TileEntityFarmManager.class, Utils.getUnlocalisedName(Strings.FARM_MANAGER_NAME));
+		}
+		if (GanysSurface.enableInkHarvester)
+			GameRegistry.registerTileEntity(TileEntityInkHarvester.class, Utils.getUnlocalisedName(Strings.INK_HARVESTER_NAME));
+		if (GanysSurface.enableEncasers)
+			GameRegistry.registerTileEntity(TileEntityAutoEncaser.class, Utils.getUnlocalisedName(Strings.AUTO_ENCASER_NAME));
+		if (GanysSurface.enableChests)
+			GameRegistry.registerTileEntity(TileEntityWoodChest.class, Utils.getUnlocalisedName("wood_chest"));
+		if (GanysSurface.enableWoodenSigns)
+			GameRegistry.registerTileEntity(TileEntityWoodSign.class, Utils.getUnlocalisedName("wood_sign"));
+		if (GanysSurface.enableBanners)
+			GameRegistry.registerTileEntity(TileEntityBanner.class, Utils.getUnlocalisedName("banner"));
+		if (GanysSurface.enableBanners)
+			GameRegistry.registerTileEntity(TileEntityMarket.class, Utils.getUnlocalisedName(Strings.MARKET));
 	}
 
 	public void registerEntities() {
-		EntityRegistry.registerModEntity(EntityPoop.class, Strings.ENTITY_POOP_NAME, ModIDs.ENTITY_POOP_ID, GanysSurface.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityBatPoop.class, Strings.ENTITY_BAT_POOP_NAME, ModIDs.ENTITY_BAT_POOP_ID, GanysSurface.instance, 64, 1, true);
-		EntityRegistry.registerModEntity(EntityVillageFinder.class, Strings.VILLAGE_FINDER, ModIDs.ENTITY_VILLAGE_FINDER_ID, GanysSurface.instance, 64, 1, true);
+		if (GanysSurface.enableFlingablePoop) {
+			EntityRegistry.registerModEntity(EntityPoop.class, Strings.ENTITY_POOP_NAME, ModIDs.ENTITY_POOP_ID, GanysSurface.instance, 64, 1, true);
+			EntityRegistry.registerModEntity(EntityBatPoop.class, Strings.ENTITY_BAT_POOP_NAME, ModIDs.ENTITY_BAT_POOP_ID, GanysSurface.instance, 64, 1, true);
+		}
+		if (GanysSurface.enableVillageFinder)
+			EntityRegistry.registerModEntity(EntityVillageFinder.class, Strings.VILLAGE_FINDER, ModIDs.ENTITY_VILLAGE_FINDER_ID, GanysSurface.instance, 64, 1, true);
 	}
 
 	public void registerRenderers() {
@@ -121,35 +144,38 @@ public class CommonProxy implements IGuiHandler {
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tile = world.getTileEntity(x, y, z);
-		switch (ID) {
-			case GUIsID.BLOCK_DETECTOR:
+		GUIsID guiID = GUIsID.values()[ID];
+		switch (guiID) {
+			case BLOCK_DETECTOR:
 				return new ContainerBlockDetector(player.inventory, (TileEntityBlockDetector) tile);
-			case GUIsID.WORK_TABLE:
+			case WORK_TABLE:
 				return new ContainerWorkTable(player.inventory, (TileEntityWorkTable) tile);
-			case GUIsID.ORGANIC_MATTER_COMPRESSOR:
+			case ORGANIC_MATTER_COMPRESSOR:
 				return new ContainerOrganicMatterCompressor(player.inventory, (TileEntityOrganicMatterCompressor) tile);
-			case GUIsID.PLANTER:
+			case PLANTER:
 				return new ContainerPlanter(player.inventory, (TileEntityPlanter) tile);
-			case GUIsID.INK_HARVESTER:
+			case INK_HARVESTER:
 				return new ContainerInkHarvester(player.inventory, (TileEntityInkHarvester) tile);
-			case GUIsID.DUAL_WORK_TABLE:
+			case DUAL_WORK_TABLE:
 				return new ContainerDualWorkTable(player.inventory, (TileEntityDualWorkTable) tile);
-			case GUIsID.FARM_MANAGER:
+			case FARM_MANAGER:
 				return new ContainerFarmManager(player.inventory, (TileEntityFarmManager) tile);
-			case GUIsID.PORTABLE_DUAL_WORK_TABLE:
+			case PORTABLE_DUAL_WORK_TABLE:
 				return new ContainerPortableDualWorkTable(player, x);
-			case GUIsID.ENCASING_BENCH:
+			case ENCASING_BENCH:
 				return new ContainerEncasingBench(player.inventory);
-			case GUIsID.AUTO_ENCASER:
+			case AUTO_ENCASER:
 				return new ContainerAutoEncaser(player.inventory, (TileEntityAutoEncaser) tile);
-			case GUIsID.GEARALYSER:
+			case GEARALYSER:
 				return new ContainerGearalyser(player.inventory);
-			case GUIsID.ENCHANTING_TABLE:
+			case ENCHANTING_TABLE:
 				return new ContainerEnchantment(player.inventory, world, x, y, z);
-			case GUIsID.WOOD_SIGN:
+			case WOOD_SIGN:
 				return null;
-			case GUIsID.CRAFTING_TABLE_NO_CONFLICT:
+			case CRAFTING_TABLE_NO_CONFLICT:
 				return new ContainerCraftingTable(player.inventory, world, x, y, z);
+			case MARKET:
+				return new ContainerMarket(player.inventory, (TileEntityMarket) tile);
 			default:
 				return null;
 		}
@@ -158,35 +184,38 @@ public class CommonProxy implements IGuiHandler {
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tile = world.getTileEntity(x, y, z);
-		switch (ID) {
-			case GUIsID.BLOCK_DETECTOR:
+		GUIsID guiID = GUIsID.values()[ID];
+		switch (guiID) {
+			case BLOCK_DETECTOR:
 				return new GuiBlockDetector(player.inventory, (TileEntityBlockDetector) tile);
-			case GUIsID.WORK_TABLE:
+			case WORK_TABLE:
 				return new GuiWorkTable(player.inventory, (TileEntityWorkTable) tile);
-			case GUIsID.ORGANIC_MATTER_COMPRESSOR:
+			case ORGANIC_MATTER_COMPRESSOR:
 				return new GuiOrganicMatterCompressor(player.inventory, (TileEntityOrganicMatterCompressor) tile);
-			case GUIsID.PLANTER:
+			case PLANTER:
 				return new GuiPlanter(player.inventory, (TileEntityPlanter) tile);
-			case GUIsID.INK_HARVESTER:
+			case INK_HARVESTER:
 				return new GuiInkHarvester(player.inventory, (TileEntityInkHarvester) tile);
-			case GUIsID.DUAL_WORK_TABLE:
+			case DUAL_WORK_TABLE:
 				return new GuiDualWorkTable(player.inventory, (TileEntityDualWorkTable) tile);
-			case GUIsID.FARM_MANAGER:
+			case FARM_MANAGER:
 				return new GuiFarmManager(player.inventory, (TileEntityFarmManager) tile);
-			case GUIsID.PORTABLE_DUAL_WORK_TABLE:
+			case PORTABLE_DUAL_WORK_TABLE:
 				return new GuiPortableDualWorkTable(player, x);
-			case GUIsID.ENCASING_BENCH:
+			case ENCASING_BENCH:
 				return new GuiEncasingBench(player.inventory);
-			case GUIsID.AUTO_ENCASER:
+			case AUTO_ENCASER:
 				return new GuiAutoEncaser(player.inventory, (TileEntityAutoEncaser) tile);
-			case GUIsID.GEARALYSER:
+			case GEARALYSER:
 				return new GuiGearalyser(player.inventory);
-			case GUIsID.ENCHANTING_TABLE:
+			case ENCHANTING_TABLE:
 				return new GuiEnchantment(player.inventory, world, null);
-			case GUIsID.WOOD_SIGN:
+			case WOOD_SIGN:
 				return new GuiWoodSign((TileEntityWoodSign) tile);
-			case GUIsID.CRAFTING_TABLE_NO_CONFLICT:
+			case CRAFTING_TABLE_NO_CONFLICT:
 				return new GuiCraftingTable(player.inventory, world, x, y, z);
+			case MARKET:
+				return new GuiMarket(player.inventory, (TileEntityMarket) tile);
 			default:
 				return null;
 		}

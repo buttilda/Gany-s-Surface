@@ -43,6 +43,6 @@ public class PacketPortWorkTable extends CustomPacket {
 
 	@Override
 	public void handleServerSide(World world, EntityPlayer player) {
-		player.openGui(GanysSurface.instance, GUIsID.PORTABLE_DUAL_WORK_TABLE, world, slot, 0, 0);
+		player.openGui(GanysSurface.instance, GUIsID.PORTABLE_DUAL_WORK_TABLE.ordinal(), world, slot, 0, 0);
 	}
 }

@@ -44,7 +44,7 @@ public class FarmManager extends BlockContainer implements IConfigurable {
 		else {
 			TileEntityFarmManager tile = Utils.getTileEntity(world, x, y, z, TileEntityFarmManager.class);
 			if (tile != null)
-				player.openGui(GanysSurface.instance, GUIsID.FARM_MANAGER, world, x, y, z);
+				player.openGui(GanysSurface.instance, GUIsID.FARM_MANAGER.ordinal(), world, x, y, z);
 			return true;
 		}
 	}

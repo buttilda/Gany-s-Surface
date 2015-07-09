@@ -58,7 +58,7 @@ public class ItemWoodSign extends ItemBlock {
 				if (sign != null) {
 					sign.isStanding = side == 1;
 					if (world.isRemote)
-						player.openGui(GanysSurface.instance, GUIsID.WOOD_SIGN, world, x, y, z);
+						player.openGui(GanysSurface.instance, GUIsID.WOOD_SIGN.ordinal(), world, x, y, z);
 					sign.func_145912_a(player);
 				}
 				return true;

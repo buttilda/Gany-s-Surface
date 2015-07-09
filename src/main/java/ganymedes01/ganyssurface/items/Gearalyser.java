@@ -29,7 +29,7 @@ public class Gearalyser extends Item implements IConfigurable {
 	@Override
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
 		if (!world.isRemote)
-			player.openGui(GanysSurface.instance, GUIsID.GEARALYSER, world, 0, 0, 0);
+			player.openGui(GanysSurface.instance, GUIsID.GEARALYSER.ordinal(), world, 0, 0, 0);
 		return stack;
 	}
 

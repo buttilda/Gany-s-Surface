@@ -6,17 +6,15 @@ import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.Strings;
-import ganymedes01.ganyssurface.tileentities.TileEntityAutoEncaser;
+import ganymedes01.ganyssurface.tileentities.TileEntityMarket;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
@@ -25,21 +23,23 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class AutoEncaser extends BlockContainer implements IConfigurable {
+public class Market extends BlockContainer implements IConfigurable {
 
-	@SideOnly(Side.CLIENT)
-	private IIcon[] icons;
-
-	public AutoEncaser() {
+	public Market() {
 		super(Material.iron);
-		setHardness(2.0F);
-		setBlockName(Utils.getUnlocalisedName(Strings.AUTO_ENCASER_NAME));
-		setCreativeTab(GanysSurface.enableEncasers ? GanysSurface.surfaceTab : null);
+		setHardness(2.5F);
+		setStepSound(soundTypeMetal);
+		setBlockName(Utils.getUnlocalisedName(Strings.MARKET));
+		setBlockTextureName(Utils.getBlockTexture(Strings.MARKET));
+		setCreativeTab(GanysSurface.enableMarket ? GanysSurface.surfaceTab : null);
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(World world, int meta) {
-		return new TileEntityAutoEncaser();
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack stack) {
+		if (player != null && player instanceof EntityPlayer) {
+			TileEntityMarket tile = Utils.getTileEntity(world, x, y, z, TileEntityMarket.class);
+			tile.setOwner((EntityPlayer) player);
+		}
 	}
 
 	@Override
@@ -49,7 +49,9 @@ public class AutoEncaser extends BlockContainer implements IConfigurable {
 		if (player.isSneaking())
 			return false;
 		else {
-			player.openGui(GanysSurface.instance, GUIsID.AUTO_ENCASER.ordinal(), world, x, y, z);
+			TileEntityMarket tile = Utils.getTileEntity(world, x, y, z, TileEntityMarket.class);
+			if (tile != null)
+				player.openGui(GanysSurface.instance, GUIsID.MARKET.ordinal(), world, x, y, z);
 			return true;
 		}
 	}
@@ -61,21 +63,12 @@ public class AutoEncaser extends BlockContainer implements IConfigurable {
 	}
 
 	@Override
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int meta) {
-		return side == 1 ? icons[0] : icons[1];
-	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void registerBlockIcons(IIconRegister reg) {
-		icons = new IIcon[2];
-		for (int i = 0; i < icons.length; i++)
-			icons[i] = reg.registerIcon(Utils.getBlockTexture(Strings.AUTO_ENCASER_NAME) + i);
+	public TileEntity createNewTileEntity(World world, int meta) {
+		return new TileEntityMarket();
 	}
 
 	@Override
 	public boolean isEnabled() {
-		return GanysSurface.enableEncasers;
+		return GanysSurface.enableMarket;
 	}
 }

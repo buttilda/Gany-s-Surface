@@ -40,7 +40,7 @@ public class EncasingBench extends Block implements IConfigurable {
 		if (player.isSneaking())
 			return false;
 		else {
-			player.openGui(GanysSurface.instance, GUIsID.ENCASING_BENCH, world, x, y, z);
+			player.openGui(GanysSurface.instance, GUIsID.ENCASING_BENCH.ordinal(), world, x, y, z);
 			return true;
 		}
 	}

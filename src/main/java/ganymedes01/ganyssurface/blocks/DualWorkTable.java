@@ -33,7 +33,7 @@ public class DualWorkTable extends WorkTable {
 		else {
 			TileEntityDualWorkTable tile = Utils.getTileEntity(world, x, y, z, TileEntityDualWorkTable.class);
 			if (tile != null)
-				player.openGui(GanysSurface.instance, GUIsID.DUAL_WORK_TABLE, world, x, y, z);
+				player.openGui(GanysSurface.instance, GUIsID.DUAL_WORK_TABLE.ordinal(), world, x, y, z);
 			return true;
 		}
 	}

@@ -208,14 +208,10 @@ public class MiscEventHandler {
 				int y = event.y;
 				int z = event.z;
 
-				if (world == null || world.isRemote)
-					return;
-				if (player.isSneaking())
-					return;
-				else {
+				if (world != null && !world.isRemote && !player.isSneaking()) {
 					TileEntityEnchantmentTable tile = Utils.getTileEntity(world, x, y, z, TileEntityEnchantmentTable.class);
 					if (tile != null && world.getBlock(x, y, z) == Blocks.enchanting_table) {
-						player.openGui(GanysSurface.instance, GUIsID.ENCHANTING_TABLE, world, x, y, z);
+						player.openGui(GanysSurface.instance, GUIsID.ENCHANTING_TABLE.ordinal(), world, x, y, z);
 						event.setCanceled(true);
 					}
 				}
@@ -229,14 +225,11 @@ public class MiscEventHandler {
 				int y = event.y;
 				int z = event.z;
 
-				if (world == null || world.isRemote)
-					return;
-				if (player.isSneaking())
-					return;
-				else if (world.getBlock(x, y, z) == Blocks.crafting_table) {
-					player.openGui(GanysSurface.instance, GUIsID.CRAFTING_TABLE_NO_CONFLICT, world, x, y, z);
-					event.setCanceled(true);
-				}
+				if (world != null && !world.isRemote && !player.isSneaking())
+					if (world.getBlock(x, y, z) == Blocks.crafting_table) {
+						player.openGui(GanysSurface.instance, GUIsID.CRAFTING_TABLE_NO_CONFLICT.ordinal(), world, x, y, z);
+						event.setCanceled(true);
+					}
 			}
 	}
 

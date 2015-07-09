@@ -47,7 +47,7 @@ public class OrganicMatterCompressor extends BlockContainer implements IConfigur
 		else {
 			TileEntityOrganicMatterCompressor tile = Utils.getTileEntity(world, x, y, z, TileEntityOrganicMatterCompressor.class);
 			if (tile != null)
-				player.openGui(GanysSurface.instance, GUIsID.ORGANIC_MATTER_COMPRESSOR, world, x, y, z);
+				player.openGui(GanysSurface.instance, GUIsID.ORGANIC_MATTER_COMPRESSOR.ordinal(), world, x, y, z);
 			return true;
 		}
 	}

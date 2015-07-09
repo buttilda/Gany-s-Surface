@@ -56,6 +56,7 @@ public class Strings {
 	public static final String COARSE_DIRT = "coarse_dirt";
 	public static final String STORAGE = "storage";
 	public static final String DYE = "dye";
+	public static final String MARKET = "market";
 
 	// Item names
 	public static final String ROT_NAME = "rot";

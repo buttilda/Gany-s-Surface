@@ -98,7 +98,7 @@ public class WoodenWrench extends Item implements IConfigurable {
 			return true;
 		} else if (block instanceof BlockWoodSign)
 			if (!world.isRemote)
-				player.openGui(GanysSurface.instance, GUIsID.WOOD_SIGN, world, x, y, z);
+				player.openGui(GanysSurface.instance, GUIsID.WOOD_SIGN.ordinal(), world, x, y, z);
 		return false;
 	}
 

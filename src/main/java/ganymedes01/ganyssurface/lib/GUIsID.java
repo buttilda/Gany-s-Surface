@@ -7,22 +7,21 @@ package ganymedes01.ganyssurface.lib;
  *
  */
 
-public class GUIsID {
+public enum GUIsID {
 
-	public static final int BLOCK_DETECTOR = 0;
-	public static final int WORK_TABLE = 1;
-	public static final int ORGANIC_MATTER_COMPRESSOR = 2;
-	public static final int PLANTER = 3;
-	public static final int INK_HARVESTER = 4;
-	public static final int MARKET_PRIVATE = 5;
-	public static final int MARKET_PUBLIC = 6;
-	public static final int DUAL_WORK_TABLE = 7;
-	public static final int FARM_MANAGER = 8;
-	public static final int PORTABLE_DUAL_WORK_TABLE = 9;
-	public static final int ENCASING_BENCH = 10;
-	public static final int AUTO_ENCASER = 11;
-	public static final int GEARALYSER = 12;
-	public static final int ENCHANTING_TABLE = 13;
-	public static final int WOOD_SIGN = 14;
-	public static final int CRAFTING_TABLE_NO_CONFLICT = 15;
+	BLOCK_DETECTOR,
+	WORK_TABLE,
+	ORGANIC_MATTER_COMPRESSOR,
+	PLANTER,
+	INK_HARVESTER,
+	DUAL_WORK_TABLE,
+	FARM_MANAGER,
+	PORTABLE_DUAL_WORK_TABLE,
+	ENCASING_BENCH,
+	AUTO_ENCASER,
+	GEARALYSER,
+	ENCHANTING_TABLE,
+	WOOD_SIGN,
+	CRAFTING_TABLE_NO_CONFLICT,
+	MARKET
 }

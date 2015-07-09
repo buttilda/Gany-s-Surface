@@ -103,6 +103,7 @@ public class GanysSurface {
 	public static boolean enableStorageBlocks = true;
 	public static boolean enableDyeBlocks = true;
 	public static boolean enableNoRecipeConflict = true;
+	public static boolean enableMarket = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;

@@ -84,7 +84,7 @@ public class WorkTable extends BlockContainer implements IConfigurable {
 		else {
 			TileEntityWorkTable tile = Utils.getTileEntity(world, x, y, z, TileEntityWorkTable.class);
 			if (tile != null)
-				player.openGui(GanysSurface.instance, GUIsID.WORK_TABLE, world, x, y, z);
+				player.openGui(GanysSurface.instance, GUIsID.WORK_TABLE.ordinal(), world, x, y, z);
 			return true;
 		}
 	}

@@ -50,7 +50,7 @@ public class SensoringDislocator extends Dislocator {
 
 			TileEntitySensoringDislocator tile = Utils.getTileEntity(world, x, y, z, TileEntitySensoringDislocator.class);
 			if (tile != null)
-				player.openGui(GanysSurface.instance, GUIsID.BLOCK_DETECTOR, world, x, y, z);
+				player.openGui(GanysSurface.instance, GUIsID.BLOCK_DETECTOR.ordinal(), world, x, y, z);
 			return true;
 		}
 	}

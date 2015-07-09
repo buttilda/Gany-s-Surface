@@ -68,7 +68,7 @@ public class InkHarvester extends BlockContainer implements IConfigurable {
 		else {
 			TileEntityInkHarvester tile = Utils.getTileEntity(world, x, y, z, TileEntityInkHarvester.class);
 			if (tile != null && tile.isFormed()) {
-				player.openGui(GanysSurface.instance, GUIsID.INK_HARVESTER, world, x, y, z);
+				player.openGui(GanysSurface.instance, GUIsID.INK_HARVESTER.ordinal(), world, x, y, z);
 				return true;
 			}
 			return false;

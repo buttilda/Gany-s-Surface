@@ -59,7 +59,7 @@ public class Planter extends BlockContainer implements IConfigurable {
 		else {
 			TileEntityPlanter tile = Utils.getTileEntity(world, x, y, z, TileEntityPlanter.class);
 			if (tile != null)
-				player.openGui(GanysSurface.instance, GUIsID.PLANTER, world, x, y, z);
+				player.openGui(GanysSurface.instance, GUIsID.PLANTER.ordinal(), world, x, y, z);
 			return true;
 		}
 	}
