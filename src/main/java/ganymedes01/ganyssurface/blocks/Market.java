@@ -58,7 +58,11 @@ public class Market extends BlockContainer implements IConfigurable {
 
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int meta) {
-		InventoryUtils.dropInventoryContents(world.getTileEntity(x, y, z));
+		TileEntityMarket tile = Utils.getTileEntity(world, x, y, z, TileEntityMarket.class);
+		if (tile != null)
+			for (int i = 0; i < 7; i++)
+				tile.setInventorySlotContents(i, null);
+		InventoryUtils.dropInventoryContents(tile);
 		super.breakBlock(world, x, y, z, block, meta);
 	}
 

@@ -5,6 +5,10 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -22,7 +26,7 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 	private String owner;
 
 	public TileEntityMarket() {
-		super(0, Strings.MARKET);
+		super(14, Strings.MARKET);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -60,8 +64,34 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 		return false;
 	}
 
+	@Override
+	public Packet getDescriptionPacket() {
+		NBTTagCompound nbt = new NBTTagCompound();
+		writeToNBT(nbt);
+		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 0, nbt);
+	}
+
+	@Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
+		if (pkt.func_148853_f() == 0)
+			readFromNBT(pkt.func_148857_g());
+	}
+
+	@Override
+	public void writeToNBT(NBTTagCompound nbt) {
+		super.writeToNBT(nbt);
+		nbt.setString("owner", owner);
+	}
+
+	@Override
+	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+		owner = nbt.getString("owner");
+	}
+
 	public void setOwner(EntityPlayer player) {
 		owner = player.getCommandSenderName();
+		markDirty();
 	}
 
 	public String getOwner() {

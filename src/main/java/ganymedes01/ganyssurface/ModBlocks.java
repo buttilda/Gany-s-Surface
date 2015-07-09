@@ -37,6 +37,7 @@ import ganymedes01.ganyssurface.blocks.InvertedDaylightDetector;
 import ganymedes01.ganyssurface.blocks.ItemDisplay;
 import ganymedes01.ganyssurface.blocks.Lantern;
 import ganymedes01.ganyssurface.blocks.LeafWall;
+import ganymedes01.ganyssurface.blocks.Market;
 import ganymedes01.ganyssurface.blocks.OrganicMatterCompressor;
 import ganymedes01.ganyssurface.blocks.Planter;
 import ganymedes01.ganyssurface.blocks.PoopBlock;
@@ -106,6 +107,7 @@ public class ModBlocks {
 	public static final Block bookshelf = new BlockWoodBookshelf();
 	public static final BlockStorage storage = new BlockStorage();
 	public static final BlockStorage dye = new BlockDye();
+	public static final Block market = new Market();
 
 	public static final Block[] disguisedTrapdoors = new Block[BlockWood.field_150096_a.length];
 	public static final Block[] chests = new Block[BlockWood.field_150096_a.length];

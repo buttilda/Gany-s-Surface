@@ -22,14 +22,19 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class GuiMarket extends GuiGanysSurface {
 
 	private final ResourceLocation TEXTURE = Utils.getResource(Utils.getGUITexture(Strings.MARKET));
+	private final TileEntityMarket market;
 
 	public GuiMarket(InventoryPlayer player, TileEntityMarket market) {
 		super(new ContainerMarket(player, market));
+		this.market = market;
+		ySize = 192;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
-		fontRendererObj.drawString(StatCollector.translateToLocal(Utils.getConainerName(Strings.MARKET)), 28, 6, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocalFormatted(Utils.getString("isselling"), market.getOwner()), 28, 6, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal(Utils.getString("for")), 35, 32, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal(Utils.getString("payhere")), 8, 58, BLACK);
 		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
 	}
 
