@@ -27,7 +27,7 @@ public class ContainerMarket extends GanysContainer {
 			addSlotToContainer(new MarketSlot(market, 1 + i, 55 + i * 18, 29));
 		// Payment
 		for (int i = 0; i < 6; i++)
-			addSlotToContainer(new BetterSlot(market, 8 + i, 8 + i * 18, 71));
+			addSlotToContainer(new BetterSlot(market, 7 + i, 8 + i * 18, 71));
 		// Purchase
 		addSlotToContainer(new BetterSlot(market, 13, 141, 71));
 
