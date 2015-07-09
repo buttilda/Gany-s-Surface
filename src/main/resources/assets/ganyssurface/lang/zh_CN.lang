@@ -288,18 +288,19 @@ container.ganyssurface.autoEncaser=自动装箱工作台
 container.ganyssurface.gearalyser=装备分析仪
 container.ganyssurface.banner=Banner Pattern
 
-matter=有机物质:
-squidFood=鱼食:
-
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface
 
+# Strings
+string.ganyssurface.matter=有机物质:
+string.ganyssurface.squidFood=鱼食:
+string.ganyssurface.pleaseletmefree0=求求你放了我吧! TAT
+string.ganyssurface.pleaseletmefree1=鱿鱼是怎么叫的?
+string.ganyssurface.attacktocapture=左键一只蝙蝠或鱿鱼来捕捉它
+string.ganyssurface.interacttorotate=右键原木,告示牌或竖纹方块来旋转它们
+string.ganyssurface.portableWorktable=按%s或右键来打开
+
 # Others
-pleaseletmefree0=求求你放了我吧! TAT
-pleaseletmefree1=鱿鱼是怎么叫的?
-attacktocapture=左键一只蝙蝠或鱿鱼来捕捉它
-interacttorotate=右键原木,告示牌或竖纹方块来旋转它们
-portableWorktable=按%s或右键来打开
 entity.ItemFrame.name=物品展示框
 
 # Version Check

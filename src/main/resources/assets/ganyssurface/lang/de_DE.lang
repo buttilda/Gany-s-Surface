@@ -115,13 +115,12 @@ container.ganyssurface:planter=Pflanzmaschine
 container.ganyssurface:inkHarvester=Tinte-Erntemaschine
 container.ganyssurface:dualWorkTable=Doppelwerktisch
 
-matter=Materie:
-squidFood=Essen:
-
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface
 
-# Others
-pleaseletmefree=Bitte lass mich frei D=
-attacktocapture=Linksklick auf eine Fledermaus, um sie zu fangen
-interacttorotate=Rechtsklick auf St‰mme, S‰ulen und so weiter, um sie zu drehen
+# Strings
+strings.ganyssurface.matter=Materie:
+strings.ganyssurface.squidFood=Essen:
+strings.ganyssurface.pleaseletmefree=Bitte lass mich frei D=
+strings.ganyssurface.attacktocapture=Linksklick auf eine Fledermaus, um sie zu fangen
+strings.ganyssurface.interacttorotate=Rechtsklick auf St‰mme, S‰ulen und so weiter, um sie zu drehen

@@ -288,18 +288,19 @@ container.ganyssurface.autoEncaser=Автоматический упаковщи
 container.ganyssurface.gearalyser=Анализатор брони и инструментов
 container.ganyssurface.banner=Шаблон флагов
 
-matter=Материя:
-squidFood=Еда:
-
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface
 
+# Strings
+string.ganyssurface.matter=Материя:
+string.ganyssurface.squidFood=Еда:
+string.ganyssurface.pleaseletmefree0=Пожалуйста, отпусти меня D=
+string.ganyssurface.pleaseletmefree1=Что спрут говорит?
+string.ganyssurface.attacktocapture=ЛКМ по летучей мыши или спруту, чтобы поймать их
+string.ganyssurface.interacttorotate=ПКМ по древесине, колоннам, табличкам и т.д., чтобы поворачивать
+string.ganyssurface.portableWorktable=Нажмите %s или ПКМ, чтобы открыть.
+
 # Others
-pleaseletmefree0=Пожалуйста, отпусти меня D=
-pleaseletmefree1=Что спрут говорит?
-attacktocapture=ЛКМ по летучей мыши или спруту, чтобы поймать их
-interacttorotate=ПКМ по древесине, колоннам, табличкам и т.д., чтобы поворачивать
-portableWorktable=Нажмите %s или ПКМ, чтобы открыть.
 entity.ItemFrame.name=Предметная рамка
 
 # Version Check

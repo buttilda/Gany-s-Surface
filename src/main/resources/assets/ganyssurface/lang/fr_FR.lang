@@ -222,16 +222,17 @@ container.ganyssurface.encasingBench=Table d'Emboîtage
 container.ganyssurface.autoEncaser=Auto Emboîteur
 container.ganyssurface.gearalyser=Engrenaliseur
 
-matter=Matière:
-squidFood=Nourriture:
-
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface
 
+# Strings
+string.ganyssurface.matter=Matière:
+string.ganyssurface.squidFood=Nourriture:
+string.ganyssurface.pleaseletmefree0=Libérez-moi, pitié D':
+string.ganyssurface.pleaseletmefree1="O poulpe, au regard de soie..." - Comte De Lautréamont
+string.ganyssurface.attacktocapture=Cliquer-gauche sur une chauve-souris ou un poulpe pour la/le capturer
+string.ganyssurface.interacttorotate=Cliquer-droit sur des bûches, des pilliers, etc. pour tourner
+string.ganyssurface.portableWorktable=Appuyer sur %s ou cliquer-droit pour ouvrir. 
+
 # Others
-pleaseletmefree0=Libérez-moi, pitié D':
-pleaseletmefree1="O poulpe, au regard de soie..." - Comte De Lautréamont
-attacktocapture=Cliquer-gauche sur une chauve-souris ou un poulpe pour la/le capturer
-interacttorotate=Cliquer-droit sur des bûches, des pilliers, etc. pour tourner
-portableWorktable=Appuyer sur %s ou cliquer-droit pour ouvrir. 
 entity.ItemFrame.name=Cadre

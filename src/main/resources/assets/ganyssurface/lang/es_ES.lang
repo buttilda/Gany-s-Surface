@@ -110,13 +110,12 @@ container.ganyssurface:planter=Plantador
 container.ganyssurface:inkHarvester=Cosechador de Tinta
 container.ganyssurface:dualWorkTable=Mesa de Trabajo Dual
 
-matter=Materia:
-squidFood=Alimento:
-
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface
 
-# Others
-pleaseletmefree=Libérame por favor D=
-attacktocapture=Clic izquierdo a un Murciélago para atraparlo
-interacttorotate=Clic derecho a troncos, pilares, etc. para rotarlos
+# Strings
+strings.ganyssurface.matter=Materia:
+strings.ganyssurface.squidFood=Alimento:
+strings.ganyssurface.pleaseletmefree=Libérame por favor D=
+strings.ganyssurface.attacktocapture=Clic izquierdo a un Murciélago para atraparlo
+strings.ganyssurface.interacttorotate=Clic derecho a troncos, pilares, etc. para rotarlos

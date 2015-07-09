@@ -222,16 +222,17 @@ container.ganyssurface.encasingBench=梱包作業台
 container.ganyssurface.autoEncaser=自動梱包装置
 container.ganyssurface.gearalyser=ツールスキャナー
 
-matter=物質:
-squidFood=食糧:
-
 # Creative Tabのローカライズ
 itemGroup.ganyssurface=Gany's Surface
 
-# その他
-pleaseletmefree0=私を自由にしてください...
-pleaseletmefree1=イカは何かを言っている？
-attacktocapture=左クリックでイカやコウモリを捕獲
-interacttorotate=右クリックで原木や看板などの向きを変更
-portableWorktable=%s キーか右クリックで開く
+# Strings
+string.ganyssurface.matter=物質:
+string.ganyssurface.squidFood=食糧:
+string.ganyssurface.pleaseletmefree0=私を自由にしてください...
+string.ganyssurface.pleaseletmefree1=イカは何かを言っている？
+string.ganyssurface.attacktocapture=左クリックでイカやコウモリを捕獲
+string.ganyssurface.interacttorotate=右クリックで原木や看板などの向きを変更
+string.ganyssurface.portableWorktable=%s キーか右クリックで開く
+
+# Others
 entity.ItemFrame.name=額縁

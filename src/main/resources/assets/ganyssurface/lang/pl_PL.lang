@@ -115,13 +115,12 @@ container.ganyssurface:planter=Wysiewacz
 container.ganyssurface:inkHarvester=Zbieracz Tuszu
 container.ganyssurface:dualWorkTable=Podwójny stół pracowniczy
 
-matter=Matter:
-squidFood=Food:
-
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface
 
-# Others
-pleaseletmefree=Please let me free D=
-attacktocapture=Left-Click a bat to capture it
-interacttorotate=Right-Click logs,pillars and etc. to rotate
+# Strings
+string.ganyssurface.matter=Matter:
+string.ganyssurface.squidFood=Food:
+string.ganyssurface.pleaseletmefree=Please let me free D=
+string.ganyssurface.attacktocapture=Left-Click a bat to capture it
+string.ganyssurface.interacttorotate=Right-Click logs,pillars and etc. to rotate

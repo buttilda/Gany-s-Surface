@@ -53,7 +53,5 @@ container.ganyssurface:organicMatterCompressor=Organisk Stof Kompressor
 container.ganyssurface:itemDisplay=Element Udstilling
 container.ganyssurface:planter=Planter
 
-matter=Matter:
-
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Overflade

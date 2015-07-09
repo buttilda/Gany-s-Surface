@@ -150,18 +150,13 @@ container.ganyssurface:farmManager=Gestore della Fattoria
 container.ganyssurface:encasingBench=Banco Restringente
 container.ganyssurface:autoEncaser=Restringente Automatico
 
-matter=Materiale:
-squidFood=Cibo:
-profit=Profitto:
-forSale=In Sconto:
-offer=Offerta:
-price=Prezzo:
-
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface
 
-# Others
-pleaseletmefree0=Ti prego, liberami D=
-pleaseletmefree1=What does the squid say?
-attacktocapture=Tasto sinistro su un pipistrello o un calamaro per catturarlo
-interacttorotate=Tasto destro su un tronco, pilastro, ecc. per ruotarlo
+# Strings
+string.ganyssurface.matter=Materiale:
+string.ganyssurface.squidFood=Cibo:
+string.ganyssurface.pleaseletmefree0=Ti prego, liberami D=
+string.ganyssurface.pleaseletmefree1=What does the squid say?
+string.ganyssurface.attacktocapture=Tasto sinistro su un pipistrello o un calamaro per catturarlo
+string.ganyssurface.interacttorotate=Tasto destro su un tronco, pilastro, ecc. per ruotarlo
