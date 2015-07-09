@@ -45,7 +45,7 @@ public class WoodenWrench extends Item implements IConfigurable {
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
-		list.add(StatCollector.translateToLocal("interacttorotate"));
+		list.add(StatCollector.translateToLocal(Utils.getString("interacttorotate")));
 	}
 
 	@Override

@@ -42,7 +42,7 @@ public class PortableDualWorkTable extends Item implements IConfigurable {
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
-		list.add(String.format(StatCollector.translateToLocal("portableWorktable"), EnumChatFormatting.YELLOW + Keyboard.getKeyName(KeyBindingHandler.worktable.getKeyCode()) + EnumChatFormatting.GRAY));
+		list.add(StatCollector.translateToLocalFormatted(Utils.getString("portableWorktable"), EnumChatFormatting.YELLOW + Keyboard.getKeyName(KeyBindingHandler.worktable.getKeyCode()) + EnumChatFormatting.GRAY));
 	}
 
 	public static TileEntityDualWorkTable getTile(ItemStack stack) {

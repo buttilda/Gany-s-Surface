@@ -51,7 +51,7 @@ public class PocketCritter extends Item implements IConfigurable {
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
-		list.add(StatCollector.translateToLocal("pleaseletmefree" + stack.getItemDamage()));
+		list.add(StatCollector.translateToLocal(Utils.getString("pleaseletmefree" + stack.getItemDamage())));
 	}
 
 	@Override

@@ -32,7 +32,7 @@ public class GuiInkHarvester extends GuiGanysSurface {
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
 		fontRendererObj.drawString(StatCollector.translateToLocal(harvester.getInventoryName()), xSize / 2 - fontRendererObj.getStringWidth(StatCollector.translateToLocal(harvester.getInventoryName())) / 2, 6, BLACK);
 		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
-		fontRendererObj.drawString(StatCollector.translateToLocal("squidFood"), 115, 25, BLACK);
+		fontRendererObj.drawString(StatCollector.translateToLocal(Utils.getString("squidFood")), 115, 25, BLACK);
 	}
 
 	@Override

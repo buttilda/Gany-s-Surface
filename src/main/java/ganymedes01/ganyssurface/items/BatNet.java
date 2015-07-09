@@ -39,7 +39,7 @@ public class BatNet extends Item implements IConfigurable {
 	@Override
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
-		list.add(StatCollector.translateToLocal("attacktocapture"));
+		list.add(StatCollector.translateToLocal(Utils.getString("attacktocapture")));
 	}
 
 	@Override

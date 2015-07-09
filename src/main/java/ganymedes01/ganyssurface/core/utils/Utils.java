@@ -62,6 +62,10 @@ public class Utils {
 		return "container." + Reference.MOD_ID + "." + name;
 	}
 
+	public static String getString(String str) {
+		return "string." + Reference.MOD_ID + "." + str;
+	}
+
 	public static int getColour(int R, int G, int B) {
 		return new Color(R < 0 ? 0 : R, G < 0 ? 0 : G, B < 0 ? 0 : B).getRGB() & 0x00ffffff;
 	}

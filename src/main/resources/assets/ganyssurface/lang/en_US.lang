@@ -288,18 +288,22 @@ container.ganyssurface.autoEncaser=Auto Encaser
 container.ganyssurface.gearalyser=Gearalyser
 container.ganyssurface.banner=Banner Pattern
 
-matter=Matter:
-squidFood=Food:
-
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface
 
+# Strings
+string.ganyssurface.matter=Matter:
+string.ganyssurface.squidFood=Food:
+string.ganyssurface.isselling=%s is selling:
+string.ganyssurface.for=For
+string.ganyssurface.payhere=Pay here:
+string.ganyssurface.pleaseletmefree0=Please let me free D=
+string.ganyssurface.pleaseletmefree1=What does the squid say?
+string.ganyssurface.attacktocapture=Left-Click a bat or a squid to capture it
+string.ganyssurface.interacttorotate=Right-Click logs,pillars,signs and etc. to rotate
+string.ganyssurface.portableWorktable=Press %s or right-click to open.
+
 # Others
-pleaseletmefree0=Please let me free D=
-pleaseletmefree1=What does the squid say?
-attacktocapture=Left-Click a bat or a squid to capture it
-interacttorotate=Right-Click logs,pillars,signs and etc. to rotate
-portableWorktable=Press %s or right-click to open.
 entity.ItemFrame.name=Item Frame
 
 # Version Check
