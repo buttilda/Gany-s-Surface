@@ -32,6 +32,8 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 	private static final int PRODUCT_SLOT = 0;
 	private static final int PURCHASE_SLOT = 13;
 
+	private boolean isSleeping = false;
+	private int tries = 0;
 	private String owner;
 	private final List<ItemStack> profits = new ArrayList<ItemStack>();
 
@@ -106,25 +108,43 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 	@Override
 	public void markDirty() {
 		super.markDirty();
-		checkPurchase();
+		isSleeping = false;
 	}
 
 	@Override
 	public void updateEntity() {
 		if (!worldObj.isRemote) {
-			if (!profits.isEmpty()) {
-				EntityPlayer player = worldObj.getPlayerEntityByName(owner);
-				if (player != null) {
-					IInventory enderChest = player.getInventoryEnderChest();
-					for (ItemStack profit : profits)
-						if (InventoryUtils.addStackToInventory(enderChest, profit)) {
-							profits.remove(profit);
-							return;
-						}
+			// Complete purchases
+			if (!isSleeping || worldObj.getWorldTime() % 60 == 0)
+				if (checkPurchase()) {
+					makePurchase();
+					tries = 0;
+					isSleeping = false;
+				} else {
+					tries++;
+					// If all check atempts failed for the last minute enter sleep mode
+					if (tries >= 20 * 60)
+						isSleeping = true;
 				}
-			}
+
+			// Try to add buffer to Ender Chest
+			addBufferToEnderChest();
 		} else if (!markets.containsKey(this))
 			markets.put(this, null);
+	}
+
+	private void addBufferToEnderChest() {
+		if (!profits.isEmpty()) {
+			EntityPlayer player = worldObj.getPlayerEntityByName(owner);
+			if (player != null) {
+				IInventory enderChest = player.getInventoryEnderChest();
+				for (ItemStack profit : profits)
+					if (InventoryUtils.addStackToInventory(enderChest, profit)) {
+						profits.remove(profit);
+						return;
+					}
+			}
+		}
 	}
 
 	public void setOwner(EntityPlayer player) {
@@ -136,10 +156,26 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 		return owner;
 	}
 
-	public void checkPurchase() {
+	private boolean checkPurchase() {
+		// If there's no product set...
 		if (inventory[PRODUCT_SLOT] == null)
-			return;
+			return false;
+		// If there's no stock...
+		if (!hasStock())
+			return false;
+		// If there's already something in the output slot...
+		if (inventory[PURCHASE_SLOT] != null)
+			// If the item currently being sold is not the same as the one in the output...
+			if (!InventoryUtils.areStacksSameOre(inventory[PURCHASE_SLOT], inventory[PRODUCT_SLOT]))
+				return false;
+			else {
+				// If they are the same but the stack sizes are too big...
+				int size = inventory[PURCHASE_SLOT].stackSize + inventory[PRODUCT_SLOT].stackSize;
+				if (size > getInventoryStackLimit() || size > inventory[PURCHASE_SLOT].getMaxStackSize())
+					return false;
+			}
 
+		// Check if the payment slots match the price slots
 		boolean matched = true;
 		boolean allNull = true;
 		for (int i = 1; i < 7; i++) {
@@ -160,13 +196,13 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 					break;
 				}
 		}
-		if (matched && !allNull)
-			inventory[PURCHASE_SLOT] = inventory[PRODUCT_SLOT].copy();
-		else
-			inventory[PURCHASE_SLOT] = null;
+
+		// If they match and the price slots aren't all null...
+		return matched && !allNull;
 	}
 
-	public void makePurchase() {
+	private void makePurchase() {
+		// Add profits to buffer
 		for (int i = 7; i < 13; i++) {
 			ItemStack payment = inventory[i];
 			if (payment != null) {
@@ -176,6 +212,36 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 				profits.add(inventory[i - 6].copy());
 			}
 		}
+
+		// Deduct item sold from ender chest
+		int totalCount = 0;
+		int targetCount = inventory[PRODUCT_SLOT].stackSize;
+		EntityPlayer player = worldObj.getPlayerEntityByName(owner);
+		if (player != null) {
+			IInventory enderChest = player.getInventoryEnderChest();
+			for (int i = 0; i < enderChest.getSizeInventory(); i++) {
+				ItemStack invtStack = enderChest.getStackInSlot(i);
+				if (InventoryUtils.areStacksSameOre(invtStack, inventory[PRODUCT_SLOT])) {
+					int oldCount = totalCount;
+					totalCount = Math.min(invtStack.stackSize + totalCount, targetCount);
+					if ((invtStack.stackSize -= totalCount - oldCount) <= 0)
+						enderChest.setInventorySlotContents(i, null);
+					if (totalCount >= targetCount)
+						break;
+				}
+			}
+		}
+
+		// Add the sold item to the output slot
+		if (inventory[PURCHASE_SLOT] == null)
+			inventory[PURCHASE_SLOT] = inventory[PRODUCT_SLOT].copy();
+		else
+			inventory[PURCHASE_SLOT].stackSize += inventory[PRODUCT_SLOT].stackSize;
+	}
+
+	private boolean hasStock() {
+		EntityPlayer player = worldObj.getPlayerEntityByName(owner);
+		return player != null && InventoryUtils.inventoryContains(player.getInventoryEnderChest(), inventory[PRODUCT_SLOT]);
 	}
 
 	public boolean isItemPayment(ItemStack stack) {

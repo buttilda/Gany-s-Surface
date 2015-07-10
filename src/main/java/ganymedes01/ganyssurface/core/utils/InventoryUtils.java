@@ -23,6 +23,20 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class InventoryUtils {
 
+	public static boolean inventoryContains(IInventory iinventory, ItemStack stack) {
+		int totalCount = 0;
+		IInventory invt = getInventory(iinventory);
+		for (int i = 0; i < invt.getSizeInventory(); i++) {
+			ItemStack invtStack = invt.getStackInSlot(i);
+			if (areStacksSameOre(stack, invtStack)) {
+				totalCount += invtStack.stackSize;
+				if (totalCount >= stack.stackSize)
+					return true;
+			}
+		}
+		return false;
+	}
+
 	public static void addToPlayerInventory(EntityPlayer player, ItemStack stack, double x, double y, double z) {
 		if (!player.worldObj.isRemote) {
 			EntityItem entity = new EntityItem(player.worldObj, x + 0.5, y, z + 0.5, stack);
