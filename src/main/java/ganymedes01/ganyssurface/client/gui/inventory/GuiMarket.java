@@ -34,8 +34,12 @@ public class GuiMarket extends GuiGanysSurface {
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
 		fontRendererObj.drawString(StatCollector.translateToLocalFormatted(Utils.getString("isselling"), market.getOwner()), 28, 6, BLACK);
 		fontRendererObj.drawString(StatCollector.translateToLocal(Utils.getString("for")), 35, 32, BLACK);
-		fontRendererObj.drawString(StatCollector.translateToLocal(Utils.getString("payhere")), 8, 58, BLACK);
 		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
+
+		if (mc.thePlayer.getCommandSenderName().equals(market.getOwner()))
+			fontRendererObj.drawString(StatCollector.translateToLocal(Utils.getString("stockyourenderchest")), 8, 58, Utils.getColour(255, 0, 0));
+		else
+			fontRendererObj.drawString(StatCollector.translateToLocal(Utils.getString("payhere")), 8, 58, BLACK);
 	}
 
 	@Override

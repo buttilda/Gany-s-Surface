@@ -459,6 +459,12 @@ public class ModRecipes {
 				addShapelessRecipe(ModBlocks.dye.getStoredObjectResult(i), ModBlocks.dye.getOreName(i));
 			}
 
+		if (GanysSurface.enableMarket)
+			if (GanysSurface.enableItemDisplay)
+				addShapedRecipe(new ItemStack(ModBlocks.market), "xxx", "yzy", "waw", 'x', "plankWood", 'y', Items.item_frame, 'z', new ItemStack(ModBlocks.itemDisplay, 1, OreDictionary.WILDCARD_VALUE), 'w', "stone", 'a', new ItemStack(Blocks.stonebrick, 1, 3));
+			else
+				addShapedRecipe(new ItemStack(ModBlocks.market), "xxx", "yyy", "zwz", 'x', "plankWood", 'y', Items.item_frame, 'z', "stone", 'w', new ItemStack(Blocks.stonebrick, 1, 3));
+
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)
 			addShapedRecipe(new ItemStack(Blocks.web), "x x", " y ", "x x", 'y', "slimeball", 'x', Items.string);

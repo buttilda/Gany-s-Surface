@@ -122,7 +122,7 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 					isSleeping = false;
 				} else {
 					tries++;
-					// If all check atempts failed for the last minute enter sleep mode
+					// If all check attempts failed for the last minute enter sleep mode
 					if (tries >= 20 * 60)
 						isSleeping = true;
 				}
@@ -135,15 +135,13 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 
 	private void addBufferToEnderChest() {
 		if (!profits.isEmpty()) {
-			EntityPlayer player = worldObj.getPlayerEntityByName(owner);
-			if (player != null) {
-				IInventory enderChest = player.getInventoryEnderChest();
+			IInventory boundInvt = getBoundInventory();
+			if (boundInvt != null)
 				for (ItemStack profit : profits)
-					if (InventoryUtils.addStackToInventory(enderChest, profit)) {
+					if (InventoryUtils.addStackToInventory(boundInvt, profit)) {
 						profits.remove(profit);
 						return;
 					}
-			}
 		}
 	}
 
@@ -216,21 +214,19 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 		// Deduct item sold from ender chest
 		int totalCount = 0;
 		int targetCount = inventory[PRODUCT_SLOT].stackSize;
-		EntityPlayer player = worldObj.getPlayerEntityByName(owner);
-		if (player != null) {
-			IInventory enderChest = player.getInventoryEnderChest();
-			for (int i = 0; i < enderChest.getSizeInventory(); i++) {
-				ItemStack invtStack = enderChest.getStackInSlot(i);
+		IInventory boundInvt = getBoundInventory();
+		if (boundInvt != null)
+			for (int i = 0; i < boundInvt.getSizeInventory(); i++) {
+				ItemStack invtStack = boundInvt.getStackInSlot(i);
 				if (InventoryUtils.areStacksSameOre(invtStack, inventory[PRODUCT_SLOT])) {
 					int oldCount = totalCount;
 					totalCount = Math.min(invtStack.stackSize + totalCount, targetCount);
 					if ((invtStack.stackSize -= totalCount - oldCount) <= 0)
-						enderChest.setInventorySlotContents(i, null);
+						boundInvt.setInventorySlotContents(i, null);
 					if (totalCount >= targetCount)
 						break;
 				}
 			}
-		}
 
 		// Add the sold item to the output slot
 		if (inventory[PURCHASE_SLOT] == null)
@@ -240,8 +236,8 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 	}
 
 	private boolean hasStock() {
-		EntityPlayer player = worldObj.getPlayerEntityByName(owner);
-		return player != null && InventoryUtils.inventoryContains(player.getInventoryEnderChest(), inventory[PRODUCT_SLOT]);
+		IInventory boundInvt = getBoundInventory();
+		return boundInvt != null && InventoryUtils.inventoryContains(boundInvt, inventory[PRODUCT_SLOT]);
 	}
 
 	public boolean isItemPayment(ItemStack stack) {
@@ -266,5 +262,10 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 		for (int i = 1; i < 7; i++)
 			price[i - 1] = inventory[i];
 		return price;
+	}
+
+	private IInventory getBoundInventory() {
+		EntityPlayer player = worldObj.getPlayerEntityByName(owner);
+		return player != null ? player.getInventoryEnderChest() : null;
 	}
 }
