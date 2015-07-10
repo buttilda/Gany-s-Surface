@@ -7,6 +7,7 @@ import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPortableDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
 import ganymedes01.ganyssurface.integration.nei.BannerPatternHandler;
+import ganymedes01.ganyssurface.integration.nei.MarketSalesHandler;
 import ganymedes01.ganyssurface.integration.nei.OMCYieldHandler;
 import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.block.Block;
@@ -45,6 +46,11 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 		if (GanysSurface.enableBanners) {
 			API.registerRecipeHandler(new BannerPatternHandler());
 			API.registerUsageHandler(new BannerPatternHandler());
+		}
+
+		if (GanysSurface.enableMarket) {
+			API.registerRecipeHandler(new MarketSalesHandler());
+			API.registerUsageHandler(new MarketSalesHandler());
 		}
 
 		if (GanysSurface.enableTea) {

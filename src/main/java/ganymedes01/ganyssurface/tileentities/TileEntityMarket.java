@@ -5,6 +5,8 @@ import ganymedes01.ganyssurface.lib.Strings;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -24,6 +26,8 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
  */
 
 public class TileEntityMarket extends GanysInventory implements ISidedInventory {
+
+	public static final Map<TileEntityMarket, Object> markets = new WeakHashMap<TileEntityMarket, Object>();
 
 	private static final int PRODUCT_SLOT = 0;
 	private static final int PURCHASE_SLOT = 13;
@@ -107,17 +111,20 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 
 	@Override
 	public void updateEntity() {
-		if (!profits.isEmpty()) {
-			EntityPlayer player = worldObj.getPlayerEntityByName(owner);
-			if (player != null) {
-				IInventory enderChest = player.getInventoryEnderChest();
-				for (ItemStack profit : profits)
-					if (InventoryUtils.addStackToInventory(enderChest, profit)) {
-						profits.remove(profit);
-						return;
-					}
+		if (!worldObj.isRemote) {
+			if (!profits.isEmpty()) {
+				EntityPlayer player = worldObj.getPlayerEntityByName(owner);
+				if (player != null) {
+					IInventory enderChest = player.getInventoryEnderChest();
+					for (ItemStack profit : profits)
+						if (InventoryUtils.addStackToInventory(enderChest, profit)) {
+							profits.remove(profit);
+							return;
+						}
+				}
 			}
-		}
+		} else if (!markets.containsKey(this))
+			markets.put(this, null);
 	}
 
 	public void setOwner(EntityPlayer player) {
@@ -169,5 +176,29 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 				profits.add(inventory[i - 6].copy());
 			}
 		}
+	}
+
+	public boolean isItemPayment(ItemStack stack) {
+		for (int i = 1; i < 7; i++) {
+			ItemStack payment = inventory[i];
+			if (InventoryUtils.areStacksSameOre(payment, stack))
+				return true;
+		}
+		return false;
+	}
+
+	public boolean isItemForSale(ItemStack stack) {
+		return InventoryUtils.areStacksSameOre(inventory[PRODUCT_SLOT], stack);
+	}
+
+	public ItemStack getProduct() {
+		return inventory[PRODUCT_SLOT];
+	}
+
+	public ItemStack[] getPrice() {
+		ItemStack[] price = new ItemStack[6];
+		for (int i = 1; i < 7; i++)
+			price[i - 1] = inventory[i];
+		return price;
 	}
 }

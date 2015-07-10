@@ -287,6 +287,7 @@ container.ganyssurface.encasingBench=Encasing Bench
 container.ganyssurface.autoEncaser=Auto Encaser
 container.ganyssurface.gearalyser=Gearalyser
 container.ganyssurface.banner=Banner Pattern
+container.ganyssurface.market=Market
 
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface
@@ -297,6 +298,8 @@ string.ganyssurface.squidFood=Food:
 string.ganyssurface.isselling=%s is selling:
 string.ganyssurface.for=For
 string.ganyssurface.payhere=Pay here:
+string.ganyssurface.at=at: 
+string.ganyssurface.inthe=in the %s
 string.ganyssurface.pleaseletmefree0=Please let me free D=
 string.ganyssurface.pleaseletmefree1=What does the squid say?
 string.ganyssurface.attacktocapture=Left-Click a bat or a squid to capture it
