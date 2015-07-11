@@ -34,8 +34,8 @@ public class GuiWorkTable extends GuiGanysSurface {
 	public void initGui() {
 		super.initGui();
 		if (GanysSurface.enableNoRecipeConflict) {
-			buttonList.add(new GuiButton(0, 260, 95, 15, 20, ">"));
-			buttonList.add(new GuiButton(1, 240, 95, 15, 20, "<"));
+			buttonList.add(new GuiButton(0, guiLeft + 135, guiTop + 60, 15, 20, ">"));
+			buttonList.add(new GuiButton(1, guiLeft + 115, guiTop + 60, 15, 20, "<"));
 		}
 	}
 

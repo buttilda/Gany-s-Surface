@@ -39,10 +39,10 @@ public class GuiDualWorkTable extends GuiGanysSurface {
 	public void initGui() {
 		super.initGui();
 		if (GanysSurface.enableNoRecipeConflict) {
-			buttonList.add(new GuiButton(0, 200, 95, 15, 20, ">"));
-			buttonList.add(new GuiButton(1, 180, 95, 15, 20, "<"));
-			buttonList.add(new GuiButton(2, 292, 95, 15, 20, ">"));
-			buttonList.add(new GuiButton(3, 272, 95, 15, 20, "<"));
+			buttonList.add(new GuiButton(0, guiLeft + 179 - 92, guiTop + 58, 15, 20, ">"));
+			buttonList.add(new GuiButton(1, guiLeft + 159 - 92, guiTop + 58, 15, 20, "<"));
+			buttonList.add(new GuiButton(2, guiLeft + 179, guiTop + 58, 15, 20, ">"));
+			buttonList.add(new GuiButton(3, guiLeft + 159, guiTop + 58, 15, 20, "<"));
 		}
 	}
 
