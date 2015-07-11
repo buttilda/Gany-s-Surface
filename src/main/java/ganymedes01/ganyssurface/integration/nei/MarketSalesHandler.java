@@ -74,8 +74,10 @@ public class MarketSalesHandler extends TemplateRecipeHandler {
 	@Override
 	public void loadCraftingRecipes(String outputId, Object... results) {
 		if (outputId.equals(getRecipeId()))
-			for (TileEntityMarket market : TileEntityMarket.markets.keySet())
-				arecipes.add(new CachedMarketSale(market));
+			for (TileEntityMarket market : TileEntityMarket.markets.keySet()) {
+				if (market.getProduct() != null)
+					arecipes.add(new CachedMarketSale(market));
+			}
 		else
 			super.loadCraftingRecipes(outputId, results);
 	}

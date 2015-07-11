@@ -69,16 +69,14 @@ public class TileEntityMarket extends GanysInventory implements ISidedInventory 
 	@Override
 	public Packet getDescriptionPacket() {
 		NBTTagCompound nbt = new NBTTagCompound();
-		nbt.setString("owner", owner);
+		writeToNBT(nbt);
 		return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 0, nbt);
 	}
 
 	@Override
 	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt) {
-		if (pkt.func_148853_f() == 0) {
-			NBTTagCompound nbt = pkt.func_148857_g();
-			owner = nbt.getString("owner");
-		}
+		if (pkt.func_148853_f() == 0)
+			readFromNBT(pkt.func_148857_g());
 	}
 
 	@Override
