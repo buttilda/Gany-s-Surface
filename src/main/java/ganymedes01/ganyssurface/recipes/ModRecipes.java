@@ -107,6 +107,9 @@ public class ModRecipes {
 
 		if (GanysSurface.enableWoodenBookshelves)
 			removeFirstRecipeFor(Blocks.bookshelf);
+
+		removeFirstRecipeFor(Blocks.hopper);
+		addShapedRecipe(new ItemStack(Blocks.hopper), "x x", "xyx", " x ", 'x', "ingotIron", 'y', "chestWood");
 	}
 
 	private static void registerOreDictionary() {
