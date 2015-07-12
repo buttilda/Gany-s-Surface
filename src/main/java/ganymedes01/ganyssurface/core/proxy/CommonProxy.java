@@ -125,7 +125,7 @@ public class CommonProxy implements IGuiHandler {
 			GameRegistry.registerTileEntity(TileEntityWoodSign.class, Utils.getUnlocalisedName("wood_sign"));
 		if (GanysSurface.enableBanners)
 			GameRegistry.registerTileEntity(TileEntityBanner.class, Utils.getUnlocalisedName("banner"));
-		if (GanysSurface.enableBanners)
+		if (GanysSurface.enableMarket)
 			GameRegistry.registerTileEntity(TileEntityMarket.class, Utils.getUnlocalisedName(Strings.MARKET));
 	}
 
