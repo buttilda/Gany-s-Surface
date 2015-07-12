@@ -1,4 +1,4 @@
-package ganymedes01.ganyssurface.blocks;
+package ganymedes01.ganyssurface.blocks.OnePointEight;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;
@@ -24,13 +24,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockWoodDoor extends BlockDoor implements IConfigurable {
 
-	public static final String[] names = new String[] { "oak", "spruce", "birch", "jungle", "acacia", "dark_oak" };
-
 	private final int meta;
 
 	public BlockWoodDoor(int meta) {
 		super(Material.wood);
-		String name = names[meta];
+		String name = GanysSurface.WOOD_NAMES[meta];
 		this.meta = meta;
 
 		disableStats();

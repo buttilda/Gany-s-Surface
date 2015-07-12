@@ -104,6 +104,7 @@ public class GanysSurface {
 	public static boolean enableDyeBlocks = true;
 	public static boolean enableNoRecipeConflict = true;
 	public static boolean enableMarket = true;
+	public static boolean enableDispenserShears = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
@@ -113,7 +114,6 @@ public class GanysSurface {
 	public static boolean enableIronTrapdoor = true;
 	public static boolean enableMutton = true;
 	public static boolean enablePrismarineStuff = true;
-	public static boolean enableDispenserShears = true;
 	public static boolean enableDoors = true;
 	public static boolean enableInvertedDaylightSensor = true;
 	public static boolean enableCoarseDirt = true;
@@ -125,6 +125,7 @@ public class GanysSurface {
 	public static boolean enableSponge = true;
 
 	public static int max18StonesPerCluster = 33;
+	public static final String[] WOOD_NAMES = new String[] { "oak", "spruce", "birch", "jungle", "acacia", "dark_oak" };
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

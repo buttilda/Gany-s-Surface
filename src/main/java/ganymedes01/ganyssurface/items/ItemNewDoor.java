@@ -3,7 +3,6 @@ package ganymedes01.ganyssurface.items;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks;
-import ganymedes01.ganyssurface.blocks.BlockWoodDoor;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,7 +18,7 @@ public class ItemNewDoor extends Item implements IConfigurable {
 
 	public ItemNewDoor(int meta) {
 		door = ModBlocks.doors[meta - 1];
-		String name = BlockWoodDoor.names[meta];
+		String name = GanysSurface.WOOD_NAMES[meta];
 
 		setMaxStackSize(64);
 		setTextureName("door_" + name);

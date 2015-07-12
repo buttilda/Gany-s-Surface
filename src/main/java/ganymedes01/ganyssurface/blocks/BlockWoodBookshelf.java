@@ -60,7 +60,7 @@ public class BlockWoodBookshelf extends BlockBookshelf implements ISubBlocksBloc
 		icons = new IIcon[BlockWood.field_150096_a.length - 1];
 
 		for (int i = 0; i < icons.length; i++)
-			icons[i] = reg.registerIcon(getTextureName() + BlockWoodDoor.names[i + 1]);
+			icons[i] = reg.registerIcon(getTextureName() + GanysSurface.WOOD_NAMES[i + 1]);
 	}
 
 	@Override

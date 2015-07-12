@@ -2,7 +2,6 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;
-import ganymedes01.ganyssurface.blocks.BlockWoodDoor;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -39,7 +38,7 @@ public class Stick extends Item implements IConfigurable {
 
 	@Override
 	public String getUnlocalizedName(ItemStack stack) {
-		return super.getUnlocalizedName() + "_" + BlockWoodDoor.names[Math.max(0, Math.min(stack.getItemDamage() + 1, BlockWoodDoor.names.length - 1))];
+		return super.getUnlocalizedName() + "_" + GanysSurface.WOOD_NAMES[Math.max(0, Math.min(stack.getItemDamage() + 1, GanysSurface.WOOD_NAMES.length - 1))];
 	}
 
 	@Override
@@ -61,7 +60,7 @@ public class Stick extends Item implements IConfigurable {
 	public void registerIcons(IIconRegister reg) {
 		icon = new IIcon[BlockWood.field_150096_a.length - 1];
 		for (int i = 0; i < icon.length; i++)
-			icon[i] = reg.registerIcon(getIconString() + "_" + BlockWoodDoor.names[i + 1]);
+			icon[i] = reg.registerIcon(getIconString() + "_" + GanysSurface.WOOD_NAMES[i + 1]);
 	}
 
 	@Override

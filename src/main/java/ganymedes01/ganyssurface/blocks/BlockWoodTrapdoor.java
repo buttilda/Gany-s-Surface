@@ -29,7 +29,7 @@ public class BlockWoodTrapdoor extends BlockTrapDoor implements IConfigurable {
 		setHardness(3.0F);
 		setStepSound(soundTypeWood);
 		setBlockName(Utils.getUnlocalisedName("trapdoor" + meta));
-		setBlockTextureName(Utils.getBlockTexture("trapdoor_" + BlockWoodDoor.names[meta]));
+		setBlockTextureName(Utils.getBlockTexture("trapdoor_" + GanysSurface.WOOD_NAMES[meta]));
 		setCreativeTab(GanysSurface.enableWoodenTrapdoors ? GanysSurface.surfaceTab : null);
 	}
 

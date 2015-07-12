@@ -127,7 +127,7 @@ public class BlockWoodSign extends BlockSign implements ISubBlocksBlock, IConfig
 	@Override
 	@SideOnly(Side.CLIENT)
 	public String getItemIconName() {
-		return !GanysSurface.enable3DRendering ? Utils.getBlockTexture("sign_" + BlockWoodDoor.names[woodMeta]) : null;
+		return !GanysSurface.enable3DRendering ? Utils.getBlockTexture("sign_" + GanysSurface.WOOD_NAMES[woodMeta]) : null;
 	}
 
 	@Override

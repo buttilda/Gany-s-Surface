@@ -18,7 +18,7 @@ public class BlockWoodLadder extends BlockLadder implements IConfigurable {
 		setHardness(0.4F);
 		setStepSound(soundTypeLadder);
 		setBlockName(Utils.getUnlocalisedName("ladder" + meta));
-		setBlockTextureName(Utils.getBlockTexture("ladder_" + BlockWoodDoor.names[meta]));
+		setBlockTextureName(Utils.getBlockTexture("ladder_" + GanysSurface.WOOD_NAMES[meta]));
 		setCreativeTab(GanysSurface.enableWoodenLadders ? GanysSurface.surfaceTab : null);
 	}
 

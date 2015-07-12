@@ -1,7 +1,7 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
+import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
-import ganymedes01.ganyssurface.blocks.BlockWoodDoor;
 import ganymedes01.ganyssurface.blocks.BlockWoodSign;
 import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.core.utils.Utils;
@@ -29,7 +29,7 @@ public class TileEntityWoodSignRenderer extends TileEntitySpecialRenderer {
 
 	public TileEntityWoodSignRenderer() {
 		for (int i = 0; i < textures.length; i++)
-			textures[i] = Utils.getResource(Utils.getEntityTexture("sign_" + BlockWoodDoor.names[i + 1]));
+			textures[i] = Utils.getResource(Utils.getEntityTexture("sign_" + GanysSurface.WOOD_NAMES[i + 1]));
 	}
 
 	@Override
