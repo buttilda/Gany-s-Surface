@@ -293,7 +293,7 @@ public class ModRecipes {
 		if (GanysSurface.enableExtraVanillaRecipes) {
 			addShapedRecipe(new ItemStack(Items.clay_ball, 4), "xxx", "yzy", "xxx", 'x', Blocks.gravel, 'y', Blocks.dirt, 'z', Items.water_bucket);
 			addShapelessRecipe(new ItemStack(Items.clay_ball, 4), Blocks.clay);
-			addShapedRecipe(new ItemStack(Items.name_tag), " y ", "x  ", 'x', Items.paper, 'y', Items.string);
+			addShapedRecipe(new ItemStack(Items.name_tag), " y", "x ", 'x', Items.paper, 'y', Items.string);
 			addShapelessRecipe(new ItemStack(Items.fermented_spider_eye), Items.spider_eye, Items.sugar, Blocks.red_mushroom);
 		}
 	}
