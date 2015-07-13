@@ -287,6 +287,7 @@ public class ModRecipes {
 			for (int i = 0; i < BlockWood.field_150096_a.length - 1; i++)
 				addShapedRecipe(new ItemStack(ModItems.stick, 4, i), "x", "x", 'x', new ItemStack(Blocks.planks, 1, i + 1));
 			addShapedRecipe(new ItemStack(Items.stick, 4), "x", "x", 'x', "plankWood");
+			addShapelessRecipe(new ItemStack(Items.stick), new ItemStack(ModItems.stick, 1, OreDictionary.WILDCARD_VALUE));
 		}
 
 		// Vanilla
