@@ -196,6 +196,7 @@ tile.ganyssurface.dye_magenta.name=Блок сиреневого красите�
 tile.ganyssurface.dye_orange.name=Блок оранжевого красителя
 tile.ganyssurface.dye_white.name=Блок белого красителя
 tile.ganyssurface.beetrootBlock.name=Свёкла
+tile.ganyssurface.market.name=Рынок
 
 tile.ganyssurface.18Stones_1.name=Гранит
 tile.ganyssurface.18Stones_2.name=Гладкий гранит
@@ -256,21 +257,21 @@ tile.ganyssurface.colouredRedstoneMAGENTA.name=Сиреневый камень
 tile.ganyssurface.colouredRedstoneORANGE.name=Оранжевый камень
 tile.ganyssurface.colouredRedstoneWHITE.name=Белый камень
 
-tile.ganyssurface.colouredRedstoneBlockBLACK.name=Блок чёрного камня
-tile.ganyssurface.colouredRedstoneBlockGREEN.name=Блок зелёного камня
-tile.ganyssurface.colouredRedstoneBlockBROWN.name=Блок коричневого камня
-tile.ganyssurface.colouredRedstoneBlockBLUE.name=Блок синего камня
-tile.ganyssurface.colouredRedstoneBlockPURPLE.name=Блок фиолетового камня
-tile.ganyssurface.colouredRedstoneBlockCYAN.name=Блок бирюзового камня
-tile.ganyssurface.colouredRedstoneBlockLIGHTGREY.name=Блок светло-серого камня
-tile.ganyssurface.colouredRedstoneBlockGREY.name=Блок серого камня
-tile.ganyssurface.colouredRedstoneBlockPINK.name=Блок розового камня
-tile.ganyssurface.colouredRedstoneBlockLIME.name=Блок лаймового камня
-tile.ganyssurface.colouredRedstoneBlockYELLOW.name=Блок жёлтого камня
-tile.ganyssurface.colouredRedstoneBlockLIGHTBLUE.name=Блок светло-синего камня
-tile.ganyssurface.colouredRedstoneBlockMAGENTA.name=Блок сиреневого камня
-tile.ganyssurface.colouredRedstoneBlockORANGE.name=Блок оранжевого камня
-tile.ganyssurface.colouredRedstoneBlockWHITE.name=Блок белого камня
+tile.ganyssurface.colouredRedstoneBlock_0.name=Блок чёрного камня
+tile.ganyssurface.colouredRedstoneBlock_2.name=Блок зелёного камня
+tile.ganyssurface.colouredRedstoneBlock_3.name=Блок коричневого камня
+tile.ganyssurface.colouredRedstoneBlock_4.name=Блок синего камня
+tile.ganyssurface.colouredRedstoneBlock_5.name=Блок фиолетового камня
+tile.ganyssurface.colouredRedstoneBlock_6.name=Блок бирюзового камня
+tile.ganyssurface.colouredRedstoneBlock_7.name=Блок светло-серого камня
+tile.ganyssurface.colouredRedstoneBlock_8.name=Блок серого камня
+tile.ganyssurface.colouredRedstoneBlock_9.name=Блок розового камня
+tile.ganyssurface.colouredRedstoneBlock_10.name=Блок лаймового камня
+tile.ganyssurface.colouredRedstoneBlock_11.name=Блок жёлтого камня
+tile.ganyssurface.colouredRedstoneBlock_12.name=Блок светло-синего камня
+tile.ganyssurface.colouredRedstoneBlock_13.name=Блок сиреневого камня
+tile.ganyssurface.colouredRedstoneBlock_14.name=Блок оранжевого камня
+tile.ganyssurface.colouredRedstoneBlock_15.name=Блок белого камня
 
 # GUI localizations
 container.ganyssurface.blockDetector=Детектор блока
@@ -287,6 +288,7 @@ container.ganyssurface.encasingBench=Упаковщик
 container.ganyssurface.autoEncaser=Автоматический упаковщик
 container.ganyssurface.gearalyser=Анализатор брони и инструментов
 container.ganyssurface.banner=Шаблон флагов
+container.ganyssurface.market=Рынок
 
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface
@@ -294,8 +296,14 @@ itemGroup.ganyssurface=Gany's Surface
 # Strings
 string.ganyssurface.matter=Материя:
 string.ganyssurface.squidFood=Еда:
+string.ganyssurface.isselling=%s продаёт:
+string.ganyssurface.for=За
+string.ganyssurface.payhere=Платить здесь:
+string.ganyssurface.at=at: 
+string.ganyssurface.inthe=в %s
+string.ganyssurface.stockyourenderchest=Положите вещи в сундук Края!
 string.ganyssurface.pleaseletmefree0=Пожалуйста, отпусти меня D=
-string.ganyssurface.pleaseletmefree1=Что спрут говорит?
+string.ganyssurface.pleaseletmefree1=Что говорит спрут?
 string.ganyssurface.attacktocapture=ЛКМ по летучей мыши или спруту, чтобы поймать их
 string.ganyssurface.interacttorotate=ПКМ по древесине, колоннам, табличкам и т.д., чтобы поворачивать
 string.ganyssurface.portableWorktable=Нажмите %s или ПКМ, чтобы открыть.
