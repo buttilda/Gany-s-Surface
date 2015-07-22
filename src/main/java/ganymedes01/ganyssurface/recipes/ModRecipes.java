@@ -567,6 +567,7 @@ public class ModRecipes {
 		if (GanysSurface.enableSponge) {
 			addShapelessRecipe(new ItemStack(ModBlocks.sponge), Blocks.sponge);
 			addShapelessRecipe(new ItemStack(Blocks.sponge), ModBlocks.sponge);
+			GameRegistry.addSmelting(new ItemStack(ModBlocks.sponge, 1, 1), new ItemStack(ModBlocks.sponge), 0.0F);
 		}
 	}
 
