@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.integration;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiCraftingTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiPortableDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
@@ -36,6 +37,11 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 			API.registerGuiOverlayHandler(GuiDualWorkTable.class, new DefaultOverlayHandler(5 + 75, 11), "crafting");
 			API.registerGuiOverlay(GuiPortableDualWorkTable.class, "crafting", 5 + 75, 11);
 			API.registerGuiOverlayHandler(GuiPortableDualWorkTable.class, new DefaultOverlayHandler(5 + 75, 11), "crafting");
+		}
+
+		if (GanysSurface.enableNoRecipeConflict) {
+			API.registerGuiOverlay(GuiCraftingTable.class, "crafting");
+			API.registerGuiOverlayHandler(GuiCraftingTable.class, new DefaultOverlayHandler(), "crafting");
 		}
 
 		if (GanysSurface.enableOMC) {
