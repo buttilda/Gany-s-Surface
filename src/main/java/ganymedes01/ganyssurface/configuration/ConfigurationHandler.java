@@ -116,6 +116,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableStorageBlocks = configBoolean("Enable storage blocks", "More specifically: " + BlockStorage.getTypesString(), true, true);
 		GanysSurface.enableDyeBlocks = configBoolean("Enable dye blocks", true, true);
 		GanysSurface.enableNoRecipeConflict = configBoolean("Enable No Recipe Conflict for Crafting Tables", true, true);
+		GanysSurface.enableNoRecipeConflictForCrafTable = configBoolean("Enable No Recipe Conflict for only the vanilla Crafting Tables", "You'll need to turn this off to craft Extra Utilities's Unstable Ingots", true, true);
 		GanysSurface.enableMarket = configBoolean("Enable Market", true, true);
 
 		// 1.8 Stuff

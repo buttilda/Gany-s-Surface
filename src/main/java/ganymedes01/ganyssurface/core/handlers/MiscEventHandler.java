@@ -217,7 +217,7 @@ public class MiscEventHandler {
 				}
 			}
 
-		if (GanysSurface.enableNoRecipeConflict)
+		if (GanysSurface.enableNoRecipeConflictForCrafTable)
 			if (event.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK) {
 				World world = event.world;
 				EntityPlayer player = event.entityPlayer;
