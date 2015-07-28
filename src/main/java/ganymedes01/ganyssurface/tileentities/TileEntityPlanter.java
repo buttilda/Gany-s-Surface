@@ -1,24 +1,23 @@
 package ganymedes01.ganyssurface.tileentities;
 
+import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.IPacketHandlingTile;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketTileEntity;
 import ganymedes01.ganyssurface.network.packet.PacketTileEntity.TileData;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class TileEntityPlanter extends GanysInventory implements IPacketHandlingTile {
@@ -48,28 +47,23 @@ public class TileEntityPlanter extends GanysInventory implements IPacketHandling
 		}
 		if (!isReturning)
 			if (worldObj.isAirBlock(xCoord, yCoord - 1, zCoord))
-				if (!worldObj.isAirBlock(xCoord, yCoord - 2, zCoord))
-					for (int i = 0; i < inventory.length; i++) {
-						if (inventory[i] == null)
-							continue;
-						if (inventory[i].getItem() instanceof IPlantable) {
-							IPlantable seed = (IPlantable) inventory[i].getItem();
-							Block soil = worldObj.getBlock(xCoord, yCoord - 2, zCoord);
-							if (soil.canSustainPlant(worldObj, xCoord, yCoord - 2, zCoord, ForgeDirection.UP, seed)) {
-								armExtension += 0.01F;
-								if (armExtension >= 0.5F) {
-									worldObj.setBlock(xCoord, yCoord - 1, zCoord, seed.getPlant(worldObj, xCoord, yCoord, zCoord));
-									inventory[i].stackSize--;
-									if (inventory[i].stackSize <= 0)
-										inventory[i] = null;
-									isReturning = true;
-								}
-								update();
-							}
+				for (int i = 0; i < inventory.length; i++) {
+					if (inventory[i] == null)
+						continue;
+					else {
+						armExtension += 0.01F;
+						if (armExtension >= 0.5F) {
+							inventory[i].tryPlaceItemIntoWorld(Utils.getPlayer(worldObj), worldObj, xCoord, yCoord - 2, zCoord, 1, 0, 0, 0);
+							if (inventory[i].stackSize <= 0)
+								inventory[i] = null;
+							isReturning = true;
 						}
+						update();
+						break;
 					}
-				else
-					isReturning = true;
+				}
+			else
+				isReturning = true;
 	}
 
 	public float getArmExtension() {
