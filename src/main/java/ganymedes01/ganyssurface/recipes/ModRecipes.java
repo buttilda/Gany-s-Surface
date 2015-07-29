@@ -279,7 +279,7 @@ public class ModRecipes {
 			}
 
 		if (GanysSurface.enableBeetroots) {
-			addShapelessRecipe(new ItemStack(ModItems.beetrootSoup), "cropBeetroot", "cropBeetroot", "cropBeetroot", "cropBeetroot", Items.bowl);
+			addShapedRecipe(new ItemStack(ModItems.beetrootSoup), "xxx", "xxx", " y ", 'x', "cropBeetroot", 'y', Items.bowl);
 			addShapelessRecipe(new ItemStack(Items.dye, 1, 1), "cropBeetroot");
 		}
 
