@@ -43,7 +43,7 @@ public class TileEntityFarmManager extends GanysInventory {
 			if (worldObj.isAirBlock(xCoord + p.x, yCoord - i + 1, zCoord + p.y)) {
 				List<Integer> slots = new LinkedList<Integer>();
 				for (int j = 0; j < inventory.length; j++)
-					if (inventory[j] != null)
+					if (inventory[j] != null && inventory[j].stackSize > 1)
 						slots.add(j);
 				if (!slots.isEmpty()) {
 					int slot = slots.get(worldObj.rand.nextInt(slots.size()));

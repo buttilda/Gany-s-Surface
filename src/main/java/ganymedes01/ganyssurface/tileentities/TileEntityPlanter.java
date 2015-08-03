@@ -11,7 +11,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.IPlantable;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
@@ -48,7 +51,7 @@ public class TileEntityPlanter extends GanysInventory implements IPacketHandling
 		if (!isReturning)
 			if (worldObj.isAirBlock(xCoord, yCoord - 1, zCoord))
 				for (int i = 0; i < inventory.length; i++) {
-					if (inventory[i] == null)
+					if (inventory[i] == null || inventory[i].stackSize <= 1)
 						continue;
 					else {
 						armExtension += 0.01F;
@@ -115,5 +118,11 @@ public class TileEntityPlanter extends GanysInventory implements IPacketHandling
 		super.writeToNBT(data);
 		data.setFloat("armExtension", armExtension);
 		data.setBoolean("isReturning", isReturning);
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public AxisAlignedBB getRenderBoundingBox() {
+		return AxisAlignedBB.getBoundingBox(xCoord, yCoord - 1, zCoord, xCoord + 1, yCoord + 1, zCoord + 1);
 	}
 }
