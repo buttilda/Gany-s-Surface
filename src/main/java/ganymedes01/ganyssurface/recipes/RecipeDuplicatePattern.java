@@ -68,7 +68,7 @@ public class RecipeDuplicatePattern implements IRecipe {
 
 			if (slot != null && TileEntityBanner.getPatterns(slot) > 0) {
 				ItemStack copy = slot.copy();
-				copy.stackSize = 1;
+				copy.stackSize = 2;
 				return copy;
 			}
 		}
