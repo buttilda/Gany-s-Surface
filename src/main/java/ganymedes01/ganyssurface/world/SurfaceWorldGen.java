@@ -31,7 +31,7 @@ public class SurfaceWorldGen implements IWorldGenerator {
 		generators.add(new WorldGenMinable(ModBlocks.newStones, 3, GanysSurface.max18StonesPerCluster, Blocks.stone));
 		generators.add(new WorldGenMinable(ModBlocks.newStones, 5, GanysSurface.max18StonesPerCluster, Blocks.stone));
 
-		generatorBasalt = new WorldGenMinable(ModBlocks.basalt, 0, GanysSurface.max18StonesPerCluster, Blocks.stone);
+		generatorBasalt = new WorldGenMinable(ModBlocks.basalt, 0, GanysSurface.basaltBlocksPerCluster, Blocks.stone);
 	}
 
 	@Override

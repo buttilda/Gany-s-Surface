@@ -110,6 +110,7 @@ public class GanysSurface {
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;
 	public static int poopingChance = 15000;
+	public static int basaltBlocksPerCluster = 33;
 
 	public static boolean enable18Stones = true;
 	public static boolean enableIronTrapdoor = true;
