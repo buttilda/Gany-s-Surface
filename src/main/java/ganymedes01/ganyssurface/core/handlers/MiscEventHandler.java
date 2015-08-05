@@ -110,8 +110,7 @@ public class MiscEventHandler {
 		else
 			for (int i = 0; i < event.entityPlayer.inventory.getSizeInventory(); i++) {
 				int count = Quiver.getArrowCount(event.entityPlayer.inventory.getStackInSlot(i));
-				flag = count > 0;
-				if (flag)
+				if (flag = count > 0)
 					break;
 			}
 
@@ -158,7 +157,8 @@ public class MiscEventHandler {
 				event.bow.damageItem(1, event.entityPlayer);
 				event.entityPlayer.worldObj.playSoundAtEntity(event.entityPlayer, "random.bow", 1.0F, 1.0F / (event.entityPlayer.worldObj.rand.nextFloat() * 0.4F + 1.2F) + charge * 0.5F);
 
-				Quiver.setArrowCount(quiver, count - 1);
+				if (!event.entityPlayer.capabilities.isCreativeMode)
+					Quiver.setArrowCount(quiver, count - 1);
 
 				if (!event.entityPlayer.worldObj.isRemote)
 					event.entityPlayer.worldObj.spawnEntityInWorld(arrow);
