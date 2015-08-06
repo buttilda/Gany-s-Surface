@@ -6,6 +6,7 @@ import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.UnsizedStack;
 
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
@@ -27,6 +28,9 @@ import net.minecraftforge.oredict.OreDictionary;
  */
 
 public class OrganicMatterRegistry {
+
+	// Totally not stolen from Botania >_>
+	private static final Pattern SEED_PATTERN = Pattern.compile("(?:(?:(?:[A-Z-_.:]|^)seed)|(?:(?:[a-z-_.:]|^)Seed))(?:[sA-Z-_.:]|$)");
 
 	private static HashMap<UnsizedStack, Integer> matterYield = new HashMap<UnsizedStack, Integer>();
 	private static HashMap<Integer, Integer> oreYield = new HashMap<Integer, Integer>();
@@ -179,7 +183,7 @@ public class OrganicMatterRegistry {
 	}
 
 	public static int getOrganicYield(ItemStack stack) {
-		if (stack == null)
+		if (stack == null || stack.getItem() == null)
 			return -1;
 		if (stack.getItem() == Item.getItemFromBlock(Blocks.coal_block))
 			return -1;
@@ -200,7 +204,7 @@ public class OrganicMatterRegistry {
 			Item item = stack.getItem();
 			if (item instanceof ItemFood)
 				ret = (int) (10 * ((ItemFood) item).func_150906_h(stack));
-			else if (item instanceof ItemSeeds)
+			else if (item instanceof ItemSeeds || SEED_PATTERN.matcher(stack.getItem().getUnlocalizedName(stack)).find())
 				ret = 1;
 		}
 
