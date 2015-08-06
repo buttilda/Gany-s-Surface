@@ -4,6 +4,7 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerWorkTable;
+import ganymedes01.ganyssurface.inventory.INoConflictRecipeContainer;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict;
@@ -25,18 +26,34 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiWorkTable extends GuiGanysSurface {
 
+	private boolean prevHasMultipleResults = false;
+
 	public GuiWorkTable(InventoryPlayer inventory, TileEntityWorkTable tile) {
 		super(new ContainerWorkTable(inventory, tile));
 	}
 
 	@Override
+	public void updateScreen() {
+		super.updateScreen();
+		if (!GanysSurface.enableNoRecipeConflict)
+			return;
+
+		INoConflictRecipeContainer container = (INoConflictRecipeContainer) inventorySlots;
+		boolean hasMultipleResults = container.hasMultipleResults(true);
+
+		if (hasMultipleResults != prevHasMultipleResults) {
+			addOrRemoveButtons(hasMultipleResults);
+			prevHasMultipleResults = hasMultipleResults;
+		}
+	}
+
 	@SuppressWarnings("unchecked")
-	public void initGui() {
-		super.initGui();
-		if (GanysSurface.enableNoRecipeConflict) {
+	private void addOrRemoveButtons(boolean add) {
+		if (add) {
 			buttonList.add(new GuiButton(0, guiLeft + 135, guiTop + 60, 15, 20, ">"));
 			buttonList.add(new GuiButton(1, guiLeft + 115, guiTop + 60, 15, 20, "<"));
-		}
+		} else
+			buttonList.clear();
 	}
 
 	@Override

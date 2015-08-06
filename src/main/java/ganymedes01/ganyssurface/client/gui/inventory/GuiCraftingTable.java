@@ -1,6 +1,7 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
 import ganymedes01.ganyssurface.inventory.ContainerCraftingTable;
+import ganymedes01.ganyssurface.inventory.INoConflictRecipeContainer;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict;
 import net.minecraft.client.gui.GuiButton;
@@ -26,17 +27,32 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class GuiCraftingTable extends GuiContainer {
 
 	private static final ResourceLocation TEXTURE = new ResourceLocation("textures/gui/container/crafting_table.png");
+	private boolean prevHasMultipleResults = false;
 
 	public GuiCraftingTable(InventoryPlayer playerInventory, World world, int x, int y, int z) {
 		super(new ContainerCraftingTable(playerInventory, world, x, y, z));
 	}
 
 	@Override
+	public void updateScreen() {
+		super.updateScreen();
+
+		INoConflictRecipeContainer container = (INoConflictRecipeContainer) inventorySlots;
+		boolean hasMultipleResults = container.hasMultipleResults(true);
+
+		if (hasMultipleResults != prevHasMultipleResults) {
+			addOrRemoveButtons(hasMultipleResults);
+			prevHasMultipleResults = hasMultipleResults;
+		}
+	}
+
 	@SuppressWarnings("unchecked")
-	public void initGui() {
-		super.initGui();
-		buttonList.add(new GuiButton(0, guiLeft + 135, guiTop + 60, 15, 20, ">"));
-		buttonList.add(new GuiButton(1, guiLeft + 115, guiTop + 60, 15, 20, "<"));
+	private void addOrRemoveButtons(boolean add) {
+		if (add) {
+			buttonList.add(new GuiButton(0, guiLeft + 135, guiTop + 60, 15, 20, ">"));
+			buttonList.add(new GuiButton(1, guiLeft + 115, guiTop + 60, 15, 20, "<"));
+		} else
+			buttonList.clear();
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.inventory;
 
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict;
+import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict2;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class ContainerCraftingTable extends ContainerWorkbench implements INoCon
 
 	private final World world;
 	private int currentResultIndex = 0;
+	private boolean hasMultipleResults = false;
 
 	public ContainerCraftingTable(InventoryPlayer playerInventory, World world, int x, int y, int z) {
 		super(playerInventory, world, x, y, z);
@@ -32,12 +34,20 @@ public class ContainerCraftingTable extends ContainerWorkbench implements INoCon
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
 		List<ItemStack> results = ContainerWorkTable.getPossibleResults(craftMatrix, world);
-		if (results.isEmpty())
+		if (results.isEmpty()) {
 			craftResult.setInventorySlotContents(0, null);
-		else if (results.size() == 1)
+			hasMultipleResults = false;
+		} else if (results.size() == 1) {
 			craftResult.setInventorySlotContents(0, results.get(0));
-		else
+			hasMultipleResults = false;
+		} else {
 			setCurrentResultIndex(true, Math.min(currentResultIndex, results.size() - 1));
+			hasMultipleResults = true;
+		}
+
+		for (Object crafter : crafters)
+			if (crafter instanceof EntityPlayer)
+				PacketHandler.sendToPlayer(new PacketGUINoRecipeConflict2(true, hasMultipleResults), (EntityPlayer) crafter);
 	}
 
 	@Override
@@ -66,5 +76,15 @@ public class ContainerCraftingTable extends ContainerWorkbench implements INoCon
 
 		currentResultIndex = index;
 		craftResult.setInventorySlotContents(0, results.get(currentResultIndex));
+	}
+
+	@Override
+	public void setHasMultipleResults(boolean isFirstMatrix, boolean hasMultipleResults) {
+		this.hasMultipleResults = hasMultipleResults;
+	}
+
+	@Override
+	public boolean hasMultipleResults(boolean isFirstMatrix) {
+		return hasMultipleResults;
 	}
 }

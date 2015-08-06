@@ -4,10 +4,15 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerDualWorkTable;
+import ganymedes01.ganyssurface.inventory.INoConflictRecipeContainer;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -25,6 +30,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiDualWorkTable extends GuiGanysSurface {
 
+	private boolean prevHasMultipleResults1 = false, prevHasMultipleResults2 = false;
+
 	public GuiDualWorkTable(InventoryPlayer inventory, TileEntityDualWorkTable tile) {
 		this(new ContainerDualWorkTable(inventory, tile));
 	}
@@ -35,14 +42,46 @@ public class GuiDualWorkTable extends GuiGanysSurface {
 	}
 
 	@Override
+	public void updateScreen() {
+		super.updateScreen();
+		if (!GanysSurface.enableNoRecipeConflict)
+			return;
+
+		INoConflictRecipeContainer container = (INoConflictRecipeContainer) inventorySlots;
+
+		boolean hasMultipleResults = container.hasMultipleResults(true);
+		if (hasMultipleResults != prevHasMultipleResults1) {
+			addOrRemoveButtons(true, hasMultipleResults);
+			prevHasMultipleResults1 = hasMultipleResults;
+		}
+
+		hasMultipleResults = container.hasMultipleResults(false);
+		if (hasMultipleResults != prevHasMultipleResults2) {
+			addOrRemoveButtons(false, hasMultipleResults);
+			prevHasMultipleResults2 = hasMultipleResults;
+		}
+	}
+
 	@SuppressWarnings("unchecked")
-	public void initGui() {
-		super.initGui();
-		if (GanysSurface.enableNoRecipeConflict) {
-			buttonList.add(new GuiButton(0, guiLeft + 179 - 92, guiTop + 58, 15, 20, ">"));
-			buttonList.add(new GuiButton(1, guiLeft + 159 - 92, guiTop + 58, 15, 20, "<"));
-			buttonList.add(new GuiButton(2, guiLeft + 179, guiTop + 58, 15, 20, ">"));
-			buttonList.add(new GuiButton(3, guiLeft + 159, guiTop + 58, 15, 20, "<"));
+	private void addOrRemoveButtons(boolean isFirstMatrix, boolean add) {
+		if (add) {
+			if (isFirstMatrix) {
+				buttonList.add(new GuiButton(0, guiLeft + 179 - 92, guiTop + 58, 15, 20, ">"));
+				buttonList.add(new GuiButton(1, guiLeft + 159 - 92, guiTop + 58, 15, 20, "<"));
+			} else {
+				buttonList.add(new GuiButton(2, guiLeft + 179, guiTop + 58, 15, 20, ">"));
+				buttonList.add(new GuiButton(3, guiLeft + 159, guiTop + 58, 15, 20, "<"));
+			}
+		} else {
+			List<GuiButton> toRemove = new ArrayList<GuiButton>();
+			for (Object obj : buttonList) {
+				GuiButton button = (GuiButton) obj;
+				if (isFirstMatrix && (button.id == 0 || button.id == 1))
+					toRemove.add(button);
+				if (!isFirstMatrix && (button.id == 2 || button.id == 3))
+					toRemove.add(button);
+			}
+			buttonList.removeAll(toRemove);
 		}
 	}
 

@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.network;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.network.packet.CustomPacket;
 import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict;
+import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict2;
 import ganymedes01.ganyssurface.network.packet.PacketPortWorkTable;
 import ganymedes01.ganyssurface.network.packet.PacketTileEntity;
 import io.netty.buffer.ByteBuf;
@@ -44,7 +45,8 @@ public final class PacketHandler {
 	public enum PacketType {
 		TILE_ENTITY(PacketTileEntity.class),
 		PORT_WORKTABLE(PacketPortWorkTable.class),
-		GUI_NO_RECIPE_CONFLICT(PacketGUINoRecipeConflict.class);
+		GUI_NO_RECIPE_CONFLICT(PacketGUINoRecipeConflict.class),
+		GUI_NO_RECIPE_CONFLICT_2(PacketGUINoRecipeConflict2.class);
 
 		final Class<? extends CustomPacket> cls;
 

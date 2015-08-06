@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.inventory;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict;
+import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict2;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable.WorkTableCrafting;
 
@@ -33,6 +34,7 @@ public class ContainerDualWorkTable extends GanysContainer implements INoConflic
 	protected InventoryCrafting matrixRight;
 
 	protected int currentResultIndex1 = 0, currentResultIndex2 = 0;
+	protected boolean hasMultipleResults1 = false, hasMultipleResults2 = false;
 
 	protected IInventory result = new InventoryCraftResult();
 	protected IInventory resultRight = new InventoryCraftResult();
@@ -78,22 +80,38 @@ public class ContainerDualWorkTable extends GanysContainer implements INoConflic
 		if (GanysSurface.enableNoRecipeConflict) {
 			if (inventory == matrixLeft) {
 				List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrixLeft, world);
-				if (results.isEmpty())
+				if (results.isEmpty()) {
 					result.setInventorySlotContents(0, null);
-				else if (results.size() == 1)
+					hasMultipleResults1 = false;
+				} else if (results.size() == 1) {
 					result.setInventorySlotContents(0, results.get(0));
-				else
+					hasMultipleResults1 = false;
+				} else {
 					setCurrentResultIndex(true, Math.min(currentResultIndex1, results.size() - 1));
+					hasMultipleResults1 = true;
+				}
+
+				for (Object crafter : crafters)
+					if (crafter instanceof EntityPlayer)
+						PacketHandler.sendToPlayer(new PacketGUINoRecipeConflict2(true, hasMultipleResults1), (EntityPlayer) crafter);
 			}
 
 			if (inventory == matrixRight) {
 				List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrixRight, world);
-				if (results.isEmpty())
+				if (results.isEmpty()) {
 					resultRight.setInventorySlotContents(0, null);
-				else if (results.size() == 1)
+					hasMultipleResults2 = false;
+				} else if (results.size() == 1) {
 					resultRight.setInventorySlotContents(0, results.get(0));
-				else
+					hasMultipleResults2 = false;
+				} else {
 					setCurrentResultIndex(false, Math.min(currentResultIndex2, results.size() - 1));
+					hasMultipleResults2 = true;
+				}
+
+				for (Object crafter : crafters)
+					if (crafter instanceof EntityPlayer)
+						PacketHandler.sendToPlayer(new PacketGUINoRecipeConflict2(false, hasMultipleResults2), (EntityPlayer) crafter);
 			}
 		} else {
 			if (inventory == matrixLeft)
@@ -166,5 +184,18 @@ public class ContainerDualWorkTable extends GanysContainer implements INoConflic
 		else
 			currentResultIndex2 = index;
 		(isFirstMatrix ? result : resultRight).setInventorySlotContents(0, results.get(isFirstMatrix ? currentResultIndex1 : currentResultIndex2));
+	}
+
+	@Override
+	public void setHasMultipleResults(boolean isFirstMatrix, boolean hasMultipleResults) {
+		if (isFirstMatrix)
+			hasMultipleResults1 = hasMultipleResults;
+		else
+			hasMultipleResults2 = hasMultipleResults;
+	}
+
+	@Override
+	public boolean hasMultipleResults(boolean isFirstMatrix) {
+		return isFirstMatrix ? hasMultipleResults1 : hasMultipleResults2;
 	}
 }

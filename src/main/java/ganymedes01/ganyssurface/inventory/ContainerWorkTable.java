@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.inventory;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict;
+import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict2;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable.WorkTableCrafting;
 
@@ -35,6 +36,7 @@ public class ContainerWorkTable extends GanysContainer implements INoConflictRec
 	private final InventoryCrafting matrix;
 	private final IInventory result = new InventoryCraftResult();
 	private int currentResultIndex = 0;
+	private boolean hasMultipleResults = false;
 
 	public ContainerWorkTable(InventoryPlayer inventory, TileEntityWorkTable tile) {
 		super(tile);
@@ -60,12 +62,20 @@ public class ContainerWorkTable extends GanysContainer implements INoConflictRec
 	public void onCraftMatrixChanged(IInventory inventory) {
 		if (GanysSurface.enableNoRecipeConflict) {
 			List<ItemStack> results = getPossibleResults(matrix, world);
-			if (results.isEmpty())
+			if (results.isEmpty()) {
 				result.setInventorySlotContents(0, null);
-			else if (results.size() == 1)
+				hasMultipleResults = false;
+			} else if (results.size() == 1) {
 				result.setInventorySlotContents(0, results.get(0));
-			else
+				hasMultipleResults = false;
+			} else {
 				setCurrentResultIndex(true, Math.min(currentResultIndex, results.size() - 1));
+				hasMultipleResults = true;
+			}
+
+			for (Object crafter : crafters)
+				if (crafter instanceof EntityPlayer)
+					PacketHandler.sendToPlayer(new PacketGUINoRecipeConflict2(true, hasMultipleResults), (EntityPlayer) crafter);
 		} else
 			result.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(matrix, world));
 	}
@@ -162,5 +172,15 @@ public class ContainerWorkTable extends GanysContainer implements INoConflictRec
 					results.add(recipe.getCraftingResult(matrix));
 
 		return results;
+	}
+
+	@Override
+	public void setHasMultipleResults(boolean isFirstMatrix, boolean hasMultipleResults) {
+		this.hasMultipleResults = hasMultipleResults;
+	}
+
+	@Override
+	public boolean hasMultipleResults(boolean isFirstMatrix) {
+		return hasMultipleResults;
 	}
 }

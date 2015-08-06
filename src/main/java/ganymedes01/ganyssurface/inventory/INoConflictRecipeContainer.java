@@ -2,7 +2,11 @@ package ganymedes01.ganyssurface.inventory;
 
 public interface INoConflictRecipeContainer {
 
-	void handleButtonClick(boolean isFirstValue, int bump);
+	void handleButtonClick(boolean isFirstMatrix, int bump);
 
-	void setCurrentResultIndex(boolean isFirstValue, int index);
+	void setCurrentResultIndex(boolean isFirstMatrix, int index);
+
+	void setHasMultipleResults(boolean isFirstMatrix, boolean hasMultipleResults);
+
+	boolean hasMultipleResults(boolean isFirstMatrix);
 }
