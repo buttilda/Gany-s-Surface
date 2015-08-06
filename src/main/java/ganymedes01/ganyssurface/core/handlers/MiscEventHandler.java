@@ -21,6 +21,8 @@ import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.ai.EntityAITempt;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -249,26 +251,49 @@ public class MiscEventHandler {
 	public void spawnEvent(EntityJoinWorldEvent event) {
 		if (event.entity instanceof EntityPig) {
 			EntityPig pig = (EntityPig) event.entity;
-			pig.tasks.addTask(4, new EntityAITempt(pig, 1.2, ModItems.beetroot, false));
-			pig.tasks.addTask(4, new EntityAITempt(pig, 1.2, ModItems.pineCone, false));
+			if (GanysSurface.enableBeetroots)
+				pig.tasks.addTask(4, new EntityAITempt(pig, 1.2, ModItems.beetroot, false));
+			if (GanysSurface.enablePineCones)
+				pig.tasks.addTask(4, new EntityAITempt(pig, 1.2, ModItems.pineCone, false));
+		} else if (event.entity instanceof EntityChicken) {
+			EntityChicken chicken = (EntityChicken) event.entity;
+			if (GanysSurface.enableTea)
+				chicken.tasks.addTask(3, new EntityAITempt(chicken, 1.0D, ModItems.camelliaSeeds, false));
+			if (GanysSurface.enableBeetroots)
+				chicken.tasks.addTask(3, new EntityAITempt(chicken, 1.0D, ModItems.beetrootSeeds, false));
+			if (GanysSurface.enablePineCones)
+				chicken.tasks.addTask(3, new EntityAITempt(chicken, 1.0D, ModItems.pineNuts, false));
 		}
 	}
 
 	@SubscribeEvent(priority = EventPriority.HIGHEST)
 	public void interactEntityEvent(EntityInteractEvent event) {
 		ItemStack stack = event.entityPlayer.getCurrentEquippedItem();
-		if (stack != null && event.target instanceof EntityPig)
-			if (stack.getItem() == ModItems.beetroot || stack.getItem() == ModItems.pineCone) {
-				EntityPig pig = (EntityPig) event.target;
-				if (!pig.isChild() && !pig.isInLove()) {
-					pig.func_146082_f(event.entityPlayer);
-					if (!event.entityPlayer.capabilities.isCreativeMode) {
-						stack.stackSize--;
-						if (stack.stackSize <= 0)
-							event.entityPlayer.inventory.setInventorySlotContents(event.entityPlayer.inventory.currentItem, null);
-					}
-				}
-			}
+		if (stack == null)
+			return;
+
+		if (event.target instanceof EntityPig) {
+			if (stack.getItem() == ModItems.beetroot && GanysSurface.enableBeetroots)
+				setAnimalInLove((EntityPig) event.target, event.entityPlayer, stack);
+			if (stack.getItem() == ModItems.pineCone && GanysSurface.enablePineCones)
+				setAnimalInLove((EntityPig) event.target, event.entityPlayer, stack);
+		} else if (event.target instanceof EntityChicken) {
+			if (stack.getItem() == ModItems.beetrootSeeds && GanysSurface.enableBeetroots)
+				setAnimalInLove((EntityChicken) event.target, event.entityPlayer, stack);
+			if (stack.getItem() == ModItems.camelliaSeeds && GanysSurface.enableTea)
+				setAnimalInLove((EntityChicken) event.target, event.entityPlayer, stack);
+			if (stack.getItem() == ModItems.pineNuts && GanysSurface.enablePineCones)
+				setAnimalInLove((EntityChicken) event.target, event.entityPlayer, stack);
+		}
+	}
+
+	private void setAnimalInLove(EntityAnimal pig, EntityPlayer player, ItemStack stack) {
+		if (!pig.isChild() && !pig.isInLove()) {
+			pig.func_146082_f(player);
+			if (!player.capabilities.isCreativeMode)
+				if (--stack.stackSize <= 0)
+					player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
+		}
 	}
 
 	@SubscribeEvent
