@@ -1,25 +1,17 @@
 package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityCubicSensoringDislocator;
-
-import java.util.ArrayList;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.event.ForgeEventFactory;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -49,33 +41,6 @@ public class CubicSensoringDislocator extends SensoringDislocator {
 				player.openGui(GanysSurface.instance, GUIsID.BLOCK_DETECTOR.ordinal(), world, x, y, z);
 			return true;
 		}
-	}
-
-	@Override
-	public void breakSurroundingBlock(World world, int xCoord, int yCoord, int zCoord, ForgeDirection dir) {
-		int x = xCoord + dir.offsetX;
-		int y = yCoord + dir.offsetY;
-		int z = zCoord + dir.offsetZ;
-		Block target = world.getBlock(x, y, z);
-		if (world.isAirBlock(x, y, z))
-			return;
-
-		IInventory inventory = getInventory(world, xCoord, yCoord, zCoord, null);
-
-		if (target != null)
-			if (target.getBlockHardness(world, x, y, z) >= 0 && target.getMaterial() != Material.water && target.getMaterial() != Material.lava) {
-				if (inventory != null) {
-					int meta = world.getBlockMetadata(x, y, z);
-					ArrayList<ItemStack> drops = target.getDrops(world, x, y, z, meta, 0);
-					ForgeEventFactory.fireBlockHarvesting(drops, world, target, x, y, z, meta, 0, 0, false, Utils.getPlayer(world));
-					for (ItemStack stack : drops)
-						if (!addStacktoInventory(inventory, stack))
-							InventoryUtils.dropStack(world, x, y, z, stack);
-				} else
-					target.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-				world.playAuxSFXAtEntity(null, 2001, x, y, z, Block.getIdFromBlock(target) + (world.getBlockMetadata(x, y, z) << 12));
-				world.setBlockToAir(x, y, z);
-			}
 	}
 
 	@Override

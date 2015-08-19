@@ -16,7 +16,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 public class TileEntityCubicSensoringDislocator extends TileEntitySensoringDislocator {
 
 	public TileEntityCubicSensoringDislocator() {
-		super(Strings.CUBIC_SENSORING_DISLOCATOR_NAME);
+		super(5, Strings.CUBIC_SENSORING_DISLOCATOR_NAME);
 	}
 
 	@Override

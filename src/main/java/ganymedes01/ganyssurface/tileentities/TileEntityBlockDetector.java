@@ -24,14 +24,17 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class TileEntityBlockDetector extends GanysInventory implements ISidedInventory {
 
-	protected int coolDown = 20;
+	private final int MAX_COOLDOWN;
+	protected int coolDown;
 
 	public TileEntityBlockDetector() {
-		this(Strings.BLOCK_DETECTOR_NAME);
+		this(20, Strings.BLOCK_DETECTOR_NAME);
 	}
 
-	protected TileEntityBlockDetector(String name) {
+	protected TileEntityBlockDetector(int maxCoolDown, String name) {
 		super(1, name);
+		MAX_COOLDOWN = maxCoolDown;
+		coolDown = MAX_COOLDOWN;
 	}
 
 	@Override
@@ -39,9 +42,8 @@ public class TileEntityBlockDetector extends GanysInventory implements ISidedInv
 		if (worldObj.isRemote)
 			return;
 
-		coolDown--;
-		if (coolDown <= 0) {
-			coolDown = 20;
+		if (--coolDown <= 0) {
+			coolDown = MAX_COOLDOWN;
 			updateStatus();
 		}
 	}

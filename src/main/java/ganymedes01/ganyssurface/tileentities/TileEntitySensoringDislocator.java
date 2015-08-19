@@ -18,11 +18,11 @@ public class TileEntitySensoringDislocator extends TileEntityBlockDetector {
 	public int redstoneStrength = 0;
 
 	public TileEntitySensoringDislocator() {
-		this(Strings.SENSORING_DISLOCATOR_NAME);
+		this(10, Strings.SENSORING_DISLOCATOR_NAME);
 	}
 
-	protected TileEntitySensoringDislocator(String name) {
-		super(name);
+	protected TileEntitySensoringDislocator(int maxCoolDown, String name) {
+		super(maxCoolDown, name);
 	}
 
 	@Override

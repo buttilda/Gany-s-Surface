@@ -84,58 +84,24 @@ public class Dislocator extends BlockContainer implements IConfigurable {
 		int y = yCoord + dir.offsetY;
 		int z = zCoord + dir.offsetZ;
 		Block target = world.getBlock(x, y, z);
-		if (target != null)
-			if (target.getBlockHardness(world, x, y, z) >= 0 && target.getMaterial() != Material.water && target.getMaterial() != Material.lava) {
-				IInventory tile = getInventory(world, xCoord, yCoord, zCoord, dir);
+		if (target.isAir(world, x, y, z))
+			return;
 
-				if (tile != null) {
-					int meta = world.getBlockMetadata(x, y, z);
-					ArrayList<ItemStack> drops = target.getDrops(world, x, y, z, meta, 0);
-					ForgeEventFactory.fireBlockHarvesting(drops, world, target, x, y, z, meta, 0, 0, false, Utils.getPlayer(world));
-					for (ItemStack stack : drops)
-						if (!addStacktoInventory(tile, stack))
-							InventoryUtils.dropStack(world, x, y, z, stack);
-				} else
-					target.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
-				world.playAuxSFXAtEntity(null, 2001, x, y, z, Block.getIdFromBlock(target) + (world.getBlockMetadata(x, y, z) << 12));
-				world.setBlockToAir(x, y, z);
-			}
-	}
+		if (target.getBlockHardness(world, x, y, z) >= 0 && target.getMaterial() != Material.water && target.getMaterial() != Material.lava) {
+			IInventory inventory = getInventory(world, xCoord, yCoord, zCoord, dir);
 
-	protected boolean addStacktoInventory(IInventory iinventory, ItemStack stack) {
-		ArrayList<Integer> slots = getStackSlots(iinventory, stack);
-		while (slots.size() > 0 && stack.stackSize > 0) {
-			for (Integer slot : slots)
-				while (iinventory.getStackInSlot(slot).stackSize < iinventory.getStackInSlot(slot).getMaxStackSize() && stack.stackSize > 0) {
-					++iinventory.getStackInSlot(slot).stackSize;
-					--stack.stackSize;
-				}
-			slots = getStackSlots(iinventory, stack);
+			if (inventory != null) {
+				int meta = world.getBlockMetadata(x, y, z);
+				ArrayList<ItemStack> drops = target.getDrops(world, x, y, z, meta, 0);
+				ForgeEventFactory.fireBlockHarvesting(drops, world, target, x, y, z, meta, 0, 0, false, Utils.getPlayer(world));
+				for (ItemStack stack : drops)
+					if (!InventoryUtils.addStackToInventory(inventory, stack, dir.ordinal()))
+						InventoryUtils.dropStack(world, x, y, z, stack);
+			} else
+				target.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
+			world.playAuxSFXAtEntity(null, 2001, x, y, z, Block.getIdFromBlock(target) + (world.getBlockMetadata(x, y, z) << 12));
+			world.setBlockToAir(x, y, z);
 		}
-		if (stack.stackSize <= 0)
-			return true;
-
-		for (int i = 0; i < iinventory.getSizeInventory(); i++)
-			if (iinventory.getStackInSlot(i) == null) {
-				iinventory.setInventorySlotContents(i, stack);
-				stack = null;
-				return true;
-			}
-		if (stack != null && stack.stackSize > 0)
-			return false;
-		else
-			return true;
-	}
-
-	private static ArrayList<Integer> getStackSlots(IInventory iinventory, ItemStack stack) {
-		ArrayList<Integer> slots = new ArrayList<Integer>();
-		for (int i = 0; i < iinventory.getSizeInventory(); i++)
-			if (iinventory.getStackInSlot(i) != null && stack != null)
-				if (iinventory.getStackInSlot(i).getItem() == stack.getItem())
-					if (iinventory.getStackInSlot(i).isItemEqual(stack))
-						if (iinventory.getStackInSlot(i).stackSize < iinventory.getStackInSlot(i).getMaxStackSize())
-							slots.add(i);
-		return slots;
 	}
 
 	protected IInventory getInventory(World world, int x, int y, int z, ForgeDirection dir) {
