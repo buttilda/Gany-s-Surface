@@ -306,7 +306,7 @@ public class ModRecipes {
 		}
 
 		if (GanysSurface.enableChocolate)
-			addShapedRecipe(new ItemStack(ModBlocks.chocolateCake), "xxx", "yzy", "www", 'x', Items.milk_bucket, 'y', ModItems.chocolateBar, 'z', "egg", 'w', Items.wheat);
+			addShapedRecipe(new ItemStack(ModBlocks.chocolateCake), "xxx", "yzy", "www", 'x', Items.milk_bucket, 'y', ModItems.chocolateBar, 'z', Items.egg, 'w', Items.wheat);
 
 		if (GanysSurface.enableColouredRedstone)
 			for (int i = 0; i < dyes.length; i++)
