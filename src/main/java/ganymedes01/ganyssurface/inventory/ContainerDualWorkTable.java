@@ -77,6 +77,15 @@ public class ContainerDualWorkTable extends GanysContainer implements INoConflic
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
+		boolean hasNonNull = false;
+		for (int i = 0; i < inventory.getSizeInventory(); i++)
+			if (inventory.getStackInSlot(i) != null) {
+				hasNonNull = true;
+				break;
+			}
+		if (!hasNonNull)
+			return;
+
 		if (GanysSurface.enableNoRecipeConflict) {
 			if (inventory == matrixLeft) {
 				List<ItemStack> results = ContainerWorkTable.getPossibleResults(matrixLeft, world);

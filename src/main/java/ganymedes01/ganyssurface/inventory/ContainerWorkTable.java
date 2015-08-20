@@ -60,6 +60,15 @@ public class ContainerWorkTable extends GanysContainer implements INoConflictRec
 
 	@Override
 	public void onCraftMatrixChanged(IInventory inventory) {
+		boolean hasNonNull = false;
+		for (int i = 0; i < matrix.getSizeInventory(); i++)
+			if (matrix.getStackInSlot(i) != null) {
+				hasNonNull = true;
+				break;
+			}
+		if (!hasNonNull)
+			return;
+
 		if (GanysSurface.enableNoRecipeConflict) {
 			List<ItemStack> results = getPossibleResults(matrix, world);
 			if (results.isEmpty()) {
