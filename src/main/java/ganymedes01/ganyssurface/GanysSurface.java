@@ -18,6 +18,7 @@ import java.io.File;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -70,7 +71,6 @@ public class GanysSurface {
 	public static boolean enableEncasers = true;
 	public static boolean enableOMC = true;
 	public static boolean enableSpawnEggs = true;
-	public static boolean enableSlimeBlock = true;
 	public static boolean enableAnalisers = true;
 	public static boolean enableIcyPick = true;
 	public static boolean enableFertilisedSoil = true;
@@ -114,6 +114,7 @@ public class GanysSurface {
 	public static boolean enableWoodenBookshelves = true;
 
 	// EtFuturum
+	public static boolean enableSlimeBlock = true;
 	public static boolean enableBeetroots = true;
 	public static boolean enableBurnableBlocks = true;
 	public static boolean enable18Stones = true;
@@ -134,6 +135,31 @@ public class GanysSurface {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		ModIntegrator.preInit();
+
+		if (Loader.isModLoaded("etfuturum")) {
+			enableSlimeBlock = false;
+			enableBeetroots = false;
+			enableBurnableBlocks = false;
+			enable18Stones = false;
+			enableIronTrapdoor = false;
+			enableMutton = false;
+			enablePrismarineStuff = false;
+			enableDoors = false;
+			enableInvertedDaylightSensor = false;
+			enableCoarseDirt = false;
+			enableRedSandstone = false;
+			enable18Enchants = false;
+			enableFences = false;
+			enableSilkTouchingMushrooms = false;
+			enableBanners = false;
+			enableSponge = false;
+		}
+		if (Loader.isModLoaded("woodstuff")) {
+			enableChests = false;
+			enableWoodenButtons = false;
+			enableWoodenPressurePlates = false;
+			enableWoodenBookshelves = false;
+		}
 
 		ConfigurationHandler.INSTANCE.init(new File(event.getModConfigurationDirectory().getAbsolutePath() + File.separator + Reference.MASTER + File.separator + Reference.MOD_ID + ".cfg"));
 
