@@ -87,19 +87,13 @@ public class GanysSurface {
 	public static boolean enableRedyeingBlocks = true;
 	public static boolean enableExtraVanillaRecipes = true;
 	public static boolean enableEndermanDropsBlocks = true;
-	public static boolean enableChests = true;
 	public static boolean enableDynamicTextureChests = false;
 	public static boolean enableSlowRail = true;
 	public static boolean enableBasalt = true;
 	public static boolean enableFlingablePoop = true;
-	public static boolean enableBurnableBlocks = true;
-	public static boolean enableWoodenButtons = true;
-	public static boolean enableWoodenPressurePlates = true;
 	public static boolean enableWoodenTrapdoors = true;
-	public static boolean enableBeetroots = true;
 	public static boolean enableWoodenLadders = true;
 	public static boolean enableWoodenSigns = true;
-	public static boolean enableWoodenBookshelves = true;
 	public static boolean enableStorageBlocks = true;
 	public static boolean enableDyeBlocks = true;
 	public static boolean enableNoRecipeConflict = true;
@@ -111,7 +105,17 @@ public class GanysSurface {
 	public static int inkHarvesterMaxStrike = 5;
 	public static int poopingChance = 15000;
 	public static int basaltBlocksPerCluster = 33;
+	public static final String[] WOOD_NAMES = new String[] { "oak", "spruce", "birch", "jungle", "acacia", "dark_oak" };
 
+	// WoodStuff
+	public static boolean enableChests = true;
+	public static boolean enableWoodenButtons = true;
+	public static boolean enableWoodenPressurePlates = true;
+	public static boolean enableWoodenBookshelves = true;
+
+	// EtFuturum
+	public static boolean enableBeetroots = true;
+	public static boolean enableBurnableBlocks = true;
 	public static boolean enable18Stones = true;
 	public static boolean enableIronTrapdoor = true;
 	public static boolean enableMutton = true;
@@ -125,9 +129,7 @@ public class GanysSurface {
 	public static boolean enableSilkTouchingMushrooms = true;
 	public static boolean enableBanners = true;
 	public static boolean enableSponge = true;
-
 	public static int max18StonesPerCluster = 33;
-	public static final String[] WOOD_NAMES = new String[] { "oak", "spruce", "birch", "jungle", "acacia", "dark_oak" };
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
