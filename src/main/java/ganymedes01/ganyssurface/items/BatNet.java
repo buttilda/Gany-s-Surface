@@ -49,7 +49,7 @@ public class BatNet extends Item implements IConfigurable {
 			if (!player.worldObj.isRemote) {
 				ItemStack pocketBat = new ItemStack(ModItems.pocketCritter, 1, meta);
 				if (((EntityLiving) target).hasCustomNameTag())
-					pocketBat.setStackDisplayName(((EntityBat) target).getCustomNameTag());
+					pocketBat.setStackDisplayName(((EntityLiving) target).getCustomNameTag());
 				target.setDead();
 				InventoryUtils.addToPlayerInventory(player, pocketBat, target.posX, target.posY + 1, target.posZ);
 				item.damageItem(1, player);
