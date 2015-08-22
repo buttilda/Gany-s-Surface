@@ -227,11 +227,13 @@ public class MiscEventHandler {
 				int y = event.y;
 				int z = event.z;
 
-				if (world != null && !world.isRemote && !player.isSneaking())
-					if (world.getBlock(x, y, z) == Blocks.crafting_table) {
+				if (world != null && !world.isRemote && !player.isSneaking()) {
+					Block block = world.getBlock(x, y, z);
+					if (block == Blocks.crafting_table || "ganymedes01.woodstuff.blocks.BlockWoodCraftingTable".equals(block.getClass().getCanonicalName())) {
 						player.openGui(GanysSurface.instance, GUIsID.CRAFTING_TABLE_NO_CONFLICT.ordinal(), world, x, y, z);
 						event.setCanceled(true);
 					}
+				}
 			}
 	}
 

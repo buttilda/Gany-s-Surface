@@ -23,12 +23,21 @@ import net.minecraft.world.World;
 public class ContainerCraftingTable extends ContainerWorkbench implements INoConflictRecipeContainer {
 
 	private final World world;
+	private final int x, y, z;
 	private int currentResultIndex = 0;
 	private boolean hasMultipleResults = false;
 
 	public ContainerCraftingTable(InventoryPlayer playerInventory, World world, int x, int y, int z) {
 		super(playerInventory, world, x, y, z);
 		this.world = world;
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+
+	@Override
+	public boolean canInteractWith(EntityPlayer player) {
+		return player.getDistanceSq(x + 0.5, y + 0.5, z + 0.5) <= 64.0;
 	}
 
 	@Override

@@ -113,6 +113,7 @@ public class ModRecipes {
 	}
 
 	private static void registerOreDictionary() {
+		OreDictionary.registerOre("craftingTableWood", new ItemStack(Blocks.crafting_table));
 		OreDictionary.registerOre("chestWood", new ItemStack(Blocks.chest));
 		OreDictionary.registerOre("trapdoorWood", Blocks.trapdoor);
 
@@ -326,7 +327,7 @@ public class ModRecipes {
 
 		if (GanysSurface.enableWorkTables) {
 			addShapedRecipe(new ItemStack(ModBlocks.dualWorkTable), "yyy", "x x", "yyy", 'x', ModBlocks.workTable, 'y', "plankWood");
-			addShapelessRecipe(new ItemStack(ModBlocks.workTable), Blocks.crafting_table, "chestWood");
+			addShapelessRecipe(new ItemStack(ModBlocks.workTable), "craftingTableWood", "chestWood");
 		}
 
 		if (GanysSurface.enableLeafWalls) {
