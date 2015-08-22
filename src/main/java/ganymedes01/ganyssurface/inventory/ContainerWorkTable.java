@@ -66,8 +66,10 @@ public class ContainerWorkTable extends GanysContainer implements INoConflictRec
 				hasNonNull = true;
 				break;
 			}
-		if (!hasNonNull)
+		if (!hasNonNull) {
+			result.setInventorySlotContents(0, null);
 			return;
+		}
 
 		if (GanysSurface.enableNoRecipeConflict) {
 			List<ItemStack> results = getPossibleResults(matrix, world);

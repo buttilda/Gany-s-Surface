@@ -83,8 +83,13 @@ public class ContainerDualWorkTable extends GanysContainer implements INoConflic
 				hasNonNull = true;
 				break;
 			}
-		if (!hasNonNull)
+		if (!hasNonNull) {
+			if (inventory == matrixLeft)
+				result.setInventorySlotContents(0, null);
+			else
+				resultRight.setInventorySlotContents(0, null);
 			return;
+		}
 
 		if (GanysSurface.enableNoRecipeConflict) {
 			if (inventory == matrixLeft) {
