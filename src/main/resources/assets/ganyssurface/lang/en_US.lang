@@ -307,6 +307,7 @@ string.ganyssurface.pleaseletmefree1=What does the squid say?
 string.ganyssurface.attacktocapture=Left-Click a bat or a squid to capture it
 string.ganyssurface.interacttorotate=Right-Click logs,pillars,signs and etc. to rotate
 string.ganyssurface.portableWorktable=Press %s or right-click to open.
+string.ganyssurface.quiver=%dx Arrows
 
 # Others
 entity.ItemFrame.name=Item Frame

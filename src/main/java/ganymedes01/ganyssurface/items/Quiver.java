@@ -78,7 +78,7 @@ public class Quiver extends Item implements IQuiver, IConfigurable {
 	@SideOnly(Side.CLIENT)
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {
-		list.add(getArrowCount(stack) + "x " + StatCollector.translateToLocal("item.arrow.name"));
+		list.add(String.format(StatCollector.translateToLocal(Utils.getString("quiver")), getArrowCount(stack)));
 	}
 
 	@Override
