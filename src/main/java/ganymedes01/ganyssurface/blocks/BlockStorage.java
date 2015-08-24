@@ -18,7 +18,7 @@ import net.minecraft.item.ItemStack;
 
 public class BlockStorage extends BlockGeneric implements ISubBlocksBlock, IConfigurable {
 
-	private static enum TYPES {
+	public static enum TYPES {
 		flint(new ItemStack(Items.flint), new ItemStack(Items.flint, 9), "blockFlint"),
 		carrot(new ItemStack(Items.carrot), new ItemStack(Items.carrot, 9), "blockCarrot"),
 		gunpowder(new ItemStack(Items.gunpowder), new ItemStack(Items.gunpowder, 9), "blockGunpowder"),

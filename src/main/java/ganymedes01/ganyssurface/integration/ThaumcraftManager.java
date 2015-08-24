@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.integration;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
+import ganymedes01.ganyssurface.blocks.BlockStorage;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -110,6 +111,26 @@ public class ThaumcraftManager extends Integration {
 		if (GanysSurface.enableWoodenTrapdoors)
 			for (Block trapdoor : ModBlocks.trapdoors)
 				addAspectsToItem(trapdoor, new Aspect[] { Aspect.TREE, Aspect.MOTION }, new int[] { 2, 1 });
+
+		if (GanysSurface.enableChocolate)
+			addAspectsToItem(ModBlocks.chocolateCake, new Aspect[] { Aspect.WATER, Aspect.HUNGER, Aspect.LIFE, Aspect.SENSES }, new int[] { 4, 4, 4, 2 });
+
+		if (GanysSurface.enableLeafWalls)
+			addAspectsToItem(ModBlocks.leafWall, new Aspect[] { Aspect.PLANT }, new int[] { 2 });
+
+		if (GanysSurface.enableStorageBlocks)
+			addAspectsToItem(new ItemStack(ModBlocks.storage, 1, BlockStorage.TYPES.sugar.ordinal()), new Aspect[] { Aspect.HUNGER }, new int[] { 6 });
+
+		if (GanysSurface.enableWorkTables) {
+			addAspectsToItem(ModBlocks.workTable, new Aspect[] { Aspect.CRAFT, Aspect.VOID }, new int[] { 4, 3 });
+			addAspectsToItem(ModBlocks.dualWorkTable, new Aspect[] { Aspect.CRAFT, Aspect.VOID }, new int[] { 7, 5 });
+			addAspectsToItem(ModItems.portalDualWorkTable, new Aspect[] { Aspect.CRAFT, Aspect.VOID }, new int[] { 7, 5 });
+		}
+
+		if (GanysSurface.enableSpawnEggs) {
+			addAspectsToItem(ModItems.chargedCreeperSpawner, new Aspect[] { Aspect.TRAP, Aspect.SOUL }, new int[] { 1, 1 });
+			addAspectsToItem(ModItems.horseSpawner, new Aspect[] { Aspect.TRAP, Aspect.SOUL }, new int[] { 1, 1 });
+		}
 	}
 
 	@Override
