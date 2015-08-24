@@ -7,6 +7,7 @@ import ganymedes01.ganyssurface.blocks.BlockStorage;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
@@ -43,8 +44,10 @@ public class ThaumcraftManager extends Integration {
 		}
 		if (GanysSurface.enableCookedEgg)
 			addAspectsToItem(ModItems.cookedEgg, new Aspect[] { Aspect.HUNGER, Aspect.LIFE, Aspect.BEAST }, new int[] { 1, 1, 1 });
-		if (GanysSurface.enableChocolate)
+		if (GanysSurface.enableChocolate) {
 			addAspectsToItem(ModItems.chocolateBar, new Aspect[] { Aspect.HUNGER, Aspect.SENSES }, new int[] { 2, 1 });
+			addAspectsToItem(ModBlocks.chocolateCake, new Aspect[] { Aspect.WATER, Aspect.HUNGER, Aspect.LIFE, Aspect.SENSES }, new int[] { 4, 4, 4, 2 });
+		}
 		if (GanysSurface.enablePineCones) {
 			addAspectsToItem(ModItems.pineCone, new Aspect[] { Aspect.CROP, Aspect.PLANT }, new int[] { 2, 1 });
 			addAspectsToItem(ModItems.pineNuts, new Aspect[] { Aspect.CROP, Aspect.HUNGER }, new int[] { 2, 1 });
@@ -54,7 +57,7 @@ public class ThaumcraftManager extends Integration {
 			addAspectsToItem(ModItems.rawMutton, new Aspect[] { Aspect.FLESH, Aspect.LIFE, Aspect.BEAST }, new int[] { 2, 1, 1 });
 		}
 		if (GanysSurface.enableSpawnEggs) {
-			addAspectsToItem(ModItems.horseSpawner, new Aspect[] { Aspect.SOUL, Aspect.TRAP }, new int[] { 1, 1 });
+			addAspectsToItem(new ItemStack(ModItems.horseSpawner, 1, OreDictionary.WILDCARD_VALUE), new Aspect[] { Aspect.SOUL, Aspect.TRAP }, new int[] { 1, 1 });
 			addAspectsToItem(ModItems.chargedCreeperSpawner, new Aspect[] { Aspect.SOUL, Aspect.TRAP }, new int[] { 1, 1 });
 		}
 		if (GanysSurface.enableChests)
@@ -112,9 +115,6 @@ public class ThaumcraftManager extends Integration {
 			for (Block trapdoor : ModBlocks.trapdoors)
 				addAspectsToItem(trapdoor, new Aspect[] { Aspect.TREE, Aspect.MOTION }, new int[] { 2, 1 });
 
-		if (GanysSurface.enableChocolate)
-			addAspectsToItem(ModBlocks.chocolateCake, new Aspect[] { Aspect.WATER, Aspect.HUNGER, Aspect.LIFE, Aspect.SENSES }, new int[] { 4, 4, 4, 2 });
-
 		if (GanysSurface.enableLeafWalls)
 			addAspectsToItem(ModBlocks.leafWall, new Aspect[] { Aspect.PLANT }, new int[] { 2 });
 
@@ -125,11 +125,6 @@ public class ThaumcraftManager extends Integration {
 			addAspectsToItem(ModBlocks.workTable, new Aspect[] { Aspect.CRAFT, Aspect.VOID }, new int[] { 4, 3 });
 			addAspectsToItem(ModBlocks.dualWorkTable, new Aspect[] { Aspect.CRAFT, Aspect.VOID }, new int[] { 7, 5 });
 			addAspectsToItem(ModItems.portalDualWorkTable, new Aspect[] { Aspect.CRAFT, Aspect.VOID }, new int[] { 7, 5 });
-		}
-
-		if (GanysSurface.enableSpawnEggs) {
-			addAspectsToItem(ModItems.chargedCreeperSpawner, new Aspect[] { Aspect.TRAP, Aspect.SOUL }, new int[] { 1, 1 });
-			addAspectsToItem(ModItems.horseSpawner, new Aspect[] { Aspect.TRAP, Aspect.SOUL }, new int[] { 1, 1 });
 		}
 	}
 
