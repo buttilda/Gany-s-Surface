@@ -307,6 +307,7 @@ string.ganyssurface.pleaseletmefree1=Что говорит спрут?
 string.ganyssurface.attacktocapture=ЛКМ по летучей мыши или спруту, чтобы поймать их
 string.ganyssurface.interacttorotate=ПКМ по древесине, колоннам, табличкам и т.д., чтобы поворачивать
 string.ganyssurface.portableWorktable=Нажмите %s или ПКМ, чтобы открыть.
+string.ganyssurface.quiver=Стрел: %dx
 
 # Others
 entity.ItemFrame.name=Предметная рамка
