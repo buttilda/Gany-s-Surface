@@ -130,6 +130,7 @@ public class GanysSurface {
 	public static boolean enableSilkTouchingMushrooms = true;
 	public static boolean enableBanners = true;
 	public static boolean enableSponge = true;
+	public static boolean enableStoneBrickRecipes = true;
 	public static int max18StonesPerCluster = 33;
 
 	@EventHandler
@@ -153,6 +154,7 @@ public class GanysSurface {
 			enableSilkTouchingMushrooms = false;
 			enableBanners = false;
 			enableSponge = false;
+			enableStoneBrickRecipes = false;
 		}
 		if (Loader.isModLoaded("woodstuff")) {
 			enableChests = false;

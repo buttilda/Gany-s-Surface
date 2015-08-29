@@ -135,6 +135,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableBanners = configBoolean("Enable 1.8 banners", true, GanysSurface.enableBanners);
 		GanysSurface.enableRedSandstone = configBoolean("Enable 1.8 red sandstone", true, GanysSurface.enableRedSandstone);
 		GanysSurface.enableSponge = configBoolean("Enable 1.8 sponge (absorbs water)", true, GanysSurface.enableSponge);
+		GanysSurface.enableStoneBrickRecipes = configBoolean("Enable 1.8 Stone Bricks recipes", true, GanysSurface.enableStoneBrickRecipes);
 
 		// Others
 		GanysSurface.shouldDoVersionCheck = configBoolean("shouldDoVersionCheck", true, GanysSurface.shouldDoVersionCheck);
