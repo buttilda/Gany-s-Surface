@@ -5,6 +5,7 @@ import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.api.ISlimeBlockSpreable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModSounds;
+import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 
@@ -16,6 +17,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -43,10 +45,26 @@ public class SlimeBlock extends Block implements IConfigurable {
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
+	public void onFallenUpon(World world, int x, int y, int z, Entity entity, float fallDistance) {
 		if (!entity.isSneaking()) {
-			entity.fallDistance = 0.0F;
-			entity.motionY = 1.0F;
+			entity.fallDistance = 0;
+			if (entity.motionY < 0)
+				entity.getEntityData().setDouble(Reference.MOD_ID + ":slime", -entity.motionY);
+		}
+	}
+
+	@Override
+	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity) {
+		NBTTagCompound data = entity.getEntityData();
+		if (data.hasKey(Reference.MOD_ID + ":slime")) {
+			entity.motionY = data.getDouble(Reference.MOD_ID + ":slime");
+			data.removeTag(Reference.MOD_ID + ":slime");
+		}
+
+		if (Math.abs(entity.motionY) < 0.1 && !entity.isSneaking()) {
+			double d = 0.4 + Math.abs(entity.motionY) * 0.2;
+			entity.motionX *= d;
+			entity.motionZ *= d;
 		}
 	}
 
