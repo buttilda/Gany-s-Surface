@@ -185,6 +185,10 @@ public class MiscEventHandler {
 				event.drops.clear();
 				event.drops.add(new ItemStack(ModBlocks.red_mushroom_block));
 			}
+
+		if (GanysSurface.enableEatenCake)
+			if (event.block == Blocks.cake)
+				event.drops.add(new ItemStack(ModItems.eatenCake, 1, event.blockMetadata));
 	}
 
 	@SubscribeEvent

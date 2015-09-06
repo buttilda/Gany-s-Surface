@@ -2,9 +2,9 @@ package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
 import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
 import cpw.mods.fml.client.FMLClientHandler;
@@ -20,6 +20,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ItemCakeRenderer implements IItemRenderer {
+
+	private final Block cake;
+
+	public ItemCakeRenderer(Block cake) {
+		this.cake = cake;
+	}
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -60,10 +66,13 @@ public class ItemCakeRenderer implements IItemRenderer {
 		OpenGLHelper.translate(x, y, z);
 		FMLClientHandler.instance().getClient().renderEngine.bindTexture(TextureMap.locationBlocksTexture);
 
+		int meta = stack.getItemDamage();
 		float f = 0.0625F;
-		float f1 = 0.5F;
-		renderer.setRenderBounds(f, 0.0F, f, 1.0F - f, f1, 1.0F - f);
-		BlockRendererHelper.renderSimpleBlock(Blocks.cake, 0, renderer);
+		float f1 = (1 + meta * 2) / 16.0F;
+		float f2 = 0.5F;
+		renderer.setRenderBounds(f1, 0.0F, f, 1.0F - f, f2, 1.0F - f);
+
+		BlockRendererHelper.renderSimpleBlock(cake, stack.getItemDamage(), renderer);
 
 		OpenGLHelper.popMatrix();
 	}

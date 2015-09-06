@@ -100,6 +100,7 @@ public class GanysSurface {
 	public static boolean enableNoRecipeConflictForCrafTable = true;
 	public static boolean enableMarket = true;
 	public static boolean enableDispenserShears = true;
+	public static boolean enableEatenCake = true;
 
 	public static int maxLevelOMCWorks = 15;
 	public static int inkHarvesterMaxStrike = 5;

@@ -2,11 +2,13 @@ package ganymedes01.ganyssurface.blocks;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;
-import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.items.block.ItemChocolateCake;
 import ganymedes01.ganyssurface.lib.Strings;
+
+import java.util.Random;
+
 import net.minecraft.block.BlockCake;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +32,6 @@ public class ChocolateCakeBlock extends BlockCake implements ISubBlocksBlock, IC
 	private IIcon cakeTopIcon, cakeBottomIcon, cakeInner;
 
 	public ChocolateCakeBlock() {
-		super();
 		disableStats();
 		setHardness(0.5F);
 		setStepSound(soundTypeCloth);
@@ -52,19 +53,34 @@ public class ChocolateCakeBlock extends BlockCake implements ISubBlocksBlock, IC
 	private void eatCakeSlice(World world, int x, int y, int z, EntityPlayer player) {
 		if (player.canEat(false)) {
 			player.getFoodStats().addStats(2, 0.6F);
-			int l = world.getBlockMetadata(x, y, z) + 1;
+			int meta = world.getBlockMetadata(x, y, z) + 1;
 
-			if (l >= 6)
+			if (meta >= 6)
 				world.setBlockToAir(x, y, z);
 			else
-				world.setBlockMetadataWithNotify(x, y, z, l, 2);
+				world.setBlockMetadataWithNotify(x, y, z, meta, 2);
 		}
+	}
+
+	@Override
+	public int damageDropped(int meta) {
+		return meta;
+	}
+
+	@Override
+	public int quantityDropped(Random rand) {
+		return GanysSurface.enableEatenCake ? 1 : super.quantityDropped(rand);
+	}
+
+	@Override
+	public Item getItemDropped(int meta, Random rand, int fortune) {
+		return GanysSurface.enableEatenCake ? Item.getItemFromBlock(this) : super.getItemDropped(meta, rand, fortune);
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Item getItem(World world, int x, int y, int z) {
-		return Item.getItemFromBlock(ModBlocks.chocolateCake);
+		return Item.getItemFromBlock(this);
 	}
 
 	@Override

@@ -19,6 +19,7 @@ import ganymedes01.ganyssurface.items.CookedEgg;
 import ganymedes01.ganyssurface.items.CupOfTea;
 import ganymedes01.ganyssurface.items.DyedChainArmour;
 import ganymedes01.ganyssurface.items.DyedIronArmour;
+import ganymedes01.ganyssurface.items.EatenCake;
 import ganymedes01.ganyssurface.items.EmptyMug;
 import ganymedes01.ganyssurface.items.Gearalyser;
 import ganymedes01.ganyssurface.items.Horsalyser;
@@ -97,6 +98,7 @@ public class ModItems {
 	public static final Item quiver = new Quiver();
 	public static final Item painting = new Painting();
 	public static final Item stick = new Stick();
+	public static final Item eatenCake = new EatenCake();
 
 	// 1.8 Stuff
 	public static final Item rawMutton = new MuttonRaw();

@@ -95,6 +95,9 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 
 		if (GanysSurface.enableFences)
 			API.hideItem(new ItemStack(Blocks.fence));
+
+		if (GanysSurface.enableEatenCake)
+			API.hideItem(new ItemStack(ModItems.eatenCake));
 	}
 
 	@Override

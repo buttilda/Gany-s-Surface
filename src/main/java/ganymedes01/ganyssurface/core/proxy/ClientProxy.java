@@ -147,7 +147,7 @@ public class ClientProxy extends CommonProxy {
 			MinecraftForgeClient.registerItemRenderer(Items.boat, new ItemBoatRenderer());
 			MinecraftForgeClient.registerItemRenderer(Items.bed, new ItemBedRenderer());
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.lever), new ItemLeverRenderer());
-			MinecraftForgeClient.registerItemRenderer(Items.cake, new ItemCakeRenderer());
+			MinecraftForgeClient.registerItemRenderer(Items.cake, new ItemCakeRenderer(Blocks.cake));
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.torch), new ItemTorchRenderer());
 			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(Blocks.redstone_torch), new ItemTorchRenderer());
 			MinecraftForgeClient.registerItemRenderer(Items.sign, ItemSignRenderer.INSTANCE);
@@ -156,7 +156,14 @@ public class ClientProxy extends CommonProxy {
 					MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(sign), ItemSignRenderer.INSTANCE);
 		}
 
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.banner), new ItemBannerRenderer());
+		if (GanysSurface.enableBanners)
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.banner), new ItemBannerRenderer());
+
+		if (GanysSurface.enableEatenCake)
+			MinecraftForgeClient.registerItemRenderer(ModItems.eatenCake, new ItemCakeRenderer(Blocks.cake));
+
+		if (GanysSurface.enableChocolate)
+			MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.chocolateCake), new ItemCakeRenderer(ModBlocks.chocolateCake));
 	}
 
 	private void registerEntityRenderers() {

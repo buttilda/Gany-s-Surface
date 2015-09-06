@@ -16,4 +16,9 @@ public class ItemChocolateCake extends ItemBlock {
 		super(block);
 		setMaxStackSize(1);
 	}
+
+	@Override
+	public int getMetadata(int meta) {
+		return meta;
+	}
 }

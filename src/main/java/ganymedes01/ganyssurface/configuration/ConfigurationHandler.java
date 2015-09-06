@@ -119,6 +119,7 @@ public class ConfigurationHandler {
 		GanysSurface.enableNoRecipeConflictForCrafTable = configBoolean("Enable No Recipe Conflict for only the vanilla Crafting Tables", "You'll need to turn this off to craft Extra Utilities's Unstable Ingots", true, GanysSurface.enableNoRecipeConflictForCrafTable);
 		GanysSurface.enableMarket = configBoolean("Enable Market", true, GanysSurface.enableMarket);
 		GanysSurface.basaltBlocksPerCluster = configInteger("Max number of Basalt per cluster", true, GanysSurface.basaltBlocksPerCluster);
+		GanysSurface.enableEatenCake = configBoolean("Cakes drop themselves", true, GanysSurface.enableEatenCake);
 
 		// 1.8 Stuff
 		GanysSurface.enable18Stones = configBoolean("Enable 1.8 Stones", true, GanysSurface.enable18Stones);
