@@ -188,7 +188,10 @@ public class MiscEventHandler {
 
 		if (GanysSurface.enableEatenCake)
 			if (event.block == Blocks.cake)
-				event.drops.add(new ItemStack(ModItems.eatenCake, 1, event.blockMetadata));
+				if (event.blockMetadata == 0)
+					event.drops.add(new ItemStack(Items.cake));
+				else
+					event.drops.add(new ItemStack(ModItems.eatenCake, 1, event.blockMetadata));
 	}
 
 	@SubscribeEvent
