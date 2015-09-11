@@ -30,7 +30,8 @@ public class KeyBindingHandler {
 	public static KeyBinding worktable = new KeyBinding(StatCollector.translateToLocal("item.ganyssurface.portableDualWorkTable.name"), Keyboard.KEY_P, Reference.MOD_NAME);
 
 	public KeyBindingHandler() {
-		ClientRegistry.registerKeyBinding(worktable);
+		if (GanysSurface.enableWorkTables)
+			ClientRegistry.registerKeyBinding(worktable);
 	}
 
 	@SubscribeEvent
