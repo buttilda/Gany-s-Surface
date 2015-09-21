@@ -147,7 +147,7 @@ public class PoopBlock extends Block implements IGrowable, IConfigurable {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
-		if (meta > icons.length)
+		if (meta >= icons.length)
 			meta = 0;
 		return icons[meta];
 	}
