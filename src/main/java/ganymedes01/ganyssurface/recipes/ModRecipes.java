@@ -4,7 +4,6 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.blocks.OnePointEight.Stones18;
-import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.EnumColour;
 import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.block.Block;
@@ -65,8 +64,6 @@ public class ModRecipes {
 		if (GanysSurface.enableDoors) {
 			Items.wooden_door.setMaxStackSize(64);
 			Items.iron_door.setMaxStackSize(64);
-			Items.wooden_door.setTextureName(Utils.getItemTexture("door_wood"));
-			Items.iron_door.setTextureName(Utils.getItemTexture("door_iron"));
 			removeFirstRecipeFor(Items.wooden_door);
 			removeFirstRecipeFor(Items.iron_door);
 		}

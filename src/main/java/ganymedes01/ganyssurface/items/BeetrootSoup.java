@@ -19,7 +19,7 @@ public class BeetrootSoup extends ItemSoup implements IConfigurable {
 	public BeetrootSoup() {
 		super(6);
 		setContainerItem(Items.bowl);
-		setTextureName(Utils.getItemTexture(Strings.BEETROOT_SOUP_NAME));
+		setTextureName("beetroot_soup");
 		setUnlocalizedName(Utils.getUnlocalisedName(Strings.BEETROOT_SOUP_NAME));
 		setCreativeTab(GanysSurface.enableBeetroots ? GanysSurface.surfaceTab : null);
 	}

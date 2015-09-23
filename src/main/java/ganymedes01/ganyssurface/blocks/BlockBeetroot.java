@@ -5,9 +5,8 @@ import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
-import net.minecraft.block.BlockCarrot;
+import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
@@ -20,18 +19,26 @@ import cpw.mods.fml.relauncher.SideOnly;
  *
  */
 
-public class BlockBeetroot extends BlockCarrot implements IConfigurable {
+public class BlockBeetroot extends BlockCrops implements IConfigurable {
+
+	@SideOnly(Side.CLIENT)
+	private IIcon[] icons;
 
 	public BlockBeetroot() {
 		setCreativeTab(null);
+		setBlockTextureName("beetroots");
 		setBlockName(Utils.getUnlocalisedName(Strings.BLOCK_BEETROOT_NAME));
-		setBlockTextureName(Utils.getBlockTexture(Strings.BLOCK_BEETROOT_NAME));
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta) {
-		return meta < 7 ? Blocks.carrots.getIcon(side, meta) : blockIcon;
+		if (meta < 7) {
+			if (meta == 6)
+				meta = 5;
+			return icons[meta >> 1];
+		} else
+			return icons[3];
 	}
 
 	@Override
@@ -47,7 +54,9 @@ public class BlockBeetroot extends BlockCarrot implements IConfigurable {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister reg) {
-		blockIcon = reg.registerIcon(getTextureName());
+		icons = new IIcon[4];
+		for (int i = 0; i < icons.length; i++)
+			icons[i] = reg.registerIcon(getTextureName() + "_stage_" + i);
 	}
 
 	@Override

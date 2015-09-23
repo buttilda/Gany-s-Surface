@@ -21,7 +21,7 @@ public class BeetrootSeeds extends ItemSeeds implements IConfigurable {
 
 	public BeetrootSeeds() {
 		super(ModBlocks.beetroot, Blocks.farmland);
-		setTextureName(Utils.getItemTexture(Strings.BEETROOT_SEEDS_NAME));
+		setTextureName("beetroot_seeds");
 		setUnlocalizedName(Utils.getUnlocalisedName(Strings.BEETROOT_SEEDS_NAME));
 		setCreativeTab(GanysSurface.enableBeetroots ? GanysSurface.surfaceTab : null);
 
