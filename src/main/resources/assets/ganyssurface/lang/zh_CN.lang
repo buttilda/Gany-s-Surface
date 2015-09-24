@@ -195,8 +195,8 @@ tile.ganyssurface.dye_light_blue.name=淡蓝色燃料块
 tile.ganyssurface.dye_magenta.name=品红色燃料块
 tile.ganyssurface.dye_orange.name=橙色燃料块
 tile.ganyssurface.dye_white.name=白色燃料块
-tile.ganyssurface.beetrootBlock.name=Beetroot
-
+tile.ganyssurface.beetrootBlock.name=甜菜根
+tile.ganyssurface.market.name=市场
 tile.ganyssurface.18Stones_1.name=花岗岩
 tile.ganyssurface.18Stones_2.name=平滑花岗岩
 tile.ganyssurface.18Stones_3.name=闪长岩
@@ -287,6 +287,8 @@ container.ganyssurface.encasingBench=装箱工作台
 container.ganyssurface.autoEncaser=自动装箱工作台
 container.ganyssurface.gearalyser=装备分析仪
 container.ganyssurface.banner=Banner Pattern
+container.ganyssurface.market=市场
+
 
 # Creative Tab localizations
 itemGroup.ganyssurface=Gany's Surface
