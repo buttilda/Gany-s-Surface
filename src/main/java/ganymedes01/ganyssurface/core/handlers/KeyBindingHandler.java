@@ -27,11 +27,13 @@ import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 
 public class KeyBindingHandler {
 
-	public static KeyBinding worktable = new KeyBinding(StatCollector.translateToLocal("item.ganyssurface.portableDualWorkTable.name"), Keyboard.KEY_P, Reference.MOD_NAME);
+	public static KeyBinding worktable;
 
 	public KeyBindingHandler() {
-		if (GanysSurface.enableWorkTables)
+		if (GanysSurface.enableWorkTables) {
+			worktable = new KeyBinding(StatCollector.translateToLocal("item.ganyssurface.portableDualWorkTable.name"), Keyboard.KEY_P, Reference.MOD_NAME);
 			ClientRegistry.registerKeyBinding(worktable);
+		}
 	}
 
 	@SubscribeEvent
