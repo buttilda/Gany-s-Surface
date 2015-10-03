@@ -53,7 +53,6 @@ public class TileEntityFarmManager extends GanysInventory {
 						break;
 					}
 				}
-				break;
 			}
 	}
 
