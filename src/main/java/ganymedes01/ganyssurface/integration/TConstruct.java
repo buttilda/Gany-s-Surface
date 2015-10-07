@@ -2,14 +2,11 @@ package ganymedes01.ganyssurface.integration;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
-import ganymedes01.ganyssurface.ModItems;
-import net.minecraft.nbt.NBTTagCompound;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * TConstuct integration for modified iron/trap doors
@@ -19,24 +16,22 @@ import net.minecraft.init.Items;
  *
  */
 
-//update TiC recipes to match new iron doors
+// update TiC recipes to match new iron doors
 public class TConstruct extends Integration {
 
 	@Override
 	public void init() {
-		// NOP
-
 	}
 
 	@Override
 	public void postInit() {
 		NBTTagCompound data;
-		int ingotLiquidValue = 144; //1 ingot amount in mb
+		int ingotLiquidValue = 144; // 1 ingot amount in mb
 
 		ItemStack iron = new ItemStack(Blocks.iron_block);
 
-		if(GanysSurface.enableDoors){
-			//reload the door melting recipe (will overwrite)
+		if (GanysSurface.enableDoors) {
+			// reload the door melting recipe (will overwrite)
 			ItemStack iron_door = new ItemStack(Items.iron_door);
 			data = new NBTTagCompound();
 
@@ -48,8 +43,8 @@ public class TConstruct extends Integration {
 
 			FMLInterModComms.sendMessage(getModID(), "addSmelteryMelting", data);
 		}
-		if(GanysSurface.enableIronTrapdoor){
-			//add a trapdoor smelting recipe
+		if (GanysSurface.enableIronTrapdoor) {
+			// add a trapdoor smelting recipe
 			ItemStack iron_trapdoor = new ItemStack(ModBlocks.ironTrapdoor);
 			data = new NBTTagCompound();
 
@@ -67,5 +62,4 @@ public class TConstruct extends Integration {
 	public String getModID() {
 		return "TConstruct";
 	}
-
 }
