@@ -15,7 +15,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -54,10 +53,7 @@ public class WoodenArmour extends ItemArmor implements IConfigurable {
 
 	@Override
 	public boolean getIsRepairable(ItemStack item, ItemStack material) {
-		for (ItemStack stack : OreDictionary.getOres("logWood"))
-			if (InventoryUtils.areStacksSameOre(material, stack))
-				return true;
-		return false;
+		return InventoryUtils.isItemOre(material, "logWood");
 	}
 
 	@Override
