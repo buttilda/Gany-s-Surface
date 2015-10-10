@@ -2,6 +2,7 @@ package ganymedes01.ganyssurface.items;
 
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModMaterials;
 import ganymedes01.ganyssurface.lib.Strings;
@@ -54,7 +55,7 @@ public class WoodenArmour extends ItemArmor implements IConfigurable {
 	@Override
 	public boolean getIsRepairable(ItemStack item, ItemStack material) {
 		for (ItemStack stack : OreDictionary.getOres("logWood"))
-			if (stack.getItem() == material.getItem())
+			if (InventoryUtils.areStacksSameOre(material, stack))
 				return true;
 		return false;
 	}
