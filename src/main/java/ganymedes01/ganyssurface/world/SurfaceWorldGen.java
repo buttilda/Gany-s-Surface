@@ -46,7 +46,7 @@ public class SurfaceWorldGen implements IWorldGenerator {
 						if (world.getBlock(x, y, z) == Blocks.dirt && world.getBlockMetadata(x, y, z) == 1)
 							world.setBlock(x, y, z, ModBlocks.coarseDirt, 0, 2);
 
-		if (GanysSurface.enable18Stones)
+		if (GanysSurface.enable18Stones && GanysSurface.max18StonesPerCluster > 0)
 			for (Iterator<WorldGenMinable> iterator = generators.iterator(); iterator.hasNext();) {
 				WorldGenMinable generator = iterator.next();
 				for (int i = 0; i < 10; i++) {
@@ -58,7 +58,7 @@ public class SurfaceWorldGen implements IWorldGenerator {
 				}
 			}
 
-		if (GanysSurface.enableBasalt)
+		if (GanysSurface.enableBasalt && GanysSurface.basaltBlocksPerCluster > 0)
 			for (int i = 0; i < 10; i++) {
 				int x = chunkX * 16 + rand.nextInt(16);
 				int y = rand.nextInt(80);
