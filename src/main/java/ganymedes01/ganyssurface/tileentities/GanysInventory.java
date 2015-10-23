@@ -32,11 +32,7 @@ public class GanysInventory extends TileEntity implements IInventory {
 
 	@Override
 	public ItemStack getStackInSlot(int slot) {
-		try {
-			return inventory[slot];
-		} finally {
-			markDirty();
-		}
+		return inventory[slot];
 	}
 
 	@Override

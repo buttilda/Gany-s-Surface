@@ -18,16 +18,18 @@ public class ContainerAutoEncaser extends GanysContainer {
 
 	public ContainerAutoEncaser(InventoryPlayer player, TileEntityAutoEncaser tile) {
 		super(tile);
-		addSlotToContainer(new AutoEncaserSlot(tile, 9, 124, 35));
+		addSlotToContainer(new AutoEncaserSlot(tile, 9, 134, 48));
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
-				addSlotToContainer(new AutoEncaserSlot(tile, j + i * 3, 30 + j * 18, 17 + i * 18));
+				addSlotToContainer(new AutoEncaserSlot(tile, j + i * 3, 40 + j * 18, 30 + i * 18));
+		addSlotToContainer(new AutoEncaserSlot(tile, 10, 100, 22));
+		addSlotToContainer(new Slot(tile, 11, 16, 30));
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++)
-				addSlotToContainer(new Slot(player, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+				addSlotToContainer(new Slot(player, j + i * 9 + 9, 8 + j * 18, 101 + i * 18));
 		for (int i = 0; i < 9; i++)
-			addSlotToContainer(new Slot(player, i, 8 + i * 18, 142));
+			addSlotToContainer(new Slot(player, i, 8 + i * 18, 159));
 	}
 
 	@Override

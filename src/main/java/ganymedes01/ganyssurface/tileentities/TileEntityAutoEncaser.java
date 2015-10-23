@@ -19,10 +19,10 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class TileEntityAutoEncaser extends GanysInventory implements ISidedInventory {
 
-	private boolean bool;
+	private boolean isDirty = true;
 
 	public TileEntityAutoEncaser() {
-		super(10, Strings.AUTO_ENCASER_NAME);
+		super(12, Strings.AUTO_ENCASER_NAME);
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class TileEntityAutoEncaser extends GanysInventory implements ISidedInven
 
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
-		if (slot == 9) {
+		if (slot == 9 || slot == 10) {
 			inventory[slot] = stack;
 			markDirty();
 		} else
@@ -40,18 +40,30 @@ public class TileEntityAutoEncaser extends GanysInventory implements ISidedInven
 	}
 
 	@Override
+	public void readFromNBT(NBTTagCompound nbt) {
+		super.readFromNBT(nbt);
+		isDirty = true;
+	}
+
+	@Override
+	public void markDirty() {
+		super.markDirty();
+		isDirty = true;
+	}
+
+	@Override
 	public void updateEntity() {
 		if (worldObj.isRemote)
 			return;
-		if (bool) {
-			bool = false;
+		if (!isDirty)
 			return;
-		}
-		bool = true;
+		isDirty = false;
 
 		for (int i = 0; i < 9; i++)
 			if (inventory[i] == null)
 				return;
+		if (inventory[10] == null)
+			return;
 
 		ItemStack encased = getEncasedItem();
 
@@ -63,10 +75,13 @@ public class TileEntityAutoEncaser extends GanysInventory implements ISidedInven
 			inventory[9].stackSize++;
 			added = true;
 		}
-		if (added)
+		if (added) {
 			for (int i = 0; i < 9; i++)
 				if (--inventory[i].stackSize <= 0)
 					inventory[i] = null;
+			if (--inventory[10].stackSize <= 0)
+				inventory[10] = null;
+		}
 	}
 
 	private ItemStack getEncasedItem() {
@@ -83,25 +98,32 @@ public class TileEntityAutoEncaser extends GanysInventory implements ISidedInven
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
-		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+		return new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 	}
 
 	@Override
 	public boolean canInsertItem(int slot, ItemStack stack, int side) {
-		if (slot != 9) {
-			ArrayList<ItemStack> stacks = new ArrayList<ItemStack>();
-			for (int i = 0; i < 9; i++) {
-				if (inventory[i] == null)
-					continue;
-				stacks.add(inventory[i]);
-			}
-			if (stacks.isEmpty())
+		if (slot == 10)
+			return InventoryUtils.isItemOre(stack, "plankWood");
+		else if (slot == 9)
+			return false;
+		else if (slot >= 0 || slot <= 8)
+			if (inventory[11] != null)
+				return InventoryUtils.areStacksTheSame(inventory[11], stack, false);
+			else {
+				ArrayList<ItemStack> stacks = new ArrayList<ItemStack>();
+				for (int i = 0; i < 9; i++) {
+					if (inventory[i] == null)
+						continue;
+					stacks.add(inventory[i]);
+				}
+				if (stacks.isEmpty())
+					return true;
+				for (ItemStack s : stacks)
+					if (!InventoryUtils.areStacksTheSame(s, stack, false))
+						return false;
 				return true;
-			for (ItemStack s : stacks)
-				if (!InventoryUtils.areStacksTheSame(s, stack, false))
-					return false;
-			return true;
-		}
+			}
 		return false;
 	}
 

@@ -7,6 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
@@ -15,32 +16,56 @@ import net.minecraft.nbt.NBTTagCompound;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class ContainerEncasingBench extends Container {
 
-	public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
-	public IInventory craftResult = new InventoryCraftResult();
+	private final InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
+	private final IInventory craftResult = new InventoryCraftResult();
+	private final IInventory planks = new InventoryBasic("Planks", false, 1) {
+
+		@Override
+		public ItemStack decrStackSize(int slot, int size) {
+			ItemStack ret = super.decrStackSize(slot, size);
+			ContainerEncasingBench.this.onCraftMatrixChanged(this);
+			return ret;
+		}
+
+		@Override
+		public void setInventorySlotContents(int slot, ItemStack stack) {
+			super.setInventorySlotContents(slot, stack);
+			ContainerEncasingBench.this.onCraftMatrixChanged(this);
+		}
+	};
 
 	public ContainerEncasingBench(InventoryPlayer player) {
-		addSlotToContainer(new SlotEncaser(player.player, craftMatrix, craftResult, 0, 124, 35));
+		addSlotToContainer(new SlotEncaser(craftMatrix, planks, craftResult, 0, 124, 41));
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 3; j++)
-				addSlotToContainer(new Slot(craftMatrix, j + i * 3, 30 + j * 18, 17 + i * 18));
+				addSlotToContainer(new Slot(craftMatrix, j + i * 3, 30 + j * 18, 23 + i * 18));
+		addSlotToContainer(new Slot(planks, 0, 90, 15) {
+			@Override
+			public boolean isItemValid(ItemStack stack) {
+				return InventoryUtils.isItemOre(stack, "plankWood");
+			}
+		});
 
 		for (int i = 0; i < 3; i++)
 			for (int j = 0; j < 9; j++)
-				addSlotToContainer(new Slot(player, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+				addSlotToContainer(new Slot(player, j + i * 9 + 9, 8 + j * 18, 90 + i * 18));
 		for (int i = 0; i < 9; i++)
-			addSlotToContainer(new Slot(player, i, 8 + i * 18, 142));
+			addSlotToContainer(new Slot(player, i, 8 + i * 18, 148));
 
 		onCraftMatrixChanged(craftMatrix);
 	}
 
 	private ItemStack getEncasedItem() {
+		if (planks.getStackInSlot(0) == null)
+			return null;
+
 		for (int i = 0; i < craftMatrix.getSizeInventory(); i++)
 			for (int j = 0; j < craftMatrix.getSizeInventory(); j++)
 				if (i != j)
@@ -72,12 +97,16 @@ public class ContainerEncasingBench extends Container {
 	public void onContainerClosed(EntityPlayer player) {
 		super.onContainerClosed(player);
 
-		if (!player.worldObj.isRemote)
+		if (!player.worldObj.isRemote) {
 			for (int i = 0; i < craftMatrix.getSizeInventory(); i++) {
 				ItemStack stack = craftMatrix.getStackInSlotOnClosing(i);
 				if (stack != null)
 					player.dropPlayerItemWithRandomChoice(stack, false);
 			}
+			ItemStack stack = planks.getStackInSlotOnClosing(0);
+			if (stack != null)
+				player.dropPlayerItemWithRandomChoice(stack, false);
+		}
 	}
 
 	@Override

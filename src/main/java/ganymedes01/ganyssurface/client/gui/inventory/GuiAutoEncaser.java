@@ -21,20 +21,25 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class GuiAutoEncaser extends GuiGanysSurface {
 
+	private static final ResourceLocation TEXTURE = Utils.getResource(Utils.getGUITexture("auto_encaser"));
+
 	public GuiAutoEncaser(InventoryPlayer player, TileEntityAutoEncaser tile) {
 		super(new ContainerAutoEncaser(player, tile));
+		xSize = 176;
+		ySize = 182;
 	}
 
 	@Override
 	protected void drawGuiContainerForegroundLayer(int x, int y) {
-		fontRendererObj.drawString(StatCollector.translateToLocal(Utils.getConainerName(Strings.AUTO_ENCASER_NAME)), 28, 6, BLACK);
+		String name = StatCollector.translateToLocal(Utils.getConainerName(Strings.AUTO_ENCASER_NAME));
+		fontRendererObj.drawString(name, (xSize - fontRendererObj.getStringWidth(name)) / 2, 6, BLACK);
 		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, BLACK);
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float f, int x, int y) {
 		OpenGLHelper.colour(1.0F, 1.0F, 1.0F, 1.0F);
-		mc.renderEngine.bindTexture(new ResourceLocation("textures/gui/container/crafting_table.png"));
+		mc.renderEngine.bindTexture(TEXTURE);
 		int k = (width - xSize) / 2;
 		int l = (height - ySize) / 2;
 		drawTexturedModalRect(k, l, 0, 0, xSize, ySize);
