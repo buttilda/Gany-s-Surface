@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
+import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.client.renderer.block.BlockRendererHelper;
 import net.minecraft.block.Block;
@@ -43,7 +44,8 @@ public class ItemCakeRenderer implements IItemRenderer {
 		if (renderer instanceof RenderBlocks)
 			switch (type) {
 				case ENTITY:
-					OpenGLHelper.scale(0.5, 0.5, 0.5);
+					if (cake != ModBlocks.chocolateCake)
+						OpenGLHelper.scale(0.5, 0.5, 0.5);
 					render(stack, 0, 0, 0, (RenderBlocks) renderer);
 					break;
 				case EQUIPPED:
