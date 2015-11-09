@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.core.handlers;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
@@ -10,7 +11,6 @@ import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * Gany's Surface
@@ -44,7 +44,7 @@ public class PoopHandler {
 	private void replaceNearbyAirBlock(World world, int x, int y, int z, Block block, int meta) {
 		for (int i = -1; i < 2; i++)
 			for (int k = -1; k < 2; k++)
-				if (world.isAirBlock(x + i, y, z + k) || world.getBlock(x + i, y, z + k).isReplaceable(world, x + i, y, z + k)) {
+				if (canPoopGoHere(world, x + i, y, z + k)) {
 					world.setBlock(x + i, y, z + k, block, meta, 3);
 					ModBlocks.poop.onNeighborBlockChange(world, x + i, y, z + k, block);
 					return;
@@ -60,5 +60,17 @@ public class PoopHandler {
 					if (world.getBlock(x + i, y + j, z + k) == ModBlocks.poop)
 						count++;
 		return count > 4;
+	}
+
+	private boolean canPoopGoHere(World world, int x, int y, int z) {
+		if (world.isAirBlock(x, y, z))
+			return true;
+		else {
+			Block block = world.getBlock(x, y, z);
+			if (block.isReplaceable(world, x, y, z))
+				return !block.getMaterial().isLiquid();
+		}
+
+		return false;
 	}
 }
