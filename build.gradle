@@ -17,12 +17,12 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.12.6"
+version = "1.12.7"
 group = "ganymedes01.ganyssurface"
 archivesBaseName = "Ganys Surface"
 
 minecraft {
-    version = "1.7.10-10.13.4.1448-1.7.10"
+    version = "1.7.10-10.13.4.1566-1.7.10"
     runDir = "eclipse/assets"
 }
 
