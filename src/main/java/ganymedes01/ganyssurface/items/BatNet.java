@@ -1,14 +1,13 @@
 package ganymedes01.ganyssurface.items;
 
+import java.util.List;
+
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
-
-import java.util.List;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.passive.EntityBat;
@@ -43,7 +42,7 @@ public class BatNet extends Item implements IConfigurable {
 	}
 
 	@Override
-	public boolean onLeftClickEntity(ItemStack item, EntityPlayer player, Entity target) {
+	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity target) {
 		int meta = getMetaFromCreature(target);
 		if (meta >= 0) {
 			if (!player.worldObj.isRemote) {
@@ -52,7 +51,9 @@ public class BatNet extends Item implements IConfigurable {
 					pocketBat.setStackDisplayName(((EntityLiving) target).getCustomNameTag());
 				target.setDead();
 				InventoryUtils.addToPlayerInventory(player, pocketBat, target.posX, target.posY + 1, target.posZ);
-				item.damageItem(1, player);
+				stack.damageItem(1, player);
+				if (stack.getItemDamage() > stack.getMaxDamage())
+					player.setCurrentItemOrArmor(0, null);
 			}
 			return true;
 		} else
