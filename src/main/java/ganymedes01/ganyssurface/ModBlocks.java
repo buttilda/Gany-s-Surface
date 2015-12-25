@@ -1,5 +1,8 @@
 package ganymedes01.ganyssurface;
 
+import java.lang.reflect.Field;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 import ganymedes01.ganyssurface.blocks.AutoEncaser;
 import ganymedes01.ganyssurface.blocks.Basalt;
 import ganymedes01.ganyssurface.blocks.BlockBeetroot;
@@ -30,6 +33,7 @@ import ganymedes01.ganyssurface.blocks.EncasingBench;
 import ganymedes01.ganyssurface.blocks.FarmManager;
 import ganymedes01.ganyssurface.blocks.FertilizedSoil;
 import ganymedes01.ganyssurface.blocks.InkHarvester;
+import ganymedes01.ganyssurface.blocks.InvertedRedstoneLamp;
 import ganymedes01.ganyssurface.blocks.ItemDisplay;
 import ganymedes01.ganyssurface.blocks.Lantern;
 import ganymedes01.ganyssurface.blocks.LeafWall;
@@ -56,14 +60,10 @@ import ganymedes01.ganyssurface.blocks.OnePointEight.RedSandstoneStairs;
 import ganymedes01.ganyssurface.blocks.OnePointEight.SeaLantern;
 import ganymedes01.ganyssurface.blocks.OnePointEight.Sponge;
 import ganymedes01.ganyssurface.blocks.OnePointEight.Stones18;
-
-import java.lang.reflect.Field;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockWood;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Gany's Surface
@@ -108,6 +108,8 @@ public class ModBlocks {
 	public static final BlockStorage storage = new BlockStorage();
 	public static final BlockStorage dye = new BlockDye();
 	public static final Block market = new Market();
+	public static final Block invertedRedstoneLampOff = new InvertedRedstoneLamp(true);
+	public static final Block invertedRedstoneLampOn = new InvertedRedstoneLamp(false);
 
 	public static final Block[] disguisedTrapdoors = new Block[BlockWood.field_150096_a.length];
 	public static final Block[] chests = new Block[BlockWood.field_150096_a.length];

@@ -198,6 +198,8 @@ tile.ganyssurface.dye_orange.name=Block of Orange Dye
 tile.ganyssurface.dye_white.name=Block of White Dye
 tile.ganyssurface.beetrootBlock.name=Beetroot
 tile.ganyssurface.market.name=Market
+tile.ganyssurface.inverted_redstone_lamp_on.name=Inverted Redstone Lamp
+tile.ganyssurface.inverted_redstone_lamp_off.name=Inverted Redstone Lamp
 
 tile.ganyssurface.18Stones_1.name=Granite
 tile.ganyssurface.18Stones_2.name=Polished Granite

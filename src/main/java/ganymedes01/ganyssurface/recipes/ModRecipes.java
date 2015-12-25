@@ -1,5 +1,9 @@
 package ganymedes01.ganyssurface.recipes;
 
+import org.apache.commons.lang3.ArrayUtils;
+
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
@@ -20,11 +24,6 @@ import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
-
-import org.apache.commons.lang3.ArrayUtils;
-
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Gany's Surface
@@ -466,6 +465,9 @@ public class ModRecipes {
 				addShapedRecipe(new ItemStack(ModBlocks.market), "xxx", "yzy", "waw", 'x', "plankWood", 'y', Items.item_frame, 'z', new ItemStack(ModBlocks.itemDisplay, 1, OreDictionary.WILDCARD_VALUE), 'w', "stone", 'a', new ItemStack(Blocks.stonebrick, 1, 3));
 			else
 				addShapedRecipe(new ItemStack(ModBlocks.market), "xxx", "yyy", "zwz", 'x', "plankWood", 'y', Items.item_frame, 'z', "stone", 'w', new ItemStack(Blocks.stonebrick, 1, 3));
+
+		if (GanysSurface.enableInvertedRedsontLamp)
+			addShapedRecipe(new ItemStack(ModBlocks.invertedRedstoneLampOn), " x ", "xyx", " x ", 'x', Blocks.redstone_torch, 'y', Blocks.glowstone);
 
 		// Vanilla
 		if (GanysSurface.enableExtraVanillaRecipes)

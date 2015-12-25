@@ -1,5 +1,8 @@
 package ganymedes01.ganyssurface.integration;
 
+import codechicken.nei.api.API;
+import codechicken.nei.api.IConfigureNEI;
+import codechicken.nei.recipe.DefaultOverlayHandler;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
@@ -14,9 +17,6 @@ import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import codechicken.nei.api.API;
-import codechicken.nei.api.IConfigureNEI;
-import codechicken.nei.recipe.DefaultOverlayHandler;
 
 /**
  * Gany's Surface
@@ -98,6 +98,9 @@ public class NEIGanysSurfaceConfig implements IConfigureNEI {
 
 		if (GanysSurface.enableEatenCake)
 			API.hideItem(new ItemStack(ModItems.eatenCake));
+
+		if (GanysSurface.enableInvertedRedsontLamp)
+			API.hideItem(new ItemStack(ModBlocks.invertedRedstoneLampOff));
 	}
 
 	@Override
