@@ -1,22 +1,21 @@
 package ganymedes01.ganyssurface.items;
 
+import java.util.Random;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModMaterials;
 import ganymedes01.ganyssurface.lib.Strings;
-
-import java.util.Random;
-
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

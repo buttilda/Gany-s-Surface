@@ -2,12 +2,12 @@ package ganymedes01.ganyssurface.api;
 
 import java.lang.reflect.Field;
 
+import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * Gany's Surface

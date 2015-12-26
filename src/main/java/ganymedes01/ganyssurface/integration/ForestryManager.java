@@ -1,17 +1,16 @@
 package ganymedes01.ganyssurface.integration;
 
-import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.ModItems;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.ModItems;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Gany's Surface

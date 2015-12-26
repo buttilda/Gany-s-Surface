@@ -1,11 +1,11 @@
 package ganymedes01.ganyssurface.integration;
 
-import ganymedes01.ganyssurface.lib.Reference;
-
 import java.util.ArrayList;
 
 import com.google.common.reflect.ClassPath;
 import com.google.common.reflect.ClassPath.ClassInfo;
+
+import ganymedes01.ganyssurface.lib.Reference;
 
 /**
  * Gany's Surface

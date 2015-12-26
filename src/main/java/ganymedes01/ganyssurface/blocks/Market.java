@@ -1,5 +1,7 @@
 package ganymedes01.ganyssurface.blocks;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.InventoryUtils;
@@ -17,8 +19,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

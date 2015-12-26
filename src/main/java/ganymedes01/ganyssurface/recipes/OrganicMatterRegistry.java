@@ -1,13 +1,12 @@
 package ganymedes01.ganyssurface.recipes;
 
+import java.util.HashMap;
+import java.util.regex.Pattern;
+
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.UnsizedStack;
-
-import java.util.HashMap;
-import java.util.regex.Pattern;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;

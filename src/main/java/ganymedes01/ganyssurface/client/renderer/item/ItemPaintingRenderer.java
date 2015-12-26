@@ -1,5 +1,7 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.items.Painting;
 import net.minecraft.client.Minecraft;
@@ -8,8 +10,6 @@ import net.minecraft.entity.item.EntityPainting.EnumArt;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

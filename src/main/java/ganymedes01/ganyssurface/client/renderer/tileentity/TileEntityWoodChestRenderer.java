@@ -1,11 +1,5 @@
 package ganymedes01.ganyssurface.client.renderer.tileentity;
 
-import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.blocks.BlockWoodChest;
-import ganymedes01.ganyssurface.blocks.BlockWoodChest.ChestType;
-import ganymedes01.ganyssurface.client.OpenGLHelper;
-import ganymedes01.ganyssurface.core.utils.Utils;
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -18,6 +12,14 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.blocks.BlockWoodChest;
+import ganymedes01.ganyssurface.blocks.BlockWoodChest.ChestType;
+import ganymedes01.ganyssurface.client.OpenGLHelper;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.client.Minecraft;
@@ -28,9 +30,6 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ResourceLocation;
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

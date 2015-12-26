@@ -1,5 +1,10 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.core.utils.Utils;
@@ -9,16 +14,10 @@ import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict;
 import ganymedes01.ganyssurface.tileentities.TileEntityDualWorkTable;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

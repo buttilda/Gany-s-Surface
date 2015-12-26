@@ -1,9 +1,5 @@
 package ganymedes01.ganyssurface.core.handlers;
 
-import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.Reference;
-
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -15,17 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.AbstractClientPlayer;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.event.RenderPlayerEvent;
-
 import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.Reference;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.AbstractClientPlayer;
+import net.minecraft.client.renderer.texture.DynamicTexture;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 
 /**
  * Gany's Surface

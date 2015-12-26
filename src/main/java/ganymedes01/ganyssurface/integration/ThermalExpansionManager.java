@@ -1,11 +1,11 @@
 package ganymedes01.ganyssurface.integration;
 
+import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.registry.GameRegistry;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import cpw.mods.fml.common.event.FMLInterModComms;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Gany's Surface

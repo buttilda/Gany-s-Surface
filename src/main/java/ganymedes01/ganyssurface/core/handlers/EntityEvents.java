@@ -1,11 +1,12 @@
 package ganymedes01.ganyssurface.core.handlers;
 
-import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.ModItems;
-
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.common.eventhandler.EventPriority;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -14,8 +15,6 @@ import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import cpw.mods.fml.common.eventhandler.EventPriority;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * Gany's Surface

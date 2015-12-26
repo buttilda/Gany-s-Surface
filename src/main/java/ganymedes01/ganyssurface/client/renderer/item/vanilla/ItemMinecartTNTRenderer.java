@@ -1,10 +1,10 @@
 package ganymedes01.ganyssurface.client.renderer.item.vanilla;
 
+import cpw.mods.fml.client.FMLClientHandler;
 import ganymedes01.ganyssurface.client.OpenGLHelper;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.init.Blocks;
-import cpw.mods.fml.client.FMLClientHandler;
 
 /**
  * Gany's Surface

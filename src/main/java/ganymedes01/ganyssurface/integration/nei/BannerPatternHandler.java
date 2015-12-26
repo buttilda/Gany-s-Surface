@@ -1,5 +1,12 @@
 package ganymedes01.ganyssurface.integration.nei;
 
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import codechicken.nei.PositionedStack;
+import codechicken.nei.recipe.TemplateRecipeHandler;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.core.utils.Utils;
@@ -8,12 +15,6 @@ import ganymedes01.ganyssurface.lib.EnumColour;
 import ganymedes01.ganyssurface.recipes.ModRecipes;
 import ganymedes01.ganyssurface.tileentities.TileEntityBanner;
 import ganymedes01.ganyssurface.tileentities.TileEntityBanner.EnumBannerPattern;
-
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.gui.inventory.GuiCrafting;
 import net.minecraft.item.Item;
@@ -22,8 +23,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.oredict.OreDictionary;
-import codechicken.nei.PositionedStack;
-import codechicken.nei.recipe.TemplateRecipeHandler;
 
 /**
  * Gany's Surface

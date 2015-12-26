@@ -1,14 +1,13 @@
 package ganymedes01.ganyssurface.configuration;
 
-import ganymedes01.ganyssurface.lib.Reference;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraftforge.common.config.ConfigElement;
 import cpw.mods.fml.client.config.GuiConfig;
 import cpw.mods.fml.client.config.IConfigElement;
+import ganymedes01.ganyssurface.lib.Reference;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraftforge.common.config.ConfigElement;
 
 /**
  * Gany's Surface

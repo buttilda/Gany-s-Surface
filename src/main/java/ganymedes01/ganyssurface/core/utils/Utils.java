@@ -1,7 +1,5 @@
 package ganymedes01.ganyssurface.core.utils;
 
-import ganymedes01.ganyssurface.lib.Reference;
-
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,6 +7,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
+import com.mojang.authlib.GameProfile;
+
+import cpw.mods.fml.relauncher.ReflectionHelper;
+import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
@@ -20,10 +22,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.FakePlayerFactory;
-
-import com.mojang.authlib.GameProfile;
-
-import cpw.mods.fml.relauncher.ReflectionHelper;
 
 /**
  * Gany's Surface

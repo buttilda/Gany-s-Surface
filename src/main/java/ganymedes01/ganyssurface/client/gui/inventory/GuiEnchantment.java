@@ -1,12 +1,17 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
-import ganymedes01.ganyssurface.client.OpenGLHelper;
-import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.inventory.ContainerEnchantment;
-
 import java.util.ArrayList;
 import java.util.Random;
 
+import org.lwjgl.util.glu.Project;
+
+import com.google.common.collect.Lists;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import ganymedes01.ganyssurface.client.OpenGLHelper;
+import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.inventory.ContainerEnchantment;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -22,13 +27,6 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-
-import org.lwjgl.util.glu.Project;
-
-import com.google.common.collect.Lists;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class GuiEnchantment extends GuiContainer {

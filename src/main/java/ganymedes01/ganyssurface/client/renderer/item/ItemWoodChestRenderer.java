@@ -1,5 +1,8 @@
 package ganymedes01.ganyssurface.client.renderer.item;
 
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.blocks.BlockWoodChest;
 import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.client.renderer.tileentity.TileEntityWoodChestRenderer;
@@ -7,9 +10,6 @@ import net.minecraft.block.Block;
 import net.minecraft.client.model.ModelChest;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

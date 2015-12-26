@@ -1,13 +1,5 @@
 package ganymedes01.ganyssurface.integration.nei;
 
-import ganymedes01.ganyssurface.client.OpenGLHelper;
-import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
-import ganymedes01.ganyssurface.core.utils.UnsizedStack;
-import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.Reference;
-import ganymedes01.ganyssurface.lib.Strings;
-import ganymedes01.ganyssurface.recipes.OrganicMatterRegistry;
-
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,14 +8,21 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
 import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.ItemList;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
+import ganymedes01.ganyssurface.client.OpenGLHelper;
+import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
+import ganymedes01.ganyssurface.core.utils.UnsizedStack;
+import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.Reference;
+import ganymedes01.ganyssurface.lib.Strings;
+import ganymedes01.ganyssurface.recipes.OrganicMatterRegistry;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 
 /**
  * Gany's Surface

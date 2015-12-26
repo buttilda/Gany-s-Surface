@@ -1,15 +1,14 @@
 package ganymedes01.ganyssurface.inventory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict;
 import ganymedes01.ganyssurface.network.packet.PacketGUINoRecipeConflict2;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable.WorkTableCrafting;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;

@@ -1,18 +1,17 @@
 package ganymedes01.ganyssurface.world;
 
-import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.ModBlocks;
-
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.common.IWorldGenerator;
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.ModBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import cpw.mods.fml.common.IWorldGenerator;
 
 /**
  * Gany's Surface

@@ -1,5 +1,9 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
+import org.lwjgl.opengl.GL11;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.inventory.ContainerCraftingTable;
 import ganymedes01.ganyssurface.inventory.INoConflictRecipeContainer;
 import ganymedes01.ganyssurface.network.PacketHandler;
@@ -10,11 +14,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-
-import org.lwjgl.opengl.GL11;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

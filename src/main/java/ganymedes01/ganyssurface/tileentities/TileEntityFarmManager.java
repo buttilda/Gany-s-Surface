@@ -1,13 +1,12 @@
 package ganymedes01.ganyssurface.tileentities;
 
-import ganymedes01.ganyssurface.core.utils.Spiral;
-import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.Strings;
-
 import java.awt.Point;
 import java.util.LinkedList;
 import java.util.List;
 
+import ganymedes01.ganyssurface.core.utils.Spiral;
+import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.IPlantable;

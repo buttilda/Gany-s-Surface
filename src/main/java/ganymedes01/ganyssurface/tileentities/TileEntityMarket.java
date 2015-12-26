@@ -1,13 +1,12 @@
 package ganymedes01.ganyssurface.tileentities;
 
-import ganymedes01.ganyssurface.core.utils.InventoryUtils;
-import ganymedes01.ganyssurface.lib.Strings;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
 
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
+import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;

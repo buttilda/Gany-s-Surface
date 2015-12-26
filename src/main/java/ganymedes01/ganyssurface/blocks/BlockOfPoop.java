@@ -1,5 +1,9 @@
 package ganymedes01.ganyssurface.blocks;
 
+import java.util.Random;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks.ISubBlocksBlock;
@@ -7,13 +11,8 @@ import ganymedes01.ganyssurface.api.ISlimeBlockSpreable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.ModSounds;
 import ganymedes01.ganyssurface.lib.Strings;
-
-import java.util.Random;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

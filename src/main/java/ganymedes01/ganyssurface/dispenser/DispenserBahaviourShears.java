@@ -1,10 +1,9 @@
 package ganymedes01.ganyssurface.dispenser;
 
-import ganymedes01.ganyssurface.core.utils.InventoryUtils;
-import ganymedes01.ganyssurface.core.utils.Utils;
-
 import java.util.List;
 
+import ganymedes01.ganyssurface.core.utils.InventoryUtils;
+import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;

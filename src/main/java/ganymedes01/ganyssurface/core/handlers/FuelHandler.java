@@ -1,5 +1,6 @@
 package ganymedes01.ganyssurface.core.handlers;
 
+import cpw.mods.fml.common.IFuelHandler;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.items.WoodenArmour;
@@ -7,7 +8,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityFurnace;
-import cpw.mods.fml.common.IFuelHandler;
 
 /**
  * Gany's Surface

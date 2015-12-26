@@ -1,5 +1,8 @@
 package ganymedes01.ganyssurface;
 
+import java.lang.reflect.Field;
+
+import cpw.mods.fml.common.registry.GameRegistry;
 import ganymedes01.ganyssurface.dispenser.DispenserBahaviourShears;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorChargedCreeperSpawner;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorHorseSpawner;
@@ -47,16 +50,12 @@ import ganymedes01.ganyssurface.items.TeaLeaves;
 import ganymedes01.ganyssurface.items.VillageFinder;
 import ganymedes01.ganyssurface.items.WoodenArmour;
 import ganymedes01.ganyssurface.items.WoodenWrench;
-
-import java.lang.reflect.Field;
-
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.BlockWood;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Gany's Surface

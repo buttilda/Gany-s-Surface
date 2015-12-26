@@ -1,12 +1,11 @@
 package ganymedes01.ganyssurface.tileentities;
 
-import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.lib.Strings;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.command.IEntitySelector;

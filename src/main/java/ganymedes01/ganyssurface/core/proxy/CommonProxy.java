@@ -1,5 +1,9 @@
 package ganymedes01.ganyssurface.core.proxy;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.IGuiHandler;
+import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiAutoEncaser;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
@@ -65,10 +69,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.network.IGuiHandler;
-import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Gany's Surface

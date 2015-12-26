@@ -1,20 +1,19 @@
 package ganymedes01.ganyssurface.configuration;
 
+import java.awt.Color;
+import java.io.File;
+
+import cpw.mods.fml.client.event.ConfigChangedEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.blocks.BlockStorage;
 import ganymedes01.ganyssurface.integration.Integration;
 import ganymedes01.ganyssurface.integration.ModIntegrator;
 import ganymedes01.ganyssurface.lib.EnumColour;
 import ganymedes01.ganyssurface.lib.Reference;
-
-import java.awt.Color;
-import java.io.File;
-
 import net.minecraft.block.BlockColored;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraftforge.common.config.Configuration;
-import cpw.mods.fml.client.event.ConfigChangedEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * Gany's Surface

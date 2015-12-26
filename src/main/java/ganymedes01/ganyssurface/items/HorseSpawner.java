@@ -1,14 +1,15 @@
 package ganymedes01.ganyssurface.items;
 
-import ganymedes01.ganyssurface.GanysSurface;
-import ganymedes01.ganyssurface.IConfigurable;
-import ganymedes01.ganyssurface.core.utils.Utils;
-import ganymedes01.ganyssurface.lib.Strings;
-
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import ganymedes01.ganyssurface.GanysSurface;
+import ganymedes01.ganyssurface.IConfigurable;
+import ganymedes01.ganyssurface.core.utils.Utils;
+import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -27,8 +28,6 @@ import net.minecraft.util.Facing;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

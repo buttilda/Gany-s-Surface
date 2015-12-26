@@ -1,13 +1,12 @@
 package ganymedes01.ganyssurface.items;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
-
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;

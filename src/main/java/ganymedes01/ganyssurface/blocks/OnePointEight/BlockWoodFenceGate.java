@@ -1,5 +1,7 @@
 package ganymedes01.ganyssurface.blocks.OnePointEight;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModBlocks.IBurnableBlock;
@@ -7,8 +9,6 @@ import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.block.BlockFenceGate;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.IIcon;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

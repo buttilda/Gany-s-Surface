@@ -1,12 +1,12 @@
 package ganymedes01.ganyssurface.integration;
 
+import cpw.mods.fml.common.event.FMLInterModComms;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import cpw.mods.fml.common.event.FMLInterModComms;
 
 /**
  * TConstuct integration for modified iron/trap doors
