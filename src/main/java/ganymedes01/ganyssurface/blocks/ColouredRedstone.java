@@ -15,7 +15,6 @@ import ganymedes01.ganyssurface.lib.RenderIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockColored;
-import net.minecraft.block.BlockRedstoneDiode;
 import net.minecraft.block.BlockRedstoneWire;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -187,8 +186,8 @@ public class ColouredRedstone extends Block implements IConfigurable {
 			return true;
 		else if (b == Blocks.air || b == Blocks.redstone_wire || b == Blocks.redstone_block || b instanceof ColouredRedstone && b != block)
 			return false;
-		else if (!BlockRedstoneDiode.isRedstoneRepeaterBlockID(b))
-			return b != null && b.canConnectRedstone(world, x, y, z, side);
+		else if (!Blocks.unpowered_repeater.func_149907_e(b))
+			return b.canConnectRedstone(world, x, y, z, side);
 		else {
 			int meta = world.getBlockMetadata(x, y, z);
 			return side == (meta & 3) || side == Direction.rotateOpposite[meta & 3];
