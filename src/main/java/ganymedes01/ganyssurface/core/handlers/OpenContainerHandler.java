@@ -2,8 +2,6 @@ package ganymedes01.ganyssurface.core.handlers;
 
 import java.util.ArrayList;
 
-import cpw.mods.fml.common.eventhandler.Event.Result;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import ganymedes01.ganyssurface.GanysSurface;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerBrewingStand;
@@ -12,6 +10,8 @@ import net.minecraft.inventory.ContainerDispenser;
 import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.inventory.ContainerHopper;
 import net.minecraftforge.event.entity.player.PlayerOpenContainerEvent;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * Gany's Surface

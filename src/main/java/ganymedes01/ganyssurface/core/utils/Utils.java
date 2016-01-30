@@ -9,12 +9,10 @@ import java.util.UUID;
 
 import com.mojang.authlib.GameProfile;
 
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.village.Village;
 import net.minecraft.village.VillageCollection;
@@ -22,6 +20,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.FakePlayerFactory;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 /**
  * Gany's Surface

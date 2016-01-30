@@ -1,16 +1,11 @@
 package ganymedes01.ganyssurface.core.proxy;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.network.IGuiHandler;
-import cpw.mods.fml.common.registry.EntityRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiAutoEncaser;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiBlockDetector;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiCraftingTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiEncasingBench;
-import ganymedes01.ganyssurface.client.gui.inventory.GuiEnchantment;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiFarmManager;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiGearalyser;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiInkHarvester;
@@ -21,7 +16,6 @@ import ganymedes01.ganyssurface.client.gui.inventory.GuiPortableDualWorkTable;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWoodSign;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiWorkTable;
 import ganymedes01.ganyssurface.configuration.ConfigurationHandler;
-import ganymedes01.ganyssurface.core.handlers.EntityEvents;
 import ganymedes01.ganyssurface.core.handlers.MiscEventHandler;
 import ganymedes01.ganyssurface.core.handlers.OpenContainerHandler;
 import ganymedes01.ganyssurface.core.handlers.PoopHandler;
@@ -48,7 +42,6 @@ import ganymedes01.ganyssurface.lib.GUIsID;
 import ganymedes01.ganyssurface.lib.ModIDs;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.tileentities.TileEntityAutoEncaser;
-import ganymedes01.ganyssurface.tileentities.TileEntityBanner;
 import ganymedes01.ganyssurface.tileentities.TileEntityBlockDetector;
 import ganymedes01.ganyssurface.tileentities.TileEntityChestPropellant;
 import ganymedes01.ganyssurface.tileentities.TileEntityCubicSensoringDislocator;
@@ -62,13 +55,16 @@ import ganymedes01.ganyssurface.tileentities.TileEntityOrganicMatterCompressor;
 import ganymedes01.ganyssurface.tileentities.TileEntityPlanter;
 import ganymedes01.ganyssurface.tileentities.TileEntityRainDetector;
 import ganymedes01.ganyssurface.tileentities.TileEntitySensoringDislocator;
-import ganymedes01.ganyssurface.tileentities.TileEntityWoodChest;
 import ganymedes01.ganyssurface.tileentities.TileEntityWoodSign;
 import ganymedes01.ganyssurface.tileentities.TileEntityWorkTable;
+import net.minecraft.client.gui.GuiEnchantment;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.network.IGuiHandler;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Gany's Surface
@@ -80,11 +76,9 @@ import net.minecraftforge.common.MinecraftForge;
 public class CommonProxy implements IGuiHandler {
 
 	public void registerEvents() {
-		FMLCommonHandler.instance().bus().register(ConfigurationHandler.INSTANCE);
+		MinecraftForge.EVENT_BUS.register(ConfigurationHandler.INSTANCE);
 		if (GanysSurface.enableDynamicSnow)
-			FMLCommonHandler.instance().bus().register(new SnowTickHandler());
-		if (GanysSurface.enableMutton)
-			MinecraftForge.EVENT_BUS.register(new EntityEvents());
+			MinecraftForge.EVENT_BUS.register(new SnowTickHandler());
 		if (GanysSurface.enablePoop)
 			MinecraftForge.EVENT_BUS.register(new PoopHandler());
 
@@ -119,12 +113,8 @@ public class CommonProxy implements IGuiHandler {
 			GameRegistry.registerTileEntity(TileEntityInkHarvester.class, Utils.getUnlocalisedName(Strings.INK_HARVESTER_NAME));
 		if (GanysSurface.enableEncasers)
 			GameRegistry.registerTileEntity(TileEntityAutoEncaser.class, Utils.getUnlocalisedName(Strings.AUTO_ENCASER_NAME));
-		if (GanysSurface.enableChests)
-			GameRegistry.registerTileEntity(TileEntityWoodChest.class, Utils.getUnlocalisedName("wood_chest"));
 		if (GanysSurface.enableWoodenSigns)
 			GameRegistry.registerTileEntity(TileEntityWoodSign.class, Utils.getUnlocalisedName("wood_sign"));
-		if (GanysSurface.enableBanners)
-			GameRegistry.registerTileEntity(TileEntityBanner.class, Utils.getUnlocalisedName("banner"));
 		if (GanysSurface.enableMarket)
 			GameRegistry.registerTileEntity(TileEntityMarket.class, Utils.getUnlocalisedName(Strings.MARKET));
 	}

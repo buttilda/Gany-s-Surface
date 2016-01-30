@@ -1,9 +1,8 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.inventory.ContainerPortableDualWorkTable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

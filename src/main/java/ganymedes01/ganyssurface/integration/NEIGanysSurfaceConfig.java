@@ -1,8 +1,5 @@
 package ganymedes01.ganyssurface.integration;
 
-import codechicken.nei.api.API;
-import codechicken.nei.api.IConfigureNEI;
-import codechicken.nei.recipe.DefaultOverlayHandler;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
@@ -17,6 +14,7 @@ import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.API;
 
 /**
  * Gany's Surface

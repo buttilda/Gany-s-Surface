@@ -1,7 +1,5 @@
 package ganymedes01.ganyssurface.client.gui.inventory;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.inventory.ContainerFarmManager;
@@ -10,6 +8,7 @@ import ganymedes01.ganyssurface.tileentities.TileEntityFarmManager;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

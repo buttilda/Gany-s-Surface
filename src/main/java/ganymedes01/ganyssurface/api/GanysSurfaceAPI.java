@@ -2,31 +2,31 @@ package ganymedes01.ganyssurface.api;
 
 import java.lang.reflect.Field;
 
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.event.FMLInterModComms;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fml.common.FMLLog;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class GanysSurfaceAPI {
 
 	/**
 	 * Sets a custom yield on the Organic Matter Fabricator (OMF) for a determined item/block.
-	 * 
+	 *
 	 * Pass a yield of -1 to make the item not acceptable on the OMF.
-	 * 
+	 *
 	 * Most items have a yield of 2. The amount needed for the machine to start to work is 144.
-	 * 
+	 *
 	 * This is metadata sensitive.
-	 * 
+	 *
 	 * @param matter
 	 *            : ItemStack of item/block to which the yield will be registered
 	 * @param burnTime

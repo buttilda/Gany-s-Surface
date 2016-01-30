@@ -2,16 +2,11 @@ package ganymedes01.ganyssurface.recipes;
 
 import org.apache.commons.lang3.ArrayUtils;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.registry.GameRegistry;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
-import ganymedes01.ganyssurface.blocks.OnePointEight.Stones18;
-import ganymedes01.ganyssurface.lib.EnumColour;
 import ganymedes01.ganyssurface.lib.Reference;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockWood;
 import net.minecraft.entity.item.EntityPainting.EnumArt;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -19,6 +14,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.RecipeSorter;
 import net.minecraftforge.oredict.RecipeSorter.Category;
@@ -41,17 +38,11 @@ public class ModRecipes {
 			RecipeSorter.register(Reference.MOD_ID + ".StorageCaseRecipe", StorageCaseRecipe.class, Category.SHAPELESS, "after:minecraft:shapeless");
 		if (GanysSurface.enableDyedArmour)
 			RecipeSorter.register(Reference.MOD_ID + ".RecipeArmourDyes", RecipeArmourDyes.class, Category.SHAPELESS, "after:minecraft:shapeless");
-		if (GanysSurface.enableBanners) {
-			RecipeSorter.register(Reference.MOD_ID + ".RecipeDuplicatePattern", RecipeDuplicatePattern.class, Category.SHAPELESS, "after:minecraft:shapeless");
-			RecipeSorter.register(Reference.MOD_ID + ".RecipeAddPattern", RecipeAddPattern.class, Category.SHAPED, "after:minecraft:shaped");
-		}
 
 		registerOreDictionary();
 
 		registerBlockRecipes();
 		registerItemRecipes();
-
-		add18Recipes();
 
 		tweakRecipes();
 
@@ -60,35 +51,6 @@ public class ModRecipes {
 	}
 
 	private static void tweakRecipes() {
-		if (GanysSurface.enableDoors) {
-			Items.wooden_door.setMaxStackSize(64);
-			Items.iron_door.setMaxStackSize(64);
-			removeFirstRecipeFor(Items.wooden_door);
-			removeFirstRecipeFor(Items.iron_door);
-		}
-
-		if (GanysSurface.enableChests)
-			removeFirstRecipeFor(Blocks.chest);
-
-		if (GanysSurface.enableFences) {
-			removeFirstRecipeFor(Blocks.fence);
-			removeFirstRecipeFor(Blocks.fence_gate);
-			Blocks.fence.setCreativeTab(null);
-			Blocks.fence_gate.setCreativeTab(null);
-		}
-
-		if (GanysSurface.enableBurnableBlocks) {
-			Blocks.fire.setFireInfo(Blocks.fence_gate, 5, 20);
-			Blocks.fire.setFireInfo(Blocks.fence, 5, 20);
-			Blocks.fire.setFireInfo(Blocks.deadbush, 60, 100);
-		}
-
-		if (GanysSurface.enableWoodenButtons)
-			removeFirstRecipeFor(Blocks.wooden_button);
-
-		if (GanysSurface.enableWoodenPressurePlates)
-			removeFirstRecipeFor(Blocks.wooden_pressure_plate);
-
 		if (GanysSurface.enableWoodenTrapdoors)
 			removeFirstRecipeFor(Blocks.trapdoor);
 
@@ -100,12 +62,6 @@ public class ModRecipes {
 
 		if (GanysSurface.enableWoodenSigns)
 			removeFirstRecipeFor(Items.sign);
-
-		if (GanysSurface.enableWoodenBookshelves)
-			removeFirstRecipeFor(Blocks.bookshelf);
-
-		removeFirstRecipeFor(Blocks.hopper);
-		addShapedRecipe(new ItemStack(Blocks.hopper), "x x", "xyx", " x ", 'x', "ingotIron", 'y', "chestWood");
 	}
 
 	private static void registerOreDictionary() {
@@ -124,37 +80,15 @@ public class ModRecipes {
 		if (GanysSurface.enableChocolate)
 			OreDictionary.registerOre("beansCocoa", new ItemStack(Items.dye, 1, 3));
 
-		if (GanysSurface.enablePrismarineStuff) {
-			OreDictionary.registerOre("shardPrismarine", new ItemStack(ModItems.prismarineItems, 1, 0));
-			OreDictionary.registerOre("crystalPrismarine", new ItemStack(ModItems.prismarineItems, 1, 1));
-			OreDictionary.registerOre("blockPrismarine", new ItemStack(ModBlocks.prismarineBlocks, 1, OreDictionary.WILDCARD_VALUE));
-		}
-
-		if (GanysSurface.enable18Stones) {
-			OreDictionary.registerOre("stoneGranite", new ItemStack(ModBlocks.newStones, 1, Stones18.GRANITE));
-			OreDictionary.registerOre("stoneDiorite", new ItemStack(ModBlocks.newStones, 1, Stones18.DIORITE));
-			OreDictionary.registerOre("stoneAndesite", new ItemStack(ModBlocks.newStones, 1, Stones18.ANDESITE));
-			OreDictionary.registerOre("stoneGranitePolished", new ItemStack(ModBlocks.newStones, 1, Stones18.POLISHED_GRANITE));
-			OreDictionary.registerOre("stoneDioritePolished", new ItemStack(ModBlocks.newStones, 1, Stones18.POLISHED_DIORITE));
-			OreDictionary.registerOre("stoneAndesitePolished", new ItemStack(ModBlocks.newStones, 1, Stones18.POLISHED_ANDESITE));
-		}
-
 		if (GanysSurface.enableBasalt) {
 			OreDictionary.registerOre("stoneBasalt", new ItemStack(ModBlocks.basalt, 1, 0));
 			OreDictionary.registerOre("stoneBasaltPolished", new ItemStack(ModBlocks.basalt, 1, 1));
 		}
 
-		if (GanysSurface.enableChests)
-			for (Block chest : ModBlocks.chests)
-				OreDictionary.registerOre("chestWood", new ItemStack(chest));
-
 		if (GanysSurface.enableSpawnEggs) {
 			OreDictionary.registerOre("mobEgg", ModItems.chargedCreeperSpawner);
 			OreDictionary.registerOre("mobEgg", new ItemStack(ModItems.horseSpawner, 1, OreDictionary.WILDCARD_VALUE));
 		}
-
-		if (GanysSurface.enableSlimeBlock)
-			OreDictionary.registerOre("blockSlime", new ItemStack(ModBlocks.slimeBlock));
 
 		if (GanysSurface.enableBlockOfCharcoal)
 			OreDictionary.registerOre("blockCharcoal", new ItemStack(ModBlocks.charcoalBlock));
@@ -167,15 +101,9 @@ public class ModRecipes {
 		if (GanysSurface.enableOMC)
 			OreDictionary.registerOre("itemSkull", new ItemStack(Items.skull, 1, OreDictionary.WILDCARD_VALUE));
 
-		if (GanysSurface.enableBeetroots)
-			OreDictionary.registerOre("cropBeetroot", ModItems.beetroot);
-
 		if (GanysSurface.enableWoodenTrapdoors)
 			for (Block trapdoor : ModBlocks.trapdoors)
 				OreDictionary.registerOre("trapdoorWood", trapdoor);
-
-		if (GanysSurface.enableIronTrapdoor)
-			OreDictionary.registerOre("trapdoorIron", ModBlocks.ironTrapdoor);
 
 		if (GanysSurface.enableWoodenLadders)
 			OreDictionary.registerOre("stickWood", new ItemStack(ModItems.stick, 1, OreDictionary.WILDCARD_VALUE));
@@ -275,11 +203,6 @@ public class ModRecipes {
 				addShapedRecipe(new ItemStack(ModItems.painting, 1, i), "xxx", "xyx", "xxx", 'x', "stickWood", 'y', middle);
 			}
 
-		if (GanysSurface.enableBeetroots) {
-			addShapedRecipe(new ItemStack(ModItems.beetrootSoup), "xxx", "xxx", " y ", 'x', "cropBeetroot", 'y', Items.bowl);
-			addShapelessRecipe(new ItemStack(Items.dye, 1, 1), "cropBeetroot");
-		}
-
 		if (GanysSurface.enableWoodenLadders) {
 			for (int i = 0; i < BlockWood.field_150096_a.length - 1; i++)
 				addShapedRecipe(new ItemStack(ModItems.stick, 4, i), "x", "x", 'x', new ItemStack(Blocks.planks, 1, i + 1));
@@ -365,22 +288,9 @@ public class ModRecipes {
 		if (GanysSurface.enableInkHarvester)
 			addShapedRecipe(new ItemStack(ModBlocks.inkHarvester), "xyx", "xzx", "xwx", 'x', new ItemStack(ModItems.pocketCritter, 1, 1), 'y', "dustRedstone", 'z', "blockIron", 'w', Items.golden_sword);
 
-		if (GanysSurface.enableSlimeBlock) {
-			addShapedRecipe(new ItemStack(ModBlocks.slimeBlock), "xxx", "xyx", "xxx", 'x', "slimeball", 'y', Items.water_bucket);
-			addShapelessRecipe(new ItemStack(Items.slime_ball, 8), ModBlocks.slimeBlock);
-		}
-
 		if (GanysSurface.enableBlockOfCharcoal) {
 			addShapedRecipe(new ItemStack(ModBlocks.charcoalBlock), "xxx", "xxx", "xxx", 'x', new ItemStack(Items.coal, 1, 1));
 			addShapelessRecipe(new ItemStack(Items.coal, 9, 1), new ItemStack(ModBlocks.charcoalBlock));
-		}
-
-		if (GanysSurface.enableChests) {
-			for (int i = 0; i < ModBlocks.chests.length; i++) {
-				addShapedRecipe(new ItemStack(ModBlocks.chests[i]), "xxx", "x x", "xxx", 'x', new ItemStack(Blocks.planks, 1, i));
-				addShapelessRecipe(new ItemStack(Blocks.chest), ModBlocks.chests[i]);
-			}
-			addShapedRecipe(new ItemStack(Blocks.chest), "xxx", "x x", "xxx", 'x', "plankWood");
 		}
 
 		if (GanysSurface.enableSlowRail)
@@ -392,30 +302,8 @@ public class ModRecipes {
 				addShapedRecipe(new ItemStack(ModBlocks.slowRail, 6), "w w", "xyx", "wzw", 'x', "slimeball", 'y', "stickWood", 'z', "dustRedstone", 'w', "ingotIron");
 
 		if (GanysSurface.enableBasalt) {
-			if (GanysSurface.enable18Stones)
-				addShapelessRecipe(new ItemStack(ModBlocks.basalt, 2, 0), "stoneDiorite", "stoneAndesite");
-			else
-				addShapelessRecipe(new ItemStack(ModBlocks.basalt, 2, 0), new ItemStack(Blocks.stone), new ItemStack(Items.coal, 1, OreDictionary.WILDCARD_VALUE));
-
+			addShapelessRecipe(new ItemStack(ModBlocks.basalt, 2, 0), "stoneDiorite", "stoneAndesite");
 			addShapedRecipe(new ItemStack(ModBlocks.basalt, 4, 1), "xx", "xx", 'x', new ItemStack(ModBlocks.basalt, 1, 0));
-		}
-
-		if (GanysSurface.enableWoodenButtons) {
-			for (int i = 0; i < ModBlocks.buttons.length; i++) {
-				Block button = ModBlocks.buttons[i];
-				addShapelessRecipe(new ItemStack(button), new ItemStack(Blocks.planks, 1, i + 1));
-				addShapelessRecipe(new ItemStack(Blocks.wooden_button), new ItemStack(button));
-			}
-			addShapelessRecipe(new ItemStack(Blocks.wooden_button), "plankWood");
-		}
-
-		if (GanysSurface.enableWoodenPressurePlates) {
-			for (int i = 0; i < ModBlocks.pressurePlates.length; i++) {
-				Block pressurePlate = ModBlocks.pressurePlates[i];
-				addShapedRecipe(new ItemStack(pressurePlate), "xx", 'x', new ItemStack(Blocks.planks, 1, i + 1));
-				addShapelessRecipe(new ItemStack(Blocks.wooden_pressure_plate), new ItemStack(pressurePlate));
-			}
-			addShapedRecipe(new ItemStack(Blocks.wooden_pressure_plate), "xx", 'x', "plankWood");
 		}
 
 		if (GanysSurface.enablePoop)
@@ -440,12 +328,6 @@ public class ModRecipes {
 			for (int i = 0; i < ModBlocks.signs.length; i++)
 				addShapedRecipe(new ItemStack(ModBlocks.signs[i], 3), "xxx", "xxx", " y ", 'x', new ItemStack(Blocks.planks, 1, i + 1), 'y', "stickWood");
 			addShapedRecipe(new ItemStack(Items.sign, 3), "xxx", "xxx", " y ", 'x', "plankWood", 'y', "stickWood");
-		}
-
-		if (GanysSurface.enableWoodenBookshelves) {
-			for (int i = 0; i < BlockWood.field_150096_a.length - 1; i++)
-				addShapedRecipe(new ItemStack(ModBlocks.bookshelf, 1, i), "xxx", "yyy", "xxx", 'x', new ItemStack(Blocks.planks, 1, i + 1), 'y', new ItemStack(Items.book));
-			addShapedRecipe(new ItemStack(Blocks.bookshelf), "xxx", "yyy", "xxx", 'x', "plankWood", 'y', new ItemStack(Items.book));
 		}
 
 		if (GanysSurface.enableStorageBlocks)
@@ -489,87 +371,6 @@ public class ModRecipes {
 				addShapedRecipe(new ItemStack(Blocks.stained_glass, 8, i), "xxx", "xyx", "xxx", 'x', Blocks.glass, 'y', reDyes[i]);
 				addShapelessRecipe(new ItemStack(Blocks.stained_glass, 1, i), Blocks.glass, reDyes[i]);
 			}
-		}
-	}
-
-	private static void add18Recipes() {
-		if (GanysSurface.enableStoneBrickRecipes) {
-			addShapelessRecipe(new ItemStack(Blocks.mossy_cobblestone), new ItemStack(Blocks.cobblestone), new ItemStack(Blocks.vine));
-			addShapelessRecipe(new ItemStack(Blocks.stonebrick, 1, 1), new ItemStack(Blocks.stonebrick), new ItemStack(Blocks.vine));
-			addShapedRecipe(new ItemStack(Blocks.stonebrick, 1, 3), "x", "x", 'x', new ItemStack(Blocks.stone_slab, 1, 5));
-			GameRegistry.addSmelting(new ItemStack(Blocks.stonebrick), new ItemStack(Blocks.stonebrick, 1, 2), 0.0F);
-		}
-
-		if (GanysSurface.enableCoarseDirt)
-			addShapedRecipe(new ItemStack(ModBlocks.coarseDirt, 4), "xy", "yx", 'x', new ItemStack(Blocks.dirt), 'y', new ItemStack(Blocks.gravel));
-
-		if (GanysSurface.enableMutton)
-			GameRegistry.addSmelting(ModItems.rawMutton, new ItemStack(ModItems.cookedMutton), 1.0F);
-
-		if (GanysSurface.enableIronTrapdoor)
-			addShapedRecipe(new ItemStack(ModBlocks.ironTrapdoor), "xx", "xx", 'x', "ingotIron");
-
-		if (GanysSurface.enable18Stones) {
-			// Diorite
-			addShapedRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.DIORITE), "xy", "yx", 'x', new ItemStack(Blocks.cobblestone), 'y', "gemQuartz");
-			addShapedRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_DIORITE), "xx", "xx", 'x', "stoneDiorite");
-			// Andesite
-			addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.ANDESITE), new ItemStack(Blocks.cobblestone), "stoneDiorite");
-			addShapedRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_ANDESITE), "xx", "xx", 'x', "stoneAndesite");
-			// Granite
-			addShapelessRecipe(new ItemStack(ModBlocks.newStones, 2, Stones18.GRANITE), "gemQuartz", "stoneDiorite");
-			addShapedRecipe(new ItemStack(ModBlocks.newStones, 4, Stones18.POLISHED_GRANITE), "xx", "xx", 'x', "stoneGranite");
-		}
-
-		if (GanysSurface.enablePrismarineStuff) {
-			int PLAIN = 0;
-			int BRICKS = 1;
-			int DARK = 2;
-
-			addShapedRecipe(new ItemStack(ModBlocks.prismarineBlocks, 1, DARK), "xxx", "xyx", "xxx", 'x', "shardPrismarine", 'y', "dyeBlack");
-			addShapedRecipe(new ItemStack(ModBlocks.prismarineBlocks, 1, PLAIN), "xx", "xx", 'x', "shardPrismarine");
-			addShapedRecipe(new ItemStack(ModBlocks.prismarineBlocks, 1, BRICKS), "xxx", "xxx", "xxx", 'x', "shardPrismarine");
-			addShapedRecipe(new ItemStack(ModBlocks.seaLantern), "xyx", "yyy", "xyx", 'x', "shardPrismarine", 'y', "crystalPrismarine");
-		}
-
-		if (GanysSurface.enableDoors) {
-			for (int i = 0; i < ModItems.doors.length; i++)
-				addShapedRecipe(new ItemStack(ModItems.doors[i], 3), "xx", "xx", "xx", 'x', new ItemStack(Blocks.planks, 1, i + 1));
-			addShapedRecipe(new ItemStack(Items.wooden_door, 3), "xx", "xx", "xx", 'x', "plankWood");
-			addShapedRecipe(new ItemStack(Items.iron_door, 3), "xx", "xx", "xx", 'x', "ingotIron");
-		}
-
-		if (GanysSurface.enableRedSandstone) {
-			addShapedRecipe(new ItemStack(ModBlocks.redSandstone), "xx", "xx", 'x', new ItemStack(Blocks.sand, 1, 1));
-			addShapedRecipe(new ItemStack(ModBlocks.redSandstone, 1, 1), "x", "x", 'x', new ItemStack(ModBlocks.redSandstoneSlab));
-			addShapedRecipe(new ItemStack(ModBlocks.redSandstone, 1, 2), "xx", "xx", 'x', new ItemStack(ModBlocks.redSandstone));
-			addShapedRecipe(new ItemStack(ModBlocks.redSandstoneSlab, 6), "xxx", 'x', ModBlocks.redSandstone);
-			addShapedRecipe(new ItemStack(ModBlocks.redSandstoneStairs, 4), "x  ", "xx ", "xxx", 'x', ModBlocks.redSandstone);
-		}
-
-		if (GanysSurface.enableFences) {
-			for (int i = 0; i < ModBlocks.fences.length; i++)
-				addShapedRecipe(new ItemStack(ModBlocks.fences[i], 3), "xyx", "xyx", 'x', new ItemStack(Blocks.planks, 1, i), 'y', "stickWood");
-			addShapedRecipe(new ItemStack(ModBlocks.fences[0], 3), "xyx", "xyx", 'x', "plankWood", 'y', "stickWood");
-			addShapelessRecipe(new ItemStack(Blocks.fence), ModBlocks.fences[0]);
-			addShapelessRecipe(new ItemStack(ModBlocks.fences[0]), Blocks.fence);
-
-			for (int i = 0; i < ModBlocks.gates.length; i++)
-				addShapedRecipe(new ItemStack(ModBlocks.gates[i]), "yxy", "yxy", 'x', new ItemStack(Blocks.planks, 1, i + 1), 'y', "stickWood");
-			addShapedRecipe(new ItemStack(Blocks.fence_gate), "yxy", "yxy", 'x', "plankWood", 'y', "stickWood");
-		}
-
-		if (GanysSurface.enableBanners) {
-			for (EnumColour colour : EnumColour.values())
-				addShapedRecipe(new ItemStack(ModBlocks.banner, 1, colour.getDamage()), new Object[] { "xxx", "xxx", " y ", 'x', new ItemStack(Blocks.wool, 1, colour.getDamage()), 'y', "stickWood" });
-			GameRegistry.addRecipe(new RecipeDuplicatePattern());
-			GameRegistry.addRecipe(new RecipeAddPattern());
-		}
-
-		if (GanysSurface.enableSponge) {
-			addShapelessRecipe(new ItemStack(ModBlocks.sponge), Blocks.sponge);
-			addShapelessRecipe(new ItemStack(Blocks.sponge), ModBlocks.sponge);
-			GameRegistry.addSmelting(new ItemStack(ModBlocks.sponge, 1, 1), new ItemStack(ModBlocks.sponge), 0.0F);
 		}
 	}
 

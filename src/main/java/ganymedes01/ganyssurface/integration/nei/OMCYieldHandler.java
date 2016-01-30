@@ -8,10 +8,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-import codechicken.lib.gui.GuiDraw;
-import codechicken.nei.ItemList;
-import codechicken.nei.PositionedStack;
-import codechicken.nei.recipe.TemplateRecipeHandler;
 import ganymedes01.ganyssurface.client.OpenGLHelper;
 import ganymedes01.ganyssurface.client.gui.inventory.GuiOrganicMatterCompressor;
 import ganymedes01.ganyssurface.core.utils.UnsizedStack;

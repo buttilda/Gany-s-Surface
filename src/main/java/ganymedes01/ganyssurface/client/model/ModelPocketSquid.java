@@ -1,9 +1,8 @@
 package ganymedes01.ganyssurface.client.model;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

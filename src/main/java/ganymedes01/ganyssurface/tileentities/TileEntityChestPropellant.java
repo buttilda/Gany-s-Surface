@@ -1,7 +1,5 @@
 package ganymedes01.ganyssurface.tileentities;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.blocks.ChestPropellant;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.entity.item.EntityItem;
@@ -10,6 +8,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

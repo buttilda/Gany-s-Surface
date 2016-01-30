@@ -13,9 +13,6 @@ import java.util.Scanner;
 
 import com.mojang.authlib.minecraft.MinecraftProfileTexture;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Reference;
@@ -24,6 +21,9 @@ import net.minecraft.client.entity.AbstractClientPlayer;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface
@@ -101,13 +101,13 @@ public class RenderCapeHandler {
 	public void onPreRenderSpecials(RenderPlayerEvent.Specials.Pre event) {
 		if (!(event.entityPlayer instanceof AbstractClientPlayer))
 			return;
-		String name = event.entityPlayer.getCommandSenderName();
+		String name = event.entityPlayer.getName();
 		if (usersWithCapes.contains(name)) {
 			AbstractClientPlayer player = (AbstractClientPlayer) event.entityPlayer;
 
-			if (event.entityPlayer.getCommandSenderName().equals("Jeb_Jeb"))
+			if (event.entityPlayer.getName().equals("Jeb_Jeb"))
 				setCape(player, JEBJEB_CAPE_DATA);
-			else if (event.entityPlayer.getCommandSenderName().equals("KingPurpleRaptor"))
+			else if (event.entityPlayer.getName().equals("KingPurpleRaptor"))
 				setCape(player, KPR_CAPE_DATA);
 			else
 				setCape(player, CAPE_DATA);

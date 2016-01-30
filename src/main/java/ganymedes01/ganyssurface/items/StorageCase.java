@@ -2,8 +2,6 @@ package ganymedes01.ganyssurface.items;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.ModItems;
@@ -12,6 +10,7 @@ import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

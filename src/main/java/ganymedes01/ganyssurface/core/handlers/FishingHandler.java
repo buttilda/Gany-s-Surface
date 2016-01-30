@@ -9,11 +9,6 @@ import net.minecraftforge.common.FishingHooks;
 public class FishingHandler {
 
 	public static void init() {
-		if (GanysSurface.enablePrismarineStuff) {
-			addTreasure(new ItemStack(ModItems.prismarineItems, 1, 0), 1);
-			addTreasure(new ItemStack(ModItems.prismarineItems, 1, 1), 1);
-		}
-
 		if (GanysSurface.enablePoop)
 			addJunk(new ItemStack(ModItems.poop), 8);
 

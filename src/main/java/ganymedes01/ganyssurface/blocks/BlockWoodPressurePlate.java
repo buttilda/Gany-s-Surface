@@ -4,7 +4,6 @@ import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.IConfigurable;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import net.minecraft.block.BlockPressurePlate;
-import net.minecraft.block.BlockWood;
 import net.minecraft.block.material.Material;
 
 /**

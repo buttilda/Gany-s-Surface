@@ -1,5 +1,7 @@
 package ganymedes01.ganyssurface.integration;
 
+import com.sun.jna.platform.unix.X11.XSizeHints.Aspect;
+
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
@@ -8,9 +10,6 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import thaumcraft.api.ThaumcraftApi;
-import thaumcraft.api.aspects.Aspect;
-import thaumcraft.api.aspects.AspectList;
 
 /**
  * Gany's Surface

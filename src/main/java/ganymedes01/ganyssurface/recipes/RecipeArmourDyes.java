@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import ganymedes01.ganyssurface.ModItems;
 import ganymedes01.ganyssurface.core.utils.InventoryUtils;
 import ganymedes01.ganyssurface.items.ItemDyeableArmour;
-import ganymedes01.ganyssurface.lib.EnumColour;
 import net.minecraft.block.BlockColored;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.init.Items;

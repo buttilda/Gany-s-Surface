@@ -67,7 +67,12 @@ public class OrganicMatterRegistry {
 		addMatterYield(Items.paper);
 		addMatterYield(Items.sugar);
 		addMatterYield(Items.leather);
-		addMatterYield(Items.wooden_door);
+		addMatterYield(Items.acacia_door);
+		addMatterYield(Items.birch_door);
+		addMatterYield(Items.dark_oak_door);
+		addMatterYield(Items.jungle_door);
+		addMatterYield(Items.oak_door);
+		addMatterYield(Items.spruce_door);
 		addMatterYield(Items.lead);
 		addMatterYield(Items.wheat);
 		addMatterYield(Items.dye);

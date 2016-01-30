@@ -8,7 +8,6 @@ import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
 
 /**

@@ -8,9 +8,9 @@ import net.minecraft.world.World;
 
 /**
  * Gany's Surface
- * 
+ *
  * @author ganymedes01
- * 
+ *
  */
 
 public class StorageCaseRecipe implements IRecipe {
@@ -48,7 +48,6 @@ public class StorageCaseRecipe implements IRecipe {
 			return stack;
 		}
 		return null;
-
 	}
 
 	@Override

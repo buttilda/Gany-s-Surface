@@ -98,7 +98,7 @@ public class VersionHelper implements Runnable {
 
 		String text = StatCollector.translateToLocal("versioncheck." + Reference.MOD_ID + ".message");
 		String download = String.format(StatCollector.translateToLocal("versioncheck." + Reference.MOD_ID + ".download"), Reference.LATEST_VERSION);
-		return IChatComponent.Serializer.func_150699_a("[{\"text\":\"" + text + "\"}," + "{\"text\":\" " + white + "[" + green + download + white + "]\"," + "\"color\":\"green\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":" + "{\"text\":\"Click to download the latest version\",\"color\":\"yellow\"}}," + "\"clickEvent\":{\"action\":\"open_url\",\"value\":\"" + updateURL + "\"}}]");
+		return IChatComponent.Serializer.jsonToComponent("[{\"text\":\"" + text + "\"}," + "{\"text\":\" " + white + "[" + green + download + white + "]\"," + "\"color\":\"green\",\"hoverEvent\":{\"action\":\"show_text\",\"value\":" + "{\"text\":\"Click to download the latest version\",\"color\":\"yellow\"}}," + "\"clickEvent\":{\"action\":\"open_url\",\"value\":\"" + updateURL + "\"}}]");
 	}
 
 	public static byte getResult() {

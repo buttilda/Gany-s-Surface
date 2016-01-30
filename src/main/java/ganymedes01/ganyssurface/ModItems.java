@@ -2,7 +2,6 @@ package ganymedes01.ganyssurface;
 
 import java.lang.reflect.Field;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import ganymedes01.ganyssurface.dispenser.DispenserBahaviourShears;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorChargedCreeperSpawner;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorHorseSpawner;
@@ -11,9 +10,6 @@ import ganymedes01.ganyssurface.dispenser.DispenserBehaviorPoop;
 import ganymedes01.ganyssurface.dispenser.DispenserBehaviorRot;
 import ganymedes01.ganyssurface.items.BatNet;
 import ganymedes01.ganyssurface.items.BatStew;
-import ganymedes01.ganyssurface.items.Beetroot;
-import ganymedes01.ganyssurface.items.BeetrootSeeds;
-import ganymedes01.ganyssurface.items.BeetrootSoup;
 import ganymedes01.ganyssurface.items.CamelliaSeeds;
 import ganymedes01.ganyssurface.items.ChargedCreeperSpawner;
 import ganymedes01.ganyssurface.items.ChocolateBar;
@@ -28,10 +24,7 @@ import ganymedes01.ganyssurface.items.Gearalyser;
 import ganymedes01.ganyssurface.items.Horsalyser;
 import ganymedes01.ganyssurface.items.HorseSpawner;
 import ganymedes01.ganyssurface.items.IcyPickaxe;
-import ganymedes01.ganyssurface.items.ItemNewDoor;
 import ganymedes01.ganyssurface.items.MankyCupOfTea;
-import ganymedes01.ganyssurface.items.MuttonCooked;
-import ganymedes01.ganyssurface.items.MuttonRaw;
 import ganymedes01.ganyssurface.items.ObsidianHead;
 import ganymedes01.ganyssurface.items.Painting;
 import ganymedes01.ganyssurface.items.PineCone;
@@ -39,7 +32,6 @@ import ganymedes01.ganyssurface.items.PineNuts;
 import ganymedes01.ganyssurface.items.PocketCritter;
 import ganymedes01.ganyssurface.items.Poop;
 import ganymedes01.ganyssurface.items.PortableDualWorkTable;
-import ganymedes01.ganyssurface.items.PrismarineItems;
 import ganymedes01.ganyssurface.items.Quiver;
 import ganymedes01.ganyssurface.items.RoastedSquid;
 import ganymedes01.ganyssurface.items.Rot;
@@ -51,11 +43,11 @@ import ganymedes01.ganyssurface.items.VillageFinder;
 import ganymedes01.ganyssurface.items.WoodenArmour;
 import ganymedes01.ganyssurface.items.WoodenWrench;
 import net.minecraft.block.BlockDispenser;
-import net.minecraft.block.BlockWood;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 /**
  * Gany's Surface
@@ -99,17 +91,6 @@ public class ModItems {
 	public static final Item stick = new Stick();
 	public static final Item eatenCake = new EatenCake();
 
-	// 1.8 Stuff
-	public static final Item rawMutton = new MuttonRaw();
-	public static final Item cookedMutton = new MuttonCooked();
-	public static final Item prismarineItems = new PrismarineItems();
-	public static final Item[] doors = new Item[BlockWood.field_150096_a.length - 1];
-
-	// MC:PE
-	public static final Item beetroot = new Beetroot();
-	public static final Item beetrootSoup = new BeetrootSoup();
-	public static final Item beetrootSeeds = new BeetrootSeeds();
-
 	// Armour
 	public static final Item woodenHelmet = new WoodenArmour(0);
 	public static final Item woodenChestplate = new WoodenArmour(1);
@@ -125,11 +106,6 @@ public class ModItems {
 	public static final Item dyedChainChestplate = new DyedChainArmour(1);
 	public static final Item dyedChainLeggings = new DyedChainArmour(2);
 	public static final Item dyedChainBoots = new DyedChainArmour(3);
-
-	static {
-		for (int i = 0; i < doors.length; i++)
-			doors[i] = new ItemNewDoor(i + 1);
-	}
 
 	public static void init() {
 		try {

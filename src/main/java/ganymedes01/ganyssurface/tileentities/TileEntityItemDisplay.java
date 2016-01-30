@@ -1,8 +1,5 @@
 package ganymedes01.ganyssurface.tileentities;
 
-import cpw.mods.fml.common.network.ByteBufUtils;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.lib.Strings;
 import ganymedes01.ganyssurface.network.IPacketHandlingTile;
 import ganymedes01.ganyssurface.network.PacketHandler;
@@ -16,6 +13,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
+import net.minecraftforge.fml.common.network.ByteBufUtils;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
  * Gany's Surface

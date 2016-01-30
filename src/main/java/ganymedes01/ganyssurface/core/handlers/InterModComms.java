@@ -3,13 +3,13 @@ package ganymedes01.ganyssurface.core.handlers;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import cpw.mods.fml.common.event.FMLInterModComms.IMCEvent;
-import cpw.mods.fml.common.event.FMLInterModComms.IMCMessage;
 import ganymedes01.ganyssurface.lib.IMCKeys;
 import ganymedes01.ganyssurface.lib.Reference;
 import ganymedes01.ganyssurface.recipes.OrganicMatterRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.fml.common.event.FMLInterModComms.IMCEvent;
+import net.minecraftforge.fml.common.event.FMLInterModComms.IMCMessage;
 
 /**
  * Gany's Surface

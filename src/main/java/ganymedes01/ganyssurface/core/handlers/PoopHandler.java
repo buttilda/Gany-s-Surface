@@ -1,6 +1,5 @@
 package ganymedes01.ganyssurface.core.handlers;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import ganymedes01.ganyssurface.GanysSurface;
 import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.ModItems;
@@ -11,6 +10,7 @@ import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /**
  * Gany's Surface

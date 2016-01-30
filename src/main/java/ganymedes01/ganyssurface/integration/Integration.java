@@ -1,7 +1,5 @@
 package ganymedes01.ganyssurface.integration;
 
-import cpw.mods.fml.common.Loader;
-
 /**
  * Gany's Surface
  * 

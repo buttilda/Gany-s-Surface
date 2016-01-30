@@ -4,7 +4,6 @@ import ganymedes01.ganyssurface.ModBlocks;
 import ganymedes01.ganyssurface.blocks.CubicSensoringDislocator;
 import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
-import net.minecraftforge.common.util.ForgeDirection;
 
 /**
  * Gany's Surface
