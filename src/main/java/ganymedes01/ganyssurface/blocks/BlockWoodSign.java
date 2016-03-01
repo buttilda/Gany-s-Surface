@@ -119,8 +119,6 @@ public class BlockWoodSign extends BlockSign implements ISubBlocksBlock, IConfig
 			this.dropBlockAsItem(world, x, y, z, world.getBlockMetadata(x, y, z), 0);
 			world.setBlockToAir(x, y, z);
 		}
-
-		super.onNeighborBlockChange(world, x, y, z, neighbour);
 	}
 
 	@Override
