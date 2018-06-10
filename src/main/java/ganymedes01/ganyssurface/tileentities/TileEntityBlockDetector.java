@@ -6,6 +6,7 @@ import ganymedes01.ganyssurface.lib.Strings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCocoa;
 import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemBucket;
@@ -90,7 +91,7 @@ public class TileEntityBlockDetector extends GanysInventory implements ISidedInv
 		if (InventoryUtils.areStacksTheSame(filter, dropped, false))
 			return true;
 
-		if (block == Block.getBlockFromItem(filter.getItem()) && meta == filter.getItemDamage())
+		if (block != Blocks.air && block == Block.getBlockFromItem(filter.getItem()) && meta == filter.getItemDamage())
 			return true;
 
 		if (filter.getItem() instanceof ItemBucket) {
