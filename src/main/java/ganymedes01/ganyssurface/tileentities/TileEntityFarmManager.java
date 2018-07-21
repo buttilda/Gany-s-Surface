@@ -7,6 +7,7 @@ import java.util.List;
 import ganymedes01.ganyssurface.core.utils.Spiral;
 import ganymedes01.ganyssurface.core.utils.Utils;
 import ganymedes01.ganyssurface.lib.Strings;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.IPlantable;
@@ -46,10 +47,15 @@ public class TileEntityFarmManager extends GanysInventory {
 						slots.add(j);
 				if (!slots.isEmpty()) {
 					int slot = slots.get(worldObj.rand.nextInt(slots.size()));
-					if (inventory[slot].tryPlaceItemIntoWorld(Utils.getPlayer(worldObj), worldObj, xCoord + p.x, yCoord - i, zCoord + p.y, 1, 0, 0, 0)) {
-						if (inventory[slot].stackSize <= 0)
-							inventory[slot] = null;
-						break;
+					Block plantable = ((IPlantable) inventory[slot].getItem()).getPlant(worldObj, xCoord + p.x, yCoord - i, zCoord + p.y);
+					if (plantable != null &&
+							worldObj.getBlock(xCoord + p.x, yCoord - i - 1, zCoord + p.y).isFertile(worldObj,xCoord + p.x, yCoord - i - 1, zCoord + p.y)) {
+						if (worldObj.setBlock(xCoord + p.x, yCoord - i, zCoord + p.y, plantable)) {
+							inventory[slot].stackSize--;
+							if (inventory[slot].stackSize <= 0)
+								inventory[slot] = null;
+							break;
+						}
 					}
 				}
 			}
