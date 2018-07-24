@@ -50,6 +50,7 @@ public class TileEntityFarmManager extends GanysInventory {
 					if (inventory[slot].getItem() instanceof IPlantable) {
 						Block plantable = ((IPlantable) inventory[slot].getItem()).getPlant(worldObj, xCoord + p.x, yCoord - i, zCoord + p.y);
 						if (plantable != null &&
+								!(worldObj.getBlock(xCoord + p.x, yCoord - i, zCoord + p.y) instanceof IPlantable) &&
 								plantable.canBlockStay(worldObj,xCoord + p.x, yCoord - i, zCoord + p.y)) {
 							if (worldObj.setBlock(xCoord + p.x, yCoord - i, zCoord + p.y, plantable)) {
 								inventory[slot].stackSize--;

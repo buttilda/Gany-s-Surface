@@ -60,7 +60,8 @@ public class TileEntityPlanter extends GanysInventory implements IPacketHandling
 							if (inventory[i].getItem() instanceof IPlantable) {
 								Block plantable = ((IPlantable) inventory[i].getItem()).getPlant(worldObj, xCoord, yCoord - 1, zCoord);
 								if (plantable != null &&
-										plantable.canBlockStay(worldObj,xCoord, yCoord - 1, zCoord)) {
+										!(worldObj.getBlock(xCoord, yCoord - 1, zCoord) instanceof IPlantable) &&
+										plantable.canBlockStay(worldObj, xCoord, yCoord - 1, zCoord)) {
 									if (worldObj.setBlock(xCoord, yCoord - 1, zCoord, plantable)) {
 										inventory[i].stackSize--;
 										if (inventory[i].stackSize <= 0)
