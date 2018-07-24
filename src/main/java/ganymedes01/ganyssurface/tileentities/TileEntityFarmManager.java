@@ -47,14 +47,16 @@ public class TileEntityFarmManager extends GanysInventory {
 						slots.add(j);
 				if (!slots.isEmpty()) {
 					int slot = slots.get(worldObj.rand.nextInt(slots.size()));
-					Block plantable = ((IPlantable) inventory[slot].getItem()).getPlant(worldObj, xCoord + p.x, yCoord - i, zCoord + p.y);
-					if (plantable != null &&
-							worldObj.getBlock(xCoord + p.x, yCoord - i - 1, zCoord + p.y).isFertile(worldObj,xCoord + p.x, yCoord - i - 1, zCoord + p.y)) {
-						if (worldObj.setBlock(xCoord + p.x, yCoord - i, zCoord + p.y, plantable)) {
-							inventory[slot].stackSize--;
-							if (inventory[slot].stackSize <= 0)
-								inventory[slot] = null;
-							break;
+					if (inventory[slot].getItem() instanceof IPlantable) {
+						Block plantable = ((IPlantable) inventory[slot].getItem()).getPlant(worldObj, xCoord + p.x, yCoord - i, zCoord + p.y);
+						if (plantable != null &&
+								plantable.canBlockStay(worldObj,xCoord + p.x, yCoord - i, zCoord + p.y)) {
+							if (worldObj.setBlock(xCoord + p.x, yCoord - i, zCoord + p.y, plantable)) {
+								inventory[slot].stackSize--;
+								if (inventory[slot].stackSize <= 0)
+									inventory[slot] = null;
+								break;
+							}
 						}
 					}
 				}
