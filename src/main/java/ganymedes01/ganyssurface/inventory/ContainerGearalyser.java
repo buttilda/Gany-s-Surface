@@ -3,6 +3,7 @@ package ganymedes01.ganyssurface.inventory;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ganymedes01.ganyssurface.inventory.slots.GearSlot;
+import ganymedes01.ganyssurface.inventory.slots.SlotArmor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -34,7 +35,7 @@ public class ContainerGearalyser extends Container {
 
 		for (int i = 0; i < 4; i++) {
 			final int type = i;
-			addSlotToContainer(new Slot(player, player.getSizeInventory() - 1 - i, 176, 14 + i * 18) {
+			addSlotToContainer(new SlotArmor(player, player.getSizeInventory() - 1 - i, 176, 14 + i * 18, i) {
 
 				@Override
 				@SideOnly(Side.CLIENT)
@@ -85,4 +86,5 @@ public class ContainerGearalyser extends Container {
 
 		return stack;
 	}
+
 }

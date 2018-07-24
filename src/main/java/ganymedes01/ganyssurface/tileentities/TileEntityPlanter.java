@@ -9,6 +9,7 @@ import ganymedes01.ganyssurface.network.PacketHandler;
 import ganymedes01.ganyssurface.network.packet.PacketTileEntity;
 import ganymedes01.ganyssurface.network.packet.PacketTileEntity.TileData;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;
@@ -56,10 +57,19 @@ public class TileEntityPlanter extends GanysInventory implements IPacketHandling
 					else {
 						armExtension += 0.01F;
 						if (armExtension >= 0.5F) {
-							inventory[i].tryPlaceItemIntoWorld(Utils.getPlayer(worldObj), worldObj, xCoord, yCoord - 2, zCoord, 1, 0, 0, 0);
-							if (inventory[i].stackSize <= 0)
-								inventory[i] = null;
-							isReturning = true;
+							if (inventory[i].getItem() instanceof IPlantable) {
+								Block plantable = ((IPlantable) inventory[i].getItem()).getPlant(worldObj, xCoord, yCoord - 1, zCoord);
+								if (plantable != null &&
+										!(worldObj.getBlock(xCoord, yCoord - 1, zCoord) instanceof IPlantable) &&
+										plantable.canBlockStay(worldObj, xCoord, yCoord - 1, zCoord)) {
+									if (worldObj.setBlock(xCoord, yCoord - 1, zCoord, plantable)) {
+										inventory[i].stackSize--;
+										if (inventory[i].stackSize <= 0)
+											inventory[i] = null;
+										isReturning = true;
+									}
+								}
+							}
 						}
 						update();
 						break;
